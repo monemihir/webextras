@@ -25,7 +25,7 @@ using Newtonsoft.Json;
 namespace MMM.Library.WebExtras.JQDataTables
 {
   /// <summary>
-  /// class encapsulating the returned well formed json data to a datatables table from a ajax call
+  /// Class encapsulating the returned well formed json data to a datatables table from a ajax call
   /// http://www.datatables.net
   /// 
   /// "In reply to each request for information that DataTables makes to the server, 
@@ -57,7 +57,7 @@ namespace MMM.Library.WebExtras.JQDataTables
     /// The data in a 2D array
     /// </summary>
     [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-    public IEnumerable<string[]> aaData { get; set; }
+    public IEnumerable<IEnumerable<string>> aaData { get; set; }
 
     /// <summary>
     /// Default constructor

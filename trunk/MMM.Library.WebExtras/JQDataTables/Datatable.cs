@@ -31,47 +31,61 @@ namespace MMM.Library.WebExtras.JQDataTables
     /// <summary>
     /// HTML field ID for the Datatable
     /// </summary>
-    public string TableID { get; private set; }
+    public string ID { get; private set; }
 
     /// <summary>
     /// Datatable settings
     /// </summary>
-    public DatatableSettings TableSettings { get; private set; }
+    public DatatableSettings Settings { get; private set; }
 
     /// <summary>
     /// Datatable column headings
     /// </summary>
-    public DatatableColumn[] Columns { get; private set; }
+    public IEnumerable<DatatableColumn> Columns { get; private set; }
 
     /// <summary>
     /// Datatable records
     /// </summary>
-    public DatatableRecords TableData { get; private set; }
+    public DatatableRecords Records { get; private set; }
 
     /// <summary>
     /// Postback data for server side processing
     /// </summary>
-    public PostbackItem[] ServerPostbackData { get; private set; }
+    public IEnumerable<PostbackItem> Postbacks { get; private set; }
 
     /// <summary>
-    /// Default constructor
+    /// Constructor
     /// </summary>
-    /// <param name="tableId">HTML field ID for the Datatable</param>
-    /// <param name="tableSettings">Datatable settings</param>
+    /// <param name="settings">Datatable settings</param>
     /// <param name="columns">Datatable column specifications</param>
-    /// <param name="tableData">Datatable records</param>
-    /// <param name="serverData">[Optional] Postback data for server side processing</param>
-    public Datatable(string tableId, DatatableSettings tableSettings, IEnumerable<DatatableColumn> columns, DatatableRecords tableData, IEnumerable<PostbackItem> serverData = null)
+    /// <param name="records">Datatable records</param>
+    /// <param name="postbacks">[Optional] Postback data for server side processing</param>
+    public Datatable(DatatableSettings settings, IEnumerable<DatatableColumn> columns, DatatableRecords records, IEnumerable<PostbackItem> postbacks = null) :
+      this(string.Format("autogen-{0}", Guid.NewGuid().ToString()), settings, columns, records, postbacks) { }
+
+    /// <summary>
+    /// Constructor to initialize with an HTML field ID
+    /// </summary>
+    /// <param name="id">HTML field ID for the Datatable</param>
+    /// <param name="settings">Datatable settings</param>
+    /// <param name="columns">Datatable column specifications</param>
+    /// <param name="records">Datatable records</param>
+    /// <param name="postbacks">[Optional] Postback data for server side processing</param>
+    public Datatable(string id, DatatableSettings settings, IEnumerable<DatatableColumn> columns, DatatableRecords records, IEnumerable<PostbackItem> postbacks = null)
     {
-      TableID = tableId;
+      ID = id;
+      Settings = settings;
 
-      if (tableSettings.aoColumns == null)
-        tableSettings.SetupAOColumns(columns);
+      // decide sorting enable/disable for columns
+      int[] columnNumbers = settings.aaSorting.Select(f => f.ToArray()[0]).Cast<int>().ToArray();
+      Columns = columns.Select((f, idx) => new DatatableColumn(f.Name, f.CssClass, f.Width, f.Visible) { Sortable = columnNumbers.Contains(idx) });
 
-      TableSettings = tableSettings;
-      Columns = columns.ToArray();
-      TableData = tableData;
-      ServerPostbackData = (serverData != null) ? serverData.ToArray() : new PostbackItem[0];
+      // if the aoColumns were not setup then do a default setup
+      if (settings.aoColumns == null)
+        settings.SetupAOColumns(columns);
+
+      Records = records;
+      Postbacks = postbacks ?? Enumerable.Empty<PostbackItem>();
     }
   }
 }

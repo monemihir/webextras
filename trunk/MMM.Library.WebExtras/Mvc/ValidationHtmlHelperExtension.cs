@@ -5,7 +5,7 @@ using System.Text;
 using System.Linq.Expressions;
 using System.Web.Mvc;
 
-namespace MMM.Library.WebExtras.Helpers
+namespace MMM.Library.WebExtras.Mvc
 {
   /// <summary>
   /// Validation HTML helper methods

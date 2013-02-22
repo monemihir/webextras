@@ -1,6 +1,6 @@
 ﻿/*
 * This file is part of - Code Library
-* Copyright (C) 2010-2011 Mihir Mone
+* Copyright (C) 2013 Mihir Mone
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Lesser General Public License as published by

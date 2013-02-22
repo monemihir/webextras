@@ -19,7 +19,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web.Script.Serialization;
 using Newtonsoft.Json;
 
 namespace MMM.Library.WebExtras.JQDataTables
@@ -30,81 +29,6 @@ namespace MMM.Library.WebExtras.JQDataTables
   [Serializable]
   public class DatatableSettings
   {
-    /// <summary>
-    /// Language init options
-    /// </summary>
-    [Serializable]
-    public class OLanguage
-    {
-      /// <summary>
-      /// This string gives information to the end user about the information that is current on 
-      /// display on the page. The _START_, _END_ and _TOTAL_ variables are all dynamically 
-      /// replaced as the table display updates, and can be freely moved or removed as the 
-      /// language requirements change
-      /// </summary>
-      public string sInfo;
-
-      /// <summary>
-      /// Display information string for when the table is empty. Typically the format of this 
-      /// string should match sInfo
-      /// </summary>
-      public string sInfoEmpty;
-    }
-
-    /// <summary>
-    /// Specification for a Datatables data column
-    /// </summary>
-    [Serializable]
-    public class AOColumn
-    {
-      /// <summary>
-      /// Enable / Disable sorting based on this column
-      /// </summary>
-      public bool bSortable;
-
-      /// <summary>
-      /// CSS class for the cells of this column
-      /// </summary>
-      [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-      public string sClass;
-
-      /// <summary>
-      /// The width of the column, this parameter may take any CSS value (3em, 20px etc)
-      /// </summary>
-      [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-      public string sWidth;
-
-      /// <summary>
-      /// Flag indicating whether the column is visible
-      /// </summary>
-      public bool bVisible;
-
-      /// <summary>
-      /// Default constructor
-      /// </summary>
-      public AOColumn()
-      {
-        bVisible = true;
-      }
-    }
-
-    /// <summary>
-    /// Specification for the column sorts
-    /// </summary>
-    [Serializable]
-    public class AASort
-    {
-      /// <summary>
-      /// Column number. This is zero indexed i.e the column numbers start from 0
-      /// </summary>
-      public int columnNumber;
-
-      /// <summary>
-      /// Type of sort. Only valid values are "asc" and "desc"
-      /// </summary>
-      public string sortType;
-    }
-
     /// <summary>
     /// Enable / Disable server side processing. The AJAX source (sAjaxSource) must also be specified
     /// </summary>
@@ -163,7 +87,7 @@ namespace MMM.Library.WebExtras.JQDataTables
     /// this variable. The aaSorting array should contain an array for each column to be sorted 
     /// initially containing the column's index and a direction string ('asc' or 'desc')
     /// </summary>
-    public object[][] aaSorting;
+    public IEnumerable<IEnumerable<object>> aaSorting;
 
     /// <summary>
     /// Individual data column specifications
@@ -191,30 +115,22 @@ namespace MMM.Library.WebExtras.JQDataTables
     /// Constructor to setup Datatable with default column widths. All columns will get equal width.
     /// </summary>
     /// <param name="displayLength">Number of rows to display on a single page when using pagination</param>
-    /// <param name="sortOptions">Column sort options. If this is null or empty list a default "asc" sort on 
-    /// the first column will be applied</param>
+    /// <param name="sortOptions">Column sort options. If this is null no sorting will be applied</param>
     /// <param name="ajaxSource">AJAX source URL</param>
     /// <param name="footerSuffix">[Optional] This string gives information to the end user about the information 
     /// that is current on display on the page</param>
-    /// <param name="tableHeight">[Optional] Height of the table in pixels. Defaults to 200px</param>
+    /// <param name="tableHeight">[Optional] Height of the table in pixels. Defaults to 200px. Note. Pass in a null if to do not
+    /// want any table height set</param>
     public DatatableSettings(int displayLength, IEnumerable<AASort> sortOptions, string ajaxSource, string footerSuffix = "", string tableHeight = "200px")
     {
       bPaginate = true;
       bFilter = bLengthChange = false;
       sPaginationType = "full_numbers";
       iDisplayLength = displayLength;
-      sScrollY = tableHeight;
+      if (!string.IsNullOrEmpty(tableHeight))
+        sScrollY = tableHeight;
 
-      foreach (AASort s in sortOptions)
-      {
-        if (s.sortType.ToLower() != "asc" && s.sortType.ToLower() != "desc")
-          throw new Exception("Sort type can only be either \"asc\" or \"desc\"");
-      }
-
-      aaSorting =
-        (sortOptions != null && sortOptions.Count() > 0) ?
-        sortOptions.Select(o => new object[2] { o.columnNumber, o.sortType }).ToArray() :
-        (new List<object[]> { new object[2] { 0, "asc" } }).ToArray();
+      aaSorting = sortOptions.Select(f => f.ToArray()) ?? null;
 
       oLanguage = new OLanguage
       {
@@ -223,6 +139,19 @@ namespace MMM.Library.WebExtras.JQDataTables
       };
       sAjaxSource = ajaxSource;
     }
+
+    /// <summary>
+    /// Constructor to setup Datatable with default column widths. All columns will get equal width.
+    /// </summary>
+    /// <param name="displayLength">Number of rows to display on a single page when using pagination</param>
+    /// <param name="sortOption">Column sort option. If this is null no sorting will be applied</param>
+    /// <param name="ajaxSource">AJAX source URL</param>
+    /// <param name="footerSuffix">[Optional] This string gives information to the end user about the information 
+    /// that is current on display on the page</param>
+    /// <param name="tableHeight">[Optional] Height of the table in pixels. Defaults to 200px. Note. Pass in a null if to do not
+    /// want any table height set</param>
+    public DatatableSettings(int displayLength, AASort sortOption, string ajaxSource, string footerSuffix = "", string tableHeight = "200px")
+      : this(displayLength, (sortOption == null ? null : new AASort[] { sortOption }), ajaxSource, footerSuffix, tableHeight) { }
 
     /// <summary>
     /// Setup the jQuery dataTables aoColumns variable from the given

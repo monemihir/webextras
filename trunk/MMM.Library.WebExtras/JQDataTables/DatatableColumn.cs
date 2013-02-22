@@ -29,7 +29,7 @@ namespace MMM.Library.WebExtras.JQDataTables
     /// <summary>
     /// Text heading for the column
     /// </summary>
-    public string Name { get; private set; }
+    public string Name { get; set; }
 
     /// <summary>
     /// HTML field ID for the column
@@ -39,36 +39,35 @@ namespace MMM.Library.WebExtras.JQDataTables
     /// <summary>
     /// Flag indicating whether this column is sortable
     /// </summary>
-    public bool Sortable { get; private set; }
+    public bool Sortable { get; set; }
 
     /// <summary>
     /// Css class for this column
     /// </summary>
-    public string CssClass { get; private set; }
+    public string CssClass { get; set; }
 
     /// <summary>
     /// Column width in percent
     /// </summary>
-    public int? Width { get; private set; }
+    public int? Width { get; set; }
 
     /// <summary>
     /// Flag indicating whether this column is visible
     /// </summary>
-    public bool Visible { get; private set; }
+    public bool Visible { get; set; }
 
     /// <summary>
     /// Default constructor
     /// </summary>
     /// <param name="name">Text heading for the column</param>
-    /// <param name="sortable">[Optional] Flag indicating whether this column is sortable. Defaults to false</param>
+    /// 
     /// <param name="cssClass">[Optional] CSS class for the cells of this column. Defaults to null</param>
     /// <param name="width">[Optional] Column width in percent. Defaults to null</param>
     /// <param name="visible">[Optional] Flag indicating whether this column is visible. Defaults to true</param>
-    public DatatableColumn(string name, bool sortable = false, string cssClass = null, int? width = null, bool visible = true)
+    public DatatableColumn(string name, string cssClass = null, int? width = null, bool visible = true)
     {
       Name = name;
       HtmlFieldId = name.ToLower() + "_Id";
-      Sortable = sortable;
       Width = width;
       Visible = visible;
       CssClass = cssClass;

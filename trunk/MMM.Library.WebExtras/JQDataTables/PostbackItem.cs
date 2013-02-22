@@ -51,8 +51,8 @@ namespace MMM.Library.WebExtras.JQDataTables
     }
 
     /// <summary>
-    /// Generate Datatables Postback items from the attributes
-    /// of the given object
+    /// Generate Datatables Postback items from the attributes/value
+    /// pairs of the given object
     /// </summary>
     /// <param name="o">Object to generate Postback items from</param>
     /// <returns>Generated Postback items</returns>
