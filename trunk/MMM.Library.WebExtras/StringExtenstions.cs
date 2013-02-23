@@ -16,5 +16,17 @@ namespace MMM.Library.WebExtras
     {
       return CultureInfo.CurrentCulture.TextInfo.ToTitleCase(str);
     }
+
+    /// <summary>
+    /// Returns a value indicating whether the specified System.String object occurs
+    /// within this string ignoring case.
+    /// </summary>
+    /// <param name="str">String to be checked</param>
+    /// <param name="value">The string to seek</param>
+    /// <returns>True if string to be seeked is found in this string, else False</returns>
+    public static bool ContainsIgnoreCase(this string str, string value)
+    {
+      return str.ToLowerInvariant().Contains(value.ToLowerInvariant());
+    }
   }
 }

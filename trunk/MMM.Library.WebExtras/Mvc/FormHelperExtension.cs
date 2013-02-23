@@ -31,57 +31,6 @@ namespace MMM.Library.WebExtras.Mvc
   /// </summary>
   public static class FormHelperExtension
   {
-    #region Textbox extensions
-
-    /// <summary>
-    /// Displays an HTML Data textbox with date format of 'dd MMM yyyy'
-    /// </summary>
-    /// <param name="html">Current HTMLHelper object</param>
-    /// <param name="dateTime">Value to be displayed</param>
-    /// <param name="htmlFieldName">Name of HTML control</param>
-    /// <param name="cssClass">[Optional] CSS class for the control. Defaults to empty.</param>
-    /// <returns>HTML Date textbox control</returns>
-    public static MvcHtmlString DateTextBox(
-      this HtmlHelper html,
-      DateTime? dateTime,
-      string htmlFieldName,
-      string cssClass = "")
-    {
-      // Create the outer DIV tag
-      TagBuilder div = new TagBuilder("div");
-      div.AddCssClass("input-append");
-      div.AddCssClass("date");
-      div.Attributes["id"] = html.ViewContext.ViewData.TemplateInfo.GetFullHtmlFieldId(htmlFieldName);
-
-      // Create INPUT sub tag
-      TagBuilder tag = new TagBuilder("input");
-      tag.Attributes["type"] = "text";
-      if (dateTime.HasValue)
-        tag.Attributes["value"] = dateTime.Value.ToString("dd-MM-yyyy");
-      tag.Attributes["name"] = html.ViewContext.ViewData.TemplateInfo.GetFullHtmlFieldName(htmlFieldName);
-      tag.Attributes["readOnly"] = "readonly";
-      tag.Attributes["style"] = "text-align: center;";
-      tag.AddCssClass(cssClass);
-
-      // Create SPAN sub tag
-      TagBuilder span = new TagBuilder("span");
-      span.AddCssClass("add-on");
-
-      // Create I sub tag
-      TagBuilder i = new TagBuilder("i");
-      i.AddCssClass("icon-calendar");
-
-      // Add I to SPAN
-      span.InnerHtml = i.ToString(TagRenderMode.Normal);
-
-      // Add INPUT and SPAN to DIV
-      div.InnerHtml = tag.ToString(TagRenderMode.SelfClosing) + span.ToString(TagRenderMode.Normal);
-
-      return MvcHtmlString.Create(div.ToString(TagRenderMode.Normal));
-    }
-
-    #endregion Textbox extensions
-
     #region Button extensions
 
     /// <summary>
@@ -249,7 +198,7 @@ namespace MMM.Library.WebExtras.Mvc
           TagBuilder cell = new TagBuilder("td");
           cell.AddCssClass("display-field");
 
-          // Loop until either number of boxes available finishes or 
+          // Loop until either number of boxes available finishes or
           // number of boxes per line are added
           CheckBox box = listInfo[index];
 
