@@ -28,7 +28,7 @@ namespace MMM.Library.WebExtras.Bootstrap
   /// <summary>
   /// Twitter bootstrap form HTML helper extensions
   /// </summary>
-  public static class BSFormHtmlHelperExtension
+  public static class BootstrapFormHtmlHelperExtension
   {
     #region DateTextBoxFor extensions
 

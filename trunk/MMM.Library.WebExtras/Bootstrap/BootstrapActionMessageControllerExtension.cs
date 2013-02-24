@@ -16,25 +16,27 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+using System.Text;
 using System.Web.Mvc;
+using MMM.Library.WebExtras.Mvc;
 
-namespace MMM.Library.WebExtras.Mvc
+namespace MMM.Library.WebExtras.Bootstrap
 {
   /// <summary>
   /// A class to store and retrieve messages for display after an action has occurred
   /// Provides ControllerBase and HtmlHelper extensions
   /// </summary>
-  public static class ActionMessageControllerExtension
+  public static class BootstrapActionMessageControllerExtension
   {
     /// <summary>
     /// The key used to store the message in the TempData object
     /// </summary>
-    public const string TempDataMessageKey = "<MvcAction_LastActionMessage>";
+    public const string TempDataMessageKey = "<Bootstrap_LastActionMessage>";
 
     /// <summary>
     /// The key used to store the message type i.e success/failure in the TempData object
     /// </summary>
-    public const string TempDataMessageTypeKey = "<MvcAction_LastActionMessageType>";
+    public const string TempDataMessageTypeKey = "<Bootstrap_LastActionMessageType>";
 
     /// <summary>
     /// Overload of the RedirectToAction method, which allows the saving of an action message
@@ -43,32 +45,12 @@ namespace MMM.Library.WebExtras.Mvc
     /// <param name="c">The controller</param>
     /// <param name="result">The redirect result to execute</param>
     /// <param name="message">The action message to display after redirection. Use a starting ! character to display as an alert message.</param>
-    /// <param name="isSuccess">Flag indicating whether this action result was a success or failure</param>
+    /// <param name="type">Action message type</param>
     /// <param name="args">Any message formatting arguments</param>
     /// <returns>A RedirectToRouteResult result</returns>
-    public static RedirectToRouteResult RedirectToAction(this ControllerBase c, ActionResult result, string message, bool isSuccess, params object[] args)
+    public static RedirectToRouteResult RedirectToAction(this ControllerBase c, ActionResult result, string message, ActionMessageType type = ActionMessageType.Success, params object[] args)
     {
-      SaveActionMessage(c, message, isSuccess, args);
-
-      var callInfo = result.GetT4MVCResult();
-      return new RedirectToRouteResult(
-        null,
-        callInfo.RouteValueDictionary
-        );
-    }
-
-    /// <summary>
-    /// Overload of the RedirectToAction method, which allows the saving of an action message
-    /// before the redirect is executed
-    /// </summary>
-    /// <param name="c">The controller</param>
-    /// <param name="result">The redirect result to execute</param>
-    /// <param name="message">The action message to display after redirection. Use a starting ! character to display as an alert message.</param>
-    /// <param name="args">Any message formatting arguments</param>
-    /// <returns>A RedirectToRouteResult result</returns>
-    public static RedirectToRouteResult RedirectToAction(this ControllerBase c, ActionResult result, string message, params object[] args)
-    {
-      SaveActionMessage(c, message, true, args);
+      SaveActionMessage(c, message, type, args);
 
       var callInfo = result.GetT4MVCResult();
       return new RedirectToRouteResult(
@@ -85,35 +67,12 @@ namespace MMM.Library.WebExtras.Mvc
     /// <param name="viewName">The view name to show</param>
     /// <param name="model">Model data associated with the view</param>
     /// <param name="message">The action message to display after redirection. Use a starting ! character to display as an alert message.</param>
-    /// <param name="isSuccess">Flag indicating whether this action result was a success or failure</param>
+    /// <param name="type">Action message type</param>
     /// <param name="args">Any message formatting arguments</param>
     /// <returns>a ViewResult result</returns>
-    public static ViewResult View(this ControllerBase c, string viewName, object model, string message, bool isSuccess, params object[] args)
+    public static ViewResult View(this ControllerBase c, string viewName, object model, string message, ActionMessageType type = ActionMessageType.Success, params object[] args)
     {
-      SaveActionMessage(c, message, isSuccess, args);
-
-      c.ViewData.Model = model;
-      return new ViewResult
-      {
-        ViewName = viewName,
-        ViewData = c.ViewData,
-        TempData = c.TempData
-      };
-    }
-
-    /// <summary>
-    /// Overload of the View method, which allows the saving of an action message
-    /// before the View is returned
-    /// </summary>
-    /// <param name="c">The controller</param>
-    /// <param name="viewName">The view name to show</param>
-    /// <param name="model">Model data associated with the view</param>
-    /// <param name="message">The action message to display after redirection. Use a starting ! character to display as an alert message.</param>
-    /// <param name="args">Any message formatting arguments</param>
-    /// <returns>a ViewResult result</returns>
-    public static ViewResult View(this ControllerBase c, string viewName, object model, string message, params object[] args)
-    {
-      SaveActionMessage(c, message, true, args);
+      SaveActionMessage(c, message, type, args);
 
       c.ViewData.Model = model;
       return new ViewResult
@@ -131,13 +90,13 @@ namespace MMM.Library.WebExtras.Mvc
     /// </summary>
     /// <param name="c">The controller</param>
     /// <param name="message">The action message to display after redirection. Use a starting ! character to display as an alert message.</param>
-    /// <param name="isSuccess">Flag indicating whether to save a success message or a failure message </param>
+    /// <param name="type">Action message type</param>
     /// <param name="args">Any message formatting arguments</param>
-    private static void SaveActionMessage(this ControllerBase c, string message, bool isSuccess, params object[] args)
+    private static void SaveActionMessage(this ControllerBase c, string message, ActionMessageType type, params object[] args)
     {
       // store data in temp key, will be alive for one request only
       c.TempData[TempDataMessageKey] = string.Format(message, args);
-      c.TempData[TempDataMessageTypeKey] = isSuccess;
+      c.TempData[TempDataMessageTypeKey] = type;
     }
 
     /// <summary>
@@ -152,27 +111,42 @@ namespace MMM.Library.WebExtras.Mvc
       {
         // get message
         string message = helper.ViewContext.TempData[TempDataMessageKey].ToString();
-        bool success = (bool)helper.ViewContext.TempData[TempDataMessageTypeKey];
+        ActionMessageType type = (ActionMessageType)helper.ViewContext.TempData[TempDataMessageTypeKey];
+        string controlId = "actionmessage";
 
-        // create the close button for action message
-        TagBuilder closeBtn = new TagBuilder("button");
-        closeBtn.Attributes["type"] = "button";
-        closeBtn.Attributes["data-dismiss"] = "alert";
-        closeBtn.AddCssClass("close");
-        closeBtn.SetInnerText("x");
-
+        // create action message div
         TagBuilder builder = new TagBuilder("div");
-        builder.AddCssClass("alert");
-        builder.GenerateId("actionmessage");
+        builder.Attributes["class"] = "alert span7 offset1 keep-center strong";
+        builder.GenerateId(controlId);
+        builder.AddCssClass("alert-" + type.GetStringValue());
+        builder.InnerHtml = message;
 
-        if (success)
-          builder.AddCssClass("alert-success");
-        else
-          builder.AddCssClass("alert-error");
+        // create the script tag
+        TagBuilder script = new TagBuilder("script");
+        script.Attributes["type"] = "text/javascript";
 
-        builder.InnerHtml = closeBtn.ToString(TagRenderMode.Normal) + message;
+        StringBuilder sb = new StringBuilder();
+        sb.Append("$(document).ready(function () { ");
+        sb.Append("\n");
+        sb.Append("var control = $('#" + controlId + "');");
+        sb.Append("\n");
 
-        return MvcHtmlString.Create(builder.ToString(TagRenderMode.Normal));
+        switch (type)
+        {
+          case ActionMessageType.Success:
+            sb.Append("control.delay(3000).slideUp('500');");
+            break;
+
+          default:
+            sb.Append("control.slideDown('500');");
+            break;
+        }
+        sb.Append("\n");
+        sb.Append("});");
+
+        script.InnerHtml = sb.ToString();
+
+        return MvcHtmlString.Create(builder.ToString(TagRenderMode.Normal) + script.ToString(TagRenderMode.Normal));
       }
 
       return MvcHtmlString.Empty;

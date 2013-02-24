@@ -1,4 +1,4 @@
-﻿@model OMC.Dukc5.Web.Models.jQueryDatatables.Datatable
+﻿@model MMM.Library.WebExtras.JQDataTables.Datatable
 
 <table class="dataTable table-bordered table-striped" id="@Model.TableID">
     <thead>
@@ -13,7 +13,7 @@
   </table>
 
   <script type="text/javascript">
-    var dtable = @Html.Raw(Model.TableSettings.ToString())
+    var dtable = @Html.Raw(Model.TableSettings.ToString() + ";")
     dtable["sDom"] = (dtable["sDom"] == null) ? "t<'row-fluid'<'span6'i><'span6'p>>" : dtable["sDom"];
     dtable["sPaginationType"] = "bootstrap";
     @{

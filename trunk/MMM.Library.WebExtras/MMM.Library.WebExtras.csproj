@@ -99,13 +99,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Bootstrap\BSFormHtmlHelperExtension.cs" />
+    <Compile Include="Bootstrap\BootstrapFormHtmlHelperExtension.cs" />
     <Compile Include="Enum\EnumExtention.cs" />
     <Compile Include="JQDataTables\AASort.cs" />
     <Compile Include="JQDataTables\AOColumn.cs" />
     <Compile Include="JQDataTables\DatatableFilters.cs" />
     <Compile Include="JQDataTables\OLanguage.cs" />
     <Compile Include="JQDataTables\SortType.cs" />
+    <Compile Include="Mvc\ActionMessageType.cs" />
     <Compile Include="Mvc\FormHelperExtension.cs" />
     <Compile Include="Html\ButtonOfType.cs" />
     <Compile Include="Html\CheckBox.cs" />
@@ -119,7 +120,7 @@
     <Compile Include="JQFlot\FlotChartOptions.cs" />
     <Compile Include="JQFlot\FlotChartSeries.cs" />
     <Compile Include="Mvc\ModelStateErrorExtension.cs" />
-    <Compile Include="Mvc\ActionMessageControllerExtension.cs" />
+    <Compile Include="Bootstrap\BootstrapActionMessageControllerExtension.cs" />
     <Compile Include="Mvc\HtmlHelperExtension.cs" />
     <Compile Include="Mvc\ValidationHtmlHelperExtension.cs" />
     <Compile Include="Mvc\SelectedTabHelperExtension.cs" />
@@ -146,7 +147,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties BuildVersion_ConfigurationName="Release" BuildVersion_UseGlobalSettings="True" />
+      <UserProperties BuildVersion_UseGlobalSettings="True" BuildVersion_ConfigurationName="Release" />
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup>
