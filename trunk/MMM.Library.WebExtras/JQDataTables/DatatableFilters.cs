@@ -64,6 +64,8 @@ namespace MMM.Library.WebExtras.JQDataTables
     public DatatableFilters()
     {
       sEcho = "1";
+      iDisplayStart = 0;
+      iDisplayLength = 0;
     }
   }
 }

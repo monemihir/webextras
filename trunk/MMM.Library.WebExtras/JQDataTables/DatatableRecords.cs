@@ -65,6 +65,8 @@ namespace MMM.Library.WebExtras.JQDataTables
     {
       sEcho = "1";
       aaData = new string[0][];
+      iTotalDisplayRecords = 0;
+      iTotalRecords = 0;
     }
 
     /// <summary>
