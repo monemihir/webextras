@@ -48,23 +48,9 @@ namespace MMM.Library.WebExtras.Html
     /// </summary>
     /// <param name="value">Value for check box</param>
     /// <param name="displayText">Text to be displayed for the check box</param>
-    /// <param name="isChecked">Flag indicating whether the check box is checked</param>
-    public CheckBox(string value, string displayText, bool isChecked)
-    {
-      Value = value;
-      DisplayText = displayText;
-      IsChecked = isChecked;
-      IsEnabled = true;
-    }
-
-    /// <summary>
-    /// Constructor to create a CheckBox with given parameters
-    /// </summary>
-    /// <param name="value">Value for check box</param>
-    /// <param name="displayText">Text to be displayed for the check box</param>
-    /// <param name="isChecked">Flag indicating whether the check box is checked</param>
-    /// <param name="isEnabled">Flag indicating whether the check box is enabled</param>
-    public CheckBox(string value, string displayText, bool isChecked, bool isEnabled)
+    /// <param name="isChecked">[Optional] Flag indicating whether the check box is checked</param>
+    /// <param name="isEnabled">[Optional] Flag indicating whether the check box is enabled</param>
+    public CheckBox(string value, string displayText, bool isChecked = false, bool isEnabled = true)
     {
       Value = value;
       DisplayText = displayText;

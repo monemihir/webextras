@@ -17,13 +17,12 @@
 */
 
 using System.Collections.Generic;
-using System.Web.Script.Serialization;
 using Newtonsoft.Json;
 
 namespace MMM.Library.WebExtras.JQFlot
 {
   /// <summary>
-  /// A class representing the jquery properties of a flot series for any flot charts (http://code.google.com/p/flot/)    
+  /// A class representing the jquery properties of a flot series for any flot charts (http://code.google.com/p/flot/)
   /// property names must match the flot property names to allow correct .net to json conversion.
   /// see API docs: http://people.iola.dk/olau/flot/API.txt
   /// </summary>
@@ -143,7 +142,7 @@ namespace MMM.Library.WebExtras.JQFlot
     public class CurvedLineOptions
     {
       /// <summary>
-      /// ctor to initialize defaults. show=false, lineWidth=1, fill=false, 
+      /// ctor to initialize defaults. show=false, lineWidth=1, fill=false,
       /// fit=true, fitPointDist=0, fillColor=''
       /// </summary>
       public CurvedLineOptions()
@@ -177,13 +176,13 @@ namespace MMM.Library.WebExtras.JQFlot
       public bool fit { get; set; }
 
       /// <summary>
-      /// defines the x axis distance of the additional two points 
+      /// defines the x axis distance of the additional two points
       /// that are used to enforce the min max condition
       /// </summary>
       public double fitPointDist { get; set; }
 
       /// <summary>
-      /// color to fill the series with if other than the default series color. 
+      /// color to fill the series with if other than the default series color.
       /// If left blank, the default series color will be used.
       /// </summary>
       public string fillColor { get; set; }
@@ -227,7 +226,7 @@ namespace MMM.Library.WebExtras.JQFlot
     public int shadowSize { get; set; }
 
     /// <summary>
-    /// series data as a collection of x,y doubles 
+    /// series data as a collection of x,y doubles
     /// </summary>
     [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
     public IEnumerable<double[]> data { get; set; }
@@ -288,6 +287,5 @@ namespace MMM.Library.WebExtras.JQFlot
     {
       return JsonConvert.SerializeObject(this);
     }
-
   }
 }

@@ -39,7 +39,7 @@ namespace MMM.Library.WebExtras.Bootstrap
     /// <typeparam name="TValue">Property to be scanned</typeparam>
     /// <param name="html">HtmlHelper extension</param>
     /// <param name="expression">The property lamba expression</param>
-    /// <param name="dateFormat">Date format</param>    
+    /// <param name="dateFormat">Date format</param>
     /// <param name="htmlAttributes">Extra HTML attributes to be applied to the text box</param>
     /// <returns>A Bootstrap date picker control</returns>
     public static MvcHtmlString DateTextBoxFor<TModel, TValue>(this HtmlHelper<TModel> html, Expression<Func<TModel, TValue>> expression, string dateFormat, object htmlAttributes = (IDictionary<string,object>)null)
@@ -68,7 +68,7 @@ namespace MMM.Library.WebExtras.Bootstrap
     /// <typeparam name="TValue">Property to be scanned</typeparam>
     /// <param name="html">HtmlHelper extension</param>
     /// <param name="expression">The property lamba expression</param>
-    /// <param name="timeFormat">Time format</param>    
+    /// <param name="timeFormat">Time format</param>
     /// <param name="htmlAttributes">Extra HTML attributes to be applied to the text box</param>
     /// <returns>A Bootstrap date picker control</returns>
     public static MvcHtmlString TimeTextBoxFor<TModel, TValue>(this HtmlHelper<TModel> html, Expression<Func<TModel, TValue>> expression, string timeFormat, object htmlAttributes = (IDictionary<string,object>)null)
@@ -96,7 +96,7 @@ namespace MMM.Library.WebExtras.Bootstrap
     /// <typeparam name="TValue">Property to be scanned</typeparam>
     /// <param name="html">HtmlHelper extension</param>
     /// <param name="expression">The property lamba expression</param>
-    /// <param name="dateTimeFormat">Date and Time format</param>    
+    /// <param name="dateTimeFormat">Date and Time format</param>
     /// <param name="htmlAttributes">Extra HTML attributes to be applied to the text box</param>
     /// <returns>A Bootstrap date time picker control</returns>
     public static MvcHtmlString DateTimeTextBoxFor<TModel, TValue>(this HtmlHelper<TModel> html, Expression<Func<TModel, TValue>> expression, string dateTimeFormat, object htmlAttributes = (IDictionary<string,object>)null)
@@ -124,7 +124,7 @@ namespace MMM.Library.WebExtras.Bootstrap
     /// <typeparam name="TValue">Property to be scanned</typeparam>
     /// <param name="html">HtmlHelper extension</param>
     /// <param name="expression">The property lamba expression</param>
-    /// <param name="dateTimeFormat">Date and Time format</param>    
+    /// <param name="dateTimeFormat">Date and Time format</param>
     /// <param name="htmlAttributes">Extra HTML attributes to be applied to the text box</param>
     /// <returns>A Bootstrap date time picker control</returns>
     private static MvcHtmlString GetDateTimePickerFor<TModel, TValue>(this HtmlHelper<TModel> html, Expression<Func<TModel, TValue>> expression, string dateTimeFormat, object htmlAttributes = (IDictionary<string,object>)null)

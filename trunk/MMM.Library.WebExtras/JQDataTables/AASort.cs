@@ -17,6 +17,7 @@
 */
 
 using System;
+using MMM.Library.WebExtras.Core;
 
 namespace MMM.Library.WebExtras.JQDataTables
 {

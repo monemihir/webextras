@@ -45,9 +45,9 @@ namespace MMM.Library.WebExtras.Mvc
     /// <param name="imageSrc">Image source</param>
     /// <param name="altText">Alternate text if the image can't be shown</param>
     /// <param name="url">URL for hyperlink</param>
-    /// <param name="isJavascriptLink">[Optional] Flag indicating whether this is 
+    /// <param name="isJavascriptLink">[Optional] Flag indicating whether this is
     /// a javascript link</param>
-    /// <param name="htmlAttributes">[Optional] Extra html attributes for the image link. Note. 
+    /// <param name="htmlAttributes">[Optional] Extra html attributes for the image link. Note.
     /// These attributes will be applied to the A tag only. Defaults to null</param>
     /// <returns>HTML ImageHyperLink</returns>
     public static MvcHtmlString ImageLink(
@@ -73,11 +73,11 @@ namespace MMM.Library.WebExtras.Mvc
 
       return MvcHtmlString.Create(a.ToString());
     }
-        
+
     /// <summary>
     /// HTML hyperlink to given URL with the given
     /// text
-    /// </summary>    
+    /// </summary>
     /// <param name="html">Current HTMLHelper object</param>
     /// <param name="linkText">Text to display for the link</param>
     /// <param name="url">URL for hyperlink. This can be either a url or a javascript event</param>
@@ -108,7 +108,7 @@ namespace MMM.Library.WebExtras.Mvc
 
     /// <summary>
     /// HTML hyperlink with an icon
-    /// </summary>    
+    /// </summary>
     /// <param name="html">Current HTMLHelper object</param>
     /// <param name="linkText">Text to display for the link</param>
     /// <param name="url">URL for hyperlink. This can be either a url or a javascript event</param>
@@ -311,7 +311,7 @@ namespace MMM.Library.WebExtras.Mvc
     /// <param name="html">Current HtmlHelper object</param>
     /// <param name="linkText">Link text</param>
     /// <param name="user">Current user</param>
-    /// <param name="result">Action to be executed</param>  
+    /// <param name="result">Action to be executed</param>
     /// <param name="iconClass">Icon CSS class(s) to be prepended for the link. Multiple icon classes must be separated with
     /// spaces</param>
     /// <param name="htmlAttributes">[Optional] Extra html attributes. Defaults to null</param>

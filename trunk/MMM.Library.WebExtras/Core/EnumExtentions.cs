@@ -20,12 +20,12 @@ using System;
 using System.Globalization;
 using System.Reflection;
 
-namespace MMM.Library.WebExtras
+namespace MMM.Library.WebExtras.Core
 {
   /// <summary>
   /// Enum extenstions
   /// </summary>
-  public static class EnumExtention
+  public static class EnumExtentions
   {
     /// <summary>
     /// Convert a given enum value to titlecase

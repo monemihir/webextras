@@ -40,7 +40,7 @@ namespace MMM.Library.WebExtras.Mvc
     /// <param name="helper">Current HTML helper object</param>
     /// <param name="activeController">Controller name to be matched</param>
     /// <param name="activeActions">[Optional] Action names to be matched. Defaults to null</param>
-    /// <returns>If current tab is active, the default CSS class "selected", 
+    /// <returns>If current tab is active, the default CSS class "selected",
     /// else empty string to indicate that current tab is not active</returns>
     public static string SelectedTab(this HtmlHelper helper, string activeController, IEnumerable<string> activeActions = null)
     {
@@ -53,7 +53,7 @@ namespace MMM.Library.WebExtras.Mvc
     /// <param name="helper">Current HTML helper object</param>
     /// <param name="activeController">Controller name to be matched</param>
     /// <param name="activeAction">Action name to be matched</param>
-    /// <returns>If current tab is active, the default CSS class "selected", 
+    /// <returns>If current tab is active, the default CSS class "selected",
     /// else empty string to indicate that current tab is not active</returns>
     public static string SelectedTab(this HtmlHelper helper, string activeController, string activeAction)
     {
@@ -67,7 +67,7 @@ namespace MMM.Library.WebExtras.Mvc
     /// <param name="activeController">Controller name to be matched</param>
     /// <param name="activeAction">Action name to be matched</param>
     /// <param name="cssClass">custom CSS class defined with active tab CSS</param>
-    /// <returns>If current tab is active, the CSS class provided, 
+    /// <returns>If current tab is active, the CSS class provided,
     /// else empty string to indicate that current tab is not active</returns>
     public static string SelectedTab(this HtmlHelper helper, string activeController, string activeAction, string cssClass)
     {
@@ -81,7 +81,7 @@ namespace MMM.Library.WebExtras.Mvc
     /// <param name="activeController">Controller name to be matched</param>
     /// <param name="activeActions">Action names to be matched</param>
     /// <param name="cssClass">custom CSS class defined with active tab CSS</param>
-    /// <returns>If current tab is active, the CSS class provided, 
+    /// <returns>If current tab is active, the CSS class provided,
     /// else empty string to indicate that current tab is not active</returns>
     private static string SelectedTab(this HtmlHelper helper, string activeController, IEnumerable<string> activeActions, string cssClass)
     {

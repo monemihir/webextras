@@ -84,7 +84,7 @@ namespace MMM.Library.WebExtras.Mvc
     }
 
     /// <summary>
-    /// Renders a view with the given view model and returns the 
+    /// Renders a view with the given view model and returns the
     /// generated HTML content
     /// </summary>
     /// <param name="c">The controller</param>

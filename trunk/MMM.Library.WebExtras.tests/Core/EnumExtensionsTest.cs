@@ -16,25 +16,50 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MMM.Library.WebExtras.Core;
 
-namespace MMM.Library.WebExtras.JQDataTables
+namespace MMM.Library.WebExtras.tests.Core
 {
   /// <summary>
-  /// Sort types
+  /// Test enum
   /// </summary>
-  public enum SortType
+  public enum TestEnum
+  {
+    [StringValue("test me")]
+    testvalue
+  }
+
+  /// <summary>
+  /// Enum extensions unit tests
+  /// </summary>
+  [TestClass]
+  public class EnumExtensionsTest
   {
     /// <summary>
-    /// Ascending sort
+    /// Test that the ToTitlecase method works properly
     /// </summary>
-    [StringValue("asc")]
-    Ascending,
+    [TestMethod]
+    public void ToTitlecase_Works_Properly()
+    {
+      // Act
+      string result = TestEnum.testvalue.ToTitleCase();
+
+      // Assert
+      Assert.AreEqual("Testvalue", result);
+    }
 
     /// <summary>
-    /// Descending sort
+    /// Test that the GetStringValue method works properly
     /// </summary>
-    [StringValue("desc")]
-    Descending
+    [TestMethod]
+    public void GetStringValue_Works_Properly()
+    {
+      // Act
+      string result = TestEnum.testvalue.GetStringValue();
+
+      // Assert
+      Assert.AreEqual("test me", result);
+    }
   }
 }

@@ -34,7 +34,7 @@ namespace MMM.Library.WebExtras.JQFlot
       /// ctor to intialize defaults. tickDecimals=0
       /// </summary>
       public AxisOptions()
-      {        
+      {
         tickDecimals = 0;
         mode = null;
         timeformat = null;
@@ -63,7 +63,7 @@ namespace MMM.Library.WebExtras.JQFlot
       public int? tickSize { get; set; }
 
       /// <summary>
-      /// min tick size to be used when plotting a time series. eg. [1, "day"]  
+      /// min tick size to be used when plotting a time series. eg. [1, "day"]
       /// </summary>
       public object[] minTickSize { get; set; }
 
@@ -173,7 +173,7 @@ namespace MMM.Library.WebExtras.JQFlot
       /// ctor to initialize defaults. active=true
       /// </summary>
       public CurvedLineOptions()
-      {        
+      {
         active = true;
       }
 
@@ -191,7 +191,7 @@ namespace MMM.Library.WebExtras.JQFlot
     public FlotChartOptions()
     {
       xaxis = new AxisOptions();
-      yaxis = new AxisOptions();      
+      yaxis = new AxisOptions();
       grid = new GridOptions();
       series = new SeriesOptions();
     }

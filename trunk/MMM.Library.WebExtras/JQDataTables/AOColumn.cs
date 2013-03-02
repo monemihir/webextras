@@ -54,7 +54,7 @@ namespace MMM.Library.WebExtras.JQDataTables
     /// </summary>
     public AOColumn()
     {
-      bVisible = true;      
+      bVisible = true;
     }
   }
 }

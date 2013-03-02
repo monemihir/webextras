@@ -60,7 +60,7 @@ namespace MMM.Library.WebExtras.JQDataTables
     /// Default constructor
     /// </summary>
     /// <param name="name">Text heading for the column</param>
-    /// 
+    ///
     /// <param name="cssClass">[Optional] CSS class for the cells of this column. Defaults to null</param>
     /// <param name="width">[Optional] Column width in percent. Defaults to null</param>
     /// <param name="visible">[Optional] Flag indicating whether this column is visible. Defaults to true</param>

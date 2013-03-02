@@ -22,11 +22,10 @@ using System.Linq;
 
 namespace MMM.Library.WebExtras.JQFlot
 {
-
   /// <summary>
   /// A helper used to supply data to flot charts.
-  /// Chart data is specifically formatted as json point arrays [[x,y],...] providing the 
-  /// series data for the flot charts (http://code.google.com/p/flot/)    
+  /// Chart data is specifically formatted as json point arrays [[x,y],...] providing the
+  /// series data for the flot charts (http://code.google.com/p/flot/)
   /// x values are represented as javascript date numbers (total ms since 1970)
   /// http://people.iola.dk/olau/flot/API.txt
   /// </summary>
@@ -36,7 +35,7 @@ namespace MMM.Library.WebExtras.JQFlot
     /// converts a flotDateTime object into a flot javascript date number (total ms since 1970-1-1 UTC)
     /// The date is converted to local time for this operation.
     /// NOTE: This method is specific to FLOT due to the way it expects dates, for general javascript dates use the JavascriptHelper.ToJSDate() method.
-    /// 
+    ///
     /// From the FLOT API:
     /// "Normally you want the timestamps to be displayed according to a
     /// certain time zone, usually the time zone in which the data has been
@@ -45,7 +44,7 @@ namespace MMM.Library.WebExtras.JQFlot
     /// the timestamps according to the time zone that the visitor is in,
     /// which means that the ticks will shift unpredictably with the time zone
     /// and daylight savings of each visitor.
-    /// 
+    ///
     /// So given that there's no good support for custom time zones in
     /// Javascript, you'll have to take care of this server-side.
     /// The easiest way to think about it is to pretend that the data
@@ -64,7 +63,7 @@ namespace MMM.Library.WebExtras.JQFlot
     /// <summary>
     /// converts a flot javascript date number (total ms since 1970-1-1 UTC) into a DateTime object in UTC
     /// NOTE: This method is specific to FLOT due to the way it expects dates, for general javascript dates use the JavascriptHelper.ToUtcDate() method.
-    /// 
+    ///
     /// From the FLOT API:
     /// "Normally you want the timestamps to be displayed according to a
     /// certain time zone, usually the time zone in which the data has been
@@ -73,7 +72,7 @@ namespace MMM.Library.WebExtras.JQFlot
     /// the timestamps according to the time zone that the visitor is in,
     /// which means that the ticks will shift unpredictably with the time zone
     /// and daylight savings of each visitor.
-    /// 
+    ///
     /// So given that there's no good support for custom time zones in
     /// Javascript, you'll have to take care of this server-side.
     /// The easiest way to think about it is to pretend that the data

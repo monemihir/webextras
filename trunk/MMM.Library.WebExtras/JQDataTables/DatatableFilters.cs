@@ -17,9 +17,6 @@
 */
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace MMM.Library.WebExtras.JQDataTables
 {
@@ -48,7 +45,7 @@ namespace MMM.Library.WebExtras.JQDataTables
     /// Number of columns that are used in sorting
     public int iSortingCols { get; set; }
 
-    /// First sort column numeric index, possible to have 
+    /// First sort column numeric index, possible to have
     /// _1,_2 etc for multi column sorting
     public int iSortCol_0 { get; set; }
 

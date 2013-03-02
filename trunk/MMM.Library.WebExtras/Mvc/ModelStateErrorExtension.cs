@@ -21,13 +21,11 @@ using System.Web.Mvc;
 
 namespace MMM.Library.WebExtras.Mvc
 {
-
   /// <summary>
   /// ModelStateDictionary extension class to add custom/server side validation errors
-  /// </summary> 
+  /// </summary>
   public static class ModelStateErrorExtension
   {
-
     /// <summary>
     /// ModelStateDictionary extension method which adds custom/server side validation errors for display by MVC
     /// </summary>

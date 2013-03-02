@@ -40,13 +40,13 @@ namespace MMM.Library.WebExtras.JQDataTables
     public bool bFilter;
 
     /// <summary>
-    /// Allows the end user to select the size of a formatted page from a select menu 
+    /// Allows the end user to select the size of a formatted page from a select menu
     /// (sizes are 10, 25, 50 and 100). Requires pagination (bPaginate)
     /// </summary>
     public bool bLengthChange;
 
     /// <summary>
-    /// DataTables features two different built-in pagination interaction methods 
+    /// DataTables features two different built-in pagination interaction methods
     /// ('two_button' or 'full_numbers') which present different page controls to the end user.
     /// </summary>
     public string sPaginationType;
@@ -62,15 +62,15 @@ namespace MMM.Library.WebExtras.JQDataTables
     public bool bJQueryUI;
 
     /// <summary>
-    /// Number of rows to display on a single page when using pagination. If feature enabled 
-    /// (bLengthChange) then the end user will be able to over-ride this to a custom setting 
+    /// Number of rows to display on a single page when using pagination. If feature enabled
+    /// (bLengthChange) then the end user will be able to over-ride this to a custom setting
     /// using a pop-up menu
     /// </summary>
     public int iDisplayLength;
 
     /// <summary>
-    /// Enable vertical scrolling. Vertical scrolling will constrain the DataTable to 
-    /// the given height (in pixels), an enable scrolling for any data which overflows the current 
+    /// Enable vertical scrolling. Vertical scrolling will constrain the DataTable to
+    /// the given height (in pixels), an enable scrolling for any data which overflows the current
     /// viewport.
     /// </summary>
     public string sScrollY;
@@ -82,9 +82,9 @@ namespace MMM.Library.WebExtras.JQDataTables
     public bool? bProcessing;
 
     /// <summary>
-    /// If sorting is enabled, then DataTables will perform a first pass sort on initialisation. 
-    /// You can define which column(s) the sort is performed upon, and the sorting direction, with 
-    /// this variable. The aaSorting array should contain an array for each column to be sorted 
+    /// If sorting is enabled, then DataTables will perform a first pass sort on initialisation.
+    /// You can define which column(s) the sort is performed upon, and the sorting direction, with
+    /// this variable. The aaSorting array should contain an array for each column to be sorted
     /// initially containing the column's index and a direction string ('asc' or 'desc')
     /// </summary>
     public IEnumerable<IEnumerable<object>> aaSorting;
@@ -117,7 +117,7 @@ namespace MMM.Library.WebExtras.JQDataTables
     /// <param name="displayLength">Number of rows to display on a single page when using pagination</param>
     /// <param name="sortOptions">Column sort options. If this is null no sorting will be applied</param>
     /// <param name="ajaxSource">AJAX source URL</param>
-    /// <param name="footerSuffix">[Optional] This string gives information to the end user about the information 
+    /// <param name="footerSuffix">[Optional] This string gives information to the end user about the information
     /// that is current on display on the page</param>
     /// <param name="tableHeight">[Optional] Height of the table in pixels. Defaults to 200px. Note. Pass in a null if to do not
     /// want any table height set</param>
@@ -146,7 +146,7 @@ namespace MMM.Library.WebExtras.JQDataTables
     /// <param name="displayLength">Number of rows to display on a single page when using pagination</param>
     /// <param name="sortOption">Column sort option. If this is null no sorting will be applied</param>
     /// <param name="ajaxSource">AJAX source URL</param>
-    /// <param name="footerSuffix">[Optional] This string gives information to the end user about the information 
+    /// <param name="footerSuffix">[Optional] This string gives information to the end user about the information
     /// that is current on display on the page</param>
     /// <param name="tableHeight">[Optional] Height of the table in pixels. Defaults to 200px. Note. Pass in a null if to do not
     /// want any table height set</param>

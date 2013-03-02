@@ -36,7 +36,7 @@ namespace MMM.Library.WebExtras
     public string RssFeedChannel { get; private set; }
 
     /// <summary>
-    /// RSS data retrieved. 
+    /// RSS data retrieved.
     /// </summary>
     public List<Dictionary<string, string>> RssData { get; private set; }
 
@@ -93,7 +93,7 @@ namespace MMM.Library.WebExtras
         Stream responseStream = response.GetResponseStream();
 
         XmlDocument doc = new XmlDocument();
-        if (responseStream != null) 
+        if (responseStream != null)
           doc.Load(responseStream);
 
         XmlNodeList rssItems = doc.SelectNodes("rss/channel/item");
@@ -122,7 +122,7 @@ namespace MMM.Library.WebExtras
 
             count++;
           }
-        if (responseStream != null) 
+        if (responseStream != null)
           responseStream.Close();
 
         return true;

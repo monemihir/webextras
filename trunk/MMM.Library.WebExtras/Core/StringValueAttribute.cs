@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-/*
+﻿/*
 * This file is part of - Code Library
 * Copyright (C) 2013 Mihir Mone
 *
@@ -19,9 +16,9 @@ using System.Linq;
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System.Text;
+using System;
 
-namespace MMM.Library.WebExtras
+namespace MMM.Library.WebExtras.Core
 {
   /// <summary>
   /// String value attribute which can be applied to Enumerations

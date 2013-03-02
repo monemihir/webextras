@@ -16,28 +16,28 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using MMM.Library.WebExtras.Core;
 
-namespace MMM.Library.WebExtras.JQDataTables
+namespace MMM.Library.WebExtras.tests.Core
 {
   /// <summary>
-  /// Language init options
+  /// StringValueAttribute unit tests
   /// </summary>
-  [Serializable]
-  public class OLanguage
+  [TestClass]
+  public class StringValueAttributeTest
   {
     /// <summary>
-    /// This string gives information to the end user about the information that is current on
-    /// display on the page. The _START_, _END_ and _TOTAL_ variables are all dynamically
-    /// replaced as the table display updates, and can be freely moved or removed as the
-    /// language requirements change
+    /// Constuctor initializes fields properly
     /// </summary>
-    public string sInfo;
+    [TestMethod]
+    public void Ctor_Test()
+    {
+      // Act
+      StringValueAttribute sva = new StringValueAttribute("value value");
 
-    /// <summary>
-    /// Display information string for when the table is empty. Typically the format of this
-    /// string should match sInfo
-    /// </summary>
-    public string sInfoEmpty;
+      // Assert
+      Assert.AreEqual("value value", sva.Value);
+    }
   }
 }
