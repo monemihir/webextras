@@ -116,7 +116,7 @@ namespace MMM.Library.WebExtras.Bootstrap
 
         // create action message div
         TagBuilder builder = new TagBuilder("div");
-        builder.Attributes["class"] = "alert span7 offset1 keep-center strong";
+        builder.Attributes["class"] = "alert keep-center strong";
         builder.GenerateId(controlId);
         builder.AddCssClass("alert-" + type.GetStringValue());
         builder.InnerHtml = message;
@@ -134,11 +134,11 @@ namespace MMM.Library.WebExtras.Bootstrap
         switch (type)
         {
           case ActionMessageType.Success:
-            sb.Append("control.delay(3000).slideUp('500');");
+            sb.Append("control.delay(3000).fadeOut('500');");
             break;
 
           default:
-            sb.Append("control.slideDown('500');");
+            sb.Append("control.fadeIn('500');");
             break;
         }
         sb.Append("\n");
