@@ -56,6 +56,11 @@ namespace WebExtras.JQDataTables
     public string sColumns { get; set; }
 
     /// <summary>
+    /// Sort direction decided on the sSortDir_0 property
+    /// </summary>
+    public SortType SortDirection { get { return sSortDir_0 == "asc" ? SortType.Ascending : SortType.Descending; } }
+
+    /// <summary>
     /// Default constructor
     /// </summary>
     public DatatableFilters()
@@ -63,6 +68,8 @@ namespace WebExtras.JQDataTables
       sEcho = "1";
       iDisplayStart = 0;
       iDisplayLength = 0;
+      sSortDir_0 = "asc";
+      iSortCol_0 = 0;
     }
   }
 }

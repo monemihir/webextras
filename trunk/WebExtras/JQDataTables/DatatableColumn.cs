@@ -64,13 +64,15 @@ namespace WebExtras.JQDataTables
     /// <param name="cssClass">[Optional] CSS class for the cells of this column. Defaults to null</param>
     /// <param name="width">[Optional] Column width in percent. Defaults to null</param>
     /// <param name="visible">[Optional] Flag indicating whether this column is visible. Defaults to true</param>
-    public DatatableColumn(string name, string cssClass = null, int? width = null, bool visible = true)
+    /// <param name="bSortable">[Optional] Flag indicating whether to enable sorting for this column. Defaults to false</param>
+    public DatatableColumn(string name, string cssClass = null, int? width = null, bool visible = true, bool bSortable = false)
     {
       Name = name;
       HtmlFieldId = name.ToLower() + "_Id";
       Width = width;
       Visible = visible;
       CssClass = cssClass;
+      Sortable = bSortable;
     }
   }
 }

@@ -58,7 +58,7 @@
   <ItemGroup>
     <Compile Include="Core\EnumExtensionsTest.cs" />
     <Compile Include="Core\StringValueAttributeTest.cs" />
-    <Compile Include="JQDataTables\DatatableRecordsTest.cs" />
+    <Compile Include="JQDataTables\DatatableRecordsSortExtensionTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Core\StringExtensionsTest.cs" />
   </ItemGroup>

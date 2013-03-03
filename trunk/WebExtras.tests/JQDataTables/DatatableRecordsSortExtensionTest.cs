@@ -27,7 +27,7 @@ namespace WebExtras.tests.JQDataTables
   /// Datatable records unit tests
   /// </summary>
   [TestClass]
-  public class DatatableRecordsTest
+  public class DatatableRecordsSortExtensionTest
   {
     private DatatableRecords m_records;
 
@@ -99,26 +99,23 @@ namespace WebExtras.tests.JQDataTables
 
       // Act
       // sort on numeric column
-      m_records.Sort(0, SortType.Ascending);
+      IEnumerable<IEnumerable<string>> result = m_records.aaData.Sort(0, SortType.Ascending);
 
       // Assert
-      string[][] result = m_records.aaData.Select(f => f.ToArray()).ToArray();
       AssertSortedAAData(expected1, result);
 
       // Act
       // sort on string column
-      m_records.Sort(1, SortType.Ascending);
+      result = m_records.aaData.Sort(1, SortType.Ascending);
 
-      // Assert
-      result = m_records.aaData.Select(f => f.ToArray()).ToArray();
+      // Assert      
       AssertSortedAAData(expected2, result);
 
       // Act
       // sort on date time column
-      m_records.Sort(2, SortType.Ascending);
+      result = m_records.aaData.Sort(2, SortType.Ascending);
 
-      // Assert
-      result = m_records.aaData.Select(f => f.ToArray()).ToArray();
+      // Assert      
       AssertSortedAAData(expected3, result);
     }
 
@@ -155,26 +152,23 @@ namespace WebExtras.tests.JQDataTables
 
       // Act
       // sort on numeric column
-      m_records.Sort(0, SortType.Descending);
+      IEnumerable<IEnumerable<string>> result = m_records.aaData.Sort(0, SortType.Descending);
 
       // Assert
-      string[][] result = m_records.aaData.Select(f => f.ToArray()).ToArray();
       AssertSortedAAData(expected1, result);
 
       // Act
       // sort on string column
-      m_records.Sort(1, SortType.Descending);
+      result = m_records.aaData.Sort(1, SortType.Descending);
 
-      // Assert
-      result = m_records.aaData.Select(f => f.ToArray()).ToArray();
+      // Assert      
       AssertSortedAAData(expected2, result);
 
       // Act
       // sort on date time column
-      m_records.Sort(2, SortType.Descending);
+      result = m_records.aaData.Sort(2, SortType.Descending);
 
-      // Assert
-      result = m_records.aaData.Select(f => f.ToArray()).ToArray();
+      // Assert      
       AssertSortedAAData(expected3, result);
     }
 
@@ -201,13 +195,16 @@ namespace WebExtras.tests.JQDataTables
     /// </summary>
     /// <param name="expected">Expected collection</param>
     /// <param name="actual">Actual collection as result of the Act phase</param>
-    public void AssertSortedAAData(string[][] expected, string[][] actual)
+    public void AssertSortedAAData(IEnumerable<IEnumerable<string>> expected, IEnumerable<IEnumerable<string>> actual)
     {
-      for (int i = 0; i < expected.Length; i++)
+      string[][] expectedArr = expected.Select(f => f.ToArray()).ToArray();
+      string[][] actualArr = actual.Select(f => f.ToArray()).ToArray();
+
+      for (int i = 0; i < expectedArr.Length; i++)
       {
-        for (int j = 0; j < expected[0].Length; j++)
+        for (int j = 0; j < expectedArr[0].Length; j++)
         {
-          Assert.AreEqual(expected[i][j], actual[i][j]);
+          Assert.AreEqual(expectedArr[i][j], actualArr[i][j]);
         }
       }
     }

@@ -18,8 +18,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 
 namespace WebExtras.JQDataTables
@@ -67,73 +65,6 @@ namespace WebExtras.JQDataTables
       aaData = new string[0][];
       iTotalDisplayRecords = 0;
       iTotalRecords = 0;
-    }
-
-    /// <summary>
-    /// Sort 'aaData' based on the given column number and sort direction
-    /// </summary>
-    /// <param name="columnNumber">Column to sort on</param>
-    /// <param name="type">Sort direction</param>
-    public void Sort(int columnNumber, SortType type)
-    {
-      if (aaData != null && aaData.Count() > 1)
-      {
-        if (type == SortType.Ascending)
-          SortAscending(columnNumber);
-        else
-          SortDescending(columnNumber);
-      }
-    }
-
-    /// <summary>
-    /// Sort 'aaData' ascending by given column number
-    /// </summary>
-    /// <param name="columnNumber">Column to sort on</param>
-    private void SortAscending(int columnNumber)
-    {
-      string[][] data = aaData.Select(f => f.ToArray()).ToArray();
-      string parseStr = Regex.Replace(data[0][columnNumber], "<.*?>", string.Empty);
-
-      DateTime dt = DateTime.MinValue;
-      bool success = DateTime.TryParse(parseStr, out dt);
-      if (success)
-        aaData = data.OrderBy(f => DateTime.Parse(Regex.Replace(f[columnNumber], "<.*?>", string.Empty)));
-      else
-      {
-        double dbl = double.NaN;
-        success = double.TryParse(parseStr, out dbl);
-        if (success)
-          aaData = data.OrderBy(f => double.Parse(Regex.Replace(f[columnNumber], "<.*?>", string.Empty)));
-        else
-          aaData = data.OrderBy(f => Regex.Replace(f[columnNumber], "<.*?>", string.Empty));
-      }
-    }
-
-    /// <summary>
-    /// Sort 'aaData' descending based on given column number
-    /// </summary>
-    /// <param name="columnNumber">Column number to sort on</param>
-    private void SortDescending(int columnNumber)
-    {
-      string[][] data = aaData.Select(f => f.ToArray()).ToArray();
-      string parseStr = Regex.Replace(data[0][columnNumber], "<.*?>", string.Empty);
-      DateTime dt = DateTime.MinValue;
-
-      bool success = DateTime.TryParse(parseStr, out dt);
-
-      if (success)
-        aaData = data.OrderByDescending(f => DateTime.Parse(Regex.Replace(f[columnNumber], "<.*?>", string.Empty)));
-      else
-      {
-        double dbl = double.NaN;
-
-        success = double.TryParse(parseStr, out dbl);
-
-        if (success)
-          aaData = data.OrderByDescending(f => double.Parse(Regex.Replace(f[columnNumber], "<.*?>", string.Empty)));
-        else
-          aaData = data.OrderByDescending(f => Regex.Replace(f[columnNumber], "<.*?>", string.Empty));
-      }
     }
 
     /// <summary>
