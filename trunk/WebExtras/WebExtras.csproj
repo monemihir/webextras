@@ -105,7 +105,6 @@
     <Compile Include="JQDataTables\DatatableFilters.cs" />
     <Compile Include="JQDataTables\OLanguage.cs" />
     <Compile Include="JQDataTables\SortType.cs" />
-    <Compile Include="JavascriptHelper.cs" />
     <Compile Include="JQDataTables\Datatable.cs" />
     <Compile Include="JQDataTables\DatatableColumn.cs" />
     <Compile Include="JQDataTables\DatatableRecords.cs" />
