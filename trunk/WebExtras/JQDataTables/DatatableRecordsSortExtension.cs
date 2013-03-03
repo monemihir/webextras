@@ -29,6 +29,11 @@ namespace WebExtras.JQDataTables
   public static class DatatableRecordsSortExtension
   {
     /// <summary>
+    /// A list of predefined HTML currency syntax
+    /// </summary>
+    private static readonly IEnumerable<string> m_currencies = new string[] { "&euro;", "&yen;", "$", "&pound;", "rs." };
+
+    /// <summary>
     /// Sort DatatableRecords.aaData based on the given column number and sort direction
     /// </summary>
     /// <param name="aaData">DatatableRecords table data to be sorted</param>
@@ -55,20 +60,20 @@ namespace WebExtras.JQDataTables
     private static IEnumerable<IEnumerable<string>> SortAscending(IEnumerable<IEnumerable<string>> aaData, int columnNumber)
     {
       string[][] data = aaData.Select(f => f.ToArray()).ToArray();
-      string parseStr = Regex.Replace(data[0][columnNumber], "<.*?>", string.Empty);
+      string parseStr = SanitiseString(data[0][columnNumber]);
 
       DateTime dt = DateTime.MinValue;
       bool success = DateTime.TryParse(parseStr, out dt);
       if (success)
-        aaData = data.OrderBy(f => DateTime.Parse(Regex.Replace(f[columnNumber], "<.*?>", string.Empty)));
+        aaData = data.OrderBy(f => DateTime.Parse(SanitiseString(f[columnNumber])));
       else
       {
         double dbl = double.NaN;
         success = double.TryParse(parseStr, out dbl);
         if (success)
-          aaData = data.OrderBy(f => double.Parse(Regex.Replace(f[columnNumber], "<.*?>", string.Empty)));
+          aaData = data.OrderBy(f => double.Parse(SanitiseString(f[columnNumber])));
         else
-          aaData = data.OrderBy(f => Regex.Replace(f[columnNumber], "<.*?>", string.Empty));
+          aaData = data.OrderBy(f => SanitiseString(f[columnNumber]));
       }
 
       return aaData;
@@ -82,13 +87,13 @@ namespace WebExtras.JQDataTables
     private static IEnumerable<IEnumerable<string>> SortDescending(IEnumerable<IEnumerable<string>> aaData, int columnNumber)
     {
       string[][] data = aaData.Select(f => f.ToArray()).ToArray();
-      string parseStr = Regex.Replace(data[0][columnNumber], "<.*?>", string.Empty);
+      string parseStr = SanitiseString(data[0][columnNumber]);
       DateTime dt = DateTime.MinValue;
 
       bool success = DateTime.TryParse(parseStr, out dt);
 
       if (success)
-        aaData = data.OrderByDescending(f => DateTime.Parse(Regex.Replace(f[columnNumber], "<.*?>", string.Empty)));
+        aaData = data.OrderByDescending(f => DateTime.Parse(SanitiseString(f[columnNumber])));
       else
       {
         double dbl = double.NaN;
@@ -96,12 +101,28 @@ namespace WebExtras.JQDataTables
         success = double.TryParse(parseStr, out dbl);
 
         if (success)
-          aaData = data.OrderByDescending(f => double.Parse(Regex.Replace(f[columnNumber], "<.*?>", string.Empty)));
+          aaData = data.OrderByDescending(f => double.Parse(SanitiseString(f[columnNumber])));
         else
-          aaData = data.OrderByDescending(f => Regex.Replace(f[columnNumber], "<.*?>", string.Empty));
+          aaData = data.OrderByDescending(f => SanitiseString(f[columnNumber]));
       }
 
       return aaData;
+    }
+
+    /// <summary>
+    /// Sanitises given string by stripping any HTML tags and HTML currency tags
+    /// from the given string
+    /// </summary>
+    /// <param name="str">String to be sanitized</param>
+    /// <returns>Sanitised string</returns>
+    private static string SanitiseString(string str)
+    {
+      Regex.Replace(str, "<.*?>", string.Empty);
+
+      foreach (string currency in m_currencies)
+        str = str.ToLowerInvariant().Replace(currency.ToLowerInvariant(), "");
+
+      return str;
     }
   }
 }
