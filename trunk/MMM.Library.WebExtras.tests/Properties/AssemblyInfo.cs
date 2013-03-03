@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("WebExtras Unit Tests")]
+[assembly: AssemblyTitle("WebExtras.tests")]
 [assembly: AssemblyDescription("Unit tests for WebExtras library")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
