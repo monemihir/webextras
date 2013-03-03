@@ -54,18 +54,43 @@
     <ErrorReport>prompt</ErrorReport>
     <DocumentationFile>bin\WebExtras.Mvc.xml</DocumentationFile>
   </PropertyGroup>
-
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="T4MVCExtensions">
+      <HintPath>..\External\T4MVC\v3.2.0\T4MVCExtensions.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bootstrap\BootstrapActionMessageControllerExtension.cs" />
+    <Compile Include="Bootstrap\BootstrapFormHtmlHelperExtension.cs" />
+    <Compile Include="Html\ButtonOfType.cs" />
+    <Compile Include="Html\CheckBox.cs" />
+    <Compile Include="JavascriptHelper.cs" />
+    <Compile Include="Mvc\ActionMessageType.cs" />
+    <Compile Include="Mvc\FormHelperExtension.cs" />
+    <Compile Include="Mvc\HtmlHelperExtension.cs" />
+    <Compile Include="Mvc\ModelStateErrorExtension.cs" />
+    <Compile Include="Mvc\SelectedTabHelperExtension.cs" />
+    <Compile Include="Mvc\ValidationHtmlHelperExtension.cs" />
+    <Compile Include="Mvc\ViewRendererControllerExtension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\WebExtras\WebExtras.csproj">
+      <Project>{79881816-8CC9-458B-99F7-BBE3E35AB665}</Project>
+      <Name>WebExtras</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
