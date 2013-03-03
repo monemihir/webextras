@@ -17,9 +17,9 @@
 */
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using MMM.Library.WebExtras.Core;
+using WebExtras.Core;
 
-namespace MMM.Library.WebExtras.tests.Core
+namespace WebExtras.tests.Core
 {
   /// <summary>
   /// Test enum

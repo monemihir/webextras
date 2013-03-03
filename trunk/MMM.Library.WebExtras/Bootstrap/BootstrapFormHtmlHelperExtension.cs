@@ -23,7 +23,7 @@ using System.Linq.Expressions;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace MMM.Library.WebExtras.Bootstrap
+namespace WebExtras.Bootstrap
 {
   /// <summary>
   /// Twitter bootstrap form HTML helper extensions

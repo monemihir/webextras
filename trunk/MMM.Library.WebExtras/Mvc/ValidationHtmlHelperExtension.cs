@@ -20,7 +20,7 @@ using System;
 using System.Linq.Expressions;
 using System.Web.Mvc;
 
-namespace MMM.Library.WebExtras.Mvc
+namespace WebExtras.Mvc
 {
   /// <summary>
   /// Validation HTML helper methods

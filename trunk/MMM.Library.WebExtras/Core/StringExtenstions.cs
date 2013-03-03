@@ -18,7 +18,7 @@
 
 using System.Globalization;
 
-namespace MMM.Library.WebExtras.Core
+namespace WebExtras.Core
 {
   /// <summary>
   /// String extension functions

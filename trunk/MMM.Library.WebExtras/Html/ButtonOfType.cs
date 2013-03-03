@@ -16,7 +16,7 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-namespace MMM.Library.WebExtras.Html
+namespace WebExtras.Html
 {
   /// <summary>
   /// Indicates the type of HTML button to be rendered

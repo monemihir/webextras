@@ -24,7 +24,7 @@ using System.Security.Principal;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace MMM.Library.WebExtras.Mvc
+namespace WebExtras.Mvc
 {
   /// <summary>
   /// Generic HTML helper extension methods

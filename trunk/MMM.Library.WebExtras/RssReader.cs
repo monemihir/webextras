@@ -23,7 +23,7 @@ using System.Linq;
 using System.Net;
 using System.Xml;
 
-namespace MMM.Library.WebExtras
+namespace WebExtras
 {
   /// <summary>
   /// A generic RSS 2.0 reader

@@ -16,9 +16,9 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using MMM.Library.WebExtras.Core;
+using WebExtras.Core;
 
-namespace MMM.Library.WebExtras.JQDataTables
+namespace WebExtras.JQDataTables
 {
   /// <summary>
   /// Sort types

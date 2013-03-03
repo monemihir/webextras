@@ -18,7 +18,7 @@
 
 using System;
 
-namespace MMM.Library.WebExtras.Core
+namespace WebExtras.Core
 {
   /// <summary>
   /// String value attribute which can be applied to Enumerations

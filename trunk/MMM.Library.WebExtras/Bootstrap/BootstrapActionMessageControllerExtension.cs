@@ -18,10 +18,10 @@
 
 using System.Text;
 using System.Web.Mvc;
-using MMM.Library.WebExtras.Core;
-using MMM.Library.WebExtras.Mvc;
+using WebExtras.Core;
+using WebExtras.Mvc;
 
-namespace MMM.Library.WebExtras.Bootstrap
+namespace WebExtras.Bootstrap
 {
   /// <summary>
   /// A class to store and retrieve messages for display after an action has occurred

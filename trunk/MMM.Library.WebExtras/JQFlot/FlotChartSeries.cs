@@ -19,7 +19,7 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace MMM.Library.WebExtras.JQFlot
+namespace WebExtras.JQFlot
 {
   /// <summary>
   /// A class representing the jquery properties of a flot series for any flot charts (http://code.google.com/p/flot/)

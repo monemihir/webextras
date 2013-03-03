@@ -20,7 +20,7 @@ using System;
 using System.Globalization;
 using System.Reflection;
 
-namespace MMM.Library.WebExtras.Core
+namespace WebExtras.Core
 {
   /// <summary>
   /// Enum extenstions

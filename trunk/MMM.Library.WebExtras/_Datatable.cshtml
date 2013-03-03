@@ -1,18 +1,16 @@
-﻿@model MMM.Library.WebExtras.JQDataTables.Datatable
-
+﻿@model WebExtras.JQDataTables.Datatable
 <table class="dataTable table-bordered table-striped" id="@Model.TableID">
-    <thead>
-      <tr>
-        @foreach (DatatableColumn col in Model.Columns)
-        { 
-          <th>@Html.Raw(col.Name)
-          </th>
-        }
-      </tr>
-    </thead>
-  </table>
-
-  <script type="text/javascript">
+  <thead>
+    <tr>
+      @foreach (DatatableColumn col in Model.Columns)
+      {
+        <th>@Html.Raw(col.Name)
+        </th>
+      }
+    </tr>
+  </thead>
+</table>
+<script type="text/javascript">
     var dtable = @Html.Raw(Model.TableSettings.ToString() + ";")
     dtable["sDom"] = (dtable["sDom"] == null) ? "t<'row-fluid'<'span6'i><'span6'p>>" : dtable["sDom"];
     dtable["sPaginationType"] = "bootstrap";
@@ -36,15 +34,15 @@
       }
     }
       $.getJSON(sSource, aoData, function(json) {
-        fnCallback(json)            
+        fnCallback(json)
       });
     };
 
     var col = @Model.Columns.Length - 1;
     dtable.fnCreatedRow = function (nRow, aData, iDataIndex) {
-      $(nRow).addClass(aData[col]);      
+      $(nRow).addClass(aData[col]);
     };
-    
+
     @Html.Raw(string.Format("var {0}_tbl = $('#{0}').dataTable(dtable);", Model.TableID))
 
     @{
@@ -53,12 +51,11 @@
         <text>
           var firstPage = @Html.Raw(Model.TableData.ToString())
 
-          @Html.Raw(string.Format("oSettings = {0}_tbl.fnSettings();", Model.TableID))          
+          @Html.Raw(string.Format("oSettings = {0}_tbl.fnSettings();", Model.TableID))
           oSettings.oFeatures.bServerSide = true;
           oSettings.sAjaxSource = '@Model.TableSettings.sAjaxSource';
           @Html.Raw(string.Format("{0}_tbl.oApi._fnAjaxUpdateDraw(oSettings, firstPage);", Model.TableID))
         </text>
       }
     }
-
-  </script>
+</script>

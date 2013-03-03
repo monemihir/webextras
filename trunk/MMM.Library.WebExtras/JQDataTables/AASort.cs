@@ -17,9 +17,9 @@
 */
 
 using System;
-using MMM.Library.WebExtras.Core;
+using WebExtras.Core;
 
-namespace MMM.Library.WebExtras.JQDataTables
+namespace WebExtras.JQDataTables
 {
   /// <summary>
   /// Specification for the column sorts

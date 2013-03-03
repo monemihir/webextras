@@ -18,7 +18,7 @@
 
 using System;
 
-namespace MMM.Library.WebExtras.JQDataTables
+namespace WebExtras.JQDataTables
 {
   /// <summary>
   /// Datatable column headings

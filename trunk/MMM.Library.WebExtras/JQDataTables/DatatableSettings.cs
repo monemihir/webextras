@@ -21,7 +21,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json;
 
-namespace MMM.Library.WebExtras.JQDataTables
+namespace WebExtras.JQDataTables
 {
   /// <summary>
   /// jQuery Datatable settings

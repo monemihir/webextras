@@ -18,7 +18,7 @@
 
 using System;
 
-namespace MMM.Library.WebExtras
+namespace WebExtras
 {
   /// <summary>
   /// Class to contain Javascript helpers.

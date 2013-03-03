@@ -19,7 +19,7 @@
 using System;
 using Newtonsoft.Json;
 
-namespace MMM.Library.WebExtras.JQDataTables
+namespace WebExtras.JQDataTables
 {
   /// <summary>
   /// Specification for a Datatables data column

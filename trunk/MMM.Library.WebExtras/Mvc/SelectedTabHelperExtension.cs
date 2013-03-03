@@ -20,7 +20,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 
-namespace MMM.Library.WebExtras.Mvc
+namespace WebExtras.Mvc
 {
   /// <summary>
   /// Extension to highlight the active/selected tab. The onus is on the user

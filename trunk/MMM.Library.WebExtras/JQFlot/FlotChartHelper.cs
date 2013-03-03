@@ -20,7 +20,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace MMM.Library.WebExtras.JQFlot
+namespace WebExtras.JQFlot
 {
   /// <summary>
   /// A helper used to supply data to flot charts.

@@ -19,9 +19,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using MMM.Library.WebExtras.JQDataTables;
+using WebExtras.JQDataTables;
 
-namespace MMM.Library.WebExtras.tests.JQDataTables
+namespace WebExtras.tests.JQDataTables
 {
   /// <summary>
   /// Datatable records unit tests

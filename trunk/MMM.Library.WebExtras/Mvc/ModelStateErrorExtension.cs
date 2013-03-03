@@ -19,7 +19,7 @@
 using System.Collections.Specialized;
 using System.Web.Mvc;
 
-namespace MMM.Library.WebExtras.Mvc
+namespace WebExtras.Mvc
 {
   /// <summary>
   /// ModelStateDictionary extension class to add custom/server side validation errors

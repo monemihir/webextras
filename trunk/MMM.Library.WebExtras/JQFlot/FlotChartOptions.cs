@@ -16,7 +16,7 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-namespace MMM.Library.WebExtras.JQFlot
+namespace WebExtras.JQFlot
 {
   /// <summary>
   /// flot chart options

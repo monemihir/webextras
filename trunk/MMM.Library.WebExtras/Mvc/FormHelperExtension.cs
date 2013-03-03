@@ -22,9 +22,9 @@ using System.Linq;
 using System.Text;
 using System.Web.Mvc;
 using System.Web.Routing;
-using MMM.Library.WebExtras.Html;
+using WebExtras.Html;
 
-namespace MMM.Library.WebExtras.Mvc
+namespace WebExtras.Mvc
 {
   /// <summary>
   /// Form helper extension methods

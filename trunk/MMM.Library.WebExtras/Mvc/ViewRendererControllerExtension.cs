@@ -19,7 +19,7 @@
 using System.IO;
 using System.Web.Mvc;
 
-namespace MMM.Library.WebExtras.Mvc
+namespace WebExtras.Mvc
 {
   /// <summary>
   /// Offline rendering of MVC views
