@@ -63,7 +63,7 @@
     <Compile Include="Core\StringExtensionsTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MMM.Library.WebExtras\WebExtras.csproj">
+    <ProjectReference Include="..\WebExtras\WebExtras.csproj">
       <Project>{79881816-8CC9-458B-99F7-BBE3E35AB665}</Project>
       <Name>WebExtras</Name>
     </ProjectReference>
