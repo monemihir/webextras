@@ -9,7 +9,7 @@
     <ProjectGuid>{7866269E-4F9A-4DF2-BE1B-B7804BFD4DB7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MMM.Library.WebExtras.tests</RootNamespace>
+    <RootNamespace>WebExtras.tests</RootNamespace>
     <AssemblyName>WebExtras.tests</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -63,9 +63,9 @@
     <Compile Include="Core\StringExtensionsTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MMM.Library.WebExtras\MMM.Library.WebExtras.csproj">
+    <ProjectReference Include="..\MMM.Library.WebExtras\WebExtras.csproj">
       <Project>{79881816-8CC9-458B-99F7-BBE3E35AB665}</Project>
-      <Name>MMM.Library.WebExtras</Name>
+      <Name>WebExtras</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
