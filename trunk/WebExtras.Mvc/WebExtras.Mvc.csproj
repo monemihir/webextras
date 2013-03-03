@@ -85,7 +85,9 @@
     <Compile Include="Mvc\ViewRendererControllerExtension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="_Datatable.cshtml" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WebExtras\WebExtras.csproj">
       <Project>{79881816-8CC9-458B-99F7-BBE3E35AB665}</Project>
