@@ -76,13 +76,13 @@
     <Compile Include="Html\ButtonOfType.cs" />
     <Compile Include="Html\CheckBox.cs" />
     <Compile Include="JavascriptHelper.cs" />
-    <Compile Include="Mvc\ActionMessageType.cs" />
-    <Compile Include="Mvc\FormHelperExtension.cs" />
-    <Compile Include="Mvc\HtmlHelperExtension.cs" />
-    <Compile Include="Mvc\ModelStateErrorExtension.cs" />
-    <Compile Include="Mvc\SelectedTabHelperExtension.cs" />
-    <Compile Include="Mvc\ValidationHtmlHelperExtension.cs" />
-    <Compile Include="Mvc\ViewRendererControllerExtension.cs" />
+    <Compile Include="Core\ActionMessageType.cs" />
+    <Compile Include="Core\FormHelperExtension.cs" />
+    <Compile Include="Core\HtmlHelperExtension.cs" />
+    <Compile Include="Core\ModelStateErrorExtension.cs" />
+    <Compile Include="Core\SelectedTabHelperExtension.cs" />
+    <Compile Include="Core\ValidationHtmlHelperExtension.cs" />
+    <Compile Include="Core\ViewRendererControllerExtension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -19,7 +19,7 @@
 using System.Text;
 using System.Web.Mvc;
 using WebExtras.Core;
-using WebExtras.Mvc;
+using WebExtras.Mvc.Core;
 
 namespace WebExtras.Mvc.Bootstrap
 {
