@@ -87,10 +87,12 @@ namespace WebExtras.Mvc.Core
     {
       string cssClassToUse;
 
-      string currentController = helper.ViewContext.Controller.ValueProvider.GetValue("controller").RawValue.ToString();
+      activeController = activeController.ToLowerInvariant();
+      string currentController = helper.ViewContext.Controller.ValueProvider.GetValue("controller").RawValue.ToString().ToLowerInvariant();
       if (activeActions != null)
       {
-        string currentAction = helper.ViewContext.Controller.ValueProvider.GetValue("action").RawValue.ToString();
+        activeActions = activeActions.Select(f => f.ToLowerInvariant());
+        string currentAction = helper.ViewContext.Controller.ValueProvider.GetValue("action").RawValue.ToString().ToLowerInvariant();
         cssClassToUse =
           (currentController == activeController && activeActions.Contains(currentAction))
           ? cssClass
