@@ -106,34 +106,6 @@ namespace WebExtras.Mvc.Core
       return MvcHtmlString.Create(a.ToString());
     }
 
-    /// <summary>
-    /// HTML hyperlink with an icon
-    /// </summary>
-    /// <param name="html">Current HTMLHelper object</param>
-    /// <param name="linkText">Text to display for the link</param>
-    /// <param name="url">URL for hyperlink. This can be either a url or a javascript event</param>
-    /// <param name="iconClass">Icon CSS class(s) to be prepended for the link. Multiple icon classes must be separated with
-    /// spaces</param>
-    /// <param name="isJavascriptLink">[Optional] If the value specified for the 'url' parameter is
-    /// to be treated as a javascript function call, this parameter must be set to true. Defaults to
-    /// false.</param>
-    /// <param name="htmlAttributes">[Optional] Extra HTML attributes. Defaults to null</param>
-    /// <returns>HTML Hyperlink</returns>
-    public static MvcHtmlString IconHyperLink(
-      this HtmlHelper html,
-      string linkText,
-      string url,
-      string iconClass,
-      bool isJavascriptLink = false,
-      object htmlAttributes = null)
-    {
-      MvcHtmlString link = HyperLink(html, linkText, url, isJavascriptLink, html);
-
-      string iconLink = link.ToHtmlString().Replace(string.Format(">{0}", linkText), string.Format("><i class='{0}'></i>{1}", iconClass, linkText));
-
-      return MvcHtmlString.Create(iconLink);
-    }
-
     #endregion Hyperlink extensions
 
     #region Image extensions
@@ -280,53 +252,6 @@ namespace WebExtras.Mvc.Core
 
     #endregion ImageActionLink extensions
 
-    #region IconActionLink extensions
-
-    /// <summary>
-    /// Create an action link with an icon
-    /// </summary>
-    /// <param name="html">Current HtmlHelper object</param>
-    /// <param name="linkText">Link text</param>
-    /// <param name="result">Action to be executed</param>
-    /// <param name="iconClass">Icon CSS class(s) to be prepended for the link. Multiple icon classes must be separated with
-    /// spaces</param>
-    /// <param name="htmlAttributes">[Optional] Extra html attributes. Defaults to null</param>
-    /// <returns>An action link prepended with the icon for the given icon class(s)</returns>
-    public static MvcHtmlString IconActionLink(this HtmlHelper html, string linkText, ActionResult result, string iconClass, object htmlAttributes = (IDictionary<string, object>)null)
-    {
-      MvcHtmlString link = html.ActionLink(linkText, result, htmlAttributes);
-
-      string iconLink = link.ToHtmlString().Replace(string.Format(">{0}", linkText), string.Format("><i class='{0}'></i>{1}", iconClass, linkText));
-
-      return MvcHtmlString.Create(iconLink);
-    }
-
-    #endregion IconActionLink extensions
-
-    #region IconAuthActionLink
-
-    /// <summary>
-    /// Create a authenticated action link with an icon
-    /// </summary>
-    /// <param name="html">Current HtmlHelper object</param>
-    /// <param name="linkText">Link text</param>
-    /// <param name="user">Current user</param>
-    /// <param name="result">Action to be executed</param>
-    /// <param name="iconClass">Icon CSS class(s) to be prepended for the link. Multiple icon classes must be separated with
-    /// spaces</param>
-    /// <param name="htmlAttributes">[Optional] Extra html attributes. Defaults to null</param>
-    /// <returns>Authenticated action link if user is authenticated, else
-    /// empty result</returns>
-    public static MvcHtmlString IconAuthActionLink(this HtmlHelper html, string linkText, IPrincipal user, ActionResult result, string iconClass, object htmlAttributes = (IDictionary<string, object>)null)
-    {
-      if (user.Identity.IsAuthenticated)
-        return html.IconActionLink(linkText, result, iconClass, htmlAttributes);
-
-      return MvcHtmlString.Empty;
-    }
-
-    #endregion IconAuthActionLink
-
     #region AuthActionLink
 
     /// <summary>
@@ -348,45 +273,5 @@ namespace WebExtras.Mvc.Core
     }
 
     #endregion AuthActionLink
-
-    #region ButtonActionLink
-
-    /// <summary>
-    /// Create an button look and feel action link
-    /// </summary>
-    /// <param name="html">Current HtmlHelper object</param>
-    /// <param name="linkText">Link text</param>
-    /// <param name="result">Action to be executed</param>
-    /// <param name="selected">[Optional] Flag indicating whether this link should be selected. Defaults to false</param>
-    /// <returns>Button look and feel action link</returns>
-    public static MvcHtmlString ButtonActionLink(this HtmlHelper html, string linkText, ActionResult result, bool selected = false)
-    {
-      if (selected)
-        return html.ActionLink(linkText, result, new { id = "sbuttonLink" + Guid.NewGuid().ToString().Replace("-", "") });
-      return html.ActionLink(linkText, result, new { id = "buttonLink" + Guid.NewGuid().ToString().Replace("-", "") });
-    }
-
-    /// <summary>
-    /// Create an button look and feel action link
-    /// </summary>
-    /// <param name="html">Current HtmlHelper object</param>
-    /// <param name="linkText">Link text</param>
-    /// <param name="user">Current user</param>
-    /// <param name="result">Action to be executed</param>
-    /// <param name="selected">[Optional] Flag indicating whether this link should be selected. Defaults to false</param>
-    /// <returns>Button look and feel action link</returns>
-    public static MvcHtmlString AuthButtonActionLink(this HtmlHelper html, string linkText, IPrincipal user, ActionResult result, bool selected = false)
-    {
-      if (user.Identity.IsAuthenticated)
-      {
-        if (selected)
-          return html.AuthActionLink(linkText, user, result, new { id = "sbuttonLink" + Guid.NewGuid().ToString().Replace("-", "") });
-        return html.AuthActionLink(linkText, user, result, new { id = "buttonLink" + Guid.NewGuid().ToString().Replace("-", "") });
-      }
-
-      return MvcHtmlString.Empty;
-    }
-
-    #endregion ButtonActionLink
   }
 }

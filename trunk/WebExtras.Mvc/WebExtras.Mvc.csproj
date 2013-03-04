@@ -73,6 +73,7 @@
   <ItemGroup>
     <Compile Include="Bootstrap\BootstrapActionMessageControllerExtension.cs" />
     <Compile Include="Bootstrap\BootstrapFormHtmlHelperExtension.cs" />
+    <Compile Include="Bootstrap\BootstrapHtmlHelperExtension.cs" />
     <Compile Include="Html\ButtonOfType.cs" />
     <Compile Include="Html\CheckBox.cs" />
     <Compile Include="JavascriptHelper.cs" />

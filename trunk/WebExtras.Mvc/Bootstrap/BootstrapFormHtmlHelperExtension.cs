@@ -22,6 +22,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Web.Mvc;
 using System.Web.Routing;
+using WebExtras.Mvc.Html;
 
 namespace WebExtras.Mvc.Bootstrap
 {
@@ -30,6 +31,51 @@ namespace WebExtras.Mvc.Bootstrap
   /// </summary>
   public static class BootstrapFormHtmlHelperExtension
   {
+    #region IconButton extensions
+
+    /// <summary>
+    /// Create a HTML Button control with an icon
+    /// </summary>
+    /// <param name="html">Current HTMLHelper object</param>
+    /// <param name="type">Type of the button control. Valid values are 'regular',
+    /// 'submit', 'reset'</param>
+    /// <param name="cssClass">CSS class</param>
+    /// <param name="id">ID</param>
+    /// <param name="value">Value text to display on button</param>
+    /// <param name="iconClass">Icon CSS class(s) to be prepended for the link. Multiple icon classes must be separated with
+    /// spaces</param>
+    /// <param name="onClick">[Optional] Javascript onClick event name. Defaults to null. Note. If button type is 'Submit' or
+    /// 'Reset' this onclick event will be ignored and can be null</param>
+    /// <param name="htmlAttributes">[Optional] Additional html attributes to apply to the link (BUTTON) object</param>
+    /// <returns>HTML Button</returns>
+    public static MvcHtmlString IconButton(
+      this HtmlHelper html,
+      ButtonOfType type,
+      string cssClass,
+      string id,
+      string value,
+      string iconClass,
+      string onClick = null,
+      object htmlAttributes = (IDictionary<string, object>)null)
+    {
+      string autogenId = string.Format("autogen-{0}", new Random(DateTime.Now.Millisecond).Next(1, 9999).ToString());
+      TagBuilder button = new TagBuilder("button");
+      button.Attributes["id"] = string.IsNullOrEmpty(id) ? autogenId : id;
+      button.InnerHtml = string.Format("<i class='{0}'></i>{1}", iconClass, value);
+      onClick = (!string.IsNullOrEmpty(onClick) && onClick.EndsWith("()")) ? onClick : onClick + "()";
+      if (!string.IsNullOrEmpty(cssClass))
+        button.AddCssClass(cssClass);
+      button.Attributes["type"] = (type == ButtonOfType.Regular) ? "button" : type.ToString().ToLower();
+      if (type == ButtonOfType.Regular)
+        button.Attributes["onclick"] = "javascript:" + onClick;
+
+      button.MergeAttributes<string, object>((IDictionary<string, object>)new RouteValueDictionary(htmlAttributes));
+
+      return MvcHtmlString.Create(button.ToString(TagRenderMode.Normal));
+    }
+
+    #endregion IconButton extensions
+
     #region DateTextBoxFor extensions
 
     /// <summary>
