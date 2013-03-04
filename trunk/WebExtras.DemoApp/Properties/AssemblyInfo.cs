@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("WebExtras.DemoApp")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("WebExtras demo application")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("WebExtras.DemoApp")]
-[assembly: AssemblyCopyright("Copyright ©  2013")]
+[assembly: AssemblyProduct("WebExtras")]
+[assembly: AssemblyCopyright("Copyright ©  2013 Mihir Mone")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
