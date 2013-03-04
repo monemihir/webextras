@@ -1,0 +1,36 @@
+﻿@using WebExtras.DemoApp.App_Start
+@using WebExtras.Core
+@using SquishIt.Framework
+@using SquishIt.Mvc
+@using WebExtras.Mvc.Core
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>@ViewBag.Title</title>
+  <link rel="icon" type="image/ico" href="@Links.Content.favicon_ico" />
+  @Bundle.Css().MvcRenderCachedAssetTag(ContentBundle.CSSMain.GetStringValue())
+  @Bundle.JavaScript().MvcRenderCachedAssetTag(ContentBundle.JSBase.GetStringValue())
+</head>
+<body>
+  <br />
+  <div class="navbar navbar-fixed-top navbar-inverse">
+    <div class="navbar-inner">
+      <ul class="nav">
+        <li class="@Html.SelectedTab("Core", "Generic")">@Html.ActionLink("Core", MVC.Core.Generic())</li>
+        <li class="@Html.SelectedTab("Core", "Datatables")">@Html.ActionLink("jQuery Datatables", MVC.Core.Datatables())</li>
+        <li class="@Html.SelectedTab("Core", "Flot")">@Html.ActionLink("jQuery Flot", MVC.Core.Flot())</li>
+      </ul>
+    </div>
+  </div>
+  <div class="container-fluid main">
+    @RenderBody()
+  </div>
+  <footer>
+    <small>Copyright &copy; @DateTime.Now.Year Mihir Mone. All Rights Reserved.</small>
+  </footer>
+  @RenderSection("scripts", required: false)
+</body>
+</html>

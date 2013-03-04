@@ -54,14 +54,20 @@ namespace WebExtras.JQDataTables
     public IEnumerable<PostbackItem> Postbacks { get; private set; }
 
     /// <summary>
+    /// Flag indicating whether to enable status column
+    /// </summary>
+    public bool EnableStatusColumn { get; private set; }
+
+    /// <summary>
     /// Constructor
     /// </summary>
     /// <param name="settings">Datatable settings</param>
     /// <param name="columns">Datatable column specifications</param>
     /// <param name="records">Datatable records</param>
     /// <param name="postbacks">[Optional] Postback data for server side processing</param>
-    public Datatable(DatatableSettings settings, IEnumerable<DatatableColumn> columns, DatatableRecords records, IEnumerable<PostbackItem> postbacks = null) :
-      this(string.Format("autogen-{0}", Guid.NewGuid().ToString()), settings, columns, records, postbacks) { }
+    /// <param name="enableStatusColumn">[Optional] flag indicating whether to enable status column. Defaults to false</param>
+    public Datatable(DatatableSettings settings, IEnumerable<DatatableColumn> columns, DatatableRecords records, IEnumerable<PostbackItem> postbacks = null, bool enableStatusColumn = false) :
+      this(string.Format("autogen-{0}", Guid.NewGuid().ToString()), settings, columns, records, postbacks, enableStatusColumn) { }
 
     /// <summary>
     /// Constructor to initialize with an HTML field ID
@@ -71,9 +77,10 @@ namespace WebExtras.JQDataTables
     /// <param name="columns">Datatable column specifications</param>
     /// <param name="records">Datatable records</param>
     /// <param name="postbacks">[Optional] Postback data for server side processing</param>
-    public Datatable(string id, DatatableSettings settings, IEnumerable<DatatableColumn> columns, DatatableRecords records, IEnumerable<PostbackItem> postbacks = null)
+    /// <param name="enableStatusColumn">[Optional] flag indicating whether to enable status column. Defaults to false</param>
+    public Datatable(string id, DatatableSettings settings, IEnumerable<DatatableColumn> columns, DatatableRecords records, IEnumerable<PostbackItem> postbacks = null, bool enableStatusColumn = false)
     {
-      ID = id;
+      ID = id.Replace("-", "_");
       Settings = settings;
 
       // decide sorting enable/disable for columns
@@ -86,6 +93,7 @@ namespace WebExtras.JQDataTables
 
       Records = records;
       Postbacks = postbacks ?? Enumerable.Empty<PostbackItem>();
+      EnableStatusColumn = enableStatusColumn;
     }
   }
 }
