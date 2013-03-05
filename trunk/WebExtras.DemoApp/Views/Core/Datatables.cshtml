@@ -32,8 +32,9 @@
     @Html.ActionLink("Basic Setup", MVC.Core.Datatables(0), new { id = "basic" })
   </li>
   <li>@Html.ActionLink("Ajax Setup", MVC.Core.Datatables(1), new { id = "ajax" })</li>
-  <li>@Html.ActionLink("Add paging", MVC.Core.Datatables(2), new { id = "paging" })</li>
-  <li>@Html.ActionLink("Add sorting", MVC.Core.Datatables(3), new { id = "sorting" })</li>
+  <li>@Html.ActionLink("Paging", MVC.Core.Datatables(2), new { id = "paging" })</li>
+  <li>@Html.ActionLink("Sorting", MVC.Core.Datatables(3), new { id = "sorting" })</li>
+  <li>@Html.ActionLink("Adding status column", MVC.Core.Datatables(4), new { id = "status" })</li>
 </ul>
 @switch (Model.DisplayMode)
 {
@@ -47,6 +48,10 @@
 
   case 3:
   @Html.Partial(MVC.Core.Views._SortedSetup, Model.Table)
+    break;
+
+  case 4:
+  @Html.Partial(MVC.Core.Views._StatusSetup, Model.Table)
     break;
 
   case 0:
@@ -73,6 +78,10 @@
 
     case 3:
       $('#sorting').parent().addClass('active');
+      break;
+
+    case 4:
+      $('#status').parent().addClass('active');
       break;
   }
 

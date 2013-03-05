@@ -40,6 +40,7 @@ namespace WebExtras.DemoApp.Controllers
       };
       DatatableSettings dtSettings = null;
       DatatableRecords dtRecords = null;
+      bool enableStatusColumn = false;
 
       switch (mode)
       {
@@ -68,6 +69,25 @@ namespace WebExtras.DemoApp.Controllers
           dtRecords = GetSortedRecords(new DatatableFilters { iDisplayStart = 0, iDisplayLength = 5 });
           break;
 
+        case 4:
+          tableId = "status-table";
+          dtSettings = new DatatableSettings(5, new AASort(0, SortType.Ascending), null, "status records", "150px");
+          IEnumerable<string[]> statusData = new string[][]
+          {
+            new string[] { "first column row 1", "second column row 1", "error" },    
+            new string[] { "first column row 2", "second column row 2", "warning" },
+            new string[] { "first column row 3", "second column row 3", "info" },
+            new string[] { "first column row 4", "second column row 4", "success" }
+          };
+          enableStatusColumn = true;
+          dtRecords = new DatatableRecords
+          {
+            iTotalRecords = statusData.Count(),
+            iTotalDisplayRecords = statusData.Count(),
+            aaData = statusData
+          };
+          break;
+
         case 0:
         default:
           tableId = "basic-table";
@@ -89,7 +109,7 @@ namespace WebExtras.DemoApp.Controllers
 
       // Let's create the datatable object with an HTML ID, our settings, columns and records
       model.DisplayMode = mode.Value;
-      model.Table = new Datatable(tableId, dtSettings, dtColumns, dtRecords);
+      model.Table = new Datatable(tableId, dtSettings, dtColumns, dtRecords, null, enableStatusColumn);
       return View(model);
     }
 

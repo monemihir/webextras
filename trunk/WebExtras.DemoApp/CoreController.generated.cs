@@ -141,6 +141,7 @@ namespace WebExtras.DemoApp.Controllers
                 public readonly string _Datatable = "_Datatable";
                 public readonly string _PagedSetup = "_PagedSetup";
                 public readonly string _SortedSetup = "_SortedSetup";
+                public readonly string _StatusSetup = "_StatusSetup";
                 public readonly string Datatables = "Datatables";
                 public readonly string Flot = "Flot";
                 public readonly string Generic = "Generic";
@@ -150,6 +151,7 @@ namespace WebExtras.DemoApp.Controllers
             public readonly string _Datatable = "~/Views/Core/_Datatable.cshtml";
             public readonly string _PagedSetup = "~/Views/Core/_PagedSetup.cshtml";
             public readonly string _SortedSetup = "~/Views/Core/_SortedSetup.cshtml";
+            public readonly string _StatusSetup = "~/Views/Core/_StatusSetup.cshtml";
             public readonly string Datatables = "~/Views/Core/Datatables.cshtml";
             public readonly string Flot = "~/Views/Core/Flot.cshtml";
             public readonly string Generic = "~/Views/Core/Generic.cshtml";

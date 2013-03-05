@@ -82,14 +82,15 @@ namespace WebExtras.JQDataTables
     {
       ID = id.Replace("-", "_");
       Settings = settings;
+      Columns = columns;
 
-      // decide sorting enable/disable for columns
-      int[] columnNumbers = settings.aaSorting.Select(f => f.ToArray()[0]).Cast<int>().ToArray();
-      Columns = columns.Select((f, idx) => new DatatableColumn(f.Name, f.CssClass, f.Width, f.Visible) { Sortable = columnNumbers.Contains(idx) });
+      // setup the status column if the flag is set
+      if (enableStatusColumn)
+        Columns = Columns.Concat(new DatatableColumn[] { new DatatableColumn("", visible: false, bSortable: false) });
 
       // if the aoColumns were not setup then do a default setup
       if (settings.aoColumns == null)
-        settings.SetupAOColumns(columns);
+        settings.SetupAOColumns(Columns);
 
       Records = records;
       Postbacks = postbacks ?? Enumerable.Empty<PostbackItem>();
