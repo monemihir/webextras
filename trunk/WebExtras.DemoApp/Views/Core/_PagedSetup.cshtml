@@ -41,7 +41,7 @@
       sEcho = filters.sEcho,
       iTotalRecords = dtData.Length,                                        <span class="comment">// Total records in table</span>
       iTotalDisplayRecords = dtData.Length,                                 <span class="comment">// Total records to be displayed in the table</span>
-      aaData = dtData.Skip(filters.iDisplayStart).Take(iDisplayLength)      <span class="comment">// The paged data to be displayed</span>
+      aaData = dtData<span class="highlight">.Skip(filters.iDisplayStart).Take(iDisplayLength)</span>      <span class="comment">// The paged data to be displayed</span>
     };
 
     return dtRecords;

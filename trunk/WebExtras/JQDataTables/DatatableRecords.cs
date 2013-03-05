@@ -19,6 +19,7 @@
 using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using System.Linq;
 
 namespace WebExtras.JQDataTables
 {
@@ -54,7 +55,16 @@ namespace WebExtras.JQDataTables
     /// <summary>
     /// The data in a 2D array
     /// </summary>
-    public IEnumerable<IEnumerable<string>> aaData { get; set; }
+    private IEnumerable<IEnumerable<string>> m_aaData;
+
+    /// <summary>
+    /// The data in a 2D array
+    /// </summary>
+    public IEnumerable<IEnumerable<string>> aaData
+    {
+      get { return m_aaData; }
+      set { m_aaData = SanitiseAAData(value); }
+    }
 
     /// <summary>
     /// Default constructor
@@ -74,6 +84,28 @@ namespace WebExtras.JQDataTables
     public override string ToString()
     {
       return JsonConvert.SerializeObject(this);
+    }
+
+    /// <summary>
+    /// Check whether the aaData property is jagged collection and 
+    /// if it is converts it to a square/rectangular collection.
+    /// This makes sure that we don't have missing columns and avoids
+    /// DataTables throwing javascript errors for columns missing.
+    /// </summary>
+    /// <param name="toBeSanitised">Collection to be sanitised</param>
+    /// <returns>Sanitised collection</returns>
+    private IEnumerable<IEnumerable<string>> SanitiseAAData(IEnumerable<IEnumerable<string>> toBeSanitised)
+    {
+      IEnumerable<IEnumerable<string>> newAAData = toBeSanitised;
+
+      if (toBeSanitised != null && toBeSanitised.Count() > 1)
+      {
+        int maxLength = toBeSanitised.Where(f => f != null).Max(f => f.Count());
+        IEnumerable<string> empty = Enumerable.Range(0, maxLength).Select(f => string.Empty);
+        newAAData = toBeSanitised.Select(f => f.Concat(empty).Take(maxLength));
+      }
+
+      return newAAData;
     }
   }
 }

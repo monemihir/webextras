@@ -40,7 +40,7 @@
   We make use of the C# LinqToSQL feature in order to simulate the sorting behavior. WebExtras provides an extension method for the 
   <strong>IEnumerable&lt;IEnumerable&lt;string&gt;&gt;</strong> interface which takes care of the sorting for us. 
   <pre><code>  
-  public DatatableRecords GetPagedAndSortedRecords(DatatableFilters filters)
+  public DatatableRecords GetSortedRecords(DatatableFilters filters)
   {
     <span class="comment">// Let's create the actual data to go into the table by adding 15 records</span>
     List&lt;string[]&gt; dtData = new List&lt;string[]&gt;();   <span class="comment">// Note that this still implements IEnumerable&lt;IEnumerable&lt;string&gt;&gt;</span>
@@ -59,16 +59,12 @@
       sEcho = filters.sEcho,
       iTotalRecords = dtData.Length,                                        <span class="comment">// Total records in table</span>
       iTotalDisplayRecords = dtData.Length,                                 <span class="comment">// Total records to be displayed in the table</span>
-      aaData = dtData
-        .Skip(filters.iDisplayStart)
-        .Take(iDisplayLength)                                               <span class="comment">// The paged and sorted data to be displayed</span>
-        <span class="highlight">.Sort(filters.iSortCol_0, filters.SortDirection)</span>      
+      aaData = dtData<span class="highlight">.Sort(filters.iSortCol_0, filters.SortDirection)</span>        <span class="comment">// The sorted data to be displayed</span>
     };
 
     return dtRecords;
   }
   </code></pre>
-  The reason we use the DatatableFilters as a parameter will soon be apparent
 </div>
 
 <div class="well">
