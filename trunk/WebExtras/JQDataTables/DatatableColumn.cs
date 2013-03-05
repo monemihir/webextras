@@ -67,7 +67,7 @@ namespace WebExtras.JQDataTables
     public DatatableColumn(string name, string cssClass = null, int? width = null, bool visible = true, bool bSortable = false)
     {
       Name = name;
-      HtmlFieldId = name.ToLower() + "_Id";
+      HtmlFieldId = name.ToLower().Replace(" ", "_") + "_Id";
       Width = width;
       Visible = visible;
       CssClass = cssClass;

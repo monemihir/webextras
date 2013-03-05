@@ -44,6 +44,30 @@ namespace WebExtras.DemoApp.Controllers
             return RedirectToRoutePermanent(callInfo.RouteValueDictionary);
         }
 
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult Datatables()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Datatables);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.JsonResult GetAjaxData()
+        {
+            return new T4MVC_System_Web_Mvc_JsonResult(Area, Name, ActionNames.GetAjaxData);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.JsonResult GetPagedData()
+        {
+            return new T4MVC_System_Web_Mvc_JsonResult(Area, Name, ActionNames.GetPagedData);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.JsonResult GetSortedData()
+        {
+            return new T4MVC_System_Web_Mvc_JsonResult(Area, Name, ActionNames.GetSortedData);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public CoreController Actions { get { return MVC.Core; } }
@@ -63,10 +87,45 @@ namespace WebExtras.DemoApp.Controllers
             public readonly string Index = ("Index").ToLowerInvariant();
             public readonly string Generic = ("Generic").ToLowerInvariant();
             public readonly string Datatables = ("Datatables").ToLowerInvariant();
+            public readonly string GetAjaxData = ("GetAjaxData").ToLowerInvariant();
+            public readonly string GetPagedData = ("GetPagedData").ToLowerInvariant();
+            public readonly string GetSortedData = ("GetSortedData").ToLowerInvariant();
             public readonly string Flot = ("Flot").ToLowerInvariant();
         }
 
 
+        static readonly ActionParamsClass_Datatables s_params_Datatables = new ActionParamsClass_Datatables();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_Datatables DatatablesParams { get { return s_params_Datatables; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_Datatables
+        {
+            public readonly string mode = ("mode").ToLowerInvariant();
+        }
+        static readonly ActionParamsClass_GetAjaxData s_params_GetAjaxData = new ActionParamsClass_GetAjaxData();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_GetAjaxData GetAjaxDataParams { get { return s_params_GetAjaxData; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_GetAjaxData
+        {
+            public readonly string filters = ("filters").ToLowerInvariant();
+        }
+        static readonly ActionParamsClass_GetPagedData s_params_GetPagedData = new ActionParamsClass_GetPagedData();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_GetPagedData GetPagedDataParams { get { return s_params_GetPagedData; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_GetPagedData
+        {
+            public readonly string filters = ("filters").ToLowerInvariant();
+        }
+        static readonly ActionParamsClass_GetSortedData s_params_GetSortedData = new ActionParamsClass_GetSortedData();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_GetSortedData GetSortedDataParams { get { return s_params_GetSortedData; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_GetSortedData
+        {
+            public readonly string filters = ("filters").ToLowerInvariant();
+        }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ViewsClass Views { get { return s_views; } }
@@ -77,12 +136,20 @@ namespace WebExtras.DemoApp.Controllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
+                public readonly string _AjaxSetup = "_AjaxSetup";
+                public readonly string _BasicSetup = "_BasicSetup";
                 public readonly string _Datatable = "_Datatable";
+                public readonly string _PagedSetup = "_PagedSetup";
+                public readonly string _SortedSetup = "_SortedSetup";
                 public readonly string Datatables = "Datatables";
                 public readonly string Flot = "Flot";
                 public readonly string Generic = "Generic";
             }
+            public readonly string _AjaxSetup = "~/Views/Core/_AjaxSetup.cshtml";
+            public readonly string _BasicSetup = "~/Views/Core/_BasicSetup.cshtml";
             public readonly string _Datatable = "~/Views/Core/_Datatable.cshtml";
+            public readonly string _PagedSetup = "~/Views/Core/_PagedSetup.cshtml";
+            public readonly string _SortedSetup = "~/Views/Core/_SortedSetup.cshtml";
             public readonly string Datatables = "~/Views/Core/Datatables.cshtml";
             public readonly string Flot = "~/Views/Core/Flot.cshtml";
             public readonly string Generic = "~/Views/Core/Generic.cshtml";
@@ -106,9 +173,31 @@ namespace WebExtras.DemoApp.Controllers
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult Datatables()
+        public override System.Web.Mvc.ActionResult Datatables(int? mode)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Datatables);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "mode", mode);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.JsonResult GetAjaxData(WebExtras.JQDataTables.DatatableFilters filters)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_JsonResult(Area, Name, ActionNames.GetAjaxData);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "filters", filters);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.JsonResult GetPagedData(WebExtras.JQDataTables.DatatableFilters filters)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_JsonResult(Area, Name, ActionNames.GetPagedData);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "filters", filters);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.JsonResult GetSortedData(WebExtras.JQDataTables.DatatableFilters filters)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_JsonResult(Area, Name, ActionNames.GetSortedData);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "filters", filters);
             return callInfo;
         }
 

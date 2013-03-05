@@ -27,69 +27,53 @@
     </ul>
   </div>
 </div>
-<div class="well">
-  <h4>Creating column definitions</h4>
-  Column definitions are created by instantiating the <i>WebExtras.JQDataTables.DatatableColumn</i> class
-  <pre><code>
-  DatatableColumn dtColumn = new DatatableColumn
-  (
-      Name = "First Column",  <span class="comment">// Only the Name property is compulsory. All other properties are optional</span>
-      Sortable = true,
-      CssClass = "",          <span class="comment">// any extra CSS class you would like to apply to this column</span>
-      Width = 10,             <span class="comment">// specified as a percentage</span>
-      Visible = true
-  );  
-  </code></pre>
-</div>
+<ul class="nav nav-pills">
+  <li>
+    @Html.ActionLink("Basic Setup", MVC.Core.Datatables(0), new { id = "basic" })
+  </li>
+  <li>@Html.ActionLink("Ajax Setup", MVC.Core.Datatables(1), new { id = "ajax" })</li>
+  <li>@Html.ActionLink("Add paging", MVC.Core.Datatables(2), new { id = "paging" })</li>
+  <li>@Html.ActionLink("Add sorting", MVC.Core.Datatables(3), new { id = "sorting" })</li>
+</ul>
+@switch (Model.DisplayMode)
+{
+  case 1:
+  @Html.Partial(MVC.Core.Views._AjaxSetup, Model.Table)
+    break;
 
-<div class="well">
-  <h4>Creating table settings</h4>
-  Table settings are created by instantiating the <i>WebExtras.JQDataTables.DatatableSettings</i> class 
-  <pre><code>  
-  DatatableSettings dtSettings = new DatatableSettings 
-  (
-    5,                                      <span class="comment">// specify the number of records per page</span>
-    new AASort(0, SortType.Ascending),      <span class="comment">// specify one initial sort, multiple initial sorts, or leave null for no sort</span>
-    null,                                   <span class="comment">// specify an AJAX source to retrieve data from</span>
-    "demo records",                         <span class="comment">// specify a table footer suffix</span>
-    "150px"                                 <span class="comment">// specify a maximum table height, once reached you will get scroll bars</span>
-  );
-  </code></pre>
-</div>
+  case 2:
+  @Html.Partial(MVC.Core.Views._PagedSetup, Model.Table)
+    break;
 
-<div class="well">
-  <h4>Creating table records</h4>
-  Table records are created by instantiating the <i>WebExtras.JQDataTables.DatatableRecords</i> class
-  <pre><code>
-  <span class="comment">// Let's create the actual data to go into the table</span>
-  string[][] dtData = new string[][]
-  {
-    new string[] { "first column row 1" },
-    new string[] { "first column row 2" }
-  };
+  case 3:
+  @Html.Partial(MVC.Core.Views._SortedSetup, Model.Table)
+    break;
 
-  DatatableRecords dtRecords = new DatatableRecords
-  {
-    iTotalRecords = dtData.Length,            <span class="comment">// Total records in table</span>
-    iTotalDisplayRecords = dtData.Length,     <span class="comment">// Total records to be displayed in the table</span>
-    aaData = dtData                           <span class="comment">// The data to be displayed</span>
-  };
-  </code></pre>
-</div>
-<div class="well">
-  <h4>Creating the table object</h4>
-  Let us now bring all the different components together
-  <pre><code>
-  <span class="comment">// We need a collection of columns, so create an array from our column</span>
-  DatatableColumn[] dtColumns = new DatatableColumn[] { dtColumn };
+  case 0:
+  default:
+  @Html.Partial(MVC.Core.Views._BasicSetup, Model.Table)
+    break;
+}
 
-  <span class="comment">// Let's create the datatable object with an HTML ID, our settings, columns and records</span>
-  Datatable dtable = new Datatable("demo-table", dtSettings, dtColumns, dtRecords);
-  </code></pre>
-</div>
-<div class="well">
-  <h4>Now let's see the output</h4>
-  <div class="output">
-    @Html.Partial(MVC.Core.Views._Datatable, Model.Table)
-  </div>
-</div>
+<script type="text/javascript">
+  var dmode = '@Request.QueryString["mode"]';
+
+  switch (parseInt(dmode)) {
+    case 0:
+      $('#basic').parent().addClass('active');
+      break;
+
+    case 1:
+      $('#ajax').parent().addClass('active');
+      break;
+
+    case 2:
+      $('#paging').parent().addClass('active');
+      break;
+
+    case 3:
+      $('#sorting').parent().addClass('active');
+      break;
+  }
+
+</script>

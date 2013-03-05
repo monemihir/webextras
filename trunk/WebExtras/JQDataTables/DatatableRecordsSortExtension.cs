@@ -120,7 +120,7 @@ namespace WebExtras.JQDataTables
       Regex.Replace(str, "<.*?>", string.Empty);
 
       foreach (string currency in m_currencies)
-        str = str.ToLowerInvariant().Replace(currency.ToLowerInvariant(), "");
+        str = str.ToLowerInvariant().Replace(currency.ToLowerInvariant(), "").Trim();
 
       return str;
     }

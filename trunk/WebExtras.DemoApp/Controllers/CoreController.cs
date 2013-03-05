@@ -26,40 +26,163 @@ namespace WebExtras.DemoApp.Controllers
 
     //
     // GET: /Core/Datatables
-    public virtual ActionResult Datatables()
+    public virtual ActionResult Datatables(int? mode)
     {
+      if (!mode.HasValue)
+        return RedirectToAction(Actions.Datatables(0));
+
       DatatablesViewModel model = new DatatablesViewModel();
+      string tableId = string.Empty;
+      IEnumerable<DatatableColumn> dtColumns = new List<DatatableColumn>
+      {
+        new DatatableColumn("First Column"),
+        new DatatableColumn("Second Column")
+      };
+      DatatableSettings dtSettings = null;
+      DatatableRecords dtRecords = null;
 
-      DatatableColumn dtColumn1 = new DatatableColumn("First Column", "", 10, true);
-      DatatableColumn dtColumn2 = new DatatableColumn("Second Column", "", 10, true);
+      switch (mode)
+      {
+        case 1:
+          tableId = "ajax-table";
+          dtSettings = new DatatableSettings(5, new AASort(0, SortType.Ascending), MVC.Core.ActionNames.GetAjaxData, "ajax records", "150px");
+          break;
 
-      DatatableSettings dtSettings = new DatatableSettings(5, new AASort(0, SortType.Ascending), null, "demo records", "150px");
-      dtSettings.sDom = "t<'row-fluid'<'span6'i><'span6'p>>";
-      dtSettings.sPaginationType = "bootstrap";
+        case 2:
+          tableId = "paged-table";
+          dtSettings = new DatatableSettings(5, new AASort(0, SortType.Ascending), MVC.Core.ActionNames.GetPagedData, "paged records", "150px");
+          dtRecords = GetPagedRecords(new DatatableFilters { iDisplayStart = 0, iDisplayLength = 5 });
+          break;
 
+        case 3:
+          tableId = "paged-and-sorted-table";
+          dtColumns = new List<DatatableColumn>
+          {
+            new DatatableColumn("HTML field column", bSortable: true),
+            new DatatableColumn("String Column", bSortable: true),
+            new DatatableColumn("DateTime Column", bSortable: true),
+            new DatatableColumn("Numeric Column", bSortable: true),
+            new DatatableColumn("Currency Column", bSortable: true)
+          };
+          dtSettings = new DatatableSettings(5, new AASort(0, SortType.Ascending), MVC.Core.ActionNames.GetSortedData, "sorted records", "150px");
+          dtRecords = GetSortedRecords(new DatatableFilters { iDisplayStart = 0, iDisplayLength = 5 });
+          break;
+
+        case 0:
+        default:
+          tableId = "basic-table";
+          dtSettings = new DatatableSettings(5, new AASort(0, SortType.Ascending), null, "basic records", "150px");
+          IEnumerable<string[]> dtData = new string[][]
+          {
+            new string[] { "first column row 1", "second column row 1" },    
+            new string[] { "first column row 2", "second column row 2" }
+          };
+
+          dtRecords = new DatatableRecords
+          {
+            iTotalRecords = dtData.Count(),            // Total records in table
+            iTotalDisplayRecords = dtData.Count(),     // Total records to be displayed in the table
+            aaData = dtData                           // The data to be displayed
+          };
+          break;
+      }
+
+      // Let's create the datatable object with an HTML ID, our settings, columns and records
+      model.DisplayMode = mode.Value;
+      model.Table = new Datatable(tableId, dtSettings, dtColumns, dtRecords);
+      return View(model);
+    }
+
+    //
+    // GET: /Core/GetAjaxData
+    public virtual JsonResult GetAjaxData(DatatableFilters filters)
+    {
       // Let's create the actual data to go into the table
       string[][] dtData = new string[][]
       {
-        new string[] { "first column row 1", "second column row 1" },    
-        new string[] { "first column row 2", "second column row 2" }
+        new string[] { "first column ajax row 1", "second column ajax row 1" },    
+        new string[] { "first column ajax row 2", "second column ajax row 2" }
       };
 
       DatatableRecords dtRecords = new DatatableRecords
       {
-        iTotalRecords = dtData.Length,            // Total records in table
-        iTotalDisplayRecords = dtData.Length,     // Total records to be displayed in the table
-        aaData = dtData                           // The data to be displayed
+        sEcho = filters.sEcho,
+        iTotalRecords = dtData.Length,                                                // Total records in table
+        iTotalDisplayRecords = dtData.Length,                                         // Total records to be displayed in the table
+        aaData = dtData      // The data to be displayed
       };
 
-      // We need a collection of columns, so create an array from our column
-      DatatableColumn[] dtColumns = new DatatableColumn[] { dtColumn1, dtColumn2 };
+      return Json(dtRecords, JsonRequestBehavior.AllowGet);
+    }
 
-      // Let's create the datatable object with an HTML ID, our settings, columns and records
-      Datatable dtable = new Datatable("demo-table", dtSettings, dtColumns, dtRecords);
+    //
+    // GET: /Core/GetPagedData
+    public virtual JsonResult GetPagedData(DatatableFilters filters)
+    {
+      DatatableRecords dtRecords = GetPagedRecords(filters);
 
-      model.Table = dtable;
+      return Json(dtRecords, JsonRequestBehavior.AllowGet);
+    }
 
-      return View(model);
+    //
+    // GET: /Core/GetSortedData
+    public virtual JsonResult GetSortedData(DatatableFilters filters)
+    {
+      DatatableRecords dtRecords = GetSortedRecords(filters);
+
+      return Json(dtRecords, JsonRequestBehavior.AllowGet);
+    }
+
+    //
+    // Non action: /Core/GetPagedRecords
+    [NonAction]
+    public DatatableRecords GetPagedRecords(DatatableFilters filters)
+    {
+      // Let's create the actual data to go into the table
+      List<string[]> dtData = new List<string[]>();
+
+      for (int i = 0; i < 15; i++)
+      {
+        dtData.Add(new string[] { 
+          string.Format("first column paged row {0}", i + 1), 
+          string.Format("second column paged row {0}", i + 1) 
+        });
+      }
+
+      DatatableRecords dtRecords = new DatatableRecords
+      {
+        sEcho = filters.sEcho,
+        iTotalRecords = dtData.Count(),                                                // Total records in table
+        iTotalDisplayRecords = dtData.Count(),                                         // Total records to be displayed in the table
+        aaData = dtData.Skip(filters.iDisplayStart).Take(filters.iDisplayLength)      // The data to be displayed
+      };
+
+      return dtRecords;
+    }
+
+    //
+    // Non action: /Core/GetSortedRecords
+    [NonAction]
+    public DatatableRecords GetSortedRecords(DatatableFilters filters)
+    {
+      // Let's create the actual data to go into the table
+      List<string[]> dtData = new List<string[]> {
+        new string[] { "<a href='#'>4</a>", "mihir", "02-Jan-13", "2", "&euro; 15.00" },
+        new string[] { "<a href='#'>3</a>", "sneha", "2013-Mar-12", "45", "&pound; 12.00" },
+        new string[] { "<a href='#'>1</a>", "mohan", "20 Mar 13", "32", "rs. 151.00" },
+        new string[] { "<a href='#'>2</a>", "swati", "29May13", "10", "$ 201.00" },
+        new string[] { "<a href='#'>2</a>", "sindhu", "Feb 11, 2012", "110", "&yen; 92.00" }
+      };
+
+      DatatableRecords dtRecords = new DatatableRecords
+      {
+        sEcho = filters.sEcho,
+        iTotalRecords = dtData.Count(),                                                // Total records in table
+        iTotalDisplayRecords = dtData.Count(),                                         // Total records to be displayed in the table
+        aaData = dtData.Sort(filters.iSortCol_0, filters.SortDirection)      // The data to be displayed
+      };
+
+      return dtRecords;
     }
 
     //

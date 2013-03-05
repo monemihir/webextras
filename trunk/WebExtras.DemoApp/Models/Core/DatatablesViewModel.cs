@@ -8,6 +8,8 @@ namespace WebExtras.DemoApp.Models.Core
 {
   public class DatatablesViewModel
   {
+    public int DisplayMode { get; set; }
+
     public Datatable Table { get; set; }
   }
 }

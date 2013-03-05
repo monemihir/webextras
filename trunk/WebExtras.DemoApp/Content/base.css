@@ -43,6 +43,11 @@ header, footer, nav, section
   color: green;
 }
 
+.highlight
+{
+  color: #d14;
+}
+
 .output
 {
   background-color: #fff;
@@ -80,22 +85,38 @@ pre
   margin-top: 5px;
 }
 
+.navbar .nav
+{
+  margin: 0 20px;
+}
+
+.navbar-inner
+{
+  filter: 0;
+}
+
+.navbar-inverse .navbar-inner
+{
+  filter: 0;
+}
+
 .navbar-fixed-top
 {
   left: 1%;
   right: 1%;
   width: 970px;
-  margin: 0 auto;
+  margin: 0 auto;  
 }
 
   .navbar-fixed-top .navbar-inner
   {
-    border-bottom-right-radius: 20px;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
   }
 
 .navbar-inverse .navbar-inner
 {
-  border-color: #666;
+  border-color: #666;  
 }
 
 .navbar-inverse .nav .active > a,
