@@ -61,7 +61,7 @@ namespace WebExtras.Mvc.Bootstrap
       string autogenId = string.Format("autogen-{0}", new Random(DateTime.Now.Millisecond).Next(1, 9999).ToString());
       TagBuilder button = new TagBuilder("button");
       button.Attributes["id"] = string.IsNullOrEmpty(id) ? autogenId : id;
-      button.InnerHtml = string.Format("<i class='{0}'></i>{1}", iconClass, value);
+      button.InnerHtml = string.Format("<i class='{0}'></i>&nbsp;{1}", iconClass, value);
       onClick = (!string.IsNullOrEmpty(onClick) && onClick.EndsWith("()")) ? onClick : onClick + "()";
       if (!string.IsNullOrEmpty(cssClass))
         button.AddCssClass(cssClass);
