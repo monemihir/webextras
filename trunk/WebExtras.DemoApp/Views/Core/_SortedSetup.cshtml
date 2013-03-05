@@ -28,7 +28,7 @@
   (
     5,                                      <span class="comment">// specify the number of records per page</span>
     new AASort(0, SortType.Ascending),      <span class="comment">// specify one initial sort, multiple initial sorts, or leave null for no sort</span>
-    <span class="highlight">"~/getsorteddata"</span>,             <span class="comment">// specify an AJAX source to retrieve data from</span>
+    <span class="highlight">"~/getsorteddata"</span>,                       <span class="comment">// specify an AJAX source to retrieve data from</span>
     "paged and sorted records",             <span class="comment">// specify a table footer suffix</span>
     "150px"                                 <span class="comment">// specify a maximum table height, once reached you will get scroll bars</span>
   );
@@ -72,8 +72,8 @@
   We need to create the first page of the table in order to have the paging behavior kick in. This should be done when you display
   the table the first time.
   <pre><code>  
-  DatatableRecords dtRecords = GetPagedRecords(new DatatableFilters { iDisplayStart = 0, iDisplayLength = 5 });
-  Datatable dTable = new Datatable("paged-table", dtColumns, dtSettings, dtRecords);
+  DatatableRecords dtRecords = GetSortedRecords(new DatatableFilters { iDisplayStart = 0, iDisplayLength = 5 });
+  Datatable dTable = new Datatable("sorted-table", dtColumns, dtSettings, dtRecords);
   </code></pre>
 </div>
 
@@ -83,9 +83,9 @@
   we have used DatatableFilters as one of the parameters means that we can simply forward the filtering parameters we got 
   from the HTTP GET request from the client side.
   <pre><code>
-  public JsonResult GetPagedData(DatatableFilters filters)
+  public JsonResult GetSortedData(DatatableFilters filters)
   {
-    DatatableRecords dtRecords = GetPagedRecords(filters);
+    DatatableRecords dtRecords = GetSortedRecords(filters);
 
     return Json(dtRecords, JsonRequestBehavior.AllowGet);
   }
