@@ -16,6 +16,7 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -135,6 +136,39 @@ namespace WebExtras.tests.JQDataTables
     }
 
     /// <summary>
+    /// Test that ascending sort with a custom parser works properly.
+    /// </summary>
+    [TestMethod]
+    public void Sort_Ascending_With_Custom_Parser_Works_Properly()
+    {
+      // Arrange
+      // Setup a custom parser for the first column to parse as follows:
+      // <a href='/displayplan/16'>2</a> should return 16
+      Func<string, object> parser = (string str) =>
+      {
+        int val = int.Parse(str.Split('\'')[1].Split('/').Last());
+        return val;
+      };
+      Dictionary<int, Func<string, object>> parsers = new Dictionary<int, Func<string, object>>();
+      parsers.Add(0, parser);
+
+      // sorted with the custom parser
+      string[][] expected = new List<string[]> {
+        new string[] { "<a href='/displayplan/4'>4</a>", "mihir", "02-Jan-13", "&euro;15.00" },
+        new string[] { "<a href='/displayplan/11'>1</a>", "mohan", "20 Mar 13", "rs.151.00" },
+        new string[] { "<a href='/displayplan/16'>2</a>", "swati", "29May13", "$201.00" },
+        new string[] { "<a href='/displayplan/24'>3</a>", "sneha", "2013-Mar-12", "&pound;12.00" }
+      }.ToArray();
+
+      // Act
+      // sort based on the custom parser
+      IEnumerable<IEnumerable<string>> result = m_records.aaData.Sort(0, SortType.Ascending, parsers);
+
+      // Assert
+      AssertSortedAAData(expected, result);
+    }
+
+    /// <summary>
     /// Test that descending sort works properly
     /// </summary>
     [TestMethod]
@@ -200,6 +234,39 @@ namespace WebExtras.tests.JQDataTables
 
       // Assert      
       AssertSortedAAData(expected3, result);
+    }
+
+    /// <summary>
+    /// Test that descending sort with a custom parser works properly.
+    /// </summary>
+    [TestMethod]
+    public void Sort_Descending_With_Custom_Parser_Works_Properly()
+    {
+      // Arrange
+      // Setup a custom parser for the first column to parse as follows:
+      // <a href='/displayplan/16'>2</a> should return 16
+      Func<string, object> parser = (string str) =>
+      {
+        int val = int.Parse(str.Split('\'')[1].Split('/').Last());
+        return val;
+      };
+      Dictionary<int, Func<string, object>> parsers = new Dictionary<int, Func<string, object>>();
+      parsers.Add(0, parser);
+
+      // sorted with the custom parser
+      string[][] expected = new List<string[]> {
+        new string[] { "<a href='/displayplan/24'>3</a>", "sneha", "2013-Mar-12", "&pound;12.00" },
+        new string[] { "<a href='/displayplan/16'>2</a>", "swati", "29May13", "$201.00" },
+        new string[] { "<a href='/displayplan/11'>1</a>", "mohan", "20 Mar 13", "rs.151.00" },
+        new string[] { "<a href='/displayplan/4'>4</a>", "mihir", "02-Jan-13", "&euro;15.00" }
+      }.ToArray();
+
+      // Act
+      // sort based on the custom parser
+      IEnumerable<IEnumerable<string>> result = m_records.aaData.Sort(0, SortType.Descending, parsers);
+
+      // Assert
+      AssertSortedAAData(expected, result);
     }
 
     /// <summary>

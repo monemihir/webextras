@@ -38,16 +38,13 @@ namespace WebExtras.JQDataTables
     /// </summary>
     /// <param name="aaData">DatatableRecords table data to be sorted</param>
     /// <param name="columnNumber">Column to sort on</param>
+    /// <param name="customParsers">[Optional] A dictionary containing the column number as an associated data parser function.
+    /// Defaults to null.</param>
     /// <param name="type">Sort direction</param>
-    public static IEnumerable<IEnumerable<string>> Sort(this IEnumerable<IEnumerable<string>> aaData, int columnNumber, SortType type)
+    public static IEnumerable<IEnumerable<string>> Sort(this IEnumerable<IEnumerable<string>> aaData, int columnNumber, SortType type, IDictionary<int, Func<string, object>> customParsers = null)
     {
       if (aaData != null && aaData.Count() > 1)
-      {
-        if (type == SortType.Ascending)
-          aaData = SortAscending(aaData, columnNumber);
-        else
-          aaData = SortDescending(aaData, columnNumber);
-      }
+        aaData = (type == SortType.Ascending) ? SortAscending(aaData, columnNumber, customParsers) : SortDescending(aaData, columnNumber, customParsers);
 
       return aaData;
     }
@@ -57,25 +54,39 @@ namespace WebExtras.JQDataTables
     /// </summary>
     /// <param name="aaData">DatatableRecords table data to be sorted</param>
     /// <param name="columnNumber">Column to sort on</param>
-    private static IEnumerable<IEnumerable<string>> SortAscending(IEnumerable<IEnumerable<string>> aaData, int columnNumber)
+    /// <param name="customParsers">[Optional] A dictionary containing the column number as an associated data parser function.
+    /// Defaults to null.</param>
+    /// <returns>Ascending sorted records</returns>
+    private static IEnumerable<IEnumerable<string>> SortAscending(IEnumerable<IEnumerable<string>> aaData, int columnNumber, IDictionary<int, Func<string, object>> customParsers = null)
     {
       string[][] data = aaData.Select(f => f.ToArray()).ToArray();
-      string parseStr = SanitiseString(data[0][columnNumber]);
 
-      DateTime dt = DateTime.MinValue;
-      bool success = DateTime.TryParse(parseStr, out dt);
-      if (success)
-        aaData = data.OrderBy(f => DateTime.Parse(SanitiseString(f[columnNumber])));
+      // if there is a custom parser for the column use that, else
+      // use the default sorters
+      if (customParsers != null && customParsers.ContainsKey(columnNumber))
+      {
+        aaData = data.OrderBy(f => customParsers[columnNumber](f[columnNumber]));
+      }
       else
       {
-        double dbl = double.NaN;
-        success = double.TryParse(parseStr, out dbl);
-        if (success)
-          aaData = data.OrderBy(f => double.Parse(SanitiseString(f[columnNumber])));
-        else
-          aaData = data.OrderBy(f => SanitiseString(f[columnNumber]));
-      }
+        string parseStr = SanitiseString(data[0][columnNumber]);
 
+        DateTime dt = DateTime.MinValue;
+        bool success = DateTime.TryParse(parseStr, out dt);
+
+        if (success)
+          aaData = data.OrderBy(f => DateTime.Parse(SanitiseString(f[columnNumber])));
+        else
+        {
+          double dbl = double.NaN;
+          success = double.TryParse(parseStr, out dbl);
+
+          if (success)
+            aaData = data.OrderBy(f => double.Parse(SanitiseString(f[columnNumber])));
+          else
+            aaData = data.OrderBy(f => SanitiseString(f[columnNumber]));
+        }
+      }
       return aaData;
     }
 
@@ -84,26 +95,38 @@ namespace WebExtras.JQDataTables
     /// </summary>
     /// <param name="aaData">DatatableRecords table data to be sorted</param>
     /// <param name="columnNumber">Column number to sort on</param>
-    private static IEnumerable<IEnumerable<string>> SortDescending(IEnumerable<IEnumerable<string>> aaData, int columnNumber)
+    /// <param name="customParsers">[Optional] A dictionary containing the column number as an associated data parser function.
+    /// Defaults to null.</param>
+    /// <returns>Descending sorted records</returns>
+    private static IEnumerable<IEnumerable<string>> SortDescending(IEnumerable<IEnumerable<string>> aaData, int columnNumber, IDictionary<int, Func<string, object>> customParsers = null)
     {
       string[][] data = aaData.Select(f => f.ToArray()).ToArray();
-      string parseStr = SanitiseString(data[0][columnNumber]);
-      DateTime dt = DateTime.MinValue;
 
-      bool success = DateTime.TryParse(parseStr, out dt);
-
-      if (success)
-        aaData = data.OrderByDescending(f => DateTime.Parse(SanitiseString(f[columnNumber])));
+      // if there is a custom parser for the column use that, else
+      // use the default sorters
+      if (customParsers != null && customParsers.ContainsKey(columnNumber))
+      {
+        aaData = data.OrderByDescending(f => customParsers[columnNumber](f[columnNumber]));
+      }
       else
       {
-        double dbl = double.NaN;
+        string parseStr = SanitiseString(data[0][columnNumber]);
 
-        success = double.TryParse(parseStr, out dbl);
+        DateTime dt = DateTime.MinValue;
+        bool success = DateTime.TryParse(parseStr, out dt);
 
         if (success)
-          aaData = data.OrderByDescending(f => double.Parse(SanitiseString(f[columnNumber])));
+          aaData = data.OrderByDescending(f => DateTime.Parse(SanitiseString(f[columnNumber])));
         else
-          aaData = data.OrderByDescending(f => SanitiseString(f[columnNumber]));
+        {
+          double dbl = double.NaN;
+          success = double.TryParse(parseStr, out dbl);
+
+          if (success)
+            aaData = data.OrderByDescending(f => double.Parse(SanitiseString(f[columnNumber])));
+          else
+            aaData = data.OrderByDescending(f => SanitiseString(f[columnNumber]));
+        }
       }
 
       return aaData;
