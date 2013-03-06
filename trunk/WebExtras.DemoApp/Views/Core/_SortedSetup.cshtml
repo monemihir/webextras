@@ -101,16 +101,52 @@
 
 <div class="well">
   <h4>Some details about the sorter extension</h4>
-  The sorter extension can currently handle columns with the following .NET base types and some special formats as listed below:
+  <p>The sorter extension can currently handle columns with the following .NET base types and some special formats as listed below:</p>
   <ul>
     <li>string</li>
     <li>DateTime</li>
     <li>int, float, double, decimal</li>
     <li>currency i.e. data in the format: &euro;5.00, $6.00, &pound;7.00, &yen;8.00, Rs.9.00. The sorter will strip the currencies and sort on the decimal number.
-      It isn't intelligent enough to look up the current exchange rate and sort them, so beware!! <br />Euro, Dollar, Pound, Rupees and Yen are the currenctly supported
+      It isn't intelligent enough to look up the current exchange rate and sort them, so beware!!
+      <br />
+      Euro, Dollar, Pound, Rupees and Yen are the currenctly supported
       currencies.
     </li>
     <li>HTML fields i.e data in format: &lt;a href='/somelink.html'&gt;some text&lt;/a&gt;. The sorter will strip the HTML tags and sort on the inner text of the tag.
       In this case the sorter will sort on <strong>some text</strong> and not the HTML A tag.</li>
   </ul>
+</div>
+
+<div class="well">
+  <h4>But my data doesn't fit any of the default formats :(</h4>
+  <p>
+    All defaults sorters have a fixed way in which they try to parse data and then apply the sorting logic on it. 
+    However, you are not limited to only the default sorters.
+    If you have a custom data format you are using, you can provide custom parsers to use in order to perform sorts.
+  </p>
+  <pre><code>
+  <span class="comment">// An example custom parser to sort on the second character of the column data</span>
+  Func&lt;string, object&gt; secondCharParser = (string str) => 
+  {
+    char[] arr = str.ToCharArray();
+    
+    if(arr.Length > 1)
+      return arr[1];
+    
+    return null; 
+  }
+
+  Dictionary&lt;int, Func&lt;string, object&gt;&gt; parsers = new Dictionary&lt;int, Func&lt;string, object&gt;&gt;();
+  parsers.Add(1, secondCharParser);
+
+  <span class="comment">// Let's say we want to apply this custom parser to the second column of the table above</span>
+  <span class="comment">// This is how your DatatableRecords object creation would look</span>
+  DatatableRecords dtRecords = new DatatableRecords
+  {
+    sEcho = filters.sEcho,
+    iTotalRecords = dtData.Length,                                        
+    iTotalDisplayRecords = dtData.Length,                                 
+    aaData = dtData<span class="highlight">.Sort(filters.iSortCol_0, filters.SortDirection, parsers)</span>        <span class="comment">// Sorting with custom parser</span>
+  };
+  </code></pre>
 </div>

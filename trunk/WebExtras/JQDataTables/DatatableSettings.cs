@@ -59,7 +59,8 @@ namespace WebExtras.JQDataTables
     /// <summary>
     /// Enable jQuery UI ThemeRoller support
     /// </summary>
-    public bool bJQueryUI;
+    [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+    public bool? bJQueryUI;
 
     /// <summary>
     /// Number of rows to display on a single page when using pagination. If feature enabled
@@ -87,7 +88,7 @@ namespace WebExtras.JQDataTables
     /// this variable. The aaSorting array should contain an array for each column to be sorted
     /// initially containing the column's index and a direction string ('asc' or 'desc')
     /// </summary>
-    public IEnumerable<IEnumerable<object>> aaSorting;
+    public IEnumerable<IEnumerable<object>> aaSorting { get; private set; }
 
     /// <summary>
     /// Individual data column specifications
@@ -138,6 +139,7 @@ namespace WebExtras.JQDataTables
         sInfoEmpty = "No records"
       };
       sAjaxSource = ajaxSource;
+      bServerSide = !string.IsNullOrEmpty(ajaxSource);
     }
 
     /// <summary>
