@@ -11,5 +11,9 @@ namespace WebExtras.DemoApp.Models.Core
     public int DisplayMode { get; set; }
 
     public Datatable Table { get; set; }
+
+    public Datatable PostbackEnabledTable { get; set; }
+
+    public PostbackSetupViewModel PostbackFormFields { get; set; }
   }
 }

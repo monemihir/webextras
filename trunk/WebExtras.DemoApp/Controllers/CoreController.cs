@@ -1,4 +1,5 @@
 ﻿using System;
+using WebExtras.Core;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -89,13 +90,16 @@ namespace WebExtras.DemoApp.Controllers
           break;
 
         case 0:
+        case 5:
         default:
           tableId = "basic-table";
           dtSettings = new DatatableSettings(5, new AASort(0, SortType.Ascending), null, "basic records", "150px");
           IEnumerable<string[]> dtData = new string[][]
           {
             new string[] { "first column row 1", "second column row 1" },    
-            new string[] { "first column row 2", "second column row 2" }
+            new string[] { "first column row 2", "second column row 2" },
+            new string[] { "first column row 3", "second column row 3" },
+            new string[] { "first column row 4", "second column row 4" }
           };
 
           dtRecords = new DatatableRecords
@@ -111,6 +115,43 @@ namespace WebExtras.DemoApp.Controllers
       model.DisplayMode = mode.Value;
       model.Table = new Datatable(tableId, dtSettings, dtColumns, dtRecords, null, enableStatusColumn);
       return View(model);
+    }
+
+    [HttpPost]
+    public virtual ActionResult Datatables(DatatablesViewModel viewModel)
+    {
+      // create the basic table again
+      IEnumerable<DatatableColumn> dtColumns = new List<DatatableColumn>
+      {
+        new DatatableColumn("First Column"),
+        new DatatableColumn("Second Column")
+      };
+      DatatableSettings dtSettings = new DatatableSettings(5, new AASort(0, SortType.Ascending), null, "basic records", "150px");
+      IEnumerable<string[]> dtData = new string[][]
+      {
+        new string[] { "first column row 1", "second column row 1" },    
+        new string[] { "first column row 2", "second column row 2" },
+        new string[] { "first column row 3", "second column row 3" },
+        new string[] { "first column row 4", "second column row 4" }
+      };
+
+      DatatableRecords dtRecords = new DatatableRecords
+      {
+        iTotalRecords = dtData.Count(),            // Total records in table
+        iTotalDisplayRecords = dtData.Count(),     // Total records to be displayed in the table
+        aaData = dtData                           // The data to be displayed
+      };
+      viewModel.Table = new Datatable("basic-table", dtSettings, dtColumns, dtRecords);
+
+      // create the postbacks enabled table
+      IEnumerable<PostbackItem> dtPostbacks = PostbackItem.FromObject(viewModel.PostbackFormFields);
+      dtSettings = new DatatableSettings(5, new AASort(0, SortType.Ascending), MVC.Core.ActionNames.GetPostbackData, "searched/filtered records", "150px");
+      viewModel.PostbackEnabledTable = new Datatable("postbacks-table", dtSettings, dtColumns, null, dtPostbacks);
+
+      // update the display mode
+      viewModel.DisplayMode = 6;
+
+      return View(MVC.Core.Views.Datatables, viewModel);
     }
 
     //
@@ -129,7 +170,7 @@ namespace WebExtras.DemoApp.Controllers
         sEcho = filters.sEcho,
         iTotalRecords = dtData.Length,                                                // Total records in table
         iTotalDisplayRecords = dtData.Length,                                         // Total records to be displayed in the table
-        aaData = dtData      // The data to be displayed
+        aaData = dtData                                                               // The data to be displayed
       };
 
       return Json(dtRecords, JsonRequestBehavior.AllowGet);
@@ -149,6 +190,34 @@ namespace WebExtras.DemoApp.Controllers
     public virtual JsonResult GetSortedData(DatatableFilters filters)
     {
       DatatableRecords dtRecords = GetSortedRecords(filters);
+
+      return Json(dtRecords, JsonRequestBehavior.AllowGet);
+    }
+
+    //
+    // GET: /Core/GetPostbackData
+    public virtual JsonResult GetPostbackData(DatatableFilters filters, PostbackSetupViewModel postbacks)
+    {
+      IEnumerable<string[]> dtData = new string[][]
+      {
+        new string[] { "first column row 1", "second column row 1" },    
+        new string[] { "first column row 2", "second column row 2" },
+        new string[] { "first column row 3", "second column row 3" },
+        new string[] { "first column row 4", "second column row 4" }
+      };
+
+      if (!string.IsNullOrEmpty(postbacks.FirstColumn))
+        dtData = dtData.Where(f => f[0].ContainsIgnoreCase(postbacks.FirstColumn));
+      if (!string.IsNullOrEmpty(postbacks.SecondColumn))
+        dtData = dtData.Where(f => f[1].ContainsIgnoreCase(postbacks.SecondColumn));
+
+      DatatableRecords dtRecords = new DatatableRecords
+      {
+        sEcho = filters.sEcho,
+        iTotalRecords = dtData.Count(),
+        iTotalDisplayRecords = dtData.Count(),
+        aaData = dtData
+      };
 
       return Json(dtRecords, JsonRequestBehavior.AllowGet);
     }

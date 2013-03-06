@@ -35,6 +35,7 @@
   <li>@Html.ActionLink("Paging", MVC.Core.Datatables(2), new { id = "paging" })</li>
   <li>@Html.ActionLink("Sorting", MVC.Core.Datatables(3), new { id = "sorting" })</li>
   <li>@Html.ActionLink("Adding status column", MVC.Core.Datatables(4), new { id = "status" })</li>
+  <li>@Html.ActionLink("Adding extra postbacks", MVC.Core.Datatables(5), new { id = "postbacks" })</li>
 </ul>
 @switch (Model.DisplayMode)
 {
@@ -54,6 +55,14 @@
   @Html.Partial(MVC.Core.Views._StatusSetup, Model.Table)
     break;
 
+  case 5:
+  @Html.Partial(MVC.Core.Views._PostbackSetup, Model)
+    break;
+
+  case 6:
+  @Html.Partial(MVC.Core.Views._PostbackResult, Model)
+    break;
+
   case 0:
   default:
   @Html.Partial(MVC.Core.Views._BasicSetup, Model.Table)
@@ -61,7 +70,7 @@
 }
 
 <script type="text/javascript">
-  var dmode = '@Request.QueryString["mode"]';
+  var dmode = '@Model.DisplayMode';
 
   switch (parseInt(dmode)) {
     case 0:
@@ -82,6 +91,11 @@
 
     case 4:
       $('#status').parent().addClass('active');
+      break;
+
+    case 5:
+    case 6:
+      $('#postbacks').parent().addClass('active');
       break;
   }
 
