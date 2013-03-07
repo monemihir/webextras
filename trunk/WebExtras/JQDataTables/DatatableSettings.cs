@@ -72,7 +72,7 @@ namespace WebExtras.JQDataTables
     /// <summary>
     /// Enable vertical scrolling. Vertical scrolling will constrain the DataTable to
     /// the given height (in pixels), an enable scrolling for any data which overflows the current
-    /// viewport.
+    /// viewport. Set this to null if you want auto height
     /// </summary>
     public string sScrollY;
 
