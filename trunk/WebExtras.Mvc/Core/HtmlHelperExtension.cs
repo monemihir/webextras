@@ -45,6 +45,26 @@ namespace WebExtras.Mvc.Core
     /// <param name="imageSrc">Image source</param>
     /// <param name="altText">Alternate text if the image can't be shown</param>
     /// <param name="url">URL for hyperlink</param>
+    /// <param name="htmlAttributes">[Optional] Extra html attributes for the image link. Note.
+    /// These attributes will be applied to the A tag only. Defaults to null</param>
+    /// <returns>HTML ImageHyperLink</returns>
+    public static MvcHtmlString ImageLink(
+      this HtmlHelper html,
+      string imageSrc,
+      string altText,
+      string url,
+      object htmlAttributes = null)
+    {
+      return ImageLink(html, imageSrc, altText, url, false, htmlAttributes);
+    }
+
+    /// <summary>
+    /// Displays an image hyperlink
+    /// </summary>
+    /// <param name="html">Current HTMLHelper object</param>
+    /// <param name="imageSrc">Image source</param>
+    /// <param name="altText">Alternate text if the image can't be shown</param>
+    /// <param name="url">URL for hyperlink</param>
     /// <param name="isJavascriptLink">[Optional] Flag indicating whether this is
     /// a javascript link</param>
     /// <param name="htmlAttributes">[Optional] Extra html attributes for the image link. Note.
@@ -55,7 +75,7 @@ namespace WebExtras.Mvc.Core
       string imageSrc,
       string altText,
       string url,
-      bool isJavascriptLink = false,
+      bool isJavascriptLink,
       object htmlAttributes = null)
     {
       TagBuilder a = new TagBuilder("a");
@@ -75,13 +95,29 @@ namespace WebExtras.Mvc.Core
     }
 
     /// <summary>
-    /// HTML hyperlink to given URL with the given
-    /// text
+    /// HTML hyperlink to given URL with the given text
     /// </summary>
     /// <param name="html">Current HTMLHelper object</param>
     /// <param name="linkText">Text to display for the link</param>
     /// <param name="url">URL for hyperlink. This can be either a url or a javascript event</param>
-    /// <param name="isJavascriptLink">[Optional] If the value specified for the 'url' parameter is
+    /// <param name="htmlAttributes">HTML attributes</param>
+    /// <returns>HTML Hyperlink</returns>
+    public static MvcHtmlString HyperLink(
+      this HtmlHelper html,
+      string linkText,
+      string url,
+      object htmlAttributes = null)
+    {
+      return HyperLink(html, linkText, url, false, htmlAttributes);
+    }
+
+    /// <summary>
+    /// HTML hyperlink to given URL with the given text
+    /// </summary>
+    /// <param name="html">Current HTMLHelper object</param>
+    /// <param name="linkText">Text to display for the link</param>
+    /// <param name="url">URL for hyperlink. This can be either a url or a javascript event</param>
+    /// <param name="isJavascriptLink">If the value specified for the 'url' parameter is
     /// to be treated as a javascript function call, this parameter must be set to true. Defaults to
     /// false.</param>
     /// <param name="htmlAttributes">HTML attributes</param>
@@ -90,7 +126,7 @@ namespace WebExtras.Mvc.Core
       this HtmlHelper html,
       string linkText,
       string url,
-      bool isJavascriptLink = false,
+      bool isJavascriptLink,
       object htmlAttributes = null)
     {
       TagBuilder a = new TagBuilder("a");
