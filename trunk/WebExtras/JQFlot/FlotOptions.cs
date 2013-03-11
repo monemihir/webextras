@@ -16,6 +16,7 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+using System;
 using Newtonsoft.Json;
 using WebExtras.JQFlot.SubOptions;
 
@@ -24,6 +25,7 @@ namespace WebExtras.JQFlot
   /// <summary>
   /// flot chart options
   /// </summary>
+  [Serializable]
   public class FlotOptions
   {
     /// <summary>
@@ -62,5 +64,14 @@ namespace WebExtras.JQFlot
     /// </summary>
     [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
     public SeriesOptions series { get; set; }
+
+    /// <summary>
+    /// JSON serializes the current Flot options
+    /// </summary>
+    /// <returns>JSON serialized object</returns>
+    public override string ToString()
+    {
+      return JsonConvert.SerializeObject(this);
+    }
   }
 }

@@ -6,11 +6,25 @@ using System.Web;
 using System.Web.Mvc;
 using WebExtras.DemoApp.Models.Core;
 using WebExtras.JQDataTables;
+using WebExtras.JQFlot;
+using WebExtras.JQFlot.Graphs;
+using WebExtras.JQFlot.SubOptions;
 
 namespace WebExtras.DemoApp.Controllers
 {
   public partial class CoreController : Controller
   {
+    private double[][] m_flotSampleData;
+
+    /// <summary>
+    /// Constructor
+    /// </summary>
+    public CoreController()
+    {
+      Random rand = new Random(DateTime.Now.Millisecond);
+      m_flotSampleData = Enumerable.Range(1, 10).Select(f => new double[] { f, rand.NextDouble() * 20 }).ToArray();
+    }
+
     //
     // GET: /Core/
     public virtual ActionResult Index()
@@ -289,7 +303,32 @@ namespace WebExtras.DemoApp.Controllers
         return RedirectToAction(Actions.Flot(0));
       }
 
-      return View();
+      FlotSeries linegraph = new FlotSeries
+      {
+        label = "Sample Line Graph",
+        data = m_flotSampleData,
+        lines = new LineGraph { show = true }
+      };
+
+      FlotOptions options = new FlotOptions
+      {
+        xaxis = new AxisOptions(),
+        yaxis = new AxisOptions()
+      };
+
+      FlotChart chart = new FlotChart
+      {
+        chartOptions = options,
+        chartSeries = new FlotSeries[] { linegraph }
+      };
+
+      FlotViewModel model = new FlotViewModel
+      {
+        Chart = chart,
+        DisplayMode = mode.Value
+      };
+
+      return View(model);
     }
 
     #endregion Flot actions

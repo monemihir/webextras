@@ -118,18 +118,15 @@
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\AssetsController.cs" />
-    <Compile Include="Controllers\DatatablesController.cs" />
     <Compile Include="Controllers\CoreController.cs" />
     <Compile Include="CoreController.generated.cs">
-      <DependentUpon>T4MVC.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DatatablesController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Core\DatatablesViewModel.cs" />
+    <Compile Include="Models\Core\FlotViewModel.cs" />
     <Compile Include="Models\Core\PostbackSetupViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SharedController.generated.cs">

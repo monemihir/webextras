@@ -26,6 +26,7 @@ namespace WebExtras.JQFlot.Graphs
   /// <summary>
   /// curved line options
   /// </summary>
+  [Serializable]
   public class CurvedLineGraph
   {
     /// <summary>

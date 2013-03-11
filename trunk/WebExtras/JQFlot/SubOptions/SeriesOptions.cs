@@ -26,6 +26,7 @@ namespace WebExtras.JQFlot.SubOptions
   /// <summary>
   /// series options
   /// </summary>
+  [Serializable]
   public class SeriesOptions
   {
     /// <summary>

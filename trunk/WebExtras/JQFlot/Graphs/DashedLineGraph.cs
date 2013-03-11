@@ -26,6 +26,7 @@ namespace WebExtras.JQFlot.Graphs
   /// <summary>
   /// dash options
   /// </summary>
+  [Serializable]
   public class DashedLineGraph
   {
     /// <summary>

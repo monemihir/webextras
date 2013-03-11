@@ -1,5 +1,7 @@
-﻿@{
-    ViewBag.Title = "jQuery Flot";
+﻿@model WebExtras.DemoApp.Models.Core.FlotViewModel
+
+@{
+  ViewBag.Title = "jQuery Flot";
 }
 
 <h3 class="keep-center">jQuery Flot Bindings</h3>
@@ -31,8 +33,31 @@
       <ul class="dependancies">
         <li>jquery.flot.js</li>
         <li>jquery.flot.curvedlines.js</li>
-        <li>jquery.flot.dashes.js</li>        
+        <li>jquery.flot.dashes.js</li>
       </ul>
     </div>
   </div>
 </div>
+<div class="row-fluid">
+  <div class="span9">
+    Steps involved in creating a Flot graph
+    <ul>
+      <li>Creating the graph options</li>
+      <li>Creating graph data</li>
+      <li>Creating the graph series</li>
+      <li>Rendering the graph</li>
+    </ul>
+  </div>
+</div>
+<ul class="nav nav-pills">
+  <li>
+    @Html.ActionLink("Line Graph", MVC.Core.Flot(0))
+  </li>
+</ul>
+<div id="line-graph" style="width: 80%; height: 200px; margin: 0 auto; display: block;">
+</div>
+<script type="text/javascript">
+  $(document).ready(function () {
+    $.plot($('#line-graph'), [@Html.Raw(Model.Chart.chartSeries[0].ToString())], @Html.Raw(Model.Chart.chartOptions.ToString()));    
+  });
+</script>

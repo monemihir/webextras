@@ -36,6 +36,6 @@ namespace WebExtras.JQFlot
     /// <summary>
     /// Flot chart series to be plotted
     /// </summary>
-    public IEnumerable<FlotSeries> chartSeries { get; set; }
+    public FlotSeries[] chartSeries { get; set; }
   }
 }

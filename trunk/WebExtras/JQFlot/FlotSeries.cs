@@ -16,6 +16,7 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json;
@@ -28,6 +29,7 @@ namespace WebExtras.JQFlot
   /// property names must match the flot property names to allow correct .net to json conversion.
   /// see API docs: http://people.iola.dk/olau/flot/API.txt
   /// </summary>
+  [Serializable]
   public class FlotSeries
   {
     /// <summary>

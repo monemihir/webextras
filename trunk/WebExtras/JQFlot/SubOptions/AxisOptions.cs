@@ -26,6 +26,7 @@ namespace WebExtras.JQFlot.SubOptions
   /// <summary>
   /// flot axis options
   /// </summary>
+  [Serializable]
   public class AxisOptions
   {
     /// <summary>

@@ -26,6 +26,7 @@ namespace WebExtras.JQFlot.Graphs
   /// <summary>
   /// line options
   /// </summary>
+  [Serializable]
   public class LineGraph
   {
     /// <summary>

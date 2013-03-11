@@ -26,6 +26,7 @@ namespace WebExtras.JQFlot.SubOptions
   /// <summary>
   /// flot grid options
   /// </summary>
+  [Serializable]
   public class GridOptions
   {
      /// <summary>

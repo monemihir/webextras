@@ -26,6 +26,7 @@ namespace WebExtras.JQFlot.Graphs
   /// <summary>
   /// point options
   /// </summary>
+  [Serializable]
   public class PointGraph
   {
     /// <summary>

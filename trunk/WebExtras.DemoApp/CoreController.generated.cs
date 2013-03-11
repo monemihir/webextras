@@ -25,9 +25,6 @@ namespace WebExtras.DemoApp.Controllers
     public partial class CoreController
     {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public CoreController() { }
-
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         protected CoreController(Dummy d) { }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
