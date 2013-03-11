@@ -218,26 +218,3 @@ table.dataTable thead td:active {
 	*margin-top: -1px;
 	-webkit-overflow-scrolling: touch;
 }
-
-/*
- * Bootstrap styling
- */
-table.dataTable tbody tr.success td
-{
-  background-color: #dff0d8;
-}
-
-table.dataTable tbody tr.error td
-{
-  background-color: #f2dede;
-}
-
-table.dataTable tbody tr.warning td
-{
-  background-color: #fcf8e3;
-}
-
-table.dataTable tbody tr.info td
-{
-  background-color: #d9edf7;
-}

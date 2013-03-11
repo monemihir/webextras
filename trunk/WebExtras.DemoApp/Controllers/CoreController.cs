@@ -25,6 +25,8 @@ namespace WebExtras.DemoApp.Controllers
       return View();
     }
 
+    #region Datatables actions
+
     //
     // GET: /Core/Datatables
     public virtual ActionResult Datatables(int? mode)
@@ -274,11 +276,22 @@ namespace WebExtras.DemoApp.Controllers
       return dtRecords;
     }
 
+    #endregion Datatables actions
+
+    #region Flot actions
+
     //
     // GET: /Core/Flot
-    public virtual ActionResult Flot()
+    public virtual ActionResult Flot(int? mode)
     {
+      if (!mode.HasValue)
+      {
+        return RedirectToAction(Actions.Flot(0));
+      }
+
       return View();
     }
+
+    #endregion Flot actions
   }
 }

@@ -111,10 +111,20 @@
     <Compile Include="JQDataTables\DatatableRecords.cs" />
     <Compile Include="JQDataTables\DatatableSettings.cs" />
     <Compile Include="JQDataTables\PostbackItem.cs" />
-    <Compile Include="JQFlot\FlotChartHelper.cs" />
-    <Compile Include="JQFlot\FlotChartOptions.cs" />
-    <Compile Include="JQFlot\FlotChartSeries.cs" />
-    <Compile Include="JQFlot\JavascriptHelper.cs" />
+    <Compile Include="JQFlot\FlotChart.cs" />
+    <Compile Include="JQFlot\Graphs\CurvedLineGraph.cs" />
+    <Compile Include="JQFlot\Graphs\DashedLineGraph.cs" />
+    <Compile Include="JQFlot\Graphs\LineGraph.cs" />
+    <Compile Include="JQFlot\Graphs\PointGraph.cs" />
+    <Compile Include="JQFlot\SubOptions\CurvedLinesOptions.cs" />
+    <Compile Include="JQFlot\SubOptions\AxisOptions.cs" />
+    <Compile Include="JQFlot\FlotChartDateTimeExtension.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="JQFlot\FlotOptions.cs" />
+    <Compile Include="JQFlot\FlotSeries.cs" />
+    <Compile Include="JQFlot\SubOptions\GridOptions.cs" />
+    <Compile Include="JQFlot\SubOptions\SeriesOptions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RssReader.cs" />
     <Compile Include="Core\StringExtenstions.cs" />
@@ -134,7 +144,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties BuildVersion_ConfigurationName="Release" BuildVersion_UseGlobalSettings="False" />
+      <UserProperties BuildVersion_UseGlobalSettings="False" BuildVersion_ConfigurationName="Release" />
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup>

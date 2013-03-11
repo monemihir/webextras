@@ -74,6 +74,12 @@ namespace WebExtras.DemoApp.Controllers
         {
             return new T4MVC_System_Web_Mvc_JsonResult(Area, Name, ActionNames.GetPostbackData);
         }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult Flot()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Flot);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public CoreController Actions { get { return MVC.Core; } }
@@ -142,6 +148,14 @@ namespace WebExtras.DemoApp.Controllers
         {
             public readonly string filters = ("filters").ToLowerInvariant();
             public readonly string postbacks = ("postbacks").ToLowerInvariant();
+        }
+        static readonly ActionParamsClass_Flot s_params_Flot = new ActionParamsClass_Flot();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_Flot FlotParams { get { return s_params_Flot; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_Flot
+        {
+            public readonly string mode = ("mode").ToLowerInvariant();
         }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -239,9 +253,10 @@ namespace WebExtras.DemoApp.Controllers
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult Flot()
+        public override System.Web.Mvc.ActionResult Flot(int? mode)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Flot);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "mode", mode);
             return callInfo;
         }
 
