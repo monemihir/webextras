@@ -28,14 +28,9 @@ header, footer, nav, section
   margin-top: 20px;
 }
 
-#assembly-info
+.dependancies
 {
   list-style: none;
-}
-
-#assembly-info ul
-{
-  list-style: square;
 }
 
 .comment
