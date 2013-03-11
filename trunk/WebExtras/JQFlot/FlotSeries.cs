@@ -42,6 +42,10 @@ namespace WebExtras.JQFlot
       shadowSize = 0;
       hoverable = true;
       data = new List<List<double>>();
+      dashes = new DashedLineGraph();
+      lines = new LineGraph();
+      curvedLines = new CurvedLineGraph();
+      points = new PointGraph();
     }
 
     /// <summary>
@@ -82,31 +86,26 @@ namespace WebExtras.JQFlot
     /// <summary>
     /// a tooltip to display when the series is hovered or clicked
     /// </summary>
-    [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
     public string tooltip { get; set; }
 
     /// <summary>
     /// line options
     /// </summary>
-    [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
     public LineGraph lines { get; set; }
 
     /// <summary>
     /// dash options
     /// </summary>
-    [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
     public DashedLineGraph dashes { get; set; }
 
     /// <summary>
     /// curved line options
     /// </summary>
-    [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
     public CurvedLineGraph curvedLines { get; set; }
 
     /// <summary>
     /// point options
     /// </summary>
-    [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
     public PointGraph points { get; set; }
 
     /// <summary>
