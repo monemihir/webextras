@@ -141,6 +141,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap-2.3.1.css" />
     <Content Include="Content\favicon.ico" />
+    <Content Include="Content\favicon.png" />
     <Content Include="Content\img\bootstrap\glyphicons-halflings-white.png" />
     <Content Include="Content\img\bootstrap\glyphicons-halflings.png" />
     <Content Include="Content\img\datatables\back_disabled.png" />
@@ -238,6 +239,9 @@
     <Content Include="Views\Core\_StatusSetup.cshtml" />
     <Content Include="Views\Core\_PostbackSetup.cshtml" />
     <Content Include="Views\Core\_PostbackResult.cshtml" />
+    <Content Include="Views\Core\_LineGraph.cshtml" />
+    <Content Include="Views\Core\_DashedGraph.cshtml" />
+    <Content Include="Views\Core\_CurvedLineGraph.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

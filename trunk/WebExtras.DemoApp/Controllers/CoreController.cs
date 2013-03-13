@@ -22,7 +22,7 @@ namespace WebExtras.DemoApp.Controllers
     public CoreController()
     {
       Random rand = new Random(DateTime.Now.Millisecond);
-      m_flotSampleData = Enumerable.Range(1, 10).Select(f => new double[] { f, rand.NextDouble() * 20 }).ToArray();
+      m_flotSampleData = Enumerable.Range(1, 10).Select(f => new double[] { f, rand.NextDouble() * 100 }).ToArray();
     }
 
     //
@@ -303,23 +303,59 @@ namespace WebExtras.DemoApp.Controllers
         return RedirectToAction(Actions.Flot(0));
       }
 
-      FlotSeries linegraph = new FlotSeries
-      {
-        label = "Sample Line Graph",
-        data = m_flotSampleData,
-        lines = new LineGraph { show = true }
-      };
-
       FlotOptions options = new FlotOptions
       {
         xaxis = new AxisOptions(),
-        yaxis = new AxisOptions()
+        yaxis = new AxisOptions(),
+        grid = new GridOptions { borderWidth = 1 }
       };
+
+      FlotSeries serie = null;
+
+      switch (mode)
+      {
+        case 2:
+          serie = new FlotSeries
+          {
+            label = "Sample Curved Line Graph",
+            data = m_flotSampleData,
+            curvedLines = new CurvedLineGraph { show = true }
+          };
+
+          options = new FlotOptions
+          {
+            xaxis = new AxisOptions(),
+            yaxis = new AxisOptions(),
+            grid = new GridOptions { borderWidth = 1 },
+            series = new SeriesOptions()
+          };
+          break;
+
+        case 1:
+          serie = new FlotSeries
+          {
+            label = "Sample Dashed Line Graph",
+            data = m_flotSampleData,
+            dashes = new DashedLineGraph { show = true }
+          };
+          break;
+
+        case 0:
+        default:
+          serie = new FlotSeries
+          {
+            label = "Sample Line Graph",
+            data = m_flotSampleData,
+            lines = new LineGraph { show = true }
+          };
+          break;
+
+      }
 
       FlotChart chart = new FlotChart
       {
         chartOptions = options,
-        chartSeries = new FlotSeries[] { linegraph }
+        chartSeries = new FlotSeries[] { serie }
       };
 
       FlotViewModel model = new FlotViewModel

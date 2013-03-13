@@ -51,13 +51,47 @@
 </div>
 <ul class="nav nav-pills">
   <li>
-    @Html.ActionLink("Line Graph", MVC.Core.Flot(0))
+    @Html.ActionLink("Line Graph", MVC.Core.Flot(0), new { id = "linegraph" })
+  </li>
+  <li>
+    @Html.ActionLink("Dashed Line Graph", MVC.Core.Flot(1), new { id = "dashedgraph" })
+  </li>
+  <li>
+    @Html.ActionLink("Curved Line Graph", MVC.Core.Flot(2), new { id = "curvedgraph" })
   </li>
 </ul>
-<div id="line-graph" style="width: 80%; height: 200px; margin: 0 auto; display: block;">
-</div>
+
+@switch (Model.DisplayMode)
+{
+  case 2:
+  @Html.Partial(MVC.Core.Views._CurvedLineGraph, Model.Chart)
+    break;
+
+  case 1:
+  @Html.Partial(MVC.Core.Views._DashedGraph, Model.Chart)
+    break;
+
+  case 0:
+  default:
+  @Html.Partial(MVC.Core.Views._LineGraph, Model.Chart)
+    break;
+}
+
 <script type="text/javascript">
-  $(document).ready(function () {
-    $.plot($('#line-graph'), [@Html.Raw(Model.Chart.chartSeries[0].ToString())], @Html.Raw(Model.Chart.chartOptions.ToString()));    
-  });
+  var dmode = '@Model.DisplayMode';
+
+  switch (parseInt(dmode)) {
+    case 0:
+      $('#linegraph').parent().addClass('active');
+      break;
+
+    case 1:
+      $('#dashedgraph').parent().addClass('active');
+      break;
+
+    case 2:
+      $('#curvedgraph').parent().addClass('active');
+      break;
+  }
+
 </script>

@@ -30,7 +30,7 @@ namespace WebExtras.JQFlot.SubOptions
   public class GridOptions
   {
      /// <summary>
-      /// ctor to initialize defaults. hoverable=true, clickable=false, borderWidth=0, show=false
+      /// ctor to initialize defaults. hoverable=true, clickable=false, borderWidth=0
       /// </summary>
       public GridOptions()
       {

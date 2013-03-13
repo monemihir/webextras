@@ -5,7 +5,7 @@
   color: #232323;
   background-image: url('img/draft.png');
   width: 980px;
-  margin: 0 auto;  
+  margin: 0 auto;
 }
 
 header, footer, nav, section
@@ -56,10 +56,10 @@ header, footer, nav, section
   float: right !important;
 }
 
-.secondary-nav .dropdown-menu
-{
-  right: 0;
-}
+  .secondary-nav .dropdown-menu
+  {
+    right: 0;
+  }
 
 /* Bootstrap extensions */
 h4
@@ -75,6 +75,12 @@ footer
   padding-bottom: 1%;
 }
 
+.nav-tabs > li, .nav-pills > li
+{
+  padding-left: 3px;
+  padding-right: 3px;
+}
+
 /* Bootstrap overrides */
 .well
 {
@@ -88,6 +94,12 @@ pre
   padding: 5px;
   background-color: #fff;
   margin-top: 5px;
+}
+
+.nav > li > a:hover,
+.nav > li > a:focus
+{
+  background-color: #dddddd;
 }
 
 .navbar .nav
@@ -110,7 +122,7 @@ pre
   left: 1%;
   right: 1%;
   width: 970px;
-  margin: 0 auto;  
+  margin: 0 auto;
 }
 
   .navbar-fixed-top .navbar-inner
@@ -121,7 +133,7 @@ pre
 
 .navbar-inverse .navbar-inner
 {
-  border-color: #666;  
+  border-color: #666;
 }
 
 .navbar-inverse .nav .active > a,
@@ -129,4 +141,25 @@ pre
 .navbar-inverse .nav .active > a:focus
 {
   background-color: #666666;
+}
+
+/* Generic styles */
+.content
+{
+  padding: 25px 5px;
+  background-color: #fff;
+  margin-top: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 4px 4px 4px 4px;
+  display: block;
+  font-size: 13px;
+  line-height: 20px;
+}
+
+.flot-graph
+{
+  margin: 0 auto;
+  display: block;
+  width: 90%;
+  height: 200px;
 }
