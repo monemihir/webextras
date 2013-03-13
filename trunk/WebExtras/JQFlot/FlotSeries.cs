@@ -1,5 +1,5 @@
 ﻿/*
-* This file is part of - Code Library
+* This file is part of - WebExtras
 * Copyright (C) 2013 Mihir Mone
 *
 * This program is free software: you can redistribute it and/or modify
