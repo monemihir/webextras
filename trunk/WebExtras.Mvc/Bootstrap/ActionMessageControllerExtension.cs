@@ -27,7 +27,7 @@ namespace WebExtras.Mvc.Bootstrap
   /// A class to store and retrieve messages for display after an action has occurred
   /// Provides ControllerBase and HtmlHelper extensions
   /// </summary>
-  public static class BootstrapActionMessageControllerExtension
+  public static class ActionMessageControllerExtension
   {
     /// <summary>
     /// The key used to store the message in the TempData object

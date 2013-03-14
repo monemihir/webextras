@@ -29,7 +29,7 @@ namespace WebExtras.Mvc.Bootstrap
   /// <summary>
   /// Twitter bootstrap form HTML helper extensions
   /// </summary>
-  public static class BootstrapFormHtmlHelperExtension
+  public static class FormHtmlHelperExtension
   {
     #region IconButton extensions
 

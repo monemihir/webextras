@@ -1,91 +1,111 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Web;
+﻿using System.Collections.Generic;
 using System.Web.Mvc;
-using System.Linq;
 
 namespace WebExtras.Mvc.Html
 {
-  public class HtmlElement : IHtmlString
+  /// <summary>
+  /// Represents an HTML element
+  /// </summary>
+  public class HtmlElement : IExtendedHtmlString
   {
     /// <summary>
-    /// Html tag
+    /// MVC HTML tag builder object
     /// </summary>
     public TagBuilder Tag { get; set; }
 
-    public List<IHtmlString> InnerTags { get; set; }
+    /// <summary>
+    /// Inner HTML tags
+    /// </summary>
+    public List<IExtendedHtmlString> InnerTags { get; set; }
 
-    protected IDictionary<string, object> Attributes;
-
-    public HtmlElement(HtmlTag element)
+    /// <summary>
+    /// Default constructor
+    /// </summary>
+    /// <param name="tag">An HTML tag to initialise this element with</param>
+    public HtmlElement(HtmlTag tag)
     {
-      Tag = new TagBuilder(element.ToString().ToLowerInvariant());
-      InnerTags = new List<IHtmlString>();
+      Tag = new TagBuilder(tag.ToString().ToLowerInvariant());
+      InnerTags = new List<IExtendedHtmlString>();
     }
 
-    public HtmlElement(HtmlTag element, IDictionary<string, object> htmlAttributes)
-      : this(element)
+    /// <summary>
+    /// Constructor to specify a dictionary of extra HTML attributes
+    /// </summary>
+    /// <param name="tag">An HTML tag to initialise this element with</param>
+    /// <param name="htmlAttributes">Extra HTML attributes</param>
+    public HtmlElement(HtmlTag tag, IDictionary<string, object> htmlAttributes)
+      : this(tag)
     {
-      Attributes = htmlAttributes != null ? htmlAttributes : new Dictionary<string, object>();
+      if (htmlAttributes != null)
+        Tag.MergeAttributes<string, object>(htmlAttributes);
     }
 
-    public HtmlElement(HtmlTag element, object htmlAttributes)
-      : this(element)
+    /// <summary>
+    /// Constructor to specify extra HTML attributes as an anonymous type
+    /// </summary>
+    /// <param name="tag"></param>
+    /// <param name="htmlAttributes"></param>
+    public HtmlElement(HtmlTag tag, object htmlAttributes)
+      : this(tag)
     {
-      Attributes = htmlAttributes != null ? (IDictionary<string, object>)HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes) : new Dictionary<string, object>();
+      if (htmlAttributes != null)
+        Tag.MergeAttributes<string, object>(HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes));
     }
 
+    /// <summary>
+    /// Gets or sets the value for the attribute specified
+    /// </summary>
+    /// <param name="attribute">Attribute to get or set value</param>
+    /// <returns>Value of attribute if available, else null</returns>
     public string this[string attribute]
     {
-      get { return Attributes.ContainsKey(attribute) ? Attributes[attribute].ToString() : null; }
+      get { return Tag.Attributes.ContainsKey(attribute) ? Tag.Attributes[attribute].ToString() : null; }
       set
       {
-        if (Attributes.ContainsKey(attribute))
-          Attributes[attribute] += " " + value;
+        if (Tag.Attributes.ContainsKey(attribute))
+          Tag.Attributes[attribute] += " " + value;
         else
-          Attributes.Add(attribute, value);
+          Tag.Attributes.Add(attribute, value);
       }
     }
 
-    public bool HasAttribute(string attribute)
-    {
-      return Attributes.ContainsKey(attribute);
-    }
-
-    protected void SetAttribute(string attribute, string value, bool overwrite = false)
-    {
-      if (Attributes.ContainsKey(attribute))
-      {
-        if (overwrite)
-          Attributes[attribute] = " " + value;
-        else
-          Attributes[attribute] += " " + value;
-      }
-      else
-        Attributes.Add(attribute, value);
-    }
-
-    public void AppendElement(IHtmlString html)
+    /// <summary>
+    /// Appends the given HTML element at the end of the current 
+    /// element
+    /// </summary>
+    /// <param name="html">HTML element to be added</param>
+    public void AppendElement(IExtendedHtmlString html)
     {
       InnerTags.Add(html);
     }
 
-    public void PrependElement(IHtmlString html)
+    /// <summary>
+    /// Prepends the given HTML element at the beginning of
+    /// the current element
+    /// </summary>
+    /// <param name="html">HTML element to be added</param>
+    public void PrependElement(IExtendedHtmlString html)
     {
       InnerTags.Insert(0, html);
     }
-        
+
+    /// <summary>
+    /// Converts current element to a MVC HTML string
+    /// </summary>
+    /// <returns>MVC HTML string representation of current element</returns>
     public virtual string ToHtmlString()
     {
       return ToHtmlString(TagRenderMode.Normal);
     }
 
+    /// <summary>
+    /// Converts current element to a MVC HTMl string with
+    /// the given tag rendering mode
+    /// </summary>
+    /// <param name="renderMode">Tag render mode</param>
+    /// <returns>MVC HTML string representation of the current element</returns>
     public virtual string ToHtmlString(TagRenderMode renderMode)
     {
-      Tag.MergeAttributes<string, object>(Attributes);
-
       return Tag.ToString(renderMode);
     }
   }

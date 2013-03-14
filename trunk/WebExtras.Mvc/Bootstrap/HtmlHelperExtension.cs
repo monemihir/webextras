@@ -16,13 +16,11 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Web.Mvc;
-using WebExtras.Mvc.Core;
 using System.Security.Principal;
+using System.Web.Mvc;
+using System.Web.Routing;
+using WebExtras.Mvc.Core;
 using WebExtras.Mvc.Html;
 
 namespace WebExtras.Mvc.Bootstrap
@@ -30,48 +28,8 @@ namespace WebExtras.Mvc.Bootstrap
   /// <summary>
   /// Bootstrap Html Helper extension methods
   /// </summary>
-  public static class BootstrapHtmlHelperExtension
-  {
-    /// <summary>
-    /// HTML hyperlink with an icon
-    /// </summary>
-    /// <param name="html">Current HTMLHelper object</param>
-    /// <param name="linkText">Text to display for the link</param>
-    /// <param name="url">URL for hyperlink. This can be either a url or a javascript event</param>
-    /// <param name="iconClass">Icon CSS class(s) to be prepended for the link. Multiple icon classes must be separated with
-    /// spaces</param>
-    /// <param name="isJavascriptLink">[Optional] If the value specified for the 'url' parameter is
-    /// to be treated as a javascript function call, this parameter must be set to true. Defaults to
-    /// false.</param>
-    /// <param name="htmlAttributes">[Optional] Extra HTML attributes. Defaults to null</param>
-    /// <returns>HTML Hyperlink</returns>
-    public static MvcHtmlString IconHyperLink(
-      this HtmlHelper html,
-      string linkText,
-      string url,
-      string iconClass,
-      bool isJavascriptLink = false,
-      object htmlAttributes = null)
-    {
-      MvcHtmlString link = html.HyperLink(linkText, url, isJavascriptLink, html);
-
-      string iconLink = link.ToHtmlString().Replace(string.Format(">{0}", linkText), string.Format("><i class='{0}'></i>{1}", iconClass, linkText));
-
-      return MvcHtmlString.Create(iconLink);
-    }
-
-    public static Hyperlink Hyperlink(
-      this HtmlHelper html,
-      string linkText,
-      string url,
-      object htmlAttributes)
-    {
-      Hyperlink h = new Hyperlink(linkText, url, htmlAttributes);
-
-      return h;
-    }
-
-
+  public static class HtmlHelperExtension
+  {    
     #region IconActionLink extensions
 
     /// <summary>
@@ -89,6 +47,10 @@ namespace WebExtras.Mvc.Bootstrap
       MvcHtmlString link = html.ActionLink(linkText, result, htmlAttributes);
 
       string iconLink = link.ToHtmlString().Replace(string.Format(">{0}", linkText), string.Format("><i class='{0}'></i>{1}", iconClass, linkText));
+
+      VirtualPathData vpd = RouteTable.Routes.GetVirtualPath(html.ViewContext.RequestContext, result.GetRouteValueDictionary());
+
+      string url = vpd.VirtualPath;
 
       return MvcHtmlString.Create(iconLink);
     }

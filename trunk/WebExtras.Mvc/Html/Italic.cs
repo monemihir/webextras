@@ -1,13 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
+﻿
 namespace WebExtras.Mvc.Html
 {
+  /// <summary>
+  /// Represents an HTML I element
+  /// </summary>
   public class Italic : HtmlElement
   {
-    public Italic(object htmlAttributes)
+    /// <summary>
+    /// Constructor
+    /// </summary>
+    /// <param name="text">Text to be displayed</param>
+    public Italic(string text)
+      : base(HtmlTag.I)
+    {
+      Tag.SetInnerText(text);
+    }      
+
+    /// <summary>
+    /// Constructor
+    /// </summary>
+    /// <param name="htmlAttributes">Extra HTML attributes</param>
+    public Italic(object htmlAttributes = null)
       : base(HtmlTag.I, htmlAttributes)
     { }
   }

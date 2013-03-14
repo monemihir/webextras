@@ -1,35 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WebExtras.Core;
+﻿using WebExtras.Mvc.Html;
 
 namespace WebExtras.Mvc.Html
 {
+  /// <summary>
+  /// Hyperlink extension methods
+  /// </summary>
   public static class HyperlinkExtension
   {
-    public static Hyperlink AddIcons(this Hyperlink html, params Icon[] icons)
+    /// <summary>
+    /// Converts the current hyperlink to a javascript link
+    /// </summary>
+    /// <param name="html">Hyperlink to be converted</param>
+    /// <returns>Converted hyperlink</returns>
+    public static Hyperlink AsJavascriptLink(this Hyperlink html)
     {
-      if (icons == null)
-        throw new ArgumentNullException("icons");
-
-      Italic i = new Italic(null);
-      i["class"] = string.Join(" ", icons.Select(x => x.GetStringValue()));
-
-      html.PrependElement(i);
-
-      return html;
-    }
-
-    public static Hyperlink AddWhiteIcons(this Hyperlink html, params Icon[] icons)
-    {
-      if (icons == null)
-        throw new ArgumentNullException("icons");
-
-      Italic i = new Italic(null);
-      i["class"] = "icon-white " + string.Join(" ", icons.Select(x => x.GetStringValue()));
-
-      html.PrependElement(i);
+      html.Url = "javascript:" + (html.Url.EndsWith("()") ? html.Url : html.Url + "()");
 
       return html;
     }

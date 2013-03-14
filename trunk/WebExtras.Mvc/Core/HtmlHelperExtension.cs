@@ -23,6 +23,7 @@ using System.Linq;
 using System.Security.Principal;
 using System.Web.Mvc;
 using System.Web.Routing;
+using WebExtras.Mvc.Html;
 
 namespace WebExtras.Mvc.Core
 {
@@ -95,51 +96,42 @@ namespace WebExtras.Mvc.Core
     }
 
     /// <summary>
-    /// HTML hyperlink to given URL with the given text
+    /// Creates a HTML hyperlink
     /// </summary>
-    /// <param name="html">Current HTMLHelper object</param>
-    /// <param name="linkText">Text to display for the link</param>
-    /// <param name="url">URL for hyperlink. This can be either a url or a javascript event</param>
-    /// <param name="htmlAttributes">HTML attributes</param>
+    /// <param name="html">Current html helper object</param>
+    /// <param name="linkText">Link text</param>
+    /// <param name="url">Link URL</param>
+    /// <param name="htmlAttributes">Extra HTML attributes</param>
     /// <returns>HTML Hyperlink</returns>
-    public static MvcHtmlString HyperLink(
+    public static Hyperlink Hyperlink(
       this HtmlHelper html,
       string linkText,
       string url,
       object htmlAttributes = null)
     {
-      return HyperLink(html, linkText, url, false, htmlAttributes);
+      Hyperlink h = new Hyperlink(linkText, url, htmlAttributes);
+
+      return h;
     }
 
     /// <summary>
-    /// HTML hyperlink to given URL with the given text
+    /// Creates a HTML hyperlink
     /// </summary>
-    /// <param name="html">Current HTMLHelper object</param>
-    /// <param name="linkText">Text to display for the link</param>
-    /// <param name="url">URL for hyperlink. This can be either a url or a javascript event</param>
-    /// <param name="isJavascriptLink">If the value specified for the 'url' parameter is
-    /// to be treated as a javascript function call, this parameter must be set to true. Defaults to
-    /// false.</param>
-    /// <param name="htmlAttributes">HTML attributes</param>
-    /// <returns>HTML Hyperlink</returns>
-    public static MvcHtmlString HyperLink(
+    /// <param name="html">Current html helper object</param>
+    /// <param name="linkText">Link text</param>
+    /// <param name="result">Action result</param>
+    /// <param name="htmlAttributes">Extra HTML attributes</param>
+    /// <returns>HTML hyperlink</returns>
+    public static Hyperlink Hyperlink(
       this HtmlHelper html,
       string linkText,
-      string url,
-      bool isJavascriptLink,
+      ActionResult result,
       object htmlAttributes = null)
     {
-      TagBuilder a = new TagBuilder("a");
-      a.SetInnerText(linkText);
+      VirtualPathData vpd = RouteTable.Routes.GetVirtualPath(html.ViewContext.RequestContext, result.GetRouteValueDictionary());
+      string url = vpd.VirtualPath;
 
-      if (isJavascriptLink)
-        a.Attributes["href"] = "javascript:" + (url.EndsWith("()") ? url : url + "()");
-      else
-        a.Attributes["href"] = url;
-
-      a.MergeAttributes<string, object>((IDictionary<string, object>)new RouteValueDictionary(htmlAttributes));
-
-      return MvcHtmlString.Create(a.ToString());
+      return Hyperlink(html, linkText, url, htmlAttributes);
     }
 
     #endregion Hyperlink extensions

@@ -1,36 +1,65 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Web.Mvc;
 
 namespace WebExtras.Mvc.Html
 {
+  /// <summary>
+  /// Represents an HTML A element
+  /// </summary>
   public class Hyperlink : HtmlElement
   {
+    /// <summary>
+    /// Link text
+    /// </summary>
     public string Text { get; set; }
 
-    public string Url { get; set; }
+    /// <summary>
+    /// Link URL
+    /// </summary>
+    public string Url { get { return Tag.Attributes["href"]; } set { Tag.Attributes["href"] = value; } }
 
+    /// <summary>
+    /// Constructor
+    /// </summary>
+    /// <param name="linkText">Link text</param>
+    /// <param name="url">Link URL</param>
+    /// <param name="htmlAttributes">Extra HTML attributes</param>
     public Hyperlink(string linkText, string url, object htmlAttributes)
       : base(HtmlTag.A, htmlAttributes)
     {
       Text = linkText;
-      Url = url;      
+      Tag.Attributes["href"] = url;
     }
 
+    /// <summary>
+    /// Constructor
+    /// </summary>
+    /// <param name="linkText">Link text</param>
+    /// <param name="url">Link URL</param>
+    /// <param name="htmlAttributes">Extra HTML attributes</param>
     public Hyperlink(string linkText, string url, IDictionary<string, object> htmlAttributes)
       : base(HtmlTag.A, htmlAttributes)
     {
       Text = linkText;
-      Url = url;
+      Tag.Attributes["href"] = url;
     }
 
+    /// <summary>
+    /// Converts current hyperlink element to a MVC HTML string
+    /// </summary>
+    /// <returns>MVC HTML string representation of current hyperlink element</returns>
     public override string ToHtmlString()
     {
       return ToHtmlString(TagRenderMode.Normal);
     }
 
+    /// <summary>
+    /// Converts current hyperlink element to a MVC HTMl string with
+    /// the given tag rendering mode
+    /// </summary>
+    /// <param name="renderMode">Tag render mode</param>
+    /// <returns>MVC HTML string representation of the current hyperlink element</returns>
     public override string ToHtmlString(TagRenderMode renderMode)
     {
       Tag.Attributes["href"] = Url;
