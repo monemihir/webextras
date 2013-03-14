@@ -23,6 +23,7 @@ using System.Text;
 using System.Web.Mvc;
 using WebExtras.Mvc.Core;
 using System.Security.Principal;
+using WebExtras.Mvc.Html;
 
 namespace WebExtras.Mvc.Bootstrap
 {
@@ -58,6 +59,18 @@ namespace WebExtras.Mvc.Bootstrap
 
       return MvcHtmlString.Create(iconLink);
     }
+
+    public static Hyperlink Hyperlink(
+      this HtmlHelper html,
+      string linkText,
+      string url,
+      object htmlAttributes)
+    {
+      Hyperlink h = new Hyperlink(linkText, url, htmlAttributes);
+
+      return h;
+    }
+
 
     #region IconActionLink extensions
 

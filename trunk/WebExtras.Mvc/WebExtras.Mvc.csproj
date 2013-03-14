@@ -74,8 +74,14 @@
     <Compile Include="Bootstrap\BootstrapActionMessageControllerExtension.cs" />
     <Compile Include="Bootstrap\BootstrapFormHtmlHelperExtension.cs" />
     <Compile Include="Bootstrap\BootstrapHtmlHelperExtension.cs" />
+    <Compile Include="Html\HtmlTag.cs" />
+    <Compile Include="Html\HtmlElement.cs" />
     <Compile Include="Html\ButtonOfType.cs" />
     <Compile Include="Html\CheckBox.cs" />
+    <Compile Include="Html\Hyperlink.cs" />
+    <Compile Include="Html\HyperlinkExtension.cs" />
+    <Compile Include="Html\Icon.cs" />
+    <Compile Include="Html\Italic.cs" />
     <Compile Include="JavascriptHelper.cs" />
     <Compile Include="Core\ActionMessageType.cs" />
     <Compile Include="Core\FormHelperExtension.cs" />
