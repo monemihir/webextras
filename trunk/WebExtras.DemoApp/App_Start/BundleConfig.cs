@@ -52,6 +52,7 @@ namespace WebExtras.DemoApp.App_Start
         .Add(Links.Scripts.jquery_flot_0_7_js)
         .Add(Links.Scripts.jquery_flot_curvedlines_0_2_3_js)
         .Add(Links.Scripts.jquery_flot_dashes_0_1_js)
+        .Add(Links.Scripts.jquery_flot_axislabels_1_0_js)
         .AsCached(ContentBundle.JSBase.GetStringValue(), ResolveJsPath(ContentBundle.JSBase));
     }
   }

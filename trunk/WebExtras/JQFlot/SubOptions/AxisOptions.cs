@@ -20,6 +20,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Newtonsoft.Json;
 
 namespace WebExtras.JQFlot.SubOptions
 {
@@ -30,7 +31,7 @@ namespace WebExtras.JQFlot.SubOptions
   public class AxisOptions
   {
     /// <summary>
-    /// ctor to intialize defaults. tickDecimals=0
+    /// ctor to intialize defaults. tickDecimals=0, tickLength=0, axisLabelUseCanvas=true
     /// </summary>
     public AxisOptions()
     {
@@ -39,6 +40,9 @@ namespace WebExtras.JQFlot.SubOptions
       timeformat = null;
       minTickSize = null;
       tickLength = 0;
+      axisLabelUseCanvas = true;
+      axisLabelFontSizePixels = 12;
+      axisLabelFontFamily = "Verdana";
     }
 
     /// <summary>
@@ -99,5 +103,52 @@ namespace WebExtras.JQFlot.SubOptions
     /// or a 24 hour nomenclature
     /// </summary>
     public bool? twelveHourClock { get; set; }
+
+    /// <summary>
+    /// Axis label to be shown
+    /// </summary>
+    public string axisLabel { get; set; }
+
+    /// <summary>
+    /// If set to true, the axis label will be drawn on the Flot canvas object itself. Y axis text will
+    /// be vertical. If set to false, the axis label will be drawn as a HTML DIV element and text will
+    /// always be horizontal irrespective of X or Y axis.
+    /// </summary>
+    private bool m_axisLabelUseCanvas;
+
+    /// <summary>
+    /// If set to true, the axis label will be drawn on the Flot canvas object itself. Y axis text will
+    /// be vertical. If set to false, the axis label will be drawn as a HTML DIV element and text will
+    /// always be horizontal irrespective of X or Y axis.
+    /// </summary>
+    public bool axisLabelUseCanvas
+    {
+      get { return m_axisLabelUseCanvas; }
+
+      set
+      {
+        m_axisLabelUseCanvas = value;
+        if (!value)
+        {
+          // automatically reset the font family and font size
+          axisLabelFontFamily = null;
+          axisLabelFontSizePixels = null;
+        }
+      }
+    }
+
+    /// <summary>
+    /// Font size in pixels for the axis label. This option is only available if 'axisLabelUseCanvas' 
+    /// is set to true
+    /// </summary>
+    [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+    public int? axisLabelFontSizePixels { get; set; }
+
+    /// <summary>
+    /// Font family for the axis label. This option is only available if 'axisLabelUseCanvas' is
+    /// set to true
+    /// </summary>
+    [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+    public string axisLabelFontFamily { get; set; }
   }
 }

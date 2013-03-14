@@ -165,6 +165,7 @@ namespace WebExtras.DemoApp.Controllers
             public class _ViewNamesClass
             {
                 public readonly string _AjaxSetup = "_AjaxSetup";
+                public readonly string _AxisLabels = "_AxisLabels";
                 public readonly string _BasicSetup = "_BasicSetup";
                 public readonly string _CurvedLineGraph = "_CurvedLineGraph";
                 public readonly string _DashedGraph = "_DashedGraph";
@@ -180,6 +181,7 @@ namespace WebExtras.DemoApp.Controllers
                 public readonly string Generic = "Generic";
             }
             public readonly string _AjaxSetup = "~/Views/Core/_AjaxSetup.cshtml";
+            public readonly string _AxisLabels = "~/Views/Core/_AxisLabels.cshtml";
             public readonly string _BasicSetup = "~/Views/Core/_BasicSetup.cshtml";
             public readonly string _CurvedLineGraph = "~/Views/Core/_CurvedLineGraph.cshtml";
             public readonly string _DashedGraph = "~/Views/Core/_DashedGraph.cshtml";

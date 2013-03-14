@@ -1,9 +1,8 @@
 ﻿using System;
-using WebExtras.Core;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
+using WebExtras.Core;
 using WebExtras.DemoApp.Models.Core;
 using WebExtras.JQDataTables;
 using WebExtras.JQFlot;
@@ -14,6 +13,8 @@ namespace WebExtras.DemoApp.Controllers
 {
   public partial class CoreController : Controller
   {
+    #region Ctor and attributes
+
     private double[][] m_flotSampleData;
 
     /// <summary>
@@ -25,12 +26,20 @@ namespace WebExtras.DemoApp.Controllers
       m_flotSampleData = Enumerable.Range(1, 10).Select(f => new double[] { f, rand.NextDouble() * 100 }).ToArray();
     }
 
+    #endregion Ctor and attributes
+
+    #region Index action
+
     //
     // GET: /Core/
     public virtual ActionResult Index()
     {
       return RedirectToAction(Actions.Generic());
     }
+    
+    #endregion Index action
+
+    #region Generic action
 
     //
     // GET: /Core/Generic
@@ -38,6 +47,8 @@ namespace WebExtras.DemoApp.Controllers
     {
       return View();
     }
+
+    #endregion Generic action
 
     #region Datatables actions
 
@@ -305,8 +316,8 @@ namespace WebExtras.DemoApp.Controllers
 
       FlotOptions options = new FlotOptions
       {
-        xaxis = new AxisOptions(),
-        yaxis = new AxisOptions(),
+        xaxis = new AxisOptions { axisLabel = "X axis label" },
+        yaxis = new AxisOptions { axisLabel = "Y axis label" },
         grid = new GridOptions { borderWidth = 1 }
       };
 
@@ -324,8 +335,8 @@ namespace WebExtras.DemoApp.Controllers
 
           options = new FlotOptions
           {
-            xaxis = new AxisOptions(),
-            yaxis = new AxisOptions(),
+            xaxis = new AxisOptions { axisLabel = "X axis label" },
+            yaxis = new AxisOptions { axisLabel = "Y axis label" },
             grid = new GridOptions { borderWidth = 1 },
             series = new SeriesOptions()
           };

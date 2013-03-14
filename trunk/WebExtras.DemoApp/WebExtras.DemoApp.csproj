@@ -165,6 +165,7 @@
     <Content Include="Scripts\jquery.datatables-1.9.4.min.js" />
     <Content Include="Scripts\jquery.datatables.pagination.js" />
     <Content Include="Scripts\jquery.flot-0.7.js" />
+    <Content Include="Scripts\jquery.flot.axislabels-1.0.js" />
     <Content Include="Scripts\jquery.flot.curvedlines-0.2.3.js" />
     <Content Include="Scripts\jquery.flot.dashes-0.1.js" />
     <Content Include="Scripts\jquery.migrate-1.1.1.min.js" />
@@ -242,6 +243,7 @@
     <Content Include="Views\Core\_LineGraph.cshtml" />
     <Content Include="Views\Core\_DashedGraph.cshtml" />
     <Content Include="Views\Core\_CurvedLineGraph.cshtml" />
+    <Content Include="Views\Core\_AxisLabels.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

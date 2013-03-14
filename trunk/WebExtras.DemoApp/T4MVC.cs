@@ -88,6 +88,8 @@ namespace Links
                       
         public static readonly string jquery_flot_0_7_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.flot-0.7.min.js") ? Url("jquery.flot-0.7.min.js") : Url("jquery.flot-0.7.js");
                       
+        public static readonly string jquery_flot_axislabels_1_0_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.flot.axislabels-1.0.min.js") ? Url("jquery.flot.axislabels-1.0.min.js") : Url("jquery.flot.axislabels-1.0.js");
+                      
         public static readonly string jquery_flot_curvedlines_0_2_3_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.flot.curvedlines-0.2.3.min.js") ? Url("jquery.flot.curvedlines-0.2.3.min.js") : Url("jquery.flot.curvedlines-0.2.3.js");
                       
         public static readonly string jquery_flot_dashes_0_1_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.flot.dashes-0.1.min.js") ? Url("jquery.flot.dashes-0.1.min.js") : Url("jquery.flot.dashes-0.1.js");
@@ -105,6 +107,7 @@ namespace Links
         public static readonly string bootstrap_2_3_1_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/bootstrap-2.3.1.min.css") ? Url("bootstrap-2.3.1.min.css") : Url("bootstrap-2.3.1.css");
              
         public static readonly string favicon_ico = Url("favicon.ico");
+        public static readonly string favicon_png = Url("favicon.png");
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public static class img {
             private const string URLPATH = "~/Content/img";

@@ -1,0 +1,62 @@
+﻿<p>In order to draw axis labels you need <strong>jquery.flot.axislabels.js</strong>.</p>
+
+<div class="well">
+  <h4>Drawing axis labels</h4>
+  Axis labels can be drawn by setting the appropriate properties of the <strong>WebExtras.JQFlot.SubOptions.AxisOptions</strong> class.
+  <pre><code>
+  AxisOptions axisOpt = new AxisOptions
+  {
+    axisLabel = "my axis label"
+  };
+  </code></pre>
+</div>
+
+<div class="well">
+  <h4>Axis label options</h4>
+  <div class="content">
+    <table class="table table-striped table-bordered">
+      <tr>
+        <th>Option</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th style="width: 45%">Description</th>
+      </tr>
+      <tr>
+        <td>axisLabel</td>
+        <td>string</td>
+        <td><i>Empty string</i></td>
+        <td>Axis label</td>
+      </tr>
+      <tr>
+        <td>axisLabelUseCanvas</td>
+        <td>boolean</td>
+        <td>true</td>
+        <td>If set to true, the axis label will be drawn on the Flot canvas object itself. Y axis text will be vertical. 
+          If set to false, the axis label will be drawn as a HTML DIV element and text will always be horizontal 
+          irrespective of X or Y axis.
+        </td>
+      </tr>
+      <tr>
+        <td>axisLabelFontSizePixels</td>
+        <td>int</td>
+        <td>12</td>
+        <td>Font size in pixels for the axis label. This option is only available if 'axisLabelUseCanvas' is set to true.
+        </td>
+      </tr>
+      <tr>
+        <td>axisLabel</td>
+        <td>string</td>
+        <td>Verdana</td>
+        <td>Font family for the axis label. This option is only available if 'axisLabelUseCanvas' is set to true. 
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<div class="well">
+  <h4>Axis label Limitations</h4>
+  <div class="content">
+    Axis labels for secondary axes eg. x2axis, y2axis are not supported
+  </div>
+</div>

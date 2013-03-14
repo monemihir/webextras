@@ -34,6 +34,7 @@
         <li>jquery.flot.js</li>
         <li>jquery.flot.curvedlines.js</li>
         <li>jquery.flot.dashes.js</li>
+        <li>jquery.flot.axislabels.js</li>
       </ul>
     </div>
   </div>
@@ -59,10 +60,17 @@
   <li>
     @Html.ActionLink("Curved Line Graph", MVC.Core.Flot(2), new { id = "curvedgraph" })
   </li>
+  <li>
+    @Html.ActionLink("Axis Labels", MVC.Core.Flot(3), new { id = "axislabels" })
+  </li>
 </ul>
 
 @switch (Model.DisplayMode)
 {
+  case 3:
+    @Html.Partial(MVC.Core.Views._AxisLabels)
+    break;
+    
   case 2:
   @Html.Partial(MVC.Core.Views._CurvedLineGraph, Model.Chart)
     break;
@@ -91,6 +99,10 @@
 
     case 2:
       $('#curvedgraph').parent().addClass('active');
+      break;
+
+    case 3:
+      $('#axislabels').parent().addClass('active');
       break;
   }
 
