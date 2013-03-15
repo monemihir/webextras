@@ -16,6 +16,8 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+using WebExtras.Core;
+
 namespace WebExtras.Mvc.Html
 {
   /// <summary>
@@ -26,16 +28,19 @@ namespace WebExtras.Mvc.Html
     /// <summary>
     /// Regular button
     /// </summary>
+    [StringValue("button")]
     Regular,
 
     /// <summary>
     /// Reset button
     /// </summary>
+    [StringValue("reset")]
     Reset,
 
     /// <summary>
     /// Submit button
     /// </summary>
+    [StringValue("submit")]
     Submit
   }
 }

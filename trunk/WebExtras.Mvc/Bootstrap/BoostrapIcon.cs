@@ -17,6 +17,12 @@ namespace WebExtras.Mvc.Bootstrap
     /// Ok icon
     /// </summary>
     [StringValue("icon-ok")]
-    Ok
+    Ok,
+
+    /// <summary>
+    /// Down arrow icon
+    /// </summary>
+    [StringValue("icon-arrow-down")]
+    ArrowDown
   }
 }

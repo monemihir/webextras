@@ -162,7 +162,7 @@ namespace WebExtras.Mvc.Core
       Hyperlink link = new Hyperlink(string.Empty, url, htmlAttributes);
       Image img = new Image(src, altText, title, new { style = "border: 0; vertical-align: top" });
 
-      link.InnerTags.Add(img);
+      link.AppendTags.Add(img);
 
       return link;
     }
@@ -314,7 +314,7 @@ namespace WebExtras.Mvc.Core
         Hyperlink link = new Hyperlink(string.Empty, url, htmlAttributes);
         Image img = new Image(src, altText, title, new { style = "border: 0; vertical-align: top" });
 
-        link.InnerTags.Add(img);
+        link.AppendTags.Add(img);
 
         return link;
       }

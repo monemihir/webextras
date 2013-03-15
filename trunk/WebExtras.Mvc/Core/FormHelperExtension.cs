@@ -34,42 +34,39 @@ namespace WebExtras.Mvc.Core
     #region Button extensions
 
     /// <summary>
-    /// Create a HTML Button control
+    /// Create a HTML button
     /// </summary>
-    /// <param name="html">Current HTMLHelper object</param>
-    /// <param name="type">Type of the button control. Valid values are 'regular',
-    /// 'submit', 'reset'</param>
-    /// <param name="cssClass">CSS class</param>
-    /// <param name="id">ID</param>
-    /// <param name="value">Value text to display on button</param>
-    /// <param name="onClick">[Optional] Javascript onClick event name. Defaults to null. Note. If button type is 'Submit' or
-    /// 'Reset' this onclick event will be ignored and can be null</param>
-    /// <param name="htmlAttributes">[Optional] Additional html attributes to apply to the link (BUTTON) object</param>
-    /// <returns>HTML Button</returns>
-    public static MvcHtmlString Button(
+    /// <param name="html">Current HTML helper object</param>
+    /// <param name="type">Button type</param>
+    /// <param name="text">Button text</param>
+    /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
+    /// <returns>A HTML Button</returns>
+    public static Button Button(
       this HtmlHelper html,
       ButtonOfType type,
-      string cssClass,
-      string id,
-      string value,
-      string onClick = null,
-      object htmlAttributes = (IDictionary<string, object>)null)
+      string text,
+      object htmlAttributes = null)
     {
-      string autogenId = string.Format("autogen-{0}", new Random(DateTime.Now.Millisecond).Next(1, 9999).ToString());
-      TagBuilder button = new TagBuilder("button");
-      button.Attributes["id"] = string.IsNullOrEmpty(id) ? autogenId : id;
-      button.InnerHtml = value;
+      return new Button(type, text, string.Empty, htmlAttributes);
+    }
 
-      if (!string.IsNullOrEmpty(cssClass))
-        button.AddCssClass(cssClass);
-      button.Attributes["type"] = (type == ButtonOfType.Regular) ? "button" : type.ToString().ToLower();
-
-      if (!string.IsNullOrEmpty(onClick))
-        button.Attributes["onclick"] = "javascript:" + onClick;
-
-      button.MergeAttributes<string, object>((IDictionary<string, object>)new RouteValueDictionary(htmlAttributes));
-
-      return MvcHtmlString.Create(button.ToString(TagRenderMode.Normal));
+    /// <summary>
+    /// Create a HTML button
+    /// </summary>
+    /// <param name="html">Current HTML helper object</param>
+    /// <param name="type">Button type</param>
+    /// <param name="text">Button text</param>
+    /// <param name="onclick">Button onclick event</param>
+    /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
+    /// <returns>A HTML Button</returns>
+    public static Button Button(
+      this HtmlHelper html,
+      ButtonOfType type,
+      string text,
+      string onclick,
+      object htmlAttributes = null)
+    {
+      return new Button(type, text, onclick, htmlAttributes);
     }
 
     #endregion Button extensions

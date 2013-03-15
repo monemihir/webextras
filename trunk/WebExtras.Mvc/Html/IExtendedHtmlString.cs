@@ -17,7 +17,7 @@ namespace WebExtras.Mvc.Html
     /// <summary>
     /// Inner tags
     /// </summary>
-    List<IExtendedHtmlString> InnerTags { get; set; }
+    List<IExtendedHtmlString> AppendTags { get; }
 
     /// <summary>
     /// Appends the given HTML element at the end of the current 

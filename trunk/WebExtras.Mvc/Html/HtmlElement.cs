@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
+using System.Linq;
 
 namespace WebExtras.Mvc.Html
 {
@@ -14,9 +15,14 @@ namespace WebExtras.Mvc.Html
     public TagBuilder Tag { get; set; }
 
     /// <summary>
-    /// Inner HTML tags
+    /// Inner HTML tags to be appended
     /// </summary>
-    public List<IExtendedHtmlString> InnerTags { get; set; }
+    public List<IExtendedHtmlString> AppendTags { get; private set; }
+
+    /// <summary>
+    /// Inner HTML tags to be prepended
+    /// </summary>
+    public List<IExtendedHtmlString> PrependTags { get; private set; }
 
     /// <summary>
     /// Default constructor
@@ -25,7 +31,8 @@ namespace WebExtras.Mvc.Html
     public HtmlElement(HtmlTag tag)
     {
       Tag = new TagBuilder(tag.ToString().ToLowerInvariant());
-      InnerTags = new List<IExtendedHtmlString>();
+      AppendTags = new List<IExtendedHtmlString>();
+      PrependTags = new List<IExtendedHtmlString>();
     }
 
     /// <summary>
@@ -76,7 +83,7 @@ namespace WebExtras.Mvc.Html
     /// <param name="html">HTML element to be added</param>
     public void AppendElement(IExtendedHtmlString html)
     {
-      InnerTags.Add(html);
+      AppendTags.Add(html);
     }
 
     /// <summary>
@@ -86,7 +93,7 @@ namespace WebExtras.Mvc.Html
     /// <param name="html">HTML element to be added</param>
     public void PrependElement(IExtendedHtmlString html)
     {
-      InnerTags.Insert(0, html);
+      PrependTags.Add(html);
     }
 
     /// <summary>
@@ -106,6 +113,11 @@ namespace WebExtras.Mvc.Html
     /// <returns>MVC HTML string representation of the current element</returns>
     public virtual string ToHtmlString(TagRenderMode renderMode)
     {
+      Tag.InnerHtml = 
+        string.Join("", PrependTags.Select(f => f.ToHtmlString())) + 
+        Tag.InnerHtml + 
+        string.Join("", AppendTags.Select(f => f.ToHtmlString()));
+
       return Tag.ToString(renderMode);
     }
 

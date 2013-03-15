@@ -35,7 +35,8 @@
         <li class="@Html.SelectedTab("Mvc", "Bootstrap")">@Html.ActionLink("Mvc Bootstrap", MVC.Mvc.Bootstrap())</li>
       </ul>
       <ul class="nav secondary-nav">
-        <li>@Html.IconButton(ButtonOfType.Regular, "btn btn-success", "download", "Get WebExtras", "icon-arrow-down icon-white", "gotoCodeplex()")</li>
+        @*<li>@Html.Button(ButtonOfType.Regular, "btn btn-success", "download", "Get WebExtras", "icon-arrow-down icon-white", "gotoCodeplex()")</li>*@
+        <li>@Html.Button(ButtonOfType.Regular, "Get WebExtras", "gotoCodeplex()", new { id = "download" }).AsSuccess().AddWhiteIcon(BoostrapIcon.ArrowDown)</li>
       </ul>
     </div>
   </div>

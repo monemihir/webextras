@@ -53,7 +53,7 @@ namespace WebExtras.Mvc.Html
     /// <param name="title">Image title</param>
     /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
     public Image(string href, string altText, string title, object htmlAttributes = null)
-      : base(HtmlTag.IMG, htmlAttributes)
+      : base(HtmlTag.Img, htmlAttributes)
     {
       Src = href;
       AltText = altText;

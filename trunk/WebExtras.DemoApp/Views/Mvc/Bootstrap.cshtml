@@ -4,6 +4,6 @@
 
 @Html.Hyperlink("lkjldsa", "oirijond")
 
-<img title="wallpaper title" style="border: 0; vertical-align: top" href="/Content/jpg/wallpaper1.jpg" alt="wallpaper 1" />
+@Html.Imagelink(Links.Content.jpg.wallpaper1_jpg, "wallpaper 1", "wallpaper title", Url.Action(MVC.Mvc.Bootstrap()))
 
-@Html.ImageLink(Links.Content.jpg.wallpaper1_jpg, "wallpaper 1", "wallpaper title", Url.Action(MVC.Mvc.Bootstrap()))
+@Html.Button(ButtonOfType.Regular, "blah blah", null).AsPrimary().AddWhiteIcon(BoostrapIcon.Edit)

@@ -12,7 +12,11 @@ namespace WebExtras.Mvc.Html
     /// <summary>
     /// Link text
     /// </summary>
-    public string Text { get; set; }
+    public string Text
+    {
+      get { return Tag.InnerHtml; }
+      set { Tag.InnerHtml = value; }
+    }
 
     /// <summary>
     /// Link URL
@@ -30,19 +34,6 @@ namespace WebExtras.Mvc.Html
     {
       Text = linkText;
       Url = url;
-    }
-
-    /// <summary>
-    /// Converts current hyperlink element to a MVC HTMl string with
-    /// the given tag rendering mode
-    /// </summary>
-    /// <param name="renderMode">Tag render mode</param>
-    /// <returns>MVC HTML string representation of the current hyperlink element</returns>
-    public override string ToHtmlString(TagRenderMode renderMode)
-    {      
-      Tag.InnerHtml = string.Join("", InnerTags.Select(f => f.ToHtmlString())) + Text;
-
-      return Tag.ToString(renderMode);
     }
   }
 }

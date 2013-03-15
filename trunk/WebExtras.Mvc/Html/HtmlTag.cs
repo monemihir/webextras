@@ -24,6 +24,11 @@ namespace WebExtras.Mvc.Html
     /// <summary>
     /// HTML IMG tag
     /// </summary>
-    IMG
+    Img,
+
+    /// <summary>
+    /// HTML BUTTON tag
+    /// </summary>
+    Button
   }
 }
