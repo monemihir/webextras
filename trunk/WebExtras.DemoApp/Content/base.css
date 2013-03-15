@@ -115,6 +115,7 @@ pre
 .navbar-inverse .navbar-inner
 {
   filter: 0;
+  border-color: #666;
 }
 
 .navbar-fixed-top
@@ -131,16 +132,39 @@ pre
     border-bottom-left-radius: 15px;
   }
 
-.navbar-inverse .navbar-inner
-{
-  border-color: #666;
-}
-
 .navbar-inverse .nav .active > a,
 .navbar-inverse .nav .active > a:hover,
 .navbar-inverse .nav .active > a:focus
 {
   background-color: #666666;
+}
+
+.dropdown-menu
+{
+  background-color: #333333;
+  color: #ffffff;
+  margin: 5px 0 0;
+}
+
+
+  .dropdown-menu > li > a
+  {
+    color: inherit;
+  }
+
+.navbar .nav > li > .dropdown-menu:after
+{
+  border-bottom: 6px solid #333333;
+}
+
+.navbar-inverse .nav li.dropdown.open > .dropdown-toggle, .navbar-inverse .nav li.dropdown.active > .dropdown-toggle, .navbar-inverse .nav li.dropdown.open.active > .dropdown-toggle
+{
+  background-color: #666666;
+}
+
+.dropdown .caret
+{
+  margin-left: 4px;
 }
 
 /* Generic styles */
@@ -149,6 +173,7 @@ pre
   padding: 25px 5px;
   background-color: #fff;
   margin-top: 5px;
+  margin-bottom: 10px;
   border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 4px 4px 4px 4px;
   display: block;

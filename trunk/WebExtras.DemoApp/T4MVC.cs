@@ -155,6 +155,14 @@ namespace Links
     
         public static readonly string jquery_dataTables_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.dataTables.min.css") ? Url("jquery.dataTables.min.css") : Url("jquery.dataTables.css");
              
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public static class png {
+            private const string URLPATH = "~/Content/png";
+            public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
+            public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+            public static readonly string youtube_logo_png = Url("youtube-logo.png");
+        }
+    
         public static readonly string webextras_dataTables_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/webextras.dataTables.min.css") ? Url("webextras.dataTables.min.css") : Url("webextras.dataTables.css");
              
     }

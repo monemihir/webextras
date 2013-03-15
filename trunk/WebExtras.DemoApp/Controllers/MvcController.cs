@@ -12,12 +12,19 @@ namespace WebExtras.DemoApp.Controllers
     // GET: /Mvc
     public virtual ActionResult Index()
     {
-      return RedirectToAction(Actions.Core());
+      return RedirectToAction(Actions.CoreHtml());
     }
     
     //
-    // GET: /Mvc/Core
-    public virtual ActionResult Core()
+    // GET: /Mvc/CoreHtml
+    public virtual ActionResult CoreHtml()
+    {
+      return View();
+    }
+
+    //
+    // GET: /Mvc/CoreForm
+    public virtual ActionResult CoreForm()
     {
       return View();
     }

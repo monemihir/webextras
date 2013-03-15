@@ -16,10 +16,10 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Security.Principal;
 using System.Web.Mvc;
 using System.Web.Routing;
@@ -159,8 +159,25 @@ namespace WebExtras.Mvc.Core
       string url,
       object htmlAttributes = null)
     {
-      Hyperlink link = new Hyperlink(string.Empty, url, htmlAttributes);
-      Image img = new Image(src, altText, title, new { style = "border: 0; vertical-align: top" });
+      object linkAttributes = null, imgAttributes = null;
+
+      if (htmlAttributes != null)
+      {
+        // try to get the html attributes for the link and img
+        IDictionary<string, object> attr = htmlAttributes
+          .GetType()
+          .GetProperties(BindingFlags.Public | BindingFlags.Instance)
+          .Select(p => new KeyValuePair<string, object>(p.Name, p.GetValue(htmlAttributes, null)))
+          .ToDictionary(k => k.Key, v => v.Value);
+
+        if (attr.ContainsKey("a"))
+          linkAttributes = attr["a"];
+        if (attr.ContainsKey("img"))
+          imgAttributes = attr["img"];
+      }
+      
+      Hyperlink link = new Hyperlink(string.Empty, url, linkAttributes);
+      Image img = new Image(src, altText, title, imgAttributes);
 
       link.AppendTags.Add(img);
 
@@ -277,13 +294,7 @@ namespace WebExtras.Mvc.Core
       object htmlAttributes = null)
     {
       if (user.Identity.IsAuthenticated)
-      {
-
-        VirtualPathData vpd = RouteTable.Routes.GetVirtualPath(html.ViewContext.RequestContext, result.GetRouteValueDictionary());
-        string url = vpd.VirtualPath;
-
-        return Imagelink(html, src, altText, title, url, htmlAttributes);
-      }
+        return Imagelink(html, src, altText, title, result, htmlAttributes);
 
       return HtmlElement.Empty;
     }
@@ -310,14 +321,7 @@ namespace WebExtras.Mvc.Core
       object htmlAttributes = null)
     {
       if (user.Identity.IsAuthenticated)
-      {
-        Hyperlink link = new Hyperlink(string.Empty, url, htmlAttributes);
-        Image img = new Image(src, altText, title, new { style = "border: 0; vertical-align: top" });
-
-        link.AppendTags.Add(img);
-
-        return link;
-      }
+        return Imagelink(html, src, altText, title, url, htmlAttributes);
 
       return HtmlElement.Empty;
     }
@@ -381,8 +385,8 @@ namespace WebExtras.Mvc.Core
     public static IExtendedHtmlString AuthHyperlink(
       this HtmlHelper html,
       IPrincipal user,
-      string linkText, 
-      string url, 
+      string linkText,
+      string url,
       object htmlAttributes = null)
     {
       if (user.Identity.IsAuthenticated)
@@ -401,10 +405,10 @@ namespace WebExtras.Mvc.Core
     /// <param name="htmlAttributes">Extra HTML attributes</param>
     /// <returns>HTML hyperlink</returns>
     public static IExtendedHtmlString AuthHyperlink(
-      this HtmlHelper html, 
-      IPrincipal user, 
-      string linkText, 
-      ActionResult result, 
+      this HtmlHelper html,
+      IPrincipal user,
+      string linkText,
+      ActionResult result,
       object htmlAttributes = null)
     {
       if (user.Identity.IsAuthenticated)

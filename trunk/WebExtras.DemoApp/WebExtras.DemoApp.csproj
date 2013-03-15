@@ -162,6 +162,7 @@
     <Content Include="Content\img\draft.png" />
     <Content Include="Content\jquery.dataTables.css" />
     <Content Include="Content\jpg\wallpaper1.jpg" />
+    <Content Include="Content\png\youtube-logo.png" />
     <Content Include="Content\webextras.dataTables.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\base.css" />
@@ -249,9 +250,10 @@
     <Content Include="Views\Core\_DashedGraph.cshtml" />
     <Content Include="Views\Core\_CurvedLineGraph.cshtml" />
     <Content Include="Views\Core\_AxisLabels.cshtml" />
-    <Content Include="Views\Mvc\Bootstrap.cshtml" />
     <Content Include="Views\Mvc\Index.cshtml" />
-    <Content Include="Views\Mvc\Core.cshtml" />
+    <Content Include="Views\Mvc\CoreHtml.cshtml" />
+    <Content Include="Views\Mvc\CoreForm.cshtml" />
+    <Content Include="Views\Mvc\Bootstrap.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -61,7 +61,8 @@ namespace WebExtras.DemoApp.Controllers
         public class ActionNamesClass
         {
             public readonly string Index = ("Index").ToLowerInvariant();
-            public readonly string Core = ("Core").ToLowerInvariant();
+            public readonly string CoreHtml = ("CoreHtml").ToLowerInvariant();
+            public readonly string CoreForm = ("CoreForm").ToLowerInvariant();
             public readonly string Bootstrap = ("Bootstrap").ToLowerInvariant();
         }
 
@@ -77,11 +78,13 @@ namespace WebExtras.DemoApp.Controllers
             public class _ViewNamesClass
             {
                 public readonly string Bootstrap = "Bootstrap";
-                public readonly string Core = "Core";
+                public readonly string CoreForm = "CoreForm";
+                public readonly string CoreHtml = "CoreHtml";
                 public readonly string Index = "Index";
             }
             public readonly string Bootstrap = "~/Views/Mvc/Bootstrap.cshtml";
-            public readonly string Core = "~/Views/Mvc/Core.cshtml";
+            public readonly string CoreForm = "~/Views/Mvc/CoreForm.cshtml";
+            public readonly string CoreHtml = "~/Views/Mvc/CoreHtml.cshtml";
             public readonly string Index = "~/Views/Mvc/Index.cshtml";
         }
     }
@@ -97,9 +100,15 @@ namespace WebExtras.DemoApp.Controllers
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult Core()
+        public override System.Web.Mvc.ActionResult CoreHtml()
         {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Core);
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.CoreHtml);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult CoreForm()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.CoreForm);
             return callInfo;
         }
 
