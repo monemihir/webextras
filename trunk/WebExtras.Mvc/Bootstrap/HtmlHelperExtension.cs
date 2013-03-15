@@ -29,56 +29,6 @@ namespace WebExtras.Mvc.Bootstrap
   /// Bootstrap Html Helper extension methods
   /// </summary>
   public static class HtmlHelperExtension
-  {    
-    #region IconActionLink extensions
-
-    /// <summary>
-    /// Create an action link with an icon
-    /// </summary>
-    /// <param name="html">Current HtmlHelper object</param>
-    /// <param name="linkText">Link text</param>
-    /// <param name="result">Action to be executed</param>
-    /// <param name="iconClass">Icon CSS class(s) to be prepended for the link. Multiple icon classes must be separated with
-    /// spaces</param>
-    /// <param name="htmlAttributes">[Optional] Extra html attributes. Defaults to null</param>
-    /// <returns>An action link prepended with the icon for the given icon class(s)</returns>
-    public static MvcHtmlString IconActionLink(this HtmlHelper html, string linkText, ActionResult result, string iconClass, object htmlAttributes = (IDictionary<string, object>)null)
-    {
-      MvcHtmlString link = html.ActionLink(linkText, result, htmlAttributes);
-
-      string iconLink = link.ToHtmlString().Replace(string.Format(">{0}", linkText), string.Format("><i class='{0}'></i>{1}", iconClass, linkText));
-
-      VirtualPathData vpd = RouteTable.Routes.GetVirtualPath(html.ViewContext.RequestContext, result.GetRouteValueDictionary());
-
-      string url = vpd.VirtualPath;
-
-      return MvcHtmlString.Create(iconLink);
-    }
-
-    #endregion IconActionLink extensions
-
-    #region IconAuthActionLink
-
-    /// <summary>
-    /// Create a authenticated action link with an icon
-    /// </summary>
-    /// <param name="html">Current HtmlHelper object</param>
-    /// <param name="linkText">Link text</param>
-    /// <param name="user">Current user</param>
-    /// <param name="result">Action to be executed</param>
-    /// <param name="iconClass">Icon CSS class(s) to be prepended for the link. Multiple icon classes must be separated with
-    /// spaces</param>
-    /// <param name="htmlAttributes">[Optional] Extra html attributes. Defaults to null</param>
-    /// <returns>Authenticated action link if user is authenticated, else
-    /// empty result</returns>
-    public static MvcHtmlString IconAuthActionLink(this HtmlHelper html, string linkText, IPrincipal user, ActionResult result, string iconClass, object htmlAttributes = (IDictionary<string, object>)null)
-    {
-      if (user.Identity.IsAuthenticated)
-        return html.IconActionLink(linkText, result, iconClass, htmlAttributes);
-
-      return MvcHtmlString.Empty;
-    }
-
-    #endregion IconAuthActionLink
+  {     
   }
 }

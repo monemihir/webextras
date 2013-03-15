@@ -108,5 +108,13 @@ namespace WebExtras.Mvc.Html
     {
       return Tag.ToString(renderMode);
     }
+
+    /// <summary>
+    /// Empty string
+    /// </summary>
+    public static IExtendedHtmlString Empty
+    {
+      get { return new Empty(); }
+    }
   }
 }

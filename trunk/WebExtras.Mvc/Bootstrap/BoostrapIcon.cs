@@ -1,11 +1,11 @@
 ﻿using WebExtras.Core;
 
-namespace WebExtras.Mvc.Html
+namespace WebExtras.Mvc.Bootstrap
 {
   /// <summary>
   /// A collection of available icons
   /// </summary>
-  public enum Icon
+  public enum BoostrapIcon
   {
     /// <summary>
     /// Edit icon

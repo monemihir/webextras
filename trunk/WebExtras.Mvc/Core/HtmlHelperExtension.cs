@@ -36,9 +36,7 @@ namespace WebExtras.Mvc.Core
     /// Default separator used to join stuff
     /// </summary>
     private const string DefaultSeparator = " | ";
-
-    #region Hyperlink extensions
-
+    
     /// <summary>
     /// Displays an image hyperlink
     /// </summary>
@@ -95,15 +93,17 @@ namespace WebExtras.Mvc.Core
       return MvcHtmlString.Create(a.ToString());
     }
 
+    #region Hyperlink extensions
+
     /// <summary>
-    /// Creates a HTML hyperlink
+    /// Creates a HTML hyperlink from given text and URL
     /// </summary>
     /// <param name="html">Current html helper object</param>
     /// <param name="linkText">Link text</param>
     /// <param name="url">Link URL</param>
     /// <param name="htmlAttributes">Extra HTML attributes</param>
     /// <returns>HTML Hyperlink</returns>
-    public static Hyperlink Hyperlink(
+    public static IExtendedHtmlString Hyperlink(
       this HtmlHelper html,
       string linkText,
       string url,
@@ -115,14 +115,14 @@ namespace WebExtras.Mvc.Core
     }
 
     /// <summary>
-    /// Creates a HTML hyperlink
+    /// Creates a HTML hyperlink from given text and action
     /// </summary>
     /// <param name="html">Current html helper object</param>
     /// <param name="linkText">Link text</param>
     /// <param name="result">Action result</param>
     /// <param name="htmlAttributes">Extra HTML attributes</param>
     /// <returns>HTML hyperlink</returns>
-    public static Hyperlink Hyperlink(
+    public static IExtendedHtmlString Hyperlink(
       this HtmlHelper html,
       string linkText,
       ActionResult result,
@@ -135,6 +135,59 @@ namespace WebExtras.Mvc.Core
     }
 
     #endregion Hyperlink extensions
+
+    #region AuthHyperlink extensions
+
+    /// <summary>
+    /// Creates a HTML hyperlink from given text and URL
+    /// </summary>
+    /// <param name="html">Current html helper object</param>
+    /// <param name="linkText">Link text</param>
+    /// <param name="url">Link URL</param>
+    /// <param name="user">User used to authenticate</param>
+    /// <param name="htmlAttributes">Extra HTML attributes</param>
+    /// <returns>HTML Hyperlink</returns>
+    public static IExtendedHtmlString AuthHyperlink(
+      this HtmlHelper html,
+      string linkText,
+      string url,
+      IPrincipal user,
+      object htmlAttributes = null)
+    {
+      if (user.Identity.IsAuthenticated)
+        return new Hyperlink(linkText, url, htmlAttributes);
+
+      return HtmlElement.Empty;
+    }
+
+    /// <summary>
+    /// Creates a HTML hyperlink from given text and action
+    /// </summary>
+    /// <param name="html">Current html helper object</param>
+    /// <param name="linkText">Link text</param>
+    /// <param name="result">Action result</param>
+    /// <param name="user">User used to authenticate</param>
+    /// <param name="htmlAttributes">Extra HTML attributes</param>
+    /// <returns>HTML hyperlink</returns>
+    public static IExtendedHtmlString AuthHyperlink(
+      this HtmlHelper html,
+      string linkText,
+      ActionResult result,
+      IPrincipal user,
+      object htmlAttributes = null)
+    {
+      if (user.Identity.IsAuthenticated)
+      {
+        VirtualPathData vpd = RouteTable.Routes.GetVirtualPath(html.ViewContext.RequestContext, result.GetRouteValueDictionary());
+        string url = vpd.VirtualPath;
+
+        return Hyperlink(html, linkText, url, htmlAttributes);
+      }
+
+      return HtmlElement.Empty;
+    }
+
+    #endregion AuthHyperlink extensions
 
     #region Image extensions
 
@@ -279,27 +332,5 @@ namespace WebExtras.Mvc.Core
     }
 
     #endregion ImageActionLink extensions
-
-    #region AuthActionLink
-
-    /// <summary>
-    /// Create a authenticated action link
-    /// </summary>
-    /// <param name="html">Current HtmlHelper object</param>
-    /// <param name="linkText">Link text</param>
-    /// <param name="user">Current user</param>
-    /// <param name="result">Action to be executed</param>
-    /// <param name="htmlAttributes">[Optional] Extra html attributes. Defaults to null</param>
-    /// <returns>Authenticated action link if user is authenticated, else
-    /// empty result</returns>
-    public static MvcHtmlString AuthActionLink(this HtmlHelper html, string linkText, IPrincipal user, ActionResult result, object htmlAttributes = (IDictionary<string, object>)null)
-    {
-      if (user.Identity.IsAuthenticated)
-        return html.ActionLink(linkText, result, htmlAttributes);
-
-      return MvcHtmlString.Empty;
-    }
-
-    #endregion AuthActionLink
   }
 }

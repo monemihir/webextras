@@ -7,6 +7,11 @@ namespace WebExtras.Mvc.Html
   public enum HtmlTag
   {
     /// <summary>
+    /// A null HTML tag
+    /// </summary>
+    Empty,
+
+    /// <summary>
     /// HTML A tag
     /// </summary>
     A,

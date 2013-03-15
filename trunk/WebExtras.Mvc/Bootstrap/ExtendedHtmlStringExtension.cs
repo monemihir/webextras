@@ -1,7 +1,7 @@
 ﻿using WebExtras.Core;
 using WebExtras.Mvc.Html;
 
-namespace WebExtras.Mvc.Html
+namespace WebExtras.Mvc.Bootstrap
 {
   /// <summary>
   /// Bootstrap hyperlink extensions
@@ -15,7 +15,7 @@ namespace WebExtras.Mvc.Html
     /// <param name="html">Current html helper</param>
     /// <param name="icon">Icon to be rendered</param>
     /// <returns>Html element with icon added</returns>
-    public static T AddIcon<T>(this T html, Icon icon) where T : IExtendedHtmlString
+    public static T AddIcon<T>(this T html, BoostrapIcon icon) where T : IExtendedHtmlString
     {
       Italic i = new Italic(null);
       i["class"] = string.Join(" ", icon.GetStringValue());
@@ -31,7 +31,7 @@ namespace WebExtras.Mvc.Html
     /// <param name="html">Current html helper</param>
     /// <param name="icon">Icon to be rendered</param>
     /// <returns>Html element with a white icon added</returns>
-    public static T AddWhiteIcon<T>(this T html, Icon icon) where T : IExtendedHtmlString
+    public static T AddWhiteIcon<T>(this T html, BoostrapIcon icon) where T : IExtendedHtmlString
     {
       Italic i = new Italic(null);
       i["class"] = "icon-white " + string.Join(" ", icon.GetStringValue());

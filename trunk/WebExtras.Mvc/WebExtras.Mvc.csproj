@@ -72,6 +72,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bootstrap\ActionMessageControllerExtension.cs" />
+    <Compile Include="Html\Empty.cs" />
     <Compile Include="Html\HyperlinkExtension.cs" />
     <Compile Include="Bootstrap\FormHtmlHelperExtension.cs" />
     <Compile Include="Bootstrap\HtmlHelperExtension.cs" />
@@ -80,9 +81,9 @@
     <Compile Include="Html\ButtonOfType.cs" />
     <Compile Include="Html\CheckBox.cs" />
     <Compile Include="Html\Hyperlink.cs" />
-    <Compile Include="Html\ExtendedHtmlStringExtension.cs" />
+    <Compile Include="Bootstrap\ExtendedHtmlStringExtension.cs" />
     <Compile Include="Html\IExtendedHtmlString.cs" />
-    <Compile Include="Html\Icon.cs" />
+    <Compile Include="Bootstrap\BoostrapIcon.cs" />
     <Compile Include="Html\Italic.cs" />
     <Compile Include="JavascriptHelper.cs" />
     <Compile Include="Core\ActionMessageType.cs" />

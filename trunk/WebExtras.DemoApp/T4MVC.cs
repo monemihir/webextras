@@ -26,6 +26,7 @@ public static class MVC
 {
     public static WebExtras.DemoApp.Controllers.AssetsController Assets = new WebExtras.DemoApp.Controllers.T4MVC_AssetsController();
     public static WebExtras.DemoApp.Controllers.CoreController Core = new WebExtras.DemoApp.Controllers.T4MVC_CoreController();
+    public static WebExtras.DemoApp.Controllers.MvcController Mvc = new WebExtras.DemoApp.Controllers.T4MVC_MvcController();
     public static T4MVC.SharedController Shared = new T4MVC.SharedController();
 }
 
