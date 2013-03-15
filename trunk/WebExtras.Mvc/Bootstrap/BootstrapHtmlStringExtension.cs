@@ -6,7 +6,7 @@ namespace WebExtras.Mvc.Bootstrap
   /// <summary>
   /// Bootstrap hyperlink extensions
   /// </summary>
-  public static class ExtendedHtmlStringExtension
+  public static class BootstrapHtmlStringExtension
   {
     /// <summary>
     /// Add an icon

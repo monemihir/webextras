@@ -36,62 +36,293 @@ namespace WebExtras.Mvc.Core
     /// Default separator used to join stuff
     /// </summary>
     private const string DefaultSeparator = " | ";
-    
+
+    #region Imagelink extensions
+
     /// <summary>
-    /// Displays an image hyperlink
+    /// Create a HTML hyperlink with an image
     /// </summary>
-    /// <param name="html">Current HTMLHelper object</param>
-    /// <param name="imageSrc">Image source</param>
-    /// <param name="altText">Alternate text if the image can't be shown</param>
-    /// <param name="url">URL for hyperlink</param>
+    /// <param name="html">Current HTML helper object</param>
+    /// <param name="src">Image location</param>
+    /// <param name="url">Link URL</param>
     /// <param name="htmlAttributes">[Optional] Extra html attributes for the image link. Note.
-    /// These attributes will be applied to the A tag only. Defaults to null</param>
-    /// <returns>HTML ImageHyperLink</returns>
-    public static MvcHtmlString ImageLink(
+    /// These attributes will be applied to the A tag only.</param>
+    /// <returns>HTML image hyperlink</returns>
+    public static IExtendedHtmlString Imagelink(
       this HtmlHelper html,
-      string imageSrc,
+      string src,
+      string url,
+      object htmlAttributes = null)
+    {
+      return Imagelink(html, src, string.Empty, string.Empty, url, htmlAttributes);
+    }
+
+    /// <summary>
+    /// Create a HTML hyperlink with an image
+    /// </summary>
+    /// <param name="html">Current HTML helper object</param>
+    /// <param name="src">Image location</param>
+    /// <param name="altText">Image alt text</param>
+    /// <param name="url">Link URL</param>
+    /// <param name="htmlAttributes">[Optional] Extra html attributes for the image link. Note.
+    /// These attributes will be applied to the A tag only.</param>
+    /// <returns>HTML image hyperlink</returns>
+    public static IExtendedHtmlString Imagelink(
+      this HtmlHelper html,
+      string src,
       string altText,
       string url,
       object htmlAttributes = null)
     {
-      return ImageLink(html, imageSrc, altText, url, false, htmlAttributes);
+      return Imagelink(html, src, altText, string.Empty, url, htmlAttributes);
     }
 
     /// <summary>
-    /// Displays an image hyperlink
+    /// Create a HTML hyperlink with an image and given action
     /// </summary>
-    /// <param name="html">Current HTMLHelper object</param>
-    /// <param name="imageSrc">Image source</param>
-    /// <param name="altText">Alternate text if the image can't be shown</param>
-    /// <param name="url">URL for hyperlink</param>
-    /// <param name="isJavascriptLink">[Optional] Flag indicating whether this is
-    /// a javascript link</param>
+    /// <param name="html">Current HTML helper object</param>
+    /// <param name="src">Image location</param>
+    /// <param name="result">Action result</param>
     /// <param name="htmlAttributes">[Optional] Extra html attributes for the image link. Note.
-    /// These attributes will be applied to the A tag only. Defaults to null</param>
-    /// <returns>HTML ImageHyperLink</returns>
-    public static MvcHtmlString ImageLink(
+    /// These attributes will be applied to the A tag only.</param>
+    /// <returns>HTML image hyperlink</returns>
+    public static IExtendedHtmlString Imagelink(
       this HtmlHelper html,
-      string imageSrc,
-      string altText,
-      string url,
-      bool isJavascriptLink,
+      string src,
+      ActionResult result,
       object htmlAttributes = null)
     {
-      TagBuilder a = new TagBuilder("a");
-      a.Attributes["style"] = "text-decoration: none; border: 0";
-      a.Attributes["href"] = isJavascriptLink ? "javascript:" + url : url;
-      a.Attributes["title"] = altText;
-      a.MergeAttributes<string, object>((IDictionary<string, object>)new RouteValueDictionary(htmlAttributes));
-
-      TagBuilder img = new TagBuilder("img");
-      img.Attributes["style"] = "border: 0; vertical-align: top";
-      img.Attributes["src"] = imageSrc;
-      img.Attributes["alt"] = altText;
-
-      a.InnerHtml = img.ToString(TagRenderMode.SelfClosing);
-
-      return MvcHtmlString.Create(a.ToString());
+      return Imagelink(html, src, string.Empty, string.Empty, result, htmlAttributes);
     }
+
+    /// <summary>
+    /// Create a HTML hyperlink with an image and given action
+    /// </summary>
+    /// <param name="html">Current HTML helper object</param>
+    /// <param name="src">Image location</param>
+    /// <param name="altText">Image alt text</param>
+    /// <param name="result">Action result</param>
+    /// <param name="htmlAttributes">[Optional] Extra html attributes for the image link. Note.
+    /// These attributes will be applied to the A tag only.</param>
+    /// <returns>HTML image hyperlink</returns>
+    public static IExtendedHtmlString Imagelink(
+      this HtmlHelper html,
+      string src,
+      string altText,
+      ActionResult result,
+      object htmlAttributes = null)
+    {
+      return Imagelink(html, src, altText, string.Empty, result, htmlAttributes);
+    }
+
+    /// <summary>
+    /// Create a HTML hyperlink with an image and given action
+    /// </summary>
+    /// <param name="html">Current HTML helper object</param>
+    /// <param name="src">Image location</param>
+    /// <param name="altText">Image alt text</param>
+    /// <param name="title">Image title</param>
+    /// <param name="result">Action result</param>
+    /// <param name="htmlAttributes">[Optional] Extra html attributes for the image link. Note.
+    /// These attributes will be applied to the A tag only.</param>
+    /// <returns>HTML image hyperlink</returns>
+    public static IExtendedHtmlString Imagelink(
+      this HtmlHelper html,
+      string src,
+      string altText,
+      string title,
+      ActionResult result,
+      object htmlAttributes = null)
+    {
+      VirtualPathData vpd = RouteTable.Routes.GetVirtualPath(html.ViewContext.RequestContext, result.GetRouteValueDictionary());
+      string url = vpd.VirtualPath;
+
+      return Imagelink(html, src, altText, title, url, htmlAttributes);
+    }
+
+    /// <summary>
+    /// Create a HTML hyperlink with an image
+    /// </summary>
+    /// <param name="html">Current HTML helper object</param>
+    /// <param name="src">Image location</param>
+    /// <param name="altText">Image alt text</param>
+    /// <param name="title">Image title</param>
+    /// <param name="url">Link URL</param>
+    /// <param name="htmlAttributes">[Optional] Extra html attributes for the image link. Note.
+    /// These attributes will be applied to the A tag only.</param>
+    /// <returns>HTML image hyperlink</returns>
+    public static IExtendedHtmlString Imagelink(
+      this HtmlHelper html,
+      string src,
+      string altText,
+      string title,
+      string url,
+      object htmlAttributes = null)
+    {
+      Hyperlink link = new Hyperlink(string.Empty, url, htmlAttributes);
+      Image img = new Image(src, altText, title, new { style = "border: 0; vertical-align: top" });
+
+      link.InnerTags.Add(img);
+
+      return link;
+    }
+
+    #endregion Imagelink extensions
+
+    #region AuthImagelink extensions
+
+    /// <summary>
+    /// Create a HTML hyperlink with an image
+    /// </summary>
+    /// <param name="html">Current HTML helper object</param>
+    /// <param name="user">User used to authenticate</param>
+    /// <param name="src">Image location</param>
+    /// <param name="url">Link URL</param>
+    /// <param name="htmlAttributes">[Optional] Extra html attributes for the image link. Note.
+    /// These attributes will be applied to the A tag only.</param>
+    /// <returns>HTML image hyperlink</returns>
+    public static IExtendedHtmlString AuthImagelink(
+      this HtmlHelper html,
+      IPrincipal user,
+      string src,
+      string url,
+      object htmlAttributes = null)
+    {
+      return AuthImagelink(html, user, src, string.Empty, string.Empty, url, htmlAttributes);
+    }
+
+    /// <summary>
+    /// Create a HTML hyperlink with an image
+    /// </summary>
+    /// <param name="html">Current HTML helper object</param>
+    /// <param name="user">User used to authenticate</param>
+    /// <param name="src">Image location</param>
+    /// <param name="altText">Image alt text</param>
+    /// <param name="url">Link URL</param>
+    /// <param name="htmlAttributes">[Optional] Extra html attributes for the image link. Note.
+    /// These attributes will be applied to the A tag only.</param>
+    /// <returns>HTML image hyperlink</returns>
+    public static IExtendedHtmlString AuthImagelink(
+      this HtmlHelper html,
+      IPrincipal user,
+      string src,
+      string altText,
+      string url,
+      object htmlAttributes = null)
+    {
+      return AuthImagelink(html, user, src, altText, string.Empty, url, htmlAttributes);
+    }
+
+    /// <summary>
+    /// Create a HTML hyperlink with an image and given action
+    /// </summary>
+    /// <param name="html">Current HTML helper object</param>
+    /// <param name="user">User used to authenticate</param>
+    /// <param name="src">Image location</param>
+    /// <param name="result">Action result</param>
+    /// <param name="htmlAttributes">[Optional] Extra html attributes for the image link. Note.
+    /// These attributes will be applied to the A tag only.</param>
+    /// <returns>HTML image hyperlink</returns>
+    public static IExtendedHtmlString AuthImagelink(
+      this HtmlHelper html,
+      IPrincipal user,
+      string src,
+      ActionResult result,
+      object htmlAttributes = null)
+    {
+      return AuthImagelink(html, user, src, string.Empty, string.Empty, result, htmlAttributes);
+    }
+
+    /// <summary>
+    /// Create a HTML hyperlink with an image and given action
+    /// </summary>
+    /// <param name="html">Current HTML helper object</param>
+    /// <param name="user">User used to authenticate</param>
+    /// <param name="src">Image location</param>
+    /// <param name="altText">Image alt text</param>
+    /// <param name="result">Action result</param>
+    /// <param name="htmlAttributes">[Optional] Extra html attributes for the image link. Note.
+    /// These attributes will be applied to the A tag only.</param>
+    /// <returns>HTML image hyperlink</returns>
+    public static IExtendedHtmlString AuthImagelink(
+      this HtmlHelper html,
+      IPrincipal user,
+      string src,
+      string altText,
+      ActionResult result,
+      object htmlAttributes = null)
+    {
+      return AuthImagelink(html, user, src, altText, string.Empty, result, htmlAttributes);
+    }
+
+    /// <summary>
+    /// Create a HTML hyperlink with an image and given action
+    /// </summary>
+    /// <param name="html">Current HTML helper object</param>
+    /// <param name="user">User used to authenticate</param>
+    /// <param name="src">Image location</param>
+    /// <param name="altText">Image alt text</param>
+    /// <param name="title">Image title</param>
+    /// <param name="result">Action result</param>
+    /// <param name="htmlAttributes">[Optional] Extra html attributes for the image link. Note.
+    /// These attributes will be applied to the A tag only.</param>
+    /// <returns>HTML image hyperlink</returns>
+    public static IExtendedHtmlString AuthImagelink(
+      this HtmlHelper html,
+      IPrincipal user,
+      string src,
+      string altText,
+      string title,
+      ActionResult result,
+      object htmlAttributes = null)
+    {
+      if (user.Identity.IsAuthenticated)
+      {
+
+        VirtualPathData vpd = RouteTable.Routes.GetVirtualPath(html.ViewContext.RequestContext, result.GetRouteValueDictionary());
+        string url = vpd.VirtualPath;
+
+        return Imagelink(html, src, altText, title, url, htmlAttributes);
+      }
+
+      return HtmlElement.Empty;
+    }
+
+    /// <summary>
+    /// Create a HTML hyperlink with an image
+    /// </summary>
+    /// <param name="html">Current HTML helper object</param>
+    /// <param name="user">User used to authenticate</param>
+    /// <param name="src">Image location</param>
+    /// <param name="altText">Image alt text</param>
+    /// <param name="title">Image title</param>
+    /// <param name="url">Link URL</param>
+    /// <param name="htmlAttributes">[Optional] Extra html attributes for the image link. Note.
+    /// These attributes will be applied to the A tag only.</param>
+    /// <returns>HTML image hyperlink</returns>
+    public static IExtendedHtmlString AuthImagelink(
+      this HtmlHelper html,
+      IPrincipal user,
+      string src,
+      string altText,
+      string title,
+      string url,
+      object htmlAttributes = null)
+    {
+      if (user.Identity.IsAuthenticated)
+      {
+        Hyperlink link = new Hyperlink(string.Empty, url, htmlAttributes);
+        Image img = new Image(src, altText, title, new { style = "border: 0; vertical-align: top" });
+
+        link.InnerTags.Add(img);
+
+        return link;
+      }
+
+      return HtmlElement.Empty;
+    }
+
+    #endregion AuthImagelink extensions
 
     #region Hyperlink extensions
 
@@ -102,7 +333,7 @@ namespace WebExtras.Mvc.Core
     /// <param name="linkText">Link text</param>
     /// <param name="url">Link URL</param>
     /// <param name="htmlAttributes">Extra HTML attributes</param>
-    /// <returns>HTML Hyperlink</returns>
+    /// <returns>HTML hyperlink</returns>
     public static IExtendedHtmlString Hyperlink(
       this HtmlHelper html,
       string linkText,
@@ -142,16 +373,16 @@ namespace WebExtras.Mvc.Core
     /// Creates a HTML hyperlink from given text and URL
     /// </summary>
     /// <param name="html">Current html helper object</param>
+    /// <param name="user">User used to authenticate</param>
     /// <param name="linkText">Link text</param>
     /// <param name="url">Link URL</param>
-    /// <param name="user">User used to authenticate</param>
     /// <param name="htmlAttributes">Extra HTML attributes</param>
     /// <returns>HTML Hyperlink</returns>
     public static IExtendedHtmlString AuthHyperlink(
       this HtmlHelper html,
-      string linkText,
-      string url,
       IPrincipal user,
+      string linkText, 
+      string url, 
       object htmlAttributes = null)
     {
       if (user.Identity.IsAuthenticated)
@@ -164,16 +395,16 @@ namespace WebExtras.Mvc.Core
     /// Creates a HTML hyperlink from given text and action
     /// </summary>
     /// <param name="html">Current html helper object</param>
+    /// <param name="user">User used to authenticate</param>
     /// <param name="linkText">Link text</param>
     /// <param name="result">Action result</param>
-    /// <param name="user">User used to authenticate</param>
     /// <param name="htmlAttributes">Extra HTML attributes</param>
     /// <returns>HTML hyperlink</returns>
     public static IExtendedHtmlString AuthHyperlink(
-      this HtmlHelper html,
-      string linkText,
-      ActionResult result,
-      IPrincipal user,
+      this HtmlHelper html, 
+      IPrincipal user, 
+      string linkText, 
+      ActionResult result, 
       object htmlAttributes = null)
     {
       if (user.Identity.IsAuthenticated)
@@ -192,39 +423,54 @@ namespace WebExtras.Mvc.Core
     #region Image extensions
 
     /// <summary>
-    /// Create an HTML IMG tag
+    /// Creates an HTML image
     /// </summary>
-    /// <param name="htmlHelper">Current HTMLHelper object</param>
-    /// <param name="altText">Alt text for image</param>
-    /// <param name="srcUrl">Source URL of image</param>
-    /// <returns>An HTML IMG tag</returns>
-    public static MvcHtmlString Image(
-      this HtmlHelper htmlHelper,
-      string altText,
-      string srcUrl)
+    /// <param name="html">Current HTML helper object</param>
+    /// <param name="src">Image location</param>
+    /// <param name="htmlAttributes">Extra HTML attributes</param>
+    /// <returns>An HTML image</returns>
+    public static IExtendedHtmlString Image(
+      this HtmlHelper html,
+      string src,
+      object htmlAttributes = null)
     {
-      return Image(htmlHelper, altText, srcUrl, (IDictionary<string, object>)null);
+      return new Image(src, string.Empty, string.Empty, htmlAttributes);
     }
 
     /// <summary>
-    /// Create an HTML IMG tag
+    /// Creates an HTML image
     /// </summary>
-    /// <param name="htmlHelper">Current HTMLHelper object</param>
-    /// <param name="altText">Alt text for image</param>
-    /// <param name="srcUrl">Source URL of image</param>
+    /// <param name="html">Current HTML helper object</param>
+    /// <param name="src">Image location</param>
+    /// <param name="altText">Image alt text</param>
     /// <param name="htmlAttributes">Extra HTML attributes</param>
-    /// <returns>An HTML IMG tag</returns>
-    public static MvcHtmlString Image(
-      this HtmlHelper htmlHelper,
+    /// <returns>An HTML image</returns>
+    public static IExtendedHtmlString Image(
+      this HtmlHelper html,
+      string src,
       string altText,
-      string srcUrl,
-      object htmlAttributes)
+      object htmlAttributes = null)
     {
-      TagBuilder img = new TagBuilder("img");
-      img.MergeAttributes(new RouteValueDictionary(htmlAttributes));
-      img.Attributes["src"] = srcUrl;
-      img.Attributes["alt"] = altText;
-      return MvcHtmlString.Create(img.ToString(TagRenderMode.SelfClosing));
+      return new Image(src, altText, string.Empty, htmlAttributes);
+    }
+
+    /// <summary>
+    /// Creates an HTML image
+    /// </summary>
+    /// <param name="html">Current HTML helper object</param>
+    /// <param name="src">Image location</param>
+    /// <param name="altText">Image alt text</param>
+    /// <param name="title">Image title</param>
+    /// <param name="htmlAttributes">Extra HTML attributes</param>
+    /// <returns>An HTML image</returns>
+    public static IExtendedHtmlString Image(
+      this HtmlHelper html,
+      string src,
+      string altText,
+      string title,
+      object htmlAttributes = null)
+    {
+      return new Image(src, altText, title, htmlAttributes);
     }
 
     #endregion Image extensions
@@ -285,52 +531,5 @@ namespace WebExtras.Mvc.Core
     }
 
     #endregion Inline extensions
-
-    #region ImageActionLink extensions
-
-    /// <summary>
-    /// Html helper to create an Action link for an image
-    /// </summary>
-    /// <param name="htmlHelper">html helper extension</param>
-    /// <param name="imgSrc">Url to the image file to display</param>
-    /// <param name="action">Action to execute in the link</param>
-    /// <returns>An image link html string</returns>
-    public static MvcHtmlString ImageActionLink(this HtmlHelper htmlHelper, string imgSrc, ActionResult action)
-    {
-      return ImageActionLink(htmlHelper, imgSrc, null, action, (IDictionary<string, object>)null);
-    }
-
-    /// <summary>
-    /// Html helper to create an Action link for an image
-    /// </summary>
-    /// <param name="htmlHelper">html helper extension</param>
-    /// <param name="imgSrc">Url to the image file to display</param>
-    /// <param name="altText">Alternative text to display if image not found</param>
-    /// <param name="action">Action to execute in the link</param>
-    /// <returns>An image link html string</returns>
-    public static MvcHtmlString ImageActionLink(this HtmlHelper htmlHelper, string imgSrc, string altText, ActionResult action)
-    {
-      return ImageActionLink(htmlHelper, imgSrc, altText, action, (IDictionary<string, object>)null);
-    }
-
-    /// <summary>
-    /// Html helper to create an Action link for an image
-    /// </summary>
-    /// <param name="htmlHelper">html helper extension</param>
-    /// <param name="imgSrc">Url to the image file to display</param>
-    /// <param name="altText">Alternative text to display if image not found</param>
-    /// <param name="action">Action to execute in the link</param>
-    /// <param name="htmlAttributes">Additional html attributes to apply to the link (A) object</param>
-    /// <returns>An image link html string</returns>
-    public static MvcHtmlString ImageActionLink(this HtmlHelper htmlHelper, string imgSrc, string altText, ActionResult action, object htmlAttributes)
-    {
-      altText = altText ?? string.Empty;
-      string img = Image(htmlHelper, altText, imgSrc, new { style = "border:0" }).ToHtmlString();
-      string linkText = T4Extensions.ActionLink(htmlHelper, "{0}", action, htmlAttributes).ToHtmlString();
-      MvcHtmlString a = MvcHtmlString.Create(string.Format(linkText, img));
-      return a;
-    }
-
-    #endregion ImageActionLink extensions
   }
 }

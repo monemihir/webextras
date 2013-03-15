@@ -24,34 +24,12 @@ namespace WebExtras.Mvc.Html
     /// </summary>
     /// <param name="linkText">Link text</param>
     /// <param name="url">Link URL</param>
-    /// <param name="htmlAttributes">Extra HTML attributes</param>
-    public Hyperlink(string linkText, string url, object htmlAttributes)
+    /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
+    public Hyperlink(string linkText, string url, object htmlAttributes = null)
       : base(HtmlTag.A, htmlAttributes)
     {
       Text = linkText;
-      Tag.Attributes["href"] = url;
-    }
-
-    /// <summary>
-    /// Constructor
-    /// </summary>
-    /// <param name="linkText">Link text</param>
-    /// <param name="url">Link URL</param>
-    /// <param name="htmlAttributes">Extra HTML attributes</param>
-    public Hyperlink(string linkText, string url, IDictionary<string, object> htmlAttributes)
-      : base(HtmlTag.A, htmlAttributes)
-    {
-      Text = linkText;
-      Tag.Attributes["href"] = url;
-    }
-
-    /// <summary>
-    /// Converts current hyperlink element to a MVC HTML string
-    /// </summary>
-    /// <returns>MVC HTML string representation of current hyperlink element</returns>
-    public override string ToHtmlString()
-    {
-      return ToHtmlString(TagRenderMode.Normal);
+      Url = url;
     }
 
     /// <summary>
@@ -61,11 +39,10 @@ namespace WebExtras.Mvc.Html
     /// <param name="renderMode">Tag render mode</param>
     /// <returns>MVC HTML string representation of the current hyperlink element</returns>
     public override string ToHtmlString(TagRenderMode renderMode)
-    {
-      Tag.Attributes["href"] = Url;
+    {      
       Tag.InnerHtml = string.Join("", InnerTags.Select(f => f.ToHtmlString())) + Text;
 
       return Tag.ToString(renderMode);
     }
-  }  
+  }
 }

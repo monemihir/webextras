@@ -93,7 +93,7 @@ namespace WebExtras.Mvc.Html
     /// Converts current element to a MVC HTML string
     /// </summary>
     /// <returns>MVC HTML string representation of current element</returns>
-    public virtual string ToHtmlString()
+    public string ToHtmlString()
     {
       return ToHtmlString(TagRenderMode.Normal);
     }

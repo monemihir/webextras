@@ -10,8 +10,9 @@ namespace WebExtras.Mvc.Html
     /// Constructor
     /// </summary>
     /// <param name="text">Text to be displayed</param>
-    public Italic(string text)
-      : base(HtmlTag.I)
+    /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
+    public Italic(string text, object htmlAttributes = null)
+      : base(HtmlTag.I, htmlAttributes)
     {
       Tag.SetInnerText(text);
     }      
@@ -19,7 +20,7 @@ namespace WebExtras.Mvc.Html
     /// <summary>
     /// Constructor
     /// </summary>
-    /// <param name="htmlAttributes">Extra HTML attributes</param>
+    /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
     public Italic(object htmlAttributes = null)
       : base(HtmlTag.I, htmlAttributes)
     { }

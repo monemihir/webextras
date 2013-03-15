@@ -19,6 +19,11 @@ namespace WebExtras.Mvc.Html
     /// <summary>
     /// HTML I tag
     /// </summary>
-    I
+    I,
+
+    /// <summary>
+    /// HTML IMG tag
+    /// </summary>
+    IMG
   }
 }
