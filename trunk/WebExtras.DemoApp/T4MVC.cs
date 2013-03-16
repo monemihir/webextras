@@ -163,7 +163,7 @@ namespace Links
             public static readonly string youtube_logo_png = Url("youtube-logo.png");
         }
     
-        public static readonly string webextras_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/webextras.min.css") ? Url("webextras.min.css") : Url("webextras.css");
+        public static readonly string webextras_bootstrap_1_0_0_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/webextras.bootstrap-1.0.0.min.css") ? Url("webextras.bootstrap-1.0.0.min.css") : Url("webextras.bootstrap-1.0.0.css");
              
     }
 

@@ -78,11 +78,13 @@ namespace WebExtras.DemoApp.Controllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
+                public readonly string BootstrapForm = "BootstrapForm";
                 public readonly string BootstrapHtml = "BootstrapHtml";
                 public readonly string CoreForm = "CoreForm";
                 public readonly string CoreHtml = "CoreHtml";
                 public readonly string Index = "Index";
             }
+            public readonly string BootstrapForm = "~/Views/Mvc/BootstrapForm.cshtml";
             public readonly string BootstrapHtml = "~/Views/Mvc/BootstrapHtml.cshtml";
             public readonly string CoreForm = "~/Views/Mvc/CoreForm.cshtml";
             public readonly string CoreHtml = "~/Views/Mvc/CoreHtml.cshtml";
