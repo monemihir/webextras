@@ -19,8 +19,7 @@ namespace WebExtras.Mvc.Html
     {
       if (html.Tag.Attributes.ContainsKey("href"))
       {
-        string url = html.Tag.Attributes["href"];
-        html.Tag.Attributes["href"] = "javascript:" + (url.EndsWith("()") ? url : url + "()");
+        html.Tag.Attributes["href"] = "javascript:" + html.Tag.Attributes["href"];
       }
 
       return html;

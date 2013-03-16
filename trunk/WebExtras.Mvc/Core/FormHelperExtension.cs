@@ -56,7 +56,7 @@ namespace WebExtras.Mvc.Core
     /// <param name="html">Current HTML helper object</param>
     /// <param name="type">Button type</param>
     /// <param name="text">Button text</param>
-    /// <param name="onclick">Button onclick event</param>
+    /// <param name="onclick">Button javascript onclick event</param>
     /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
     /// <returns>A HTML Button</returns>
     public static Button Button(
@@ -71,194 +71,143 @@ namespace WebExtras.Mvc.Core
 
     #endregion Button extensions
 
-    #region CheckBoxList extensions
+    #region CheckBoxGroup extensions
 
     /// <summary>
-    /// Create a CheckBox list
+    /// Creates a HTML TABLE with given checkboxes
     /// </summary>
-    /// <param name="htmlHelper">Current HTMLHelper object</param>
-    /// <param name="name">Name of checkbox list</param>
-    /// <param name="listInfo">List of CheckBox controls</param>
-    /// <param name="boxesPerLine">Number of checkboxes per line</param>
-    /// <returns>String representation of a checkbox list</returns>
-    public static MvcHtmlString CheckBoxList(
-      this HtmlHelper htmlHelper,
+    /// <param name="html">Current HTML helper object</param>
+    /// <param name="name">Name of the checkbox group</param>
+    /// <param name="checkboxes">A collection of checkboxes</param>
+    /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
+    /// <returns>A HTML checkbox list</returns>
+    public static MvcHtmlString CheckBoxGroup(
+      this HtmlHelper html,
       string name,
-      List<CheckBox> listInfo,
-      int boxesPerLine)
+      IEnumerable<CheckBox> checkboxes,
+      object htmlAttributes = null)
     {
-      return htmlHelper.CheckBoxList(name, listInfo, boxesPerLine,
-          ((IDictionary<string, object>)null));
+      return CheckBoxGroup(html, name, checkboxes, 5, htmlAttributes);
     }
 
     /// <summary>
-    /// Create a CheckBox list with extra HTML attributes
+    /// Creates a HTML TABLE with given checkboxes
     /// </summary>
-    /// <param name="htmlHelper">Current HTMLHelper object</param>
-    /// <param name="name">Name of checkbox list</param>
-    /// <param name="listInfo">List of CheckBox controls</param>
-    /// <param name="boxesPerLine">Number of checkboxes per line</param>
-    /// <param name="htmlAttributes">Extra HTML attributes</param>
-    /// <returns>String representation of a checkbox list</returns>
-    public static MvcHtmlString CheckBoxList(
-      this HtmlHelper htmlHelper,
+    /// <param name="html">Current HTML helper object</param>
+    /// <param name="name">Name of the checkbox group</param>
+    /// <param name="checkboxes">A collection of checkboxes</param>
+    /// <param name="boxesPerLine">No. of checkboxes to display per line</param>
+    /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
+    /// <returns>A HTML checkbox list</returns>
+    public static MvcHtmlString CheckBoxGroup(
+      this HtmlHelper html,
       string name,
-      List<CheckBox> listInfo,
+      IEnumerable<CheckBox> checkboxes,
       int boxesPerLine,
-      object htmlAttributes)
+      object htmlAttributes = null)
     {
-      return htmlHelper.CheckBoxList(name, listInfo, boxesPerLine,
-          ((IDictionary<string, object>)new RouteValueDictionary(htmlAttributes)));
-    }
+      foreach (CheckBox c in checkboxes)
+        c["name"] = name;
 
-    /// <summary>
-    /// Create a CheckBox list with extra HTML attributes
-    /// </summary>
-    /// <param name="htmlHelper">Current HTMLHelper object</param>
-    /// <param name="name">Name of checkbox list</param>
-    /// <param name="listInfo">List of CheckBox controls</param>
-    /// <param name="boxesPerLine">Number of checkboxes per line</param>
-    /// <param name="htmlAttributes">Extra HTML attributes</param>
-    /// <returns>String representation of a checkbox list</returns>
-    public static MvcHtmlString CheckBoxList(
-      this HtmlHelper htmlHelper,
-      string name,
-      List<CheckBox> listInfo,
-      int boxesPerLine,
-      IDictionary<string, object> htmlAttributes)
-    {
-      if (String.IsNullOrEmpty(name))
-        throw new ArgumentException("The argument must have a value", "name");
-      if (listInfo == null)
-        throw new ArgumentNullException("listInfo");
-      if (!listInfo.Any())
-        throw new ArgumentException("The list must contain at least one value", "listInfo");
-
-      StringBuilder sb = new StringBuilder();
-
-      // Create a table
-      TagBuilder tbl = new TagBuilder("table");
-      tbl.Attributes["width"] = "100%";
-      int index = 0;
-      while (true)
+      List<string> rows = new List<string>();
+      for (int i = 0; i < checkboxes.Count(); i += boxesPerLine)
       {
-        // Create a new table row
-        TagBuilder row = new TagBuilder("tr");
-        for (int j = 0; j < boxesPerLine && index < listInfo.Count; j++, index++)
-        {
-          // Create a new table cell
-          TagBuilder cell = new TagBuilder("td");
-          cell.AddCssClass("display-field");
+        IEnumerable<string> datas = checkboxes
+          .Skip(i)
+          .Take(boxesPerLine)
+          .Select(f => string.Format("<td>{0}</td>\n", f.ToHtmlString()));
 
-          // Loop until either number of boxes available finishes or
-          // number of boxes per line are added
-          CheckBox box = listInfo[index];
-
-          TagBuilder chkbox = new TagBuilder("input");
-          if (box.IsChecked)
-            chkbox.MergeAttribute("checked", "checked");
-          if (!box.IsEnabled)
-            chkbox.MergeAttribute("disabled", "");
-          chkbox.MergeAttributes<string, object>(htmlAttributes);
-          chkbox.MergeAttribute("type", "checkbox");
-          chkbox.MergeAttribute("value", box.Value);
-          chkbox.MergeAttribute("name", name);
-
-          TagBuilder span = new TagBuilder("span");
-          span.SetInnerText(" " + box.DisplayText);
-          span.MergeAttribute("id", string.Format("{0}-{1}", name, box.Value));
-
-          // Append the checkbox to the table cell
-          cell.InnerHtml = chkbox.ToString(TagRenderMode.SelfClosing) + span.ToString(TagRenderMode.Normal);
-
-          // Append the table cell to the table row
-          row.InnerHtml += cell.ToString(TagRenderMode.Normal);
-        }
-
-        // Append table row to the table
-        tbl.InnerHtml += row.ToString(TagRenderMode.Normal);
-        if (index >= listInfo.Count)
-        {
-          break;
-        }
+        rows.Add("<tr>" + string.Join("", datas) + "</tr>\n");
       }
 
-      sb.Append(tbl.ToString(TagRenderMode.Normal));
-      return MvcHtmlString.Create(sb.ToString());
+      TagBuilder table = new TagBuilder("table");
+      table.AddCssClass("checkbox-group");
+      table.InnerHtml = string.Join("", rows);
+      table.MergeAttributes<string, object>(HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes));
+
+      return MvcHtmlString.Create(table.ToString(TagRenderMode.Normal));
     }
 
-    #endregion CheckBoxList extensions
+    #endregion CheckBoxGroup extensions
 
-    #region RadioButtonList extensions
-
-    /// <summary>
-    /// Create a RadioButton list with the given name and
-    /// list of items.
-    /// </summary>
-    /// <param name="htmlHelper">Current HTMLHelper object</param>
-    /// <param name="name">Name of the radio button list</param>
-    /// <param name="selectList">List of radio buttons</param>
-    /// <returns>String representation of a RadioButton list</returns>
-    public static MvcHtmlString RadioButtonList(
-      this HtmlHelper htmlHelper,
-      string name,
-      IEnumerable<SelectListItem> selectList)
-    {
-      return RadioButtonList(htmlHelper, name, selectList,
-        ((IDictionary<string, object>)null));
-    }
+    #region RadioButtonGroup extensions
 
     /// <summary>
-    /// Create a RadioButton list with the given name and
-    /// list of items.
+    /// Creates a HTML TABLE with given radio buttons
     /// </summary>
-    /// <param name="htmlHelper">Current HTMLHelper object</param>
-    /// <param name="name">Name of the radio button list</param>
-    /// <param name="selectList">List of radio buttons</param>
-    /// <param name="htmlAttributes">Extra HTML attributes</param>
-    /// <returns>String representation of a RadioButton list</returns>
-    public static MvcHtmlString RadioButtonList(
-      this HtmlHelper htmlHelper,
+    /// <param name="html">Current HTML helper object</param>
+    /// <param name="name">Name of the checkbox group</param>
+    /// <param name="radioButtons">A collection of radio buttons</param>
+    /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
+    /// <returns>A HTML radio buttons list</returns>
+    public static MvcHtmlString RadioButtonGroup(
+      this HtmlHelper html,
       string name,
-      IEnumerable<SelectListItem> selectList,
-      object htmlAttributes)
+      IEnumerable<RadioButton> radioButtons,
+      object htmlAttributes = null)
     {
-      return RadioButtonList(htmlHelper, name, selectList,
-        ((IDictionary<string, object>)new RouteValueDictionary(htmlAttributes)));
+      return RadioButtonGroup(html, name, radioButtons, 5, htmlAttributes);
     }
 
     /// <summary>
-    /// Create a RadioButton list with the given name and
-    /// list of items.
+    /// Creates a HTML TABLE with given radio buttons
     /// </summary>
-    /// <param name="htmlHelper">Current HTMLHelper object</param>
-    /// <param name="name">Name of the radio button list</param>
-    /// <param name="selectList">List of radio buttons</param>
-    /// <param name="htmlAttributes">Extra HTML attributes</param>
-    /// <returns>String representation of a RadioButton list</returns>
-    public static MvcHtmlString RadioButtonList(
-      this HtmlHelper htmlHelper,
+    /// <param name="html">Current HTML helper object</param>
+    /// <param name="name">Name of the checkbox group</param>
+    /// <param name="radioButtons">A collection of radio buttons</param>
+    /// <param name="buttonsPerLine">No. of radio buttons to display per line</param>
+    /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
+    /// <returns>A HTML radio buttons list</returns>
+    public static MvcHtmlString RadioButtonGroup(
+      this HtmlHelper html,
       string name,
-      IEnumerable<SelectListItem> selectList,
-      IDictionary<string, object> htmlAttributes)
+      IEnumerable<RadioButton> radioButtons,
+      int buttonsPerLine,
+      object htmlAttributes = null)
     {
-      List<string> radioButtons = new List<string>();
+      foreach (RadioButton r in radioButtons)
+        r["name"] = name;
 
-      foreach (SelectListItem item in selectList)
+      List<string> rows = new List<string>();
+      for (int i = 0; i < radioButtons.Count(); i += buttonsPerLine)
       {
-        TagBuilder radioBtn = new TagBuilder("input");
-        radioBtn.Attributes["type"] = "radio";
-        radioBtn.Attributes["name"] = name;
-        if (item.Selected)
-          radioBtn.Attributes["checked"] = "checked";
-        radioBtn.Attributes["value"] = item.Value.ToString();
-        radioBtn.MergeAttributes<string, object>(htmlAttributes);
-        radioButtons.Add(radioBtn.ToString(TagRenderMode.SelfClosing) + " " + item.Text);
+        IEnumerable<string> datas = radioButtons
+          .Skip(i)
+          .Take(buttonsPerLine)
+          .Select(f => string.Format("<td>{0}</td>\n", f.ToHtmlString()));
+
+        rows.Add("<tr>" + string.Join("", datas) + "</tr>\n");
       }
 
-      return MvcHtmlString.Create(string.Join("&nbsp;&nbsp;", radioButtons.ToArray()));
+      TagBuilder table = new TagBuilder("table");
+      table.AddCssClass("radiobutton-group");
+      table.InnerHtml = string.Join("", rows);
+      table.MergeAttributes<string, object>(HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes));
+
+      return MvcHtmlString.Create(table.ToString(TagRenderMode.Normal));
     }
 
-    #endregion RadioButtonList extensions
+    #endregion RadioButtonGroup extensions
+
+    #region List extensions
+
+    /// <summary>
+    /// Create an HTML LIST
+    /// </summary>
+    /// <param name="html">Current HTML helper object</param>
+    /// <param name="type">List type</param>
+    /// <param name="listItems">A collection of list items</param>
+    /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
+    /// <returns>A HTML LIST</returns>
+    public static HtmlList List(
+      this HtmlHelper html,
+      ListType type,
+      IEnumerable<HtmlListItem> listItems,
+      object htmlAttributes = null)
+    {
+      return new HtmlList(type, listItems, htmlAttributes);
+    }
+
+    #endregion List extensions
   }
 }

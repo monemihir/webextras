@@ -78,6 +78,7 @@
     <Compile Include="Html\ExtendedHtmlStringExtension.cs" />
     <Compile Include="Bootstrap\FormHtmlHelperExtension.cs" />
     <Compile Include="Bootstrap\HtmlHelperExtension.cs" />
+    <Compile Include="Html\HtmlListItem.cs" />
     <Compile Include="Html\HtmlTag.cs" />
     <Compile Include="Html\HtmlElement.cs" />
     <Compile Include="Html\ButtonOfType.cs" />
@@ -88,6 +89,9 @@
     <Compile Include="Bootstrap\BoostrapIcon.cs" />
     <Compile Include="Html\Image.cs" />
     <Compile Include="Html\Italic.cs" />
+    <Compile Include="Html\HtmlList.cs" />
+    <Compile Include="Html\ListType.cs" />
+    <Compile Include="Html\RadioButton.cs" />
     <Compile Include="JavascriptHelper.cs" />
     <Compile Include="Core\ActionMessageType.cs" />
     <Compile Include="Core\FormHelperExtension.cs" />

@@ -16,46 +16,89 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+using System.Web.Mvc;
+
 namespace WebExtras.Mvc.Html
 {
   /// <summary>
-  /// This class represents a CheckBox
+  /// Represents a HTML Checkbox element
   /// </summary>
-  public class CheckBox
+  public class CheckBox : HtmlElement
   {
     /// <summary>
-    /// Value for check box
+    /// Checkbox value
     /// </summary>
-    public string Value { get; private set; }
+    public string Value { get { return this["value"]; } set { this["value"] = value; } }
 
     /// <summary>
-    /// Text to be displayed for the check box
+    /// Checkbox text
     /// </summary>
-    public string DisplayText { get; private set; }
+    public string Text { get; set; }
 
     /// <summary>
     /// Flag indicating whether the check box is checked
     /// </summary>
-    public bool IsChecked { get; private set; }
+    public bool IsChecked { get; set; }
 
     /// <summary>
-    /// Flag indicating whether the check box is enabled
+    /// Flag indicating whether the check box is disabled
     /// </summary>
-    public bool IsEnabled { get; private set; }
+    public bool IsDisabled { get; set; }
 
     /// <summary>
-    /// Constructor to create a CheckBox with given parameters
+    /// Constructor
     /// </summary>
+    /// <param name="text">Text to be displayed for the check box</param>
     /// <param name="value">Value for check box</param>
-    /// <param name="displayText">Text to be displayed for the check box</param>
-    /// <param name="isChecked">[Optional] Flag indicating whether the check box is checked</param>
-    /// <param name="isEnabled">[Optional] Flag indicating whether the check box is enabled</param>
-    public CheckBox(string value, string displayText, bool isChecked = false, bool isEnabled = true)
+    /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
+    public CheckBox(string text, string value, object htmlAttributes = null)
+      : this(text, value, false, false, htmlAttributes)
+    { }
+
+    /// <summary>
+    /// Constructor
+    /// </summary>
+    /// <param name="text">Text to be displayed for the check box</param>
+    /// <param name="value">Value for check box</param>
+    /// <param name="isChecked">Flag indicating whether the check box is checked</param>
+    /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
+    public CheckBox(string text, string value, bool isChecked, object htmlAttributes = null)
+      : this(text, value, isChecked, false, htmlAttributes)
     {
+    }
+
+    /// <summary>
+    /// Constructor
+    /// </summary>
+    /// <param name="text">Text to be displayed for the check box</param>
+    /// <param name="value">Value for check box</param>
+    /// <param name="isChecked">Flag indicating whether the check box is checked</param>
+    /// <param name="isDisabled">Flag indicating whether the check box is disabled</param>
+    /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
+    public CheckBox(string text, string value, bool isChecked, bool isDisabled, object htmlAttributes = null)
+      : base(HtmlTag.Input, htmlAttributes)
+    {
+      this["type"] = "checkbox";
       Value = value;
-      DisplayText = displayText;
+      Text = text;
       IsChecked = isChecked;
-      IsEnabled = isEnabled;
+      IsDisabled = isDisabled;
+    }
+
+    /// <summary>
+    /// Converts current element to a MVC HTMl string with
+    /// the given tag rendering mode
+    /// </summary>
+    /// <param name="renderMode">Tag render mode</param>
+    /// <returns>MVC HTML string representation of the current element</returns>
+    public override string ToHtmlString(TagRenderMode renderMode)
+    {
+      if (IsChecked)
+        this["checked"] = "";
+      if (IsDisabled)
+        this["disabled"] = "";
+
+      return base.ToHtmlString(TagRenderMode.SelfClosing) + " " + Text;
     }
   }
 }

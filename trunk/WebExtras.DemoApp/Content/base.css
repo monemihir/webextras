@@ -41,6 +41,9 @@ header, footer, nav, section
 .highlight
 {
   color: #d14;
+  background-color: rgba(0, 0, 0, 0.15);
+  padding: 2px 3px;
+  border-radius: 2px;
 }
 
 .output

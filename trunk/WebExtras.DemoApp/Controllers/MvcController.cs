@@ -30,8 +30,15 @@ namespace WebExtras.DemoApp.Controllers
     }
 
     //
-    // GET: /Mvc/Bootstrap
-    public virtual ActionResult Bootstrap()
+    // GET: /Mvc/BootstrapHtml
+    public virtual ActionResult BootstrapHtml()
+    {
+      return View();
+    }
+
+    //
+    // GET: /Mvc/BootstrapForm
+    public virtual ActionResult BootstrapForm()
     {
       return View();
     }

@@ -29,6 +29,21 @@ namespace WebExtras.Mvc.Html
     /// <summary>
     /// HTML BUTTON tag
     /// </summary>
-    Button
+    Button,
+
+    /// <summary>
+    /// HTML INPUT tag
+    /// </summary>
+    Input,
+
+    /// <summary>
+    /// HTML LIST tag
+    /// </summary>
+    List,
+
+    /// <summary>
+    /// HTML LIST ITEM tag
+    /// </summary>
+    ListItem
   }
 }

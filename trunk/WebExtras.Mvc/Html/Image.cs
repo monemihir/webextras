@@ -14,17 +14,17 @@ namespace WebExtras.Mvc.Html
     /// <summary>
     /// Image location
     /// </summary>
-    public string Src { get { return Tag.Attributes["src"]; } set { Tag.Attributes["src"] = value; } }
+    public string Src { get { return this["src"]; } set { this["src"] = value; } }
 
     /// <summary>
     /// Image Alt text
     /// </summary>
-    public string AltText { get { return Tag.Attributes["alt"]; } set { Tag.Attributes["alt"] = value; } }
+    public string AltText { get { return this["alt"]; } set { this["alt"] = value; } }
 
     /// <summary>
     /// Image title text
     /// </summary>
-    public string Title { get { return Tag.Attributes["title"]; } set { Tag.Attributes["title"] = value; } }
+    public string Title { get { return this["title"]; } set { this["title"] = value; } }
 
     /// <summary>
     /// Constructor

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
 using System.Linq;
+using System;
 
 namespace WebExtras.Mvc.Html
 {
@@ -9,6 +10,11 @@ namespace WebExtras.Mvc.Html
   /// </summary>
   public class HtmlElement : IExtendedHtmlString
   {
+    /// <summary>
+    /// Random number generator
+    /// </summary>
+    private static Random m_rand;
+
     /// <summary>
     /// MVC HTML tag builder object
     /// </summary>
@@ -31,6 +37,8 @@ namespace WebExtras.Mvc.Html
     public HtmlElement(HtmlTag tag)
     {
       Tag = new TagBuilder(tag.ToString().ToLowerInvariant());
+      m_rand = new Random(DateTime.Now.Millisecond);
+
       AppendTags = new List<IExtendedHtmlString>();
       PrependTags = new List<IExtendedHtmlString>();
     }
@@ -113,9 +121,12 @@ namespace WebExtras.Mvc.Html
     /// <returns>MVC HTML string representation of the current element</returns>
     public virtual string ToHtmlString(TagRenderMode renderMode)
     {
-      Tag.InnerHtml = 
-        string.Join("", PrependTags.Select(f => f.ToHtmlString())) + 
-        Tag.InnerHtml + 
+      if (!Tag.Attributes.ContainsKey("id"))
+        this["id"] = string.Format("auto_{0}", m_rand.Next(1, 9999).ToString());
+      
+      Tag.InnerHtml =
+        string.Join("", PrependTags.Select(f => f.ToHtmlString())) +
+        Tag.InnerHtml +
         string.Join("", AppendTags.Select(f => f.ToHtmlString()));
 
       return Tag.ToString(renderMode);

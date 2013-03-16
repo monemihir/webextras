@@ -63,7 +63,8 @@ namespace WebExtras.DemoApp.Controllers
             public readonly string Index = ("Index").ToLowerInvariant();
             public readonly string CoreHtml = ("CoreHtml").ToLowerInvariant();
             public readonly string CoreForm = ("CoreForm").ToLowerInvariant();
-            public readonly string Bootstrap = ("Bootstrap").ToLowerInvariant();
+            public readonly string BootstrapHtml = ("BootstrapHtml").ToLowerInvariant();
+            public readonly string BootstrapForm = ("BootstrapForm").ToLowerInvariant();
         }
 
 
@@ -77,12 +78,12 @@ namespace WebExtras.DemoApp.Controllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
-                public readonly string Bootstrap = "Bootstrap";
+                public readonly string BootstrapHtml = "BootstrapHtml";
                 public readonly string CoreForm = "CoreForm";
                 public readonly string CoreHtml = "CoreHtml";
                 public readonly string Index = "Index";
             }
-            public readonly string Bootstrap = "~/Views/Mvc/Bootstrap.cshtml";
+            public readonly string BootstrapHtml = "~/Views/Mvc/BootstrapHtml.cshtml";
             public readonly string CoreForm = "~/Views/Mvc/CoreForm.cshtml";
             public readonly string CoreHtml = "~/Views/Mvc/CoreHtml.cshtml";
             public readonly string Index = "~/Views/Mvc/Index.cshtml";
@@ -112,9 +113,15 @@ namespace WebExtras.DemoApp.Controllers
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult Bootstrap()
+        public override System.Web.Mvc.ActionResult BootstrapHtml()
         {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Bootstrap);
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.BootstrapHtml);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult BootstrapForm()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.BootstrapForm);
             return callInfo;
         }
 

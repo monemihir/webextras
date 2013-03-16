@@ -12,16 +12,12 @@ namespace WebExtras.Mvc.Html
     /// <summary>
     /// Link text
     /// </summary>
-    public string Text
-    {
-      get { return Tag.InnerHtml; }
-      set { Tag.InnerHtml = value; }
-    }
+    public string Text { get { return Tag.InnerHtml; } set { Tag.InnerHtml = value; } }
 
     /// <summary>
     /// Link URL
     /// </summary>
-    public string Url { get { return Tag.Attributes["href"]; } set { Tag.Attributes["href"] = value; } }
+    public string Url { get { return this["href"]; } set { this["href"] = value; } }
 
     /// <summary>
     /// Constructor

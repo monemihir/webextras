@@ -163,7 +163,7 @@
     <Content Include="Content\jquery.dataTables.css" />
     <Content Include="Content\jpg\wallpaper1.jpg" />
     <Content Include="Content\png\youtube-logo.png" />
-    <Content Include="Content\webextras.dataTables.css" />
+    <Content Include="Content\webextras.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\base.css" />
     <Content Include="Scripts\bootstrap-2.3.1.min.js" />
@@ -253,7 +253,8 @@
     <Content Include="Views\Mvc\Index.cshtml" />
     <Content Include="Views\Mvc\CoreHtml.cshtml" />
     <Content Include="Views\Mvc\CoreForm.cshtml" />
-    <Content Include="Views\Mvc\Bootstrap.cshtml" />
+    <Content Include="Views\Mvc\BootstrapHtml.cshtml" />
+    <Content Include="Views\Mvc\BootstrapForm.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

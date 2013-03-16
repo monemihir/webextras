@@ -7,6 +7,11 @@ namespace WebExtras.Mvc.Html
   public class Italic : HtmlElement
   {
     /// <summary>
+    /// Italic text
+    /// </summary>
+    public string Text { get { return Tag.InnerHtml; } set { Tag.InnerHtml = value; } }
+
+    /// <summary>
     /// Constructor
     /// </summary>
     /// <param name="text">Text to be displayed</param>
@@ -14,7 +19,7 @@ namespace WebExtras.Mvc.Html
     public Italic(string text, object htmlAttributes = null)
       : base(HtmlTag.I, htmlAttributes)
     {
-      Tag.SetInnerText(text);
+      Text = text;
     }      
 
     /// <summary>

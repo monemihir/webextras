@@ -25,25 +25,17 @@ namespace WebExtras.Mvc.Core
   /// ModelStateDictionary extension class to add custom/server side validation errors
   /// </summary>
   public static class ModelStateErrorExtension
-  {
-    /// <summary>
-    /// ModelStateDictionary extension method which adds custom/server side validation errors for display by MVC
-    /// </summary>
-    /// <param name="modelState">ModelStateDictionary object</param>
-    /// <param name="errors">NameValueCollection of errors: key=property name, value=error message</param>
-    public static void AddRuleViolations(this ModelStateDictionary modelState, NameValueCollection errors)
-    {
-      AddRuleViolations(modelState, errors, null);
-    }
-
+  {    
     /// <summary>
     /// ModelStateDictionary extension method which adds custom/server side validation errors for display by MVC
     /// </summary>
     /// <param name="modelState">ModelStateDictionary object</param>
     /// <param name="errors">NameValueCollection of errors: key=property name, value=error message</param>
     /// <param name="keyPrefix">a string to prefix the final key, used for child objects i.e EditVesselViewModel.Vessel.IMO</param>
-    public static void AddRuleViolations(this ModelStateDictionary modelState,
-      NameValueCollection errors, string keyPrefix)
+    public static void AddRuleViolations(
+      this ModelStateDictionary modelState,
+      NameValueCollection errors,
+      string keyPrefix = "")
     {
       if (errors == null || errors.Count == 0)
         return;

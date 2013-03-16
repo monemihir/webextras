@@ -1,0 +1,42 @@
+﻿/*
+ * Generic styling
+*/
+.checkbox-group,
+.radiobutton-group
+{
+  width: 100%;
+}
+
+  .checkbox-group input[type="checkbox"],
+  .radiobutton-group input[type="radio"]
+  {
+    margin-top: -3px;
+  }
+
+[class^="icon-"], [class*=" icon-"]
+{
+  margin-right: 3px;
+}
+
+/*
+ * Bootstrap styling for jQuery Datatables
+ */
+table.dataTable tbody tr.success td
+{
+  background-color: #dff0d8;
+}
+
+table.dataTable tbody tr.error td
+{
+  background-color: #f2dede;
+}
+
+table.dataTable tbody tr.warning td
+{
+  background-color: #fcf8e3;
+}
+
+table.dataTable tbody tr.info td
+{
+  background-color: #d9edf7;
+}

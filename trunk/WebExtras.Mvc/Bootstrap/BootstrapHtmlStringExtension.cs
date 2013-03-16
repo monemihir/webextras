@@ -9,6 +9,8 @@ namespace WebExtras.Mvc.Bootstrap
   /// </summary>
   public static class BootstrapHtmlStringExtension
   {
+    #region Icon extensions
+
     /// <summary>
     /// Add an icon
     /// </summary>
@@ -41,6 +43,10 @@ namespace WebExtras.Mvc.Bootstrap
       return html;
     }
 
+    #endregion Icon extensions
+
+    #region Button extensions
+
     /// <summary>
     /// Create special buttons
     /// </summary>
@@ -64,21 +70,31 @@ namespace WebExtras.Mvc.Bootstrap
     private static bool CanDisplayAsButton(IExtendedHtmlString html)
     {
       // We can only display hyperlinks and button as buttons
-      try
-      {
-        Hyperlink h = html as Hyperlink;
-        return true;
-      }
+      try { Hyperlink h = html as Hyperlink; return true; }
       catch (Exception) { }
 
-      try
-      {
-        Button b = html as Button;
-        return true;
-      }
+      try { Button b = html as Button; return true; }
       catch (Exception) { }
 
       return false;
     }
+
+    #endregion Button extensions
+
+    #region List extensions
+
+    /// <summary>
+    /// Create an unstyled list
+    /// </summary>
+    /// <param name="list">List to be converted</param>
+    /// <returns>An unstyled list</returns>
+    public static IExtendedHtmlString AsUnstyled(this HtmlList list)
+    {
+      list.AddCssClass("unstyled");
+
+      return list;
+    }
+
+    #endregion List extensions
   }
 }
