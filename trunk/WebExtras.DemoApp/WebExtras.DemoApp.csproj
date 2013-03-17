@@ -242,7 +242,6 @@
     <Content Include="Views\Core\_SortedSetup.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Properties\PublishProfiles\Staging.pubxml" />
     <Content Include="Views\Core\_StatusSetup.cshtml" />
     <Content Include="Views\Core\_PostbackSetup.cshtml" />
     <Content Include="Views\Core\_PostbackResult.cshtml" />
