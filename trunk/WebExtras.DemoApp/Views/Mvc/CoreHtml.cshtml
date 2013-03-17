@@ -51,7 +51,7 @@
   </code></pre>
   <p>Output</p>
   <div class="content">
-    @Html.Imagelink("/Content/png/youtube-logo.png", "YouTube", "Take me to YouTube", "http://www.youtube.com")
+    @Html.Imagelink(Links.Content.png.youtube_logo_png, "YouTube", "Take me to YouTube", "http://www.youtube.com")
   </div>
   <p>All available extensions</p>
   <pre><code>
@@ -99,6 +99,6 @@ new { a = new { attr1 = value1 ... }, img = new { attr1 = value1 } }
   <div class="content">
     @Html.Hyperlink("Take me to google", "goToGoogle()").AsJavascriptLink()
     <br /><br />
-    @Html.Imagelink("/Content/png/youtube-logo.png", "YouTube", "Take me to YouTube", "goToYoutube()").AsJavascriptLink()
+    @Html.Imagelink(Links.Content.png.youtube_logo_png, "YouTube", "Take me to YouTube", "goToYoutube()").AsJavascriptLink()
   </div>
 </div>

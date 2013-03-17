@@ -41,8 +41,9 @@ header, footer, nav, section
 .highlight
 {
   color: #d14;
-  background-color: rgba(0, 0, 0, 0.15);
-  padding: 2px 3px;
+  padding: 3px;
+  background-color: #fafafa;
+  background-image: -moz-linear-gradient(top, #ddd, #ccc);
   border-radius: 2px;
 }
 
