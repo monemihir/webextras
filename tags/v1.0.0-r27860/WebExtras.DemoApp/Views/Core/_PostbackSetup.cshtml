@@ -1,0 +1,155 @@
+﻿@model WebExtras.DemoApp.Models.Core.DatatablesViewModel
+
+@using WebExtras.Mvc.Core
+@using WebExtras.Mvc.Bootstrap
+@using WebExtras.Mvc.Html
+
+<p>
+  Postbacks a way of adding additional filtering to our datatable results. These are especially useful when implementing 
+  a search functionality.
+</p>
+<div class="well">
+  <h4>Creating the postbacks</h4>
+  Post back are created by instantiating the <strong>WebExtras.JQDataTables.PostBackItem</strong> class. Postbacks are always created in the
+  HTTP POST handler of our search method. Let's say that our post back handler entity class is as follows:
+  <pre><code>
+  <span class="comment">// Note that this needs to be an entity class, i.e it must only contain .NET base types</span>
+  public class PostbacksSearchModel
+  {
+    public string FirstColumn { get; set; }
+    public string SecondColumn { get; set; }
+  }
+  </code></pre>
+  <pre><code>
+    <span class="comment">// Let's create the postback entity model and populate with user inputs</span>
+    PostbacksSearchModel postbacks = new PostbacksSearchModel
+    {
+      FirstColumn = <span class="comment">// Set this with form element value</span>
+      SecondColumn = <span class="comment">// Set this with form element value</span>
+    }
+
+    <span class="comment">// There are two ways of creating postbacks</span>
+    <span class="comment">// Method 1: Manually adding key value pairs</span>
+    List&lt;PostbackItem&gt; dtPostbacks = new List&lt;PostbackItem&gt;();
+    
+    if (!string.IsNullOrEmpty(postbacks.FirstColumn))
+      dtPostbacks.Add(new PostbackItem("FirstColumn", postbacks.FirstColumn));
+
+    if (!string.IsNullOrEmpty(postbacks.SecondColumn))
+      dtPostbacks.Add(new PostbackItem("SecondColumn", postbacks.SecondColumn));
+
+    <span class="comment">// This is a little tedious since we only want to add non null values to our postback</span>
+    <span class="comment">// Method 2: Have the postbacks created for you from an object</span>
+    IEnumerable&lt;PostbackItem&gt; dtPostbacks = PostbackItem.FromObject(postbacks);
+  </code></pre>
+  Note that the FromObject method will only look at the public properties of the given model and ignore any type
+  that is not a .NET base type
+</div>
+
+<div class="well">
+  <h4>A slightly updated constructor definition for our datatable</h4>
+  Now that we have added some postbacks, we need to setup our datatable to be able to handle some postbacks. So we have
+  a slightly modified constructor for our datatable
+  <pre><code>
+  Datatable dTable = new Datatable("postbacks-table", dtSettings, dtColumns, null, <span class="highlight">dtPostbacks</span>);    
+  </code></pre>
+  Notice that we are not passing in any datatable records. We are just leaving them as null.
+</div>
+
+<div class="well">
+  <h4>That's the HTTP POST handler</h4>
+  <pre><code>
+  public Datatable PostHandler(PostbacksSearchModel model)
+  {    
+    IEnumerable&lt;DatatableColumn&gt; dtColumns = new DatatableColumn[]
+    {
+      new DatatableColumn("First Column"),
+      new DatatableColumn("Second Column")
+    };
+
+    <span class="highlight">IEnumerable&lt;PostbackItem&gt; dtPostbacks = PostbackItem.FromObject(model);</span>
+    DatatableSettings dtSettings = new DatatableSettings(
+      5, 
+      new AASort(0, SortType.Ascending), 
+      "~/getpostbackdata", 
+      "searched/filtered records", 
+      "150px");
+    Datatable dTable = new Datatable("postbacks-table", dtSettings, dtColumns, null, <span class="highlight">dtPostbacks</span>); 
+  }
+  </code></pre>
+  You might wonder where the search actually happens since it is not apparent from the code. You are
+  right, the search is not really happening here. This method only creates the skeleton for the view to be displayed to the user.
+</div>
+
+<div class="well">
+  <h4>An AJAX handler does the grunt work</h4>
+  In the HTTP POST handler we have said that we want the AJAX handling to be done at the URL: <span class="highlight">"~/getpostbackdata"</span>.
+  So let's now create this AJAX handler. This is where the grunt work of actually filtering/searching happens...
+  <pre><code>
+  public DatatableRecords GetPostbackData(DatatableFilters filters, PostbacksSearchModel postbacks)
+  {
+    string[][] dtData = new string[][]
+    {
+      new string[] { "first column row 1", "second column row 1" },    
+      new string[] { "first column row 2", "second column row 2" },
+      new string[] { "first column row 3", "second column row 3" },
+      new string[] { "first column row 4", "second column row 4" }
+    };
+
+    <span class="comment">// Here is our searcher logic</span>
+    <span class="comment">// You can hook in you search/filter business logic here</span>
+    if (!string.IsNullOrEmpty(postbacks.FirstColumn))
+      dtData = dtData.Where(f => f[0].ContainsIgnoreCase(postbacks.FirstColumn));
+    if (!string.IsNullOrEmpty(postbacks.SecondColumn))
+      dtData = dtData.Where(f => f[1].ContainsIgnoreCase(postbacks.SecondColumn));
+
+    DatatableRecords dtRecords = new DatatableRecords
+    {
+      sEcho = filters.sEcho,
+      iTotalRecords = dtData.Count(),
+      iTotalDisplayRecords = dtData.Count(),
+      aaData = dtData
+    };
+
+    return dtRecords;
+  }
+  </code></pre>
+</div>
+
+<div class="well">
+  <h4>The default table</h4>
+  <p>
+    We will be searching records based on this table
+  </p>
+  <div class="output">
+    @Html.Partial(MVC.Core.Views._Datatable, Model.Table)
+  </div>
+</div>
+
+<div class="well">
+  <h4>Go ahead try it yourself</h4>
+  @using (Html.BeginForm(MVC.Core.Datatables(), FormMethod.Post, new { @class = "form-horizontal" }))
+  { 
+    <div class="control-group">
+      @Html.LabelFor(f => f.PostbackFormFields.FirstColumn, new { @class = "control-label" })
+      <div class="controls">
+        @Html.TextBoxFor(f => f.PostbackFormFields.FirstColumn)
+      </div>
+    </div>
+
+    <div class="control-group">
+      @Html.LabelFor(f => f.PostbackFormFields.SecondColumn, new { @class = "control-label" })
+      <div class="controls">
+        @Html.TextBoxFor(f => f.PostbackFormFields.SecondColumn)
+      </div>
+    </div>
+
+    <div class="control-group">
+      <div class="controls">
+        @Html.Button(ButtonOfType.Submit, "Submit").AsButton(BootstrapButtonType.Primary)
+      </div>
+    </div>
+    
+    @Html.HiddenFor(f => f.DisplayMode)
+  }
+</div>
