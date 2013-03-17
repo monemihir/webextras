@@ -13,6 +13,9 @@
     margin-top: -3px;
   }
 
+/*
+ *  Bootstrap extensions
+ */
 [class^="icon-"], [class*=" icon-"]
 {
   margin-right: 3px;
