@@ -26,6 +26,7 @@
   <br />
   <div class="navbar navbar-fixed-top navbar-inverse">
     <div class="navbar-inner">
+      @Html.Hyperlink("WebExtras Demo", "#").AddCssClass("brand")
       <ul class="nav">
         <li class="@Html.SelectedTab("Core", "Generic")">@Html.ActionLink("Core", MVC.Core.Generic())</li>
         <li class="@Html.SelectedTab("Core", "Datatables")">@Html.ActionLink("jQuery Datatables", MVC.Core.Datatables())</li>

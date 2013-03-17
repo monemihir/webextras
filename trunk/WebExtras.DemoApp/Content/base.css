@@ -106,11 +106,6 @@ pre
   background-color: #dddddd;
 }
 
-.navbar .nav
-{
-  margin: 0 20px;
-}
-
 .navbar-inner
 {
   filter: 0;
@@ -120,6 +115,11 @@ pre
 {
   filter: 0;
   border-color: #666;
+}
+
+.navbar .brand {
+  margin-left: 0;
+  color: #ffffff;  
 }
 
 .navbar-fixed-top
