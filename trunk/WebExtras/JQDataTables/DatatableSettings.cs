@@ -37,7 +37,8 @@ namespace WebExtras.JQDataTables
     /// <summary>
     /// Enable or disable filtering of data
     /// </summary>
-    public bool bFilter;
+    [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+    public bool? bFilter;
 
     /// <summary>
     /// Allows the end user to select the size of a formatted page from a select menu
@@ -74,6 +75,7 @@ namespace WebExtras.JQDataTables
     /// the given height (in pixels), an enable scrolling for any data which overflows the current
     /// viewport. Set this to null if you want auto height
     /// </summary>
+    [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
     public string sScrollY;
 
     /// <summary>
@@ -98,6 +100,7 @@ namespace WebExtras.JQDataTables
     /// <summary>
     /// Language init options
     /// </summary>
+    [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
     public OLanguage oLanguage;
 
     /// <summary>
@@ -116,6 +119,19 @@ namespace WebExtras.JQDataTables
     /// Constructor to setup Datatable with default column widths. All columns will get equal width.
     /// </summary>
     /// <param name="displayLength">Number of rows to display on a single page when using pagination</param>
+    /// <param name="sortOption">Column sort option. If this is null no sorting will be applied</param>
+    /// <param name="ajaxSource">AJAX source URL</param>
+    /// <param name="footerSuffix">[Optional] This string gives information to the end user about the information
+    /// that is current on display on the page</param>
+    /// <param name="tableHeight">[Optional] Height of the table in pixels. Defaults to 200px. Note. Pass in a null if to do not
+    /// want any table height set</param>
+    public DatatableSettings(int displayLength, AASort sortOption, string ajaxSource, string footerSuffix = "", string tableHeight = "200px")
+      : this(displayLength, (sortOption == null ? null : new AASort[] { sortOption }), ajaxSource, footerSuffix, tableHeight) { }
+
+    /// <summary>
+    /// Constructor to setup Datatable with default column widths. All columns will get equal width.
+    /// </summary>
+    /// <param name="displayLength">Number of rows to display on a single page when using pagination</param>
     /// <param name="sortOptions">Column sort options. If this is null no sorting will be applied</param>
     /// <param name="ajaxSource">AJAX source URL</param>
     /// <param name="footerSuffix">[Optional] This string gives information to the end user about the information
@@ -128,8 +144,7 @@ namespace WebExtras.JQDataTables
       bFilter = bLengthChange = false;
       sPaginationType = "full_numbers";
       iDisplayLength = displayLength;
-      if (!string.IsNullOrEmpty(tableHeight))
-        sScrollY = tableHeight;
+      sScrollY = tableHeight;
 
       aaSorting = sortOptions.Select(f => f.ToArray()) ?? null;
 
@@ -141,20 +156,7 @@ namespace WebExtras.JQDataTables
       sAjaxSource = ajaxSource;
       bServerSide = !string.IsNullOrEmpty(ajaxSource);
     }
-
-    /// <summary>
-    /// Constructor to setup Datatable with default column widths. All columns will get equal width.
-    /// </summary>
-    /// <param name="displayLength">Number of rows to display on a single page when using pagination</param>
-    /// <param name="sortOption">Column sort option. If this is null no sorting will be applied</param>
-    /// <param name="ajaxSource">AJAX source URL</param>
-    /// <param name="footerSuffix">[Optional] This string gives information to the end user about the information
-    /// that is current on display on the page</param>
-    /// <param name="tableHeight">[Optional] Height of the table in pixels. Defaults to 200px. Note. Pass in a null if to do not
-    /// want any table height set</param>
-    public DatatableSettings(int displayLength, AASort sortOption, string ajaxSource, string footerSuffix = "", string tableHeight = "200px")
-      : this(displayLength, (sortOption == null ? null : new AASort[] { sortOption }), ajaxSource, footerSuffix, tableHeight) { }
-
+    
     /// <summary>
     /// Setup the jQuery dataTables aoColumns variable from the given
     /// set of columns
