@@ -36,7 +36,19 @@
 </div>
 
 <div class="well">
-  <h4>Adding Icons</h4>
+  <h4>Creating a standalone Bootstrap icon</h4>
+  <p>Markup</p>
+  <pre><code>
+@@Html.Icon(BoostrapIcon.Ok)
+  </code></pre>
+  <p>Output</p>
+  <div class="content">
+  @Html.Icon(BoostrapIcon.Ok)
+  </div>
+</div>
+
+<div class="well">
+  <h4>Adding icons to existing elements</h4>
   <p>Markup</p>
   <pre><code>
 @@Html.Hyperlink("Take me to google", "http://www.google.com").AddIcon(BoostrapIcon.Ok)

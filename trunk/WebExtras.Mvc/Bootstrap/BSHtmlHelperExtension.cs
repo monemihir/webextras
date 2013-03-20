@@ -16,11 +16,8 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System.Collections.Generic;
-using System.Security.Principal;
 using System.Web.Mvc;
-using System.Web.Routing;
-using WebExtras.Mvc.Core;
+using WebExtras.Core;
 using WebExtras.Mvc.Html;
 
 namespace WebExtras.Mvc.Bootstrap
@@ -28,7 +25,20 @@ namespace WebExtras.Mvc.Bootstrap
   /// <summary>
   /// Bootstrap Html Helper extension methods
   /// </summary>
-  public static class HtmlHelperExtension
-  {     
+  public static class BSHtmlHelperExtension
+  {
+    /// <summary>
+    /// Renders a Bootstrap icon
+    /// </summary>
+    /// <param name="html">Current Html helper object</param>
+    /// <param name="icon">Icon to be rendered</param>
+    /// <returns>A Bootstrap icon</returns>
+    public static IExtendedHtmlString Icon(this HtmlHelper html, BoostrapIcon icon)
+    {
+      Italic i = new Italic(null);
+      i["class"] = string.Join(" ", icon.GetStringValue());
+
+      return i;
+    }
   }
 }
