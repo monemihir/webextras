@@ -102,3 +102,27 @@ new { a = new { attr1 = value1 ... }, img = new { attr1 = value1 } }
     @Html.Imagelink(Links.Content.png.youtube_logo_png, "YouTube", "Take me to YouTube", "goToYoutube()").AsJavascriptLink()
   </div>
 </div>
+
+<div class="well">
+  <h4>Lists</h4>
+  <p>Markup</p>
+  <pre><code>
+@@Html.List(ListType.Unordered, new HtmlListItem[] {        <span class="comment">// You can create an ordered list by changing the list type</span>
+  new HtmlListItem("list item 1"),
+  new HtmlListItem("list item 2"),
+  new HtmlListItem("list item 3"),
+  new HtmlListItem("list item 4"),
+  new HtmlListItem("list item 5")
+})
+  </code></pre>
+  <p>Output</p>
+  <div class="content">
+    @Html.List(ListType.Unordered, new HtmlListItem[] { 
+      new HtmlListItem("list item 1"),
+      new HtmlListItem("list item 2"),
+      new HtmlListItem("list item 3"),
+      new HtmlListItem("list item 4"),
+      new HtmlListItem("list item 5")
+    })
+  </div>
+</div>

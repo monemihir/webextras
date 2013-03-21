@@ -36,7 +36,7 @@ namespace WebExtras.Mvc.Bootstrap
     public static IExtendedHtmlString Icon(this HtmlHelper html, BoostrapIcon icon)
     {
       Italic i = new Italic(null);
-      i["class"] = string.Join(" ", icon.GetStringValue());
+      i["class"] = "icon-" + icon.ToString().ToLowerInvariant().Replace("_", "-");
 
       return i;
     }

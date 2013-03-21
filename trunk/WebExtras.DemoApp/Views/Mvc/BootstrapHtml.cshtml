@@ -43,7 +43,7 @@
   </code></pre>
   <p>Output</p>
   <div class="content">
-  @Html.Icon(BoostrapIcon.Ok)
+  @Html.Icon(BoostrapIcon.Thumbs_Up) @Html.Icon(BoostrapIcon.Arrow_Down) @Html.Icon(BoostrapIcon.Backward) @Html.Icon(BoostrapIcon.Ban_Circle) @Html.Icon(BoostrapIcon.Tint)
   </div>
 </div>
 
@@ -61,5 +61,24 @@
   <pre><code>
 .AddIcon(icon)
 .AddWhiteIcon(icon)
+  </code></pre>
+</div>
+
+<div class="well">
+  <h4>Creating button styled hyperlinks</h4>
+  <p>Markup</p>
+  <pre><code>
+@@Html.Hyperlink("Take me to google", "http://www.google.com")
+    .AddWhiteIcon(BoostrapIcon.Ok)
+    .AsButton(BootstrapButtonType.Info)
+  </code></pre>
+  <p>Output</p>
+  <div class="content">
+    @Html.Hyperlink("Take me to google", "http://www.google.com").AddWhiteIcon(BoostrapIcon.Ok).AsButton(BootstrapButtonType.Info)
+  </div>
+  <p>All available extensions</p>
+  <pre><code>
+<span class="comment">// Note that this extension can only be used for hyperlinks and button elements</span>
+.AsButton(type)
   </code></pre>
 </div>
