@@ -38,18 +38,37 @@ namespace WebExtras.Mvc.Html
     List<IExtendedHtmlString> AppendTags { get; }
 
     /// <summary>
+    /// Inner HTML tags to be prepended
+    /// </summary>
+    List<IExtendedHtmlString> PrependTags { get; }
+
+    /// <summary>
     /// Appends the given HTML element at the end of the current 
     /// element
     /// </summary>
-    /// <param name="html">HTML element to be added</param>    
-    void AppendElement(IExtendedHtmlString html);
+    /// <param name="element">HTML element to be added</param>    
+    void Append(IExtendedHtmlString element);
 
+    /// <summary>
+    /// Appends the given HTML elements at the end of the current 
+    /// element
+    /// </summary>
+    /// <param name="elements">HTML elements to be added</param>
+    void Append(IEnumerable<IExtendedHtmlString> elements);
+    
     /// <summary>
     /// Prepends the given HTML element at the beginning of
     /// the current element
     /// </summary>
-    /// <param name="html">HTML element to be added</param>
-    void PrependElement(IExtendedHtmlString html);
+    /// <param name="element">HTML element to be added</param>
+    void Prepend(IExtendedHtmlString element);
+
+    /// <summary>
+    /// Prepends the given HTML elements at the beginning of
+    /// the current element
+    /// </summary>
+    /// <param name="elements">HTML elements to be added</param>
+    void Prepend(IEnumerable<IExtendedHtmlString> elements);
 
     /// <summary>
     /// Converts current element to a MVC HTMl string with

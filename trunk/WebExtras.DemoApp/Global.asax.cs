@@ -24,6 +24,7 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Routing;
 using WebExtras.DemoApp.App_Start;
+using WebExtras.Mvc.Core;
 
 namespace WebExtras.DemoApp
 {
@@ -39,6 +40,8 @@ namespace WebExtras.DemoApp
       FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
       RouteConfig.RegisterRoutes(RouteTable.Routes);
       BundleConfig.RegisterBundles();
+
+      WebExtrasMvcConstants.EnableAutoIdGeneration = true;
     }
   }
 }

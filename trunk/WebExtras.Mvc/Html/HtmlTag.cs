@@ -61,6 +61,11 @@ namespace WebExtras.Mvc.Html
     /// <summary>
     /// HTML LIST ITEM tag
     /// </summary>
-    ListItem
+    ListItem,
+
+    /// <summary>
+    /// HTML DIV tag
+    /// </summary>
+    Div
   }
 }

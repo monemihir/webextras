@@ -16,29 +16,18 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace WebExtras.Mvc.Html
+namespace WebExtras.Mvc.Core
 {
   /// <summary>
-  /// Generic extension for an extended html string
+  /// A list of WebExtras constants
   /// </summary>
-  public static class ExtendedHtmlStringExtension
+  public sealed class WebExtrasMvcConstants
   {
     /// <summary>
-    /// Adds given CSS class(es) to the current HTML element
+    /// Flag indicating whether to enable the generation of
+    /// automatic IDs for all HTML elements rendered by
+    /// the WebExtras.Mvc library
     /// </summary>
-    /// <param name="html">HTML element to add class to</param>
-    /// <param name="css">CSS class(es) to be added</param>
-    /// <returns>Current HTML element with classes added</returns>
-    public static IExtendedHtmlString AddCssClass(this IExtendedHtmlString html, string css)
-    {
-      html.Tag.AddCssClass(css);
-
-      return html;
-    }
+    public static bool EnableAutoIdGeneration { get; set; }
   }
 }

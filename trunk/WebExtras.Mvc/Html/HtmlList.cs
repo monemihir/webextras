@@ -39,11 +39,24 @@ namespace WebExtras.Mvc.Html
     /// Constructor
     /// </summary>
     /// <param name="type">Type of list</param>
+    /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
+    public HtmlList(ListType type, object htmlAttributes = null)
+      : base(HtmlTag.List, htmlAttributes)
+    {
+      Type = type;
+      Tag = new TagBuilder(type.GetStringValue());
+    }
+
+    /// <summary>
+    /// Constructor
+    /// </summary>
+    /// <param name="type">Type of list</param>
     /// <param name="listItems">A collection of items</param>
     /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
     public HtmlList(ListType type, IEnumerable<HtmlListItem> listItems, object htmlAttributes = null)
       : base(HtmlTag.List, htmlAttributes)
     {
+      Type = type;
       Tag = new TagBuilder(type.GetStringValue());
       AppendTags.AddRange(listItems);
     }

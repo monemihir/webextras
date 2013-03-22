@@ -25,7 +25,7 @@ namespace WebExtras.Mvc.Bootstrap
   /// <summary>
   /// A collection of all available icons
   /// </summary>
-  public enum BoostrapIcon
+  public enum BootstrapIcon
   {
     Adjust,
     Align_Center,

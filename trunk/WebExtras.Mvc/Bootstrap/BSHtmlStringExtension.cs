@@ -36,11 +36,11 @@ namespace WebExtras.Mvc.Bootstrap
     /// <param name="html">Current html element</param>
     /// <param name="icon">Icon to be rendered</param>
     /// <returns>Html element with icon added</returns>
-    public static T AddIcon<T>(this T html, BoostrapIcon icon) where T : IExtendedHtmlString
+    public static T AddIcon<T>(this T html, BootstrapIcon icon) where T : IExtendedHtmlString
     {
-      Italic i = new Italic(null);
+      Italic i = new Italic();
       i["class"] = "icon-" + icon.ToString().ToLowerInvariant().Replace("_", "-");
-      html.PrependElement(i);
+      html.Prepend(i);
 
       return html;
     }
@@ -52,11 +52,11 @@ namespace WebExtras.Mvc.Bootstrap
     /// <param name="html">Current html element</param>
     /// <param name="icon">Icon to be rendered</param>
     /// <returns>Html element with a white icon added</returns>
-    public static T AddWhiteIcon<T>(this T html, BoostrapIcon icon) where T : IExtendedHtmlString
+    public static T AddWhiteIcon<T>(this T html, BootstrapIcon icon) where T : IExtendedHtmlString
     {
-      Italic i = new Italic(null);
+      Italic i = new Italic();
       i["class"] = "icon-white icon-" + icon.ToString().ToLowerInvariant().Replace("_", "-");
-      html.PrependElement(i);
+      html.Prepend(i);
 
       return html;
     }

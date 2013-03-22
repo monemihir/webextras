@@ -1,9 +1,8 @@
 ﻿@{
   ViewBag.Title = "Mvc Bootstrap Html Helper Extensions";
 }
-
-<h3 class="keep-center">Mvc Bootstrap Html Helper Extensions</h3>
-
+<h3 class="keep-center">
+  Mvc Bootstrap Html Helper Extensions</h3>
 <div class="row-fluid">
   <div class="span6">
     <div class="row-fluid">
@@ -34,51 +33,97 @@
     </div>
   </div>
 </div>
-
 <div class="well">
-  <h4>Creating a standalone Bootstrap icon</h4>
-  <p>Markup</p>
+  <h4>
+    Icon</h4>
+  <p>
+    Markup</p>
   <pre><code>
-@@Html.Icon(BoostrapIcon.Ok)
+  @@Html.Icon(BootstrapIcon.Ok) 
   </code></pre>
-  <p>Output</p>
+  <p>
+    Output</p>
   <div class="content">
-  @Html.Icon(BoostrapIcon.Thumbs_Up) @Html.Icon(BoostrapIcon.Arrow_Down) @Html.Icon(BoostrapIcon.Backward) @Html.Icon(BoostrapIcon.Ban_Circle) @Html.Icon(BoostrapIcon.Tint)
+    @Html.Icon(BootstrapIcon.Thumbs_Up) @Html.Icon(BootstrapIcon.Arrow_Down) @Html.Icon(BootstrapIcon.Backward)
+    @Html.Icon(BootstrapIcon.Ban_Circle) @Html.Icon(BootstrapIcon.Tint)
   </div>
 </div>
-
 <div class="well">
-  <h4>Adding icons to existing elements</h4>
-  <p>Markup</p>
+  <h4>
+    Adding icons to existing elements</h4>
+  <p>
+    Markup</p>
   <pre><code>
-@@Html.Hyperlink("Take me to google", "http://www.google.com").AddIcon(BoostrapIcon.Ok)
+  @@Html.Hyperlink("Take me to google", "http://www.google.com").AddIcon(BootstrapIcon.Ok)
   </code></pre>
-  <p>Output</p>
+  <p>
+    Output</p>
   <div class="content">
-    @Html.Hyperlink("Take me to google", "http://www.google.com").AddIcon(BoostrapIcon.Ok)
+    @Html.Hyperlink("Take me to google", "http://www.google.com").AddIcon(BootstrapIcon.Ok)
   </div>
-  <p>All available extensions</p>
+  <p>
+    All available extensions</p>
   <pre><code>
-.AddIcon(icon)
-.AddWhiteIcon(icon)
+  .AddIcon(icon) 
+  .AddWhiteIcon(icon) 
   </code></pre>
 </div>
-
 <div class="well">
-  <h4>Creating button styled hyperlinks</h4>
+  <h4>
+    Button styled hyperlinks</h4>
+  <p>
+    Markup</p>
+  <pre><code>
+  @@Html.Hyperlink("Take me to google", "http://www.google.com")
+    .AddWhiteIcon(BootstrapIcon.Ok)
+    .AsButton(BootstrapButtonType.Info) 
+  </code></pre>
+  <p>
+    Output</p>
+  <div class="content">
+    @Html.Hyperlink("Take me to google", "http://www.google.com").AddWhiteIcon(BootstrapIcon.Ok).AsButton(BootstrapButtonType.Info)
+  </div>
+  <p>
+    All available extensions</p>
+  <pre><code>
+  <span class="comment">// Note that this extension can only be used for hyperlinks and button elements</span> 
+  .AsButton(type) 
+  </code></pre>
+</div>
+<div class="well">
+  <h4>
+    Navbar</h4>
   <p>Markup</p>
   <pre><code>
-@@Html.Hyperlink("Take me to google", "http://www.google.com")
-    .AddWhiteIcon(BoostrapIcon.Ok)
-    .AsButton(BootstrapButtonType.Info)
+    @@{
+      <span class="comment">// You can use hyperlink elements or HtmlListItem elements or even a HtmlList element to render a navbar</span>
+      Hyperlink link1 = new Hyperlink("Link 1", "#");
+      Hyperlink link2 = new Hyperlink("Link 2", "#");
+      Hyperlink link3 = new Hyperlink("Link 3", "#");
+      Hyperlink link4 = new Hyperlink("Brand", "#", new { @@class = "brand" });
+        
+      HtmlListItem item3 = new HtmlListItem(string.Empty);
+      item3.Append(link3);        
+    }      
+
+    <span class="comment">// Use appropriate navbar type to get all bootstrap effects</span>
+    @@Html.Navbar(BootstrapNavbarType.Normal, link1, link2, item3, link4)<span class="highlight">.AsInverse()</span>  <span class="comment">// Creates an inverse styled navbar</span>
   </code></pre>
-  <p>Output</p>
+  <p>
+    Output</p>
   <div class="content">
-    @Html.Hyperlink("Take me to google", "http://www.google.com").AddWhiteIcon(BoostrapIcon.Ok).AsButton(BootstrapButtonType.Info)
+    <div class="container-fluid">
+      @{
+        Hyperlink link1 = new Hyperlink("Link 1", "#");
+        Hyperlink link2 = new Hyperlink("Link 2", "#");
+        Hyperlink link3 = new Hyperlink("Link 3", "#");
+        Hyperlink link4 = new Hyperlink("Brand", "#", new { @class = "brand" });
+        
+        HtmlListItem item3 = new HtmlListItem(string.Empty);
+        item3.Append(link3);        
+      }      
+
+      @Html.Navbar(BootstrapNavbarType.Normal, link1, link2, item3, link4).AsInverse()
+    </div>
   </div>
-  <p>All available extensions</p>
-  <pre><code>
-<span class="comment">// Note that this extension can only be used for hyperlinks and button elements</span>
-.AsButton(type)
-  </code></pre>
 </div>

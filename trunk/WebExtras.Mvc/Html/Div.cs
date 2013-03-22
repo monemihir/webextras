@@ -16,29 +16,36 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace WebExtras.Mvc.Html
 {
   /// <summary>
-  /// Generic extension for an extended html string
+  /// Represents a HTML DIV element
   /// </summary>
-  public static class ExtendedHtmlStringExtension
+  public class Div : HtmlElement
   {
     /// <summary>
-    /// Adds given CSS class(es) to the current HTML element
+    /// Text to be displayed within the DIV
     /// </summary>
-    /// <param name="html">HTML element to add class to</param>
-    /// <param name="css">CSS class(es) to be added</param>
-    /// <returns>Current HTML element with classes added</returns>
-    public static IExtendedHtmlString AddCssClass(this IExtendedHtmlString html, string css)
-    {
-      html.Tag.AddCssClass(css);
+    public string Text { get { return Tag.InnerHtml; } set { Tag.InnerHtml = value; } }
 
-      return html;
+    /// <summary>
+    /// Constructor
+    /// </summary>
+    /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
+    public Div(object htmlAttributes = null)
+      : base(HtmlTag.Div, htmlAttributes)
+    { }
+
+    /// <summary>
+    /// Constructor
+    /// </summary>
+    /// <param name="text">Text to be displayed</param>
+    /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
+    public Div(string text, object htmlAttributes = null)
+      : base(HtmlTag.Div, htmlAttributes)
+    {
+      Text = text;
     }
   }
 }

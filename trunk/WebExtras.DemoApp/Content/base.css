@@ -13,16 +13,6 @@ header, footer, nav, section
   display: block;
 }
 
-.keep-center
-{
-  text-align: center;
-}
-
-.keep-right
-{
-  text-align: right;
-}
-
 .main
 {
   margin-top: 20px;

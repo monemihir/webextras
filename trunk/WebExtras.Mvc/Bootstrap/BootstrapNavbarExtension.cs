@@ -16,29 +16,24 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
-namespace WebExtras.Mvc.Html
+namespace WebExtras.Mvc.Bootstrap
 {
   /// <summary>
-  /// Generic extension for an extended html string
+  /// Bootstrap navigation bar extensions
   /// </summary>
-  public static class ExtendedHtmlStringExtension
+  public static class BootstrapNavbarExtension
   {
     /// <summary>
-    /// Adds given CSS class(es) to the current HTML element
+    /// Create an inverse bootstrap navigation bar
     /// </summary>
-    /// <param name="html">HTML element to add class to</param>
-    /// <param name="css">CSS class(es) to be added</param>
-    /// <returns>Current HTML element with classes added</returns>
-    public static IExtendedHtmlString AddCssClass(this IExtendedHtmlString html, string css)
+    /// <param name="navbar">Bootstrap navigation bar to convert</param>
+    /// <returns>An inverse bootstrap navigation bar</returns>
+    public static BootstrapNavBar AsInverse(this BootstrapNavBar navbar)
     {
-      html.Tag.AddCssClass(css);
+      navbar.Tag.AddCssClass("navbar-inverse");
 
-      return html;
+      return navbar;
     }
   }
 }

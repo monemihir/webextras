@@ -16,10 +16,11 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System.Collections.Generic;
-using System.Web.Mvc;
-using System.Linq;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web.Mvc;
+using WebExtras.Mvc.Core;
 
 namespace WebExtras.Mvc.Html
 {
@@ -76,8 +77,8 @@ namespace WebExtras.Mvc.Html
     /// <summary>
     /// Constructor to specify extra HTML attributes as an anonymous type
     /// </summary>
-    /// <param name="tag"></param>
-    /// <param name="htmlAttributes"></param>
+    /// <param name="tag">An HTML tag to initialise this element with</param>
+    /// <param name="htmlAttributes">Extra HTML attributes</param>
     public HtmlElement(HtmlTag tag, object htmlAttributes)
       : this(tag)
     {
@@ -106,20 +107,40 @@ namespace WebExtras.Mvc.Html
     /// Appends the given HTML element at the end of the current 
     /// element
     /// </summary>
-    /// <param name="html">HTML element to be added</param>
-    public void AppendElement(IExtendedHtmlString html)
+    /// <param name="element">HTML element to be added</param>
+    public void Append(IExtendedHtmlString element)
     {
-      AppendTags.Add(html);
+      AppendTags.Add(element);
+    }
+    
+    /// <summary>
+    /// Appends the given HTML elements at the end of the current 
+    /// element
+    /// </summary>
+    /// <param name="elements">HTML elements to be added</param>
+    public void Append(IEnumerable<IExtendedHtmlString> elements)
+    {
+      AppendTags.AddRange(elements);
     }
 
     /// <summary>
     /// Prepends the given HTML element at the beginning of
     /// the current element
     /// </summary>
-    /// <param name="html">HTML element to be added</param>
-    public void PrependElement(IExtendedHtmlString html)
+    /// <param name="element">HTML element to be added</param>
+    public void Prepend(IExtendedHtmlString element)
     {
-      PrependTags.Add(html);
+      PrependTags.Add(element);
+    }
+
+    /// <summary>
+    /// Prepends the given HTML elements at the beginning of
+    /// the current element
+    /// </summary>
+    /// <param name="elements">HTML elements to be added</param>
+    public void Prepend(IEnumerable<IExtendedHtmlString> elements)
+    {
+      PrependTags.AddRange(elements);
     }
 
     /// <summary>
@@ -139,15 +160,20 @@ namespace WebExtras.Mvc.Html
     /// <returns>MVC HTML string representation of the current element</returns>
     public virtual string ToHtmlString(TagRenderMode renderMode)
     {
-      if (!Tag.Attributes.ContainsKey("id"))
+      if (!Tag.Attributes.ContainsKey("id") && WebExtrasMvcConstants.EnableAutoIdGeneration)
         this["id"] = string.Format("auto_{0}", m_rand.Next(1, 9999).ToString());
-      
+
+      string innerHtml = Tag.InnerHtml;
+
       Tag.InnerHtml =
         string.Join("", PrependTags.Select(f => f.ToHtmlString())) +
         Tag.InnerHtml +
         string.Join("", AppendTags.Select(f => f.ToHtmlString()));
 
-      return Tag.ToString(renderMode);
+      string result = Tag.ToString(renderMode);
+      Tag.InnerHtml = innerHtml;
+
+      return result;
     }
 
     /// <summary>

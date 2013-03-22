@@ -21,7 +21,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <PlatformTarget>x86</PlatformTarget>
     <DocumentationFile>bin\WebExtras.Mvc.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -32,7 +31,6 @@
     </DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <PlatformTarget>x86</PlatformTarget>
     <DocumentationFile>bin\WebExtras.Mvc.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
@@ -72,8 +70,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bootstrap\ActionMessageControllerExtension.cs" />
+    <Compile Include="Bootstrap\BootstrapNavbarExtension.cs" />
+    <Compile Include="Bootstrap\BootstrapNavBar.cs" />
+    <Compile Include="Core\WebExtrasMvcConstants.cs" />
     <Compile Include="Html\Button.cs" />
     <Compile Include="Bootstrap\BootstrapButtonType.cs" />
+    <Compile Include="Html\Div.cs" />
     <Compile Include="Html\Empty.cs" />
     <Compile Include="Html\ExtendedHtmlStringExtension.cs" />
     <Compile Include="Bootstrap\BSFormHtmlHelperExtension.cs" />
@@ -86,11 +88,12 @@
     <Compile Include="Html\Hyperlink.cs" />
     <Compile Include="Bootstrap\BSHtmlStringExtension.cs" />
     <Compile Include="Html\IExtendedHtmlString.cs" />
-    <Compile Include="Bootstrap\BoostrapIcon.cs" />
+    <Compile Include="Bootstrap\BootstrapIcon.cs" />
     <Compile Include="Html\Image.cs" />
     <Compile Include="Html\Italic.cs" />
     <Compile Include="Html\HtmlList.cs" />
     <Compile Include="Html\ListType.cs" />
+    <Compile Include="Bootstrap\BootstrapNavbarType.cs" />
     <Compile Include="Html\RadioButton.cs" />
     <Compile Include="JavascriptHelper.cs" />
     <Compile Include="Core\ActionMessageType.cs" />

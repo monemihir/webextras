@@ -16,29 +16,37 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using WebExtras.Core;
 
-namespace WebExtras.Mvc.Html
+namespace WebExtras.Mvc.Bootstrap
 {
   /// <summary>
-  /// Generic extension for an extended html string
+  /// Types of bootstrap navigation bars available
   /// </summary>
-  public static class ExtendedHtmlStringExtension
+  public enum BootstrapNavbarType
   {
     /// <summary>
-    /// Adds given CSS class(es) to the current HTML element
+    /// Regular navigation bar
     /// </summary>
-    /// <param name="html">HTML element to add class to</param>
-    /// <param name="css">CSS class(es) to be added</param>
-    /// <returns>Current HTML element with classes added</returns>
-    public static IExtendedHtmlString AddCssClass(this IExtendedHtmlString html, string css)
-    {
-      html.Tag.AddCssClass(css);
+    [StringValue("navbar")]
+    Normal,
 
-      return html;
-    }
+    /// <summary>
+    /// Navigation bar fixed at top of the viewport
+    /// </summary>
+    [StringValue("navbar-fixed-top")]
+    FixedTop,
+
+    /// <summary>
+    /// Navigation bar fixed at bottom of the viewport
+    /// </summary>
+    [StringValue("navbar-fixed-bottom")]
+    FixedBottom,
+
+    /// <summary>
+    /// Navigation bar fixed at top of the page
+    /// </summary>
+    [StringValue("navbar-static-top")]
+    StaticTop
   }
 }
