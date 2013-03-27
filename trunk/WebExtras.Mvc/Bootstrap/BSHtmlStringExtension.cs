@@ -70,6 +70,17 @@ namespace WebExtras.Mvc.Bootstrap
     /// </summary>
     /// <typeparam name="T">Generic type to be used. Can only be either Hyperlink or Button</typeparam>
     /// <param name="html">Current HTML element</param>
+    /// <returns>A special button</returns>
+    public static T AsButton<T>(this T html) where T : IExtendedHtmlString
+    {
+      return AsButton<T>(html, BootstrapButtonType.Default);
+    }
+
+    /// <summary>
+    /// Create special buttons
+    /// </summary>
+    /// <typeparam name="T">Generic type to be used. Can only be either Hyperlink or Button</typeparam>
+    /// <param name="html">Current HTML element</param>
     /// <param name="type">Bootstrap button type</param>
     /// <returns>A special button</returns>
     public static T AsButton<T>(this T html, BootstrapButtonType type) where T : IExtendedHtmlString

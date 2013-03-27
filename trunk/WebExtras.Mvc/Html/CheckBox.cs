@@ -50,6 +50,15 @@ namespace WebExtras.Mvc.Html
     /// </summary>
     /// <param name="text">Text to be displayed for the check box</param>
     /// <param name="value">Value for check box</param>
+    public CheckBox(string text, string value)
+      : this(text, value, false, false, null)
+    { }
+
+    /// <summary>
+    /// Constructor
+    /// </summary>
+    /// <param name="text">Text to be displayed for the check box</param>
+    /// <param name="value">Value for check box</param>
     /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
     public CheckBox(string text, string value, object htmlAttributes = null)
       : this(text, value, false, false, htmlAttributes)
@@ -61,11 +70,31 @@ namespace WebExtras.Mvc.Html
     /// <param name="text">Text to be displayed for the check box</param>
     /// <param name="value">Value for check box</param>
     /// <param name="isChecked">Flag indicating whether the check box is checked</param>
+    public CheckBox(string text, string value, bool isChecked)
+      : this(text, value, isChecked, false, null)
+    { }
+
+    /// <summary>
+    /// Constructor
+    /// </summary>
+    /// <param name="text">Text to be displayed for the check box</param>
+    /// <param name="value">Value for check box</param>
+    /// <param name="isChecked">Flag indicating whether the check box is checked</param>
     /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
     public CheckBox(string text, string value, bool isChecked, object htmlAttributes = null)
       : this(text, value, isChecked, false, htmlAttributes)
-    {
-    }
+    { }
+
+    /// <summary>
+    /// Constructor
+    /// </summary>
+    /// <param name="text">Text to be displayed for the check box</param>
+    /// <param name="value">Value for check box</param>
+    /// <param name="isChecked">Flag indicating whether the check box is checked</param>
+    /// <param name="isDisabled">Flag indicating whether the check box is disabled</param>
+    public CheckBox(string text, string value, bool isChecked, bool isDisabled)
+      : this(text, value, isChecked, isDisabled, null)
+    { }
 
     /// <summary>
     /// Constructor
