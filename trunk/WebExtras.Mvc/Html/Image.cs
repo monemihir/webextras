@@ -27,6 +27,7 @@ namespace WebExtras.Mvc.Html
   /// <summary>
   /// Represents an HTML IMG element
   /// </summary>
+  [Serializable]
   public class Image : HtmlElement
   {
     /// <summary>

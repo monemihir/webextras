@@ -16,11 +16,13 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+using System;
 namespace WebExtras.Mvc.Core
 {
   /// <summary>
   /// A list of WebExtras constants
   /// </summary>
+  [Serializable]
   public sealed class WebExtrasMvcConstants
   {
     /// <summary>

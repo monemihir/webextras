@@ -18,6 +18,7 @@
 
 #pragma warning disable 1591
 
+using System;
 using WebExtras.Core;
 
 namespace WebExtras.Mvc.Bootstrap
@@ -25,6 +26,7 @@ namespace WebExtras.Mvc.Bootstrap
   /// <summary>
   /// A collection of all available icons
   /// </summary>
+  [Serializable]
   public enum BootstrapIcon
   {
     Adjust,

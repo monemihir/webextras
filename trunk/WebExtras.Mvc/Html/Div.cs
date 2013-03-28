@@ -16,12 +16,14 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+using System;
 
 namespace WebExtras.Mvc.Html
 {
   /// <summary>
   /// Represents a HTML DIV element
   /// </summary>
+  [Serializable]
   public class Div : HtmlElement
   {
     /// <summary>

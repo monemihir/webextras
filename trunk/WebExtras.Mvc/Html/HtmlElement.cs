@@ -27,6 +27,7 @@ namespace WebExtras.Mvc.Html
   /// <summary>
   /// Represents an HTML element
   /// </summary>
+  [Serializable]
   public class HtmlElement : IExtendedHtmlString
   {
     /// <summary>

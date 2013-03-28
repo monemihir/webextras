@@ -27,6 +27,7 @@ namespace WebExtras.Mvc.Html
   /// <summary>
   /// A collection of list types
   /// </summary>
+  [Serializable]
   public enum ListType
   {
     /// <summary>

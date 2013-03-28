@@ -16,6 +16,7 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
@@ -25,6 +26,7 @@ namespace WebExtras.Mvc.Html
   /// <summary>
   /// Represents an HTML A element
   /// </summary>
+  [Serializable]
   public class Hyperlink : HtmlElement
   {
     /// <summary>

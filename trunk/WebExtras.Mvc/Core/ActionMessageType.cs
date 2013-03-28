@@ -16,6 +16,7 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+using System;
 using WebExtras.Core;
 
 namespace WebExtras.Mvc.Core
@@ -23,6 +24,7 @@ namespace WebExtras.Mvc.Core
   /// <summary>
   /// Type of action message
   /// </summary>
+  [Serializable]
   public enum ActionMessageType
   {
     /// <summary>

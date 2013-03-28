@@ -27,6 +27,7 @@ namespace WebExtras.Mvc.Html
   /// <summary>
   /// An empty HTML tag
   /// </summary>
+  [Serializable]
   public class Empty : HtmlElement
   {
     /// <summary>

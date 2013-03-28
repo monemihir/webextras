@@ -16,6 +16,7 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+using System;
 using WebExtras.Core;
 
 namespace WebExtras.Mvc.Html
@@ -23,6 +24,7 @@ namespace WebExtras.Mvc.Html
   /// <summary>
   /// Indicates the type of HTML button to be rendered
   /// </summary>
+  [Serializable]
   public enum ButtonOfType
   {
     /// <summary>

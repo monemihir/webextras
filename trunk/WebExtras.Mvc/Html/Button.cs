@@ -26,6 +26,7 @@ namespace WebExtras.Mvc.Html
   /// <summary>
   /// Represents a HTML BUTTON element
   /// </summary>
+  [Serializable]
   public class Button : HtmlElement
   {
     /// <summary>

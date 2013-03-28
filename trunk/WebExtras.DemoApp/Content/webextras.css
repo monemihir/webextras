@@ -50,6 +50,11 @@ input[type="radio"] {
 	text-align: left;
 }
 
+.keep-middle
+{
+  vertical-align: middle;
+}
+
 /*
  *  Bootstrap extensions
  */

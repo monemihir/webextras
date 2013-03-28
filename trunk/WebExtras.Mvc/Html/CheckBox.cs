@@ -16,6 +16,7 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+using System;
 using System.Web.Mvc;
 
 namespace WebExtras.Mvc.Html
@@ -23,6 +24,7 @@ namespace WebExtras.Mvc.Html
   /// <summary>
   /// Represents a HTML Checkbox element
   /// </summary>
+  [Serializable]
   public class CheckBox : HtmlElement
   {
     /// <summary>

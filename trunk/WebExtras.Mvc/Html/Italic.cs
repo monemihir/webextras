@@ -16,11 +16,14 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+using System;
+
 namespace WebExtras.Mvc.Html
 {
   /// <summary>
   /// Represents an HTML I element
   /// </summary>
+  [Serializable]
   public class Italic : HtmlElement
   {
     /// <summary>

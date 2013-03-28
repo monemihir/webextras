@@ -27,6 +27,7 @@ namespace WebExtras.Mvc.Html
   /// <summary>
   /// Represents a HTML RADIO button element
   /// </summary>
+  [Serializable]
   public class RadioButton : HtmlElement
   {
     /// <summary>

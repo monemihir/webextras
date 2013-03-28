@@ -26,6 +26,7 @@ namespace WebExtras.JQFlot.SubOptions
   /// <summary>
   /// curved line options
   /// </summary>
+  [Serializable]
   public class CurvedLineOptions
   {
     /// <summary>

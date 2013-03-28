@@ -43,6 +43,43 @@
 </div>
 
 <div class="well">
+  <h4>Images</h4>
+  <p>Markup</p>
+  <pre><code>
+@@Html.Image("/Content/png/youtube-logo.png", "YouTube", "Take me to YouTube")
+  </code></pre>
+  <p>Output</p>
+  <div class="content">
+    @Html.Image(Links.Content.png.youtube_logo_png, "YouTube", "Take me to YouTube")
+  </div>
+  <p>All available extensions</p>
+  <pre><code>
+@@Html.Image(src, htmlAttributes)
+@@Html.Image(src, altText, htmlAttributes)
+@@Html.Image(src, altText, title, htmlAttributes)
+  </code></pre>
+  <h4>Styled images</h4>
+  <div class="content">
+    Bootstrap supports styling of images via the following CSS classes:<br />
+    <table class="table table-bordered">
+      <tr>
+        <td class="keep-middle">.img-circle</td>
+        <td>@Html.Image(Links.Content.png.youtube_logo_png, "YouTube", "Take me to YouTube", new { style = "width: 50%; height: 50%" }).AddCssClass("img-circle")</td>
+      </tr>
+      <tr>
+        <td class="keep-middle">.img-rounded</td>
+        <td>@Html.Image(Links.Content.png.youtube_logo_png, "YouTube", "Take me to YouTube", new { style = "width: 50%; height: 50%" }).AddCssClass("img-rounded")</td>
+      </tr>
+      <tr>
+        <td class="keep-middle">.img-polaroid</td>
+        <td>@Html.Image(Links.Content.png.youtube_logo_png, "YouTube", "Take me to YouTube", new { style = "width: 50%; height: 50%" }).AddCssClass("img-polaroid")</td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+
+<div class="well">
   <h4>Imagelinks</h4>
   <p>An image link is basically an image embedded into a hyperlink</p>
   <p>Markup</p>

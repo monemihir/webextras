@@ -104,7 +104,11 @@
         
       HtmlListItem item3 = new HtmlListItem(string.Empty);
       item3.Append(link3);        
+
+      HtmlList list = new HtmlList(ListType.Unordered, new HtmlListItem[] { item3 });    
     }      
+
+    @@Html.Navbar(BootstrapNavbarType.Normal, list)
 
     <span class="comment">// Use appropriate navbar type to get all bootstrap effects</span>
     @@Html.Navbar(BootstrapNavbarType.Normal, link1, link2, item3, link4)<span class="highlight">.AsInverse()</span>  <span class="comment">// Creates an inverse styled navbar</span>
@@ -120,8 +124,12 @@
         Hyperlink link4 = new Hyperlink("Brand", "#", new { @class = "brand" });
         
         HtmlListItem item3 = new HtmlListItem(string.Empty);
-        item3.Append(link3);        
+        item3.Append(link3);
+
+        HtmlList list = new HtmlList(ListType.Unordered, new HtmlListItem[] { item3 });    
       }      
+
+      @Html.Navbar(BootstrapNavbarType.Normal, list)
 
       @Html.Navbar(BootstrapNavbarType.Normal, link1, link2, item3, link4).AsInverse()
     </div>

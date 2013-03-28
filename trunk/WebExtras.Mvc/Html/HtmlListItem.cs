@@ -27,6 +27,7 @@ namespace WebExtras.Mvc.Html
   /// <summary>
   /// Represents a HTML LIST ITEM element
   /// </summary>
+  [Serializable]
   public class HtmlListItem : HtmlElement
   {
     /// <summary>

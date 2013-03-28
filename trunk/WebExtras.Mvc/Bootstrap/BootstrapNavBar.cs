@@ -25,6 +25,7 @@ namespace WebExtras.Mvc.Bootstrap
   /// <summary>
   /// A bootstrap navigation bar element
   /// </summary>
+  [Serializable]
   public class BootstrapNavBar : HtmlElement
   {
     /// <summary>

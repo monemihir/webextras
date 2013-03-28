@@ -16,6 +16,7 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+using System;
 using WebExtras.Core;
 
 namespace WebExtras.Mvc.Bootstrap
@@ -23,6 +24,7 @@ namespace WebExtras.Mvc.Bootstrap
   /// <summary>
   /// Types of bootstrap navigation bars available
   /// </summary>
+  [Serializable]
   public enum BootstrapNavbarType
   {
     /// <summary>

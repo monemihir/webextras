@@ -16,11 +16,14 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+using System;
+
 namespace WebExtras.Mvc.Html
 {
   /// <summary>
   /// A collection of all HTML tags available
   /// </summary>
+  [Serializable]
   public enum HtmlTag
   {
     /// <summary>

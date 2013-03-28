@@ -24,6 +24,7 @@ namespace WebExtras.Core
   /// String value attribute which can be applied to Enumerations
   /// to resolve to STRING rather than the default INT
   /// </summary>
+  [Serializable]
   public class StringValueAttribute : Attribute
   {
     /// <summary>

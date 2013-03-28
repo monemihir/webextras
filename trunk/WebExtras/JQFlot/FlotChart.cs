@@ -26,6 +26,7 @@ namespace WebExtras.JQFlot
   /// <summary>
   /// a flot chart containing options and series to be plotted
   /// </summary>
+  [Serializable]
   public class FlotChart
   {
     /// <summary>
