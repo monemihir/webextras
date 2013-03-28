@@ -47,7 +47,7 @@ namespace WebExtras.Mvc.Core
     /// <param name="url">Link URL</param>
     /// <param name="htmlAttributes">[Optional] Extra html attributes for the image link. By default 
     /// these attributes will be applied to the A tag only. See documentation for how to apply attributes 
-    /// to the IMG tag here - <see cref="http://mihirmone.dyndns.org/appdocs/webextras/mvc/corehtml"/></param>.
+    /// to the IMG tag here - <see href="http://mihirmone.dyndns.org/appdocs/webextras/mvc/corehtml"/></param>.
     /// <returns>HTML image hyperlink</returns>
     public static IExtendedHtmlString Imagelink(
       this HtmlHelper html,
@@ -67,7 +67,7 @@ namespace WebExtras.Mvc.Core
     /// <param name="url">Link URL</param>
     /// <param name="htmlAttributes">[Optional] Extra html attributes for the image link. By default 
     /// these attributes will be applied to the A tag only. See documentation for how to apply attributes 
-    /// to the IMG tag here - <see cref="http://mihirmone.dyndns.org/appdocs/webextras/mvc/corehtml"/></param>.
+    /// to the IMG tag here - <see href="http://mihirmone.dyndns.org/appdocs/webextras/mvc/corehtml"/></param>.
     /// <returns>HTML image hyperlink</returns>
     public static IExtendedHtmlString Imagelink(
       this HtmlHelper html,
@@ -87,7 +87,7 @@ namespace WebExtras.Mvc.Core
     /// <param name="result">Action result</param>
     /// <param name="htmlAttributes">[Optional] Extra html attributes for the image link. By default 
     /// these attributes will be applied to the A tag only. See documentation for how to apply attributes 
-    /// to the IMG tag here - <see cref="http://mihirmone.dyndns.org/appdocs/webextras/mvc/corehtml"/></param>.
+    /// to the IMG tag here - <see href="http://mihirmone.dyndns.org/appdocs/webextras/mvc/corehtml"/></param>.
     /// <returns>HTML image hyperlink</returns>
     public static IExtendedHtmlString Imagelink(
       this HtmlHelper html,
@@ -107,7 +107,7 @@ namespace WebExtras.Mvc.Core
     /// <param name="result">Action result</param>
     /// <param name="htmlAttributes">[Optional] Extra html attributes for the image link. By default 
     /// these attributes will be applied to the A tag only. See documentation for how to apply attributes 
-    /// to the IMG tag here - <see cref="http://mihirmone.dyndns.org/appdocs/webextras/mvc/corehtml"/></param>.
+    /// to the IMG tag here - <see href="http://mihirmone.dyndns.org/appdocs/webextras/mvc/corehtml"/></param>.
     /// <returns>HTML image hyperlink</returns>
     public static IExtendedHtmlString Imagelink(
       this HtmlHelper html,
@@ -129,7 +129,7 @@ namespace WebExtras.Mvc.Core
     /// <param name="result">Action result</param>
     /// <param name="htmlAttributes">[Optional] Extra html attributes for the image link. By default 
     /// these attributes will be applied to the A tag only. See documentation for how to apply attributes 
-    /// to the IMG tag here - <see cref="http://mihirmone.dyndns.org/appdocs/webextras/mvc/corehtml"/></param>.
+    /// to the IMG tag here - <see href="http://mihirmone.dyndns.org/appdocs/webextras/mvc/corehtml"/></param>.
     /// <returns>HTML image hyperlink</returns>
     public static IExtendedHtmlString Imagelink(
       this HtmlHelper html,
@@ -155,7 +155,7 @@ namespace WebExtras.Mvc.Core
     /// <param name="url">Link URL</param>
     /// <param name="htmlAttributes">[Optional] Extra html attributes for the image link. By default 
     /// these attributes will be applied to the A tag only. See documentation for how to apply attributes 
-    /// to the IMG tag here - <see cref="http://mihirmone.dyndns.org/appdocs/webextras/mvc/corehtml"/></param>.
+    /// to the IMG tag here - <see href="http://mihirmone.dyndns.org/appdocs/webextras/mvc/corehtml"/></param>.
     /// <returns>HTML image hyperlink</returns>
     public static IExtendedHtmlString Imagelink(
       this HtmlHelper html,
@@ -203,7 +203,7 @@ namespace WebExtras.Mvc.Core
     /// <param name="url">Link URL</param>
     /// <param name="htmlAttributes">[Optional] Extra html attributes for the image link. By default 
     /// these attributes will be applied to the A tag only. See documentation for how to apply attributes 
-    /// to the IMG tag here - <see cref="http://mihirmone.dyndns.org/appdocs/webextras/mvc/corehtml"/></param>.
+    /// to the IMG tag here - <see href="http://mihirmone.dyndns.org/appdocs/webextras/mvc/corehtml"/></param>.
     /// <returns>HTML image hyperlink</returns>
     public static IExtendedHtmlString AuthImagelink(
       this HtmlHelper html,
@@ -225,7 +225,7 @@ namespace WebExtras.Mvc.Core
     /// <param name="url">Link URL</param>
     /// <param name="htmlAttributes">[Optional] Extra html attributes for the image link. By default 
     /// these attributes will be applied to the A tag only. See documentation for how to apply attributes 
-    /// to the IMG tag here - <see cref="http://mihirmone.dyndns.org/appdocs/webextras/mvc/corehtml"/></param>.
+    /// to the IMG tag here - <see href="http://mihirmone.dyndns.org/appdocs/webextras/mvc/corehtml"/></param>.
     /// <returns>HTML image hyperlink</returns>
     public static IExtendedHtmlString AuthImagelink(
       this HtmlHelper html,
@@ -247,7 +247,7 @@ namespace WebExtras.Mvc.Core
     /// <param name="result">Action result</param>
     /// <param name="htmlAttributes">[Optional] Extra html attributes for the image link. By default 
     /// these attributes will be applied to the A tag only. See documentation for how to apply attributes 
-    /// to the IMG tag here - <see cref="http://mihirmone.dyndns.org/appdocs/webextras/mvc/corehtml"/></param>.
+    /// to the IMG tag here - <see href="http://mihirmone.dyndns.org/appdocs/webextras/mvc/corehtml"/></param>.
     /// <returns>HTML image hyperlink</returns>
     public static IExtendedHtmlString AuthImagelink(
       this HtmlHelper html,
@@ -269,7 +269,7 @@ namespace WebExtras.Mvc.Core
     /// <param name="result">Action result</param>
     /// <param name="htmlAttributes">[Optional] Extra html attributes for the image link. By default 
     /// these attributes will be applied to the A tag only. See documentation for how to apply attributes 
-    /// to the IMG tag here - <see cref="http://mihirmone.dyndns.org/appdocs/webextras/mvc/corehtml"/></param>.
+    /// to the IMG tag here - <see href="http://mihirmone.dyndns.org/appdocs/webextras/mvc/corehtml"/></param>.
     /// <returns>HTML image hyperlink</returns>
     public static IExtendedHtmlString AuthImagelink(
       this HtmlHelper html,
@@ -293,7 +293,7 @@ namespace WebExtras.Mvc.Core
     /// <param name="result">Action result</param>
     /// <param name="htmlAttributes">[Optional] Extra html attributes for the image link. By default 
     /// these attributes will be applied to the A tag only. See documentation for how to apply attributes 
-    /// to the IMG tag here - <see cref="http://mihirmone.dyndns.org/appdocs/webextras/mvc/corehtml"/></param>.
+    /// to the IMG tag here - <see href="http://mihirmone.dyndns.org/appdocs/webextras/mvc/corehtml"/></param>.
     /// <returns>HTML image hyperlink</returns>
     public static IExtendedHtmlString AuthImagelink(
       this HtmlHelper html,
@@ -321,7 +321,7 @@ namespace WebExtras.Mvc.Core
     /// <param name="url">Link URL</param>
     /// <param name="htmlAttributes">[Optional] Extra html attributes for the image link. By default 
     /// these attributes will be applied to the A tag only. See documentation for how to apply attributes 
-    /// to the IMG tag here - <see cref="http://mihirmone.dyndns.org/appdocs/webextras/mvc/corehtml"/></param>.
+    /// to the IMG tag here - <see href="http://mihirmone.dyndns.org/appdocs/webextras/mvc/corehtml"/></param>.
     /// <returns>HTML image hyperlink</returns>
     public static IExtendedHtmlString AuthImagelink(
       this HtmlHelper html,
@@ -348,7 +348,7 @@ namespace WebExtras.Mvc.Core
     /// <param name="html">Current html helper object</param>
     /// <param name="linkText">Link text</param>
     /// <param name="url">Link URL</param>
-    /// <param name="htmlAttributes">Extra HTML attributes</param>
+    /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
     /// <returns>HTML hyperlink</returns>
     public static IExtendedHtmlString Hyperlink(
       this HtmlHelper html,
@@ -367,7 +367,7 @@ namespace WebExtras.Mvc.Core
     /// <param name="html">Current html helper object</param>
     /// <param name="linkText">Link text</param>
     /// <param name="result">Action result</param>
-    /// <param name="htmlAttributes">Extra HTML attributes</param>
+    /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
     /// <returns>HTML hyperlink</returns>
     public static IExtendedHtmlString Hyperlink(
       this HtmlHelper html,
@@ -392,7 +392,7 @@ namespace WebExtras.Mvc.Core
     /// <param name="user">User used to authenticate</param>
     /// <param name="linkText">Link text</param>
     /// <param name="url">Link URL</param>
-    /// <param name="htmlAttributes">Extra HTML attributes</param>
+    /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
     /// <returns>HTML Hyperlink</returns>
     public static IExtendedHtmlString AuthHyperlink(
       this HtmlHelper html,
@@ -414,7 +414,7 @@ namespace WebExtras.Mvc.Core
     /// <param name="user">User used to authenticate</param>
     /// <param name="linkText">Link text</param>
     /// <param name="result">Action result</param>
-    /// <param name="htmlAttributes">Extra HTML attributes</param>
+    /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
     /// <returns>HTML hyperlink</returns>
     public static IExtendedHtmlString AuthHyperlink(
       this HtmlHelper html,
@@ -443,7 +443,7 @@ namespace WebExtras.Mvc.Core
     /// </summary>
     /// <param name="html">Current HTML helper object</param>
     /// <param name="src">Image location</param>
-    /// <param name="htmlAttributes">Extra HTML attributes</param>
+    /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
     /// <returns>An HTML image</returns>
     public static IExtendedHtmlString Image(
       this HtmlHelper html,
@@ -459,7 +459,7 @@ namespace WebExtras.Mvc.Core
     /// <param name="html">Current HTML helper object</param>
     /// <param name="src">Image location</param>
     /// <param name="altText">Image alt text</param>
-    /// <param name="htmlAttributes">Extra HTML attributes</param>
+    /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
     /// <returns>An HTML image</returns>
     public static IExtendedHtmlString Image(
       this HtmlHelper html,
@@ -477,7 +477,7 @@ namespace WebExtras.Mvc.Core
     /// <param name="src">Image location</param>
     /// <param name="altText">Image alt text</param>
     /// <param name="title">Image title</param>
-    /// <param name="htmlAttributes">Extra HTML attributes</param>
+    /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
     /// <returns>An HTML image</returns>
     public static IExtendedHtmlString Image(
       this HtmlHelper html,

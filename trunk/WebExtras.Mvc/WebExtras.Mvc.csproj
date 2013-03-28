@@ -72,6 +72,8 @@
     <Compile Include="Bootstrap\ActionMessageControllerExtension.cs" />
     <Compile Include="Bootstrap\BootstrapNavbarExtension.cs" />
     <Compile Include="Bootstrap\BootstrapNavBar.cs" />
+    <Compile Include="Bootstrap\BootstrapProgressBarExtension.cs" />
+    <Compile Include="Bootstrap\BootstrapProgressBarType.cs" />
     <Compile Include="Core\WebExtrasMvcConstants.cs" />
     <Compile Include="Html\Button.cs" />
     <Compile Include="Bootstrap\BootstrapButtonType.cs" />
@@ -94,6 +96,7 @@
     <Compile Include="Html\HtmlList.cs" />
     <Compile Include="Html\ListType.cs" />
     <Compile Include="Bootstrap\BootstrapNavbarType.cs" />
+    <Compile Include="Bootstrap\BootstrapProgressBar.cs" />
     <Compile Include="Html\RadioButton.cs" />
     <Compile Include="JavascriptHelper.cs" />
     <Compile Include="Core\ActionMessageType.cs" />

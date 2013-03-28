@@ -16,9 +16,7 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System;
 using System.Web.Mvc;
-using WebExtras.Core;
 using WebExtras.Mvc.Html;
 
 namespace WebExtras.Mvc.Bootstrap
@@ -52,6 +50,19 @@ namespace WebExtras.Mvc.Bootstrap
     public static BootstrapNavBar Navbar(this HtmlHelper html, BootstrapNavbarType type, params IExtendedHtmlString[] items)
     {
       return new BootstrapNavBar(type, items);
+    }
+
+    /// <summary>
+    /// Create a bootstrap progress bar
+    /// </summary>
+    /// <param name="html">Current HTML helper object</param>
+    /// <param name="type">Progress bar type</param>
+    /// <param name="percent">Percentage of completion for the progress bar</param>
+    /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
+    /// <returns>A boostrap progress bar</returns>
+    public static BootstrapProgressBar ProgressBar(this HtmlHelper html, BootstrapProgressBarType type, int percent, object htmlAttributes = null)
+    {
+      return new BootstrapProgressBar(type, percent, htmlAttributes);
     }
   }
 }
