@@ -1,7 +1,7 @@
 ﻿@{
   ViewBag.Title = "Generic .NET Extensions";
 }
-<h3 class="keep-center">Generic .NET Extensions</h3>
+<h3 class="keep-center">Generic .NET Extensions and Helpers</h3>
 <div class="row-fluid">
   <div class="span6">
     <div class="row-fluid">
@@ -22,15 +22,7 @@
     </div>
   </div>
 </div>
-<div class="row-fluid">
-  <div class="span9">
-    WebExtras currently provides extensions for two base types:
-    <ul>
-      <li>Enum extensions</li>
-      <li>String extensions</li>
-    </ul>
-  </div>  
-</div>
+
 <div class="well">
   <h4>Enum Extensions</h4>
   <p>WebExtras provides two enum extension methods viz., ToTitleCase() and GetStringValue()</p>
@@ -118,4 +110,16 @@
     </code></pre>
     </div>
   </div>
+</div>
+
+<div class="well">
+  <h4>General Purpose Object Cloner</h4>
+  <p>WebExtras provides a general purpose object cloner which performs a deep clone of the given object.
+    However, in order for the cloning to work, all objects to be cloned must be marked as serializable.
+  </p>
+  <p>Markup</p>
+  <pre><code>
+  SomeClass object1 = new SomeClass();
+  SomeClass object2 = ObjectCloner.Clone(object1);
+  </code></pre>
 </div>

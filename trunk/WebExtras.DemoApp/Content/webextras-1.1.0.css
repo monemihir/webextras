@@ -30,12 +30,6 @@ input[type="radio"] {
   width: 100%;
 }
 
-  .checkbox-group input[type="checkbox"],
-  .radiobutton-group input[type="radio"]
-  {
-    margin-top: -3px;
-  }
-
 .keep-center
 {
   text-align: center;

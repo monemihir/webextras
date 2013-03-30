@@ -61,12 +61,12 @@
     @if(Model.EnableStatusColumn)
     {  
       <text>
-        var col = @Model.Columns.Count() - 1;
         dtSettings.fnCreatedRow = function (nRow, aData, iDataIndex) {
-          $(nRow).addClass(aData[col]);
+          $(nRow).addClass(aData[aData.length - 1]);
         };
       </text>
     }
+
     @Html.Raw(string.Format("var {0}_tbl = $('#{0}').dataTable(dtSettings);", Model.ID))
 
     @{
