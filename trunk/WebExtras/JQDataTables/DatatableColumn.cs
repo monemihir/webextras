@@ -17,6 +17,7 @@
 */
 
 using System;
+using Newtonsoft.Json;
 
 namespace WebExtras.JQDataTables
 {
@@ -44,11 +45,13 @@ namespace WebExtras.JQDataTables
     /// <summary>
     /// Css class for this column
     /// </summary>
+    [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
     public string CssClass { get; set; }
 
     /// <summary>
     /// Column width in percent
     /// </summary>
+    [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
     public int? Width { get; set; }
 
     /// <summary>
