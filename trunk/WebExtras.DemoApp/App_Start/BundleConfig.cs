@@ -12,7 +12,7 @@
 * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 * GNU Lesser General Public License for more details.
 *
-* You should have received a copy of the GNU Affero General Public License
+* You should have received a copy of the GNU Lesser General Public License
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
@@ -56,7 +56,7 @@ namespace WebExtras.DemoApp.App_Start
       Bundle.Css()
         .Add(Links.Content.bootstrap_2_3_1_css)
         .Add(Links.Content.jquery_dataTables_css)
-        .Add(Links.Content.webextras_1_1_0_css)
+        .Add(Links.Content.webextras_1_1_1_css)
         .Add(Links.Content.base_css)
         .AsCached(ContentBundle.CSSMain.GetStringValue(), ResolveCssPath(ContentBundle.CSSMain));
 

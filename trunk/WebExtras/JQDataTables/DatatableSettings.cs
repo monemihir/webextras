@@ -20,6 +20,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json;
+using WebExtras.Core;
 
 namespace WebExtras.JQDataTables
 {
@@ -50,6 +51,7 @@ namespace WebExtras.JQDataTables
     /// DataTables features two different built-in pagination interaction methods
     /// ('two_button' or 'full_numbers') which present different page controls to the end user.
     /// </summary>
+    [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
     public string sPaginationType;
 
     /// <summary>
@@ -113,7 +115,14 @@ namespace WebExtras.JQDataTables
     /// Manually specify where in the DOM should DataTables inject various
     /// controls it adds
     /// </summary>
+    [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
     public string sDom;
+
+    /// <summary>
+    /// Flag indicating whether DataTables should save state on page refresh. This is false by default
+    /// </summary>
+    [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+    public bool? bStateSave;
 
     /// <summary>
     /// Constructor to setup Datatable with default column widths. All columns will get equal width.
@@ -139,10 +148,8 @@ namespace WebExtras.JQDataTables
     /// <param name="tableHeight">[Optional] Height of the table in pixels. Defaults to 200px. Note. Pass in a null if to do not
     /// want any table height set</param>
     public DatatableSettings(int displayLength, IEnumerable<AASort> sortOptions, string ajaxSource, string footerSuffix = "", string tableHeight = "200px")
-    {
-      bPaginate = true;
+    {      
       bFilter = bLengthChange = false;
-      sPaginationType = "full_numbers";
       iDisplayLength = displayLength;
       sScrollY = tableHeight;
 
@@ -155,8 +162,10 @@ namespace WebExtras.JQDataTables
       };
       sAjaxSource = ajaxSource;
       bServerSide = !string.IsNullOrEmpty(ajaxSource);
+
+      SetupPaging(PaginationType.Bootstrap);
     }
-    
+
     /// <summary>
     /// Setup the jQuery dataTables aoColumns variable from the given
     /// set of columns
@@ -171,6 +180,31 @@ namespace WebExtras.JQDataTables
         sWidth = c.Width.HasValue ? string.Format("{0}%", c.Width) : null,
         bVisible = c.Visible
       }).ToArray();
+    }
+
+    /// <summary>
+    /// Setup the paging mechanism
+    /// </summary>
+    /// <param name="type">Pagination type to use</param>
+    public void SetupPaging(PaginationType type)
+    {
+      switch (type)
+      {
+        case PaginationType.None:
+          bPaginate = false;
+          sPaginationType = null;
+          iDisplayLength = 10000;
+          break;
+
+        case PaginationType.Bootstrap:
+          sDom = "t<'row-fluid'<'span6'i><'span6'p>>";
+          goto default;
+
+        default:
+          bPaginate = true;
+          sPaginationType = type.GetStringValue();
+          break;
+      }
     }
 
     /// <summary>

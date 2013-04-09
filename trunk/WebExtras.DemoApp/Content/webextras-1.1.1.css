@@ -20,8 +20,9 @@
  * Generic styling
 */
 input[type="checkbox"],
-input[type="radio"] {
-	vertical-align: top;
+input[type="radio"]
+{
+  vertical-align: top;
 }
 
 .checkbox-group,
@@ -40,8 +41,9 @@ input[type="radio"] {
   text-align: right;
 }
 
-.keep-left {
-	text-align: left;
+.keep-left
+{
+  text-align: left;
 }
 
 .keep-middle
@@ -60,6 +62,33 @@ input[type="radio"] {
 /*
  * Bootstrap styling for jQuery Datatables
  */
+div.dataTables_info
+{
+  margin: 1em 0;
+}
+
+div.dataTables_paginate
+{
+  margin: 1em 0;
+}
+
+.sorting_asc, .sorting_desc
+{
+  background-color: rgba(141, 192, 219, 0.25);
+  -webkit-text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+}
+
+table.dataTable thead th
+{
+  border-bottom: 0;
+}
+
+.dataTables_scrollBody
+{
+  margin-top: -3px;
+}
+
 table.dataTable tbody tr.success td
 {
   background-color: #dff0d8;

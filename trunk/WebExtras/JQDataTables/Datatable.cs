@@ -82,16 +82,27 @@ namespace WebExtras.JQDataTables
     {
       ID = id.Replace("-", "_");
       Settings = settings;
-      Columns = columns;
 
+      // sanitize the datatable column widths
+      int nullWidthColumns = columns.Where(f => !f.Width.HasValue).Count();
+      int widthAssigned = columns.Where(f => f.Width.HasValue).Select(f => f.Width.Value).Sum();
+      int widthLeft = 100 - widthAssigned;
+
+      foreach (DatatableColumn col in columns)
+      {
+        if (!col.Width.HasValue)
+          col.Width = widthLeft / nullWidthColumns;
+      }
+            
       // setup the status column if the flag is set
       if (enableStatusColumn)
-        Columns = Columns.Concat(new DatatableColumn[] { new DatatableColumn("", visible: false, bSortable: false) });
+        columns = columns.Concat(new DatatableColumn[] { new DatatableColumn("", visible: false, bSortable: false) });
 
       // if the aoColumns were not setup then do a default setup
       if (settings.aoColumns == null)
-        settings.SetupAOColumns(Columns);
+        settings.SetupAOColumns(columns);
 
+      Columns = columns;
       Records = records;
       Postbacks = postbacks ?? Enumerable.Empty<PostbackItem>();
       EnableStatusColumn = enableStatusColumn;

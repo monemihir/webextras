@@ -12,7 +12,7 @@
 * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 * GNU Lesser General Public License for more details.
 *
-* You should have received a copy of the GNU Affero General Public License
+* You should have received a copy of the GNU Lesser General Public License
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
@@ -81,7 +81,7 @@ namespace WebExtras.DemoApp.Controllers
       string tableId = string.Empty;
       IEnumerable<DatatableColumn> dtColumns = new List<DatatableColumn>
       {
-        new DatatableColumn("First Column"),
+        new DatatableColumn("First Column", width: 25),
         new DatatableColumn("Second Column")
       };
       DatatableSettings dtSettings = null;

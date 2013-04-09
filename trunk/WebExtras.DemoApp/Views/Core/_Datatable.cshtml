@@ -32,8 +32,6 @@
 </table>
 <script type="text/javascript">
     var dtSettings = @Html.Raw(Model.Settings.ToString() + ";")
-    dtSettings["sDom"] = (dtSettings["sDom"] == null) ? "t<'row-fluid'<'span6'i><'span6'p>>" : dtSettings["sDom"];
-    dtSettings["sPaginationType"] = "bootstrap";
     @{
       if (Model.Records != null)
       {
@@ -66,7 +64,7 @@
         };
       </text>
     }
-
+      
     @Html.Raw(string.Format("var {0}_tbl = $('#{0}').dataTable(dtSettings);", Model.ID))
 
     @{

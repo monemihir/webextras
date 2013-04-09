@@ -163,7 +163,7 @@
     <Content Include="Content\jquery.dataTables.css" />
     <Content Include="Content\jpg\wallpaper1.jpg" />
     <Content Include="Content\png\youtube-logo.png" />
-    <Content Include="Content\webextras-1.1.0.css" />
+    <Content Include="Content\webextras-1.1.1.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\base.css" />
     <Content Include="Scripts\bootstrap-2.3.1.min.js" />
