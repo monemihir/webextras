@@ -47,7 +47,7 @@ namespace WebExtras.Mvc.Bootstrap
     /// <param name="type">Navigation bar type</param>
     /// <param name="items">Navigation bar items</param>
     /// <returns>A bootstrap navigation bar</returns>
-    public static BootstrapNavBar Navbar(this HtmlHelper html, BootstrapNavbarType type, params IExtendedHtmlString[] items)
+    public static BootstrapNavBar Navbar(this HtmlHelper html, EBootstrapNavbar type, params IExtendedHtmlString[] items)
     {
       return new BootstrapNavBar(type, items);
     }
@@ -60,7 +60,7 @@ namespace WebExtras.Mvc.Bootstrap
     /// <param name="percent">Percentage of completion for the progress bar</param>
     /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
     /// <returns>A boostrap progress bar</returns>
-    public static BootstrapProgressBar ProgressBar(this HtmlHelper html, BootstrapProgressBarType type, int percent, object htmlAttributes = null)
+    public static BootstrapProgressBar ProgressBar(this HtmlHelper html, EBootstrapProgressBar type, int percent, object htmlAttributes = null)
     {
       return new BootstrapProgressBar(type, percent, htmlAttributes);
     }

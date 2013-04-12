@@ -73,10 +73,10 @@
     <Compile Include="Bootstrap\BootstrapNavbarExtension.cs" />
     <Compile Include="Bootstrap\BootstrapNavBar.cs" />
     <Compile Include="Bootstrap\BootstrapProgressBarExtension.cs" />
-    <Compile Include="Bootstrap\BootstrapProgressBarType.cs" />
+    <Compile Include="Bootstrap\EBootstrapProgressBar.cs" />
     <Compile Include="Core\WebExtrasMvcConstants.cs" />
     <Compile Include="Html\Button.cs" />
-    <Compile Include="Bootstrap\BootstrapButtonType.cs" />
+    <Compile Include="Bootstrap\EBootstrapButton.cs" />
     <Compile Include="Html\Div.cs" />
     <Compile Include="Html\Empty.cs" />
     <Compile Include="Html\ExtendedHtmlStringExtension.cs" />
@@ -95,7 +95,7 @@
     <Compile Include="Html\Italic.cs" />
     <Compile Include="Html\HtmlList.cs" />
     <Compile Include="Html\ListType.cs" />
-    <Compile Include="Bootstrap\BootstrapNavbarType.cs" />
+    <Compile Include="Bootstrap\EBootstrapNavbar.cs" />
     <Compile Include="Bootstrap\BootstrapProgressBar.cs" />
     <Compile Include="Html\RadioButton.cs" />
     <Compile Include="JavascriptHelper.cs" />

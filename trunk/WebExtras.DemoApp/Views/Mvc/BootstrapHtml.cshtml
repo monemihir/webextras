@@ -78,13 +78,13 @@
   <pre><code>
   @@Html.Hyperlink("Take me to google", "http://www.google.com")
     .AddWhiteIcon(BootstrapIcon.Ok)
-    .AsButton(BootstrapButtonType.Info) 
+    .AsButton(EBootstrapButton.Info) 
   </code></pre>
   <p>
     Output
   </p>
   <div class="content">
-    @Html.Hyperlink("Take me to google", "http://www.google.com").AddWhiteIcon(BootstrapIcon.Ok).AsButton(BootstrapButtonType.Info)
+    @Html.Hyperlink("Take me to google", "http://www.google.com").AddWhiteIcon(BootstrapIcon.Ok).AsButton(EBootstrapButton.Info)
   </div>
   <p>
     All available extensions
@@ -112,10 +112,10 @@
       HtmlList list = new HtmlList(ListType.Unordered, new HtmlListItem[] { item3 });    
     }      
 
-    @@Html.Navbar(BootstrapNavbarType.Normal, list)
+    @@Html.Navbar(EBootstrapNavbar.Normal, list)
 
     <span class="comment">// Use appropriate navbar type to get all bootstrap effects</span>
-    @@Html.Navbar(BootstrapNavbarType.Normal, link1, link2, item3, link4)<span class="highlight">.AsInverse()</span>  <span class="comment">// Creates an inverse styled navbar</span>
+    @@Html.Navbar(EBootstrapNavbar.Normal, link1, link2, item3, link4)<span class="highlight">.AsInverse()</span>  <span class="comment">// Creates an inverse styled navbar</span>
   </code></pre>
   <p>
     Output
@@ -134,9 +134,9 @@
         HtmlList list = new HtmlList(ListType.Unordered, new HtmlListItem[] { item3 });    
       }
 
-      @Html.Navbar(BootstrapNavbarType.Normal, list)
+      @Html.Navbar(EBootstrapNavbar.Normal, list)
 
-      @Html.Navbar(BootstrapNavbarType.Normal, link1, link2, item3, link4).AsInverse()
+      @Html.Navbar(EBootstrapNavbar.Normal, link1, link2, item3, link4).AsInverse()
     </div>
   </div>
 </div>
@@ -145,16 +145,16 @@
   <h4>Progress Bars</h4>
   <p>Markup</p>
   <pre><code>
-@@Html.ProgressBar(BootstrapProgressBarType.Default, 10)
-@@Html.ProgressBar(BootstrapProgressBarType.Success, 25)
-@@Html.ProgressBar(BootstrapProgressBarType.Warning, 50)<span class="highlight">.AsStriped()</span>
-@@Html.ProgressBar(BootstrapProgressBarType.Danger, 75)<span class="highlight">.AsAnimated()</span>
+@@Html.ProgressBar(EBootstrapProgressBar.Default, 10)
+@@Html.ProgressBar(EBootstrapProgressBar.Success, 25)
+@@Html.ProgressBar(EBootstrapProgressBar.Warning, 50)<span class="highlight">.AsStriped()</span>
+@@Html.ProgressBar(EBootstrapProgressBar.Danger, 75)<span class="highlight">.AsAnimated()</span>
   </code></pre>
   <p>Output</p>
   <div class="content">
-    @Html.ProgressBar(BootstrapProgressBarType.Default, 10)
-    @Html.ProgressBar(BootstrapProgressBarType.Success, 25)
-    @Html.ProgressBar(BootstrapProgressBarType.Warning, 50).AsStriped()
-    @Html.ProgressBar(BootstrapProgressBarType.Danger, 75).AsAnimated()
+    @Html.ProgressBar(EBootstrapProgressBar.Default, 10)
+    @Html.ProgressBar(EBootstrapProgressBar.Success, 25)
+    @Html.ProgressBar(EBootstrapProgressBar.Warning, 50).AsStriped()
+    @Html.ProgressBar(EBootstrapProgressBar.Danger, 75).AsAnimated()
   </div>
 </div>

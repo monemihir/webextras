@@ -25,7 +25,7 @@ namespace WebExtras.Mvc.Bootstrap
   /// Types of bootstrap navigation bars available
   /// </summary>
   [Serializable]
-  public enum BootstrapNavbarType
+  public enum EBootstrapNavbar
   {
     /// <summary>
     /// Regular navigation bar

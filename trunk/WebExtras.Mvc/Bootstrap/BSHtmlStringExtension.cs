@@ -73,7 +73,7 @@ namespace WebExtras.Mvc.Bootstrap
     /// <returns>A special button</returns>
     public static T AsButton<T>(this T html) where T : IExtendedHtmlString
     {
-      return AsButton<T>(html, BootstrapButtonType.Default);
+      return AsButton<T>(html, EBootstrapButton.Default);
     }
 
     /// <summary>
@@ -83,7 +83,7 @@ namespace WebExtras.Mvc.Bootstrap
     /// <param name="html">Current HTML element</param>
     /// <param name="type">Bootstrap button type</param>
     /// <returns>A special button</returns>
-    public static T AsButton<T>(this T html, BootstrapButtonType type) where T : IExtendedHtmlString
+    public static T AsButton<T>(this T html, EBootstrapButton type) where T : IExtendedHtmlString
     {
       if (CanDisplayAsButton(html))
         html.AddCssClass(type.GetStringValue());

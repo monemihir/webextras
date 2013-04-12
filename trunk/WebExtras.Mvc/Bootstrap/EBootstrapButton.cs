@@ -27,7 +27,7 @@ namespace WebExtras.Mvc.Bootstrap
   /// A collection of button display types
   /// </summary>
   [Serializable]
-  public enum BootstrapButtonType
+  public enum EBootstrapButton
   {
     [StringValue("btn")]
     Default,

@@ -33,7 +33,7 @@ namespace WebExtras.Mvc.Bootstrap
     /// </summary>
     /// <param name="type">Navigation bar type</param>
     /// <param name="items">Navigation bar items</param>
-    public BootstrapNavBar(BootstrapNavbarType type, params IExtendedHtmlString[] items)
+    public BootstrapNavBar(EBootstrapNavbar type, params IExtendedHtmlString[] items)
       : base(HtmlTag.Div)
     {
       HtmlList list = new HtmlList(ListType.Unordered);

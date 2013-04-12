@@ -23,7 +23,7 @@ namespace WebExtras.Mvc.Bootstrap
   /// <summary>
   /// All available bootstrap progress bar types
   /// </summary>
-  public enum BootstrapProgressBarType
+  public enum EBootstrapProgressBar
   {
     /// <summary>
     /// A default progress bar
