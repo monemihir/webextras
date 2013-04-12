@@ -191,7 +191,7 @@ namespace WebExtras.DemoApp.Controllers
 
       // create the postbacks enabled table
       IEnumerable<PostbackItem> dtPostbacks = PostbackItem.FromObject(viewModel.PostbackFormFields);
-      dtSettings = new DatatableSettings(5, new AASort(0, ESort.Ascending), MVC.Core.ActionNames.GetPostbackData, "searched/filtered records", "150px");
+      dtSettings = new DatatableSettings(5, dtAOColumns, new AASort(0, ESort.Ascending), MVC.Core.ActionNames.GetPostbackData, "searched/filtered records", "150px");
       viewModel.PostbackEnabledTable = new Datatable("postbacks-table", dtSettings, null, dtPostbacks);
 
       // update the display mode
