@@ -5,18 +5,18 @@
 </p>
 <div class="well">
   <h4>Updating the column definitions to enable sorting</h4>
-  Column definitions are created by instantiating the <i>WebExtras.JQDataTables.DatatableColumn</i> class. In order to enable sorting
+  Column definitions are created by instantiating the <i>WebExtras.JQDataTables.AOColumn</i> class. In order to enable sorting
   on a column, you MUST set the Sortable property to <strong>true</strong>. By default this will be set to <strong>false</strong> by
   the constructor.
   <pre><code>
-  DatatableColumn dtColumn = new DatatableColumn
-  (
-      Name = "First Column",  <span class="comment">// Only the Name property is compulsory. All other properties are optional</span>
-      <span class="highlight">Sortable = true,</span>
-      CssClass = "",          <span class="comment">// any extra CSS class you would like to apply to this column</span>
-      Width = 10,             <span class="comment">// specified as a percentage</span>
-      Visible = true
-  );  
+  AOColumn dtColumn = new AOColumn
+  {
+    sTitle = "First Column",    <span class="comment">// Only the sTitle property is compulsory. All other properties are optional</span>
+    <span class="highlight">bSortable = true,</span>
+    sClass = "",                <span class="comment">// any extra CSS class you would like to apply to this column</span>
+    sWidth = "10%",             <span class="comment">// specified as a CSS width</span>
+    bVisible = true
+  };  
   </code></pre>
 </div>
 
@@ -24,9 +24,13 @@
   <h4>Creating table settings</h4>
   Table settings are created by instantiating the <i>WebExtras.JQDataTables.DatatableSettings</i> class 
   <pre><code>  
+  <span class="comment">// We need a collection of columns to be specified in the settings, so create an array from our column</span>
+  AOColumn[] dtColumns = new AOColumn[] { dtColumn };
+
   DatatableSettings dtSettings = new DatatableSettings 
   (
     5,                                      <span class="comment">// specify the number of records per page</span>
+    dtColumns,
     new AASort(0, SortType.Ascending),      <span class="comment">// specify one initial sort, multiple initial sorts, or leave null for no sort</span>
     <span class="highlight">"~/getsorteddata"</span>,                       <span class="comment">// specify an AJAX source to retrieve data from</span>
     "paged and sorted records",             <span class="comment">// specify a table footer suffix</span>
@@ -73,7 +77,7 @@
   the table the first time.
   <pre><code>  
   DatatableRecords dtRecords = GetSortedRecords(new DatatableFilters { iDisplayStart = 0, iDisplayLength = 5 });
-  Datatable dTable = new Datatable("sorted-table", dtColumns, dtSettings, dtRecords);
+  Datatable dTable = new Datatable("sorted-table", dtSettings, dtRecords);
   </code></pre>
 </div>
 

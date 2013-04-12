@@ -58,7 +58,7 @@ namespace WebExtras.JQDataTables
     /// <summary>
     /// Sort direction decided on the sSortDir_0 property
     /// </summary>
-    public SortType SortDirection { get { return sSortDir_0 == "asc" ? SortType.Ascending : SortType.Descending; } }
+    public ESort SortDirection { get { return sSortDir_0 == "asc" ? ESort.Ascending : ESort.Descending; } }
 
     /// <summary>
     /// Default constructor

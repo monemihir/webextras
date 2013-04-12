@@ -41,10 +41,10 @@ namespace WebExtras.JQDataTables
     /// <param name="customParsers">[Optional] A dictionary containing the column number as an associated data parser function.
     /// Defaults to null.</param>
     /// <param name="type">Sort direction</param>
-    public static IEnumerable<IEnumerable<string>> Sort(this IEnumerable<IEnumerable<string>> aaData, int columnNumber, SortType type, IDictionary<int, Func<string, object>> customParsers = null)
+    public static IEnumerable<IEnumerable<string>> Sort(this IEnumerable<IEnumerable<string>> aaData, int columnNumber, ESort type, IDictionary<int, Func<string, object>> customParsers = null)
     {
       if (aaData != null && aaData.Count() > 1)
-        aaData = (type == SortType.Ascending) ? SortAscending(aaData, columnNumber, customParsers) : SortDescending(aaData, columnNumber, customParsers);
+        aaData = (type == ESort.Ascending) ? SortAscending(aaData, columnNumber, customParsers) : SortDescending(aaData, columnNumber, customParsers);
 
       return aaData;
     }

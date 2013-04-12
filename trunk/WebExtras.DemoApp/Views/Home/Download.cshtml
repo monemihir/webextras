@@ -1,0 +1,19 @@
+﻿@{
+  ViewBag.Title = "Download";
+}
+<h3 class="keep-center">
+  WebExtras
+</h3>
+@(Html.Button(ButtonOfType.Regular, "Download", "gotoCodeplex()")
+      .AddCssClass("btn-large")
+      .AsButton(BootstrapButtonType.Success)
+      .AddWhiteIcon(BootstrapIcon.Arrow_Down))
+      <br /><br />
+<div class="changelog">
+  @Html.Inline(Links.Content.inline.changelog_html)
+</div>
+<script type="text/javascript">
+  $(function () {
+    $('.changelog').jScrollPane();
+  });
+</script>

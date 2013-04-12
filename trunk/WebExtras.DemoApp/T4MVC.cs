@@ -26,6 +26,7 @@ public static class MVC
 {
     public static WebExtras.DemoApp.Controllers.AssetsController Assets = new WebExtras.DemoApp.Controllers.T4MVC_AssetsController();
     public static WebExtras.DemoApp.Controllers.CoreController Core = new WebExtras.DemoApp.Controllers.T4MVC_CoreController();
+    public static WebExtras.DemoApp.Controllers.HomeController Home = new WebExtras.DemoApp.Controllers.T4MVC_HomeController();
     public static WebExtras.DemoApp.Controllers.MvcController Mvc = new WebExtras.DemoApp.Controllers.T4MVC_MvcController();
     public static T4MVC.SharedController Shared = new T4MVC.SharedController();
 }
@@ -95,7 +96,13 @@ namespace Links
                       
         public static readonly string jquery_flot_dashes_0_1_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.flot.dashes-0.1.min.js") ? Url("jquery.flot.dashes-0.1.min.js") : Url("jquery.flot.dashes-0.1.js");
                       
+        public static readonly string jquery_jScrollPane_2_0_0beta12_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.jScrollPane-2.0.0beta12.min.js") ? Url("jquery.jScrollPane-2.0.0beta12.min.js") : Url("jquery.jScrollPane-2.0.0beta12.js");
+                      
         public static readonly string jquery_migrate_1_1_1_min_js = Url("jquery.migrate-1.1.1.min.js");
+        public static readonly string jquery_mousewheel_3_0_6_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.mousewheel-3.0.6.min.js") ? Url("jquery.mousewheel-3.0.6.min.js") : Url("jquery.mousewheel-3.0.6.js");
+                      
+        public static readonly string jquery_mwheelIntent_1_2_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.mwheelIntent-1.2.min.js") ? Url("jquery.mwheelIntent-1.2.min.js") : Url("jquery.mwheelIntent-1.2.js");
+                      
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -146,6 +153,14 @@ namespace Links
         }
     
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public static class inline {
+            private const string URLPATH = "~/Content/inline";
+            public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
+            public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+            public static readonly string changelog_html = Url("changelog.html");
+        }
+    
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public static class jpg {
             private const string URLPATH = "~/Content/jpg";
             public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
@@ -154,6 +169,8 @@ namespace Links
         }
     
         public static readonly string jquery_dataTables_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.dataTables.min.css") ? Url("jquery.dataTables.min.css") : Url("jquery.dataTables.css");
+             
+        public static readonly string jquery_jScrollPane_2_0_0beta12_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.jScrollPane-2.0.0beta12.min.css") ? Url("jquery.jScrollPane-2.0.0beta12.min.css") : Url("jquery.jScrollPane-2.0.0beta12.css");
              
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public static class png {

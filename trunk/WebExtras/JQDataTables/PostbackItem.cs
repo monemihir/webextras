@@ -42,6 +42,11 @@ namespace WebExtras.JQDataTables
     /// <summary>
     /// Default constructor
     /// </summary>
+    public PostbackItem() { }
+
+    /// <summary>
+    /// Constructor to initialize values
+    /// </summary>
     /// <param name="objName">Name of the postback object</param>
     /// <param name="objValue">Value for the postback object</param>
     public PostbackItem(string objName, object objValue)

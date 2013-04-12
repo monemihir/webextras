@@ -21,24 +21,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using System.Web.Routing;
 
-namespace WebExtras.DemoApp
+namespace WebExtras.DemoApp.Controllers
 {
-  public class RouteConfig
+  /// <summary>
+  /// About controller
+  /// </summary>
+  public partial class HomeController : Controller
   {
-    public static void RegisterRoutes(RouteCollection routes)
+    //
+    // GET: /Home/
+    public virtual ActionResult Index()
     {
-      routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+      return View();
+    }
 
-      // add route ignore for site favicon
-      routes.IgnoreRoute("{*favicon}", new { favicon = @"(.*/)?favicon.ico(/.*)?" });
-
-      routes.MapRoute(
-          name: "Default",
-          url: "{controller}/{action}/{id}",
-          defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-      );
+    //
+    // GET: /Home/Download
+    public virtual ActionResult Download()
+    {
+      return View();
     }
   }
 }

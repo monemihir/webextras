@@ -103,13 +103,16 @@
     <Compile Include="JQDataTables\AOColumn.cs" />
     <Compile Include="JQDataTables\DatatableFilters.cs" />
     <Compile Include="JQDataTables\DatatableRecordsSortExtension.cs" />
+    <Compile Include="JQDataTables\EAOColumnType.cs" />
+    <Compile Include="JQDataTables\EServerMethod.cs" />
     <Compile Include="JQDataTables\OLanguage.cs" />
-    <Compile Include="JQDataTables\PaginationType.cs" />
-    <Compile Include="JQDataTables\SortType.cs" />
+    <Compile Include="JQDataTables\EPagination.cs" />
+    <Compile Include="JQDataTables\ESort.cs" />
     <Compile Include="JQDataTables\Datatable.cs" />
     <Compile Include="JQDataTables\DatatableColumn.cs" />
     <Compile Include="JQDataTables\DatatableRecords.cs" />
     <Compile Include="JQDataTables\DatatableSettings.cs" />
+    <Compile Include="JQDataTables\OSearch.cs" />
     <Compile Include="JQDataTables\PostbackItem.cs" />
     <Compile Include="JQFlot\FlotChart.cs" />
     <Compile Include="JQFlot\Graphs\CurvedLineGraph.cs" />
@@ -131,15 +134,13 @@
     <Compile Include="Core\StringValueAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="lgpl-3.0.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Content Include="lgpl-3.0.txt" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties BuildVersion_ConfigurationName="Release" BuildVersion_UseGlobalSettings="False" />
+      <UserProperties BuildVersion_UseGlobalSettings="False" BuildVersion_ConfigurationName="Release" />
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup>

@@ -56,6 +56,7 @@ namespace WebExtras.DemoApp.App_Start
       Bundle.Css()
         .Add(Links.Content.bootstrap_2_3_1_css)
         .Add(Links.Content.jquery_dataTables_css)
+        .Add(Links.Content.jquery_jScrollPane_2_0_0beta12_css)
         .Add(Links.Content.webextras_1_1_1_css)
         .Add(Links.Content.base_css)
         .AsCached(ContentBundle.CSSMain.GetStringValue(), ResolveCssPath(ContentBundle.CSSMain));
@@ -71,6 +72,9 @@ namespace WebExtras.DemoApp.App_Start
         .Add(Links.Scripts.jquery_flot_curvedlines_0_2_3_js)
         .Add(Links.Scripts.jquery_flot_dashes_0_1_js)
         .Add(Links.Scripts.jquery_flot_axislabels_1_0_js)
+        .Add(Links.Scripts.jquery_jScrollPane_2_0_0beta12_js)
+        .Add(Links.Scripts.jquery_mousewheel_3_0_6_js)
+        .Add(Links.Scripts.jquery_mwheelIntent_1_2_js)
         .AsCached(ContentBundle.JSBase.GetStringValue(), ResolveJsPath(ContentBundle.JSBase));
     }
   }

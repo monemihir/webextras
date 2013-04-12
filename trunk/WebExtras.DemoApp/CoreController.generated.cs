@@ -170,6 +170,7 @@ namespace WebExtras.DemoApp.Controllers
                 public readonly string _CurvedLineGraph = "_CurvedLineGraph";
                 public readonly string _DashedGraph = "_DashedGraph";
                 public readonly string _Datatable = "_Datatable";
+                public readonly string _DatatableDeprecated = "_DatatableDeprecated";
                 public readonly string _LineGraph = "_LineGraph";
                 public readonly string _PagedSetup = "_PagedSetup";
                 public readonly string _PostbackResult = "_PostbackResult";
@@ -186,6 +187,7 @@ namespace WebExtras.DemoApp.Controllers
             public readonly string _CurvedLineGraph = "~/Views/Core/_CurvedLineGraph.cshtml";
             public readonly string _DashedGraph = "~/Views/Core/_DashedGraph.cshtml";
             public readonly string _Datatable = "~/Views/Core/_Datatable.cshtml";
+            public readonly string _DatatableDeprecated = "~/Views/Core/_DatatableDeprecated.cshtml";
             public readonly string _LineGraph = "~/Views/Core/_LineGraph.cshtml";
             public readonly string _PagedSetup = "~/Views/Core/_PagedSetup.cshtml";
             public readonly string _PostbackResult = "~/Views/Core/_PostbackResult.cshtml";

@@ -25,39 +25,38 @@ namespace WebExtras.JQDataTables
   /// Datatable column headings
   /// </summary>
   [Serializable]
+  [Obsolete("Use WebExtras.JQDataTables.AOColumn instead")]
   public class DatatableColumn
   {
     /// <summary>
     /// Text heading for the column
     /// </summary>
-    public string Name { get; set; }
-
-    /// <summary>
-    /// HTML field ID for the column
-    /// </summary>
-    public string HtmlFieldId { get; private set; }
+    public string Name;
 
     /// <summary>
     /// Flag indicating whether this column is sortable
     /// </summary>
-    public bool Sortable { get; set; }
+    public bool? Sortable;
 
     /// <summary>
     /// Css class for this column
     /// </summary>
-    [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-    public string CssClass { get; set; }
+    public string CssClass;
 
     /// <summary>
     /// Column width in percent
     /// </summary>
-    [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-    public int? Width { get; set; }
+    public int? Width;
 
     /// <summary>
     /// Flag indicating whether this column is visible
     /// </summary>
-    public bool Visible { get; set; }
+    public bool? Visible;
+
+    /// <summary>
+    /// Default constructor
+    /// </summary>
+    public DatatableColumn() { }
 
     /// <summary>
     /// Default constructor
@@ -66,11 +65,10 @@ namespace WebExtras.JQDataTables
     /// <param name="cssClass">[Optional] CSS class for the cells of this column. Defaults to null</param>
     /// <param name="width">[Optional] Column width in percent. Defaults to null</param>
     /// <param name="visible">[Optional] Flag indicating whether this column is visible. Defaults to true</param>
-    /// <param name="bSortable">[Optional] Flag indicating whether to enable sorting for this column. Defaults to false</param>
-    public DatatableColumn(string name, string cssClass = null, int? width = null, bool visible = true, bool bSortable = false)
+    /// <param name="bSortable">[Optional] Flag indicating whether to enable sorting for this column. Defaults to true</param>
+    public DatatableColumn(string name, string cssClass = null, int? width = null, bool? visible = null, bool? bSortable = null)
     {
       Name = name;
-      HtmlFieldId = name.ToLower().Replace(" ", "_") + "_Id";
       Width = width;
       Visible = visible;
       CssClass = cssClass;

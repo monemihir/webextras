@@ -10,6 +10,7 @@
   DatatableSettings dtSettings = new DatatableSettings 
   (
     5,                                      <span class="comment">// specify the number of records per page</span>
+    dtColumns,
     new AASort(0, SortType.Ascending),      <span class="comment">// specify one initial sort, multiple initial sorts, or leave null for no sort</span>
     <span class="highlight">"~/getpageddata"</span>,                       <span class="comment">// specify an AJAX source to retrieve data from</span>
     "paged records",                         <span class="comment">// specify a table footer suffix</span>
@@ -56,7 +57,7 @@
   the table the first time.
   <pre><code>  
   DatatableRecords dtRecords = GetPagedRecords(new DatatableFilters { iDisplayStart = 0, iDisplayLength = 5 });
-  Datatable dTable = new Datatable("paged-table", dtColumns, dtSettings, dtRecords);
+  Datatable dTable = new Datatable("paged-table", dtSettings, dtRecords);
   </code></pre>
 </div>
 

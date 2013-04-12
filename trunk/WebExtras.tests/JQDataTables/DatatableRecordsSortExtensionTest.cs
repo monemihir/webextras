@@ -108,28 +108,28 @@ namespace WebExtras.tests.JQDataTables
 
       // Act
       // sort on numeric column
-      IEnumerable<IEnumerable<string>> result = m_records.aaData.Sort(0, SortType.Ascending);
+      IEnumerable<IEnumerable<string>> result = m_records.aaData.Sort(0, ESort.Ascending);
 
       // Assert
       AssertSortedAAData(expected0, result);
 
       // Act
       // sort on string column
-      result = m_records.aaData.Sort(1, SortType.Ascending);
+      result = m_records.aaData.Sort(1, ESort.Ascending);
 
       // Assert      
       AssertSortedAAData(expected1, result);
 
       // Act
       // sort on date time column
-      result = m_records.aaData.Sort(2, SortType.Ascending);
+      result = m_records.aaData.Sort(2, ESort.Ascending);
 
       // Assert      
       AssertSortedAAData(expected2, result);
 
       // Act
       // sort on currency column
-      result = m_records.aaData.Sort(3, SortType.Ascending);
+      result = m_records.aaData.Sort(3, ESort.Ascending);
 
       // Assert      
       AssertSortedAAData(expected3, result);
@@ -162,7 +162,7 @@ namespace WebExtras.tests.JQDataTables
 
       // Act
       // sort based on the custom parser
-      IEnumerable<IEnumerable<string>> result = m_records.aaData.Sort(0, SortType.Ascending, parsers);
+      IEnumerable<IEnumerable<string>> result = m_records.aaData.Sort(0, ESort.Ascending, parsers);
 
       // Assert
       AssertSortedAAData(expected, result);
@@ -209,28 +209,28 @@ namespace WebExtras.tests.JQDataTables
 
       // Act
       // sort on numeric column
-      IEnumerable<IEnumerable<string>> result = m_records.aaData.Sort(0, SortType.Descending);
+      IEnumerable<IEnumerable<string>> result = m_records.aaData.Sort(0, ESort.Descending);
 
       // Assert
       AssertSortedAAData(expected0, result);
 
       // Act
       // sort on string column
-      result = m_records.aaData.Sort(1, SortType.Descending);
+      result = m_records.aaData.Sort(1, ESort.Descending);
 
       // Assert      
       AssertSortedAAData(expected1, result);
 
       // Act
       // sort on date time column
-      result = m_records.aaData.Sort(2, SortType.Descending);
+      result = m_records.aaData.Sort(2, ESort.Descending);
 
       // Assert      
       AssertSortedAAData(expected2, result);
 
       // Act
       // sort on currency column
-      result = m_records.aaData.Sort(3, SortType.Descending);
+      result = m_records.aaData.Sort(3, ESort.Descending);
 
       // Assert      
       AssertSortedAAData(expected3, result);
@@ -263,7 +263,7 @@ namespace WebExtras.tests.JQDataTables
 
       // Act
       // sort based on the custom parser
-      IEnumerable<IEnumerable<string>> result = m_records.aaData.Sort(0, SortType.Descending, parsers);
+      IEnumerable<IEnumerable<string>> result = m_records.aaData.Sort(0, ESort.Descending, parsers);
 
       // Assert
       AssertSortedAAData(expected, result);

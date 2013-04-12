@@ -51,7 +51,7 @@
   Now that we have added some postbacks, we need to setup our datatable to be able to handle some postbacks. So we have
   a slightly modified constructor for our datatable
   <pre><code>
-  Datatable dTable = new Datatable("postbacks-table", dtSettings, dtColumns, null, <span class="highlight">dtPostbacks</span>);    
+  Datatable dTable = new Datatable("postbacks-table", dtSettings, null, <span class="highlight">dtPostbacks</span>);    
   </code></pre>
   Notice that we are not passing in any datatable records. We are just leaving them as null.
 </div>
@@ -61,20 +61,21 @@
   <pre><code>
   public Datatable PostHandler(PostbacksSearchModel model)
   {    
-    IEnumerable&lt;DatatableColumn&gt; dtColumns = new DatatableColumn[]
+    IEnumerable&lt;AOColumn&gt; dtColumns = new AOColumn[]
     {
-      new DatatableColumn("First Column"),
-      new DatatableColumn("Second Column")
+      new AOColumn("First Column"),
+      new AOColumn("Second Column")
     };
 
     <span class="highlight">IEnumerable&lt;PostbackItem&gt; dtPostbacks = PostbackItem.FromObject(model);</span>
     DatatableSettings dtSettings = new DatatableSettings(
       5, 
+      dtColumns,
       new AASort(0, SortType.Ascending), 
       "~/getpostbackdata", 
       "searched/filtered records", 
       "150px");
-    Datatable dTable = new Datatable("postbacks-table", dtSettings, dtColumns, null, <span class="highlight">dtPostbacks</span>); 
+    Datatable dTable = new Datatable("postbacks-table", dtSettings, null, <span class="highlight">dtPostbacks</span>); 
   }
   </code></pre>
   You might wonder where the search actually happens since it is not apparent from the code. You are

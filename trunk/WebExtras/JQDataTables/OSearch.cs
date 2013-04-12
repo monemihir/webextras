@@ -17,49 +17,39 @@
 */
 
 using System;
-using WebExtras.Core;
 
 namespace WebExtras.JQDataTables
 {
   /// <summary>
-  /// Specification for the column sorts
+  /// Defines the global filtering state at initialisation time
   /// </summary>
   [Serializable]
-  public class AASort
+  public class OSearch
   {
     /// <summary>
-    /// Column number. This is zero indexed i.e the column numbers start from 0
+    /// Flag to indicate if the filtering should be case insensitive or not
     /// </summary>
-    public int columnNumber;
+    public bool? bCaseInsensitive;
 
     /// <summary>
-    /// Type of sort. Only valid values are "asc" and "desc"
+    /// Flag to indicate if the search term should be interpreted as a regular 
+    /// expression (true) or not (false) and therefore and special regex characters escaped
     /// </summary>
-    public string sortType;
+    public bool? bRegex;
+
+    /// <summary>
+    /// Flag to indicate if DataTables is to use its smart filtering or not.
+    /// </summary>
+    public bool? bSmart;
+
+    /// <summary>
+    /// Applied search term
+    /// </summary>
+    public string sSearch;
 
     /// <summary>
     /// Default constructor
     /// </summary>
-    public AASort() { }
-
-    /// <summary>
-    /// Constructor to setup column number and sort type
-    /// </summary>
-    /// <param name="columnNumber">Column number</param>
-    /// <param name="sort">Sort type. Valid values are 'asc' and 'desc'</param>
-    public AASort(int columnNumber, ESort sort)
-    {
-      this.columnNumber = columnNumber;
-      this.sortType = sort.GetStringValue();
-    }
-
-    /// <summary>
-    /// Converts the current AASort object to an array
-    /// </summary>
-    /// <returns>Resultant object array</returns>
-    public object[] ToArray()
-    {
-      return new object[] { columnNumber, sortType };
-    }
+    public OSearch() { }
   }
 }

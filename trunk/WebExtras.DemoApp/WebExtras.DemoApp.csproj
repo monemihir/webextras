@@ -117,6 +117,7 @@
     <Compile Include="AssetsController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\AssetsController.cs" />
     <Compile Include="Controllers\CoreController.cs" />
     <Compile Include="Controllers\MvcController.cs" />
@@ -125,6 +126,9 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="HomeController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Core\DatatablesViewModel.cs" />
     <Compile Include="Models\Core\FlotViewModel.cs" />
@@ -160,12 +164,17 @@
     <Content Include="Content\img\datatables\sort_desc.png" />
     <Content Include="Content\img\datatables\sort_desc_disabled.png" />
     <Content Include="Content\img\draft.png" />
+    <Content Include="Content\inline\changelog.html" />
     <Content Include="Content\jquery.dataTables.css" />
     <Content Include="Content\jpg\wallpaper1.jpg" />
+    <Content Include="Content\jquery.jScrollPane-2.0.0beta12.css" />
     <Content Include="Content\png\youtube-logo.png" />
     <Content Include="Content\webextras-1.1.1.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\base.css" />
+    <Content Include="Scripts\jquery.jScrollPane-2.0.0beta12.js" />
+    <Content Include="Scripts\jquery.mwheelIntent-1.2.js" />
+    <Content Include="Scripts\jquery.mousewheel-3.0.6.js" />
     <Content Include="Scripts\bootstrap-2.3.1.min.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
     <Content Include="Scripts\jquery.datatables-1.9.4.min.js" />
@@ -254,6 +263,18 @@
     <Content Include="Views\Mvc\CoreForm.cshtml" />
     <Content Include="Views\Mvc\BootstrapHtml.cshtml" />
     <Content Include="Views\Mvc\BootstrapForm.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Core\_DatatableDeprecated.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Download.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\PublishProfiles\Default.pubxml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

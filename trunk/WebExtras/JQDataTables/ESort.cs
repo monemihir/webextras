@@ -17,32 +17,26 @@
 */
 
 using System;
+using WebExtras.Core;
 
 namespace WebExtras.JQDataTables
 {
   /// <summary>
-  /// Language init options
+  /// Sort types
   /// </summary>
   [Serializable]
-  public class OLanguage
+  public enum ESort
   {
     /// <summary>
-    /// This string gives information to the end user about the information that is current on
-    /// display on the page. The _START_, _END_ and _TOTAL_ variables are all dynamically
-    /// replaced as the table display updates, and can be freely moved or removed as the
-    /// language requirements change
+    /// Ascending sort
     /// </summary>
-    public string sInfo;
+    [StringValue("asc")]
+    Ascending,
 
     /// <summary>
-    /// Display information string for when the table is empty. Typically the format of this
-    /// string should match sInfo
+    /// Descending sort
     /// </summary>
-    public string sInfoEmpty;
-
-    /// <summary>
-    /// Default constructor
-    /// </summary>
-    public OLanguage() { }
+    [StringValue("desc")]
+    Descending
   }
 }

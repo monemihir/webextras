@@ -18,8 +18,8 @@
 
 using System;
 using System.Collections.Generic;
-using Newtonsoft.Json;
 using System.Linq;
+using Newtonsoft.Json;
 
 namespace WebExtras.JQDataTables
 {
@@ -83,7 +83,13 @@ namespace WebExtras.JQDataTables
     /// <returns>Returns a JSON serialized version of this object</returns>
     public override string ToString()
     {
-      return JsonConvert.SerializeObject(this);
+      return JsonConvert.SerializeObject(
+        this,
+        new JsonSerializerSettings
+        {
+          Formatting = Formatting.Indented,
+          NullValueHandling = NullValueHandling.Ignore
+        });
     }
 
     /// <summary>

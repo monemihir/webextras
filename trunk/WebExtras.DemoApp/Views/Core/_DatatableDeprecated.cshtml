@@ -23,9 +23,9 @@
 <table class="dataTable table-bordered table-striped" id="@Model.ID">
   <thead>
     <tr>
-      @foreach (AOColumn col in Model.Settings.aoColumns)
+      @foreach (DatatableColumn col in Model.Columns)
       {
-        <th>@Html.Raw(col.sTitle)
+        <th>@Html.Raw(col.Name)
         </th>
       }
     </tr>
