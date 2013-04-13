@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<project name="WebExtras" default="build-release" basedir="../trunk">
+  <description>WebExtras project</description>
+  
+  <!-- Global Properties -->
+  <property name="build.bin-dir" value="../build/binaries" />
+  <property name="build.web-dir" value="../build/web" />
+  <property name="pkg.dir" value="../dist" />
+  
+  <!-- Target: Build Release -->
+  <target name="build-release" description="Compiles the .Net solution">
+    <loadtasks assembly="C:/Program Files (x86)/NAnt/nantcontrib-0.92/bin/NAnt.Contrib.Tasks.dll" />
+    <delete includeemptydirs="true" failonerror="true">
+      <fileset basedir="${build.bin-dir}">
+        <include name="**/*" />
+      </fileset>
+    </delete>
+    
+    <delete includeemptydirs="true" failonerror="true">
+      <fileset basedir="${build.web-dir}">
+        <include name="**/*" />
+      </fileset>
+    </delete>
+    
+    <!-- Build WebExtras.DemoApp -->
+    <msbuild project="WebExtras.DemoApp/WebExtras.DemoApp.csproj">
+      <arg value="/p:OutputPath=../${build.bin-dir}" />
+      <arg value="/p:Configuration=Release" />
+      <arg value="/p:Platform=Any CPU" />
+      <arg value="/p:DocumentationFile=WebExtras.DemoApp.xml" />
+      <arg value="/t:Rebuild" />
+      <arg value="/t:TransformWebConfig" />
+      <arg value="/t:_WPPCopyWebApplication" />
+      <arg value="/p:WebProjectOutputDir=../${build.web-dir}" />
+    </msbuild>
+
+    <!-- Build WebExtras.Mvc -->
+    <msbuild project="WebExtras.Mvc/WebExtras.Mvc.csproj">
+      <arg value="/p:OutputPath=bin" />
+      <arg value="/p:Configuration=Release" />
+      <arg value="/p:Platform=Any CPU" />
+      <arg value="/p:DocumentationFile=WebExtras.Mvc.xml" />
+      <arg value="/t:Rebuild" />
+    </msbuild>
+
+    <copy file="WebExtras.Mvc/bin/WebExtras.Mvc.xml" tofile="${build.bin-dir}/WebExtras.Mvc.xml" failonerror="true" />
+    <copy file="WebExtras.Mvc/bin/WebExtras.Mvc.xml" tofile="${build.web-dir}/bin/WebExtras.Mvc.xml" failonerror="true" />
+
+    <!-- Build WebExtras -->
+    <msbuild project="WebExtras/WebExtras.csproj">
+      <arg value="/p:OutputPath=bin" />
+      <arg value="/p:Configuration=Release" />
+      <arg value="/p:Platform=Any CPU" />
+      <arg value="/p:DocumentationFile=WebExtras.xml" />
+      <arg value="/t:Rebuild" />
+    </msbuild>
+
+    <copy file="WebExtras/bin/WebExtras.xml" tofile="${build.bin-dir}/WebExtras.xml" failonerror="true" />
+    <copy file="WebExtras/bin/WebExtras.xml" tofile="${build.web-dir}/bin/WebExtras.xml" failonerror="true" />        
+  </target>
+  
+  <!-- Target: Deploy -->
+  <target name="deploy" description="Copies published Web system to appropriate location accessible by IIS">
+    <echo message="Stopping IIS Web Server" />
+    <exec program="net.exe" failonerror="false">
+      <arg value="stop" />
+      <arg value="WAS" />
+      <arg value="/Y" />
+    </exec>
+
+    <echo message="Copying deploy data" />
+    <copy todir="C:/inetpub/wwwroot/appdocs/webextras">
+      <fileset basedir="${build.web-dir}" />
+    </copy>
+
+    <echo message="Starting IIS Web Server" />
+    <exec program="net.exe">
+      <arg value="start" />
+      <arg value="W3SVC" />
+    </exec>
+    
+    <!--<iisapppool action="Start" pool="ASP.NET v4.0" server="localhost" />-->
+  </target>
+  
+  <!-- Target: Package -->
+  <target name="package" description="Creates a distribution package" depends="build-release">
+
+    <delete includeemptydirs="true" failonerror="true">
+      <fileset basedir="${pkg.dir}">
+        <include name="**/*" />
+        <include name="*.*" />
+      </fileset>
+    </delete>
+
+    <!-- Copy binaries -->
+    <copy todir="${pkg.dir}" failonerror="true">
+      <fileset basedir="${build.web-dir}">
+        <include name="bin/WebExtras.dll" />
+        <include name="bin/WebExtras.xml" />
+        <include name="bin/WebExtras.Mvc.dll" />
+        <include name="bin/WebExtras.Mvc.xml" />
+        <include name="bin/Newtonsoft.Json.dll" />
+        <include name="bin/Newtonsoft.Json.xml" />
+        <include name="bin/T4MVCExtensions.dll" />
+      </fileset>
+    </copy>
+    
+    <!-- Copy css -->
+    <copy file="${build.web-dir}/Content/webextras-1.1.1.css" todir="${pkg.dir}/css" failonerror="true" />
+    
+    <!-- Copy js -->
+    <copy todir="${pkg.dir}/js" failonerror="true">
+      <fileset basedir="${build.web-dir}/Scripts">
+        <include name="jquery.flot.axislabels-1.0.js" />
+        <include name="jquery.flot.curvedlines-0.2.3.js" />
+        <include name="jquery.flot.dashes-0.1.js" />
+      </fileset>
+    </copy>
+    
+    <!-- Copy views -->
+    <copy todir="${pkg.dir}/views" failonerror="true">
+      <fileset basedir="${build.web-dir}/Views/Core">
+        <include name="_Datatable.cshtml" />
+        <include name="_DatatableDeprecated.cshtml" />
+      </fileset>
+    </copy>
+    
+    <!-- Copy license -->
+    <copy file="${build.web-dir}/lgpl-3.0.htm" todir="${pkg.dir}" failonerror="true" />
+  </target>
+</project>

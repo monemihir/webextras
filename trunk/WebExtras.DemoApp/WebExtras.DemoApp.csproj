@@ -172,6 +172,9 @@
     <Content Include="Content\webextras-1.1.1.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\base.css" />
+    <Content Include="lgpl-3.0.htm">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\jquery.jScrollPane-2.0.0beta12.js" />
     <Content Include="Scripts\jquery.mwheelIntent-1.2.js" />
     <Content Include="Scripts\jquery.mousewheel-3.0.6.js" />
