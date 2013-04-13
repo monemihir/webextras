@@ -1,67 +1,63 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<project name="WebExtras" default="build-release" basedir="../trunk">
+<project name="WebExtras" default="build" basedir="../trunk">
   <description>WebExtras project</description>
   
+  <!-- Includes -->
+  <loadtasks assembly="C:/Program Files (x86)/NAnt/nantcontrib-0.92/bin/NAnt.Contrib.Tasks.dll" />
+  <include buildfile="../build/generic.build.include" />
+
   <!-- Global Properties -->
-  <property name="build.bin-dir" value="../build/binaries" />
-  <property name="build.web-dir" value="../build/web" />
-  <property name="pkg.dir" value="../dist" />
   <property name="deploy.dir" value="C:/inetpub/wwwroot/appdocs/webextras" />
+  <property name="msbuild.configuration" value="Release" />
+  <property name="msbuild.platform" value="Any CPU" />
+  
+  <!-- Target: Build Debug -->
+  <target name="build-debug" description="Compiles the project in Debug mode">
+    <property name="msbuild.configuration" value="Debug" />
+
+    <call target="build" />
+  </target>
   
   <!-- Target: Build Release -->
-  <target name="build-release" description="Compiles the .Net solution">
-    <loadtasks assembly="C:/Program Files (x86)/NAnt/nantcontrib-0.92/bin/NAnt.Contrib.Tasks.dll" />
-    <delete includeemptydirs="true" failonerror="true">
-      <fileset basedir="${build.bin-dir}">
-        <include name="**/*" />
-      </fileset>
-    </delete>
-    
-    <delete includeemptydirs="true" failonerror="true">
-      <fileset basedir="${build.web-dir}">
-        <include name="**/*" />
-      </fileset>
-    </delete>
+  <target name="build" description="Compiles the project in Release mode">
+
+    <call target="clean-build-dist" />
     
     <!-- Build WebExtras.DemoApp -->
     <msbuild project="WebExtras.DemoApp/WebExtras.DemoApp.csproj">
       <arg value="/p:OutputPath=../${build.bin-dir}" />
-      <arg value="/p:Configuration=Release" />
-      <arg value="/p:Platform=Any CPU" />
+      <arg value="/p:WebProjectOutputDir=../${build.web-dir}" />
+      <arg value="/p:Configuration=${msbuild.configuration}" />
+      <arg value="/p:Platform=${msbuild.platform}" />
       <arg value="/p:DocumentationFile=WebExtras.DemoApp.xml" />
       <arg value="/t:Rebuild" />
       <arg value="/t:TransformWebConfig" />
       <arg value="/t:_WPPCopyWebApplication" />
-      <arg value="/p:WebProjectOutputDir=../${build.web-dir}" />
     </msbuild>
 
     <!-- Build WebExtras.Mvc -->
     <msbuild project="WebExtras.Mvc/WebExtras.Mvc.csproj">
       <arg value="/p:OutputPath=bin" />
-      <arg value="/p:Configuration=Release" />
-      <arg value="/p:Platform=Any CPU" />
+      <arg value="/p:Configuration=${msbuild.configuration}" />
+      <arg value="/p:Platform=${msbuild.platform}" />
       <arg value="/p:DocumentationFile=WebExtras.Mvc.xml" />
       <arg value="/t:Rebuild" />
     </msbuild>
-
-    <copy file="WebExtras.Mvc/bin/WebExtras.Mvc.xml" tofile="${build.bin-dir}/WebExtras.Mvc.xml" failonerror="true" />
-    <copy file="WebExtras.Mvc/bin/WebExtras.Mvc.xml" tofile="${build.web-dir}/bin/WebExtras.Mvc.xml" failonerror="true" />
-
+    
     <!-- Build WebExtras -->
     <msbuild project="WebExtras/WebExtras.csproj">
       <arg value="/p:OutputPath=bin" />
-      <arg value="/p:Configuration=Release" />
-      <arg value="/p:Platform=Any CPU" />
+      <arg value="/p:Configuration=${msbuild.configuration}" />
+      <arg value="/p:Platform=${msbuild.platform}" />
       <arg value="/p:DocumentationFile=WebExtras.xml" />
       <arg value="/t:Rebuild" />
     </msbuild>
 
-    <copy file="WebExtras/bin/WebExtras.xml" tofile="${build.bin-dir}/WebExtras.xml" failonerror="true" />
-    <copy file="WebExtras/bin/WebExtras.xml" tofile="${build.web-dir}/bin/WebExtras.xml" failonerror="true" />        
+    <call target="copy-doc-files" />
   </target>
-  
+
   <!-- Target: Deploy -->
-  <target name="deploy" description="Copies published Web system to appropriate location accessible by IIS" depends="build-release">
+  <target name="deploy" description="Copies published Web system to appropriate location accessible by IIS" depends="build">
     <echo message="Stopping IIS Web Server" />
     <exec program="net.exe" failonerror="false">
       <arg value="stop" />
@@ -87,7 +83,7 @@
   </target>
   
   <!-- Target: Package -->
-  <target name="package" description="Creates a distribution package" depends="build-release">
+  <target name="package" description="Creates a distribution package" depends="build">
 
     <delete includeemptydirs="true" failonerror="true">
       <fileset basedir="${pkg.dir}">

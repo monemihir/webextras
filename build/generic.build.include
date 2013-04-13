@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<project name="WebExtras">
+  <!-- Global Properties -->
+  <property name="build.bin-dir" value="../build/binaries" readonly="true" />
+  <property name="build.web-dir" value="../build/web" readonly="true" />
+  <property name="pkg.dir" value="../dist" readonly="true" />
+
+  <!-- Target: Copy documentation files -->
+  <target name="copy-doc-files" description="Copies documentation files from individual 'bin' folder to appropriate location">
+    <copy file="WebExtras.Mvc/bin/WebExtras.Mvc.xml" tofile="${build.bin-dir}/WebExtras.Mvc.xml" failonerror="true" />
+    <copy file="WebExtras.Mvc/bin/WebExtras.Mvc.xml" tofile="${build.web-dir}/bin/WebExtras.Mvc.xml" failonerror="true" />
+    <copy file="WebExtras/bin/WebExtras.xml" tofile="${build.bin-dir}/WebExtras.xml" failonerror="true" />
+    <copy file="WebExtras/bin/WebExtras.xml" tofile="${build.web-dir}/bin/WebExtras.xml" failonerror="true" />
+  </target>
+
+  <!-- Target: Clean build and dist folders -->
+  <target name="clean-build-dist" description="Cleans the 'build' and 'dist' folders">
+    <delete includeemptydirs="true" failonerror="true">
+      <fileset basedir="${build.bin-dir}">
+        <include name="**/*" />
+      </fileset>
+    </delete>
+
+    <delete includeemptydirs="true" failonerror="true">
+      <fileset basedir="${build.web-dir}">
+        <include name="**/*" />
+      </fileset>
+    </delete>
+  </target>
+
+</project>
