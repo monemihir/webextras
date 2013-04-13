@@ -202,3 +202,8 @@ pre
 	padding: 5px;	
 	border-radius: 5px;
 }
+
+#build-date
+{
+  padding-left: 4%;
+}

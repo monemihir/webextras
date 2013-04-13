@@ -164,6 +164,7 @@
     <Content Include="Content\img\datatables\sort_desc.png" />
     <Content Include="Content\img\datatables\sort_desc_disabled.png" />
     <Content Include="Content\img\draft.png" />
+    <Content Include="Content\inline\build.txt" />
     <Content Include="Content\inline\changelog.html" />
     <Content Include="Content\jquery.dataTables.css" />
     <Content Include="Content\jpg\wallpaper1.jpg" />

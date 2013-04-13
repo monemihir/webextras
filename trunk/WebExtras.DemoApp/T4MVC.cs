@@ -157,6 +157,7 @@ namespace Links
             private const string URLPATH = "~/Content/inline";
             public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+            public static readonly string build_txt = Url("build.txt");
             public static readonly string changelog_html = Url("changelog.html");
         }
     
