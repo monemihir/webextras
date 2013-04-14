@@ -55,7 +55,7 @@
     @RenderBody()
   </div>
   <footer>
-    <small class="pull-left" id="build-date">Built: @Html.Inline(Links.Content.inline.build_txt)</small>
+    <small class="pull-left" id="build-date">@Html.Inline(Links.Content.inline.build_txt)</small>
     <small>Copyright &copy; @DateTime.Now.Year Mihir Mone. All Rights Reserved.</small>
   </footer>
   @RenderSection("scripts", required: false)

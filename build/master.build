@@ -72,8 +72,8 @@
 
     <echo message="Updating build timestamp in /Content/inline/build.txt at deployed location" />
     <property name="build.date" value="" />
-    <tstamp property="build.date" pattern="dd-MMM-yyyy HH:mm zz" verbose="true" />
-    <echo file="${deploy.dir}/Content/inline/build.txt">${build.date}</echo>
+    <tstamp property="build.date" pattern="dd MMM yyyy HH:mm zz" verbose="true" />
+    <echo file="${deploy.dir}/Content/inline/build.txt">Built with NAnt 0.9.2 on ${build.date}</echo>
     
     <echo message="Starting IIS Web Server" />
     <exec program="net.exe">
