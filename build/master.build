@@ -8,6 +8,7 @@
 
   <!-- Global Properties -->
   <property name="deploy.dir" value="C:/inetpub/wwwroot/appdocs/webextras" />
+  <property name="nightly.dir" value="C:/inetpub/wwwroot/nightly/webextras" />
   <property name="msbuild.configuration" value="Release" />
   <property name="msbuild.platform" value="Any CPU" />
   
@@ -56,8 +57,15 @@
     <call target="copy-doc-files" />
   </target>
 
+  <!-- Target: Deploy nightly -->
+  <target name="deploy-nightly" description="Copies published web system to nightly deploy location">
+    <property name="deploy.dir" value="${nightly.dir}" />
+
+    <call target="deploy" />
+  </target>
+  
   <!-- Target: Deploy -->
-  <target name="deploy" description="Copies published Web system to appropriate location accessible by IIS" depends="build">
+  <target name="deploy" description="Copies published Web system to deploy location" depends="build">
     <echo message="Stopping IIS Web Server" />
     <exec program="net.exe" failonerror="false">
       <arg value="stop" />
