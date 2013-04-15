@@ -54,8 +54,8 @@ namespace WebExtras.Mvc.Html
     /// <param name="text">Button text</param>
     /// <param name="onclick">Javascript onclick event of the button</param>
     /// <param name="htmlAttributes">Extra HTML attributes</param>
-    public Button(ButtonOfType type, string text, string onclick, object htmlAttributes = null)
-      : base(HtmlTag.Button, htmlAttributes)
+    public Button(EButton type, string text, string onclick, object htmlAttributes = null)
+      : base(EHtmlTag.Button, htmlAttributes)
     {
       Text = text;
 

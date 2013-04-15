@@ -55,12 +55,12 @@ namespace WebExtras.JQDataTables
     /// <summary>
     /// The data in a 2D array
     /// </summary>
-    private IEnumerable<IEnumerable<string>> m_aaData;
+    private string[][] m_aaData;
 
     /// <summary>
     /// The data in a 2D array
     /// </summary>
-    public IEnumerable<IEnumerable<string>> aaData
+    public string[][] aaData
     {
       get { return m_aaData; }
       set { m_aaData = SanitiseAAData(value); }
@@ -100,18 +100,23 @@ namespace WebExtras.JQDataTables
     /// </summary>
     /// <param name="toBeSanitised">Collection to be sanitised</param>
     /// <returns>Sanitised collection</returns>
-    private IEnumerable<IEnumerable<string>> SanitiseAAData(IEnumerable<IEnumerable<string>> toBeSanitised)
+    private string[][] SanitiseAAData(IEnumerable<IEnumerable<string>> toBeSanitised)
     {
-      IEnumerable<IEnumerable<string>> newAAData = toBeSanitised;
-
       if (toBeSanitised != null && toBeSanitised.Count() > 1)
       {
+        string[][] newAAData = toBeSanitised.Select(f => f.ToArray()).ToArray();
+
         int maxLength = toBeSanitised.Where(f => f != null).Max(f => f.Count());
         IEnumerable<string> empty = Enumerable.Range(0, maxLength).Select(f => string.Empty);
-        newAAData = toBeSanitised.Select(f => f.Concat(empty).Take(maxLength));
+        newAAData = toBeSanitised
+          .Select(f => f.Concat(empty).Take(maxLength))
+          .Select(f => f.ToArray())
+          .ToArray();
+
+        return newAAData;
       }
 
-      return newAAData;
+      return null;
     }
   }
 }

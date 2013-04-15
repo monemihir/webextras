@@ -34,9 +34,9 @@ namespace WebExtras.Mvc.Bootstrap
     /// <param name="type">Navigation bar type</param>
     /// <param name="items">Navigation bar items</param>
     public BootstrapNavBar(EBootstrapNavbar type, params IExtendedHtmlString[] items)
-      : base(HtmlTag.Div)
+      : base(EHtmlTag.Div)
     {
-      HtmlList list = new HtmlList(ListType.Unordered);
+      HtmlList list = new HtmlList(EList.Unordered);
       list["class"] = "nav";
 
       IExtendedHtmlString brand = null;

@@ -41,7 +41,7 @@ namespace WebExtras.Mvc.Html
     /// <param name="text">List item text</param>
     /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
     public HtmlListItem(string text, object htmlAttributes = null)
-      : base(HtmlTag.ListItem, htmlAttributes)
+      : base(EHtmlTag.ListItem, htmlAttributes)
     {
       Tag = new TagBuilder("li");
       Text = text;

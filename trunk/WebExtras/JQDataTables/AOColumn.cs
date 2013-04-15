@@ -34,13 +34,13 @@ namespace WebExtras.JQDataTables
     /// sort. For example first name / last name columns make sense to do a multi-column 
     /// sort over the two columns.
     /// </summary>
-    public IEnumerable<int> aDataSort;
+    public int[] aDataSort;
 
     /// <summary>
     /// You can control the default sorting direction, and even alter the behaviour of 
     /// the sort handler (i.e. only allow ascending sorting etc) using this parameter
     /// </summary>
-    public IEnumerable<string> asSorting;
+    public string[] asSorting;
 
     /// <summary>
     /// Enable or disable filtering on the data in this column

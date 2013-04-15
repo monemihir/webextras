@@ -36,7 +36,7 @@ namespace WebExtras.Mvc.Html
     /// </summary>
     /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
     public Div(object htmlAttributes = null)
-      : base(HtmlTag.Div, htmlAttributes)
+      : base(EHtmlTag.Div, htmlAttributes)
     { }
 
     /// <summary>
@@ -45,7 +45,7 @@ namespace WebExtras.Mvc.Html
     /// <param name="text">Text to be displayed</param>
     /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
     public Div(string text, object htmlAttributes = null)
-      : base(HtmlTag.Div, htmlAttributes)
+      : base(EHtmlTag.Div, htmlAttributes)
     {
       Text = text;
     }

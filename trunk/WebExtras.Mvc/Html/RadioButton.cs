@@ -80,7 +80,7 @@ namespace WebExtras.Mvc.Html
     /// <param name="isDisabled">Flag indicating whether the radio button is disabled</param>
     /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
     public RadioButton(string text, string value, bool isChecked, bool isDisabled, object htmlAttributes = null)
-      : base(HtmlTag.Input, htmlAttributes)
+      : base(EHtmlTag.Input, htmlAttributes)
     {
       this["type"] = "radio";
       Value = value;

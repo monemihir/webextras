@@ -17,58 +17,29 @@
 */
 
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using WebExtras.Core;
 
 namespace WebExtras.Mvc.Html
 {
   /// <summary>
-  /// A collection of all HTML tags available
+  /// A collection of list types
   /// </summary>
   [Serializable]
-  public enum HtmlTag
+  public enum EList
   {
     /// <summary>
-    /// A null HTML tag
+    /// An ordered list
     /// </summary>
-    Empty,
+    [StringValue("ol")]
+    Ordered,
 
     /// <summary>
-    /// HTML A tag
+    /// An unordered list
     /// </summary>
-    A,
-
-    /// <summary>
-    /// HTML I tag
-    /// </summary>
-    I,
-
-    /// <summary>
-    /// HTML IMG tag
-    /// </summary>
-    Img,
-
-    /// <summary>
-    /// HTML BUTTON tag
-    /// </summary>
-    Button,
-
-    /// <summary>
-    /// HTML INPUT tag
-    /// </summary>
-    Input,
-
-    /// <summary>
-    /// HTML LIST tag
-    /// </summary>
-    List,
-
-    /// <summary>
-    /// HTML LIST ITEM tag
-    /// </summary>
-    ListItem,
-
-    /// <summary>
-    /// HTML DIV tag
-    /// </summary>
-    Div
+    [StringValue("ul")]
+    Unordered,
   }
 }

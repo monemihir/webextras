@@ -141,12 +141,12 @@ namespace WebExtras.JQDataTables
     /// this variable. The aaSorting array should contain an array for each column to be sorted
     /// initially containing the column's index and a direction string ('asc' or 'desc')
     /// </summary>
-    public IEnumerable<IEnumerable<object>> aaSorting { get; private set; }
+    public object[][] aaSorting { get; private set; }
 
     /// <summary>
     /// Individual data column specifications
     /// </summary>
-    public IEnumerable<AOColumn> aoColumns;
+    public AOColumn[] aoColumns;
 
     /// <summary>
     /// Language init options
@@ -337,7 +337,7 @@ namespace WebExtras.JQDataTables
       iDisplayLength = displayLength;
       sScrollY = tableHeight;
 
-      aaSorting = sortOptions.Select(f => f.ToArray()) ?? null;
+      aaSorting = sortOptions.Select(f => f.ToArray()).ToArray() ?? null;
 
       oLanguage = new OLanguage
       {
@@ -395,7 +395,7 @@ namespace WebExtras.JQDataTables
       if (emptyHeading.Count > 0)
         throw new Exception(string.Format("Column(s) {0} have no title specified.", string.Join(",", emptyHeading)));
 
-      aoColumns = columns;
+      aoColumns = columns.ToArray();
     }
 
     /// <summary>

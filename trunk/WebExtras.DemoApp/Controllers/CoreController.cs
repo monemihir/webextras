@@ -131,7 +131,7 @@ namespace WebExtras.DemoApp.Controllers
           {
             iTotalRecords = statusData.Count(),
             iTotalDisplayRecords = statusData.Count(),
-            aaData = statusData
+            aaData = statusData.ToArray()
           };
           break;
 
@@ -152,7 +152,7 @@ namespace WebExtras.DemoApp.Controllers
           {
             iTotalRecords = dtData.Count(),            // Total records in table
             iTotalDisplayRecords = dtData.Count(),     // Total records to be displayed in the table
-            aaData = dtData                           // The data to be displayed
+            aaData = dtData.ToArray()                  // The data to be displayed
           };
           break;
       }
@@ -185,7 +185,7 @@ namespace WebExtras.DemoApp.Controllers
       {
         iTotalRecords = dtData.Count(),            // Total records in table
         iTotalDisplayRecords = dtData.Count(),     // Total records to be displayed in the table
-        aaData = dtData                           // The data to be displayed
+        aaData = dtData.ToArray()                  // The data to be displayed
       };
       viewModel.Table = new Datatable("basic-table", dtSettings, dtRecords);
 
@@ -262,7 +262,7 @@ namespace WebExtras.DemoApp.Controllers
         sEcho = filters.sEcho,
         iTotalRecords = dtData.Count(),
         iTotalDisplayRecords = dtData.Count(),
-        aaData = dtData
+        aaData = dtData.ToArray()
       };
 
       return Json(dtRecords, JsonRequestBehavior.AllowGet);
@@ -287,9 +287,12 @@ namespace WebExtras.DemoApp.Controllers
       DatatableRecords dtRecords = new DatatableRecords
       {
         sEcho = filters.sEcho,
-        iTotalRecords = dtData.Count(),                                                // Total records in table
-        iTotalDisplayRecords = dtData.Count(),                                         // Total records to be displayed in the table
-        aaData = dtData.Skip(filters.iDisplayStart).Take(filters.iDisplayLength)      // The data to be displayed
+        iTotalRecords = dtData.Count(),                     // Total records in table
+        iTotalDisplayRecords = dtData.Count(),              // Total records to be displayed in the table
+        aaData = dtData
+          .Skip(filters.iDisplayStart)                      // The data to be displayed
+          .Take(filters.iDisplayLength)
+          .ToArray()
       };
 
       return dtRecords;
@@ -312,9 +315,11 @@ namespace WebExtras.DemoApp.Controllers
       DatatableRecords dtRecords = new DatatableRecords
       {
         sEcho = filters.sEcho,
-        iTotalRecords = dtData.Count(),                                                // Total records in table
-        iTotalDisplayRecords = dtData.Count(),                                         // Total records to be displayed in the table
-        aaData = dtData.Sort(filters.iSortCol_0, filters.SortDirection)      // The data to be displayed
+        iTotalRecords = dtData.Count(),                                 // Total records in table
+        iTotalDisplayRecords = dtData.Count(),                          // Total records to be displayed in the table
+        aaData = dtData
+          .Sort(filters.iSortCol_0, filters.SortDirection)              // The data to be displayed
+          .ToArray()                    
       };
 
       return dtRecords;

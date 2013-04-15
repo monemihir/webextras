@@ -34,15 +34,15 @@ namespace WebExtras.Mvc.Html
     /// <summary>
     /// List type
     /// </summary>
-    public ListType Type { get; set; }
+    public EList Type { get; set; }
 
     /// <summary>
     /// Constructor
     /// </summary>
     /// <param name="type">Type of list</param>
     /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
-    public HtmlList(ListType type, object htmlAttributes = null)
-      : base(HtmlTag.List, htmlAttributes)
+    public HtmlList(EList type, object htmlAttributes = null)
+      : base(EHtmlTag.List, htmlAttributes)
     {
       Type = type;
       Tag = new TagBuilder(type.GetStringValue());
@@ -54,8 +54,8 @@ namespace WebExtras.Mvc.Html
     /// <param name="type">Type of list</param>
     /// <param name="listItems">A collection of items</param>
     /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
-    public HtmlList(ListType type, IEnumerable<HtmlListItem> listItems, object htmlAttributes = null)
-      : base(HtmlTag.List, htmlAttributes)
+    public HtmlList(EList type, IEnumerable<HtmlListItem> listItems, object htmlAttributes = null)
+      : base(EHtmlTag.List, htmlAttributes)
     {
       Type = type;
       Tag = new TagBuilder(type.GetStringValue());

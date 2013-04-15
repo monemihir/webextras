@@ -109,7 +109,7 @@
       HtmlListItem item3 = new HtmlListItem(string.Empty);
       item3.Append(link3);        
 
-      HtmlList list = new HtmlList(ListType.Unordered, new HtmlListItem[] { item3 });    
+      HtmlList list = new HtmlList(EList.Unordered, new HtmlListItem[] { item3 });    
     }      
 
     @@Html.Navbar(EBootstrapNavbar.Normal, list)
@@ -131,7 +131,7 @@
         HtmlListItem item3 = new HtmlListItem(string.Empty);
         item3.Append(link3);
 
-        HtmlList list = new HtmlList(ListType.Unordered, new HtmlListItem[] { item3 });    
+        HtmlList list = new HtmlList(EList.Unordered, new HtmlListItem[] { item3 });    
       }
 
       @Html.Navbar(EBootstrapNavbar.Normal, list)

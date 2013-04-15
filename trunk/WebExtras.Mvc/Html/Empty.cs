@@ -34,7 +34,7 @@ namespace WebExtras.Mvc.Html
     /// Default constructor
     /// </summary>
     public Empty()
-      : base(HtmlTag.Empty)
+      : base(EHtmlTag.Empty)
     { }
         
     /// <summary>

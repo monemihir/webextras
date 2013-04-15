@@ -34,7 +34,7 @@
 @@Html.Hyperlink("Take me to google", "http://www.google.com")
     .AsButton(EBootstrapButton.Default)
 
-@@Html.Button(ButtonOfType.Regular, "Take me to google", "window.location='http://www.google.com.au'")
+@@Html.Button(EButton.Regular, "Take me to google", "window.location='http://www.google.com.au'")
     .AsButton(EBootstrapButton.Inverse)
   </code></pre>
   <p>Output</p>
@@ -44,7 +44,7 @@
     @Html.Hyperlink("Take me to google", "http://www.google.com").AsButton(EBootstrapButton.Success)
     @Html.Hyperlink("Take me to google", "http://www.google.com").AsButton(EBootstrapButton.Info)
     @Html.Hyperlink("Take me to google", "http://www.google.com").AsButton(EBootstrapButton.Warning)
-    @Html.Button(ButtonOfType.Regular, "Take me to google", "goToGoogle()").AsButton(EBootstrapButton.Inverse)
+    @Html.Button(EButton.Regular, "Take me to google", "goToGoogle()").AsButton(EBootstrapButton.Inverse)
   </div>
   <p>All available extensions</p>
   <pre><code>
@@ -58,7 +58,7 @@
   <p>Unstyled lists can be created by using the <strong>AsUnstyled()</strong> decorator.</p>
   <p>Markup</p>
   <pre><code>
-@@Html.List(ListType.Unordered, new HtmlListItem[] { 
+@@Html.List(EList.Unordered, new HtmlListItem[] { 
   new HtmlListItem("list item 1"),
   new HtmlListItem("list item 2"),
   new HtmlListItem("list item 3"),
@@ -68,7 +68,7 @@
   </code></pre>
   <p>Output</p>
   <div class="content">
-    @Html.List(ListType.Unordered, new HtmlListItem[] { 
+    @Html.List(EList.Unordered, new HtmlListItem[] { 
       new HtmlListItem("list item 1"),
       new HtmlListItem("list item 2"),
       new HtmlListItem("list item 3"),

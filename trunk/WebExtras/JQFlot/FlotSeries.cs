@@ -39,11 +39,11 @@ namespace WebExtras.JQFlot
     {
       label = "";
       color = "#FFAA00";
-      yaxis = 1;      
+      yaxis = 1;
       clickable = false;
       shadowSize = 0;
       hoverable = true;
-      data = new List<List<double>>();
+      data = new double[][] { };
       dashes = new DashedLineGraph();
       lines = new LineGraph();
       curvedLines = new CurvedLineGraph();
@@ -68,7 +68,7 @@ namespace WebExtras.JQFlot
     /// <summary>
     /// series data as a collection of x,y doubles
     /// </summary>
-    public IEnumerable<IEnumerable<double>> data { get; set; }
+    public double[][] data { get; set; }
 
     /// <summary>
     /// whether the series responds to a mouse hover
@@ -117,7 +117,13 @@ namespace WebExtras.JQFlot
     /// <returns>FlotSeries as a JSON serialized string</returns>
     public override string ToString()
     {
-      return JsonConvert.SerializeObject(this);
+      return JsonConvert.SerializeObject(
+        this,
+        new JsonSerializerSettings
+        {
+          Formatting = Formatting.Indented,
+          NullValueHandling = NullValueHandling.Ignore
+        });
     }
   }
 }

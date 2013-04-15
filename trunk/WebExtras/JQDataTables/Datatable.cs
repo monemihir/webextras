@@ -42,7 +42,7 @@ namespace WebExtras.JQDataTables
     /// Datatable column headings
     /// </summary>
     [Obsolete("This property has been deprecated and will be removed in future releases")]
-    public IEnumerable<DatatableColumn> Columns { get; private set; }
+    public DatatableColumn[] Columns { get; private set; }
 
     /// <summary>
     /// Datatable records
@@ -52,7 +52,7 @@ namespace WebExtras.JQDataTables
     /// <summary>
     /// Postback data for server side processing
     /// </summary>
-    public IEnumerable<PostbackItem> Postbacks { get; private set; }
+    public PostbackItem[] Postbacks { get; private set; }
 
     /// <summary>
     /// Flag indicating whether to enable status column
@@ -107,9 +107,9 @@ namespace WebExtras.JQDataTables
       if (settings.aoColumns == null)
         settings.SetupAOColumns(columns);
 
-      Columns = columns;
+      Columns = columns.ToArray();
       Records = records;
-      Postbacks = postbacks ?? Enumerable.Empty<PostbackItem>();
+      Postbacks = postbacks.ToArray() ?? new PostbackItem[0];
       EnableStatusColumn = enableStatusColumn;
     }
 
@@ -136,11 +136,11 @@ namespace WebExtras.JQDataTables
       ID = id.Replace("-", "_");
 
       if (enableStatusColumn)
-        settings.aoColumns = settings.aoColumns.Concat(new AOColumn[] { new AOColumn { bVisible = false } });
+        settings.aoColumns = settings.aoColumns.Concat(new AOColumn[] { new AOColumn { bVisible = false } }).ToArray();
 
       Settings = settings;
       Records = records;
-      Postbacks = postbacks ?? Enumerable.Empty<PostbackItem>();
+      Postbacks = postbacks.ToArray() ?? new PostbackItem[0];
       EnableStatusColumn = enableStatusColumn;
     }
   }

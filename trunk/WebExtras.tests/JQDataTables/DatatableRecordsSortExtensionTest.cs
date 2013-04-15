@@ -44,7 +44,7 @@ namespace WebExtras.tests.JQDataTables
         new string[] { "<a href='/displayplan/24'>3</a>", "sneha", "2013-Mar-12", "&pound;12.00" },
         new string[] { "<a href='/displayplan/11'>1</a>", "mohan", "20 Mar 13", "rs.151.00" },
         new string[] { "<a href='/displayplan/16'>2</a>", "swati", "29May13", "$201.00" }
-      };
+      }.ToArray();
       m_records.iTotalDisplayRecords = m_records.aaData.Count();
       m_records.iTotalRecords = m_records.aaData.Count();
     }
@@ -278,7 +278,7 @@ namespace WebExtras.tests.JQDataTables
     {
       // Arrange
       string expected = "{\"iTotalDisplayRecords\":4,\"iTotalRecords\":4,\"sEcho\":\"1\",\"aaData\":[[\"mihir\"]]}";
-      m_records.aaData = new List<string[]> { new string[] { "mihir" } };
+      m_records.aaData = new List<string[]> { new string[] { "mihir" } }.ToArray();
 
       // Act
       string result = m_records.ToString();

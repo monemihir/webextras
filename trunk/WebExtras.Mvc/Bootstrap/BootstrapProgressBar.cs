@@ -47,7 +47,7 @@ namespace WebExtras.Mvc.Bootstrap
     /// <param name="percent">Percentage of completion for the progress bar</param>
     /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
     public BootstrapProgressBar(EBootstrapProgressBar type, int percent, object htmlAttributes = null)
-      : base(HtmlTag.Div, htmlAttributes)
+      : base(EHtmlTag.Div, htmlAttributes)
     {
       Percent = percent;
       this["class"] += "progress";

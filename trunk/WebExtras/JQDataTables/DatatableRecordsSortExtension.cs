@@ -41,12 +41,14 @@ namespace WebExtras.JQDataTables
     /// <param name="customParsers">[Optional] A dictionary containing the column number as an associated data parser function.
     /// Defaults to null.</param>
     /// <param name="type">Sort direction</param>
-    public static IEnumerable<IEnumerable<string>> Sort(this IEnumerable<IEnumerable<string>> aaData, int columnNumber, ESort type, IDictionary<int, Func<string, object>> customParsers = null)
+    public static string[][] Sort(this IEnumerable<IEnumerable<string>> aaData, int columnNumber, ESort type, IDictionary<int, Func<string, object>> customParsers = null)
     {
-      if (aaData != null && aaData.Count() > 1)
-        aaData = (type == ESort.Ascending) ? SortAscending(aaData, columnNumber, customParsers) : SortDescending(aaData, columnNumber, customParsers);
+      string[][] data = null;
 
-      return aaData;
+      if (aaData != null && aaData.Count() > 1)
+        data = (type == ESort.Ascending) ? SortAscending(aaData, columnNumber, customParsers) : SortDescending(aaData, columnNumber, customParsers);
+
+      return data;
     }
 
     /// <summary>
@@ -57,7 +59,7 @@ namespace WebExtras.JQDataTables
     /// <param name="customParsers">[Optional] A dictionary containing the column number as an associated data parser function.
     /// Defaults to null.</param>
     /// <returns>Ascending sorted records</returns>
-    private static IEnumerable<IEnumerable<string>> SortAscending(IEnumerable<IEnumerable<string>> aaData, int columnNumber, IDictionary<int, Func<string, object>> customParsers = null)
+    private static string[][] SortAscending(IEnumerable<IEnumerable<string>> aaData, int columnNumber, IDictionary<int, Func<string, object>> customParsers = null)
     {
       string[][] data = aaData.Select(f => f.ToArray()).ToArray();
 
@@ -87,7 +89,8 @@ namespace WebExtras.JQDataTables
             aaData = data.OrderBy(f => SanitiseString(f[columnNumber]));
         }
       }
-      return aaData;
+
+      return aaData.Select(f => f.ToArray()).ToArray();
     }
 
     /// <summary>
@@ -98,7 +101,7 @@ namespace WebExtras.JQDataTables
     /// <param name="customParsers">[Optional] A dictionary containing the column number as an associated data parser function.
     /// Defaults to null.</param>
     /// <returns>Descending sorted records</returns>
-    private static IEnumerable<IEnumerable<string>> SortDescending(IEnumerable<IEnumerable<string>> aaData, int columnNumber, IDictionary<int, Func<string, object>> customParsers = null)
+    private static string[][] SortDescending(IEnumerable<IEnumerable<string>> aaData, int columnNumber, IDictionary<int, Func<string, object>> customParsers = null)
     {
       string[][] data = aaData.Select(f => f.ToArray()).ToArray();
 
@@ -129,7 +132,7 @@ namespace WebExtras.JQDataTables
         }
       }
 
-      return aaData;
+      return aaData.Select(f => f.ToArray()).ToArray();
     }
 
     /// <summary>

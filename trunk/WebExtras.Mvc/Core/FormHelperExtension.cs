@@ -43,7 +43,7 @@ namespace WebExtras.Mvc.Core
     /// <returns>A HTML Button</returns>
     public static Button Button(
       this HtmlHelper html,
-      ButtonOfType type,
+      EButton type,
       string text,
       object htmlAttributes = null)
     {
@@ -61,7 +61,7 @@ namespace WebExtras.Mvc.Core
     /// <returns>A HTML Button</returns>
     public static Button Button(
       this HtmlHelper html,
-      ButtonOfType type,
+      EButton type,
       string text,
       string onclick,
       object htmlAttributes = null)
@@ -201,7 +201,7 @@ namespace WebExtras.Mvc.Core
     /// <returns>A HTML LIST</returns>
     public static HtmlList List(
       this HtmlHelper html,
-      ListType type,
+      EList type,
       IEnumerable<HtmlListItem> listItems,
       object htmlAttributes = null)
     {

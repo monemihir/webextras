@@ -46,7 +46,7 @@ namespace WebExtras.Mvc.Html
     /// <param name="url">Link URL</param>
     /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
     public Hyperlink(string linkText, string url, object htmlAttributes = null)
-      : base(HtmlTag.A, htmlAttributes)
+      : base(EHtmlTag.A, htmlAttributes)
     {
       Text = linkText;
       Url = url;

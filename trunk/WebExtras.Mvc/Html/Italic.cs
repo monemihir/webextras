@@ -36,7 +36,7 @@ namespace WebExtras.Mvc.Html
     /// </summary>
     /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
     public Italic(object htmlAttributes = null)
-      : base(HtmlTag.I, htmlAttributes)
+      : base(EHtmlTag.I, htmlAttributes)
     { }
 
     /// <summary>
@@ -45,7 +45,7 @@ namespace WebExtras.Mvc.Html
     /// <param name="text">Text to be displayed</param>
     /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
     public Italic(string text, object htmlAttributes = null)
-      : base(HtmlTag.I, htmlAttributes)
+      : base(EHtmlTag.I, htmlAttributes)
     {
       Text = text;
     }          

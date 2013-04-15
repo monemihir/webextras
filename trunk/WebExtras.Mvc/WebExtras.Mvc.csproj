@@ -83,9 +83,9 @@
     <Compile Include="Bootstrap\BSFormHtmlHelperExtension.cs" />
     <Compile Include="Bootstrap\BSHtmlHelperExtension.cs" />
     <Compile Include="Html\HtmlListItem.cs" />
-    <Compile Include="Html\HtmlTag.cs" />
+    <Compile Include="Html\EHtmlTag.cs" />
     <Compile Include="Html\HtmlElement.cs" />
-    <Compile Include="Html\ButtonOfType.cs" />
+    <Compile Include="Html\EButton.cs" />
     <Compile Include="Html\CheckBox.cs" />
     <Compile Include="Html\Hyperlink.cs" />
     <Compile Include="Bootstrap\BSHtmlStringExtension.cs" />
@@ -94,12 +94,12 @@
     <Compile Include="Html\Image.cs" />
     <Compile Include="Html\Italic.cs" />
     <Compile Include="Html\HtmlList.cs" />
-    <Compile Include="Html\ListType.cs" />
+    <Compile Include="Html\EList.cs" />
     <Compile Include="Bootstrap\EBootstrapNavbar.cs" />
     <Compile Include="Bootstrap\BootstrapProgressBar.cs" />
     <Compile Include="Html\RadioButton.cs" />
     <Compile Include="JavascriptHelper.cs" />
-    <Compile Include="Core\ActionMessageType.cs" />
+    <Compile Include="Core\EActionMessage.cs" />
     <Compile Include="Core\FormHelperExtension.cs" />
     <Compile Include="Core\HtmlHelperExtension.cs" />
     <Compile Include="Core\ModelStateErrorExtension.cs" />

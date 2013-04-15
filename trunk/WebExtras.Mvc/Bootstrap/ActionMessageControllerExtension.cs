@@ -49,7 +49,7 @@ namespace WebExtras.Mvc.Bootstrap
     /// <param name="type">Action message type</param>
     /// <param name="args">Any message formatting arguments</param>
     /// <returns>A RedirectToRouteResult result</returns>
-    public static RedirectToRouteResult RedirectToAction(this ControllerBase c, ActionResult result, string message, ActionMessageType type = ActionMessageType.Success, params object[] args)
+    public static RedirectToRouteResult RedirectToAction(this ControllerBase c, ActionResult result, string message, EActionMessage type = EActionMessage.Success, params object[] args)
     {
       SaveActionMessage(c, message, type, args);
 
@@ -71,7 +71,7 @@ namespace WebExtras.Mvc.Bootstrap
     /// <param name="type">Action message type</param>
     /// <param name="args">Any message formatting arguments</param>
     /// <returns>a ViewResult result</returns>
-    public static ViewResult View(this ControllerBase c, string viewName, object model, string message, ActionMessageType type = ActionMessageType.Success, params object[] args)
+    public static ViewResult View(this ControllerBase c, string viewName, object model, string message, EActionMessage type = EActionMessage.Success, params object[] args)
     {
       SaveActionMessage(c, message, type, args);
 
@@ -93,7 +93,7 @@ namespace WebExtras.Mvc.Bootstrap
     /// <param name="message">The action message to display after redirection. Use a starting ! character to display as an alert message.</param>
     /// <param name="type">Action message type</param>
     /// <param name="args">Any message formatting arguments</param>
-    private static void SaveActionMessage(this ControllerBase c, string message, ActionMessageType type, params object[] args)
+    private static void SaveActionMessage(this ControllerBase c, string message, EActionMessage type, params object[] args)
     {
       // store data in temp key, will be alive for one request only
       c.TempData[TempDataMessageKey] = string.Format(message, args);
@@ -112,7 +112,7 @@ namespace WebExtras.Mvc.Bootstrap
       {
         // get message
         string message = helper.ViewContext.TempData[TempDataMessageKey].ToString();
-        ActionMessageType type = (ActionMessageType)helper.ViewContext.TempData[TempDataMessageTypeKey];
+        EActionMessage type = (EActionMessage)helper.ViewContext.TempData[TempDataMessageTypeKey];
         string controlId = "actionmessage";
 
         // create action message div
@@ -134,7 +134,7 @@ namespace WebExtras.Mvc.Bootstrap
 
         switch (type)
         {
-          case ActionMessageType.Success:
+          case EActionMessage.Success:
             sb.Append("control.delay(3000).fadeOut('500');");
             break;
 

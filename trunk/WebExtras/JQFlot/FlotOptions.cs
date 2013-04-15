@@ -71,7 +71,13 @@ namespace WebExtras.JQFlot
     /// <returns>JSON serialized object</returns>
     public override string ToString()
     {
-      return JsonConvert.SerializeObject(this);
+      return JsonConvert.SerializeObject(
+        this,
+        new JsonSerializerSettings
+        {
+          Formatting = Formatting.Indented,
+          NullValueHandling = NullValueHandling.Ignore
+        });
     }
   }
 }

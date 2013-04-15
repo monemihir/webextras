@@ -54,7 +54,7 @@ namespace WebExtras.Mvc.Html
     /// Default constructor
     /// </summary>
     /// <param name="tag">An HTML tag to initialise this element with</param>
-    public HtmlElement(HtmlTag tag)
+    public HtmlElement(EHtmlTag tag)
     {
       Tag = new TagBuilder(tag.ToString().ToLowerInvariant());
       m_rand = new Random(DateTime.Now.Millisecond);
@@ -68,7 +68,7 @@ namespace WebExtras.Mvc.Html
     /// </summary>
     /// <param name="tag">An HTML tag to initialise this element with</param>
     /// <param name="htmlAttributes">Extra HTML attributes</param>
-    public HtmlElement(HtmlTag tag, IDictionary<string, object> htmlAttributes)
+    public HtmlElement(EHtmlTag tag, IDictionary<string, object> htmlAttributes)
       : this(tag)
     {
       if (htmlAttributes != null)
@@ -80,7 +80,7 @@ namespace WebExtras.Mvc.Html
     /// </summary>
     /// <param name="tag">An HTML tag to initialise this element with</param>
     /// <param name="htmlAttributes">Extra HTML attributes</param>
-    public HtmlElement(HtmlTag tag, object htmlAttributes)
+    public HtmlElement(EHtmlTag tag, object htmlAttributes)
       : this(tag)
     {
       if (htmlAttributes != null)

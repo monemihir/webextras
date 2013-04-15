@@ -19,36 +19,30 @@
 using System;
 using WebExtras.Core;
 
-namespace WebExtras.Mvc.Core
+namespace WebExtras.Mvc.Html
 {
   /// <summary>
-  /// Type of action message
+  /// Indicates the type of HTML button to be rendered
   /// </summary>
   [Serializable]
-  public enum ActionMessageType
+  public enum EButton
   {
     /// <summary>
-    /// Success message
+    /// Regular button
     /// </summary>
-    [StringValue("success")]
-    Success,
+    [StringValue("button")]
+    Regular,
 
     /// <summary>
-    /// Error message
+    /// Reset button
     /// </summary>
-    [StringValue("error")]
-    Error,
+    [StringValue("reset")]
+    Reset,
 
     /// <summary>
-    /// Warning message
+    /// Submit button
     /// </summary>
-    [StringValue("warning")]
-    Warning,
-
-    /// <summary>
-    /// Information message
-    /// </summary>
-    [StringValue("info")]
-    Information
+    [StringValue("submit")]
+    Submit
   }
 }
