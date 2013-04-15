@@ -1,1 +1,1 @@
-﻿added at build time
+﻿Build details added by NAnt at deploy time

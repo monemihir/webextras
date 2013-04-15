@@ -102,16 +102,19 @@ namespace WebExtras.JQDataTables
     /// <returns>Sanitised collection</returns>
     private string[][] SanitiseAAData(IEnumerable<IEnumerable<string>> toBeSanitised)
     {
-      if (toBeSanitised != null && toBeSanitised.Count() > 1)
+      if (toBeSanitised != null)
       {
         string[][] newAAData = toBeSanitised.Select(f => f.ToArray()).ToArray();
-
-        int maxLength = toBeSanitised.Where(f => f != null).Max(f => f.Count());
-        IEnumerable<string> empty = Enumerable.Range(0, maxLength).Select(f => string.Empty);
-        newAAData = toBeSanitised
-          .Select(f => f.Concat(empty).Take(maxLength))
-          .Select(f => f.ToArray())
-          .ToArray();
+        
+        if (toBeSanitised.Count() > 1)
+        {
+          int maxLength = toBeSanitised.Where(f => f != null).Max(f => f.Count());
+          IEnumerable<string> empty = Enumerable.Range(0, maxLength).Select(f => string.Empty);
+          newAAData = toBeSanitised
+            .Select(f => f.Concat(empty).Take(maxLength))
+            .Select(f => f.ToArray())
+            .ToArray();
+        }
 
         return newAAData;
       }

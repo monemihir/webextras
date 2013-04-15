@@ -109,7 +109,7 @@ namespace WebExtras.JQDataTables
 
       Columns = columns.ToArray();
       Records = records;
-      Postbacks = postbacks.ToArray() ?? new PostbackItem[0];
+      Postbacks = postbacks != null ? postbacks.ToArray() : new PostbackItem[0]; 
       EnableStatusColumn = enableStatusColumn;
     }
 
@@ -140,7 +140,7 @@ namespace WebExtras.JQDataTables
 
       Settings = settings;
       Records = records;
-      Postbacks = postbacks.ToArray() ?? new PostbackItem[0];
+      Postbacks = postbacks != null ? postbacks.ToArray() : new PostbackItem[0];
       EnableStatusColumn = enableStatusColumn;
     }
   }

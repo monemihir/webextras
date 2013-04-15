@@ -122,6 +122,7 @@
         <include name="jquery.flot.axislabels-1.0.js" />
         <include name="jquery.flot.curvedlines-0.2.3.js" />
         <include name="jquery.flot.dashes-0.1.js" />
+        <include name="jquery.datatables.pagination.js" />
       </fileset>
     </copy>
     
