@@ -17,8 +17,10 @@
 */
 
 using System;
+using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Web.Mvc;
+using System.Linq;
 
 namespace WebExtras.Mvc.Core
 {
@@ -41,8 +43,16 @@ namespace WebExtras.Mvc.Core
     {
       MemberExpression exp = expression.Body as MemberExpression;
       bool result = true;
-      if (html.ViewData.ModelState.ContainsKey(exp.Member.Name))
-        result = !(html.ViewData.ModelState[exp.Member.Name].Errors.Count > 0);
+
+      List<string> buff = exp.ToString().Split('.').ToList();
+      buff.RemoveAt(0);
+      string mname = string.Join(".",buff);
+
+      //if (html.ViewData.ModelState.ContainsKey(exp.Member.Name))
+      //  result = !(html.ViewData.ModelState[exp.Member.Name].Errors.Count > 0);
+
+      if(html.ViewData.ModelState.ContainsKey(mname))
+        result = !(html.ViewData.ModelState[mname].Errors.Count > 0);
 
       return result;
     }
