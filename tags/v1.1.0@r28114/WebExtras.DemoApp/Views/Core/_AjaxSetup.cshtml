@@ -1,0 +1,71 @@
+﻿@model WebExtras.JQDataTables.Datatable
+
+<p>
+  When populating via AJAX source, all you need to do is set the AJAX source parameter on the Datatable settings
+      contructor
+</p>
+<div class="well">
+  <h4>Creating table settings</h4>
+  Table settings are created by instantiating the <i>WebExtras.JQDataTables.DatatableSettings</i> class 
+  <pre><code>  
+  DatatableSettings dtSettings = new DatatableSettings 
+  (
+    5,                                      <span class="comment">// specify the number of records per page</span>
+    dtColumns,
+    new AASort(0, SortType.Ascending),      <span class="comment">// specify one initial sort, multiple initial sorts, or leave null for no sort</span>
+    <span class="highlight">"~/getajaxdata"</span>,                         <span class="comment">// specify an AJAX source to retrieve data from</span>
+    "ajax records",                         <span class="comment">// specify a table footer suffix</span>
+    "150px"                                 <span class="comment">// specify a maximum table height, once reached you will get scroll bars</span>
+  );
+  </code></pre>
+</div>
+
+<div class="well">
+  <h4>Creating the AJAX callback handler action</h4>
+  In order to populate data with an AJAX callback, you will obviously need a call back action/page/request handler which returns JSON formatted data.
+  This example uses a .NET MVC controller action, however you are not limited to that. All you need is for the server to accept some parameters
+  from a client HTTP GET request, process the data accordingly and return the JSON formatted table data.
+  <pre><code>
+  public JsonResult GetAjaxData(DatatableFilters filters)
+  {
+    <span class="comment">// Let's create the actual data to go into the table</span>
+    <span class="comment">// You can retrieve data from your repository here</span>
+    string[][] dtData = new string[][]
+    {
+      new string[] { "first column ajax row 1", "second column ajax row 1" },    
+      new string[] { "first column ajax row 2", "second column ajax row 2" }
+    };
+
+    DatatableRecords dtRecords = new DatatableRecords
+    {
+      sEcho = filters.sEcho,
+      iTotalRecords = dtData.Length,                      <span class="comment">// Total records in table</span>
+      iTotalDisplayRecords = dtData.Length,               <span class="comment">// Total records to be displayed in the table</span>
+      aaData = dtData                                     <span class="comment">// The data to be displayed</span>
+    };
+
+    return Json(dtRecords, JsonRequestBehavior.AllowGet);
+  }
+  </code></pre>
+  DatatableFilters class is just an entity class which makes use of the .NET MVC auto binding feature to look at the request parameters
+  and try to populate the appropriate attributes of the class. If you are not using .NET MVC, your request handler definition would look
+  something like this:
+  <pre><code>
+  public string GetAjaxData(string sEcho, 
+    string sSearch, 
+    int iDisplayLength, 
+    int iDisplayStart, 
+    int iColumns, 
+    int iSortingCols, 
+    int iSortCol_0, 
+    string sSortDir_0, 
+    string sColumns)
+  </code></pre>
+</div>
+
+<div class="well">
+  <h4>And the output is</h4>
+  <div class="output">
+    @Html.Partial(MVC.Core.Views._Datatable, Model)
+  </div>
+</div>

@@ -1,0 +1,160 @@
+﻿@{
+  ViewBag.Title = "Mvc Bootstrap Html Helper Extensions";
+}
+<h3 class="keep-center">Mvc Bootstrap Html Helper Extensions</h3>
+<div class="row-fluid">
+  <div class="span6">
+    <div class="row-fluid">
+      <div class="span3">
+        <strong>Assembly</strong>
+      </div>
+      <div class="span4">
+        WebExtras.Mvc.dll
+      </div>
+    </div>
+    <div class="row-fluid">
+      <div class="span3">
+        <strong>Namespace</strong>
+      </div>
+      <div class="span4">
+        WebExtras.Mvc.Bootstrap
+      </div>
+    </div>
+  </div>
+  <div class="span6">
+    <div class="span3">
+      <strong>Dependancies</strong>
+    </div>
+    <div class="span4">
+      <ul class="dependancies">
+        <li>webextras.css</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="well">
+  <h4>Icon</h4>
+  <p>
+    Markup
+  </p>
+  <pre><code>
+  @@Html.Icon(BootstrapIcon.Ok) 
+  </code></pre>
+  <p>
+    Output
+  </p>
+  <div class="content">
+    @Html.Icon(BootstrapIcon.Thumbs_Up) @Html.Icon(BootstrapIcon.Arrow_Down) @Html.Icon(BootstrapIcon.Backward)
+    @Html.Icon(BootstrapIcon.Ban_Circle) @Html.Icon(BootstrapIcon.Tint)
+  </div>
+</div>
+<div class="well">
+  <h4>Adding icons to existing elements</h4>
+  <p>
+    Markup
+  </p>
+  <pre><code>
+  @@Html.Hyperlink("Take me to google", "http://www.google.com").AddIcon(BootstrapIcon.Ok)
+  </code></pre>
+  <p>
+    Output
+  </p>
+  <div class="content">
+    @Html.Hyperlink("Take me to google", "http://www.google.com").AddIcon(BootstrapIcon.Ok)
+  </div>
+  <p>
+    All available extensions
+  </p>
+  <pre><code>
+  .AddIcon(icon) 
+  .AddWhiteIcon(icon) 
+  </code></pre>
+</div>
+<div class="well">
+  <h4>Button styled hyperlinks</h4>
+  <p>
+    Markup
+  </p>
+  <pre><code>
+  @@Html.Hyperlink("Take me to google", "http://www.google.com")
+    .AddWhiteIcon(BootstrapIcon.Ok)
+    .AsButton(EBootstrapButton.Info) 
+  </code></pre>
+  <p>
+    Output
+  </p>
+  <div class="content">
+    @Html.Hyperlink("Take me to google", "http://www.google.com").AddWhiteIcon(BootstrapIcon.Ok).AsButton(EBootstrapButton.Info)
+  </div>
+  <p>
+    All available extensions
+  </p>
+  <pre><code>
+  <span class="comment">// Note that this extension can only be used for hyperlinks and button elements</span> 
+  .AsButton(type) 
+  </code></pre>
+</div>
+
+<div class="well">
+  <h4>Navbar</h4>
+  <p>Markup</p>
+  <pre><code>
+    @@{
+      <span class="comment">// You can use hyperlink elements or HtmlListItem elements or even a HtmlList element to render a navbar</span>
+      Hyperlink link1 = new Hyperlink("Link 1", "#");
+      Hyperlink link2 = new Hyperlink("Link 2", "#");
+      Hyperlink link3 = new Hyperlink("Link 3", "#");
+      Hyperlink link4 = new Hyperlink("Brand", "#", new { @@class = "brand" });
+        
+      HtmlListItem item3 = new HtmlListItem(string.Empty);
+      item3.Append(link3);        
+
+      HtmlList list = new HtmlList(EList.Unordered, new HtmlListItem[] { item3 });    
+    }      
+
+    @@Html.Navbar(EBootstrapNavbar.Normal, list)
+
+    <span class="comment">// Use appropriate navbar type to get all bootstrap effects</span>
+    @@Html.Navbar(EBootstrapNavbar.Normal, link1, link2, item3, link4)<span class="highlight">.AsInverse()</span>  <span class="comment">// Creates an inverse styled navbar</span>
+  </code></pre>
+  <p>
+    Output
+  </p>
+  <div class="content">
+    <div class="container-fluid">
+      @{
+        Hyperlink link1 = new Hyperlink("Link 1", "#");
+        Hyperlink link2 = new Hyperlink("Link 2", "#");
+        Hyperlink link3 = new Hyperlink("Link 3", "#");
+        Hyperlink link4 = new Hyperlink("Brand", "#", new { @class = "brand" });
+
+        HtmlListItem item3 = new HtmlListItem(string.Empty);
+        item3.Append(link3);
+
+        HtmlList list = new HtmlList(EList.Unordered, new HtmlListItem[] { item3 });    
+      }
+
+      @Html.Navbar(EBootstrapNavbar.Normal, list)
+
+      @Html.Navbar(EBootstrapNavbar.Normal, link1, link2, item3, link4).AsInverse()
+    </div>
+  </div>
+</div>
+
+<div class="well">
+  <h4>Progress Bars</h4>
+  <p>Markup</p>
+  <pre><code>
+@@Html.ProgressBar(EBootstrapProgressBar.Default, 10)
+@@Html.ProgressBar(EBootstrapProgressBar.Success, 25)
+@@Html.ProgressBar(EBootstrapProgressBar.Warning, 50)<span class="highlight">.AsStriped()</span>
+@@Html.ProgressBar(EBootstrapProgressBar.Danger, 75)<span class="highlight">.AsAnimated()</span>
+  </code></pre>
+  <p>Output</p>
+  <div class="content">
+    @Html.ProgressBar(EBootstrapProgressBar.Default, 10)
+    @Html.ProgressBar(EBootstrapProgressBar.Success, 25)
+    @Html.ProgressBar(EBootstrapProgressBar.Warning, 50).AsStriped()
+    @Html.ProgressBar(EBootstrapProgressBar.Danger, 75).AsAnimated()
+  </div>
+</div>
