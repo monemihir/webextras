@@ -25,6 +25,7 @@ namespace WebExtras.JQDataTables
   /// <summary>
   /// HTTP method for Ajax call backs
   /// </summary>
+  [Serializable]
   public enum EServerMethod
   {
     /// <summary>

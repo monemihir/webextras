@@ -16,6 +16,7 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+using System;
 using WebExtras.Core;
 
 namespace WebExtras.Mvc.Bootstrap
@@ -23,6 +24,7 @@ namespace WebExtras.Mvc.Bootstrap
   /// <summary>
   /// All available bootstrap progress bar types
   /// </summary>
+  [Serializable]
   public enum EBootstrapProgressBar
   {
     /// <summary>

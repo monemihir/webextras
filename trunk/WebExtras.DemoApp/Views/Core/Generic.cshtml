@@ -115,11 +115,12 @@
 <div class="well">
   <h4>General Purpose Object Cloner</h4>
   <p>WebExtras provides a general purpose object cloner which performs a deep clone of the given object.
-    However, in order for the cloning to work, all objects to be cloned must be marked as serializable.
+    However, in order for the cloning to work, all objects (including any child object of the class) to 
+    be cloned must be marked as serializable using the [Serializable] decorator attribute.
   </p>
   <p>Markup</p>
   <pre><code>
   SomeClass object1 = new SomeClass();
-  SomeClass object2 = ObjectCloner.Clone(object1);
+  SomeClass object2 = object1.DeepClone();
   </code></pre>
 </div>

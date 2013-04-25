@@ -61,13 +61,22 @@ namespace WebExtras.JQDataTables
     /// </summary>
     /// <param name="o">Object to generate Postback items from</param>
     /// <returns>Generated Postback items</returns>
-    public static IEnumerable<PostbackItem> FromObject(object o)
+    public static List<PostbackItem> FromObject(object o)
     {
-      return o
+      List<PostbackItem> postbacks = new List<PostbackItem>();
+      PropertyInfo[] props = o
         .GetType()
-        .GetProperties(BindingFlags.Public | BindingFlags.Instance)
-        .Where(p => p.GetValue(o, null) != null)
-        .Select(p => new PostbackItem(p.Name, p.GetValue(o, null)));
+        .GetProperties(BindingFlags.Public | BindingFlags.Instance);
+
+      foreach(PropertyInfo p in props)
+      {
+        object val = p.GetValue(o, null);
+
+        if (val != null)
+          postbacks.Add(new PostbackItem(p.Name, val));
+      }
+
+      return postbacks;
     }
   }
 }

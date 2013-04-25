@@ -25,6 +25,7 @@ namespace WebExtras.JQDataTables
   /// <summary>
   /// AO column type
   /// </summary>
+  [Serializable]
   public enum EAOColumnType
   {
     /// <summary>

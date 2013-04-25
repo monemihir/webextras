@@ -16,6 +16,7 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+using System;
 using System.Web.Mvc;
 using WebExtras.Core;
 using WebExtras.Mvc.Html;
@@ -25,6 +26,7 @@ namespace WebExtras.Mvc.Bootstrap
   /// <summary>
   /// Represents a bootstrap progress bar
   /// </summary>
+  [Serializable]
   public class BootstrapProgressBar : HtmlElement
   {
     /// <summary>
