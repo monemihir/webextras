@@ -1,0 +1,81 @@
+﻿/*
+* This file is part of - WebExtras
+* Copyright (C) 2013 Mihir Mone
+*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU Lesser General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU Lesser General Public License for more details.
+*
+* You should have received a copy of the GNU Lesser General Public License
+* along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+/*
+ * Generic styling
+*/
+input[type="checkbox"],
+input[type="radio"] {
+	vertical-align: top;
+}
+
+.checkbox-group,
+.radiobutton-group
+{
+  width: 100%;
+}
+
+.keep-center
+{
+  text-align: center;
+}
+
+.keep-right
+{
+  text-align: right;
+}
+
+.keep-left {
+	text-align: left;
+}
+
+.keep-middle
+{
+  vertical-align: middle;
+}
+
+/*
+ *  Bootstrap extensions
+ */
+[class^="icon-"], [class*=" icon-"]
+{
+  margin-right: 3px;
+}
+
+/*
+ * Bootstrap styling for jQuery Datatables
+ */
+table.dataTable tbody tr.success td
+{
+  background-color: #dff0d8;
+}
+
+table.dataTable tbody tr.error td
+{
+  background-color: #f2dede;
+}
+
+table.dataTable tbody tr.warning td
+{
+  background-color: #fcf8e3;
+}
+
+table.dataTable tbody tr.info td
+{
+  background-color: #d9edf7;
+}

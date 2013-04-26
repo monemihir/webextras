@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{18E73074-CB8E-4F80-B5E8-E81702EE2E68}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WebExtras.Mvc</RootNamespace>
+    <AssemblyName>WebExtras.Mvc</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\WebExtras.Mvc.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>
+    </DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\WebExtras.Mvc.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <DocumentationFile>bin\WebExtras.Mvc.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>
+    </DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <DocumentationFile>bin\WebExtras.Mvc.xml</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="T4MVCExtensions">
+      <HintPath>..\External\T4MVC\v3.2.0\T4MVCExtensions.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Bootstrap\ActionMessageControllerExtension.cs" />
+    <Compile Include="Bootstrap\BootstrapNavbarExtension.cs" />
+    <Compile Include="Bootstrap\BootstrapNavBar.cs" />
+    <Compile Include="Bootstrap\BootstrapProgressBarExtension.cs" />
+    <Compile Include="Bootstrap\BootstrapProgressBarType.cs" />
+    <Compile Include="Core\WebExtrasMvcConstants.cs" />
+    <Compile Include="Html\Button.cs" />
+    <Compile Include="Bootstrap\BootstrapButtonType.cs" />
+    <Compile Include="Html\Div.cs" />
+    <Compile Include="Html\Empty.cs" />
+    <Compile Include="Html\ExtendedHtmlStringExtension.cs" />
+    <Compile Include="Bootstrap\BSFormHtmlHelperExtension.cs" />
+    <Compile Include="Bootstrap\BSHtmlHelperExtension.cs" />
+    <Compile Include="Html\HtmlListItem.cs" />
+    <Compile Include="Html\HtmlTag.cs" />
+    <Compile Include="Html\HtmlElement.cs" />
+    <Compile Include="Html\ButtonOfType.cs" />
+    <Compile Include="Html\CheckBox.cs" />
+    <Compile Include="Html\Hyperlink.cs" />
+    <Compile Include="Bootstrap\BSHtmlStringExtension.cs" />
+    <Compile Include="Html\IExtendedHtmlString.cs" />
+    <Compile Include="Bootstrap\BootstrapIcon.cs" />
+    <Compile Include="Html\Image.cs" />
+    <Compile Include="Html\Italic.cs" />
+    <Compile Include="Html\HtmlList.cs" />
+    <Compile Include="Html\ListType.cs" />
+    <Compile Include="Bootstrap\BootstrapNavbarType.cs" />
+    <Compile Include="Bootstrap\BootstrapProgressBar.cs" />
+    <Compile Include="Html\RadioButton.cs" />
+    <Compile Include="JavascriptHelper.cs" />
+    <Compile Include="Core\ActionMessageType.cs" />
+    <Compile Include="Core\FormHelperExtension.cs" />
+    <Compile Include="Core\HtmlHelperExtension.cs" />
+    <Compile Include="Core\ModelStateErrorExtension.cs" />
+    <Compile Include="Core\SelectedTabHelperExtension.cs" />
+    <Compile Include="Core\ValidationHtmlHelperExtension.cs" />
+    <Compile Include="Core\ViewRendererControllerExtension.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="lgpl-3.0.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WebExtras\WebExtras.csproj">
+      <Project>{79881816-8CC9-458B-99F7-BBE3E35AB665}</Project>
+      <Name>WebExtras</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

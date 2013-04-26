@@ -1,0 +1,64 @@
+﻿@using WebExtras.DemoApp.App_Start
+@using WebExtras.Core
+@using SquishIt.Framework
+@using SquishIt.Mvc
+@using WebExtras.Mvc.Core
+@using WebExtras.Mvc.Html
+@using WebExtras.Mvc.Bootstrap
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>@ViewBag.Title - WebExtras</title>
+  <link rel="icon" type="image/ico" href="@Links.Content.favicon_ico" />
+  @Bundle.Css().MvcRenderCachedAssetTag(ContentBundle.CSSMain.GetStringValue())
+  @Bundle.JavaScript().MvcRenderCachedAssetTag(ContentBundle.JSBase.GetStringValue())
+
+  <script type="text/javascript">
+    function goToGoogle() { window.location = "http://www.google.com.au"; }
+    function goToYoutube() { window.location = "http://www.youtube.com"; }
+    function gotoCodeplex() { window.open('http://webextras.codeplex.com/releases', '_blank'); }
+  </script>
+</head>
+<body>
+  <br />
+  <div class="navbar navbar-fixed-top navbar-inverse">
+    <div class="navbar-inner">
+      @Html.Hyperlink("WebExtras Demo", "#").AddCssClass("brand")
+      <ul class="nav">
+        <li class="@Html.SelectedTab("Core", "Generic")">@Html.ActionLink("Core", MVC.Core.Generic())</li>
+        <li class="@Html.SelectedTab("Core", "Datatables")">@Html.ActionLink("jQuery Datatables", MVC.Core.Datatables())</li>
+        <li class="@Html.SelectedTab("Core", "Flot")">@Html.ActionLink("jQuery Flot", MVC.Core.Flot())</li>
+        <li class="@Html.SelectedTab("Mvc", new string[] { "CoreHtml", "CoreForm" }) dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Mvc Core<i class="caret"></i></a>
+          <ul class="dropdown-menu">
+            <li>@Html.ActionLink("Html extensions", MVC.Mvc.CoreHtml())</li>
+            <li>@Html.ActionLink("Form extensions", MVC.Mvc.CoreForm())</li>
+          </ul>
+        </li>
+        <li class="@Html.SelectedTab("Mvc", new string[] { "BootstrapHtml", "BootstrapForm" }) dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Mvc Bootstrap<i class="caret"></i></a>
+          <ul class="dropdown-menu">
+            <li>@Html.ActionLink("Html extensions", MVC.Mvc.BootstrapHtml())</li>
+            <li>@Html.ActionLink("Form extensions", MVC.Mvc.BootstrapForm())</li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav secondary-nav">
+        <li>@Html.Button(ButtonOfType.Regular, "Download", "gotoCodeplex()", new { id = "download" }).AsButton(BootstrapButtonType.Success).AddWhiteIcon(BootstrapIcon.Arrow_Down)</li>
+      </ul>
+    </div>
+  </div>
+  <div class="container-fluid main">
+    @RenderBody()
+  </div>
+  <footer>
+    <small>Copyright &copy; @DateTime.Now.Year Mihir Mone. All Rights Reserved.</small>
+  </footer>
+  @RenderSection("scripts", required: false)
+</body>
+</html>
+
+
