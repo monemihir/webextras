@@ -30,6 +30,8 @@ namespace WebExtras.JQFlot.SubOptions
   [Serializable]
   public class AxisOptions
   {
+    #region Default options
+
     /// <summary>
     /// Flag indicating whether to show axis
     /// </summary>
@@ -39,12 +41,6 @@ namespace WebExtras.JQFlot.SubOptions
     /// Position of the axis on the graph. Can be one of 'bottom', 'top', 'left' or 'right'.
     /// </summary>
     public string position;
-
-    /// <summary>
-    /// Specify render mode of the axis. If displaying a time graph this must be set to 'time'.
-    /// When using time mode the jquery.flot.time.js plugin is needed
-    /// </summary>
-    public string mode;
 
     /// <summary>
     /// Time zone of Flot graph. Setting this only makes sense when using time mode rendering.
@@ -137,7 +133,17 @@ namespace WebExtras.JQFlot.SubOptions
     /// the forced ticks won't necessarily be at natural places.
     /// </summary>
     public int? alignTicksWithAxis;
-        
+
+    #endregion Default options
+
+    #region Time series options
+
+    /// <summary>
+    /// Specify render mode of the axis. If displaying a time graph this must be set to 'time'.
+    /// When using time mode the jquery.flot.time.js plugin is needed
+    /// </summary>
+    public string mode;
+
     /// <summary>
     /// Time format for the tick. See <a href="https://github.com/flot/flot/blob/master/API.md"></a>
     /// for more information on the various available formats
@@ -153,12 +159,16 @@ namespace WebExtras.JQFlot.SubOptions
     /// An array of names of days
     /// </summary>
     public string[] dayNames;
-    
+
     /// <summary>
     /// Flag indicating whether we are using a 12 hour nomenclature
     /// or a 24 hour nomenclature
     /// </summary>
     public bool? twelveHourClock;
+
+    #endregion Time series options
+
+    #region Axis label extension options
 
     /// <summary>
     /// Axis label to be shown
@@ -205,14 +215,11 @@ namespace WebExtras.JQFlot.SubOptions
     /// </summary>
     public string axisLabelFontFamily;
 
+    #endregion Axis label extension options
+
     /// <summary>
-    /// ctor to intialize defaults. tickDecimals=0, tickLength=0, axisLabelUseCanvas=true
+    /// Default constructor
     /// </summary>
-    public AxisOptions()
-    {
-      axisLabelUseCanvas = true;
-      axisLabelFontSizePixels = 12;
-      axisLabelFontFamily = "Verdana";
-    }    
+    public AxisOptions() { }
   }
 }

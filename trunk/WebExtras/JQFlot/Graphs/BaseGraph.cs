@@ -27,8 +27,9 @@ namespace WebExtras.JQFlot.Graphs
     public bool? fill;
 
     /// <summary>
-    /// Fill color. This must be a CSS color specification.
+    /// Fill color. Can be a single CSS color specification or a 
+    /// <see cref="WebExtras.JQFlot.SubOptions.ColorOptions"/> object
     /// </summary>
-    public string fillColor;
+    public object fillColor;
   }
 }

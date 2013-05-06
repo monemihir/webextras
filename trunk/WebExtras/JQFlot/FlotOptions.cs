@@ -44,9 +44,24 @@ namespace WebExtras.JQFlot
     public AxisOptions yaxis;
 
     /// <summary>
+    /// X axis 2
+    /// </summary>
+    public AxisOptions x2axis;
+
+    /// <summary>
     /// Y axis 2
     /// </summary>
     public AxisOptions y2axis;
+
+    /// <summary>
+    /// Multiple X axis definitions
+    /// </summary>
+    public AxisOptions[] xaxes;
+
+    /// <summary>
+    /// Multiple Y axis definitions
+    /// </summary>
+    public AxisOptions[] yaxes;
 
     /// <summary>
     /// Legend options

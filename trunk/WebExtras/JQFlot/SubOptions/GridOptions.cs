@@ -29,29 +29,88 @@ namespace WebExtras.JQFlot.SubOptions
   [Serializable]
   public class GridOptions
   {
-     /// <summary>
-      /// ctor to initialize defaults. hoverable=true, clickable=false, borderWidth=0
-      /// </summary>
-      public GridOptions()
-      {
-        hoverable = true;
-        clickable = false;
-        borderWidth = 0;
-      }
+    /// <summary>
+    /// Whether to show the grid
+    /// </summary>
+    public bool? show;
 
-      /// <summary>
-      /// whether the grid is hoverable
-      /// </summary>
-      public bool hoverable { get; set; }
+    /// <summary>
+    /// Whether to show grid above the data
+    /// </summary>
+    public bool? aboveData;
 
-      /// <summary>
-      /// whether the grid is clickable
-      /// </summary>
-      public bool clickable { get; set; }
+    /// <summary>
+    /// Grid color. This must be a CSS color specification.
+    /// </summary>
+    public string color;
 
-      /// <summary>
-      /// border width for graph
-      /// </summary>
-      public int borderWidth { get; set; }
+    /// <summary>
+    /// Grid background color. Can be a single CSS color specification or
+    /// a <see cref="WebExtras.JQFlot.SubOptions.ColorGradientOptions"/> object
+    /// </summary>
+    public object backgroundColor;
+
+    /// <summary>
+    /// Grid margin. Can be a number or a <see cref="WebExtras.JQFlot.SubOptions.DimensionOptions"/> object
+    /// </summary>
+    public object margin;
+
+    /// <summary>
+    /// Grid label margin in pixels
+    /// </summary>
+    public int? labelMargin;
+
+    /// <summary>
+    /// Axis margin in pixels
+    /// </summary>
+    public int? axisMargin;
+
+    /// <summary>
+    /// Markings to be drawn on the grid
+    /// </summary>
+    public MarkingOptions[] markings;
+
+    /// <summary>
+    /// Grid border width. Can be a number or a 
+    /// <see cref="WebExtras.JQFlot.SubOptions.DimensionOptions"/> object
+    /// </summary>
+    public object borderWidth;
+
+    /// <summary>
+    /// Grid border color. All colors must be CSS color specifications. Can be a
+    /// single color or a <see cref="WebExtras.JQFlot.SubOptions.DimensionOptions"/> object
+    /// </summary>
+    public object borderColor;
+
+    /// <summary>
+    /// Minimum border margin in pixels
+    /// </summary>
+    public int? minBorderMargin;
+
+    /// <summary>
+    /// Whether the grid is clickable
+    /// </summary>
+    public bool? clickable;
+    
+    /// <summary>
+    /// Whether the grid is hoverable
+    /// </summary>
+    public bool? hoverable;
+
+    /// <summary>
+    /// Whether to highlight nearby items automatically on plot hover/click.
+    /// See the 'plothover' and 'plotclick' events for the plot
+    /// </summary>
+    public bool? autoHighlight;
+
+    /// <summary>
+    /// Mouse action radius
+    /// </summary>
+    public int? mouseActiveRadius;
+
+    /// <summary>
+    /// Default constructor
+    /// </summary>
+    public GridOptions() { }
   }
 }

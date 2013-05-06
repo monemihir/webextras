@@ -34,7 +34,8 @@ namespace WebExtras.JQFlot
   {
     /// <summary>
     /// Color to be used for the series. This can be either a CSS color specification
-    /// or a number that specifies which auto-generated color to select
+    /// or a number that specifies which auto-generated color to select or a 
+    /// <see cref="WebExtras.JQFlot.SubOptions.ColorGradientOptions"/> object
     /// </summary>
     public object color;
 
