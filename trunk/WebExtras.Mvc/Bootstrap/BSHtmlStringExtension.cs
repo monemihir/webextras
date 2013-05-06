@@ -17,6 +17,7 @@
 */
 
 using System;
+using System.Linq;
 using WebExtras.Core;
 using WebExtras.Mvc.Html;
 
@@ -81,12 +82,12 @@ namespace WebExtras.Mvc.Bootstrap
     /// </summary>
     /// <typeparam name="T">Generic type to be used. Can only be either Hyperlink or Button</typeparam>
     /// <param name="html">Current HTML element</param>
-    /// <param name="type">Bootstrap button type</param>
+    /// <param name="types">Bootstrap button types</param>
     /// <returns>A special button</returns>
-    public static T AsButton<T>(this T html, EBootstrapButton type) where T : IExtendedHtmlString
+    public static T AsButton<T>(this T html, params EBootstrapButton[] types) where T : IExtendedHtmlString
     {
       if (CanDisplayAsButton(html))
-        html.AddCssClass(type.GetStringValue());
+        html.AddCssClass(string.Join(" ", types.Select(t => t.GetStringValue())));
 
       return html;
     }

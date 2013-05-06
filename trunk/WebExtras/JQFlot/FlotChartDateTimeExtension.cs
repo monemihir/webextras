@@ -53,9 +53,9 @@ namespace WebExtras.JQFlot
     /// </summary>
     /// <param name="dt">The DateTime (used as local time) to convert</param>
     /// <returns>a javascript date number (total ms since 1970-1-1 UTC)</returns>
-    public static double ToLocalJSDate(this DateTime dt)
+    public static double ToJavaScriptDate(this DateTime dt)
     {
-      TimeSpan ts = dt.ToLocalTime() - DateTime1970Utc; // difference between localtime and 1970utc gives us the date in local time
+      TimeSpan ts = dt - DateTime1970Utc; // difference between localtime and 1970utc gives us the date in local time
       return ts.TotalMilliseconds;
     }
 

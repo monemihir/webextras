@@ -45,6 +45,12 @@ namespace WebExtras.Mvc.Bootstrap
     Warning,
 
     [StringValue("btn btn-inverse")]
-    Inverse
+    Inverse,
+
+    [StringValue("btn-large")]
+    Large,
+
+    [StringValue("btn-mini")]
+    Mini
   }
 }
