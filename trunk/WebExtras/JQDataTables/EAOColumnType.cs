@@ -52,6 +52,7 @@ namespace WebExtras.JQDataTables
   /// <summary>
   /// EAOColumnType enum's custom Json Converter
   /// </summary>
+  [Serializable]
   public class EAOColumnTypeJsonConverter : JsonConverter
   {
     /// <summary>

@@ -17,70 +17,56 @@
 */
 
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using Newtonsoft.Json;
-using WebExtras.JQFlot.SubOptions;
 
-namespace WebExtras.JQFlot
+namespace WebExtras.JQFlot.SubOptions
 {
   /// <summary>
-  /// flot chart options
+  /// Represents Flot legend options
   /// </summary>
-  [Serializable]
-  public class FlotOptions
+  public class LegendOptions
   {
     /// <summary>
-    /// Default constructor
+    /// Flag indicating whether to show legend
     /// </summary>
-    public FlotOptions() { }
+    public bool? show;
 
     /// <summary>
-    /// X axis 1
+    /// Color of the label box border. This must be a CSS color specification
     /// </summary>
-    public AxisOptions xaxis;
+    public string labelBoxBorderColor;
 
     /// <summary>
-    /// Y axis 1
+    /// Number of columns per row of the legend's table
     /// </summary>
-    public AxisOptions yaxis;
+    public int? noColumns;
 
     /// <summary>
-    /// Y axis 2
+    /// Position of the legend. Can be one of 'ne', 'nw', 'se' or 'sw'.
     /// </summary>
-    public AxisOptions y2axis;
+    public string position;
 
     /// <summary>
-    /// Legend options
+    /// The margin in pixels or a numeric array with x and y margin in pixels
     /// </summary>
-    public LegendOptions legend;
+    public object margin;
 
     /// <summary>
-    /// Chart grid options
+    /// Background color of the legend. This must be a CSS color specification
     /// </summary>
-    public GridOptions grid;
+    public string backgroundColor;
 
     /// <summary>
-    /// Chart series options
+    /// Background opacity of the legend. This must be a value between 0 and 1
     /// </summary>
-    public SeriesOptions series;
+    public double backgroundOpacity;
 
     /// <summary>
-    /// An array of CSS color specifications to choose from when drawing the various series
+    /// Specify sorting to be applied to the legend objects
     /// </summary>
-    public string[] colors;
-
-    /// <summary>
-    /// JSON serializes the current Flot options
-    /// </summary>
-    /// <returns>JSON serialized object</returns>
-    public override string ToString()
-    {
-      return JsonConvert.SerializeObject(
-        this,
-        new JsonSerializerSettings
-        {
-          Formatting = Formatting.Indented,
-          NullValueHandling = NullValueHandling.Ignore
-        });
-    }
+    public ELegendSort? sorted;
   }
 }

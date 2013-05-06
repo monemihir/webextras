@@ -27,31 +27,22 @@ namespace WebExtras.JQFlot.Graphs
   /// line options
   /// </summary>
   [Serializable]
-  public class LineGraph
+  public class LineGraph : BaseGraph
   {
     /// <summary>
-    /// ctor to set defaults. show=false, lineWidth=1, fill=false
+    /// Specifies whether chart should normally start from zero.
     /// </summary>
-    public LineGraph()
-    {
-      show = false;
-      lineWidth = 1;
-      fill = false;
-    }
+    public bool? zero;
 
     /// <summary>
-    /// whether lines are shown
+    /// Whether two adjacent points are connected with a straight line or a 
+    /// step i.e a horizontal line followed by a vertical line
     /// </summary>
-    public bool show { get; set; }
+    public bool? steps;
 
     /// <summary>
-    /// the width in pixels of the line
+    /// Default constructor
     /// </summary>
-    public int lineWidth { get; set; }
-
-    /// <summary>
-    /// whether the area under the lines should be filled.
-    /// </summary>
-    public bool fill { get; set; }
+    public LineGraph() { }    
   }
 }

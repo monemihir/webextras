@@ -17,40 +17,50 @@
 */
 
 using System;
-using WebExtras.JQFlot.Graphs;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 namespace WebExtras.JQFlot.SubOptions
 {
   /// <summary>
-  /// Series global options
+  /// Represents Flot font options.
   /// </summary>
-  [Serializable]
-  public class SeriesOptions
+  public class FontOptions
   {
     /// <summary>
-    /// Default constructor
+    /// Font size in pixels
     /// </summary>
-    public SeriesOptions() { }
+    public int? size;
 
     /// <summary>
-    /// Line options
+    /// Font line height in pixels
     /// </summary>
-    public LineGraph lines;
+    public int? lineHeight;
 
     /// <summary>
-    /// Point options
+    /// Font style. CSS font-style specification.
     /// </summary>
-    public PointGraph points;
+    public string style;
 
     /// <summary>
-    /// Bar options
+    /// Font weight. CSS font-weight specification.
     /// </summary>
-    public BarGraph bars;
-
+    public string weight;
 
     /// <summary>
-    /// Curved line options
+    /// Font family. CSS font-family specfication.
     /// </summary>
-    public CurvedLineOptions curvedLines;
+    public string family;
+
+    /// <summary>
+    /// Font variant. CSS font-variant specification.
+    /// </summary>
+    public string variant;
+
+    /// <summary>
+    /// Font color. CSS color specification.
+    /// </summary>
+    public string color;
   }
 }

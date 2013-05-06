@@ -30,16 +30,13 @@ namespace WebExtras.JQFlot.SubOptions
   public class CurvedLineOptions
   {
     /// <summary>
-    /// ctor to initialize defaults. active=true
+    /// Default constructor
     /// </summary>
-    public CurvedLineOptions()
-    {
-      active = true;
-    }
+    public CurvedLineOptions() { active = true; }
 
     /// <summary>
     ///  whether to use the curved lines plugin
     /// </summary>
-    public bool active { get; set; }
+    public bool active;
   }
 }

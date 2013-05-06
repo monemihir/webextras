@@ -27,32 +27,18 @@ namespace WebExtras.JQFlot.Graphs
   /// point options
   /// </summary>
   [Serializable]
-  public class PointGraph
-  {
+  public class PointGraph : BaseGraph
+  {       
     /// <summary>
-    /// ctor to set defaults. show=false, fillColor='0xFFAA00', radius=3
+    /// The radius in pixels of the points
     /// </summary>
-    /// <param name="initFillColor">[Optional] Fill color for the points. Defaults to '0xFFAA00'</param>
-    public PointGraph(string initFillColor = "#FFAA00")
-    {
-      show = false;
-      fillColor = initFillColor;
-      radius = 3;
-    }
+    public int? radius { get; set; }
+
+    // symbol is a function
 
     /// <summary>
-    /// whether points are shown
+    /// Default constructor
     /// </summary>
-    public bool show { get; set; }
-
-    /// <summary>
-    /// the fill colour of the point
-    /// </summary>
-    public string fillColor { get; set; }
-
-    /// <summary>
-    /// the radius in pixels of the points
-    /// </summary>
-    public int radius { get; set; }
+    public PointGraph() { }    
   }
 }

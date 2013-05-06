@@ -31,83 +31,139 @@ namespace WebExtras.JQFlot.SubOptions
   public class AxisOptions
   {
     /// <summary>
-    /// ctor to intialize defaults. tickDecimals=0, tickLength=0, axisLabelUseCanvas=true
+    /// Flag indicating whether to show axis
     /// </summary>
-    public AxisOptions()
-    {
-      tickDecimals = 0;
-      mode = null;
-      timeformat = null;
-      minTickSize = null;
-      tickLength = 0;
-      axisLabelUseCanvas = true;
-      axisLabelFontSizePixels = 12;
-      axisLabelFontFamily = "Verdana";
-    }
+    public bool? show;
 
     /// <summary>
-    /// axis min
+    /// Position of the axis on the graph. Can be one of 'bottom', 'top', 'left' or 'right'.
     /// </summary>
-    public int? min { get; set; }
+    public string position;
 
     /// <summary>
-    /// axis max
+    /// Specify render mode of the axis. If displaying a time graph this must be set to 'time'.
+    /// When using time mode the jquery.flot.time.js plugin is needed
     /// </summary>
-    public int? max { get; set; }
+    public string mode;
 
     /// <summary>
-    /// tick decimal places
+    /// Time zone of Flot graph. Setting this only makes sense when using time mode rendering.
+    /// Can be either 'browser' or a timezone in the format 'UTC+1100'.
     /// </summary>
-    public int? tickDecimals { get; set; }
+    public string timezone;
 
     /// <summary>
-    /// tick step size. 1 give you 1,2,3... 2 gives you 1,3,5... and so on
+    /// Color for the axis. This must be a CSS color specification.
     /// </summary>
-    public int? tickSize { get; set; }
+    public string color;
 
     /// <summary>
-    /// min tick size to be used when plotting a time series. eg. [1, "day"]
+    /// Color for the ticks. This must be a CSS color specification.
     /// </summary>
-    public object[] minTickSize { get; set; }
+    public string tickColor;
 
     /// <summary>
-    /// Length of the tick lines in pixels. Set to 0 to hide tick lines, null
-    /// means use default, else a value for to specify width.
+    /// Font to the used to render ticks. This must be a CSS font specification.
     /// </summary>
-    public int? tickLength { get; set; }
+    public string font;
 
     /// <summary>
-    /// Mode for the axis. Either "time" or null
+    /// Axis min value
     /// </summary>
-    public string mode { get; set; }
+    public int? min;
 
     /// <summary>
-    /// Format for the for the tick. See <a href="http://flot.googlecode.com/svn/trunk/API.txt"></a>
+    /// Axis max value
+    /// </summary>
+    public int? max;
+
+    /// <summary>
+    /// The fraction of margin that the scaling algorithm will add to avoid the outermost
+    /// points ending up on the grid border.
+    /// </summary>
+    public double? autoscaleMargin;
+
+    // transform is a function
+    // inverseTransform is a function
+
+    /// <summary>
+    /// Can be a number indicating the no. of ticks needed, an array manually specifying
+    /// all the ticks to be rendered.
+    /// </summary>
+    public object ticks;
+
+    /// <summary>
+    /// Tick interval size
+    /// </summary>
+    public int? tickSize;
+
+    /// <summary>
+    /// Predominantly used when rendering time series. The format for this array is [2, "month"]
+    /// where the second value in the array can be 'second', 'minute', 'hour', 'day', 'month'
+    /// or 'year'
+    /// </summary>
+    public object[] minTickSize;
+
+    // tickFormatter is a function
+
+    /// <summary>
+    /// Tick decimal places
+    /// </summary>
+    public int? tickDecimals;
+
+    /// <summary>
+    /// Fixed width of tick labels in pixels
+    /// </summary>
+    public int? labelWidth;
+
+    /// <summary>
+    /// Fixed height of tick labels in pixels
+    /// </summary>
+    public int? labelHeight;
+
+    /// <summary>
+    /// Flag indicating whether to reserve space for tick even if the axis is not shown
+    /// </summary>
+    public bool? reserveSpace;
+
+    /// <summary>
+    /// Length of tick lines in pixels
+    /// </summary>
+    public int? tickLength;
+
+    /// <summary>
+    /// The number of another axis to align ticks of current axis to. This is useful when you have
+    /// Y axes on left and right and you want the ticks to line up properly. The trade-off is that
+    /// the forced ticks won't necessarily be at natural places.
+    /// </summary>
+    public int? alignTicksWithAxis;
+        
+    /// <summary>
+    /// Time format for the tick. See <a href="https://github.com/flot/flot/blob/master/API.md"></a>
     /// for more information on the various available formats
     /// </summary>
-    public string timeformat { get; set; }
+    public string timeformat;
 
     /// <summary>
     /// An array of names of months
     /// </summary>
-    public string[] monthNames
-    {
-      get
-      {
-        return new string[] { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
-      }
-    }
+    public string[] monthNames;
 
+    /// <summary>
+    /// An array of names of days
+    /// </summary>
+    public string[] dayNames;
+    
     /// <summary>
     /// Flag indicating whether we are using a 12 hour nomenclature
     /// or a 24 hour nomenclature
     /// </summary>
-    public bool? twelveHourClock { get; set; }
+    public bool? twelveHourClock;
 
     /// <summary>
     /// Axis label to be shown
     /// </summary>
-    public string axisLabel { get; set; }
+    public string axisLabel;
 
     /// <summary>
     /// If set to true, the axis label will be drawn on the Flot canvas object itself. Y axis text will
@@ -121,14 +177,14 @@ namespace WebExtras.JQFlot.SubOptions
     /// be vertical. If set to false, the axis label will be drawn as a HTML DIV element and text will
     /// always be horizontal irrespective of X or Y axis.
     /// </summary>
-    public bool axisLabelUseCanvas
+    public bool? axisLabelUseCanvas
     {
       get { return m_axisLabelUseCanvas; }
 
       set
       {
-        m_axisLabelUseCanvas = value;
-        if (!value)
+        m_axisLabelUseCanvas = value.Value;
+        if (value.HasValue && !value.Value)
         {
           // automatically reset the font family and font size
           axisLabelFontFamily = null;
@@ -141,14 +197,22 @@ namespace WebExtras.JQFlot.SubOptions
     /// Font size in pixels for the axis label. This option is only available if 'axisLabelUseCanvas' 
     /// is set to true
     /// </summary>
-    [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-    public int? axisLabelFontSizePixels { get; set; }
+    public int? axisLabelFontSizePixels;
 
     /// <summary>
     /// Font family for the axis label. This option is only available if 'axisLabelUseCanvas' is
     /// set to true
     /// </summary>
-    [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-    public string axisLabelFontFamily { get; set; }
+    public string axisLabelFontFamily;
+
+    /// <summary>
+    /// ctor to intialize defaults. tickDecimals=0, tickLength=0, axisLabelUseCanvas=true
+    /// </summary>
+    public AxisOptions()
+    {
+      axisLabelUseCanvas = true;
+      axisLabelFontSizePixels = 12;
+      axisLabelFontFamily = "Verdana";
+    }    
   }
 }

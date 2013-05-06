@@ -33,83 +33,80 @@ namespace WebExtras.JQFlot
   public class FlotSeries
   {
     /// <summary>
-    /// ctor to set defaults
+    /// Color to be used for the series. This can be either a CSS color specification
+    /// or a number that specifies which auto-generated color to select
     /// </summary>
-    public FlotSeries()
-    {
-      label = "";
-      color = "#FFAA00";
-      yaxis = 1;
-      clickable = false;
-      shadowSize = 0;
-      hoverable = true;
-      data = new double[][] { };
-      dashes = new DashedLineGraph();
-      lines = new LineGraph();
-      curvedLines = new CurvedLineGraph();
-      points = new PointGraph();
-    }
+    public object color;
 
     /// <summary>
-    /// label of the series
+    /// Series data as x,y or x,y,z values depending on whether the series is
+    /// going to be filled
     /// </summary>
-    public string label { get; set; }
+    public double[][] data;
 
     /// <summary>
-    /// colour of the series
+    /// The label to be used for the legend
     /// </summary>
-    public string color { get; set; }
-
-    /// <summary>
-    /// shadow size in pixels of the line or points
-    /// </summary>
-    public int shadowSize { get; set; }
-
-    /// <summary>
-    /// series data as a collection of x,y doubles
-    /// </summary>
-    public double[][] data { get; set; }
-
-    /// <summary>
-    /// whether the series responds to a mouse hover
-    /// </summary>
-    public bool hoverable { get; set; }
-
-    /// <summary>
-    /// whether the series responds to a mouse click
-    /// </summary>
-    public bool clickable { get; set; }
-
-    /// <summary>
-    /// which y axis to plot this series against. Defaults to 1
-    /// </summary>
-    public int yaxis { get; set; }
-
-    /// <summary>
-    /// a tooltip to display when the series is hovered or clicked
-    /// </summary>
-    public string tooltip { get; set; }
+    public string label;
 
     /// <summary>
     /// line options
     /// </summary>
-    public LineGraph lines { get; set; }
+    public LineGraph lines;
 
     /// <summary>
     /// dash options
     /// </summary>
-    public DashedLineGraph dashes { get; set; }
+    public DashedLineGraph dashes;
 
     /// <summary>
     /// curved line options
     /// </summary>
-    public CurvedLineGraph curvedLines { get; set; }
+    public CurvedLineGraph curvedLines;
 
     /// <summary>
     /// point options
     /// </summary>
-    public PointGraph points { get; set; }
+    public PointGraph points;
 
+    /// <summary>
+    /// bar options
+    /// </summary>
+    public BarGraph bars;
+
+    /// <summary>
+    /// which x axis to plot this series against
+    /// </summary>
+    public int? xaxis;
+
+    /// <summary>
+    /// which y axis to plot this series against
+    /// </summary>
+    public int? yaxis;
+
+    /// <summary>
+    /// whether the series responds to a mouse click
+    /// </summary>
+    public bool? clickable;
+    
+    /// <summary>
+    /// whether the series responds to a mouse hover
+    /// </summary>
+    public bool? hoverable;
+
+    /// <summary>
+    /// shadow size in pixels of the line or points
+    /// </summary>
+    public int? shadowSize;
+        
+    /// <summary>
+    /// ctor to set defaults
+    /// </summary>
+    public FlotSeries()
+    {
+      data = new double[][] { };
+    }
+    
     /// <summary>
     /// Returns the current Flot series object as a JSON
     /// serialized string

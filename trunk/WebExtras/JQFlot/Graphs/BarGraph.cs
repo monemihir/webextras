@@ -17,40 +17,40 @@
 */
 
 using System;
-using WebExtras.JQFlot.Graphs;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
-namespace WebExtras.JQFlot.SubOptions
+namespace WebExtras.JQFlot.Graphs
 {
   /// <summary>
-  /// Series global options
+  /// Represents a bar graph
   /// </summary>
-  [Serializable]
-  public class SeriesOptions
+  public class BarGraph : BaseGraph
   {
+    /// <summary>
+    /// Specifies whether chart should normally start from zero.
+    /// </summary>
+    public bool? zero;
+
+    /// <summary>
+    /// The width of the bars in the units of the x axis (or y axis if horizontal is set to true)
+    /// </summary>
+    public int? barWidth;
+
+    /// <summary>
+    /// Specifies how a bar should be aligned. Can be one of 'left', 'right' or 'center'
+    /// </summary>
+    public string align;
+
+    /// <summary>
+    /// Whether to draw the bars horizontally
+    /// </summary>
+    public bool? horizontal;
+
     /// <summary>
     /// Default constructor
     /// </summary>
-    public SeriesOptions() { }
-
-    /// <summary>
-    /// Line options
-    /// </summary>
-    public LineGraph lines;
-
-    /// <summary>
-    /// Point options
-    /// </summary>
-    public PointGraph points;
-
-    /// <summary>
-    /// Bar options
-    /// </summary>
-    public BarGraph bars;
-
-
-    /// <summary>
-    /// Curved line options
-    /// </summary>
-    public CurvedLineOptions curvedLines;
+    public BarGraph() { }
   }
 }

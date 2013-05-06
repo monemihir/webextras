@@ -4,7 +4,7 @@
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Lesser General Public License as published by
-* the Free Software Foundation, either version 2 of the License, or
+* the Free Software Foundation, either version 3 of the License, or
 * (at your option) any later version.
 *
 * This program is distributed in the hope that it will be useful,
@@ -17,35 +17,41 @@
 */
 
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using Newtonsoft.Json;
 using WebExtras.Core;
 
-namespace WebExtras.JQDataTables
+namespace WebExtras.JQFlot.SubOptions
 {
   /// <summary>
-  /// HTTP method for Ajax call backs
+  /// Legend sorting options
   /// </summary>
   [Serializable]
-  public enum EServerMethod
+  public enum ELegendSort
   {
     /// <summary>
-    /// HTTP GET method
+    /// Ascending sort
     /// </summary>
-    [StringValue("GET")]
-    Get,
+    Ascending,
 
     /// <summary>
-    /// HTTP POST method
+    /// Descending sort
     /// </summary>
-    [StringValue("POST")]
-    Post
+    Descending,
+
+    /// <summary>
+    /// Reverse sort
+    /// </summary>
+    Reverse
   }
 
   /// <summary>
-  /// EServerMethod enum's custom Json Converter
+  /// ELegendSort enum's custom Json Converter
   /// </summary>
   [Serializable]
-  public class EServerMethodJsonConverter : JsonConverter
+  public class ELegendSortJsonConverter : JsonConverter
   {
     /// <summary>
     /// Determines whether this instance can convert the specified object type
@@ -54,7 +60,7 @@ namespace WebExtras.JQDataTables
     /// <returns>true if this instance can convert the specified object type; otherwise, false</returns>
     public override bool CanConvert(Type objectType)
     {
-      return typeof(EServerMethod).IsAssignableFrom(objectType);
+      return typeof(ELegendSort).IsAssignableFrom(objectType);
     }
 
     /// <summary>
@@ -70,7 +76,7 @@ namespace WebExtras.JQDataTables
       if (existingValue == null)
         return null;
 
-      return Enum.Parse(typeof(EServerMethod), existingValue.ToString().ToTitleCase());
+      return Enum.Parse(typeof(ELegendSort), existingValue.ToString().ToTitleCase());
     }
 
     /// <summary>
@@ -82,7 +88,7 @@ namespace WebExtras.JQDataTables
     public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
     {
       if (value == null) { writer.WriteNull(); }
-      else { EServerMethod val = (EServerMethod)value; writer.WriteValue(val.GetStringValue()); }
+      else { ELegendSort val = (ELegendSort)value; writer.WriteValue(val.ToString().ToLowerInvariant()); }
     }
   }
 }
