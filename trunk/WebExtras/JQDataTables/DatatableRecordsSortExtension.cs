@@ -43,7 +43,7 @@ namespace WebExtras.JQDataTables
     /// <param name="type">Sort direction</param>
     public static string[][] Sort(this IEnumerable<IEnumerable<string>> aaData, int columnNumber, ESort type, IDictionary<int, Func<string, object>> customParsers = null)
     {
-      string[][] data = null;
+      string[][] data = new string[0][];
 
       if (aaData != null && aaData.Count() > 1)
         data = (type == ESort.Ascending) ? SortAscending(aaData, columnNumber, customParsers) : SortDescending(aaData, columnNumber, customParsers);

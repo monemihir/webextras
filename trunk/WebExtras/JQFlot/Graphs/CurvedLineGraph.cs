@@ -27,52 +27,22 @@ namespace WebExtras.JQFlot.Graphs
   /// curved line options
   /// </summary>
   [Serializable]
-  public class CurvedLineGraph
+  public class CurvedLineGraph : BaseGraph
   {
     /// <summary>
-    /// ctor to initialize defaults. show=false, lineWidth=1, fill=false,
-    /// fit=true, fitPointDist=0, fillColor=''
+    /// Default constructor
     /// </summary>
-    public CurvedLineGraph()
-    {
-      show = false;
-      lineWidth = 1;
-      fill = false;
-      fit = true;
-      fitPointDist = 0;
-      fillColor = string.Empty;
-    }
-
-    /// <summary>
-    /// whether to show curved lines.
-    /// </summary>
-    public bool show { get; set; }
-
-    /// <summary>
-    /// line width
-    /// </summary>
-    public int lineWidth { get; set; }
-
-    /// <summary>
-    /// whether the area under the curved line should be filled
-    /// </summary>
-    public bool fill { get; set; }
+    public CurvedLineGraph() { fit = true; fitPointDist = 0; }
 
     /// <summary>
     /// whether to fit the series to the available canvas area
     /// </summary>
-    public bool fit { get; set; }
+    public bool? fit;
 
     /// <summary>
     /// defines the x axis distance of the additional two points
     /// that are used to enforce the min max condition
     /// </summary>
-    public double fitPointDist { get; set; }
-
-    /// <summary>
-    /// color to fill the series with if other than the default series color.
-    /// If left blank, the default series color will be used.
-    /// </summary>
-    public string fillColor { get; set; }
+    public double? fitPointDist;
   }
 }

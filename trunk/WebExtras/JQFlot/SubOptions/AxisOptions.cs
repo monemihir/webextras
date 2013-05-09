@@ -176,30 +176,38 @@ namespace WebExtras.JQFlot.SubOptions
     public string axisLabel;
 
     /// <summary>
-    /// If set to true, the axis label will be drawn on the Flot canvas object itself. Y axis text will
-    /// be vertical. If set to false, the axis label will be drawn as a HTML DIV element and text will
-    /// always be horizontal irrespective of X or Y axis.
+    /// Whether to use Canvas to draw axis label
     /// </summary>
-    private bool m_axisLabelUseCanvas;
+    private bool? m_axisLabelUseCanvas;
 
     /// <summary>
-    /// If set to true, the axis label will be drawn on the Flot canvas object itself. Y axis text will
-    /// be vertical. If set to false, the axis label will be drawn as a HTML DIV element and text will
-    /// always be horizontal irrespective of X or Y axis.
+    /// Whether to use Canvas to draw axis label
     /// </summary>
     public bool? axisLabelUseCanvas
     {
       get { return m_axisLabelUseCanvas; }
-
       set
       {
-        m_axisLabelUseCanvas = value.Value;
-        if (value.HasValue && !value.Value)
-        {
-          // automatically reset the font family and font size
-          axisLabelFontFamily = null;
-          axisLabelFontSizePixels = null;
-        }
+        m_axisLabelUseCanvas = value;
+        m_axisLabelUseHtml = null;
+      }
+    }
+
+    /// <summary>
+    /// Whether to use HTML to draw axis label
+    /// </summary>
+    private bool? m_axisLabelUseHtml;
+
+    /// <summary>
+    /// whether to use HTML to draw axis label
+    /// </summary>
+    public bool? axisLabelUseHtml
+    {
+      get { return m_axisLabelUseHtml; }
+      set
+      {
+        m_axisLabelUseHtml = value;
+        m_axisLabelUseCanvas = null;
       }
     }
 
@@ -214,6 +222,11 @@ namespace WebExtras.JQFlot.SubOptions
     /// set to true
     /// </summary>
     public string axisLabelFontFamily;
+
+    /// <summary>
+    /// This must be a valid CSS color specification
+    /// </summary>
+    public string axisLabelColor;
 
     #endregion Axis label extension options
 

@@ -20,6 +20,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Newtonsoft.Json;
 
 namespace WebExtras.JQFlot
 {
@@ -38,5 +39,18 @@ namespace WebExtras.JQFlot
     /// Flot chart series to be plotted
     /// </summary>
     public FlotSeries[] chartSeries { get; set; }
+
+    /// <summary>
+    /// Converts the flot chart to a JSON serialized object
+    /// </summary>
+    /// <returns>JSON serialized object</returns>
+    public override string ToString()
+    {
+      return JsonConvert.SerializeObject(this,
+        new JsonSerializerSettings
+        {
+          NullValueHandling = NullValueHandling.Ignore
+        });
+    }
   }
 }

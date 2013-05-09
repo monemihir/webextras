@@ -53,6 +53,10 @@
     <DocumentationFile>bin\WebExtras.Mvc.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\External\Json.NET\v4.5.6\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
@@ -74,6 +78,7 @@
     <Compile Include="Bootstrap\BootstrapNavBar.cs" />
     <Compile Include="Bootstrap\BootstrapProgressBarExtension.cs" />
     <Compile Include="Bootstrap\EBootstrapProgressBar.cs" />
+    <Compile Include="Core\JsonNetResult.cs" />
     <Compile Include="Core\WebExtrasMvcConstants.cs" />
     <Compile Include="Html\Button.cs" />
     <Compile Include="Bootstrap\EBootstrapButton.cs" />

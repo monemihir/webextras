@@ -14,7 +14,7 @@ namespace WebExtras.JQFlot.Graphs
     /// <summary>
     /// Whether to show graph
     /// </summary>
-    public bool? show;
+    public bool show;
 
     /// <summary>
     /// The width in pixels of the line
@@ -31,5 +31,13 @@ namespace WebExtras.JQFlot.Graphs
     /// <see cref="WebExtras.JQFlot.SubOptions.ColorOptions"/> object
     /// </summary>
     public object fillColor;
+
+    /// <summary>
+    /// Default constructor
+    /// </summary>
+    protected BaseGraph()
+    {
+      show = true;
+    }
   }
 }

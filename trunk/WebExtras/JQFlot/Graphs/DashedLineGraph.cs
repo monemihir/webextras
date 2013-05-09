@@ -30,11 +30,11 @@ namespace WebExtras.JQFlot.Graphs
   public class DashedLineGraph
   {
     /// <summary>
-    /// ctor to set defaults. show=false, lineWidth=1, dashLength=5
+    /// Default constructor
     /// </summary>
     public DashedLineGraph()
     {
-      show = false;
+      show = true;
       lineWidth = 1;
       dashLength = 5;
     }

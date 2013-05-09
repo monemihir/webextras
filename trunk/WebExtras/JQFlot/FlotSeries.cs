@@ -106,6 +106,7 @@ namespace WebExtras.JQFlot
     public FlotSeries()
     {
       data = new double[][] { };
+      shadowSize = 0;
     }
     
     /// <summary>
