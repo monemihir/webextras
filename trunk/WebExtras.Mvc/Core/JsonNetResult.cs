@@ -50,21 +50,14 @@ namespace WebExtras.Mvc.Core
     public JsonSerializerSettings SerialiserSettings { get; set; }
 
     /// <summary>
-    /// Default constructor
-    /// </summary>
-    /// <param name="data">Data to be returned</param>
-    public JsonNetResult(object data)
-      : this(data, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore, Formatting = Formatting.Indented }) { }
-
-    /// <summary>
     /// Constructor
     /// </summary>
     /// <param name="data">Data to be returned</param>
     /// <param name="settings">JSON serialiser settings</param>
-    public JsonNetResult(object data, JsonSerializerSettings settings)
+    public JsonNetResult(object data, JsonSerializerSettings settings = null)
     {
       Data = data;
-      SerialiserSettings = settings;
+      SerialiserSettings = settings ?? new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore };
     }
 
     /// <summary>
