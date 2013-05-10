@@ -45,8 +45,13 @@ namespace WebExtras.JQDataTables
     {
       string[][] data = new string[0][];
 
-      if (aaData != null && aaData.Count() > 1)
-        data = (type == ESort.Ascending) ? SortAscending(aaData, columnNumber, customParsers) : SortDescending(aaData, columnNumber, customParsers);
+      if (aaData != null)
+      {
+        if (aaData.Count() > 1)
+          data = (type == ESort.Ascending) ? SortAscending(aaData, columnNumber, customParsers) : SortDescending(aaData, columnNumber, customParsers);
+        else
+          data = aaData.Select(f => f.ToArray()).ToArray();
+      }
 
       return data;
     }
