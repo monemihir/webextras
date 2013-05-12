@@ -337,7 +337,8 @@ namespace WebExtras.JQDataTables
       iDisplayLength = displayLength;
       sScrollY = tableHeight;
 
-      aaSorting = sortOptions.Select(f => f.ToArray()).ToArray() ?? null;
+      if (sortOptions != null)
+        aaSorting = sortOptions.Select(f => f.ToArray()).ToArray();
 
       oLanguage = new OLanguage
       {
@@ -362,7 +363,7 @@ namespace WebExtras.JQDataTables
     /// <param name="tableHeight">[Optional] Height of the table in pixels. Defaults to 200px. Note. Pass in a null if to do not
     /// want any table height set</param>
     public DatatableSettings(int displayLength, IEnumerable<AOColumn> columns, AASort sortOption, string ajaxSource, string footerSuffix = "", string tableHeight = "200px")
-      : this(displayLength, columns, new AASort[] { sortOption }, ajaxSource, footerSuffix, tableHeight)
+      : this(displayLength, columns, (sortOption == null) ? null : new AASort[] { sortOption }, ajaxSource, footerSuffix, tableHeight)
     { }
 
     /// <summary>
