@@ -154,6 +154,8 @@ namespace WebExtras.JQDataTables
     {
       if (string.IsNullOrEmpty(title))
         throw new ArgumentNullException("title");
+      else
+        sTitle = title;
     }
   }
 }
