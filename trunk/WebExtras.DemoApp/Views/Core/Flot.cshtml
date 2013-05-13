@@ -61,16 +61,30 @@
     @Html.ActionLink("Curved Line Graph", MVC.Core.Flot(2), new { id = "curvedgraph" })
   </li>
   <li>
-    @Html.ActionLink("Axis Labels", MVC.Core.Flot(3), new { id = "axislabels" })
+    @Html.ActionLink("Bar Graph", MVC.Core.Flot(3), new { id = "bargraph" })
+  </li>
+  <li>
+    @Html.ActionLink("Pie Graph", MVC.Core.Flot(4), new { id = "piegraph" })
+  </li>
+  <li>
+    @Html.ActionLink("Axis Labels", MVC.Core.Flot(5), new { id = "axislabels" })
   </li>
 </ul>
 
 @switch (Model.DisplayMode)
 {
-  case 3:
-    @Html.Partial(MVC.Core.Views._AxisLabels)
+  case 5:
+  @Html.Partial(MVC.Core.Views._AxisLabels)
     break;
-    
+
+  case 4:
+  @Html.Partial(MVC.Core.Views._PieGraph, Model.Chart)
+    break;
+
+  case 3:
+  @Html.Partial(MVC.Core.Views._BarGraph, Model.Chart)
+    break;
+
   case 2:
   @Html.Partial(MVC.Core.Views._CurvedLineGraph, Model.Chart)
     break;
@@ -102,6 +116,14 @@
       break;
 
     case 3:
+      $('#bargraph').parent().addClass('active');
+      break;
+
+    case 4:
+      $('#piegraph').parent().addClass('active');
+      break;
+
+    case 5:
       $('#axislabels').parent().addClass('active');
       break;
   }

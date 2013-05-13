@@ -120,7 +120,6 @@ namespace WebExtras.JQFlot
         this,
         new JsonSerializerSettings
         {
-          Formatting = Formatting.Indented,
           NullValueHandling = NullValueHandling.Ignore
         });
     }

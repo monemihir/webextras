@@ -25,38 +25,44 @@
         <td>axisLabel</td>
         <td>string</td>
         <td><i>Empty string</i></td>
-        <td>Axis label</td>
+        <td>Axis label to be shown</td>
+      </tr>
+      <tr>
+        <td>axisLabelColor</td>
+        <td>string</td>
+        <td><i>Color of grid</i></td>
+        <td>Axis label color to be used</td>
+      </tr>
+      <tr>
+        <td>axisLabelPadding</td>
+        <td>integer</td>
+        <td>2</td>
+        <td>Padding, in pixels, between the tick labels and the axis label</td>
       </tr>
       <tr>
         <td>axisLabelUseCanvas</td>
         <td>boolean</td>
+        <td><i>None</i></td>
+        <td>Flag indicating whether to use the HTML5 Canvas element to render the axis labels</td>
+      </tr>
+      <tr>
+        <td>axisLabelUseHtml</td>
+        <td>boolean</td>
         <td>true</td>
-        <td>If set to true, the axis label will be drawn on the Flot canvas object itself. Y axis text will be vertical. 
-          If set to false, the axis label will be drawn as a HTML DIV element and text will always be horizontal 
-          irrespective of X or Y axis.
-        </td>
+        <td>Flag indicating whether to use HTML and CSS transformations to render the axis labels</td>
       </tr>
       <tr>
         <td>axisLabelFontSizePixels</td>
         <td>int</td>
-        <td>12</td>
-        <td>Font size in pixels for the axis label. This option is only available if 'axisLabelUseCanvas' is set to true.
-        </td>
+        <td>14</td>
+        <td>Font size in pixels for the axis label. This option is only available if 'axisLabelUseCanvas' is set to true.</td>
       </tr>
       <tr>
-        <td>axisLabel</td>
+        <td>axisLabelFontFamily</td>
         <td>string</td>
-        <td>Verdana</td>
-        <td>Font family for the axis label. This option is only available if 'axisLabelUseCanvas' is set to true. 
-        </td>
+        <td>sans-serif</td>
+        <td>Font family for the axis label. This option is only available if 'axisLabelUseCanvas' is set to true.</td>
       </tr>
     </table>
-  </div>
-</div>
-
-<div class="well">
-  <h4>Axis label Limitations</h4>
-  <div class="content">
-    Axis labels for secondary axes eg. x2axis, y2axis are not supported
   </div>
 </div>

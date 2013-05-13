@@ -90,12 +90,16 @@ namespace Links
                       
         public static readonly string jquery_flot_0_7_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.flot-0.7.min.js") ? Url("jquery.flot-0.7.min.js") : Url("jquery.flot-0.7.js");
                       
+        public static readonly string jquery_flot_0_8_min_js = Url("jquery.flot-0.8.min.js");
         public static readonly string jquery_flot_axislabels_1_0_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.flot.axislabels-1.0.min.js") ? Url("jquery.flot.axislabels-1.0.min.js") : Url("jquery.flot.axislabels-1.0.js");
+                      
+        public static readonly string jquery_flot_axislabels_2_0_b0_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.flot.axislabels-2.0.b0.min.js") ? Url("jquery.flot.axislabels-2.0.b0.min.js") : Url("jquery.flot.axislabels-2.0.b0.js");
                       
         public static readonly string jquery_flot_curvedlines_0_2_3_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.flot.curvedlines-0.2.3.min.js") ? Url("jquery.flot.curvedlines-0.2.3.min.js") : Url("jquery.flot.curvedlines-0.2.3.js");
                       
         public static readonly string jquery_flot_dashes_0_1_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.flot.dashes-0.1.min.js") ? Url("jquery.flot.dashes-0.1.min.js") : Url("jquery.flot.dashes-0.1.js");
                       
+        public static readonly string jquery_flot_time_0_8_min_js = Url("jquery.flot.time-0.8.min.js");
         public static readonly string jquery_jScrollPane_2_0_0beta12_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.jScrollPane-2.0.0beta12.min.js") ? Url("jquery.jScrollPane-2.0.0beta12.min.js") : Url("jquery.jScrollPane-2.0.0beta12.js");
                       
         public static readonly string jquery_migrate_1_1_1_min_js = Url("jquery.migrate-1.1.1.min.js");

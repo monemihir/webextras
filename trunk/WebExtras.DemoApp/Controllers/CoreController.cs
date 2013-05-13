@@ -340,8 +340,8 @@ namespace WebExtras.DemoApp.Controllers
 
       FlotOptions options = new FlotOptions
       {
-        xaxis = new AxisOptions { axisLabel = "X axis label" },
-        yaxis = new AxisOptions { axisLabel = "Y axis label" },
+        xaxis = new AxisOptions { axisLabel = "X axis label", axisLabelColor = "#dddddd" },
+        yaxis = new AxisOptions { axisLabel = "Y axis label", axisLabelColor = "#dddddd" },
         grid = new GridOptions { borderWidth = 1 }
       };
 
@@ -349,6 +349,15 @@ namespace WebExtras.DemoApp.Controllers
 
       switch (mode)
       {
+        case 3:
+          serie = new FlotSeries
+          {
+            label = "Sample Bar Graph",
+            data = m_flotSampleData,
+            bars = new BarGraph { show = true }
+          };
+          break;
+
         case 2:
           serie = new FlotSeries
           {
@@ -359,10 +368,10 @@ namespace WebExtras.DemoApp.Controllers
 
           options = new FlotOptions
           {
-            xaxis = new AxisOptions { axisLabel = "X axis label" },
-            yaxis = new AxisOptions { axisLabel = "Y axis label" },
+            xaxis = new AxisOptions { axisLabel = "X axis label", axisLabelColor = "#dddddd" },
+            yaxis = new AxisOptions { axisLabel = "Y axis label", axisLabelColor = "#dddddd" },
             grid = new GridOptions { borderWidth = 1 },
-            series = new SeriesOptions()
+            series = new SeriesOptions { curvedLines = new CurvedLineOptions { active = true } }
           };
           break;
 

@@ -166,6 +166,7 @@ namespace WebExtras.DemoApp.Controllers
             {
                 public readonly string _AjaxSetup = "_AjaxSetup";
                 public readonly string _AxisLabels = "_AxisLabels";
+                public readonly string _BarGraph = "_BarGraph";
                 public readonly string _BasicSetup = "_BasicSetup";
                 public readonly string _CurvedLineGraph = "_CurvedLineGraph";
                 public readonly string _DashedGraph = "_DashedGraph";
@@ -173,6 +174,7 @@ namespace WebExtras.DemoApp.Controllers
                 public readonly string _DatatableDeprecated = "_DatatableDeprecated";
                 public readonly string _LineGraph = "_LineGraph";
                 public readonly string _PagedSetup = "_PagedSetup";
+                public readonly string _PieGraph = "_PieGraph";
                 public readonly string _PostbackResult = "_PostbackResult";
                 public readonly string _PostbackSetup = "_PostbackSetup";
                 public readonly string _SortedSetup = "_SortedSetup";
@@ -183,6 +185,7 @@ namespace WebExtras.DemoApp.Controllers
             }
             public readonly string _AjaxSetup = "~/Views/Core/_AjaxSetup.cshtml";
             public readonly string _AxisLabels = "~/Views/Core/_AxisLabels.cshtml";
+            public readonly string _BarGraph = "~/Views/Core/_BarGraph.cshtml";
             public readonly string _BasicSetup = "~/Views/Core/_BasicSetup.cshtml";
             public readonly string _CurvedLineGraph = "~/Views/Core/_CurvedLineGraph.cshtml";
             public readonly string _DashedGraph = "~/Views/Core/_DashedGraph.cshtml";
@@ -190,6 +193,7 @@ namespace WebExtras.DemoApp.Controllers
             public readonly string _DatatableDeprecated = "~/Views/Core/_DatatableDeprecated.cshtml";
             public readonly string _LineGraph = "~/Views/Core/_LineGraph.cshtml";
             public readonly string _PagedSetup = "~/Views/Core/_PagedSetup.cshtml";
+            public readonly string _PieGraph = "~/Views/Core/_PieGraph.cshtml";
             public readonly string _PostbackResult = "~/Views/Core/_PostbackResult.cshtml";
             public readonly string _PostbackSetup = "~/Views/Core/_PostbackSetup.cshtml";
             public readonly string _SortedSetup = "~/Views/Core/_SortedSetup.cshtml";
