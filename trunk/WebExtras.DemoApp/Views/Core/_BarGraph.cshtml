@@ -15,12 +15,12 @@
 <div class="well">
   <h4>And we have a bar graph...</h4>
   <div class="content">    
-    <div id="dashed-graph" class="flot-graph">
+    <div id="bar-graph" class="flot-graph">
     </div>
   </div>
   <script type="text/javascript">
     $(document).ready(function () {
-      $.plot($('#dashed-graph'), [@Html.Raw(Model.chartSeries[0].ToString())], @Html.Raw(Model.chartOptions.ToString()));    
+      $.plot($('#bar-graph'), [@Html.Raw(Model.chartSeries[0].ToString())], @Html.Raw(Model.chartOptions.ToString()));    
     });
   </script>
 </div>

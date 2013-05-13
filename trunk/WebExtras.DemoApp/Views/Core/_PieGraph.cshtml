@@ -1,31 +1,52 @@
 ﻿@model WebExtras.JQFlot.FlotChart
 
 <p>
-  In order to draw <strong>dashed line graphs</strong> you need <strong>jquery.flot.dashed.js</strong> i.e the
-  dashed graph plugin.
+  In order to draw <strong>pie graphs</strong> you need <strong>jquery.flot.pie.js</strong> i.e the
+  pie graph plugin.
 </p>
 
 <div class="well">
-  <h4>Slightly modifying our series we get...</h4>
+  <h4>Slightly modifying our series and options we get...</h4>
   <pre><code>
-  FlotSeries serie = new FlotSeries
+  FlotSeries serie1 = new FlotSeries
   {
-    label = "Sample Dashed Line Graph",
-    data = graphData,
-    dashes = new DashedLineGraph { show = true }                 <span class="comment">// This will denote that you want a Dashed Line graph</span>
+    label = "Serie1",
+    data = 24.2658                    <span class="comment">// Note that this is a single double value as opposed to an 2d array</span>    
   };
+  FlotSeries serie2 = new FlotSeries
+  {
+    label = "Serie2",
+    data = 86.1                       <span class="comment">// Note that this is a single double value as opposed to an 2d array</span>    
+  };
+  FlotSeries serie3 = new FlotSeries
+  {
+    label = "Serie3",
+    data = 91.0254                    <span class="comment">// Note that this is a single double value as opposed to an 2d array</span>    
+  };
+
+  <span class="comment">// Since we are drawing a pie we must supply each slice as a separate serie</span>
+  FlotSeries[] series = new FlotSeries[] { serie1, serie2, serie3 };
+
+  FlotOptions options = new FlotOptions
+  {
+    series = new SeriesOptions
+    {
+      pie = new PieGraph { show = true }    <span class="comment">// This will denote that you want a Pie graph</span>
+    }
+  }
   </code></pre>
 </div>
 
 <div class="well">
-  <h4>And we have a dashed graph...</h4>
+  <h4>And we have a pie graph...</h4>
   <div class="content">    
-    <div id="dashed-graph" class="flot-graph">
+    <div id="pie-graph" class="flot-pie-graph">
     </div>
   </div>
+
   <script type="text/javascript">
     $(document).ready(function () {
-      $.plot($('#dashed-graph'), [@Html.Raw(Model.chartSeries[0].ToString())], @Html.Raw(Model.chartOptions.ToString()));    
+      $.plot($('#pie-graph'), [@Html.Raw(string.Join(",", Model.chartSeries.Select(f => f.ToString())))], @Html.Raw(Model.chartOptions.ToString()));    
     });
   </script>
 </div>

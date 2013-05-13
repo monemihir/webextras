@@ -16,7 +16,6 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System.Web;
 using System.Web.Mvc;
 
 namespace WebExtras.DemoApp

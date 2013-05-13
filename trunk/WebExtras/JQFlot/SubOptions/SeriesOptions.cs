@@ -46,11 +46,15 @@ namespace WebExtras.JQFlot.SubOptions
     /// Bar options
     /// </summary>
     public BarGraph bars;
-
-
+    
     /// <summary>
     /// Curved line options
     /// </summary>
     public CurvedLineOptions curvedLines;
+
+    /// <summary>
+    /// pie options
+    /// </summary>
+    public PieGraph pie;
   }
 }

@@ -34,14 +34,15 @@ namespace WebExtras.DemoApp.Controllers
     #region Ctor and attributes
 
     private double[][] m_flotSampleData;
+    private Random m_rand;
 
     /// <summary>
     /// Constructor
     /// </summary>
     public CoreController()
     {
-      Random rand = new Random(DateTime.Now.Millisecond);
-      m_flotSampleData = Enumerable.Range(1, 10).Select(f => new double[] { f, rand.NextDouble() * 100 }).ToArray();
+      m_rand = new Random(DateTime.Now.Millisecond);
+      m_flotSampleData = Enumerable.Range(1, 10).Select(f => new double[] { f, m_rand.NextDouble() * 100 }).ToArray();
     }
 
     #endregion Ctor and attributes
@@ -79,7 +80,7 @@ namespace WebExtras.DemoApp.Controllers
 
       DatatablesViewModel model = new DatatablesViewModel();
       string tableId = string.Empty;
-    
+
       IEnumerable<AOColumn> dtAOColumns = new List<AOColumn> { 
         new AOColumn { sTitle = "First Column", sWidth = "25%" },
         new AOColumn { sTitle = "Second Column" }
@@ -319,7 +320,7 @@ namespace WebExtras.DemoApp.Controllers
         iTotalDisplayRecords = dtData.Count(),                          // Total records to be displayed in the table
         aaData = dtData
           .Sort(filters.iSortCol_0, filters.SortDirection)              // The data to be displayed
-          .ToArray()                    
+          .ToArray()
       };
 
       return dtRecords;
@@ -340,15 +341,32 @@ namespace WebExtras.DemoApp.Controllers
 
       FlotOptions options = new FlotOptions
       {
-        xaxis = new AxisOptions { axisLabel = "X axis label", axisLabelColor = "#dddddd" },
-        yaxis = new AxisOptions { axisLabel = "Y axis label", axisLabelColor = "#dddddd" },
+        xaxis = new AxisOptions { axisLabel = "X axis label", axisLabelColor = "#222222" },
+        yaxis = new AxisOptions { axisLabel = "Y axis label", axisLabelColor = "#222222" },
         grid = new GridOptions { borderWidth = 1 }
       };
 
+      List<FlotSeries> series = new List<FlotSeries>();
       FlotSeries serie = null;
 
       switch (mode)
       {
+        case 4:
+          series = Enumerable.Range(1, 5).Select(f => new FlotSeries
+          {
+            label = "Serie" + f.ToString(),
+            data = m_rand.NextDouble() * 100
+          }).ToList();
+
+          options = new FlotOptions
+          {
+            series = new SeriesOptions
+            {
+              pie = new PieGraph { show = true }
+            }
+          };
+          break;
+
         case 3:
           serie = new FlotSeries
           {
@@ -356,6 +374,7 @@ namespace WebExtras.DemoApp.Controllers
             data = m_flotSampleData,
             bars = new BarGraph { show = true }
           };
+          series.Add(serie);
           break;
 
         case 2:
@@ -368,11 +387,12 @@ namespace WebExtras.DemoApp.Controllers
 
           options = new FlotOptions
           {
-            xaxis = new AxisOptions { axisLabel = "X axis label", axisLabelColor = "#dddddd" },
-            yaxis = new AxisOptions { axisLabel = "Y axis label", axisLabelColor = "#dddddd" },
+            xaxis = new AxisOptions { axisLabel = "X axis label", axisLabelColor = "#222222" },
+            yaxis = new AxisOptions { axisLabel = "Y axis label", axisLabelColor = "#222222" },
             grid = new GridOptions { borderWidth = 1 },
             series = new SeriesOptions { curvedLines = new CurvedLineOptions { active = true } }
           };
+          series.Add(serie);
           break;
 
         case 1:
@@ -382,6 +402,7 @@ namespace WebExtras.DemoApp.Controllers
             data = m_flotSampleData,
             dashes = new DashedLineGraph { show = true }
           };
+          series.Add(serie);
           break;
 
         case 0:
@@ -392,6 +413,7 @@ namespace WebExtras.DemoApp.Controllers
             data = m_flotSampleData,
             lines = new LineGraph { show = true }
           };
+          series.Add(serie);
           break;
 
       }
@@ -399,7 +421,7 @@ namespace WebExtras.DemoApp.Controllers
       FlotChart chart = new FlotChart
       {
         chartOptions = options,
-        chartSeries = new FlotSeries[] { serie }
+        chartSeries = series.ToArray()
       };
 
       FlotViewModel model = new FlotViewModel

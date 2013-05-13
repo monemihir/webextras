@@ -17,7 +17,6 @@
 */
 
 using System;
-using Newtonsoft.Json;
 
 namespace WebExtras.JQDataTables
 {

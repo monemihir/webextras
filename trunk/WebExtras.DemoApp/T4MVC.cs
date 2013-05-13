@@ -8,18 +8,11 @@
 #region T4MVC
 
 using System;
-using System.Diagnostics;
 using System.CodeDom.Compiler;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
+using System.Diagnostics;
 using System.Web;
-using System.Web.Hosting;
 using System.Web.Mvc;
-using System.Web.Mvc.Ajax;
-using System.Web.Mvc.Html;
 using System.Web.Routing;
-using T4MVC;
 
 [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
 public static class MVC
@@ -88,17 +81,14 @@ namespace Links
         public static readonly string jquery_datatables_1_9_4_min_js = Url("jquery.datatables-1.9.4.min.js");
         public static readonly string jquery_datatables_pagination_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.datatables.pagination.min.js") ? Url("jquery.datatables.pagination.min.js") : Url("jquery.datatables.pagination.js");
                       
-        public static readonly string jquery_flot_0_7_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.flot-0.7.min.js") ? Url("jquery.flot-0.7.min.js") : Url("jquery.flot-0.7.js");
-                      
         public static readonly string jquery_flot_0_8_min_js = Url("jquery.flot-0.8.min.js");
-        public static readonly string jquery_flot_axislabels_1_0_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.flot.axislabels-1.0.min.js") ? Url("jquery.flot.axislabels-1.0.min.js") : Url("jquery.flot.axislabels-1.0.js");
-                      
         public static readonly string jquery_flot_axislabels_2_0_b0_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.flot.axislabels-2.0.b0.min.js") ? Url("jquery.flot.axislabels-2.0.b0.min.js") : Url("jquery.flot.axislabels-2.0.b0.js");
                       
         public static readonly string jquery_flot_curvedlines_0_2_3_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.flot.curvedlines-0.2.3.min.js") ? Url("jquery.flot.curvedlines-0.2.3.min.js") : Url("jquery.flot.curvedlines-0.2.3.js");
                       
         public static readonly string jquery_flot_dashes_0_1_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.flot.dashes-0.1.min.js") ? Url("jquery.flot.dashes-0.1.min.js") : Url("jquery.flot.dashes-0.1.js");
                       
+        public static readonly string jquery_flot_pie_1_1_min_js = Url("jquery.flot.pie-1.1.min.js");
         public static readonly string jquery_flot_time_0_8_min_js = Url("jquery.flot.time-0.8.min.js");
         public static readonly string jquery_jScrollPane_2_0_0beta12_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.jScrollPane-2.0.0beta12.min.js") ? Url("jquery.jScrollPane-2.0.0beta12.min.js") : Url("jquery.jScrollPane-2.0.0beta12.js");
                       

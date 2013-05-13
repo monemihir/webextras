@@ -16,37 +16,31 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-
-namespace WebExtras.JQFlot.Graphs
+namespace WebExtras.JQFlot.SubOptions
 {
   /// <summary>
-  /// Represents a bar graph
+  /// Represents Pie graph's combine options
   /// </summary>
-  public class BarGraph : BaseGraph
+  public class PieCombineOptions
   {
     /// <summary>
-    /// Specifies whether chart should normally start from zero.
+    /// Percentage value at which to combine slices. Can
+    /// be between 0 and 1
     /// </summary>
-    public bool? zero;
+    public double? threshold;
 
     /// <summary>
-    /// The width of the bars in the units of the x axis (or y axis if horizontal is set to true)
+    /// Color for the combined slices. This must be a 
+    /// valid CSS color specification. Hexadecimal color
+    /// specification are recommended. If unset, the plugin
+    /// will automatically use the color of the first slice
+    /// to be combined
     /// </summary>
-    public int? barWidth;
+    public string color;
 
     /// <summary>
-    /// Specifies how a bar should be aligned. Can be one of 'left', 'right' or 'center'
+    /// Label for the combined slice
     /// </summary>
-    public string align;
-
-    /// <summary>
-    /// Whether to draw the bars horizontally
-    /// </summary>
-    public bool? horizontal;
-
-    /// <summary>
-    /// Default constructor
-    /// </summary>
-    public BarGraph() { }
+    public string label;
   }
 }

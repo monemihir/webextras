@@ -16,37 +16,39 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-
-namespace WebExtras.JQFlot.Graphs
+namespace WebExtras.JQFlot.SubOptions
 {
   /// <summary>
-  /// Represents a bar graph
+  /// Represents Pie graph's label options
   /// </summary>
-  public class BarGraph : BaseGraph
+  public class PieLabelOptions
   {
     /// <summary>
-    /// Specifies whether chart should normally start from zero.
+    /// Whether to show label. If unset, it will automatically
+    /// be set to 'false' if legend is enabled, else 'true'
     /// </summary>
-    public bool? zero;
+    public bool? show;
 
     /// <summary>
-    /// The width of the bars in the units of the x axis (or y axis if horizontal is set to true)
+    /// Radius at which to place the labels. If value is between 0
+    /// and 1 (inclusive) then it will use that as a percentage of
+    /// the container size, otherwise it will use the value as a 
+    /// direct pixel length
     /// </summary>
-    public int? barWidth;
+    public double? radius;
 
     /// <summary>
-    /// Specifies how a bar should be aligned. Can be one of 'left', 'right' or 'center'
+    /// Hides the labels of any pie slice that is smaller than the 
+    /// specified percentage (ranging from 0 to 1). For e.g. a value 
+    /// of '0.03' will hide any labels with values 3% or less of total
     /// </summary>
-    public string align;
+    public double? threshold;
+
+    // formatter is a function
 
     /// <summary>
-    /// Whether to draw the bars horizontally
+    /// Pie background color options
     /// </summary>
-    public bool? horizontal;
-
-    /// <summary>
-    /// Default constructor
-    /// </summary>
-    public BarGraph() { }
+    public PieBackgroundOptions background;
   }
 }

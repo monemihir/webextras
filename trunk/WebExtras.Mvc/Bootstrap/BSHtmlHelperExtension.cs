@@ -18,9 +18,9 @@
 
 using System;
 using System.ComponentModel;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Web.Mvc;
-using System.Linq;
 using WebExtras.Mvc.Html;
 
 namespace WebExtras.Mvc.Bootstrap

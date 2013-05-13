@@ -17,8 +17,6 @@
 */
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using Newtonsoft.Json;
 using WebExtras.JQFlot.Graphs;
 
@@ -40,10 +38,10 @@ namespace WebExtras.JQFlot
     public object color;
 
     /// <summary>
-    /// Series data as x,y or x,y,z values depending on whether the series is
-    /// going to be filled
+    /// This must be a 2-dimensional double array for all graphs except pie graph.
+    /// For pie graphs this must be a single double value.
     /// </summary>
-    public double[][] data;
+    public object data;
 
     /// <summary>
     /// The label to be used for the legend

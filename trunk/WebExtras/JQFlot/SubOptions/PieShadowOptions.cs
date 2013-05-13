@@ -17,36 +17,26 @@
 */
 
 
-namespace WebExtras.JQFlot.Graphs
+namespace WebExtras.JQFlot.SubOptions
 {
   /// <summary>
-  /// Represents a bar graph
+  /// Represents a pie graph's shadow definition
   /// </summary>
-  public class BarGraph : BaseGraph
+  public class PieShadowOptions
   {
     /// <summary>
-    /// Specifies whether chart should normally start from zero.
+    /// Vertical distance in pixels of the tilted pie shadow
     /// </summary>
-    public bool? zero;
+    public int? top;
 
     /// <summary>
-    /// The width of the bars in the units of the x axis (or y axis if horizontal is set to true)
+    /// Horizontal distance in pixels of the tilted pie shadow
     /// </summary>
-    public int? barWidth;
+    public int? left;
 
     /// <summary>
-    /// Specifies how a bar should be aligned. Can be one of 'left', 'right' or 'center'
+    /// Alpha value of the tilted pie shadow
     /// </summary>
-    public string align;
-
-    /// <summary>
-    /// Whether to draw the bars horizontally
-    /// </summary>
-    public bool? horizontal;
-
-    /// <summary>
-    /// Default constructor
-    /// </summary>
-    public BarGraph() { }
+    public double? alpha;
   }
 }

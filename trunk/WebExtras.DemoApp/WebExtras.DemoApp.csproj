@@ -178,6 +178,7 @@
     </Content>
     <Content Include="Scripts\jquery.flot-0.8.min.js" />
     <Content Include="Scripts\jquery.flot.axislabels-2.0.b0.js" />
+    <Content Include="Scripts\jquery.flot.pie-1.1.min.js" />
     <Content Include="Scripts\jquery.flot.time-0.8.min.js" />
     <Content Include="Scripts\jquery.jScrollPane-2.0.0beta12.js" />
     <Content Include="Scripts\jquery.mwheelIntent-1.2.js" />

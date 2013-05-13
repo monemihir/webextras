@@ -16,37 +16,24 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-
-namespace WebExtras.JQFlot.Graphs
+namespace WebExtras.JQFlot.SubOptions
 {
   /// <summary>
-  /// Represents a bar graph
+  /// Represents Pie graph's background options
   /// </summary>
-  public class BarGraph : BaseGraph
+  public class PieBackgroundOptions
   {
     /// <summary>
-    /// Specifies whether chart should normally start from zero.
+    /// Background color of the positioned labels. If null the plugin will 
+    /// automatically use the color of the slice
     /// </summary>
-    public bool? zero;
+    public string color;
 
     /// <summary>
-    /// The width of the bars in the units of the x axis (or y axis if horizontal is set to true)
+    /// Opacity of the background for the positioned labels.
+    /// Values can be from 0 to 1 where 0 is complete transparent
+    /// and 1 if completely opaque
     /// </summary>
-    public int? barWidth;
-
-    /// <summary>
-    /// Specifies how a bar should be aligned. Can be one of 'left', 'right' or 'center'
-    /// </summary>
-    public string align;
-
-    /// <summary>
-    /// Whether to draw the bars horizontally
-    /// </summary>
-    public bool? horizontal;
-
-    /// <summary>
-    /// Default constructor
-    /// </summary>
-    public BarGraph() { }
+    public double? opacity;
   }
 }

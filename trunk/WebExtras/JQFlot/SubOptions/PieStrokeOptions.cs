@@ -16,37 +16,23 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-
-namespace WebExtras.JQFlot.Graphs
+namespace WebExtras.JQFlot.SubOptions
 {
   /// <summary>
-  /// Represents a bar graph
+  /// Represents Pie graph stroke options
   /// </summary>
-  public class BarGraph : BaseGraph
+  public class PieStrokeOptions
   {
     /// <summary>
-    /// Specifies whether chart should normally start from zero.
+    /// Color of the border of each slice.
+    /// This must be a valid CSS color specificaton.
+    /// Hexadecimal color definitions are preferred.
     /// </summary>
-    public bool? zero;
+    public string color;
 
     /// <summary>
-    /// The width of the bars in the units of the x axis (or y axis if horizontal is set to true)
+    /// Width in pixels of the border of each slice.
     /// </summary>
-    public int? barWidth;
-
-    /// <summary>
-    /// Specifies how a bar should be aligned. Can be one of 'left', 'right' or 'center'
-    /// </summary>
-    public string align;
-
-    /// <summary>
-    /// Whether to draw the bars horizontally
-    /// </summary>
-    public bool? horizontal;
-
-    /// <summary>
-    /// Default constructor
-    /// </summary>
-    public BarGraph() { }
+    public int? width;
   }
 }

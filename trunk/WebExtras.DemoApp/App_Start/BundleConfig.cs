@@ -16,7 +16,6 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System.Web;
 using SquishIt.Framework;
 using WebExtras.Core;
 
@@ -72,6 +71,7 @@ namespace WebExtras.DemoApp.App_Start
         .Add(Links.Scripts.jquery_flot_curvedlines_0_2_3_js)
         .Add(Links.Scripts.jquery_flot_dashes_0_1_js)
         .Add(Links.Scripts.jquery_flot_axislabels_2_0_b0_js)
+        .Add(Links.Scripts.jquery_flot_pie_1_1_min_js)
         .Add(Links.Scripts.jquery_jScrollPane_2_0_0beta12_js)
         .Add(Links.Scripts.jquery_mousewheel_3_0_6_js)
         .Add(Links.Scripts.jquery_mwheelIntent_1_2_js)
