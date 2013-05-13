@@ -23,6 +23,22 @@
   </div>
 </div>
 
+@*Object Extensions*@
+<div class="well">
+  <h4>Object Extensions</h4>
+  <p>
+    WebExtras provides a general purpose object cloner which performs a deep clone of the given object.
+    However, in order for the cloning to work, all objects (including any child object of the class) to 
+    be cloned must be marked as serializable using the [Serializable] decorator attribute.
+  </p>
+  <p>Markup</p>
+  <pre><code>
+  SomeClass object1 = new SomeClass();
+  SomeClass object2 = object1.DeepClone();
+  </code></pre>
+</div>
+
+@*Enum Extensions*@
 <div class="well">
   <h4>Enum Extensions</h4>
   <p>WebExtras provides two enum extension methods viz., ToTitleCase() and GetStringValue()</p>
@@ -70,6 +86,7 @@
   </div>
 </div>
 
+@*String Extensions*@
 <div class="well">
   <h4>String Extensions</h4>
   <p>WebExtras provides two string extension methods viz., ToTitleCase() and ContainsIgnoreCase()</p>
@@ -112,15 +129,26 @@
   </div>
 </div>
 
+@*Double Extensions*@
 <div class="well">
-  <h4>General Purpose Object Cloner</h4>
-  <p>WebExtras provides a general purpose object cloner which performs a deep clone of the given object.
-    However, in order for the cloning to work, all objects (including any child object of the class) to 
-    be cloned must be marked as serializable using the [Serializable] decorator attribute.
+  <h4>Double Extensions</h4>
+  <p>WebExtras provides ability to convert JavaScript ticks to a .NET DateTime object by using the ToDateTime()
+    extension method available to all double values
   </p>
-  <p>Markup</p>
   <pre><code>
-  SomeClass object1 = new SomeClass();
-  SomeClass object2 = object1.DeepClone();
+  double ticks = 1356998400000;
+  DateTime dt = ticks.ToDateTime();       <span class="comment">// Parsed date time is 01/01/2013 12:00:00 AM</span>
+  </code></pre>
+</div>
+
+@*DateTime Extensions*@
+<div class="well">
+  <h4>DateTime Extensions</h4>
+  <p>As with doubles, WebExtras also provides ability to convert a .NET DateTime object to it's equivalent
+    JavaScript timestamp by using the ToJavaScriptDate() extension method available to all DateTime values
+  </p>
+  <pre><code>
+  DateTime dt = DateTime.Parse("2013-01-01 00:00:00");
+  double ticks = dt.ToJavaScriptDate();       <span class="comment">// Parsed JavaScript ticks are 1356998400000</span>
   </code></pre>
 </div>
