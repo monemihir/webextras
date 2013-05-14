@@ -168,20 +168,22 @@
     <Content Include="Content\img\draft.png" />
     <Content Include="Content\inline\build.txt" />
     <Content Include="Content\inline\changelog.html" />
+    <Content Include="Content\jquery.bootstrap.datetimepicker.css" />
     <Content Include="Content\jquery.dataTables.css" />
     <Content Include="Content\jpg\wallpaper1.jpg" />
     <Content Include="Content\jquery.jScrollPane-2.0.0beta12.css" />
     <Content Include="Content\png\youtube-logo.png" />
-    <Content Include="Content\webextras-1.1.1.css" />
+    <Content Include="Content\webextras.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\base.css" />
     <Content Include="lgpl-3.0.htm">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Scripts\jquery.flot-0.8.min.js" />
-    <Content Include="Scripts\jquery.flot.axislabels-2.0.b0.js" />
-    <Content Include="Scripts\jquery.flot.pie-1.1.min.js" />
-    <Content Include="Scripts\jquery.flot.time-0.8.min.js" />
+    <Content Include="Scripts\jquery.bootstrap.datetimepicker.min.js" />
+    <Content Include="Scripts\jquery.flot.min.js" />
+    <Content Include="Scripts\jquery.flot.axislabels.js" />
+    <Content Include="Scripts\jquery.flot.pie.min.js" />
+    <Content Include="Scripts\jquery.flot.time.min.js" />
     <Content Include="Scripts\jquery.jScrollPane-2.0.0beta12.js" />
     <Content Include="Scripts\jquery.mwheelIntent-1.2.js" />
     <Content Include="Scripts\jquery.mousewheel-3.0.6.js" />
@@ -189,8 +191,8 @@
     <Content Include="Scripts\jquery-1.9.1.min.js" />
     <Content Include="Scripts\jquery.datatables-1.9.4.min.js" />
     <Content Include="Scripts\jquery.datatables.pagination.js" />
-    <Content Include="Scripts\jquery.flot.curvedlines-0.2.3.js" />
-    <Content Include="Scripts\jquery.flot.dashes-0.1.js" />
+    <Content Include="Scripts\jquery.flot.curvedlines.js" />
+    <Content Include="Scripts\jquery.flot.dashes.js" />
     <Content Include="Scripts\jquery.migrate-1.1.1.min.js" />
     <Content Include="T4MVC.tt.settings.xml" />
     <Content Include="Web.config" />

@@ -4,6 +4,7 @@
   color: #232323; /*background-image: url('img/draft.png');*/
   width: 980px;
   margin: 0 auto;
+  background-color: #EAEAEA;
 }
 
 header, footer, nav, section
@@ -209,6 +210,7 @@ pre
 	border: 1px solid #ddd;
 	padding: 5px;	
 	border-radius: 5px;
+  background-color: #FFFFFF;
 }
 
 #build-date

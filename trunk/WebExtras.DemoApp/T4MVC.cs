@@ -85,18 +85,19 @@ namespace Links
         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
         public static readonly string bootstrap_2_3_1_min_js = Url("bootstrap-2.3.1.min.js");
         public static readonly string jquery_1_9_1_min_js = Url("jquery-1.9.1.min.js");
+        public static readonly string jquery_bootstrap_datetimepicker_min_js = Url("jquery.bootstrap.datetimepicker.min.js");
         public static readonly string jquery_datatables_1_9_4_min_js = Url("jquery.datatables-1.9.4.min.js");
         public static readonly string jquery_datatables_pagination_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.datatables.pagination.min.js") ? Url("jquery.datatables.pagination.min.js") : Url("jquery.datatables.pagination.js");
                       
-        public static readonly string jquery_flot_0_8_min_js = Url("jquery.flot-0.8.min.js");
-        public static readonly string jquery_flot_axislabels_2_0_b0_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.flot.axislabels-2.0.b0.min.js") ? Url("jquery.flot.axislabels-2.0.b0.min.js") : Url("jquery.flot.axislabels-2.0.b0.js");
+        public static readonly string jquery_flot_axislabels_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.flot.axislabels.min.js") ? Url("jquery.flot.axislabels.min.js") : Url("jquery.flot.axislabels.js");
                       
-        public static readonly string jquery_flot_curvedlines_0_2_3_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.flot.curvedlines-0.2.3.min.js") ? Url("jquery.flot.curvedlines-0.2.3.min.js") : Url("jquery.flot.curvedlines-0.2.3.js");
+        public static readonly string jquery_flot_curvedlines_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.flot.curvedlines.min.js") ? Url("jquery.flot.curvedlines.min.js") : Url("jquery.flot.curvedlines.js");
                       
-        public static readonly string jquery_flot_dashes_0_1_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.flot.dashes-0.1.min.js") ? Url("jquery.flot.dashes-0.1.min.js") : Url("jquery.flot.dashes-0.1.js");
+        public static readonly string jquery_flot_dashes_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.flot.dashes.min.js") ? Url("jquery.flot.dashes.min.js") : Url("jquery.flot.dashes.js");
                       
-        public static readonly string jquery_flot_pie_1_1_min_js = Url("jquery.flot.pie-1.1.min.js");
-        public static readonly string jquery_flot_time_0_8_min_js = Url("jquery.flot.time-0.8.min.js");
+        public static readonly string jquery_flot_min_js = Url("jquery.flot.min.js");
+        public static readonly string jquery_flot_pie_min_js = Url("jquery.flot.pie.min.js");
+        public static readonly string jquery_flot_time_min_js = Url("jquery.flot.time.min.js");
         public static readonly string jquery_jScrollPane_2_0_0beta12_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.jScrollPane-2.0.0beta12.min.js") ? Url("jquery.jScrollPane-2.0.0beta12.min.js") : Url("jquery.jScrollPane-2.0.0beta12.js");
                       
         public static readonly string jquery_migrate_1_1_1_min_js = Url("jquery.migrate-1.1.1.min.js");
@@ -184,6 +185,8 @@ namespace Links
             public static readonly string wallpaper1_jpg = Url("wallpaper1.jpg");
         }
     
+        public static readonly string jquery_bootstrap_datetimepicker_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.bootstrap.datetimepicker.min.css") ? Url("jquery.bootstrap.datetimepicker.min.css") : Url("jquery.bootstrap.datetimepicker.css");
+             
         public static readonly string jquery_dataTables_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.dataTables.min.css") ? Url("jquery.dataTables.min.css") : Url("jquery.dataTables.css");
              
         public static readonly string jquery_jScrollPane_2_0_0beta12_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.jScrollPane-2.0.0beta12.min.css") ? Url("jquery.jScrollPane-2.0.0beta12.min.css") : Url("jquery.jScrollPane-2.0.0beta12.css");
@@ -196,7 +199,7 @@ namespace Links
             public static readonly string youtube_logo_png = Url("youtube-logo.png");
         }
     
-        public static readonly string webextras_1_1_1_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/webextras-1.1.1.min.css") ? Url("webextras-1.1.1.min.css") : Url("webextras-1.1.1.css");
+        public static readonly string webextras_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/webextras.min.css") ? Url("webextras.min.css") : Url("webextras.css");
              
     }
 
