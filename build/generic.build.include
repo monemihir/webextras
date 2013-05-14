@@ -3,7 +3,8 @@
   <!-- Global Properties -->
   <property name="build.bin-dir" value="../build/binaries" readonly="true" />
   <property name="build.web-dir" value="../build/web" readonly="true" />
-  <property name="pkg.dir" value="../dist" readonly="true" />
+  <property name="pkg.dir" value="../dist/files" readonly="true" />
+  <property name="archive.file" value="${pkg.dir}/../webextras.zip" />
 
   <!-- Target: Copy documentation files -->
   <target name="copy-doc-files" description="Copies documentation files from individual 'bin' folder to appropriate location">

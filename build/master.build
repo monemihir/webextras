@@ -102,7 +102,7 @@
 
     <!-- Copy binaries -->
     <copy todir="${pkg.dir}" failonerror="true">
-      <fileset basedir="${build.web-dir}">
+      <fileset basedir="${build.web-dir}" failonempty="true">
         <include name="bin/WebExtras.dll" />
         <include name="bin/WebExtras.xml" />
         <include name="bin/WebExtras.Mvc.dll" />
@@ -114,21 +114,30 @@
     </copy>
     
     <!-- Copy css -->
-    <copy file="${build.web-dir}/Content/webextras-1.1.1.css" todir="${pkg.dir}/css" failonerror="true" />
+    <copy todir="${pkg.dir}/css" failonerror="true">
+      <fileset basedir="${build.web-dir}/Content" failonempty="true">
+        <include name="webextras.css" />
+        <include name="jquery.bootstrap.datetimepicker.css" />
+      </fileset>
+    </copy>
     
     <!-- Copy js -->
     <copy todir="${pkg.dir}/js" failonerror="true">
-      <fileset basedir="${build.web-dir}/Scripts">
-        <include name="jquery.flot.axislabels-1.0.js" />
-        <include name="jquery.flot.curvedlines-0.2.3.js" />
-        <include name="jquery.flot.dashes-0.1.js" />
+      <fileset basedir="${build.web-dir}/Scripts" failonempty="true">
+        <include name="jquery.flot.min.js" />
+        <include name="jquery.flot.axislabels.js" />
+        <include name="jquery.flot.curvedlines.js" />
+        <include name="jquery.flot.dashes.js" />
+        <include name="jquery.flot.pie.min.js" />
+        <include name="jquery.flot.time.min.js" />
         <include name="jquery.datatables.pagination.js" />
+        <include name="jquery.bootstrap.datetimepicker.min.js" />
       </fileset>
     </copy>
     
     <!-- Copy views -->
     <copy todir="${pkg.dir}/views" failonerror="true">
-      <fileset basedir="${build.web-dir}/Views/Core">
+      <fileset basedir="${build.web-dir}/Views/Core" failonempty="true">
         <include name="_Datatable.cshtml" />
         <include name="_DatatableDeprecated.cshtml" />
       </fileset>
@@ -136,5 +145,23 @@
     
     <!-- Copy license -->
     <copy file="${build.web-dir}/lgpl-3.0.htm" todir="${pkg.dir}" failonerror="true" />
+  </target>
+  
+  <!-- Target: Archive nightly -->
+  <target name="archive-nightly" description="Create a nightly publish archive">
+    <property name="archive.file" value="${pkg.dir}/../webextras-nightly.zip" />
+
+    <call target="archive" />
+  </target>
+  
+  <!-- Target: Archive -->
+  <target name="archive" description="Creates a publish archive" depends="package">
+    <!-- We already have all files in correct location -->
+    <zip zipfile="${archive.file}">
+      <fileset basedir="${pkg.dir}">
+        <include name="**/*" />
+        <include name="*.*" />
+      </fileset>      
+    </zip>
   </target>
 </project>
