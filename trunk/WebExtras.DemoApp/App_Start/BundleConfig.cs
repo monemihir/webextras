@@ -54,6 +54,7 @@ namespace WebExtras.DemoApp.App_Start
       // Main CSS bundle
       Bundle.Css()
         .Add(Links.Content.bootstrap_2_3_1_css)
+        .Add(Links.Content.font_awesome_css)
         .Add(Links.Content.jquery_dataTables_css)
         .Add(Links.Content.jquery_jScrollPane_2_0_0beta12_css)
         .Add(Links.Content.webextras_1_1_1_css)

@@ -150,6 +150,8 @@
     <Content Include="Content\bootstrap-2.3.1.css" />
     <Content Include="Content\favicon.ico" />
     <Content Include="Content\favicon.png" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font\fontawesome-webfont.svg" />
     <Content Include="Content\img\bootstrap\glyphicons-halflings-white.png" />
     <Content Include="Content\img\bootstrap\glyphicons-halflings.png" />
     <Content Include="Content\img\datatables\back_disabled.png" />
@@ -280,6 +282,10 @@
     <Content Include="Views\Home\Download.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\font\fontawesome-webfont.eot" />
+    <Content Include="Content\font\fontawesome-webfont.ttf" />
+    <Content Include="Content\font\fontawesome-webfont.woff" />
+    <Content Include="Content\font\FontAwesome.otf" />
     <None Include="Properties\PublishProfiles\Default.pubxml" />
     <Content Include="Views\Core\_PieGraph.cshtml" />
     <Content Include="Views\Core\_BarGraph.cshtml" />

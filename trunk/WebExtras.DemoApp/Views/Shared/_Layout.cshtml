@@ -46,7 +46,7 @@
         </li>
       </ul>
       <ul class="nav secondary-nav">
-        <li>@(Html.Button(EButton.Regular, "Get WebExtras", "gotoDownload()").AsButton(EBootstrapButton.Primary).AddWhiteIcon(BootstrapIcon.Arrow_Down))</li>
+        <li>@(Html.Button(EButton.Regular, "Get WebExtras", "gotoDownload()").AsButton(EBootstrapButton.Primary).AddWhiteIcon(EBootstrapIcon.Arrow_Down))</li>
       </ul>
     </div>
   </div>
@@ -56,7 +56,7 @@
   </div>
   <footer>
     <small class="pull-left" id="build-date">@Html.Inline(Links.Content.inline.build_txt)</small>
-    <small>Copyright &copy; @DateTime.Now.Year Mihir Mone. All Rights Reserved.</small>
+    <small>Copyright &copy; @DateTime.Now.Year Mihir Mone. All Rights Reserved. @Html.Icon(EFontAwesomeIcon.Css3, new { title = "Valid CSS3" }) @Html.Icon(EFontAwesomeIcon.Html5, new { title = "Valid HTML5" })</small>
   </footer>
   @RenderSection("scripts", required: false)
 </body>

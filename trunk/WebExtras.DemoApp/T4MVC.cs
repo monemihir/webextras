@@ -8,11 +8,18 @@
 #region T4MVC
 
 using System;
-using System.CodeDom.Compiler;
 using System.Diagnostics;
+using System.CodeDom.Compiler;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Web;
+using System.Web.Hosting;
 using System.Web.Mvc;
+using System.Web.Mvc.Ajax;
+using System.Web.Mvc.Html;
 using System.Web.Routing;
+using T4MVC;
 
 [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
 public static class MVC
@@ -110,6 +117,20 @@ namespace Links
              
         public static readonly string favicon_ico = Url("favicon.ico");
         public static readonly string favicon_png = Url("favicon.png");
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public static class font {
+            private const string URLPATH = "~/Content/font";
+            public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
+            public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+            public static readonly string fontawesome_webfont_eot = Url("fontawesome-webfont.eot");
+            public static readonly string fontawesome_webfont_svg = Url("fontawesome-webfont.svg");
+            public static readonly string fontawesome_webfont_ttf = Url("fontawesome-webfont.ttf");
+            public static readonly string fontawesome_webfont_woff = Url("fontawesome-webfont.woff");
+            public static readonly string FontAwesome_otf = Url("FontAwesome.otf");
+        }
+    
+        public static readonly string font_awesome_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/font-awesome.min.css") ? Url("font-awesome.min.css") : Url("font-awesome.css");
+             
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public static class img {
             private const string URLPATH = "~/Content/img";

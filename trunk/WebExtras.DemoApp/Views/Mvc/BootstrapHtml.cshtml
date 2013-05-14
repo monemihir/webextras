@@ -38,14 +38,14 @@
     Markup
   </p>
   <pre><code>
-  @@Html.Icon(BootstrapIcon.Ok) 
+  @@Html.Icon(EBootstrapIcon.Ok) 
   </code></pre>
   <p>
     Output
   </p>
   <div class="content">
-    @Html.Icon(BootstrapIcon.Thumbs_Up) @Html.Icon(BootstrapIcon.Arrow_Down) @Html.Icon(BootstrapIcon.Backward)
-    @Html.Icon(BootstrapIcon.Ban_Circle) @Html.Icon(BootstrapIcon.Tint)
+    @Html.Icon(EBootstrapIcon.Thumbs_Up) @Html.Icon(EBootstrapIcon.Arrow_Down) @Html.Icon(EBootstrapIcon.Backward)
+    @Html.Icon(EBootstrapIcon.Ban_Circle) @Html.Icon(EBootstrapIcon.Tint)
   </div>
 </div>
 <div class="well">
@@ -54,13 +54,13 @@
     Markup
   </p>
   <pre><code>
-  @@Html.Hyperlink("Take me to google", "http://www.google.com").AddIcon(BootstrapIcon.Ok)
+  @@Html.Hyperlink("Take me to google", "http://www.google.com").AddIcon(EBootstrapIcon.Ok)
   </code></pre>
   <p>
     Output
   </p>
   <div class="content">
-    @Html.Hyperlink("Take me to google", "http://www.google.com").AddIcon(BootstrapIcon.Ok)
+    @Html.Hyperlink("Take me to google", "http://www.google.com").AddIcon(EBootstrapIcon.Ok)
   </div>
   <p>
     All available extensions
@@ -77,14 +77,14 @@
   </p>
   <pre><code>
   @@Html.Hyperlink("Take me to google", "http://www.google.com")
-    .AddWhiteIcon(BootstrapIcon.Ok)
+    .AddWhiteIcon(EBootstrapIcon.Ok)
     .AsButton(EBootstrapButton.Info) 
   </code></pre>
   <p>
     Output
   </p>
   <div class="content">
-    @Html.Hyperlink("Take me to google", "http://www.google.com").AddWhiteIcon(BootstrapIcon.Ok).AsButton(EBootstrapButton.Info)
+    @Html.Hyperlink("Take me to google", "http://www.google.com").AddWhiteIcon(EBootstrapIcon.Ok).AsButton(EBootstrapButton.Info)
   </div>
   <p>
     All available extensions

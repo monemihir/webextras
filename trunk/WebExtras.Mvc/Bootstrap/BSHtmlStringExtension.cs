@@ -37,7 +37,7 @@ namespace WebExtras.Mvc.Bootstrap
     /// <param name="html">Current html element</param>
     /// <param name="icon">Icon to be rendered</param>
     /// <returns>Html element with icon added</returns>
-    public static T AddIcon<T>(this T html, BootstrapIcon icon) where T : IExtendedHtmlString
+    public static T AddIcon<T>(this T html, EBootstrapIcon icon) where T : IExtendedHtmlString
     {
       Italic i = new Italic();
       i["class"] = "icon-" + icon.ToString().ToLowerInvariant().Replace("_", "-");
@@ -53,10 +53,44 @@ namespace WebExtras.Mvc.Bootstrap
     /// <param name="html">Current html element</param>
     /// <param name="icon">Icon to be rendered</param>
     /// <returns>Html element with a white icon added</returns>
-    public static T AddWhiteIcon<T>(this T html, BootstrapIcon icon) where T : IExtendedHtmlString
+    public static T AddWhiteIcon<T>(this T html, EBootstrapIcon icon) where T : IExtendedHtmlString
     {
       Italic i = new Italic();
       i["class"] = "icon-white icon-" + icon.ToString().ToLowerInvariant().Replace("_", "-");
+      html.Prepend(i);
+
+      return html;
+    }
+
+    /// <summary>
+    /// Add an icon
+    /// </summary>
+    /// <typeparam name="T">Generic type to be used. This type must implement IExtendedHtmlString</typeparam>
+    /// <param name="html">Current html element</param>
+    /// <param name="icon">Icon to be rendered</param>
+    /// <param name="size">Icon size</param>
+    /// <returns>Html element with icon added</returns>
+    public static T AddIcon<T>(this T html, EFontAwesomeIcon icon, EFontAwesomeIconSize size = EFontAwesomeIconSize.Normal) where T : IExtendedHtmlString
+    {
+      Italic i = new Italic();
+      i["class"] = "icon-" + icon.ToString().ToLowerInvariant().Replace("_", "-") + " icon-" + size.GetStringValue();
+      html.Prepend(i);
+
+      return html;
+    }
+
+    /// <summary>
+    /// Add a white icon
+    /// </summary>
+    /// <typeparam name="T">Generic type to be used. This type must implement IExtendedHtmlString</typeparam>
+    /// <param name="html">Current html element</param>
+    /// <param name="icon">Icon to be rendered</param>
+    /// <param name="size">Icon size</param>
+    /// <returns>Html element with a white icon added</returns>
+    public static T AddWhiteIcon<T>(this T html, EFontAwesomeIcon icon, EFontAwesomeIconSize size = EFontAwesomeIconSize.Normal) where T : IExtendedHtmlString
+    {
+      Italic i = new Italic();
+      i["class"] = "icon-white icon-" + icon.ToString().ToLowerInvariant().Replace("_", "-") + " icon-" + size.GetStringValue();
       html.Prepend(i);
 
       return html;

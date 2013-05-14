@@ -21,6 +21,8 @@ using System.ComponentModel;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Web.Mvc;
+using System.Web.Routing;
+using WebExtras.Core;
 using WebExtras.Mvc.Html;
 
 namespace WebExtras.Mvc.Bootstrap
@@ -35,11 +37,42 @@ namespace WebExtras.Mvc.Bootstrap
     /// </summary>
     /// <param name="html">Current Html helper object</param>
     /// <param name="icon">Icon to be rendered</param>
+    /// <param name="htmlAttributes">Extra HTML attributes</param>
     /// <returns>A Bootstrap icon</returns>
-    public static IExtendedHtmlString Icon(this HtmlHelper html, BootstrapIcon icon)
+    public static IExtendedHtmlString Icon(this HtmlHelper html, EBootstrapIcon icon, object htmlAttributes = null)
     {
       Italic i = new Italic();
       i["class"] = "icon-" + icon.ToString().ToLowerInvariant().Replace("_", "-");
+
+      return i;
+    }
+
+    /// <summary>
+    /// Renders a Bootstrap Font-Awesome icon
+    /// </summary>
+    /// <param name="html">Current Html helper object</param>
+    /// <param name="icon">Icon to be rendered</param>
+    /// <param name="htmlAttributes">Extra HTML attributes</param>
+    /// <returns>A Bootstrap icon</returns>
+    public static IExtendedHtmlString Icon(this HtmlHelper html, EFontAwesomeIcon icon, object htmlAttributes)
+    {
+      return Icon(html, icon, EFontAwesomeIconSize.Normal, htmlAttributes);
+    }
+
+    /// <summary>
+    /// Renders a Bootstrap Font-Awesome icon
+    /// </summary>
+    /// <param name="html">Current Html helper object</param>
+    /// <param name="icon">Icon to be rendered</param>
+    /// <param name="size">Icon size</param>
+    /// <param name="htmlAttributes">Extra HTML attributes</param>
+    /// <returns>A Bootstrap icon</returns>
+    public static IExtendedHtmlString Icon(this HtmlHelper html, EFontAwesomeIcon icon, EFontAwesomeIconSize size = EFontAwesomeIconSize.Normal, object htmlAttributes = null)
+    {
+      Italic i = new Italic();
+      i["class"] = "icon-" + icon.ToString().ToLowerInvariant().Replace("_", "-") + " icon-" + size.GetStringValue();
+
+      i.Tag.MergeAttributes<string, object>(new RouteValueDictionary(htmlAttributes));
 
       return i;
     }
