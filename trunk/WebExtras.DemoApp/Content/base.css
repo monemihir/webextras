@@ -1,10 +1,15 @@
-﻿body
+﻿html
+{
+  background: url('png/bk.png') repeat center center fixed; 
+}
+
+body
 {
   font-size: .85em;
-  color: #232323; /*background-image: url('img/draft.png');*/
+  color: #232323;
   width: 980px;
-  margin: 0 auto;
-  background-color: #EAEAEA;
+  margin: 0 auto;  
+  background-color: transparent;
 }
 
 header, footer, nav, section

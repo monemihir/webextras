@@ -1,4 +1,6 @@
-﻿@{
+﻿@model WebExtras.DemoApp.Models.Mvc.BootstrapFormViewModel
+
+@{
   ViewBag.Title = "Mvc Bootstrap Form Helper Extensions";
 }
 
@@ -51,6 +53,42 @@
 <span class="comment">// Note that this extension can only be used for hyperlinks and button elements</span>
 .AsButton(type)
   </code></pre>
+</div>
+
+<div class="well">
+  <h4>Date time pickers</h4>
+  <p>
+    WebExtras provides helper methods for rendering a date time picker attached to a textbox by using a greate little date time picker
+    provided by Sébastien Malot. You can get a copy of the date time picker from @Html.Hyperlink("here.", "http://www.malot.fr/bootstrap-datetimepicker")
+  </p>
+  <p>Markup</p>
+  <pre><code>
+@@Html.DateTextBoxFor(f => f.DateTextBox)
+
+<span class="comment">// Note that this date time picker uses 'i' for minutes</span>
+@@Html.TimeTextBoxFor(f => f.TimeTextBox, new { format = "hh:ii" })                     
+@@Html.DateTimeTextBoxFor(f => f.DateTimeTextBox, new { format = "dd M yyyy hh:ii" })   
+  </code></pre>
+  <p>Output</p>
+  <div class="content">
+    <div class="row-fluid">
+      <div class="span4">Date only picker</div>
+      <div class="span4">Time only picker</div>
+      <div class="span4">Date and time picker</div>
+    </div>
+    <div class="row-fluid">
+      <div class="span4">
+        @Html.DateTextBoxFor(f => f.DateTextBox)
+      </div>      
+      <div class="span4">
+        @Html.TimeTextBoxFor(f => f.TimeTextBox, new { format = "hh:ii" })
+      </div>
+      <div class="span4">
+        @Html.DateTimeTextBoxFor(f => f.DateTimeTextBox, new { format = "dd M yyyy hh:ii" })
+      </div>
+    </div>
+  </div>
+  <p>A slight gotcha with the time only picker is that the date will always be fixed to 31 December 1899. </p>
 </div>
 
 <div class="well">

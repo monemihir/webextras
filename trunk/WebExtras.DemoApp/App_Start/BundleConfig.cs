@@ -68,6 +68,7 @@ namespace WebExtras.DemoApp.App_Start
         .Add(Links.Scripts.jquery_migrate_1_1_1_min_js)
         .Add(Links.Scripts.bootstrap_2_3_1_min_js)
         .Add(Links.Scripts.jquery_bootstrap_datetimepicker_min_js)
+        .Add(Links.Scripts.jquery_bootstrap_hover_dropdown_min_js)
         .Add(Links.Scripts.jquery_datatables_1_9_4_min_js)
         .Add(Links.Scripts.jquery_datatables_pagination_js)
         .Add(Links.Scripts.jquery_flot_min_js)

@@ -51,18 +51,18 @@ input[type="radio"]
   vertical-align: middle;
 }
 
-/*
- *  Bootstrap extensions
- */
+/** BOOTSTRAP EXTENSIONS AND OVERRIDES **/
+
 [class^="icon-"], [class*=" icon-"]
 {
   margin-left: 0;
   margin-right: 5px;
 }
 
-/*
- * Bootstrap styling for jQuery Datatables
- */
+/** BOOTSTRAP EXTENSIONS AND OVERRIDES END **/
+
+/** BOOTSTRAP STYLING FOR JQUERY DATATABLES **/
+
 div.dataTables_paginate
 {
   margin: 0.5em 0;
@@ -104,3 +104,23 @@ table.dataTable tbody tr.info td
 {
   background-color: #d9edf7;
 }
+
+/** BOOTSTRAP STYLING FOR JQUERY DATATABLES END **/
+
+/** BOOTSTRAP DATE TIME PICKER OVERRIDES AND EXTENSIONS */
+
+[class*=" datetimepicker-dropdown"]:before,
+[class*=" datetimepicker-dropdown"]:after
+{
+  border: 0;
+}
+
+.datetimepicker.dropdown-menu
+{
+  background-color: #ffffff;
+  color: #222222;
+  background-image: none;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+/** BOOTSTRAP DATE TIME PICKER OVERRIDES AND EXTENSIONS END */

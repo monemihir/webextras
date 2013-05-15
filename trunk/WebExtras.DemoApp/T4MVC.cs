@@ -86,6 +86,7 @@ namespace Links
         public static readonly string bootstrap_2_3_1_min_js = Url("bootstrap-2.3.1.min.js");
         public static readonly string jquery_1_9_1_min_js = Url("jquery-1.9.1.min.js");
         public static readonly string jquery_bootstrap_datetimepicker_min_js = Url("jquery.bootstrap.datetimepicker.min.js");
+        public static readonly string jquery_bootstrap_hover_dropdown_min_js = Url("jquery.bootstrap.hover.dropdown.min.js");
         public static readonly string jquery_datatables_1_9_4_min_js = Url("jquery.datatables-1.9.4.min.js");
         public static readonly string jquery_datatables_pagination_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.datatables.pagination.min.js") ? Url("jquery.datatables.pagination.min.js") : Url("jquery.datatables.pagination.js");
                       
@@ -196,6 +197,7 @@ namespace Links
             private const string URLPATH = "~/Content/png";
             public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+            public static readonly string bk_png = Url("bk.png");
             public static readonly string youtube_logo_png = Url("youtube-logo.png");
         }
     

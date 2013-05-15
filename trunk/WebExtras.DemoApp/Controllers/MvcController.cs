@@ -16,7 +16,9 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+using System;
 using System.Web.Mvc;
+using WebExtras.DemoApp.Models.Mvc;
 
 namespace WebExtras.DemoApp.Controllers
 {
@@ -54,7 +56,14 @@ namespace WebExtras.DemoApp.Controllers
     // GET: /Mvc/BootstrapForm
     public virtual ActionResult BootstrapForm()
     {
-      return View();
+      BootstrapFormViewModel model = new BootstrapFormViewModel
+      {
+        DateTextBox = DateTime.Now,
+        DateTimeTextBox = DateTime.Now,
+        TimeTextBox = DateTime.Now
+      };
+
+      return View(model);
     }
   }
 }

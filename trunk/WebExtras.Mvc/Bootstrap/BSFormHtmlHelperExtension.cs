@@ -82,6 +82,7 @@ namespace WebExtras.Mvc.Bootstrap
       // parse the picker options
       IDictionary<string, object> pickerOptions = MergeOptions(new RouteValueDictionary(options));
       pickerOptions["maxView"] = 0;     // this is a time only picker so set the max view to day
+      pickerOptions["startView"] = 1;   // this is a time only picker so start with the hour view
 
       return GetDateTimePickerFor(html, expression, pickerOptions, htmlAttributes);
     }
@@ -192,7 +193,7 @@ namespace WebExtras.Mvc.Bootstrap
     /// <returns>Merged options</returns>
     private static IDictionary<string, object> MergeOptions(IDictionary<string, object> options)
     {
-      IDictionary<string, object> result = defaultPickerOptions;
+      IDictionary<string, object> result = new Dictionary<string, object>(defaultPickerOptions);
 
       if (options != null && options.Count > 0)
         foreach (var o in options)
