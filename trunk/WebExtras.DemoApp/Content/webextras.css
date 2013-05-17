@@ -59,6 +59,12 @@ input[type="radio"]
   margin-right: 5px;
 }
 
+.input-prepend .input-append input,
+.input-append .input-prepend input
+{
+  border-radius: 0;
+}
+
 /** BOOTSTRAP EXTENSIONS AND OVERRIDES END **/
 
 /** BOOTSTRAP STYLING FOR JQUERY DATATABLES **/
@@ -124,3 +130,12 @@ table.dataTable tbody tr.info td
 }
 
 /** BOOTSTRAP DATE TIME PICKER OVERRIDES AND EXTENSIONS END */
+
+/** STYLING FOR FLOT GRAPHS */
+
+.legendLabel
+{
+  padding-right: 1em;
+}
+
+/** STYLING FOR FLOT GRAPHS END */

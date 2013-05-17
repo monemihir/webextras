@@ -19,6 +19,7 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection;
+using Newtonsoft.Json;
 
 namespace WebExtras.JQDataTables
 {
@@ -72,7 +73,7 @@ namespace WebExtras.JQDataTables
         object val = p.GetValue(o, null);
 
         if (val != null)
-          postbacks.Add(new PostbackItem(p.Name, val));
+          postbacks.Add(new PostbackItem(p.Name, JsonConvert.SerializeObject(val)));
       }
 
       return postbacks;

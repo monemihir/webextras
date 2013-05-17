@@ -48,9 +48,7 @@
     @{
       foreach (PostbackItem item in Model.Postbacks)
       {
-        <text>
-          aoData.push({ name: '@item.name', value: '@item.value'});
-        </text>
+      <text>aoData.push({ name: '@item.name', value: @Html.Raw(item.value) });</text>
       }
     }
       $.getJSON(sSource, aoData, function(json) {
