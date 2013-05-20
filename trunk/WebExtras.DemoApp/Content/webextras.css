@@ -70,6 +70,16 @@ input[type="radio"]
   padding-top: 5px;
 }
 
+.control-group-large .control-label
+{
+  width: 260px;
+}
+
+.control-group-large .controls
+{
+  margin-left: 280px;
+}
+
 /** BOOTSTRAP EXTENSIONS AND OVERRIDES END **/
 
 /** BOOTSTRAP STYLING FOR JQUERY DATATABLES **/
