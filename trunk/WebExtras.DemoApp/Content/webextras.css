@@ -65,6 +65,11 @@ input[type="radio"]
   border-radius: 0;
 }
 
+.control-group .text
+{
+  padding-top: 5px;
+}
+
 /** BOOTSTRAP EXTENSIONS AND OVERRIDES END **/
 
 /** BOOTSTRAP STYLING FOR JQUERY DATATABLES **/
