@@ -63,7 +63,7 @@ namespace WebExtras.Mvc.Core
     /// <param name="html">Htmlhelper extension</param>
     /// <param name="memberName">The member name to be checked</param>
     /// <returns>True if state is valid, else False</returns>
-    public static bool ValidFor(this HtmlHelper html, String memberName)
+    public static bool IsValidFor(this HtmlHelper html, string memberName)
     {
       bool result = true;
       if (html.ViewData.ModelState.ContainsKey(memberName))

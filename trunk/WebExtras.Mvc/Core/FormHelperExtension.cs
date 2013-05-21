@@ -184,27 +184,6 @@ namespace WebExtras.Mvc.Core
       return MvcHtmlString.Create(table.ToString(TagRenderMode.Normal));
     }
 
-    #endregion RadioButtonGroup extensions
-
-    #region List extensions
-
-    /// <summary>
-    /// Create an HTML LIST
-    /// </summary>
-    /// <param name="html">Current HTML helper object</param>
-    /// <param name="type">List type</param>
-    /// <param name="listItems">A collection of list items</param>
-    /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
-    /// <returns>A HTML LIST</returns>
-    public static HtmlList List(
-      this HtmlHelper html,
-      EList type,
-      IEnumerable<HtmlListItem> listItems,
-      object htmlAttributes = null)
-    {
-      return new HtmlList(type, listItems, htmlAttributes);
-    }
-
-    #endregion List extensions
+    #endregion RadioButtonGroup extensions    
   }
 }

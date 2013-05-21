@@ -31,8 +31,8 @@ namespace WebExtras.Mvc.Core
     /// </summary>
     /// <param name="modelState">ModelStateDictionary object</param>
     /// <param name="errors">NameValueCollection of errors: key=property name, value=error message</param>
-    /// <param name="keyPrefix">a string to prefix the final key, used for child objects i.e EditVesselViewModel.Vessel.IMO</param>
-    public static void AddRuleViolations(
+    /// <param name="keyPrefix">a string to prefix the final key, used for child objects i.e ProfileViewModel.User.SecretQuestion</param>
+    public static void AddModelErrors(
       this ModelStateDictionary modelState,
       NameValueCollection errors,
       string keyPrefix = "")

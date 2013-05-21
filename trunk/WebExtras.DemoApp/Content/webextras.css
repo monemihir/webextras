@@ -51,6 +51,14 @@ input[type="radio"]
   vertical-align: middle;
 }
 
+#actionmessage
+{
+  position: fixed;
+  top: 0;  
+  right: 0.2%;
+  z-index: 2000;
+}
+
 /** BOOTSTRAP EXTENSIONS AND OVERRIDES **/
 
 [class^="icon-"], [class*=" icon-"]

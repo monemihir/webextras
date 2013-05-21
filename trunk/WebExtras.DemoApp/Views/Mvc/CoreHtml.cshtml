@@ -2,6 +2,8 @@
   ViewBag.Title = "Mvc Html Helper Extensions";
 }
 
+
+
 <h3 class="keep-center">Mvc Html Helper Extensions</h3>
 
 <div class="row-fluid">
@@ -112,19 +114,6 @@ new { a = new { attr1 = value1 ... }, img = new { attr1 = value1 } }
 </div>
 
 <div class="well">
-  <h4>Authenticated extension methods</h4>
-  <p>
-    These extension methods only return HTML content based on whether the user is authenticated or not. It uses the <strong>System.Security.Principal.IPrincipal.Identity.IsAuthenticated</strong> flag
-  in order to decide whether a user is authenticated or not.
-  </p>
-  <p>Usage</p>
-  <pre><code>
-@@Html.AuthHyperlink(...)         <span class="comment">// Provides all the same overloads as the @@Html.Hyperlink(...) extension</span>
-@@Html.AuthImagelink(...)         <span class="comment">// Provides all the same overloads as the @@Html.Imagelink(...) extension</span>
-  </code></pre>
-</div>
-
-<div class="well">
   <h4>Lists</h4>
   <p>Markup</p>
   <pre><code>
@@ -146,4 +135,71 @@ new { a = new { attr1 = value1 ... }, img = new { attr1 = value1 } }
       new HtmlListItem("list item 5")
     })
   </div>
+</div>
+
+<div class="well">
+  <h4>Authenticated extension methods</h4>
+  <p>
+    These extension methods only return HTML content based on whether the user is authenticated or not. It uses the <strong>System.Security.Principal.IPrincipal.Identity.IsAuthenticated</strong> flag
+  in order to decide whether a user is authenticated or not.
+  </p>
+  <p>Usage</p>
+  <pre><code>
+@@Html.AuthHyperlink(...)         <span class="comment">// Provides all the same overloads as the @@Html.Hyperlink(...) extension</span>
+@@Html.AuthImagelink(...)         <span class="comment">// Provides all the same overloads as the @@Html.Imagelink(...) extension</span>
+  </code></pre>
+</div>
+
+<div class="well">
+  <h4>Validation extension method</h4>
+  <p>This extension method allows you to check whether a particular view model property value has any model state errors. This method looks at the model state dictionary
+    and checks whether the given view model property exists and has an error.
+  </p>
+  <p>Usage</p>
+  <pre><code>
+@@Html.IsValidFor(f => f.PropertyName)
+@@Html.IsValidFor(PropertyName)
+  </code></pre>
+</div>
+
+<div class="well">
+  <h4>View renderer extension methods</h4>
+  <p>These methods allow you to get the rendered content of a view in the controller. It is particularly useful if you want to return a view as a JSON callback.</p>
+  <p>Usage/Markup</p>
+  <pre><code>
+<span class="comment">// The following controller action demonstrates how you would use these extension methods</span>
+using WebExtras.Mvc.Core
+
+public class HomeController : ControllerBase
+{
+  public JsonResult GetJsonView()
+  {
+    string content = string.Empty;
+    SomeViewModel myModel = new SomeViewModel();
+    if(Request.IsAjaxRequest)
+      content = <span class="hightlight">this.</span>GetRenderedPartialView("mypartialviewname", myModel);
+    else
+      content = <span class="hightlight">this.</span>GetRenderedView("myfullviewname", "mymasterpagename", myModel);
+
+    return Json(content, JsonRequestBehavior.AllowGet);
+  }
+}
+  </code></pre>
+  <p>All available extension methods</p>
+  <pre><code>
+GetRenderedView(viewName, model);
+GetRenderedView(viewName, masterPageName, model);
+GetRenderedPartialView(partialViewName, model);
+  </code></pre>
+</div>
+
+<div class="well">
+  <h4>Rendering static HTML inline</h4>
+  <p>WebExtras provides an extension method to render static HTML content inline. This is especially useful when doing content management external to the system,
+    for e.g. system changelogs, known issues list etc.
+  </p>
+  <p>Usage</p>
+  <pre><code>
+@@Html.Inline("relative path to the static content file")
+  </code></pre>
 </div>

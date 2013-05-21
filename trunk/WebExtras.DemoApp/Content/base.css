@@ -183,6 +183,12 @@ pre
   margin-left: 4px;
 }
 
+#actionMessage
+{
+  top: 45px;
+}
+
+
 /* Generic styles */
 .content
 {

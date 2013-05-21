@@ -1,7 +1,15 @@
-﻿@{
+﻿@model WebExtras.DemoApp.Models.Mvc.BootstrapHtmlViewModel
+@{
   ViewBag.Title = "Mvc Bootstrap Html Helper Extensions";
 }
+
+@if (Model.ShowMessage)
+{
+  @Html.GetLastActionMessage()
+}
+
 <h3 class="keep-center">Mvc Bootstrap Html Helper Extensions</h3>
+
 <div class="row-fluid">
   <div class="span6">
     <div class="row-fluid">
@@ -25,13 +33,16 @@
     <div class="span3">
       <strong>Dependancies</strong>
     </div>
-    <div class="span4">
+    <div class="span6">
       <ul class="dependancies">
         <li>webextras.css</li>
+        <li>>= Bootstrap 2.3.1</li>
+        <li>>= Font Awesome 3.11</li>
       </ul>
     </div>
   </div>
 </div>
+
 <div class="well">
   <h4>Icon</h4>
   <p>
@@ -54,20 +65,20 @@
     <div class="row-fluid">
       <div class="span4">
         @Html.Icon(EBootstrapIcon.Thumbs_Up) @Html.Icon(EBootstrapIcon.Arrow_Down) @Html.Icon(EBootstrapIcon.Backward)
-    @Html.Icon(EBootstrapIcon.Ban_Circle) @Html.Icon(EBootstrapIcon.Tint)
+        @Html.Icon(EBootstrapIcon.Ban_Circle) @Html.Icon(EBootstrapIcon.Tint)
       </div>
       <div class="span4">
         @Html.Icon(EFontAwesomeIcon.Thumbs_Up) @Html.Icon(EFontAwesomeIcon.Arrow_Down) @Html.Icon(EFontAwesomeIcon.Backward)
-    @Html.Icon(EFontAwesomeIcon.Ban_Circle) @Html.Icon(EFontAwesomeIcon.Tint)
+        @Html.Icon(EFontAwesomeIcon.Ban_Circle) @Html.Icon(EFontAwesomeIcon.Tint)
       </div>
       <div class="span4">
         @Html.Icon(EFontAwesomeIcon.Thumbs_Up, EFontAwesomeIconSize.Normal) @Html.Icon(EFontAwesomeIcon.Arrow_Down, EFontAwesomeIconSize.Large) @Html.Icon(EFontAwesomeIcon.Backward, EFontAwesomeIconSize.TwoX)
-    @Html.Icon(EFontAwesomeIcon.Ban_Circle, EFontAwesomeIconSize.ThreeX) @Html.Icon(EFontAwesomeIcon.Tint, EFontAwesomeIconSize.FourX)
+        @Html.Icon(EFontAwesomeIcon.Ban_Circle, EFontAwesomeIconSize.ThreeX) @Html.Icon(EFontAwesomeIcon.Tint, EFontAwesomeIconSize.FourX)
       </div>
     </div>
-    
   </div>
 </div>
+
 <div class="well">
   <h4>Adding icons to existing elements</h4>
   <p>
@@ -95,6 +106,7 @@
 .AddWhiteIcon(fontawesome-icon, fontawesome-icon-size)
   </code></pre>
 </div>
+
 <div class="well">
   <h4>Button styled hyperlinks</h4>
   <p>
@@ -181,5 +193,69 @@
     @Html.ProgressBar(EBootstrapProgressBar.Success, 25)
     @Html.ProgressBar(EBootstrapProgressBar.Warning, 50).AsStriped()
     @Html.ProgressBar(EBootstrapProgressBar.Danger, 75).AsAnimated()
+  </div>
+</div>
+
+<div class="well">
+  <h4>Tooltips</h4>
+  <p>Markup</p>
+  <pre><code>
+@@Html.TooltipFor(f => f.SomeProperty, "This is a tooltip")
+@@Html.TooltipFor(f => f.SomeProperty2)
+  </code></pre>
+  <p>Output</p>
+  <div class="content">
+    <div class="row-fluid">        
+      <div class="span3">First call result @Html.Icon(EFontAwesomeIcon.Angle_Right) @Html.TooltipFor(f => f.SomeProperty, "This is a tooltip")</div>
+      <div class="span3">Second call result @Html.Icon(EFontAwesomeIcon.Angle_Right) @Html.TooltipFor(f => f.SomeProperty2)</div>
+    </div>
+  </div>
+  <p>All available extensions</p>
+  <pre><code>
+<span class="comment">// Tooltip text retrieved from the System.ComponentModel.DescriptionAttribute added to the view model property</span>
+@@Html.TooltipFor(propertySelector)
+@@Html.TooltipFor(propertySelector, placement, trigger)
+
+<span class="comment">// Tooltip text retrieved from the function parameter passed in</span>
+@@Html.TooltipFor(propertySelector, tooltipText)
+@@Html.TooltipFor(propertySelector, tooltipText, placement, trigger)
+  </code></pre>
+</div>
+
+<div class="well">
+  <h4>Action messages</h4>
+  <p>WebExtras provides a way to add action messages to denote status of action to notify a user. For e.g. you may want to add a message to the user when he is moved to a different
+    page on a form submit or on a particular action
+  </p>
+  <p>Usage</p>
+  <pre><code>
+<span class="comment">// In the controller</span>
+using WebExtras.Mvc.Core
+
+public class HomeController : ControllerBase
+{
+  public ActionResult SomeAction()
+  {
+    SomeModel model = new SomeModel();
+    return <span class="highlight">this.</span>View("myview", model, "Your action has been performed");
+  }
+
+  public ActionResult SomeOtherAction()
+  {
+    SomeModel model = new SomeModel();
+    return <span class="highlight">this.</span>RedirectToAction(myActionResult, "Your action failed", EActionMessage.Error);
+  }
+}
+
+<span class="comment">// In the view</span>
+@@Html.GetLastActionMessage()
+  </code></pre>
+  <p>Output</p>
+  <div class="content">
+    <span class="comment">// Click the link below to see an action message demo. <br /></span>
+    <span class="comment">// Action message by default appear on the top right corner of the screen. <br /></span>
+    <span class="comment">// It's position can be controlled via CSS though. See the accompanying webextras.css file. <br /></span>
+    <br />
+    @Html.Hyperlink("Action Message Demo", MVC.Mvc.ActionMessageDemo())
   </div>
 </div>

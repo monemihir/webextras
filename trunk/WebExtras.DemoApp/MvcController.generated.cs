@@ -44,6 +44,12 @@ namespace WebExtras.DemoApp.Controllers
             return RedirectToRoutePermanent(callInfo.RouteValueDictionary);
         }
 
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult BootstrapHtml()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.BootstrapHtml);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public MvcController Actions { get { return MVC.Mvc; } }
@@ -65,9 +71,19 @@ namespace WebExtras.DemoApp.Controllers
             public readonly string CoreForm = ("CoreForm").ToLowerInvariant();
             public readonly string BootstrapHtml = ("BootstrapHtml").ToLowerInvariant();
             public readonly string BootstrapForm = ("BootstrapForm").ToLowerInvariant();
+            public readonly string ActionMessageDemo = ("ActionMessageDemo").ToLowerInvariant();
+            public readonly string ActionResults = ("ActionResults").ToLowerInvariant();
         }
 
 
+        static readonly ActionParamsClass_BootstrapHtml s_params_BootstrapHtml = new ActionParamsClass_BootstrapHtml();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_BootstrapHtml BootstrapHtmlParams { get { return s_params_BootstrapHtml; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_BootstrapHtml
+        {
+            public readonly string msg = ("msg").ToLowerInvariant();
+        }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ViewsClass Views { get { return s_views; } }
@@ -78,17 +94,17 @@ namespace WebExtras.DemoApp.Controllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
+                public readonly string ActionResults = "ActionResults";
                 public readonly string BootstrapForm = "BootstrapForm";
                 public readonly string BootstrapHtml = "BootstrapHtml";
                 public readonly string CoreForm = "CoreForm";
                 public readonly string CoreHtml = "CoreHtml";
-                public readonly string Index = "Index";
             }
+            public readonly string ActionResults = "~/Views/Mvc/ActionResults.cshtml";
             public readonly string BootstrapForm = "~/Views/Mvc/BootstrapForm.cshtml";
             public readonly string BootstrapHtml = "~/Views/Mvc/BootstrapHtml.cshtml";
             public readonly string CoreForm = "~/Views/Mvc/CoreForm.cshtml";
             public readonly string CoreHtml = "~/Views/Mvc/CoreHtml.cshtml";
-            public readonly string Index = "~/Views/Mvc/Index.cshtml";
         }
     }
 
@@ -115,15 +131,28 @@ namespace WebExtras.DemoApp.Controllers
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult BootstrapHtml()
+        public override System.Web.Mvc.ActionResult BootstrapHtml(bool? msg)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.BootstrapHtml);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "msg", msg);
             return callInfo;
         }
 
         public override System.Web.Mvc.ActionResult BootstrapForm()
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.BootstrapForm);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult ActionMessageDemo()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ActionMessageDemo);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult ActionResults()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ActionResults);
             return callInfo;
         }
 

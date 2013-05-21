@@ -18,6 +18,7 @@
 
 using System;
 using System.Web.Mvc;
+using WebExtras.Mvc.Bootstrap;
 using WebExtras.DemoApp.Models.Mvc;
 
 namespace WebExtras.DemoApp.Controllers
@@ -30,7 +31,7 @@ namespace WebExtras.DemoApp.Controllers
     {
       return RedirectToAction(Actions.CoreHtml());
     }
-    
+
     //
     // GET: /Mvc/CoreHtml
     public virtual ActionResult CoreHtml()
@@ -47,9 +48,15 @@ namespace WebExtras.DemoApp.Controllers
 
     //
     // GET: /Mvc/BootstrapHtml
-    public virtual ActionResult BootstrapHtml()
+    public virtual ActionResult BootstrapHtml(bool? msg)
     {
-      return View();
+      BootstrapHtmlViewModel model = new BootstrapHtmlViewModel
+      {
+        SomeProperty = "Blah blah",
+        ShowMessage = msg.HasValue
+      };
+
+      return View(model);
     }
 
     //
@@ -64,6 +71,20 @@ namespace WebExtras.DemoApp.Controllers
       };
 
       return View(model);
+    }
+
+    //
+    // GET: /Mvc/ActionMessageDemo
+    public virtual ActionResult ActionMessageDemo()
+    {
+      return this.RedirectToAction(Actions.BootstrapHtml(true), "This is an action message demo");
+    }
+
+    //
+    // GET: /Mvc/ActionResults
+    public virtual ActionResult ActionResults()
+    {
+      return View();
     }
   }
 }

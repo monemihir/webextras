@@ -134,6 +134,7 @@
     <Compile Include="Models\Core\FlotViewModel.cs" />
     <Compile Include="Models\Core\PostbackSetupViewModel.cs" />
     <Compile Include="Models\Mvc\BootstrapFormViewModel.cs" />
+    <Compile Include="Models\Mvc\BootstrapHtmlViewModel.cs" />
     <Compile Include="MvcController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
@@ -271,7 +272,6 @@
     <Content Include="Views\Core\_DashedGraph.cshtml" />
     <Content Include="Views\Core\_CurvedLineGraph.cshtml" />
     <Content Include="Views\Core\_AxisLabels.cshtml" />
-    <Content Include="Views\Mvc\Index.cshtml" />
     <Content Include="Views\Mvc\CoreHtml.cshtml" />
     <Content Include="Views\Mvc\CoreForm.cshtml" />
     <Content Include="Views\Mvc\BootstrapHtml.cshtml" />
@@ -294,6 +294,7 @@
     <None Include="Properties\PublishProfiles\Default.pubxml" />
     <Content Include="Views\Core\_PieGraph.cshtml" />
     <Content Include="Views\Core\_BarGraph.cshtml" />
+    <Content Include="Views\Mvc\ActionResults.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

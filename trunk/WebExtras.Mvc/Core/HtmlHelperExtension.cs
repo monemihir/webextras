@@ -513,7 +513,7 @@ namespace WebExtras.Mvc.Core
     /// <returns>A single string containing the html strings seperated by the default seperator</returns>
     public static MvcHtmlString Join(this HtmlHelper htmlHelper, params MvcHtmlString[] links)
     {
-      return Join(htmlHelper, links.Select(s => s.ToString()).ToArray());
+      return Join(htmlHelper, links.Select(s => s.ToHtmlString()).ToArray());
     }
 
     #endregion Join extensions
@@ -547,5 +547,26 @@ namespace WebExtras.Mvc.Core
     }
 
     #endregion Inline extensions
+
+    #region List extensions
+
+    /// <summary>
+    /// Create an HTML LIST
+    /// </summary>
+    /// <param name="html">Current HTML helper object</param>
+    /// <param name="type">List type</param>
+    /// <param name="listItems">A collection of list items</param>
+    /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
+    /// <returns>A HTML LIST</returns>
+    public static HtmlList List(
+      this HtmlHelper html,
+      EList type,
+      IEnumerable<HtmlListItem> listItems,
+      object htmlAttributes = null)
+    {
+      return new HtmlList(type, listItems, htmlAttributes);
+    }
+
+    #endregion List extensions
   }
 }

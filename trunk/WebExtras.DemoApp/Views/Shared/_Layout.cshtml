@@ -37,6 +37,7 @@
         <li class="@Html.SelectedTab("Mvc", new string[] { "CoreHtml", "CoreForm" }) dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Mvc Core<i class="caret"></i></a>
           <ul class="dropdown-menu">
+            <li>@Html.ActionLink("Custom Action Results", MVC.Mvc.ActionResults())</li>
             <li>@Html.ActionLink("Html extensions", MVC.Mvc.CoreHtml())</li>
             <li>@Html.ActionLink("Form extensions", MVC.Mvc.CoreForm())</li>
           </ul>

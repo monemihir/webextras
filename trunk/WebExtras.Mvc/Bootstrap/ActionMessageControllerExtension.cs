@@ -45,7 +45,7 @@ namespace WebExtras.Mvc.Bootstrap
     /// </summary>
     /// <param name="c">The controller</param>
     /// <param name="result">The redirect result to execute</param>
-    /// <param name="message">The action message to display after redirection. Use a starting ! character to display as an alert message.</param>
+    /// <param name="message">The action message to display</param>
     /// <param name="type">Action message type</param>
     /// <param name="args">Any message formatting arguments</param>
     /// <returns>A RedirectToRouteResult result</returns>
@@ -54,10 +54,7 @@ namespace WebExtras.Mvc.Bootstrap
       SaveActionMessage(c, message, type, args);
 
       var callInfo = result.GetT4MVCResult();
-      return new RedirectToRouteResult(
-        null,
-        callInfo.RouteValueDictionary
-        );
+      return new RedirectToRouteResult(null, callInfo.RouteValueDictionary);
     }
 
     /// <summary>
@@ -67,7 +64,7 @@ namespace WebExtras.Mvc.Bootstrap
     /// <param name="c">The controller</param>
     /// <param name="viewName">The view name to show</param>
     /// <param name="model">Model data associated with the view</param>
-    /// <param name="message">The action message to display after redirection. Use a starting ! character to display as an alert message.</param>
+    /// <param name="message">The action message to display</param>
     /// <param name="type">Action message type</param>
     /// <param name="args">Any message formatting arguments</param>
     /// <returns>a ViewResult result</returns>
@@ -85,12 +82,11 @@ namespace WebExtras.Mvc.Bootstrap
     }
 
     /// <summary>
-    /// ControllerBase extension method to save a message to
-    /// the Controller.TempData session cache using the key: TempDataMessageKey.
-    /// TempData is only alive for one request only before being wiped.
+    /// ControllerBase extension method to save a message to the Controller.TempData session store using the key denoted by
+    /// 'TempDataMessageKey' variable.
     /// </summary>
     /// <param name="c">The controller</param>
-    /// <param name="message">The action message to display after redirection. Use a starting ! character to display as an alert message.</param>
+    /// <param name="message">The action message to display</param>
     /// <param name="type">Action message type</param>
     /// <param name="args">Any message formatting arguments</param>
     private static void SaveActionMessage(this ControllerBase c, string message, EActionMessage type, params object[] args)

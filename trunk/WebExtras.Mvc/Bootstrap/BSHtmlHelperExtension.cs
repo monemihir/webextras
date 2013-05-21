@@ -32,6 +32,8 @@ namespace WebExtras.Mvc.Bootstrap
   /// </summary>
   public static class BSHtmlHelperExtension
   {
+    #region Icon extensions
+
     /// <summary>
     /// Renders a Bootstrap icon
     /// </summary>
@@ -77,6 +79,10 @@ namespace WebExtras.Mvc.Bootstrap
       return i;
     }
 
+    #endregion Icon extensions
+
+    #region Navbar extension
+
     /// <summary>
     /// Create a bootstrap navigation bar
     /// </summary>
@@ -88,6 +94,10 @@ namespace WebExtras.Mvc.Bootstrap
     {
       return new BootstrapNavBar(type, items);
     }
+
+    #endregion Navbar extension
+
+    #region ProgressBar extension
 
     /// <summary>
     /// Create a bootstrap progress bar
@@ -101,6 +111,8 @@ namespace WebExtras.Mvc.Bootstrap
     {
       return new BootstrapProgressBar(type, percent, htmlAttributes);
     }
+
+    #endregion ProgressBar extension
 
     #region TooltipFor extensions
 
