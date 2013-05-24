@@ -19,6 +19,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using Newtonsoft.Json;
 using WebExtras.Core;
 
@@ -79,12 +80,12 @@ namespace WebExtras.JQDataTables
     /// </summary>
     public bool bPaginate;
 
-    /// <summary>
-    /// Enable or disable the display of a 'processing' indicator when the table is being processed 
-    /// (e.g. a sort). This is particularly useful for tables with large amounts of data where it 
-    /// can take a noticeable amount of time to sort the entries.
-    /// </summary>
-    public bool? bProcessing;
+    ///// <summary>
+    ///// Enable or disable the display of a 'processing' indicator when the table is being processed 
+    ///// (e.g. a sort). This is particularly useful for tables with large amounts of data where it 
+    ///// can take a noticeable amount of time to sort the entries.
+    ///// </summary>    
+    //public bool? bProcessing;   // Todo: For some reason this does not work :(
 
     /// <summary>
     /// Configure DataTables to use server-side processing. Note that the sAjaxSource parameter must 
@@ -303,6 +304,130 @@ namespace WebExtras.JQDataTables
 
     #endregion Some extra settings
 
+    #region Callbacks
+
+    /// <summary>
+    /// Customise the cookie and / or the parameters being stored when using DataTables with state saving enabled. 
+    /// This function is called whenever the cookie is modified, and it expects a fully formed cookie string to 
+    /// be returned. Note that the data object passed in is a Javascript object which must be converted to a 
+    /// string (JSON.stringify for example).
+    /// </summary>
+    public JsFunc fnCookieCallback;
+
+    /// <summary>
+    /// This function is called when a TR element is created (and all TD child elements have been inserted), or \
+    /// registered if using a DOM source, allowing manipulation of the TR element (adding classes etc)
+    /// </summary>
+    public JsFunc fnCreatedRow;
+
+    /// <summary>
+    /// This function is called on every 'draw' event, and allows you to dynamically modify any aspect you want 
+    /// about the created DOM.
+    /// </summary>
+    public JsFunc fnDrawCallback;
+
+    /// <summary>
+    /// This function is called on every 'draw' event, and allows you to dynamically modify the header row. This 
+    /// can be used to calculate and display useful information about the table.
+    /// </summary>
+    public JsFunc fnHeaderCallback;
+
+    /// <summary>
+    /// Identical to fnHeaderCallback() but for the table footer this function allows you to modify the table 
+    /// footer on every 'draw' even.
+    /// </summary>
+    public JsFunc fnFooterCallback;
+
+    /// <summary>
+    /// When rendering large numbers in the information element for the table (i.e. "Showing 1 to 10 of 57 
+    /// entries") DataTables will render large numbers to have a comma separator for the 'thousands' units 
+    /// (e.g. 1 million is rendered as "1,000,000") to help readability for the end user. This function will 
+    /// override the default method DataTables uses.
+    /// </summary>
+    public JsFunc fnFormatNumber;
+
+    /// <summary>
+    /// The information element can be used to convey information about the current state of the table. 
+    /// Although the internationalisation options presented by DataTables are quite capable of dealing with 
+    /// most customisations, there may be times where you wish to customise the string further. This 
+    /// callback allows you to do exactly that.
+    /// </summary>
+    public JsFunc fnInfoCallback;
+
+    /// <summary>
+    /// Called when the table has been initialised. Normally DataTables will initialise sequentially and 
+    /// there will be no need for this function, however, this does not hold true when using external 
+    /// language information since that is obtained using an async XHR call.
+    /// </summary>
+    public JsFunc fnInitComplete;
+
+    /// <summary>
+    /// Called at the very start of each table draw and can be used to cancel the draw by returning false, 
+    /// any other return (including undefined) results in the full draw occurring).
+    /// </summary>
+    public JsFunc fnPreDrawCallback;
+
+    /// <summary>
+    /// This function allows you to 'post process' each row after it have been generated for each table 
+    /// draw, but before it is rendered on screen. This function might be used for setting the row class name etc.
+    /// </summary>
+    public JsFunc fnRowCallback;
+
+    /// <summary>
+    /// This parameter allows you to override the default function which obtains the data from the server 
+    /// ($.getJSON) so something more suitable for your application. For example you could use POST data,
+    /// or pull information from a Gears or AIR database.
+    /// </summary>
+    public JsFunc fnServerData;
+
+    /// <summary>
+    /// It is often useful to send extra data to the server when making an Ajax request - for example custom 
+    /// filtering information, and this callback function makes it trivial to send extra information to the server. 
+    /// The passed in parameter is the data set that has been constructed by DataTables, and you can add to this 
+    /// or modify it as you require.
+    /// </summary>
+    public JsFunc fnServerParams;
+
+    /// <summary>
+    /// Load the table state. With this function you can define from where, and how, the state of a table is loaded. 
+    /// By default DataTables will load from its state saving cookie, but you might wish to use local storage (HTML5) 
+    /// or a server-side database.
+    /// </summary>
+    public JsFunc fnStateLoad;
+
+    /// <summary>
+    /// Callback which allows modification of the saved state prior to loading that state. This callback is called 
+    /// when the table is loading state from the stored data, but prior to the settings object being modified by the 
+    /// saved state. Note that for plug-in authors, you should use the 'stateLoadParams' event to load parameters for
+    /// a plug-in.
+    /// </summary>
+    public JsFunc fnStateLoadParams;
+
+    /// <summary>
+    /// Callback that is called when the state has been loaded from the state saving method and the DataTables 
+    /// settings object has been modified as a result of the loaded state.
+    /// </summary>
+    public JsFunc fnStateLoaded;
+
+    /// <summary>
+    /// Save the table state. This function allows you to define where and how the state information for the 
+    /// table is stored - by default it will use a cookie, but you might want to use local storage (HTML5) or a 
+    /// server-side database.
+    /// </summary>
+    public JsFunc fnStateSave;
+
+    /// <summary>
+    /// Callback which allows modification of the state to be saved. Called when the table has changed state a 
+    /// new state save is required. This method allows modification of the state saving object prior to actually
+    /// doing the save, including addition or other state properties or modification. Note that for plug-in authors,
+    /// you should use the 'stateSaveParams' event to save parameters for a plug-in.
+    /// </summary>
+    public JsFunc fnStateSaveParams;
+
+    #endregion Callbacks
+
+    #region Ctors
+
     /// <summary>
     /// Default constructor
     /// </summary>
@@ -399,6 +524,10 @@ namespace WebExtras.JQDataTables
       aoColumns = columns.ToArray();
     }
 
+    #endregion Ctors
+
+    #region Setups
+
     /// <summary>
     /// Setup the jQuery dataTables aoColumns variable from the given
     /// set of columns
@@ -439,6 +568,45 @@ namespace WebExtras.JQDataTables
           break;
       }
     }
+
+    /// <summary>
+    /// Sets up the created row callback. 
+    /// </summary>
+    /// <remarks>Invoked when status column is enabled for the datatable via the 
+    /// <see cref="WebExtras.JQDataTables.Datatable"/> constructor</remarks>
+    public void SetupfnCreatedRow()
+    {
+      string[] fnParamNames = new string[] { "nRow", "aData", "iDataIndex" };
+      string fnBody = "$(nRow).addClass(aData[aData.length - 1]);";
+
+      fnCreatedRow = new JsFunc { Body = fnBody, ParameterNames = fnParamNames };
+    }
+
+    /// <summary>
+    /// Sets up postbacks for the server data callback
+    /// </summary>
+    /// <param name="postbacks">Postbacks to be setup</param>
+    /// <remarks>Invoked when there are postbacks via the <see cref="WebExtras.JQDataTables.Datatable"/> constructor </remarks>
+    public void SetupfnServerData(IEnumerable<PostbackItem> postbacks)
+    {
+      string[] aoDataPushes = new string[0];
+      if (postbacks != null && postbacks.Count() > 0)
+      {
+        aoDataPushes = postbacks.Select(f => string.Format("aoData.push({0});", f.ToJson())).ToArray();
+
+        string[] fnParamNames = new string[] { "sSource", "aoData", "fnCallback" };
+
+        StringBuilder fnBody = new StringBuilder();
+        fnBody.Append("\n\t\t");
+        fnBody.Append(string.Join("\n\t\t", aoDataPushes));
+        fnBody.Append("\n\t\t");
+        fnBody.Append("$.getJSON(sSource, aoData, function(json) { fnCallback(json); });");
+
+        fnServerData = new JsFunc { ParameterNames = fnParamNames, Body = fnBody.ToString() };
+      }
+    }
+
+    #endregion Setups
 
     /// <summary>
     /// Returns a JSON serialized version of this object

@@ -18,6 +18,7 @@
 
 using System;
 using Newtonsoft.Json;
+using WebExtras.Core;
 
 namespace WebExtras.JQDataTables
 {
@@ -136,6 +137,38 @@ namespace WebExtras.JQDataTables
     /// table remains readable
     /// </summary>
     public string sWidth;
+
+    /// <summary>
+    /// Developer definable function that is called whenever a cell is created (Ajax 
+    /// source, etc) or processed for input (DOM source). This can be used as a 
+    /// compliment to mRender allowing you to modify the DOM element (add background 
+    /// colour for example) when the element is available.
+    /// </summary>
+    public JsFunc fnCreatedCell;
+
+    /// <summary>
+    /// Custom display function that will be called for the display of each cell in this column.
+    /// </summary>
+    [Obsolete("Use mRender/mData properties instead")]
+    public JsFunc fnRender;
+
+    /// <summary>
+    /// This property can be used to read data from any JSON data source property, including 
+    /// deeply nested objects / properties. mData can be given in a number of different ways 
+    /// which effect its behaviour: integer, string, null or a <see cref="WebExtras.Core.JsFunc"/> object
+    /// </summary>
+    public object mData;
+
+    /// <summary>
+    /// This property is the rendering partner to mData and it is suggested that when you want 
+    /// to manipulate data for display (including filtering, sorting etc) but not altering the 
+    /// underlying data for the table, use this property. mData can actually do everything this 
+    /// property can and more, but this parameter is easier to use since there is no 'set' 
+    /// option. Like mData is can be given in a number of different ways to effect its behaviour, 
+    /// with the addition of supporting array syntax for easy outputting of arrays (including 
+    /// arrays of objects): integer, string or a <see cref="WebExtras.Core.JsFunc"/> object
+    /// </summary>
+    public object mRender;
 
     /// <summary>
     /// Default constructor

@@ -63,9 +63,10 @@ namespace WebExtras.JQFlot.SubOptions
     public int? axisMargin;
 
     /// <summary>
-    /// Markings to be drawn on the grid
+    /// Markings to be drawn on the grid. This can be a collection of <see cref="WebExtras.JQFlot.SubOptions.MarkingOptions"/>
+    /// or a <see cref="WebExtras.Core.JsFunc"/> object
     /// </summary>
-    public MarkingOptions[] markings;
+    public object markings;
 
     /// <summary>
     /// Grid border width. Can be a number or a 

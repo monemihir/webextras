@@ -17,6 +17,7 @@
 */
 
 using System;
+using WebExtras.Core;
 
 namespace WebExtras.JQFlot.Graphs
 {
@@ -29,9 +30,12 @@ namespace WebExtras.JQFlot.Graphs
     /// <summary>
     /// The radius in pixels of the points
     /// </summary>
-    public int? radius { get; set; }
+    public int? radius;
 
-    // symbol is a function
+    /// <summary>
+    /// Point symbol generator function
+    /// </summary>
+    public JsFunc symbol;
 
     /// <summary>
     /// Default constructor

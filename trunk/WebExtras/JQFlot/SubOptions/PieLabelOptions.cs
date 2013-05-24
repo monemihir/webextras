@@ -16,6 +16,8 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+using WebExtras.Core;
+
 namespace WebExtras.JQFlot.SubOptions
 {
   /// <summary>
@@ -44,7 +46,10 @@ namespace WebExtras.JQFlot.SubOptions
     /// </summary>
     public double? threshold;
 
-    // formatter is a function
+    /// <summary>
+    /// Label formatter function
+    /// </summary>
+    public JsFunc formatter;
 
     /// <summary>
     /// Pie background color options

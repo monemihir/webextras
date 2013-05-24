@@ -1,7 +1,7 @@
 ﻿@model WebExtras.JQDataTables.Datatable
+@using WebExtras.JQDataTables
 
-
-@*
+<!--
 * This file is part of - WebExtras
 * Copyright (C) 2013 Mihir Mone
 *
@@ -17,67 +17,50 @@
 *
 * You should have received a copy of the GNU Lesser General Public License
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*@
+-->
 
-@using WebExtras.JQDataTables
 <table class="dataTable table-bordered table-striped" id="@Model.ID">
   <thead>
     <tr>
       @foreach (AOColumn col in Model.Settings.aoColumns)
       {
-        <th>@Html.Raw(col.sTitle)
-        </th>
+        <th>@Html.Raw(col.sTitle)</th>
       }
     </tr>
   </thead>
+  @if (!Model.Settings.bServerSide)
+  {
+    <tbody>
+      @MvcHtmlString.Create(Model.Records.RenderAADataAsTableRows())
+    </tbody>
+  }
 </table>
 
 <script type="text/javascript">    
-    var dtSettings = @Html.Raw(Model.Settings.ToString() + ";")
-    @{
-      if (Model.Records != null && Model.Settings.bServerSide)
-      {
-        <text>
-          dtSettings['bServerSide'] = false;
-          dtSettings['sAjaxSource'] = null;
-        </text>
-      }
+  var dtSettings = @Html.Raw(string.Format("{0};", Model.Settings.ToString()))
+  @{
+    if (Model.Settings.bServerSide)
+    {
+      @Html.Raw("dtSettings['bServerSide'] = false; dtSettings['sAjaxSource'] = null;");
     }
-
-    dtSettings.fnServerData = function(sSource, aoData, fnCallback) {
-    @{
-      foreach (PostbackItem item in Model.Postbacks)
-      {
-      <text>aoData.push({ name: '@item.name', value: @Html.Raw(item.value) });</text>
-      }
-    }
-      $.getJSON(sSource, aoData, function(json) {
-        fnCallback(json)
-      });
-    };
-
-    @if(Model.EnableStatusColumn)
-    {  
-      <text>
-        dtSettings.fnCreatedRow = function (nRow, aData, iDataIndex) {
-          $(nRow).addClass(aData[aData.length - 1]);
-        };
-      </text>
-    }
+  }    
       
-    @Html.Raw(string.Format("var {0}_tbl = $('#{0}').dataTable(dtSettings);", Model.ID))
+  @Html.Raw(string.Format("var {0}_tbl = $('#{0}').dataTable(dtSettings);", Model.ID))
 
-    @{
+  @{
+    if (Model.Settings.bServerSide)
+    {
+      @Html.Raw(string.Format("{0}_settings = {0}_tbl.fnSettings(); {0}_settings.oFeatures.bServerSide = true; {0}_settings.sAjaxSource = '{1}';", Model.ID, Model.Settings.sAjaxSource))
+        
       if (Model.Records != null)
       {
-        <text>
-          var firstPage = @Html.Raw(Model.Records.ToString())
-
-          @Html.Raw(string.Format("oSettings = {0}_tbl.fnSettings();", Model.ID))
-          oSettings.oFeatures.bServerSide = true;
-          oSettings.sAjaxSource = '@Model.Settings.sAjaxSource';
-          @Html.Raw(string.Format("{0}_tbl.oApi._fnAjaxUpdateDraw(oSettings, firstPage);", Model.ID))
-        </text>
+        @Html.Raw(string.Format("var firstPage = {0};", Model.Records.ToString()))
+        @Html.Raw(string.Format("{0}_tbl.oApi._fnAjaxUpdateDraw({0}_settings, firstPage);", Model.ID))
+      }
+      else
+      {
+        @Html.Raw(string.Format("{0}_tbl.fnDraw()", Model.ID))
       }
     }
+  }
 </script>

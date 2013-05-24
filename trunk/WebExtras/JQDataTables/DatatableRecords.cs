@@ -67,6 +67,36 @@ namespace WebExtras.JQDataTables
     }
 
     /// <summary>
+    /// Check whether the aaData property is jagged collection and 
+    /// if it is converts it to a square/rectangular collection.
+    /// This makes sure that we don't have missing columns and avoids
+    /// DataTables throwing javascript errors for columns missing.
+    /// </summary>
+    /// <param name="toBeSanitised">Collection to be sanitised</param>
+    /// <returns>Sanitised collection</returns>
+    private string[][] SanitiseAAData(IEnumerable<IEnumerable<string>> toBeSanitised)
+    {
+      if (toBeSanitised != null)
+      {
+        string[][] newAAData = toBeSanitised.Select(f => f.ToArray()).ToArray();
+
+        if (toBeSanitised.Count() > 1)
+        {
+          int maxLength = toBeSanitised.Where(f => f != null).Max(f => f.Count());
+          IEnumerable<string> empty = Enumerable.Range(0, maxLength).Select(f => string.Empty);
+          newAAData = toBeSanitised
+            .Select(f => f.Concat(empty).Take(maxLength))
+            .Select(f => f.ToArray())
+            .ToArray();
+        }
+
+        return newAAData;
+      }
+
+      return null;
+    }
+
+    /// <summary>
     /// Default constructor
     /// </summary>
     public DatatableRecords()
@@ -91,35 +121,17 @@ namespace WebExtras.JQDataTables
           NullValueHandling = NullValueHandling.Ignore
         });
     }
-
+       
     /// <summary>
-    /// Check whether the aaData property is jagged collection and 
-    /// if it is converts it to a square/rectangular collection.
-    /// This makes sure that we don't have missing columns and avoids
-    /// DataTables throwing javascript errors for columns missing.
+    /// Render aaData as table rows
     /// </summary>
-    /// <param name="toBeSanitised">Collection to be sanitised</param>
-    /// <returns>Sanitised collection</returns>
-    private string[][] SanitiseAAData(IEnumerable<IEnumerable<string>> toBeSanitised)
+    /// <returns>Table rows in format <tr><td>...</td><td>...</td></tr></returns>
+    public string RenderAADataAsTableRows()
     {
-      if (toBeSanitised != null)
-      {
-        string[][] newAAData = toBeSanitised.Select(f => f.ToArray()).ToArray();
-        
-        if (toBeSanitised.Count() > 1)
-        {
-          int maxLength = toBeSanitised.Where(f => f != null).Max(f => f.Count());
-          IEnumerable<string> empty = Enumerable.Range(0, maxLength).Select(f => string.Empty);
-          newAAData = toBeSanitised
-            .Select(f => f.Concat(empty).Take(maxLength))
-            .Select(f => f.ToArray())
-            .ToArray();
-        }
+      if (aaData.Length > 0)
+        return string.Join("", aaData.Select(r => "<tr>" + string.Join("", r.Select(d => "<td>" + d + "</td>")) + "</tr>"));
 
-        return newAAData;
-      }
-
-      return null;
+      return string.Empty;
     }
   }
 }

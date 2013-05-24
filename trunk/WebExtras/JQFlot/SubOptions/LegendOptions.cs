@@ -16,6 +16,7 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+using WebExtras.Core;
 
 namespace WebExtras.JQFlot.SubOptions
 {
@@ -33,6 +34,11 @@ namespace WebExtras.JQFlot.SubOptions
     /// Color of the label box border. This must be a CSS color specification
     /// </summary>
     public string labelBoxBorderColor;
+
+    /// <summary>
+    /// Label formatter function
+    /// </summary>
+    public JsFunc labelFormatter;
 
     /// <summary>
     /// Number of columns per row of the legend's table
@@ -60,8 +66,9 @@ namespace WebExtras.JQFlot.SubOptions
     public double backgroundOpacity;
 
     /// <summary>
-    /// Specify sorting to be applied to the legend objects
+    /// Specify sorting to be applied to the legend objects.
+    /// null/false, true, "ascending", "descending", "reverse", or a <see cref="WebExtras.Core.JsFunc"/> object
     /// </summary>
-    public ELegendSort? sorted;
+    public object sorted;
   }
 }

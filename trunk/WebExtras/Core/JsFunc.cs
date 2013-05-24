@@ -18,73 +18,52 @@
 
 using System;
 using System.Collections.Generic;
-using System.Reflection;
+using System.Linq;
+using System.Text;
 using Newtonsoft.Json;
 
-namespace WebExtras.JQDataTables
+namespace WebExtras.Core
 {
   /// <summary>
-  /// Server postback item to be posted for server side processing
+  /// Represents a Javascript function
   /// </summary>
-  [Serializable]
-  [JsonConverter(typeof(PostbackItemConverter))]
-  public class PostbackItem
+  [JsonConverter(typeof(JsFuncConverter))]
+  public class JsFunc
   {
     /// <summary>
-    /// Name of the postback object
+    /// Function name. Leave empty if you want an anonymous function
     /// </summary>
-    public string name { get; private set; }
+    public string Name { get; set; }
 
     /// <summary>
-    /// Value for the postback object
+    /// An array of function parameter names
     /// </summary>
-    public object value { get; private set; }
+    public string[] ParameterNames { get; set; }
+
+    /// <summary>
+    /// Function body
+    /// </summary>
+    public string Body { get; set; }
+
+    /// <summary>
+    /// Flag indicating whether to surround the function with
+    /// a document.ready construct
+    /// </summary>
+    public bool OnDocumentReady { get; set; }
 
     /// <summary>
     /// Default constructor
     /// </summary>
-    public PostbackItem() { }
-
-    /// <summary>
-    /// Constructor to initialize values
-    /// </summary>
-    /// <param name="objName">Name of the postback object</param>
-    /// <param name="objValue">Value for the postback object</param>
-    public PostbackItem(string objName, object objValue)
+    public JsFunc()
     {
-      name = objName;
-      value = objValue;
-    }
-
-    /// <summary>
-    /// Generate Datatables Postback items from the attributes/value
-    /// pairs of the given object
-    /// </summary>
-    /// <param name="o">Object to generate Postback items from</param>
-    /// <returns>Generated Postback items</returns>
-    public static List<PostbackItem> FromObject(object o)
-    {
-      List<PostbackItem> postbacks = new List<PostbackItem>();
-      PropertyInfo[] props = o
-        .GetType()
-        .GetProperties(BindingFlags.Public | BindingFlags.Instance);
-
-      foreach(PropertyInfo p in props)
-      {
-        object val = p.GetValue(o, null);
-
-        if (val != null)
-          postbacks.Add(new PostbackItem(p.Name, JsonConvert.SerializeObject(val)));
-      }
-
-      return postbacks;
+      ParameterNames = new string[0];
     }
   }
 
   /// <summary>
-  /// PostbackItem JSON converter
+  /// Custom JSON converter for JsFunc class
   /// </summary>
-  public class PostbackItemConverter : JsonConverter
+  public class JsFuncConverter : JsonConverter
   {
     /// <summary>
     /// Determines whether this instance can convert the specified object type
@@ -93,7 +72,7 @@ namespace WebExtras.JQDataTables
     /// <returns>true if this instance can convert the specified object type; otherwise, false</returns>
     public override bool CanConvert(Type objectType)
     {
-      return objectType.IsAssignableFrom(typeof(PostbackItem));
+      return typeof(JsFunc).IsAssignableFrom(objectType);
     }
 
     /// <summary>
@@ -104,7 +83,7 @@ namespace WebExtras.JQDataTables
     /// <param name="existingValue">The existing value of object being read</param>
     /// <param name="serializer">The calling serializer</param>
     /// <returns>The object value</returns>
-    /// <exception cref="System.NotImplementedException"></exception>
+    /// <exception cref="System.NotImplementedException">System.NotImplementedException</exception>
     public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
     {
       throw new NotImplementedException();
@@ -118,14 +97,24 @@ namespace WebExtras.JQDataTables
     /// <param name="serializer">The Newtonsoft.Json.JsonWriter to write to</param>
     public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
     {
-      PostbackItem p = (PostbackItem)value;
+      JsFunc f = (JsFunc)value;
 
-      writer.WriteStartObject();
-      writer.WritePropertyName("name");
-      writer.WriteValue(p.name);
-      writer.WritePropertyName("value");
-      writer.WriteRawValue((string)p.value);
-      writer.WriteEndObject();
+      if (!string.IsNullOrEmpty(f.Body))
+      {
+        StringBuilder fnText = new StringBuilder();
+
+        fnText.Append("function ");
+
+        if (!string.IsNullOrEmpty(f.Name))
+          fnText.Append(f.Name);
+
+        if (f.ParameterNames.Length > 0)
+          fnText.Append("(" + string.Join(",", f.ParameterNames) + ")");
+
+        fnText.Append("{ " + f.Body + " }");
+
+        writer.WriteRawValue(fnText.ToString());
+      }
     }
   }
 }

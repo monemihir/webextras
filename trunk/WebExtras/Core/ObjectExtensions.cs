@@ -20,6 +20,7 @@ using System;
 using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
+using Newtonsoft.Json;
 
 namespace WebExtras.Core
 {
@@ -60,6 +61,16 @@ namespace WebExtras.Core
         stream.Seek(0, SeekOrigin.Begin);
         return (T)formatter.Deserialize(stream);
       }
+    }
+
+    /// <summary>
+    /// Convert current object to it's JSON representation
+    /// </summary>
+    /// <param name="source">Current object</param>
+    /// <returns>JSON object</returns>
+    public static string ToJson(this object source)
+    {
+      return JsonConvert.SerializeObject(source);
     }
   }
 }

@@ -114,7 +114,7 @@ namespace WebExtras.JQDataTables
     }
 
     /// <summary>
-    /// Constructor
+    /// Constructor. Note. The column specifications must be defined via the DatatableSettings constructor
     /// </summary>
     /// <param name="settings">Datatable settings</param>
     /// <param name="records">Datatable records</param>
@@ -124,7 +124,7 @@ namespace WebExtras.JQDataTables
       this(string.Format("autogen-{0}", Guid.NewGuid().ToString()), settings, records, postbacks, enableStatusColumn) { }
 
     /// <summary>
-    /// Constructor
+    /// Constructor. Note. The column specifications must be defined via the DatatableSettings constructor
     /// </summary>
     /// <param name="id">HTML field ID for the Datatable</param>
     /// <param name="settings">Datatable settings</param>
@@ -134,14 +134,18 @@ namespace WebExtras.JQDataTables
     public Datatable(string id, DatatableSettings settings, DatatableRecords records, IEnumerable<PostbackItem> postbacks = null, bool enableStatusColumn = false)
     {
       ID = id.Replace("-", "_");
-
-      if (enableStatusColumn)
-        settings.aoColumns = settings.aoColumns.Concat(new AOColumn[] { new AOColumn { bVisible = false } }).ToArray();
-
       Settings = settings;
       Records = records;
       Postbacks = postbacks != null ? postbacks.ToArray() : new PostbackItem[0];
       EnableStatusColumn = enableStatusColumn;
+
+      if (EnableStatusColumn)
+      {
+        settings.aoColumns = settings.aoColumns.Concat(new AOColumn[] { new AOColumn { bVisible = false } }).ToArray();
+        settings.SetupfnCreatedRow();
+      }
+
+      settings.SetupfnServerData(Postbacks);
     }
   }
 }

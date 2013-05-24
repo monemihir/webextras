@@ -17,6 +17,7 @@
 */
 
 using System;
+using WebExtras.Core;
 
 namespace WebExtras.JQFlot.SubOptions
 {
@@ -75,12 +76,19 @@ namespace WebExtras.JQFlot.SubOptions
     /// </summary>
     public double? autoscaleMargin;
 
-    // transform is a function
-    // inverseTransform is a function
+    /// <summary>
+    /// Transform callback function
+    /// </summary>
+    public JsFunc transform;
+
+    /// <summary>
+    /// Inverse transform callback function
+    /// </summary>
+    public JsFunc inverseTransform;
 
     /// <summary>
     /// Can be a number indicating the no. of ticks needed, an array manually specifying
-    /// all the ticks to be rendered.
+    /// all the ticks to be rendered or a <see cref="WebExtras.Core.JsFunc"/>.
     /// </summary>
     public object ticks;
 
@@ -96,7 +104,10 @@ namespace WebExtras.JQFlot.SubOptions
     /// </summary>
     public object[] minTickSize;
 
-    // tickFormatter is a function
+    /// <summary>
+    /// Tick formatter
+    /// </summary>
+    public JsFunc tickFormatter;
 
     /// <summary>
     /// Tick decimal places
@@ -229,6 +240,13 @@ namespace WebExtras.JQFlot.SubOptions
     /// <summary>
     /// Default constructor
     /// </summary>
-    public AxisOptions() { }
+    public AxisOptions()
+    {
+      //tickFormatter = new JsFunc
+      //{
+      //  ParameterNames = new string[] { "val", "axis" },
+      //  Body = "return val.toFixed(2);"
+      //};
+    }
   }
 }
