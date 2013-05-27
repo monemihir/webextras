@@ -118,6 +118,7 @@
       <fileset basedir="${build.web-dir}/Content" failonempty="true">
         <include name="webextras.css" />
         <include name="jquery.bootstrap.datetimepicker.css" />
+        <include name="jquery.dataTables.css" />
       </fileset>
     </copy>
     
@@ -130,6 +131,7 @@
         <include name="jquery.flot.dashes.js" />
         <include name="jquery.flot.pie.min.js" />
         <include name="jquery.flot.time.min.js" />
+        <include name="jquery.dataTables.min.js" />
         <include name="jquery.datatables.pagination.js" />
         <include name="jquery.bootstrap.datetimepicker.min.js" />
       </fileset>
@@ -140,6 +142,7 @@
       <fileset basedir="${build.web-dir}/Views/Core" failonempty="true">
         <include name="_Datatable.cshtml" />
         <include name="_DatatableDeprecated.cshtml" />
+        <include name="DatatablePartial.ascx" />
       </fileset>
     </copy>
     
