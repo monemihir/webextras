@@ -51,29 +51,28 @@
     </ul>
   </div>
 </div>
-<ul class="nav nav-pills">
-  <li>
-    @Html.ActionLink("Line Graph", MVC.Core.Flot(0), new { id = "linegraph" })
-  </li>
-  <li>
-    @Html.ActionLink("Dashed Line Graph", MVC.Core.Flot(1), new { id = "dashedgraph" })
-  </li>
-  <li>
-    @Html.ActionLink("Curved Line Graph", MVC.Core.Flot(2), new { id = "curvedgraph" })
-  </li>
-  <li>
-    @Html.ActionLink("Bar Graph", MVC.Core.Flot(3), new { id = "bargraph" })
-  </li>
-  <li>
-    @Html.ActionLink("Pie Graph", MVC.Core.Flot(4), new { id = "piegraph" })
-  </li>
-  <li>
-    @Html.ActionLink("Axis Labels", MVC.Core.Flot(5), new { id = "axislabels" })
-  </li>
+<ul id="flot-nav" class="nav nav-pills">
+  <li>@Html.ActionLink("Line Graph", MVC.Core.Flot(0))</li>
+  <li>@Html.ActionLink("Dashed Line Graph", MVC.Core.Flot(1))</li>
+  <li>@Html.ActionLink("Curved Line Graph", MVC.Core.Flot(2))</li>
+  <li>@Html.ActionLink("Bar Graph", MVC.Core.Flot(3))</li>
+  <li>@Html.ActionLink("Pie Graph", MVC.Core.Flot(4))</li>
+  <li>@Html.ActionLink("Axis Labels", MVC.Core.Flot(5))</li>
+  <li>@Html.ActionLink("Custom Formatters", MVC.Core.Flot(6))</li>
 </ul>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $('#flot-nav li:eq(' + @Model.DisplayMode + ')').addClass('active');
+  });
+</script>
 
 @switch (Model.DisplayMode)
 {
+  case 6:
+  @Html.Partial(MVC.Core.Views._CustomFlotFormatters, Model.Chart)
+    break;
+
   case 5:
   @Html.Partial(MVC.Core.Views._AxisLabels)
     break;
@@ -99,34 +98,3 @@
   @Html.Partial(MVC.Core.Views._LineGraph, Model.Chart)
     break;
 }
-
-<script type="text/javascript">
-  var dmode = '@Model.DisplayMode';
-
-  switch (parseInt(dmode)) {
-    case 0:
-      $('#linegraph').parent().addClass('active');
-      break;
-
-    case 1:
-      $('#dashedgraph').parent().addClass('active');
-      break;
-
-    case 2:
-      $('#curvedgraph').parent().addClass('active');
-      break;
-
-    case 3:
-      $('#bargraph').parent().addClass('active');
-      break;
-
-    case 4:
-      $('#piegraph').parent().addClass('active');
-      break;
-
-    case 5:
-      $('#axislabels').parent().addClass('active');
-      break;
-  }
-
-</script>

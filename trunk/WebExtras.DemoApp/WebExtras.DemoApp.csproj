@@ -193,12 +193,13 @@
     <Content Include="Scripts\jquery.mousewheel-3.0.6.js" />
     <Content Include="Scripts\bootstrap-2.3.1.min.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
-    <Content Include="Scripts\jquery.datatables-1.9.4.min.js" />
+    <Content Include="Scripts\jquery.datatables.min.js" />
     <Content Include="Scripts\jquery.datatables.pagination.js" />
     <Content Include="Scripts\jquery.flot.curvedlines.js" />
     <Content Include="Scripts\jquery.flot.dashes.js" />
     <Content Include="Scripts\jquery.migrate-1.1.1.min.js" />
     <Content Include="T4MVC.tt.settings.xml" />
+    <Content Include="Views\Core\DatatablePartial.ascx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -295,6 +296,8 @@
     <Content Include="Views\Core\_PieGraph.cshtml" />
     <Content Include="Views\Core\_BarGraph.cshtml" />
     <Content Include="Views\Mvc\ActionResults.cshtml" />
+    <None Include="Properties\PublishProfiles\Staging.pubxml" />
+    <Content Include="Views\Core\_CustomFlotFormatters.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

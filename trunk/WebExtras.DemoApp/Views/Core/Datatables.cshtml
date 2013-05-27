@@ -48,18 +48,23 @@
       <li>Creating the table object</li>
       <li>And finally the output.....</li>
     </ul>
-  </div>  
+  </div>
 </div>
-<ul class="nav nav-pills">
-  <li>
-    @Html.ActionLink("Basic Setup", MVC.Core.Datatables(0), new { id = "basic" })
-  </li>
-  <li>@Html.ActionLink("Ajax Setup", MVC.Core.Datatables(1), new { id = "ajax" })</li>
-  <li>@Html.ActionLink("Paging", MVC.Core.Datatables(2), new { id = "paging" })</li>
-  <li>@Html.ActionLink("Sorting", MVC.Core.Datatables(3), new { id = "sorting" })</li>
-  <li>@Html.ActionLink("Adding status column", MVC.Core.Datatables(4), new { id = "status" })</li>
-  <li>@Html.ActionLink("Adding extra postbacks", MVC.Core.Datatables(5), new { id = "postbacks" })</li>
+<ul id="dt-nav" class="nav nav-pills">
+  <li>@Html.ActionLink("Basic Setup", MVC.Core.Datatables(0))</li>
+  <li>@Html.ActionLink("Ajax Setup", MVC.Core.Datatables(1))</li>
+  <li>@Html.ActionLink("Paging", MVC.Core.Datatables(2))</li>
+  <li>@Html.ActionLink("Sorting", MVC.Core.Datatables(3))</li>
+  <li>@Html.ActionLink("Adding status column", MVC.Core.Datatables(4))</li>
+  <li>@Html.ActionLink("Adding extra postbacks", MVC.Core.Datatables(5))</li>
 </ul>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $('#dt-nav li:eq(' + @Model.DisplayMode + ')').addClass('active');
+  });
+</script>
+
 @switch (Model.DisplayMode)
 {
   case 1:
@@ -91,35 +96,3 @@
   @Html.Partial(MVC.Core.Views._BasicSetup, Model.Table)
     break;
 }
-
-<script type="text/javascript">
-  var dmode = '@Model.DisplayMode';
-
-  switch (parseInt(dmode)) {
-    case 0:
-      $('#basic').parent().addClass('active');
-      break;
-
-    case 1:
-      $('#ajax').parent().addClass('active');
-      break;
-
-    case 2:
-      $('#paging').parent().addClass('active');
-      break;
-
-    case 3:
-      $('#sorting').parent().addClass('active');
-      break;
-
-    case 4:
-      $('#status').parent().addClass('active');
-      break;
-
-    case 5:
-    case 6:
-      $('#postbacks').parent().addClass('active');
-      break;
-  }
-
-</script>

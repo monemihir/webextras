@@ -169,6 +169,7 @@ namespace WebExtras.DemoApp.Controllers
                 public readonly string _BarGraph = "_BarGraph";
                 public readonly string _BasicSetup = "_BasicSetup";
                 public readonly string _CurvedLineGraph = "_CurvedLineGraph";
+                public readonly string _CustomFlotFormatters = "_CustomFlotFormatters";
                 public readonly string _DashedGraph = "_DashedGraph";
                 public readonly string _Datatable = "_Datatable";
                 public readonly string _DatatableDeprecated = "_DatatableDeprecated";
@@ -179,6 +180,7 @@ namespace WebExtras.DemoApp.Controllers
                 public readonly string _PostbackSetup = "_PostbackSetup";
                 public readonly string _SortedSetup = "_SortedSetup";
                 public readonly string _StatusSetup = "_StatusSetup";
+                public readonly string DatatablePartial = "DatatablePartial";
                 public readonly string Datatables = "Datatables";
                 public readonly string Flot = "Flot";
                 public readonly string Generic = "Generic";
@@ -188,6 +190,7 @@ namespace WebExtras.DemoApp.Controllers
             public readonly string _BarGraph = "~/Views/Core/_BarGraph.cshtml";
             public readonly string _BasicSetup = "~/Views/Core/_BasicSetup.cshtml";
             public readonly string _CurvedLineGraph = "~/Views/Core/_CurvedLineGraph.cshtml";
+            public readonly string _CustomFlotFormatters = "~/Views/Core/_CustomFlotFormatters.cshtml";
             public readonly string _DashedGraph = "~/Views/Core/_DashedGraph.cshtml";
             public readonly string _Datatable = "~/Views/Core/_Datatable.cshtml";
             public readonly string _DatatableDeprecated = "~/Views/Core/_DatatableDeprecated.cshtml";
@@ -198,6 +201,7 @@ namespace WebExtras.DemoApp.Controllers
             public readonly string _PostbackSetup = "~/Views/Core/_PostbackSetup.cshtml";
             public readonly string _SortedSetup = "~/Views/Core/_SortedSetup.cshtml";
             public readonly string _StatusSetup = "~/Views/Core/_StatusSetup.cshtml";
+            public readonly string DatatablePartial = "~/Views/Core/DatatablePartial.ascx";
             public readonly string Datatables = "~/Views/Core/Datatables.cshtml";
             public readonly string Flot = "~/Views/Core/Flot.cshtml";
             public readonly string Generic = "~/Views/Core/Generic.cshtml";

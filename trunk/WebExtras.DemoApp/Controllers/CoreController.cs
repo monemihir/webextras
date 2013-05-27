@@ -351,6 +351,35 @@ namespace WebExtras.DemoApp.Controllers
 
       switch (mode)
       {
+        case 6:
+          serie = new FlotSeries
+          {
+            label = "Sample Line Graph",
+            data = m_flotSampleData,
+            lines = new LineGraph { show = true }
+          };
+          series.Add(serie);
+          options = new FlotOptions
+          {
+            grid = new GridOptions
+            {
+              borderWidth = 1
+            },
+            xaxis = new AxisOptions
+            {
+              tickDecimals = 2,
+              tickFormatter = new JsFunc
+              {
+                ParameterNames = new string[] { "val", "axis" },
+                Body = "return val.toFixed(axis.tickDecimals);"
+              }
+            }
+          };
+          break;
+
+        case 5:
+          goto default;
+
         case 4:
           series = Enumerable.Range(1, 5).Select(f => new FlotSeries
           {
@@ -405,7 +434,7 @@ namespace WebExtras.DemoApp.Controllers
           series.Add(serie);
           break;
 
-        case 0:
+        case 0:        
         default:
           serie = new FlotSeries
           {

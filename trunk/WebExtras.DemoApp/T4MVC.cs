@@ -87,7 +87,7 @@ namespace Links
         public static readonly string jquery_1_9_1_min_js = Url("jquery-1.9.1.min.js");
         public static readonly string jquery_bootstrap_datetimepicker_min_js = Url("jquery.bootstrap.datetimepicker.min.js");
         public static readonly string jquery_bootstrap_hover_dropdown_min_js = Url("jquery.bootstrap.hover.dropdown.min.js");
-        public static readonly string jquery_datatables_1_9_4_min_js = Url("jquery.datatables-1.9.4.min.js");
+        public static readonly string jquery_datatables_min_js = Url("jquery.datatables.min.js");
         public static readonly string jquery_datatables_pagination_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.datatables.pagination.min.js") ? Url("jquery.datatables.pagination.min.js") : Url("jquery.datatables.pagination.js");
                       
         public static readonly string jquery_flot_axislabels_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.flot.axislabels.min.js") ? Url("jquery.flot.axislabels.min.js") : Url("jquery.flot.axislabels.js");

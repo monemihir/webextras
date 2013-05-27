@@ -83,7 +83,7 @@ namespace WebExtras.Core
     /// <param name="existingValue">The existing value of object being read</param>
     /// <param name="serializer">The calling serializer</param>
     /// <returns>The object value</returns>
-    /// <exception cref="System.NotImplementedException">System.NotImplementedException</exception>
+    /// <exception cref="System.NotImplementedException"></exception>
     public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
     {
       throw new NotImplementedException();
@@ -109,11 +109,21 @@ namespace WebExtras.Core
           fnText.Append(f.Name);
 
         if (f.ParameterNames.Length > 0)
-          fnText.Append("(" + string.Join(",", f.ParameterNames) + ")");
+          fnText.Append("(" + string.Join(",", f.ParameterNames) + ") ");
+        else
+          fnText.Append("() ");
 
         fnText.Append("{ " + f.Body + " }");
 
-        writer.WriteRawValue(fnText.ToString());
+        StringBuilder docReady = new StringBuilder();
+        docReady.Append("$(document).ready(function() {");
+        docReady.Append(fnText.ToString());
+        docReady.Append("});");
+
+        if (f.OnDocumentReady)
+          writer.WriteRawValue(docReady.ToString());
+        else
+          writer.WriteRawValue(fnText.ToString());
       }
     }
   }

@@ -99,7 +99,7 @@
 <div class="well">
   <h4>And our sorting enabled output is</h4>
   <div class="output">
-    @Html.Partial(MVC.Core.Views._Datatable, Model)
+    @Html.Partial(MVC.Core.Views.DatatablePartial, Model)
   </div>
 </div>
 
@@ -142,10 +142,10 @@
     return null; 
   }
 
-  Dictionary&lt;int, Func&lt;string, object&gt;&gt; parsers = new Dictionary&lt;int, Func&lt;string, object&gt;&gt;();
-  parsers.Add(1, secondCharParser);
-
   <span class="comment">// Let's say we want to apply this custom parser to the second column of the table above</span>
+  Dictionary&lt;int, Func&lt;string, object&gt;&gt; parsers = new Dictionary&lt;int, Func&lt;string, object&gt;&gt;();
+  parsers.Add(<span class="highlight">1</span>, secondCharParser);           <span class="comment">// Note that the dictionary <span class="highlight">key</span> must match the column index in the table</span>
+      
   <span class="comment">// This is how your DatatableRecords object creation would look</span>
   DatatableRecords dtRecords = new DatatableRecords
   {
