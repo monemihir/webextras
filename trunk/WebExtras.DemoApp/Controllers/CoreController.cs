@@ -372,7 +372,14 @@ namespace WebExtras.DemoApp.Controllers
               {
                 ParameterNames = new string[] { "val", "axis" },
                 Body = "return val.toFixed(axis.tickDecimals);"
-              }
+              },
+              axisLabel = "X Axis - Ticks to two decimals",
+              axisLabelColor = "#222222"
+            },
+            yaxis = new AxisOptions
+            {
+              axisLabel = "Y Axis Label",
+              axisLabelColor = "#222222"
             }
           };
           break;

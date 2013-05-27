@@ -109,7 +109,7 @@ namespace WebExtras.Core
           fnText.Append(f.Name);
 
         if (f.ParameterNames.Length > 0)
-          fnText.Append("(" + string.Join(",", f.ParameterNames) + ") ");
+          fnText.Append("(" + string.Join(", ", f.ParameterNames) + ") ");
         else
           fnText.Append("() ");
 
