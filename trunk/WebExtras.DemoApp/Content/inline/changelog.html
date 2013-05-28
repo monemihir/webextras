@@ -1,26 +1,30 @@
-﻿<strong>v1.2.0</strong>
+﻿<strong>v1.2.0 (current)</strong>
 <br />
-<strong>Under Development</strong>
-<br />
+<strong>Released: 28 May 2013<br />
+</strong>
 <br />
 <strong>Changelog</strong>
 <ul>
-  <li>Enh: Adds a comprehensive list of jQuery DataTable options and features</li>
-  <li>Enh: Adds a comprehensive list of jQuery Flot options and features</li>
+  <li>Enh: Adds a comprehensive list of jQuery DataTable 1.9.4 options and features</li>
+  <li>Enh: Adds a comprehensive list of jQuery Flot 0.8 options and features</li>
   <li>Enh: Adding support for Bootstrap icons via Font Awesome library</li>
   <li>Enh: Adding Bootstrap tooltip extension</li>
+  <li>Enh: Adding a ToJson extension method on Object to convert any object to it&#39;s JSON notation</li>
   <li>Enh: Adding Double and DateTime methods to convert to/from JavaScript time ticks</li>
   <li>Enh: Adding a new MVC ActionResult called JsonNetResult which basically uses the Newtonsoft Json.NET library for JSON serialization as opposed to the native serialization used by JsonResult</li>
   <li>Enh: The date time picker extensions now use the date picker provided at <a href="http://www.malot.fr/bootstrap-datetimepicker/">http://www.malot.fr/bootstrap-datetimepicker/</a></li>
+  <li>Enh: Adding ability to create large and mini styled Bootstrap buttons using the AsButton extension method</li>
+  <li>Enh: Use CSS class <strong>.text</strong> to fix display styling of text only fields under a horizontal form with <strong>.control-group</strong> classes</li>
+  <li>Enh: We now ship an ASCX view for Datatable as well. It is called DatatablePartial.ascx and is located in the <strong>views</strong> directory of the archive</li>
   <li class="text-warning">Fix: IsValidFor extension method now allows nested member expressions</li>
   <li class="text-warning">Fix: The DatatableSettings constructors will now better handle null sorting options instead of throwing exception !!</li>
   <li class="text-warning">Fix: Object deep cloning is now an extension method on the Object class instead of having to invoke it as a static method</li>
   <li class="text-warning">Fix: All user facing properties are now either Arrays or Lists instead of IEnumerables which mean that individual items can be readily accessed via their indices</li>
   <li class="text-error">Brk: The WebExtras.JQDataTables.DatatableColumn class is now obsolete. You should use WebExtras.JQDataTable.AOColumn class
     instead. This may break some existing functionality or introduce some inconsistencies in the table displays. Refer the documentation for more
-    information on the correct way to setup the your tables.
+    information on the correct way to setup your tables.
   </li>
-  <li class="text-error">Brk: All enumerations have now been prefixed with an 'E' and the 'Type' suffix has been dropped.</li>
+  <li class="text-error">Brk: All enumerations have now been prefixed with an 'E' and the 'Type' suffix has been dropped. You can just perform a&nbsp; search-replace and you should be fine.</li>
   <li style="list-style: none">    
     <br />
     <table class="table table-bordered">
@@ -69,7 +73,7 @@
   </li>
 </ul>
 <hr />
-<strong>v1.1.0 (current)</strong>
+<strong>v1.1.0</strong>
 <br />
 <strong>Released: 30 March 2013</strong>
 <br />
