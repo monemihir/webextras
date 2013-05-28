@@ -18,8 +18,8 @@
 
 using System;
 using System.Web.Mvc;
-using WebExtras.Mvc.Bootstrap;
 using WebExtras.DemoApp.Models.Mvc;
+using WebExtras.Mvc.Bootstrap;
 
 namespace WebExtras.DemoApp.Controllers
 {
