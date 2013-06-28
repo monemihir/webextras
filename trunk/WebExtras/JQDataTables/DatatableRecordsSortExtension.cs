@@ -31,7 +31,17 @@ namespace WebExtras.JQDataTables
     /// <summary>
     /// A list of predefined HTML currency syntax
     /// </summary>
-    private static readonly IEnumerable<string> m_currencies = new string[] { "&euro;", "&yen;", "$", "&pound;", "rs." };
+    private static readonly string[] m_currencies = new string[] { "&euro;", "&yen;", "$", "&pound;", "rs." };
+
+    /// <summary>
+    /// An array of predefined special characters
+    /// </summary>
+    private static readonly string[] m_spChars = new string[] { "%" };
+
+    /// <summary>
+    /// All special string to be stripped to sanitize the input string
+    /// </summary>
+    public static string[] AllStripStrings { get { return m_currencies.Concat(m_spChars).ToArray(); } }
 
     /// <summary>
     /// Sort DatatableRecords.aaData based on the given column number and sort direction
@@ -150,8 +160,8 @@ namespace WebExtras.JQDataTables
     {
       Regex.Replace(str, "<.*?>", string.Empty);
 
-      foreach (string currency in m_currencies)
-        str = str.ToLowerInvariant().Replace(currency.ToLowerInvariant(), "").Trim();
+      foreach (string sc in AllStripStrings)
+        str = str.ToLowerInvariant().Replace(sc.ToLowerInvariant(), "").Trim();
 
       return str;
     }

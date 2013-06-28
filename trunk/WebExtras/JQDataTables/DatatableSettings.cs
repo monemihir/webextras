@@ -480,6 +480,21 @@ namespace WebExtras.JQDataTables
     /// Constructor
     /// </summary>
     /// <param name="displayLength">Number of rows to display on a single page when using pagination</param>
+    /// <param name="column">Column specifications</param>
+    /// <param name="sortOption">Column sort option. If this is null no sorting will be applied</param>
+    /// <param name="ajaxSource">AJAX source URL</param>
+    /// <param name="footerSuffix">[Optional] This string gives information to the end user about the information
+    /// that is current on display on the page</param>
+    /// <param name="tableHeight">[Optional] Height of the table in pixels. Defaults to 200px. Note. Pass in a null if to do not
+    /// want any table height set</param>
+    public DatatableSettings(int displayLength, AOColumn column, AASort sortOption, string ajaxSource, string footerSuffix = "", string tableHeight = "200px")
+      : this(displayLength, new AOColumn[] { column }, (sortOption == null) ? null : new AASort[] { sortOption }, ajaxSource, footerSuffix, tableHeight)
+    { }
+
+    /// <summary>
+    /// Constructor
+    /// </summary>
+    /// <param name="displayLength">Number of rows to display on a single page when using pagination</param>
     /// <param name="columns">Column specifications</param>
     /// <param name="sortOption">Column sort option. If this is null no sorting will be applied</param>
     /// <param name="ajaxSource">AJAX source URL</param>
@@ -509,7 +524,7 @@ namespace WebExtras.JQDataTables
     {
       if (columns == null)
         throw new ArgumentNullException("columns");
-
+      
       List<int> emptyHeading = new List<int>();
       int idx = 0;
       foreach (AOColumn c in columns)
