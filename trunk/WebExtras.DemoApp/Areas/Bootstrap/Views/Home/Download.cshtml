@@ -1,0 +1,34 @@
+﻿@{
+  ViewBag.Title = "Download";
+}
+<h3 class="keep-center">Downloads
+</h3>
+<div class="row-fluid">
+  <div class="keep-center">
+    @(Html.Hyperlink(" Stable<small> (v1.2.0)</small>", "http://mihirmone.dyndns.org/app-downloads/webextras/webextras-1.2.0.zip")
+      .AddCssClass("btn-large")
+      .AsButton(EBootstrapButton.Success)      
+      .AddWhiteIcon(EFontAwesomeIcon.Download_Alt, EFontAwesomeIconSize.Large))
+
+    &nbsp;&nbsp;&nbsp;
+
+    @(Html.Hyperlink(" Nightly", "http://mihirmone.dyndns.org/app-downloads/webextras/webextras-nightly.zip")
+      .AddCssClass("btn-large").AsButton()
+      .AddIcon(EFontAwesomeIcon.Download_Alt, EFontAwesomeIconSize.Large))
+
+    <br />
+    @Html.Hyperlink("Older versions", "javascript:gotoCodeplex()")
+  </div>
+</div>
+<br />
+<div class="row-fluid">
+  <div class="span12 changelog">
+    @Html.Inline(Links.Content.inline.changelog_html)
+  </div>
+</div>
+<br />
+<script type="text/javascript">
+  $(function () {
+    $('.changelog').jScrollPane();
+  });
+</script>

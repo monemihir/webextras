@@ -1,0 +1,100 @@
+﻿@model WebExtras.DemoApp.Areas.Bootstrap.Models.Core.FlotViewModel
+
+@{
+  ViewBag.Title = "jQuery Flot";
+}
+
+<h3 class="keep-center">jQuery Flot Bindings</h3>
+
+<div class="row-fluid">
+  <div class="span6">
+    <div class="row-fluid">
+      <div class="span3">
+        <strong>Assembly</strong>
+      </div>
+      <div class="span4">
+        WebExtras.dll
+      </div>
+    </div>
+    <div class="row-fluid">
+      <div class="span3">
+        <strong>Namespace</strong>
+      </div>
+      <div class="span4">
+        WebExtras.JQFlot
+      </div>
+    </div>
+  </div>
+  <div class="span6">
+    <div class="span3">
+      <strong>Dependancies</strong>
+    </div>
+    <div class="span4">
+      <ul class="dependancies">
+        <li>jquery.flot.js</li>
+        <li>jquery.flot.curvedlines.js</li>
+        <li>jquery.flot.dashes.js</li>
+        <li>jquery.flot.axislabels.js</li>
+        <li>jquery.flot.pie.js</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="row-fluid">
+  <div class="span9">
+    Steps involved in creating a Flot graph
+    <ul>
+      <li>Creating the graph options</li>
+      <li>Creating graph data</li>
+      <li>Creating the graph series</li>
+      <li>Rendering the graph</li>
+    </ul>
+  </div>
+</div>
+<ul id="flot-nav" class="nav nav-pills">
+  <li>@Html.ActionLink("Line Graph", MVC.Bootstrap.Core.Flot(0))</li>
+  <li>@Html.ActionLink("Dashed Line Graph", MVC.Bootstrap.Core.Flot(1))</li>
+  <li>@Html.ActionLink("Curved Line Graph", MVC.Bootstrap.Core.Flot(2))</li>
+  <li>@Html.ActionLink("Bar Graph", MVC.Bootstrap.Core.Flot(3))</li>
+  <li>@Html.ActionLink("Pie Graph", MVC.Bootstrap.Core.Flot(4))</li>
+  <li>@Html.ActionLink("Axis Labels", MVC.Bootstrap.Core.Flot(5))</li>
+  <li>@Html.ActionLink("Custom Formatters", MVC.Bootstrap.Core.Flot(6))</li>
+</ul>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $('#flot-nav li:eq(' + @Model.DisplayMode + ')').addClass('active');
+  });
+</script>
+
+@switch (Model.DisplayMode)
+{
+  case 6:
+  @Html.Partial(MVC.Bootstrap.Core.Views._CustomFlotFormatters, Model.Chart)
+    break;
+
+  case 5:
+  @Html.Partial(MVC.Bootstrap.Core.Views._AxisLabels)
+    break;
+
+  case 4:
+  @Html.Partial(MVC.Bootstrap.Core.Views._PieGraph, Model.Chart)
+    break;
+
+  case 3:
+  @Html.Partial(MVC.Bootstrap.Core.Views._BarGraph, Model.Chart)
+    break;
+
+  case 2:
+  @Html.Partial(MVC.Bootstrap.Core.Views._CurvedLineGraph, Model.Chart)
+    break;
+
+  case 1:
+  @Html.Partial(MVC.Bootstrap.Core.Views._DashedGraph, Model.Chart)
+    break;
+
+  case 0:
+  default:
+  @Html.Partial(MVC.Bootstrap.Core.Views._LineGraph, Model.Chart)
+    break;
+}

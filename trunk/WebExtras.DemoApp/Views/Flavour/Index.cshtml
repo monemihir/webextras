@@ -1,0 +1,110 @@
+﻿@using WebExtras.DemoApp.App_Start
+@using SquishIt.Framework
+@using SquishIt.Mvc
+@{
+  Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <meta name="author" content="Mihir Mone" />
+  <meta name="application-name" content="WebExtras" />
+  <meta name="description" content=".net mvc, .net mvc 4, .net mvc helpers, bootstrap, flot, datatables" />
+
+  <link rel="icon" type="image/ico" href="@Links.Content.favicon_ico" />
+  <title>Home - WebExtras</title>
+
+  @Bundle.Css().MvcRenderCachedAssetTag(ContentBundle.CSSMinimal.GetStringValue())
+
+  <style>
+    body
+    {
+      line-height: 20px;
+      text-align: center;
+    }
+
+    h2
+    {
+      text-align: center;
+      padding-top: 50px;
+      margin: 10px 0;
+      font-family: inherit;
+      font-weight: bold;
+      line-height: 40px;
+      font-size: 31.5px;
+      color: inherit;
+      text-rendering: optimizelegibility;
+      display: inline-block;
+    }
+
+    a
+    {
+      text-decoration: none;
+      padding: 11px 19px;
+      font-size: 17.5px;
+      -moz-border-radius: 6px 6px 6px 6px;
+      -webkit-border-radius: 6px 6px 6px 6px;
+      border-radius: 6px 6px 6px 6px;
+      vertical-align: middle;
+    }
+
+    .bs-button
+    {
+      -moz-border-bottom-colors: none;
+      -moz-border-left-colors: none;
+      -moz-border-right-colors: none;
+      -moz-border-top-colors: none;
+      -moz-border-image: none;
+      -o-border-image: none;
+      -webkit-border-image: none;
+      border-image: none;
+      border-style: solid;
+      border-width: 1px;
+      -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 1px 2px rgba(0, 0, 0, 0.05);
+      -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 1px 2px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 1px 2px rgba(0, 0, 0, 0.05);
+      cursor: pointer;
+      line-height: 20px;
+      margin-bottom: 0;
+      background-color: #006DCC;
+      background-image: linear-gradient(to bottom, #0088CC, #0044CC);
+      background-repeat: repeat-x;
+      border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+      color: #FFFFFF;
+      -webkit-text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+      text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    }
+
+    .ui-button
+    {
+      background: url("content/img/jqueryui/ui-bg_glass_85_dfeffc_1x400.png") repeat-x scroll 50% 50% #DFEFFC;
+      border: 1px solid #C5DBEC;
+      color: #2E6E9E;
+      cursor: pointer;
+      line-height: normal;
+      margin-right: 0.1em;
+      overflow: visible;
+      position: relative;
+    }
+  </style>
+</head>
+<body>
+  <h2>WebExtras Demo and Documentation
+    <br />
+    <br />
+    SELECT YOUR FLAVOUR    
+  </h2>
+  <br />
+  <br />
+  @Html.Hyperlink("Twitter Bootstrap", "bootstrap").AddCssClass("bs-button")
+  <br />
+  <br />
+  <br />
+  <br />
+  @Html.Hyperlink("jQuery UI", "jqueryui").AddCssClass("ui-button")
+</body>
+</html>
