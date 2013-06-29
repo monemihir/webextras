@@ -8,31 +8,42 @@
 #region T4MVC
 
 using System;
-using System.Diagnostics;
 using System.CodeDom.Compiler;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
+using System.Diagnostics;
 using System.Web;
-using System.Web.Hosting;
 using System.Web.Mvc;
-using System.Web.Mvc.Ajax;
-using System.Web.Mvc.Html;
 using System.Web.Routing;
 using T4MVC;
 
 [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
 public static class MVC
 {
+    static readonly BootstrapClass s_Bootstrap = new BootstrapClass();
+    public static BootstrapClass Bootstrap { get { return s_Bootstrap; } }
+    static readonly JQueryUIClass s_JQueryUI = new JQueryUIClass();
+    public static JQueryUIClass JQueryUI { get { return s_JQueryUI; } }
     public static WebExtras.DemoApp.Controllers.AssetsController Assets = new WebExtras.DemoApp.Controllers.T4MVC_AssetsController();
-    public static WebExtras.DemoApp.Controllers.CoreController Core = new WebExtras.DemoApp.Controllers.T4MVC_CoreController();
-    public static WebExtras.DemoApp.Controllers.HomeController Home = new WebExtras.DemoApp.Controllers.T4MVC_HomeController();
-    public static WebExtras.DemoApp.Controllers.MvcController Mvc = new WebExtras.DemoApp.Controllers.T4MVC_MvcController();
-    public static T4MVC.SharedController Shared = new T4MVC.SharedController();
+    public static WebExtras.DemoApp.Controllers.FlavourController Flavour = new WebExtras.DemoApp.Controllers.T4MVC_FlavourController();
 }
 
 namespace T4MVC
 {
+    [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+    public class BootstrapClass
+    {
+        public readonly string Name = "bootstrap";
+        public WebExtras.DemoApp.Areas.Bootstrap.Controllers.CoreController Core = new WebExtras.DemoApp.Areas.Bootstrap.Controllers.T4MVC_CoreController();
+        public WebExtras.DemoApp.Areas.Bootstrap.Controllers.HomeController Home = new WebExtras.DemoApp.Areas.Bootstrap.Controllers.T4MVC_HomeController();
+        public WebExtras.DemoApp.Areas.Bootstrap.Controllers.MvcController Mvc = new WebExtras.DemoApp.Areas.Bootstrap.Controllers.T4MVC_MvcController();
+        public T4MVC.Bootstrap.SharedController Shared = new T4MVC.Bootstrap.SharedController();
+    }
+    [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+    public class JQueryUIClass
+    {
+        public readonly string Name = "jqueryui";
+        public WebExtras.DemoApp.Areas.JQueryUI.Controllers.HomeController Home = new WebExtras.DemoApp.Areas.JQueryUI.Controllers.T4MVC_HomeController();
+        public T4MVC.JQueryUI.SharedController Shared = new T4MVC.JQueryUI.SharedController();
+    }
 }
 
 namespace T4MVC
@@ -85,6 +96,7 @@ namespace Links
         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
         public static readonly string bootstrap_2_3_1_min_js = Url("bootstrap-2.3.1.min.js");
         public static readonly string jquery_1_9_1_min_js = Url("jquery-1.9.1.min.js");
+        public static readonly string jquery_ui_1_10_3_custom_min_js = Url("jquery-ui-1.10.3.custom.min.js");
         public static readonly string jquery_bootstrap_datetimepicker_min_js = Url("jquery.bootstrap.datetimepicker.min.js");
         public static readonly string jquery_bootstrap_hover_dropdown_min_js = Url("jquery.bootstrap.hover.dropdown.min.js");
         public static readonly string jquery_datatables_min_js = Url("jquery.datatables.min.js");
@@ -106,6 +118,8 @@ namespace Links
                       
         public static readonly string jquery_mwheelIntent_1_2_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.mwheelIntent-1.2.min.js") ? Url("jquery.mwheelIntent-1.2.min.js") : Url("jquery.mwheelIntent-1.2.js");
                       
+        public static readonly string jquery_ui_menubar_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.ui.menubar.min.js") ? Url("jquery.ui.menubar.min.js") : Url("jquery.ui.menubar.js");
+                      
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -113,8 +127,6 @@ namespace Links
         private const string URLPATH = "~/Content";
         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
-        public static readonly string base_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/base.min.css") ? Url("base.min.css") : Url("base.css");
-             
         public static readonly string bootstrap_2_3_1_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/bootstrap-2.3.1.min.css") ? Url("bootstrap-2.3.1.min.css") : Url("bootstrap-2.3.1.css");
              
         public static readonly string favicon_ico = Url("favicon.ico");
@@ -167,6 +179,29 @@ namespace Links
             }
         
             public static readonly string draft_png = Url("draft.png");
+            [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+            public static class jqueryui {
+                private const string URLPATH = "~/Content/img/jqueryui";
+                public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
+                public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+                public static readonly string animated_overlay_gif = Url("animated-overlay.gif");
+                public static readonly string ui_bg_flat_0_aaaaaa_40x100_png = Url("ui-bg_flat_0_aaaaaa_40x100.png");
+                public static readonly string ui_bg_flat_55_fbec88_40x100_png = Url("ui-bg_flat_55_fbec88_40x100.png");
+                public static readonly string ui_bg_glass_75_d0e5f5_1x400_png = Url("ui-bg_glass_75_d0e5f5_1x400.png");
+                public static readonly string ui_bg_glass_85_dfeffc_1x400_png = Url("ui-bg_glass_85_dfeffc_1x400.png");
+                public static readonly string ui_bg_glass_95_fef1ec_1x400_png = Url("ui-bg_glass_95_fef1ec_1x400.png");
+                public static readonly string ui_bg_gloss_wave_55_5c9ccc_500x100_png = Url("ui-bg_gloss-wave_55_5c9ccc_500x100.png");
+                public static readonly string ui_bg_inset_hard_100_f5f8f9_1x100_png = Url("ui-bg_inset-hard_100_f5f8f9_1x100.png");
+                public static readonly string ui_bg_inset_hard_100_fcfdfd_1x100_png = Url("ui-bg_inset-hard_100_fcfdfd_1x100.png");
+                public static readonly string ui_icons_217bc0_256x240_png = Url("ui-icons_217bc0_256x240.png");
+                public static readonly string ui_icons_2e83ff_256x240_png = Url("ui-icons_2e83ff_256x240.png");
+                public static readonly string ui_icons_469bdd_256x240_png = Url("ui-icons_469bdd_256x240.png");
+                public static readonly string ui_icons_6da8d5_256x240_png = Url("ui-icons_6da8d5_256x240.png");
+                public static readonly string ui_icons_cd0a0a_256x240_png = Url("ui-icons_cd0a0a_256x240.png");
+                public static readonly string ui_icons_d8e7f3_256x240_png = Url("ui-icons_d8e7f3_256x240.png");
+                public static readonly string ui_icons_f9bd01_256x240_png = Url("ui-icons_f9bd01_256x240.png");
+            }
+        
         }
     
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -186,11 +221,15 @@ namespace Links
             public static readonly string wallpaper1_jpg = Url("wallpaper1.jpg");
         }
     
+        public static readonly string jquery_ui_1_10_3_custom_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery-ui-1.10.3.custom.min.css") ? Url("jquery-ui-1.10.3.custom.min.css") : Url("jquery-ui-1.10.3.custom.css");
+             
         public static readonly string jquery_bootstrap_datetimepicker_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.bootstrap.datetimepicker.min.css") ? Url("jquery.bootstrap.datetimepicker.min.css") : Url("jquery.bootstrap.datetimepicker.css");
              
         public static readonly string jquery_dataTables_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.dataTables.min.css") ? Url("jquery.dataTables.min.css") : Url("jquery.dataTables.css");
              
         public static readonly string jquery_jScrollPane_2_0_0beta12_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.jScrollPane-2.0.0beta12.min.css") ? Url("jquery.jScrollPane-2.0.0beta12.min.css") : Url("jquery.jScrollPane-2.0.0beta12.css");
+             
+        public static readonly string jquery_ui_menubar_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.ui.menubar.min.css") ? Url("jquery.ui.menubar.min.css") : Url("jquery.ui.menubar.css");
              
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public static class png {
@@ -201,6 +240,12 @@ namespace Links
             public static readonly string youtube_logo_png = Url("youtube-logo.png");
         }
     
+        public static readonly string style_bootstrap_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/style-bootstrap.min.css") ? Url("style-bootstrap.min.css") : Url("style-bootstrap.css");
+             
+        public static readonly string style_jqueryui_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/style-jqueryui.min.css") ? Url("style-jqueryui.min.css") : Url("style-jqueryui.css");
+             
+        public static readonly string style_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/style.min.css") ? Url("style.min.css") : Url("style.css");
+             
         public static readonly string webextras_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/webextras.min.css") ? Url("webextras.min.css") : Url("webextras.css");
              
     }

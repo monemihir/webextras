@@ -51,7 +51,13 @@ namespace WebExtras.DemoApp.App_Start
     /// </summary>
     public static void RegisterBundles()
     {
-      // Main CSS bundle
+      // Minimal CSS bundle
+      Bundle.Css()
+        .Add(Links.Content.webextras_css)
+        .Add(Links.Content.style_css)
+        .AsCached(ContentBundle.CSSMinimal.GetStringValue(), ResolveCssPath(ContentBundle.CSSMinimal));
+
+      // CSS Bootstrap bundle
       Bundle.Css()
         .Add(Links.Content.bootstrap_2_3_1_css)
         .Add(Links.Content.font_awesome_css)
@@ -59,16 +65,25 @@ namespace WebExtras.DemoApp.App_Start
         .Add(Links.Content.jquery_dataTables_css)
         .Add(Links.Content.jquery_jScrollPane_2_0_0beta12_css)
         .Add(Links.Content.webextras_css)
-        .Add(Links.Content.base_css)
-        .AsCached(ContentBundle.CSSMain.GetStringValue(), ResolveCssPath(ContentBundle.CSSMain));
+        .Add(Links.Content.style_bootstrap_css)
+        .Add(Links.Content.style_css)
+        .AsCached(ContentBundle.CSSBootstrap.GetStringValue(), ResolveCssPath(ContentBundle.CSSBootstrap));
 
-      // Create jQuery third party libraries bundle
-      Bundle.JavaScript()        
+      // CSS JQuery UI bundle
+      Bundle.Css()
+        .Add(Links.Content.jquery_ui_1_10_3_custom_css)
+        .Add(Links.Content.jquery_ui_menubar_css)
+        .Add(Links.Content.jquery_dataTables_css)
+        .Add(Links.Content.jquery_jScrollPane_2_0_0beta12_css)
+        .Add(Links.Content.webextras_css)
+        .Add(Links.Content.style_jqueryui_css)
+        .Add(Links.Content.style_css)
+        .AsCached(ContentBundle.CSSJQueryUI.GetStringValue(), ResolveCssPath(ContentBundle.CSSJQueryUI));
+
+      // Core javascript libraries' bundle
+      Bundle.JavaScript()
         .Add(Links.Scripts.jquery_1_9_1_min_js)
         .Add(Links.Scripts.jquery_migrate_1_1_1_min_js)
-        .Add(Links.Scripts.bootstrap_2_3_1_min_js)
-        .Add(Links.Scripts.jquery_bootstrap_datetimepicker_min_js)
-        .Add(Links.Scripts.jquery_bootstrap_hover_dropdown_min_js)
         .Add(Links.Scripts.jquery_datatables_min_js)
         .Add(Links.Scripts.jquery_datatables_pagination_js)
         .Add(Links.Scripts.jquery_flot_min_js)
@@ -81,6 +96,19 @@ namespace WebExtras.DemoApp.App_Start
         .Add(Links.Scripts.jquery_mousewheel_3_0_6_js)
         .Add(Links.Scripts.jquery_mwheelIntent_1_2_js)
         .AsCached(ContentBundle.JSBase.GetStringValue(), ResolveJsPath(ContentBundle.JSBase));
+
+      // Bootstrap javascript bundle
+      Bundle.JavaScript()
+        .Add(Links.Scripts.bootstrap_2_3_1_min_js)
+        .Add(Links.Scripts.jquery_bootstrap_datetimepicker_min_js)
+        .Add(Links.Scripts.jquery_bootstrap_hover_dropdown_min_js)
+        .AsCached(ContentBundle.JSBootstrap.GetStringValue(), ResolveJsPath(ContentBundle.JSBootstrap));
+
+      // jQuery UI javascript bundle
+      Bundle.JavaScript()
+        .Add(Links.Scripts.jquery_ui_1_10_3_custom_min_js)
+        .Add(Links.Scripts.jquery_ui_menubar_js)
+        .AsCached(ContentBundle.JSJQueryUI.GetStringValue(), ResolveJsPath(ContentBundle.JSJQueryUI));
     }
   }
 }

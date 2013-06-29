@@ -114,34 +114,47 @@
     <Compile Include="App_Start\ContentBundle.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Bootstrap\BootstrapAreaRegistration.cs" />
+    <Compile Include="Areas\JQueryUI\Controllers\HomeController.cs" />
+    <Compile Include="Areas\JQueryUI\JQueryUIAreaRegistration.cs" />
     <Compile Include="AssetsController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Areas\Bootstrap\Controllers\HomeController.cs" />
+    <Compile Include="Bootstrap.CoreController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Bootstrap.HomeController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Bootstrap.MvcController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Bootstrap.SharedController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\AssetsController.cs" />
-    <Compile Include="Controllers\CoreController.cs" />
-    <Compile Include="Controllers\MvcController.cs" />
-    <Compile Include="CoreController.generated.cs">
+    <Compile Include="Areas\Bootstrap\Controllers\CoreController.cs" />
+    <Compile Include="Areas\Bootstrap\Controllers\MvcController.cs" />
+    <Compile Include="Controllers\FlavourController.cs" />
+    <Compile Include="FlavourController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="HomeController.generated.cs">
+    <Compile Include="Areas\Bootstrap\Models\Core\DatatablesViewModel.cs" />
+    <Compile Include="Areas\Bootstrap\Models\Core\FlotViewModel.cs" />
+    <Compile Include="Areas\Bootstrap\Models\Core\PostbackSetupViewModel.cs" />
+    <Compile Include="Areas\Bootstrap\Models\Mvc\BootstrapFormViewModel.cs" />
+    <Compile Include="Areas\Bootstrap\Models\Mvc\BootstrapHtmlViewModel.cs" />
+    <Compile Include="JQueryUI.HomeController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Core\DatatablesViewModel.cs" />
-    <Compile Include="Models\Core\FlotViewModel.cs" />
-    <Compile Include="Models\Core\PostbackSetupViewModel.cs" />
-    <Compile Include="Models\Mvc\BootstrapFormViewModel.cs" />
-    <Compile Include="Models\Mvc\BootstrapHtmlViewModel.cs" />
-    <Compile Include="MvcController.generated.cs">
+    <Compile Include="JQueryUI.SharedController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SharedController.generated.cs">
-      <DependentUpon>T4MVC.tt</DependentUpon>
-    </Compile>
     <Compile Include="T4MVC.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -150,6 +163,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-2.3.1.css" />
+    <Content Include="Content\jquery.ui.menubar.css" />
+    <Content Include="Content\style-jqueryui.css" />
     <Content Include="Content\favicon.ico" />
     <Content Include="Content\favicon.png" />
     <Content Include="Content\font-awesome.css" />
@@ -168,20 +183,39 @@
     <Content Include="Content\img\datatables\sort_desc.png" />
     <Content Include="Content\img\datatables\sort_desc_disabled.png" />
     <Content Include="Content\img\draft.png" />
+    <Content Include="Content\img\jqueryui\animated-overlay.gif" />
+    <Content Include="Content\img\jqueryui\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\img\jqueryui\ui-bg_flat_55_fbec88_40x100.png" />
+    <Content Include="Content\img\jqueryui\ui-bg_glass_75_d0e5f5_1x400.png" />
+    <Content Include="Content\img\jqueryui\ui-bg_glass_85_dfeffc_1x400.png" />
+    <Content Include="Content\img\jqueryui\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\img\jqueryui\ui-bg_gloss-wave_55_5c9ccc_500x100.png" />
+    <Content Include="Content\img\jqueryui\ui-bg_inset-hard_100_f5f8f9_1x100.png" />
+    <Content Include="Content\img\jqueryui\ui-bg_inset-hard_100_fcfdfd_1x100.png" />
+    <Content Include="Content\img\jqueryui\ui-icons_217bc0_256x240.png" />
+    <Content Include="Content\img\jqueryui\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\img\jqueryui\ui-icons_469bdd_256x240.png" />
+    <Content Include="Content\img\jqueryui\ui-icons_6da8d5_256x240.png" />
+    <Content Include="Content\img\jqueryui\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\img\jqueryui\ui-icons_d8e7f3_256x240.png" />
+    <Content Include="Content\img\jqueryui\ui-icons_f9bd01_256x240.png" />
     <Content Include="Content\inline\build.txt" />
     <Content Include="Content\inline\changelog.html" />
+    <Content Include="Content\jquery-ui-1.10.3.custom.css" />
     <Content Include="Content\jquery.bootstrap.datetimepicker.css" />
     <Content Include="Content\jquery.dataTables.css" />
     <Content Include="Content\jpg\wallpaper1.jpg" />
     <Content Include="Content\jquery.jScrollPane-2.0.0beta12.css" />
     <Content Include="Content\png\bk.png" />
     <Content Include="Content\png\youtube-logo.png" />
+    <Content Include="Content\style.css" />
     <Content Include="Content\webextras.css" />
     <Content Include="Global.asax" />
-    <Content Include="Content\base.css" />
+    <Content Include="Content\style-bootstrap.css" />
     <Content Include="lgpl-3.0.htm">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Scripts\jquery-ui-1.10.3.custom.min.js" />
     <Content Include="Scripts\jquery.bootstrap.datetimepicker.min.js" />
     <Content Include="Scripts\jquery.bootstrap.hover.dropdown.min.js" />
     <Content Include="Scripts\jquery.flot.min.js" />
@@ -198,8 +232,9 @@
     <Content Include="Scripts\jquery.flot.curvedlines.js" />
     <Content Include="Scripts\jquery.flot.dashes.js" />
     <Content Include="Scripts\jquery.migrate-1.1.1.min.js" />
+    <Content Include="Scripts\jquery.ui.menubar.js" />
     <Content Include="T4MVC.tt.settings.xml" />
-    <Content Include="Views\Core\DatatablePartial.ascx" />
+    <Content Include="Areas\Bootstrap\Views\Core\DatatablePartial.ascx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -208,12 +243,14 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Views\Web.config" />
-    <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Bootstrap\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Bootstrap\Views\Shared\Error.cshtml" />
+    <Content Include="Areas\Bootstrap\Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\JQueryUI\Models\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -242,62 +279,68 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Core\Generic.cshtml" />
+    <Content Include="Areas\Bootstrap\Views\Core\Generic.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Core\_Datatable.cshtml" />
+    <Content Include="Areas\Bootstrap\Views\Core\_Datatable.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Core\Datatables.cshtml" />
+    <Content Include="Areas\Bootstrap\Views\Core\Datatables.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Core\Flot.cshtml" />
+    <Content Include="Areas\Bootstrap\Views\Core\Flot.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Core\_BasicSetup.cshtml" />
+    <Content Include="Areas\Bootstrap\Views\Core\_BasicSetup.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Core\_AjaxSetup.cshtml" />
+    <Content Include="Areas\Bootstrap\Views\Core\_AjaxSetup.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Core\_PagedSetup.cshtml" />
+    <Content Include="Areas\Bootstrap\Views\Core\_PagedSetup.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Core\_SortedSetup.cshtml" />
+    <Content Include="Areas\Bootstrap\Views\Core\_SortedSetup.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Core\_StatusSetup.cshtml" />
-    <Content Include="Views\Core\_PostbackSetup.cshtml" />
-    <Content Include="Views\Core\_PostbackResult.cshtml" />
-    <Content Include="Views\Core\_LineGraph.cshtml" />
-    <Content Include="Views\Core\_DashedGraph.cshtml" />
-    <Content Include="Views\Core\_CurvedLineGraph.cshtml" />
-    <Content Include="Views\Core\_AxisLabels.cshtml" />
-    <Content Include="Views\Mvc\CoreHtml.cshtml" />
-    <Content Include="Views\Mvc\CoreForm.cshtml" />
-    <Content Include="Views\Mvc\BootstrapHtml.cshtml" />
-    <Content Include="Views\Mvc\BootstrapForm.cshtml" />
+    <Content Include="Areas\Bootstrap\Views\Core\_StatusSetup.cshtml" />
+    <Content Include="Areas\Bootstrap\Views\Core\_PostbackSetup.cshtml" />
+    <Content Include="Areas\Bootstrap\Views\Core\_PostbackResult.cshtml" />
+    <Content Include="Areas\Bootstrap\Views\Core\_LineGraph.cshtml" />
+    <Content Include="Areas\Bootstrap\Views\Core\_DashedGraph.cshtml" />
+    <Content Include="Areas\Bootstrap\Views\Core\_CurvedLineGraph.cshtml" />
+    <Content Include="Areas\Bootstrap\Views\Core\_AxisLabels.cshtml" />
+    <Content Include="Areas\Bootstrap\Views\Mvc\CoreHtml.cshtml" />
+    <Content Include="Areas\Bootstrap\Views\Mvc\CoreForm.cshtml" />
+    <Content Include="Areas\Bootstrap\Views\Mvc\BootstrapHtml.cshtml" />
+    <Content Include="Areas\Bootstrap\Views\Mvc\BootstrapForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Core\_DatatableDeprecated.cshtml" />
+    <Content Include="Areas\Bootstrap\Views\Core\_DatatableDeprecated.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Areas\Bootstrap\Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Home\Download.cshtml" />
+    <Content Include="Areas\Bootstrap\Views\Home\Download.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\font\fontawesome-webfont.eot" />
     <Content Include="Content\font\fontawesome-webfont.ttf" />
     <Content Include="Content\font\fontawesome-webfont.woff" />
     <Content Include="Content\font\FontAwesome.otf" />
+    <Content Include="Areas\Bootstrap\Views\Web.config" />
+    <Content Include="Areas\JQueryUI\Views\Web.config" />
+    <Content Include="Areas\JQueryUI\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\JQueryUI\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\JQueryUI\Views\Home\Index.cshtml" />
     <None Include="Properties\PublishProfiles\Default.pubxml" />
-    <Content Include="Views\Core\_PieGraph.cshtml" />
-    <Content Include="Views\Core\_BarGraph.cshtml" />
-    <Content Include="Views\Mvc\ActionResults.cshtml" />
+    <Content Include="Areas\Bootstrap\Views\Core\_PieGraph.cshtml" />
+    <Content Include="Areas\Bootstrap\Views\Core\_BarGraph.cshtml" />
+    <Content Include="Areas\Bootstrap\Views\Mvc\ActionResults.cshtml" />
     <None Include="Properties\PublishProfiles\Staging.pubxml" />
-    <Content Include="Views\Core\_CustomFlotFormatters.cshtml" />
+    <Content Include="Areas\Bootstrap\Views\Core\_CustomFlotFormatters.cshtml" />
+    <Content Include="Views\Flavour\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

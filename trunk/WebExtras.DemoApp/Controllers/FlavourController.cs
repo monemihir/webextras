@@ -16,18 +16,18 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using WebExtras.JQDataTables;
+using System.Web.Mvc;
 
-namespace WebExtras.DemoApp.Models.Core
+namespace WebExtras.DemoApp.Controllers
 {
-  public class DatatablesViewModel
+  public partial class FlavourController : Controller
   {
-    public int DisplayMode { get; set; }
+    //
+    // GET: /Flavour/
+    public virtual ActionResult Index()
+    {
+      return View();
+    }
 
-    public Datatable Table { get; set; }
-
-    public Datatable PostbackEnabledTable { get; set; }
-
-    public PostbackSetupViewModel PostbackFormFields { get; set; }
   }
 }

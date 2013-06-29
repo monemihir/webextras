@@ -26,15 +26,39 @@ namespace WebExtras.DemoApp.App_Start
   public enum ContentBundle
   {
     /// <summary>
-    /// Main bundle
+    /// Minimal CSS bundle
     /// </summary>
-    [StringValue("css-main")]
-    CSSMain,
+    [StringValue("css-minimal")]
+    CSSMinimal,
 
     /// <summary>
-    /// Core jQuery, jQuery UI and any other core libraries
+    /// CSS Bootstrap bundle
+    /// </summary>
+    [StringValue("css-bootstrap")]
+    CSSBootstrap,
+
+    /// <summary>
+    /// CSS jQuery UI bundle
+    /// </summary>
+    [StringValue("css-jqueryui")]
+    CSSJQueryUI,
+
+    /// <summary>
+    /// Core javascript libraries' bundle
     /// </summary>
     [StringValue("js-base")]
     JSBase,
+
+    /// <summary>
+    /// Bootstrap javascript bundle
+    /// </summary>
+    [StringValue("js-bootstrap")]
+    JSBootstrap,
+
+    /// <summary>
+    /// jQuery UI javascript bundle
+    /// </summary>
+    [StringValue("js-jqueryui")]
+    JSJQueryUI
   }
 }

@@ -51,6 +51,14 @@ input[type="radio"]
   vertical-align: middle;
 }
 
+.pull-right {
+  float: right;
+}
+
+.pull-left {
+  float: left;
+}
+
 #actionmessage
 {
   position: fixed;
