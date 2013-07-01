@@ -164,8 +164,46 @@ namespace WebExtras.DemoApp.Areas.JQueryUI.Controllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
+                public readonly string _AjaxSetup = "_AjaxSetup";
+                public readonly string _AxisLabels = "_AxisLabels";
+                public readonly string _BarGraph = "_BarGraph";
+                public readonly string _BasicSetup = "_BasicSetup";
+                public readonly string _CurvedLineGraph = "_CurvedLineGraph";
+                public readonly string _CustomFlotFormatters = "_CustomFlotFormatters";
+                public readonly string _DashedGraph = "_DashedGraph";
+                public readonly string _Datatable = "_Datatable";
+                public readonly string _DatatableDeprecated = "_DatatableDeprecated";
+                public readonly string _LineGraph = "_LineGraph";
+                public readonly string _PagedSetup = "_PagedSetup";
+                public readonly string _PieGraph = "_PieGraph";
+                public readonly string _PostbackResult = "_PostbackResult";
+                public readonly string _PostbackSetup = "_PostbackSetup";
+                public readonly string _SortedSetup = "_SortedSetup";
+                public readonly string _StatusSetup = "_StatusSetup";
+                public readonly string DatatablePartial = "DatatablePartial";
+                public readonly string Datatables = "Datatables";
+                public readonly string Flot = "Flot";
                 public readonly string Generic = "Generic";
             }
+            public readonly string _AjaxSetup = "~/Areas/JQueryUI/Views/Core/_AjaxSetup.cshtml";
+            public readonly string _AxisLabels = "~/Areas/JQueryUI/Views/Core/_AxisLabels.cshtml";
+            public readonly string _BarGraph = "~/Areas/JQueryUI/Views/Core/_BarGraph.cshtml";
+            public readonly string _BasicSetup = "~/Areas/JQueryUI/Views/Core/_BasicSetup.cshtml";
+            public readonly string _CurvedLineGraph = "~/Areas/JQueryUI/Views/Core/_CurvedLineGraph.cshtml";
+            public readonly string _CustomFlotFormatters = "~/Areas/JQueryUI/Views/Core/_CustomFlotFormatters.cshtml";
+            public readonly string _DashedGraph = "~/Areas/JQueryUI/Views/Core/_DashedGraph.cshtml";
+            public readonly string _Datatable = "~/Areas/JQueryUI/Views/Core/_Datatable.cshtml";
+            public readonly string _DatatableDeprecated = "~/Areas/JQueryUI/Views/Core/_DatatableDeprecated.cshtml";
+            public readonly string _LineGraph = "~/Areas/JQueryUI/Views/Core/_LineGraph.cshtml";
+            public readonly string _PagedSetup = "~/Areas/JQueryUI/Views/Core/_PagedSetup.cshtml";
+            public readonly string _PieGraph = "~/Areas/JQueryUI/Views/Core/_PieGraph.cshtml";
+            public readonly string _PostbackResult = "~/Areas/JQueryUI/Views/Core/_PostbackResult.cshtml";
+            public readonly string _PostbackSetup = "~/Areas/JQueryUI/Views/Core/_PostbackSetup.cshtml";
+            public readonly string _SortedSetup = "~/Areas/JQueryUI/Views/Core/_SortedSetup.cshtml";
+            public readonly string _StatusSetup = "~/Areas/JQueryUI/Views/Core/_StatusSetup.cshtml";
+            public readonly string DatatablePartial = "~/Areas/JQueryUI/Views/Core/DatatablePartial.ascx";
+            public readonly string Datatables = "~/Areas/JQueryUI/Views/Core/Datatables.cshtml";
+            public readonly string Flot = "~/Areas/JQueryUI/Views/Core/Flot.cshtml";
             public readonly string Generic = "~/Areas/JQueryUI/Views/Core/Generic.cshtml";
         }
     }
@@ -194,7 +232,7 @@ namespace WebExtras.DemoApp.Areas.JQueryUI.Controllers
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult Datatables(WebExtras.DemoApp.Areas.Bootstrap.Models.Core.DatatablesViewModel viewModel)
+        public override System.Web.Mvc.ActionResult Datatables(WebExtras.DemoApp.Models.Core.DatatablesViewModel viewModel)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Datatables);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "viewModel", viewModel);
@@ -222,7 +260,7 @@ namespace WebExtras.DemoApp.Areas.JQueryUI.Controllers
             return callInfo;
         }
 
-        public override System.Web.Mvc.JsonResult GetPostbackData(WebExtras.JQDataTables.DatatableFilters filters, WebExtras.DemoApp.Areas.Bootstrap.Models.Core.PostbackSetupViewModel postbacks)
+        public override System.Web.Mvc.JsonResult GetPostbackData(WebExtras.JQDataTables.DatatableFilters filters, WebExtras.DemoApp.Models.Core.PostbackSetupViewModel postbacks)
         {
             var callInfo = new T4MVC_System_Web_Mvc_JsonResult(Area, Name, ActionNames.GetPostbackData);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "filters", filters);

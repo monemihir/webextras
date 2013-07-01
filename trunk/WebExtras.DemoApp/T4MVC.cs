@@ -141,6 +141,10 @@ namespace Links
              
         public static readonly string favicon_ico = Url("favicon.ico");
         public static readonly string favicon_png = Url("favicon.png");
+        public static readonly string fluidable_less = Url("fluidable.less");
+        public static readonly string fluidable_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/fluidable.min.css") ? Url("fluidable.min.css") : Url("fluidable.css");
+             
+        public static readonly string fluidable_min_css = Url("fluidable.min.css");
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public static class font {
             private const string URLPATH = "~/Content/font";
@@ -235,6 +239,8 @@ namespace Links
         public static readonly string jquery_bootstrap_datetimepicker_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.bootstrap.datetimepicker.min.css") ? Url("jquery.bootstrap.datetimepicker.min.css") : Url("jquery.bootstrap.datetimepicker.css");
              
         public static readonly string jquery_dataTables_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.dataTables.min.css") ? Url("jquery.dataTables.min.css") : Url("jquery.dataTables.css");
+             
+        public static readonly string jquery_dataTables_jui_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.dataTables.jui.min.css") ? Url("jquery.dataTables.jui.min.css") : Url("jquery.dataTables.jui.css");
              
         public static readonly string jquery_jScrollPane_2_0_0beta12_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.jScrollPane-2.0.0beta12.min.css") ? Url("jquery.jScrollPane-2.0.0beta12.min.css") : Url("jquery.jScrollPane-2.0.0beta12.css");
              

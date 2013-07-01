@@ -18,7 +18,7 @@
 
 using WebExtras.JQDataTables;
 
-namespace WebExtras.DemoApp.Areas.Bootstrap.Models.Core
+namespace WebExtras.DemoApp.Models.Core
 {
   public class DatatablesViewModel
   {

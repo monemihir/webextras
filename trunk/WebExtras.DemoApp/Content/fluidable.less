@@ -1,0 +1,159 @@
+/*!
+ * Fluidable Grid System 0.9.2
+ *
+ * Creator: Andri Sigurðsson
+ * Site: http://fluidable.com
+ * Date: 26.05.2013
+ */
+
+// Config
+
+@columns:       12;
+@maxWidth:	    980px;
+@gutterWidth:   32px;
+
+// Grid system
+
+@columnWidth: 100%/@columns;
+
+.page {
+	max-width: @maxWidth;
+	.center-block();
+}
+
+// Columns
+
+.columns (@index) when (@index > 0) {
+	(~".col-@{index}") {
+		width: @columnWidth * @index;
+		_width: @columnWidth * @index - 0.0694%;
+		float: left;
+		display: inline;
+        padding-bottom: 0.5em;
+	}
+	.columns(@index - 1);
+}
+.columns (0) {}
+.columns (@columns);
+
+// Offset
+.offset (@index) when (@index > 0) {
+	(~".col-offset-@{index}") {
+		margin-left: @columnWidth * @index;
+		_margin-left: @columnWidth * @index - 0.0694%;
+	}
+	.offset(@index - 1);
+}
+.offset (0) {}
+.offset (@columns);
+
+// Named columns
+
+.named(@index) {
+	width: @columnWidth * @index;
+	_width: @columnWidth * @index - 0.0694%;
+	float: left;
+	display: inline;
+}
+
+.col-full  { .named(@columns); }
+.col-half  { .named(@columns / 2); }
+.col-third  { .named(@columns / 3); }
+.col-fourth  { .named(@columns / 4); }
+.col-fifth  { .named(@columns / 5); }
+.col-sixth  { .named(@columns / 6); }
+.col-seventh  { .named(@columns / 7); }
+.col-eighth  { .named(@columns / 8); }
+.col-ninth  { .named(@columns / 9); }
+.col-tenth  { .named(@columns / 10); }
+.col-eleventh  { .named(@columns / 11); }
+.col-twelfth  { .named(@columns / 12); }
+.col-thirteenth  { .named(@columns / 13); }
+.col-fourteenth  { .named(@columns / 14); }
+.col-fifteenth  { .named(@columns / 15); }
+.col-sixteenth  { .named(@columns / 16); }
+.col-seventeenth  { .named(@columns / 17); }
+.col-eighteenth  { .named(@columns / 18); }
+
+.col-golden-a {
+	width: 61.803399%;
+	_width: 61.803399% - 0.0694%; /* IE6-7 */
+	float: left;
+}
+
+.col-golden-b {
+	width: 38.196601%;
+	_width: 38.196601% - 0.0694%; /* IE6-7 */
+	float: left;
+}
+
+// Groups
+
+.col-group {
+	margin: 0 @gutterWidth / 2;
+	.clear();
+}
+
+.col-group .col-group {
+	margin: 0;
+}
+
+.col-group .col-content {
+	margin: 0 @gutterWidth / 2;
+}
+
+.col-inset .col-content {
+	padding: @gutterWidth / 2;
+	margin: 0;
+}
+
+// Fix headline margins palced out side of columns
+
+h1, h2, h3, h4, h5, h6 {
+	margin-right: @gutterWidth;
+	margin-left: @gutterWidth;
+}
+
+.col-group h1, .col-group h2, .col-group h3, .col-group h4, .col-group h5, .col-group h6 {
+	margin-right: @gutterWidth / 2;
+	margin-left: @gutterWidth / 2;
+}
+
+.col-content h1, .col-content h2, .col-content h3, .col-content h4, .col-content h5, .col-content h6 {
+	margin-right: 0;
+	margin-left: 0;
+}
+
+// Positioning
+
+.center-block {
+	margin: 0 auto;
+}
+
+// Mobile
+
+@media screen and (max-width: 768px) {
+	.col-group [class*="col-"] {
+		width: auto;
+		float: none;
+	}
+	.col-group .col-content {
+		margin: 0;
+	}
+	.col-group [class*="offset-"] {
+		margin-left: 0;
+	}
+}
+
+// Clearfix
+
+.clear {
+	zoom: 1;
+	&:after {
+    	display: block;
+		visibility: hidden;
+    	height: 0;
+    	clear: both;
+    	content: ".";
+	}
+}

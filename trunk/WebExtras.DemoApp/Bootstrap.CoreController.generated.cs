@@ -232,7 +232,7 @@ namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult Datatables(WebExtras.DemoApp.Areas.Bootstrap.Models.Core.DatatablesViewModel viewModel)
+        public override System.Web.Mvc.ActionResult Datatables(WebExtras.DemoApp.Models.Core.DatatablesViewModel viewModel)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Datatables);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "viewModel", viewModel);
@@ -260,7 +260,7 @@ namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
             return callInfo;
         }
 
-        public override System.Web.Mvc.JsonResult GetPostbackData(WebExtras.JQDataTables.DatatableFilters filters, WebExtras.DemoApp.Areas.Bootstrap.Models.Core.PostbackSetupViewModel postbacks)
+        public override System.Web.Mvc.JsonResult GetPostbackData(WebExtras.JQDataTables.DatatableFilters filters, WebExtras.DemoApp.Models.Core.PostbackSetupViewModel postbacks)
         {
             var callInfo = new T4MVC_System_Web_Mvc_JsonResult(Area, Name, ActionNames.GetPostbackData);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "filters", filters);

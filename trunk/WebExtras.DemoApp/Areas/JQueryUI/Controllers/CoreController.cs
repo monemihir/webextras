@@ -21,7 +21,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using WebExtras.Core;
-using WebExtras.DemoApp.Areas.Bootstrap.Models.Core;
+using WebExtras.DemoApp.Models.Core;
 using WebExtras.JQDataTables;
 using WebExtras.JQFlot;
 using WebExtras.JQFlot.Graphs;
@@ -157,6 +157,9 @@ namespace WebExtras.DemoApp.Areas.JQueryUI.Controllers
           };
           break;
       }
+
+      // Resets the pagination scheme
+      dtSettings.bJQueryUI = true;
 
       // Let's create the datatable object with an HTML ID, our settings, columns and records
       model.DisplayMode = mode.Value;

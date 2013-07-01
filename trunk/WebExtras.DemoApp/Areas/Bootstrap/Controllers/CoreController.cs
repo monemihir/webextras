@@ -21,7 +21,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using WebExtras.Core;
-using WebExtras.DemoApp.Areas.Bootstrap.Models.Core;
+using WebExtras.DemoApp.Models.Core;
 using WebExtras.JQDataTables;
 using WebExtras.JQFlot;
 using WebExtras.JQFlot.Graphs;

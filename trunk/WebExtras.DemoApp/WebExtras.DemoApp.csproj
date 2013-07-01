@@ -145,9 +145,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Areas\Bootstrap\Models\Core\DatatablesViewModel.cs" />
-    <Compile Include="Areas\Bootstrap\Models\Core\FlotViewModel.cs" />
-    <Compile Include="Areas\Bootstrap\Models\Core\PostbackSetupViewModel.cs" />
     <Compile Include="Areas\Bootstrap\Models\Mvc\BootstrapFormViewModel.cs" />
     <Compile Include="Areas\Bootstrap\Models\Mvc\BootstrapHtmlViewModel.cs" />
     <Compile Include="JQueryUI.CoreController.generated.cs">
@@ -162,6 +159,9 @@
     <Compile Include="JQueryUI.SharedController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Core\DatatablesViewModel.cs" />
+    <Compile Include="Models\Core\FlotViewModel.cs" />
+    <Compile Include="Models\Core\PostbackSetupViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="T4MVC.cs">
       <AutoGen>True</AutoGen>
@@ -170,8 +170,16 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\JQueryUI\Views\Core\DatatablePartial.ascx" />
     <Content Include="Content\960.css" />
     <Content Include="Content\bootstrap-2.3.1.css" />
+    <Content Include="Content\fluidable.css">
+      <DependentUpon>fluidable.less</DependentUpon>
+    </Content>
+    <Content Include="Content\fluidable.min.css">
+      <DependentUpon>fluidable.less</DependentUpon>
+    </Content>
+    <Content Include="Content\jquery.dataTables.jui.css" />
     <Content Include="Content\img\jqueryui\ui-bg_flat_30_cccccc_40x100.png" />
     <Content Include="Content\img\jqueryui\ui-bg_flat_50_5c5c5c_40x100.png" />
     <Content Include="Content\img\jqueryui\ui-bg_glass_20_555555_1x400.png" />
@@ -258,7 +266,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\JQueryUI\Models\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -343,6 +350,25 @@
     <Content Include="Areas\JQueryUI\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\JQueryUI\Views\Home\Index.cshtml" />
     <Content Include="Areas\JQueryUI\Views\Core\Generic.cshtml" />
+    <Content Include="Areas\JQueryUI\Views\Core\_AjaxSetup.cshtml" />
+    <Content Include="Areas\JQueryUI\Views\Core\_AxisLabels.cshtml" />
+    <Content Include="Areas\JQueryUI\Views\Core\_BarGraph.cshtml" />
+    <Content Include="Areas\JQueryUI\Views\Core\_BasicSetup.cshtml" />
+    <Content Include="Areas\JQueryUI\Views\Core\_CurvedLineGraph.cshtml" />
+    <Content Include="Areas\JQueryUI\Views\Core\_CustomFlotFormatters.cshtml" />
+    <Content Include="Areas\JQueryUI\Views\Core\_DashedGraph.cshtml" />
+    <Content Include="Areas\JQueryUI\Views\Core\_Datatable.cshtml" />
+    <Content Include="Areas\JQueryUI\Views\Core\_DatatableDeprecated.cshtml" />
+    <Content Include="Areas\JQueryUI\Views\Core\_LineGraph.cshtml" />
+    <Content Include="Areas\JQueryUI\Views\Core\_PagedSetup.cshtml" />
+    <Content Include="Areas\JQueryUI\Views\Core\_PieGraph.cshtml" />
+    <Content Include="Areas\JQueryUI\Views\Core\_PostbackResult.cshtml" />
+    <Content Include="Areas\JQueryUI\Views\Core\_PostbackSetup.cshtml" />
+    <Content Include="Areas\JQueryUI\Views\Core\_SortedSetup.cshtml" />
+    <Content Include="Areas\JQueryUI\Views\Core\_StatusSetup.cshtml" />
+    <Content Include="Areas\JQueryUI\Views\Core\Flot.cshtml" />
+    <Content Include="Areas\JQueryUI\Views\Core\Datatables.cshtml" />
+    <Content Include="Content\fluidable.less" />
     <None Include="Properties\PublishProfiles\Default.pubxml" />
     <Content Include="Areas\Bootstrap\Views\Core\_PieGraph.cshtml" />
     <Content Include="Areas\Bootstrap\Views\Core\_BarGraph.cshtml" />

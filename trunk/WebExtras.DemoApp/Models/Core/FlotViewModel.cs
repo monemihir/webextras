@@ -16,18 +16,16 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System.ComponentModel;
+using WebExtras.JQFlot;
 
-namespace WebExtras.DemoApp.Areas.Bootstrap.Models.Core
+namespace WebExtras.DemoApp.Models.Core
 {
-  public class PostbackSetupViewModel
+  /// <summary>
+  /// Flot graph view model
+  /// </summary>
+  public class FlotViewModel
   {
-    [DisplayName("First column")]
-    public string FirstColumn { get; set; }
-
-    [DisplayName("Second column")]
-    public string SecondColumn { get; set; }
-
-    public PostbackSetupViewModel() { }
+    public FlotChart Chart { get; set; }
+    public int DisplayMode { get; set; }
   }
 }

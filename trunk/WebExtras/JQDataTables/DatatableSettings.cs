@@ -524,7 +524,7 @@ namespace WebExtras.JQDataTables
     {
       if (columns == null)
         throw new ArgumentNullException("columns");
-      
+
       List<int> emptyHeading = new List<int>();
       int idx = 0;
       foreach (AOColumn c in columns)
@@ -629,6 +629,13 @@ namespace WebExtras.JQDataTables
     /// <returns>Returns a JSON serialized version of this object</returns>
     public override string ToString()
     {
+      // Handle resetting of pagination if we are using jQueryUI, pagination is
+      // enabled but the pagination type is not set. Default to 'full_numbers'
+      if ((bJQueryUI.HasValue && bJQueryUI.Value == true) && 
+        bPaginate && 
+        sPaginationType == EPagination.Bootstrap.GetStringValue())
+        sPaginationType = EPagination.FullNumbers.GetStringValue();
+
       return JsonConvert.SerializeObject(
         this,
         new JsonSerializerSettings

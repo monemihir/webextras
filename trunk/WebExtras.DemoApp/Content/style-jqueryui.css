@@ -189,3 +189,12 @@ small
   background: #0078a3 url(img/jqueryui/ui-bg_glass_40_0078a3_1x400.png) 50% 50% repeat-x;
   color: #FFFFFF;
 }
+
+ul, ol {
+    margin: 0 0 10px 25px;
+    padding: 0;
+}
+
+li {
+    line-height: 20px;
+}
