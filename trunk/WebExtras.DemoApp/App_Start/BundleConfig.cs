@@ -71,6 +71,7 @@ namespace WebExtras.DemoApp.App_Start
 
       // CSS JQuery UI bundle
       Bundle.Css()
+        .Add(Links.Content._960_css)
         .Add(Links.Content.jquery_ui_1_10_3_custom_css)
         .Add(Links.Content.jquery_ui_menubar_css)
         .Add(Links.Content.jquery_dataTables_css)

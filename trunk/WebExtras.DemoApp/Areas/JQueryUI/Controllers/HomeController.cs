@@ -29,5 +29,11 @@ namespace WebExtras.DemoApp.Areas.JQueryUI.Controllers
       return View();
     }
 
+    //
+    // GET: /JQueryUI/Home/Download
+    public virtual ActionResult Download()
+    {
+      return View();
+    }
   }
 }

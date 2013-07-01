@@ -20,7 +20,7 @@ using System.Web.Mvc.Ajax;
 using System.Web.Mvc.Html;
 using System.Web.Routing;
 using T4MVC;
-namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
+namespace WebExtras.DemoApp.Areas.JQueryUI.Controllers
 {
     public partial class CoreController
     {
@@ -79,9 +79,9 @@ namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public CoreController Actions { get { return MVC.Bootstrap.Core; } }
+        public CoreController Actions { get { return MVC.JQueryUI.Core; } }
         [GeneratedCode("T4MVC", "2.0")]
-        public readonly string Area = "bootstrap";
+        public readonly string Area = "jqueryui";
         [GeneratedCode("T4MVC", "2.0")]
         public readonly string Name = "core";
         [GeneratedCode("T4MVC", "2.0")]
@@ -164,52 +164,14 @@ namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
-                public readonly string _AjaxSetup = "_AjaxSetup";
-                public readonly string _AxisLabels = "_AxisLabels";
-                public readonly string _BarGraph = "_BarGraph";
-                public readonly string _BasicSetup = "_BasicSetup";
-                public readonly string _CurvedLineGraph = "_CurvedLineGraph";
-                public readonly string _CustomFlotFormatters = "_CustomFlotFormatters";
-                public readonly string _DashedGraph = "_DashedGraph";
-                public readonly string _Datatable = "_Datatable";
-                public readonly string _DatatableDeprecated = "_DatatableDeprecated";
-                public readonly string _LineGraph = "_LineGraph";
-                public readonly string _PagedSetup = "_PagedSetup";
-                public readonly string _PieGraph = "_PieGraph";
-                public readonly string _PostbackResult = "_PostbackResult";
-                public readonly string _PostbackSetup = "_PostbackSetup";
-                public readonly string _SortedSetup = "_SortedSetup";
-                public readonly string _StatusSetup = "_StatusSetup";
-                public readonly string DatatablePartial = "DatatablePartial";
-                public readonly string Datatables = "Datatables";
-                public readonly string Flot = "Flot";
                 public readonly string Generic = "Generic";
             }
-            public readonly string _AjaxSetup = "~/Areas/Bootstrap/Views/Core/_AjaxSetup.cshtml";
-            public readonly string _AxisLabels = "~/Areas/Bootstrap/Views/Core/_AxisLabels.cshtml";
-            public readonly string _BarGraph = "~/Areas/Bootstrap/Views/Core/_BarGraph.cshtml";
-            public readonly string _BasicSetup = "~/Areas/Bootstrap/Views/Core/_BasicSetup.cshtml";
-            public readonly string _CurvedLineGraph = "~/Areas/Bootstrap/Views/Core/_CurvedLineGraph.cshtml";
-            public readonly string _CustomFlotFormatters = "~/Areas/Bootstrap/Views/Core/_CustomFlotFormatters.cshtml";
-            public readonly string _DashedGraph = "~/Areas/Bootstrap/Views/Core/_DashedGraph.cshtml";
-            public readonly string _Datatable = "~/Areas/Bootstrap/Views/Core/_Datatable.cshtml";
-            public readonly string _DatatableDeprecated = "~/Areas/Bootstrap/Views/Core/_DatatableDeprecated.cshtml";
-            public readonly string _LineGraph = "~/Areas/Bootstrap/Views/Core/_LineGraph.cshtml";
-            public readonly string _PagedSetup = "~/Areas/Bootstrap/Views/Core/_PagedSetup.cshtml";
-            public readonly string _PieGraph = "~/Areas/Bootstrap/Views/Core/_PieGraph.cshtml";
-            public readonly string _PostbackResult = "~/Areas/Bootstrap/Views/Core/_PostbackResult.cshtml";
-            public readonly string _PostbackSetup = "~/Areas/Bootstrap/Views/Core/_PostbackSetup.cshtml";
-            public readonly string _SortedSetup = "~/Areas/Bootstrap/Views/Core/_SortedSetup.cshtml";
-            public readonly string _StatusSetup = "~/Areas/Bootstrap/Views/Core/_StatusSetup.cshtml";
-            public readonly string DatatablePartial = "~/Areas/Bootstrap/Views/Core/DatatablePartial.ascx";
-            public readonly string Datatables = "~/Areas/Bootstrap/Views/Core/Datatables.cshtml";
-            public readonly string Flot = "~/Areas/Bootstrap/Views/Core/Flot.cshtml";
-            public readonly string Generic = "~/Areas/Bootstrap/Views/Core/Generic.cshtml";
+            public readonly string Generic = "~/Areas/JQueryUI/Views/Core/Generic.cshtml";
         }
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-    public class T4MVC_CoreController : WebExtras.DemoApp.Areas.Bootstrap.Controllers.CoreController
+    public class T4MVC_CoreController : WebExtras.DemoApp.Areas.JQueryUI.Controllers.CoreController
     {
         public T4MVC_CoreController() : base(Dummy.Instance) { }
 

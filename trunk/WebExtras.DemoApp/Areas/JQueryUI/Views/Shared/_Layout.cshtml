@@ -23,7 +23,7 @@
     function goToGoogle() { window.location = "http://www.google.com.au"; }
     function goToYoutube() { window.location = "http://www.youtube.com"; }
     function gotoCodeplex() { window.open('http://webextras.codeplex.com/releases', '_blank'); }
-    function gotoDownload() { window.open('@Url.Action(MVC.Bootstrap.Home.Download())', '_self'); }
+    function gotoDownload() { window.open('@Url.Action(MVC.JQueryUI.Home.Download())', '_self'); }
 
     $(document).ready(function () {
       $("#menu").menubar({
@@ -32,56 +32,32 @@
     });
   </script>
 </head>
-<body>
-  @*<br />
-  <div class="navbar navbar-fixed-top navbar-inverse">
-    <div class="navbar-inner">
-      @Html.Hyperlink("WebExtras", MVC.Bootstrap.Home.Index()).AddCssClass("brand")
-      <ul class="nav">
-        <li class="@Html.SelectedTab("Core", "Generic")">@Html.ActionLink("Core", MVC.Bootstrap.Core.Generic())</li>
-        <li class="@Html.SelectedTab("Core", "Datatables")">@Html.ActionLink("jQuery Datatables", MVC.Bootstrap.Core.Datatables())</li>
-        <li class="@Html.SelectedTab("Core", "Flot")">@Html.ActionLink("jQuery Flot", MVC.Bootstrap.Core.Flot())</li>
-        <li class="@Html.SelectedTab("Mvc", new string[] { "CoreHtml", "CoreForm" }) dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Mvc Core<i class="caret"></i></a>
-          <ul class="dropdown-menu">
-            <li>@Html.ActionLink("Custom Action Results", MVC.Bootstrap.Mvc.ActionResults())</li>
-            <li>@Html.ActionLink("Html extensions", MVC.Bootstrap.Mvc.CoreHtml())</li>
-            <li>@Html.ActionLink("Form extensions", MVC.Bootstrap.Mvc.CoreForm())</li>
-          </ul>
-        </li>
-        <li class="@Html.SelectedTab("Mvc", new string[] { "BootstrapHtml", "BootstrapForm" }) dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Mvc Bootstrap<i class="caret"></i></a>
-          <ul class="dropdown-menu">
-            <li>@Html.ActionLink("Html extensions", MVC.Bootstrap.Mvc.BootstrapHtml())</li>
-            <li>@Html.ActionLink("Form extensions", MVC.Bootstrap.Mvc.BootstrapForm())</li>
-          </ul>
-        </li>
-      </ul>
-      <ul class="nav secondary-nav">
-        <li>@(Html.Button(EButton.Regular, "Get WebExtras", "gotoDownload()").AsButton(EBootstrapButton.Primary).AddWhiteIcon(EBootstrapIcon.Arrow_Down))</li>
-      </ul>
-    </div>
-  </div>
-  <div class="container-fluid main">
-    <small class="well affix documentation-affix">@Html.Hyperlink("Stable Docs", "http://mihirmone.dyndns.org/appdocs/webextras") | @Html.Hyperlink("Nightly Docs", "http://mihirmone.dyndns.org/nightly/webextras")</small>
-    @RenderBody()
-  </div>*@
-
-  <ul id="menu">
-    <li>@Html.Hyperlink("WebExtras", "/").AddCssClass("brand")</li>
-    <li class="@Html.SelectedTab("Core", "Generic")">@Html.ActionLink("Core", MVC.Bootstrap.Core.Generic())</li>
-    <li class="@Html.SelectedTab("Core", "Datatables")">@Html.ActionLink("jQuery Datatables", MVC.Bootstrap.Core.Datatables())</li>
-    <li class="@Html.SelectedTab("Core", "Flot")">@Html.ActionLink("jQuery Flot", MVC.Bootstrap.Core.Flot())</li>
+<body>  
+  <ul id="menu" class="ui-menubar-fixed-top">
+    <li>@Html.Hyperlink("WebExtras", Url.Content("~/")).AddCssClass("brand")</li>
+    <li class="@Html.SelectedTab("Core", "Generic")">@Html.ActionLink("Core", MVC.JQueryUI.Core.Generic())</li>
+    <li class="@Html.SelectedTab("Core", "Datatables")">@Html.ActionLink("jQuery Datatables", MVC.JQueryUI.Core.Datatables())</li>
+    <li class="@Html.SelectedTab("Core", "Flot")">@Html.ActionLink("jQuery Flot", MVC.JQueryUI.Core.Flot())</li>
     <li class="@Html.SelectedTab("Mvc", new string[] { "CoreHtml", "CoreForm" })">
-          <a href="#">Mvc Core</a>
-          <ul>
-            <li>@Html.ActionLink("Custom Action Results", MVC.Bootstrap.Mvc.ActionResults())</li>
-            <li>@Html.ActionLink("Html extensions", MVC.Bootstrap.Mvc.CoreHtml())</li>
-            <li>@Html.ActionLink("Form extensions", MVC.Bootstrap.Mvc.CoreForm())</li>
-          </ul>
-        </li>
+      <a href="#">Mvc Core</a>
+      <ul>
+        <li>@Html.ActionLink("Custom Action Results", MVC.JQueryUI.Mvc.ActionResults())</li>
+        <li>@Html.ActionLink("Html extensions", MVC.JQueryUI.Mvc.CoreHtml())</li>
+        <li>@Html.ActionLink("Form extensions", MVC.JQueryUI.Mvc.CoreForm())</li>
+      </ul>
+    </li>
+    <li class="@Html.SelectedTab("Mvc", new string[] { "JQueryUIHtml", "JQueryUIForm" })">
+      <a href="#">Mvc JQuery UI</a>
+      <ul>
+        <li>@Html.ActionLink("Html extensions", MVC.JQueryUI.Mvc.JQueryUIHtml())</li>
+        <li>@Html.ActionLink("Form extensions", MVC.JQueryUI.Mvc.JQueryUIForm())</li>
+      </ul>
+    </li>
+    <li class="download-btn">@(Html.Button(EButton.Regular, "Get WebExtras", "gotoDownload()"))</li>
   </ul>
-  <div>
+
+  <div class="container_12 main">
+    <small class="ui-well affix documentation-affix">@Html.Hyperlink("Stable Docs", "http://mihirmone.dyndns.org/appdocs/webextras/jqueryui") | @Html.Hyperlink("Nightly Docs", "http://mihirmone.dyndns.org/nightly/webextras/jqueryui")</small>
     @RenderBody()
   </div>
   <footer>

@@ -7,9 +7,18 @@
 #pragma warning disable 1591
 #region T4MVC
 
-using System.CodeDom.Compiler;
+using System;
 using System.Diagnostics;
+using System.CodeDom.Compiler;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Web;
+using System.Web.Hosting;
 using System.Web.Mvc;
+using System.Web.Mvc.Ajax;
+using System.Web.Mvc.Html;
+using System.Web.Routing;
 using T4MVC;
 namespace WebExtras.DemoApp.Areas.JQueryUI.Controllers
 {
@@ -52,6 +61,7 @@ namespace WebExtras.DemoApp.Areas.JQueryUI.Controllers
         public class ActionNamesClass
         {
             public readonly string Index = ("Index").ToLowerInvariant();
+            public readonly string Download = ("Download").ToLowerInvariant();
         }
 
 
@@ -79,6 +89,12 @@ namespace WebExtras.DemoApp.Areas.JQueryUI.Controllers
         public override System.Web.Mvc.ActionResult Index()
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Index);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult Download()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Download);
             return callInfo;
         }
 

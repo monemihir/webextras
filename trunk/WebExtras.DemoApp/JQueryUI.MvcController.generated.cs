@@ -20,7 +20,7 @@ using System.Web.Mvc.Ajax;
 using System.Web.Mvc.Html;
 using System.Web.Routing;
 using T4MVC;
-namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
+namespace WebExtras.DemoApp.Areas.JQueryUI.Controllers
 {
     public partial class MvcController
     {
@@ -46,15 +46,15 @@ namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
 
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.ActionResult BootstrapHtml()
+        public System.Web.Mvc.ActionResult JQueryUIHtml()
         {
-            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.BootstrapHtml);
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.JQueryUIHtml);
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public MvcController Actions { get { return MVC.Bootstrap.Mvc; } }
+        public MvcController Actions { get { return MVC.JQueryUI.Mvc; } }
         [GeneratedCode("T4MVC", "2.0")]
-        public readonly string Area = "bootstrap";
+        public readonly string Area = "jqueryui";
         [GeneratedCode("T4MVC", "2.0")]
         public readonly string Name = "mvc";
         [GeneratedCode("T4MVC", "2.0")]
@@ -69,18 +69,18 @@ namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
             public readonly string Index = ("Index").ToLowerInvariant();
             public readonly string CoreHtml = ("CoreHtml").ToLowerInvariant();
             public readonly string CoreForm = ("CoreForm").ToLowerInvariant();
-            public readonly string BootstrapHtml = ("BootstrapHtml").ToLowerInvariant();
-            public readonly string BootstrapForm = ("BootstrapForm").ToLowerInvariant();
+            public readonly string JQueryUIHtml = ("JQueryUIHtml").ToLowerInvariant();
+            public readonly string JQueryUIForm = ("JQueryUIForm").ToLowerInvariant();
             public readonly string ActionMessageDemo = ("ActionMessageDemo").ToLowerInvariant();
             public readonly string ActionResults = ("ActionResults").ToLowerInvariant();
         }
 
 
-        static readonly ActionParamsClass_BootstrapHtml s_params_BootstrapHtml = new ActionParamsClass_BootstrapHtml();
+        static readonly ActionParamsClass_JQueryUIHtml s_params_JQueryUIHtml = new ActionParamsClass_JQueryUIHtml();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public ActionParamsClass_BootstrapHtml BootstrapHtmlParams { get { return s_params_BootstrapHtml; } }
+        public ActionParamsClass_JQueryUIHtml JQueryUIHtmlParams { get { return s_params_JQueryUIHtml; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public class ActionParamsClass_BootstrapHtml
+        public class ActionParamsClass_JQueryUIHtml
         {
             public readonly string msg = ("msg").ToLowerInvariant();
         }
@@ -94,22 +94,12 @@ namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
-                public readonly string ActionResults = "ActionResults";
-                public readonly string BootstrapForm = "BootstrapForm";
-                public readonly string BootstrapHtml = "BootstrapHtml";
-                public readonly string CoreForm = "CoreForm";
-                public readonly string CoreHtml = "CoreHtml";
             }
-            public readonly string ActionResults = "~/Areas/Bootstrap/Views/Mvc/ActionResults.cshtml";
-            public readonly string BootstrapForm = "~/Areas/Bootstrap/Views/Mvc/BootstrapForm.cshtml";
-            public readonly string BootstrapHtml = "~/Areas/Bootstrap/Views/Mvc/BootstrapHtml.cshtml";
-            public readonly string CoreForm = "~/Areas/Bootstrap/Views/Mvc/CoreForm.cshtml";
-            public readonly string CoreHtml = "~/Areas/Bootstrap/Views/Mvc/CoreHtml.cshtml";
         }
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-    public class T4MVC_MvcController : WebExtras.DemoApp.Areas.Bootstrap.Controllers.MvcController
+    public class T4MVC_MvcController : WebExtras.DemoApp.Areas.JQueryUI.Controllers.MvcController
     {
         public T4MVC_MvcController() : base(Dummy.Instance) { }
 
@@ -131,16 +121,16 @@ namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult BootstrapHtml(bool? msg)
+        public override System.Web.Mvc.ActionResult JQueryUIHtml(bool? msg)
         {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.BootstrapHtml);
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.JQueryUIHtml);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "msg", msg);
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult BootstrapForm()
+        public override System.Web.Mvc.ActionResult JQueryUIForm()
         {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.BootstrapForm);
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.JQueryUIForm);
             return callInfo;
         }
 

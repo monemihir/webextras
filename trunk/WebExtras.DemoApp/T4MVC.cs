@@ -8,10 +8,16 @@
 #region T4MVC
 
 using System;
-using System.CodeDom.Compiler;
 using System.Diagnostics;
+using System.CodeDom.Compiler;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Web;
+using System.Web.Hosting;
 using System.Web.Mvc;
+using System.Web.Mvc.Ajax;
+using System.Web.Mvc.Html;
 using System.Web.Routing;
 using T4MVC;
 
@@ -41,7 +47,9 @@ namespace T4MVC
     public class JQueryUIClass
     {
         public readonly string Name = "jqueryui";
+        public WebExtras.DemoApp.Areas.JQueryUI.Controllers.CoreController Core = new WebExtras.DemoApp.Areas.JQueryUI.Controllers.T4MVC_CoreController();
         public WebExtras.DemoApp.Areas.JQueryUI.Controllers.HomeController Home = new WebExtras.DemoApp.Areas.JQueryUI.Controllers.T4MVC_HomeController();
+        public WebExtras.DemoApp.Areas.JQueryUI.Controllers.MvcController Mvc = new WebExtras.DemoApp.Areas.JQueryUI.Controllers.T4MVC_MvcController();
         public T4MVC.JQueryUI.SharedController Shared = new T4MVC.JQueryUI.SharedController();
     }
 }
@@ -127,6 +135,8 @@ namespace Links
         private const string URLPATH = "~/Content";
         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+        public static readonly string _960_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/960.min.css") ? Url("960.min.css") : Url("960.css");
+             
         public static readonly string bootstrap_2_3_1_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/bootstrap-2.3.1.min.css") ? Url("bootstrap-2.3.1.min.css") : Url("bootstrap-2.3.1.css");
              
         public static readonly string favicon_ico = Url("favicon.ico");
@@ -185,21 +195,20 @@ namespace Links
                 public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                 public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                 public static readonly string animated_overlay_gif = Url("animated-overlay.gif");
-                public static readonly string ui_bg_flat_0_aaaaaa_40x100_png = Url("ui-bg_flat_0_aaaaaa_40x100.png");
-                public static readonly string ui_bg_flat_55_fbec88_40x100_png = Url("ui-bg_flat_55_fbec88_40x100.png");
-                public static readonly string ui_bg_glass_75_d0e5f5_1x400_png = Url("ui-bg_glass_75_d0e5f5_1x400.png");
-                public static readonly string ui_bg_glass_85_dfeffc_1x400_png = Url("ui-bg_glass_85_dfeffc_1x400.png");
-                public static readonly string ui_bg_glass_95_fef1ec_1x400_png = Url("ui-bg_glass_95_fef1ec_1x400.png");
-                public static readonly string ui_bg_gloss_wave_55_5c9ccc_500x100_png = Url("ui-bg_gloss-wave_55_5c9ccc_500x100.png");
-                public static readonly string ui_bg_inset_hard_100_f5f8f9_1x100_png = Url("ui-bg_inset-hard_100_f5f8f9_1x100.png");
-                public static readonly string ui_bg_inset_hard_100_fcfdfd_1x100_png = Url("ui-bg_inset-hard_100_fcfdfd_1x100.png");
-                public static readonly string ui_icons_217bc0_256x240_png = Url("ui-icons_217bc0_256x240.png");
-                public static readonly string ui_icons_2e83ff_256x240_png = Url("ui-icons_2e83ff_256x240.png");
-                public static readonly string ui_icons_469bdd_256x240_png = Url("ui-icons_469bdd_256x240.png");
-                public static readonly string ui_icons_6da8d5_256x240_png = Url("ui-icons_6da8d5_256x240.png");
-                public static readonly string ui_icons_cd0a0a_256x240_png = Url("ui-icons_cd0a0a_256x240.png");
-                public static readonly string ui_icons_d8e7f3_256x240_png = Url("ui-icons_d8e7f3_256x240.png");
-                public static readonly string ui_icons_f9bd01_256x240_png = Url("ui-icons_f9bd01_256x240.png");
+                public static readonly string ui_bg_flat_30_cccccc_40x100_png = Url("ui-bg_flat_30_cccccc_40x100.png");
+                public static readonly string ui_bg_flat_50_5c5c5c_40x100_png = Url("ui-bg_flat_50_5c5c5c_40x100.png");
+                public static readonly string ui_bg_glass_20_555555_1x400_png = Url("ui-bg_glass_20_555555_1x400.png");
+                public static readonly string ui_bg_glass_40_0078a3_1x400_png = Url("ui-bg_glass_40_0078a3_1x400.png");
+                public static readonly string ui_bg_glass_40_ffc73d_1x400_png = Url("ui-bg_glass_40_ffc73d_1x400.png");
+                public static readonly string ui_bg_gloss_wave_25_333333_500x100_png = Url("ui-bg_gloss-wave_25_333333_500x100.png");
+                public static readonly string ui_bg_highlight_soft_80_eeeeee_1x100_png = Url("ui-bg_highlight-soft_80_eeeeee_1x100.png");
+                public static readonly string ui_bg_inset_soft_25_000000_1x100_png = Url("ui-bg_inset-soft_25_000000_1x100.png");
+                public static readonly string ui_bg_inset_soft_30_f58400_1x100_png = Url("ui-bg_inset-soft_30_f58400_1x100.png");
+                public static readonly string ui_icons_222222_256x240_png = Url("ui-icons_222222_256x240.png");
+                public static readonly string ui_icons_4b8e0b_256x240_png = Url("ui-icons_4b8e0b_256x240.png");
+                public static readonly string ui_icons_a83300_256x240_png = Url("ui-icons_a83300_256x240.png");
+                public static readonly string ui_icons_cccccc_256x240_png = Url("ui-icons_cccccc_256x240.png");
+                public static readonly string ui_icons_ffffff_256x240_png = Url("ui-icons_ffffff_256x240.png");
             }
         
         }

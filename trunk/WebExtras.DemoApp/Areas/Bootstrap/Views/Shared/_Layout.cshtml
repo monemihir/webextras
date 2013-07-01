@@ -34,7 +34,7 @@
   <br />
   <div class="navbar navbar-fixed-top navbar-inverse">
     <div class="navbar-inner">
-      @Html.Hyperlink("WebExtras", "/").AddCssClass("brand")
+      @Html.Hyperlink("WebExtras", Url.Content("~/")).AddCssClass("brand")
       <ul class="nav">
         <li class="@Html.SelectedTab("Core", "Generic")">@Html.ActionLink("Core", MVC.Bootstrap.Core.Generic())</li>
         <li class="@Html.SelectedTab("Core", "Datatables")">@Html.ActionLink("jQuery Datatables", MVC.Bootstrap.Core.Datatables())</li>
@@ -61,7 +61,7 @@
     </div>
   </div>
   <div class="container-fluid main">
-    <small class="well affix documentation-affix">@Html.Hyperlink("Stable Docs", "http://mihirmone.dyndns.org/appdocs/webextras") | @Html.Hyperlink("Nightly Docs", "http://mihirmone.dyndns.org/nightly/webextras")</small>
+    <small class="well affix documentation-affix">@Html.Hyperlink("Stable Docs", "http://mihirmone.dyndns.org/appdocs/webextras/bootstrap") | @Html.Hyperlink("Nightly Docs", "http://mihirmone.dyndns.org/nightly/webextras/bootstrap")</small>
     @RenderBody()
   </div>
   <footer>

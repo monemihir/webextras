@@ -115,7 +115,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Bootstrap\BootstrapAreaRegistration.cs" />
+    <Compile Include="Areas\JQueryUI\Controllers\CoreController.cs" />
     <Compile Include="Areas\JQueryUI\Controllers\HomeController.cs" />
+    <Compile Include="Areas\JQueryUI\Controllers\MvcController.cs" />
     <Compile Include="Areas\JQueryUI\JQueryUIAreaRegistration.cs" />
     <Compile Include="AssetsController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
@@ -148,7 +150,13 @@
     <Compile Include="Areas\Bootstrap\Models\Core\PostbackSetupViewModel.cs" />
     <Compile Include="Areas\Bootstrap\Models\Mvc\BootstrapFormViewModel.cs" />
     <Compile Include="Areas\Bootstrap\Models\Mvc\BootstrapHtmlViewModel.cs" />
+    <Compile Include="JQueryUI.CoreController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
     <Compile Include="JQueryUI.HomeController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="JQueryUI.MvcController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="JQueryUI.SharedController.generated.cs">
@@ -162,7 +170,22 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\960.css" />
     <Content Include="Content\bootstrap-2.3.1.css" />
+    <Content Include="Content\img\jqueryui\ui-bg_flat_30_cccccc_40x100.png" />
+    <Content Include="Content\img\jqueryui\ui-bg_flat_50_5c5c5c_40x100.png" />
+    <Content Include="Content\img\jqueryui\ui-bg_glass_20_555555_1x400.png" />
+    <Content Include="Content\img\jqueryui\ui-bg_glass_40_0078a3_1x400.png" />
+    <Content Include="Content\img\jqueryui\ui-bg_glass_40_ffc73d_1x400.png" />
+    <Content Include="Content\img\jqueryui\ui-bg_gloss-wave_25_333333_500x100.png" />
+    <Content Include="Content\img\jqueryui\ui-bg_highlight-soft_80_eeeeee_1x100.png" />
+    <Content Include="Content\img\jqueryui\ui-bg_inset-soft_25_000000_1x100.png" />
+    <Content Include="Content\img\jqueryui\ui-bg_inset-soft_30_f58400_1x100.png" />
+    <Content Include="Content\img\jqueryui\ui-icons_222222_256x240.png" />
+    <Content Include="Content\img\jqueryui\ui-icons_4b8e0b_256x240.png" />
+    <Content Include="Content\img\jqueryui\ui-icons_a83300_256x240.png" />
+    <Content Include="Content\img\jqueryui\ui-icons_cccccc_256x240.png" />
+    <Content Include="Content\img\jqueryui\ui-icons_ffffff_256x240.png" />
     <Content Include="Content\jquery.ui.menubar.css" />
     <Content Include="Content\style-jqueryui.css" />
     <Content Include="Content\favicon.ico" />
@@ -184,21 +207,6 @@
     <Content Include="Content\img\datatables\sort_desc_disabled.png" />
     <Content Include="Content\img\draft.png" />
     <Content Include="Content\img\jqueryui\animated-overlay.gif" />
-    <Content Include="Content\img\jqueryui\ui-bg_flat_0_aaaaaa_40x100.png" />
-    <Content Include="Content\img\jqueryui\ui-bg_flat_55_fbec88_40x100.png" />
-    <Content Include="Content\img\jqueryui\ui-bg_glass_75_d0e5f5_1x400.png" />
-    <Content Include="Content\img\jqueryui\ui-bg_glass_85_dfeffc_1x400.png" />
-    <Content Include="Content\img\jqueryui\ui-bg_glass_95_fef1ec_1x400.png" />
-    <Content Include="Content\img\jqueryui\ui-bg_gloss-wave_55_5c9ccc_500x100.png" />
-    <Content Include="Content\img\jqueryui\ui-bg_inset-hard_100_f5f8f9_1x100.png" />
-    <Content Include="Content\img\jqueryui\ui-bg_inset-hard_100_fcfdfd_1x100.png" />
-    <Content Include="Content\img\jqueryui\ui-icons_217bc0_256x240.png" />
-    <Content Include="Content\img\jqueryui\ui-icons_2e83ff_256x240.png" />
-    <Content Include="Content\img\jqueryui\ui-icons_469bdd_256x240.png" />
-    <Content Include="Content\img\jqueryui\ui-icons_6da8d5_256x240.png" />
-    <Content Include="Content\img\jqueryui\ui-icons_cd0a0a_256x240.png" />
-    <Content Include="Content\img\jqueryui\ui-icons_d8e7f3_256x240.png" />
-    <Content Include="Content\img\jqueryui\ui-icons_f9bd01_256x240.png" />
     <Content Include="Content\inline\build.txt" />
     <Content Include="Content\inline\changelog.html" />
     <Content Include="Content\jquery-ui-1.10.3.custom.css" />
@@ -334,6 +342,7 @@
     <Content Include="Areas\JQueryUI\Views\_ViewStart.cshtml" />
     <Content Include="Areas\JQueryUI\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\JQueryUI\Views\Home\Index.cshtml" />
+    <Content Include="Areas\JQueryUI\Views\Core\Generic.cshtml" />
     <None Include="Properties\PublishProfiles\Default.pubxml" />
     <Content Include="Areas\Bootstrap\Views\Core\_PieGraph.cshtml" />
     <Content Include="Areas\Bootstrap\Views\Core\_BarGraph.cshtml" />
