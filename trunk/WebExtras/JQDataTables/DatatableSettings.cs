@@ -631,10 +631,15 @@ namespace WebExtras.JQDataTables
     {
       // Handle resetting of pagination if we are using jQueryUI, pagination is
       // enabled but the pagination type is not set. Default to 'full_numbers'
-      if ((bJQueryUI.HasValue && bJQueryUI.Value == true) && 
-        bPaginate && 
-        sPaginationType == EPagination.Bootstrap.GetStringValue())
-        sPaginationType = EPagination.FullNumbers.GetStringValue();
+      if ((bJQueryUI.HasValue && bJQueryUI.Value == true) && bPaginate)
+      {
+        if (sPaginationType == EPagination.Bootstrap.GetStringValue())
+          sPaginationType = EPagination.FullNumbers.GetStringValue();
+
+        if (sDom.Contains("row-fluid") || sDom.Contains("span") || sDom.Contains("row"))
+          sDom = null;
+      }
+        
 
       return JsonConvert.SerializeObject(
         this,

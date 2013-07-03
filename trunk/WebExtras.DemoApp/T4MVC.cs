@@ -135,8 +135,6 @@ namespace Links
         private const string URLPATH = "~/Content";
         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
-        public static readonly string _960_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/960.min.css") ? Url("960.min.css") : Url("960.css");
-             
         public static readonly string bootstrap_2_3_1_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/bootstrap-2.3.1.min.css") ? Url("bootstrap-2.3.1.min.css") : Url("bootstrap-2.3.1.css");
              
         public static readonly string favicon_ico = Url("favicon.ico");
@@ -257,12 +255,18 @@ namespace Links
     
         public static readonly string style_bootstrap_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/style-bootstrap.min.css") ? Url("style-bootstrap.min.css") : Url("style-bootstrap.css");
              
+        public static readonly string style_jqueryui_less = Url("style-jqueryui.less");
         public static readonly string style_jqueryui_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/style-jqueryui.min.css") ? Url("style-jqueryui.min.css") : Url("style-jqueryui.css");
              
+        public static readonly string style_jqueryui_min_css = Url("style-jqueryui.min.css");
+        public static readonly string style_less = Url("style.less");
         public static readonly string style_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/style.min.css") ? Url("style.min.css") : Url("style.css");
              
+        public static readonly string style_min_css = Url("style.min.css");
+        public static readonly string webextras_less = Url("webextras.less");
         public static readonly string webextras_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/webextras.min.css") ? Url("webextras.min.css") : Url("webextras.css");
              
+        public static readonly string webextras_min_css = Url("webextras.min.css");
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]

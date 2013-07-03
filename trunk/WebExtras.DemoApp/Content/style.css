@@ -1,143 +1,113 @@
-﻿html
-{
+﻿/* Main LESS definitions */
+html {
   background: url('png/bk.png') repeat center center fixed;
 }
-
-body
-{
-  background-color: transparent;
-  color: #232323;
-  font-family: Arial,sans-serif;
-  font-size: .85em;
+body {
   margin: 0 auto;
   width: 980px;
+  background-color: transparent;
+  color: #232323;
+  font-size: .85em;
+  font-family: Arial, sans-serif;
 }
-
-header, footer, nav, section
-{
+header,
+footer,
+nav,
+section {
   display: block;
 }
-
-.dependancies
-{
+.dependancies {
   list-style: none;
 }
-
-.comment
-{
+.comment {
   color: green;
 }
-
-.highlight
-{
+.highlight {
+  padding: 3px;
   background-color: #fafafa;
-  background-image: -moz-linear-gradient(top, #ddd, #ccc);
+  background-image: -moz-linear-gradient(top, #dddddd, #cccccc);
+  color: #d14;
   -moz-border-radius: 2px;
   -webkit-border-radius: 2px;
   border-radius: 2px;
-  color: #d14;
-  padding: 3px;
 }
-
-.output
-{
-  background-color: #fff;
+.output {
+  padding: 5px;
   border: 1px solid rgba(0, 0, 0, 0.15);
+  background-color: #ffffff;
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
   border-radius: 4px;
-  padding: 5px;
 }
-
-footer
-{
-  padding-bottom: 1%;
+footer {
   padding-right: 3%;
+  padding-bottom: 1%;
   text-align: right;
 }
-
-.documentation-affix
-{
+.documentation-affix {
+  z-index: 2000;
+  margin-top: 3px;
   border: 0;
   -moz-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
   -webkit-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
   box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
-  color: #fff;
-  margin-top: 3px;
+  color: #ffffff;
   -webkit-text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  z-index: 2000;
 }
-
-  .documentation-affix a
-  {
-    color: #FFFFFF;
-    text-decoration: underline;
-  }
-
-pre
-{
-  background-color: #fff;
-  margin-top: 5px;  
+.documentation-affix a {
+  color: #ffffff;
+  text-decoration: underline;
 }
-
-#actionMessage
-{
+pre {
+  margin-top: 5px;
+  background-color: #ffffff;
+}
+#actionMessage {
   top: 45px;
 }
-
 /* Generic styles */
-.content
-{
-  background-color: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  -moz-border-radius: 4px 4px 4px 4px;
-  -webkit-border-radius: 4px 4px 4px 4px;
-  border-radius: 4px 4px 4px 4px;
+.content {
   display: block;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  padding: 25px 5px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  background-color: #ffffff;
   font-size: 13px;
   line-height: 20px;
-  margin-bottom: 10px;
-  margin-top: 5px;
-  padding: 25px 5px;
 }
-
-.flot-graph
-{
+.flot-graph {
   display: block;
-  height: 200px;
   margin: 0 auto;
   width: 90%;
+  height: 200px;
 }
-
-.flot-pie-graph
-{
+.flot-pie-graph {
   display: block;
-  height: 300px;
   margin: 0 auto;
   width: 50%;
+  height: 300px;
 }
-
-.changelog
-{
-  background-color: #FFFFFF;
-  border: 1px solid #ddd;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  border-radius: 5px;
-  height: 500px;
+.changelog {
   overflow-y: scroll;
   padding: 5px;
+  height: 500px;
+  border: 1px solid #DDDDDD;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  background-color: #ffffff;
 }
-
-#build-date
-{
+#build-date {
   padding-left: 4%;
 }
-
 hr {
-  border: 0 solid #ccc;
-  border-top-width: 1px;
   clear: both;
   height: 0;
+  border: 0 solid #DDDDDD;
+  border-top-width: 1px;
 }

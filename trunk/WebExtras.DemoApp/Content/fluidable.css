@@ -6,7 +6,7 @@
  * Date: 26.05.2013
  */
 .page {
-  max-width: 980px;
+  max-width: 970px;
   margin: 0 auto;
 }
 .col-12 {
@@ -264,7 +264,6 @@
   float: left;
 }
 .col-group {
-  margin: 0 16px;
   zoom: 1;
 }
 .col-group:after {
@@ -313,6 +312,9 @@ h6 {
 }
 .center-block {
   margin: 0 auto;
+}
+[class^="col-"] pre {
+  margin-right: 5px;
 }
 @media screen and (max-width: 768px) {
   .col-group [class*="col-"] {

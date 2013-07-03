@@ -171,7 +171,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\JQueryUI\Views\Core\DatatablePartial.ascx" />
-    <Content Include="Content\960.css" />
     <Content Include="Content\bootstrap-2.3.1.css" />
     <Content Include="Content\fluidable.css">
       <DependentUpon>fluidable.less</DependentUpon>
@@ -195,7 +194,7 @@
     <Content Include="Content\img\jqueryui\ui-icons_cccccc_256x240.png" />
     <Content Include="Content\img\jqueryui\ui-icons_ffffff_256x240.png" />
     <Content Include="Content\jquery.ui.menubar.css" />
-    <Content Include="Content\style-jqueryui.css" />
+    <None Include="Content\style-jqueryui.less" />
     <Content Include="Content\favicon.ico" />
     <Content Include="Content\favicon.png" />
     <Content Include="Content\font-awesome.css" />
@@ -224,8 +223,26 @@
     <Content Include="Content\jquery.jScrollPane-2.0.0beta12.css" />
     <Content Include="Content\png\bk.png" />
     <Content Include="Content\png\youtube-logo.png" />
-    <Content Include="Content\style.css" />
-    <Content Include="Content\webextras.css" />
+    <Content Include="Content\style-jqueryui.css">
+      <DependentUpon>style-jqueryui.less</DependentUpon>
+    </Content>
+    <Content Include="Content\style-jqueryui.min.css">
+      <DependentUpon>style-jqueryui.less</DependentUpon>
+    </Content>
+    <None Include="Content\style.less" />
+    <Content Include="Content\style.css">
+      <DependentUpon>style.less</DependentUpon>
+    </Content>
+    <Content Include="Content\style.min.css">
+      <DependentUpon>style.less</DependentUpon>
+    </Content>
+    <None Include="Content\webextras.less" />
+    <Content Include="Content\webextras.css">
+      <DependentUpon>webextras.less</DependentUpon>
+    </Content>
+    <Content Include="Content\webextras.min.css">
+      <DependentUpon>webextras.less</DependentUpon>
+    </Content>
     <Content Include="Global.asax" />
     <Content Include="Content\style-bootstrap.css" />
     <Content Include="lgpl-3.0.htm">
