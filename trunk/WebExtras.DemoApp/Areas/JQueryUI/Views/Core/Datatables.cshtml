@@ -5,7 +5,7 @@
   ViewBag.Title = "jQuery Datatables";
 }
 <h3 class="keep-center">jQuery Datatables Bindings</h3>
-<div class="col-12">
+<div class="col-group">
   <div class="col-6">
     <div class="col-12">
       <div class="col-3">
@@ -24,9 +24,8 @@
       </div>
     </div>
   </div>
-  <div class="col-6">
-    <div class="col-12">
-      <div class="col-3">
+  <div class="col-offset-7">
+      <div class="col-4">
         <strong>Dependancies</strong>
       </div>
       <div class="col-4">
@@ -37,9 +36,9 @@
           <li>webextras.css</li>
         </ul>
       </div>
-    </div>
   </div>
-  @*<div class="row-fluid">
+</div>
+@*<div class="row-fluid">
     <div class="span6">
       <div class="row-fluid">
         <div class="span3">
@@ -71,9 +70,9 @@
       </div>
     </div>
   </div>*@
-  <div class="row-fluid">
-    <div class="span9">
-      Steps involved in creating a Datatable
+<div class="row-fluid">
+  <div class="span9">
+    Steps involved in creating a Datatable
     <ul>
       <li>Creating the column definitions</li>
       <li>Creating the table settings</li>
@@ -81,52 +80,51 @@
       <li>Creating the table object</li>
       <li>And finally the output.....</li>
     </ul>
-    </div>
   </div>
-  <ul id="dt-nav" class="nav nav-pills">
-    <li>@Html.ActionLink("Basic Setup", MVC.JQueryUI.Core.Datatables(0))</li>
-    <li>@Html.ActionLink("Ajax Setup", MVC.JQueryUI.Core.Datatables(1))</li>
-    <li>@Html.ActionLink("Paging", MVC.JQueryUI.Core.Datatables(2))</li>
-    <li>@Html.ActionLink("Sorting", MVC.JQueryUI.Core.Datatables(3))</li>
-    <li>@Html.ActionLink("Adding status column", MVC.JQueryUI.Core.Datatables(4))</li>
-    <li>@Html.ActionLink("Adding extra postbacks", MVC.JQueryUI.Core.Datatables(5))</li>
-  </ul>
-
-  <script type="text/javascript">
-    $(document).ready(function () {
-      $('#dt-nav li:eq(' + @Model.DisplayMode + ')').addClass('active');
-    });
-  </script>
-
-  @switch (Model.DisplayMode)
-  {
-    case 1:
-    @Html.Partial(MVC.JQueryUI.Core.Views._AjaxSetup, Model.Table)
-      break;
-
-    case 2:
-    @Html.Partial(MVC.JQueryUI.Core.Views._PagedSetup, Model.Table)
-      break;
-
-    case 3:
-    @Html.Partial(MVC.JQueryUI.Core.Views._SortedSetup, Model.Table)
-      break;
-
-    case 4:
-    @Html.Partial(MVC.JQueryUI.Core.Views._StatusSetup, Model.Table)
-      break;
-
-    case 5:
-    @Html.Partial(MVC.JQueryUI.Core.Views._PostbackSetup, Model)
-      break;
-
-    case 6:
-    @Html.Partial(MVC.JQueryUI.Core.Views._PostbackResult, Model)
-      break;
-
-    case 0:
-    default:
-    @Html.Partial(MVC.JQueryUI.Core.Views._BasicSetup, Model.Table)
-      break;
-  }
 </div>
+<ul id="dt-nav" class="nav nav-pills">
+  <li>@Html.ActionLink("Basic Setup", MVC.JQueryUI.Core.Datatables(0))</li>
+  <li>@Html.ActionLink("Ajax Setup", MVC.JQueryUI.Core.Datatables(1))</li>
+  <li>@Html.ActionLink("Paging", MVC.JQueryUI.Core.Datatables(2))</li>
+  <li>@Html.ActionLink("Sorting", MVC.JQueryUI.Core.Datatables(3))</li>
+  <li>@Html.ActionLink("Adding status column", MVC.JQueryUI.Core.Datatables(4))</li>
+  <li>@Html.ActionLink("Adding extra postbacks", MVC.JQueryUI.Core.Datatables(5))</li>
+</ul>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $('#dt-nav li:eq(' + @Model.DisplayMode + ')').addClass('active');
+  });
+</script>
+
+@switch (Model.DisplayMode)
+{
+  case 1:
+  @Html.Partial(MVC.JQueryUI.Core.Views._AjaxSetup, Model.Table)
+    break;
+
+  case 2:
+  @Html.Partial(MVC.JQueryUI.Core.Views._PagedSetup, Model.Table)
+    break;
+
+  case 3:
+  @Html.Partial(MVC.JQueryUI.Core.Views._SortedSetup, Model.Table)
+    break;
+
+  case 4:
+  @Html.Partial(MVC.JQueryUI.Core.Views._StatusSetup, Model.Table)
+    break;
+
+  case 5:
+  @Html.Partial(MVC.JQueryUI.Core.Views._PostbackSetup, Model)
+    break;
+
+  case 6:
+  @Html.Partial(MVC.JQueryUI.Core.Views._PostbackResult, Model)
+    break;
+
+  case 0:
+  default:
+  @Html.Partial(MVC.JQueryUI.Core.Views._BasicSetup, Model.Table)
+    break;
+}

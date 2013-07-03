@@ -80,6 +80,7 @@ namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
 
       DatatablesViewModel model = new DatatablesViewModel();
       string tableId = string.Empty;
+      string tableHeight = null;
 
       IEnumerable<AOColumn> dtAOColumns = new List<AOColumn> { 
         new AOColumn { sTitle = "First Column", sWidth = "25%" },
@@ -94,12 +95,12 @@ namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
       {
         case 1:
           tableId = "ajax-table";
-          dtSettings = new DatatableSettings(5, dtAOColumns, new AASort(0, ESort.Ascending), MVC.Bootstrap.Core.ActionNames.GetAjaxData, "ajax records", "150px");
+          dtSettings = new DatatableSettings(5, dtAOColumns, new AASort(0, ESort.Ascending), MVC.Bootstrap.Core.ActionNames.GetAjaxData, "ajax records", tableHeight);
           break;
 
         case 2:
           tableId = "paged-table";
-          dtSettings = new DatatableSettings(5, dtAOColumns, new AASort(0, ESort.Ascending), MVC.Bootstrap.Core.ActionNames.GetPagedData, "paged records", "150px");
+          dtSettings = new DatatableSettings(5, dtAOColumns, new AASort(0, ESort.Ascending), MVC.Bootstrap.Core.ActionNames.GetPagedData, "paged records", tableHeight);
           dtRecords = GetPagedRecords(new DatatableFilters { iDisplayStart = 0, iDisplayLength = 5 });
           break;
 
@@ -113,13 +114,13 @@ namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
             new AOColumn { sTitle = "Numeric Column", bSortable = true },
             new AOColumn { sTitle = "Currency Column", bSortable = true }
           };
-          dtSettings = new DatatableSettings(5, dtAOColumns, new AASort(0, ESort.Ascending), MVC.Bootstrap.Core.ActionNames.GetSortedData, "sorted records", "150px");
+          dtSettings = new DatatableSettings(5, dtAOColumns, new AASort(0, ESort.Ascending), MVC.Bootstrap.Core.ActionNames.GetSortedData, "sorted records", tableHeight);
           dtRecords = GetSortedRecords(new DatatableFilters { iDisplayStart = 0, iDisplayLength = 5 });
           break;
 
         case 4:
           tableId = "status-table";
-          dtSettings = new DatatableSettings(5, dtAOColumns, new AASort(0, ESort.Ascending), null, "status records", "150px");
+          dtSettings = new DatatableSettings(5, dtAOColumns, new AASort(0, ESort.Ascending), null, "status records", tableHeight);
           IEnumerable<string[]> statusData = new string[][]
           {
             new string[] { "first column row 1", "second column row 1", "error" },    
@@ -140,7 +141,7 @@ namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
         case 5:
         default:
           tableId = "basic-table";
-          dtSettings = new DatatableSettings(5, dtAOColumns, new AASort(0, ESort.Ascending), null, "basic records", "150px");
+          dtSettings = new DatatableSettings(5, dtAOColumns, new AASort(0, ESort.Ascending), null, "basic records", tableHeight);
           IEnumerable<string[]> dtData = new string[][]
           {
             new string[] { "first column row 1", "second column row 1" },    
@@ -167,13 +168,15 @@ namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
     [HttpPost]
     public virtual ActionResult Datatables(DatatablesViewModel viewModel)
     {
+      string tableHeight = null;
+
       // create the basic table again
       IEnumerable<AOColumn> dtAOColumns = new List<AOColumn> { 
         new AOColumn { sTitle = "First Column", sWidth = "25%" },
         new AOColumn { sTitle = "Second Column" }
       };
 
-      DatatableSettings dtSettings = new DatatableSettings(5, dtAOColumns, new AASort(0, ESort.Ascending), null, "basic records", "150px");
+      DatatableSettings dtSettings = new DatatableSettings(5, dtAOColumns, new AASort(0, ESort.Ascending), null, "basic records", tableHeight);
       IEnumerable<string[]> dtData = new string[][]
       {
         new string[] { "first column row 1", "second column row 1" },    
@@ -192,7 +195,7 @@ namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
 
       // create the postbacks enabled table
       IEnumerable<PostbackItem> dtPostbacks = PostbackItem.FromObject(viewModel.PostbackFormFields);
-      dtSettings = new DatatableSettings(5, dtAOColumns, new AASort(0, ESort.Ascending), MVC.Bootstrap.Core.ActionNames.GetPostbackData, "searched/filtered records", "150px");
+      dtSettings = new DatatableSettings(5, dtAOColumns, new AASort(0, ESort.Ascending), MVC.Bootstrap.Core.ActionNames.GetPostbackData, "searched/filtered records", tableHeight);
       viewModel.PostbackEnabledTable = new Datatable("postbacks-table", dtSettings, null, dtPostbacks);
 
       // update the display mode
