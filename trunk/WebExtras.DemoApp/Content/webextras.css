@@ -26,16 +26,16 @@ input[type="radio"] {
   width: 100%;
 }
 .keep-center {
-  text-align: center;
+  text-align: center !important;
 }
 .keep-right {
-  text-align: right;
+  text-align: right !important;
 }
 .keep-left {
-  text-align: left;
+  text-align: left !important;
 }
 .keep-middle {
-  vertical-align: middle;
+  vertical-align: middle !important;
 }
 .pull-right {
   float: right;
