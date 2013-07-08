@@ -177,6 +177,8 @@ namespace WebExtras.DemoApp.Areas.JQueryUI.Controllers
       };
 
       DatatableSettings dtSettings = new DatatableSettings(5, dtAOColumns, new AASort(0, ESort.Ascending), null, "basic records", "150px");
+      dtSettings.bJQueryUI = true;
+
       IEnumerable<string[]> dtData = new string[][]
       {
         new string[] { "first column row 1", "second column row 1" },    
@@ -196,12 +198,13 @@ namespace WebExtras.DemoApp.Areas.JQueryUI.Controllers
       // create the postbacks enabled table
       IEnumerable<PostbackItem> dtPostbacks = PostbackItem.FromObject(viewModel.PostbackFormFields);
       dtSettings = new DatatableSettings(5, dtAOColumns, new AASort(0, ESort.Ascending), MVC.Bootstrap.Core.ActionNames.GetPostbackData, "searched/filtered records", "150px");
+      dtSettings.bJQueryUI = true;
       viewModel.PostbackEnabledTable = new Datatable("postbacks-table", dtSettings, null, dtPostbacks);
 
       // update the display mode
       viewModel.DisplayMode = 6;
 
-      return View(MVC.Bootstrap.Core.Views.Datatables, viewModel);
+      return View(MVC.JQueryUI.Core.Views.Datatables, viewModel);
     }
 
     //

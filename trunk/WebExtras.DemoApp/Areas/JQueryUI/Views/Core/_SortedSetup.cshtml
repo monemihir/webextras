@@ -3,7 +3,7 @@
 <p>
   Sorting support can be added by slightly modifying the column definitions and using the <strong>Sort</strong> extension method.
 </p>
-<div class="well">
+<div class="ui-well">
   <h4>Updating the column definitions to enable sorting</h4>
   Column definitions are created by instantiating the <i>WebExtras.JQDataTables.AOColumn</i> class. In order to enable sorting
   on a column, you MUST set the Sortable property to <strong>true</strong>. By default this will be set to <strong>false</strong> by
@@ -20,7 +20,7 @@
   </code></pre>
 </div>
 
-<div class="well">
+<div class="ui-well">
   <h4>Creating table settings</h4>
   Table settings are created by instantiating the <i>WebExtras.JQDataTables.DatatableSettings</i> class 
   <pre><code>  
@@ -39,7 +39,7 @@
   </code></pre>
 </div>
 
-<div class="well">
+<div class="ui-well">
   <h4>Creating a data handler</h4>
   We make use of the C# LinqToSQL feature in order to simulate the sorting behavior. WebExtras provides an extension method for the 
   <strong>IEnumerable&lt;IEnumerable&lt;string&gt;&gt;</strong> interface which takes care of the sorting for us. 
@@ -71,7 +71,7 @@
   </code></pre>
 </div>
 
-<div class="well">
+<div class="ui-well">
   <h4>Make the first page of the table</h4>
   We need to create the first page of the table in order to have the paging behavior kick in. This should be done when you display
   the table the first time.
@@ -81,7 +81,7 @@
   </code></pre>
 </div>
 
-<div class="well">
+<div class="ui-well">
   <h4>A slightly modified AJAX callback handler</h4>
   We will now make use of the method that we have already created before to do our grunt work and get the data. The fact that
   we have used DatatableFilters as one of the parameters means that we can simply forward the filtering parameters we got 
@@ -96,14 +96,12 @@
   </code></pre>
 </div>
 
-<div class="well">
+<div class="ui-well">
   <h4>And our sorting enabled output is</h4>
-  <div class="output">
-    @Html.Partial(MVC.Bootstrap.Core.Views.DatatablePartial, Model)
-  </div>
+  @Html.Partial(MVC.Bootstrap.Core.Views.DatatablePartial, Model)
 </div>
 
-<div class="well">
+<div class="ui-well">
   <h4>Some details about the sorter extension</h4>
   <div class="content">
     <p>The sorter extension can currently handle columns with the following .NET base types and some special formats as listed below:</p>
@@ -123,7 +121,7 @@
   </div>
 </div>
 
-<div class="well">
+<div class="ui-well">
   <h4>But my data doesn't fit any of the default formats :(</h4>
   <p>
     All defaults sorters have a fixed way in which they try to parse data and then apply the sorting logic on it. 

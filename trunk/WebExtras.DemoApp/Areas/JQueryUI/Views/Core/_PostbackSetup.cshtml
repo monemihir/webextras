@@ -1,14 +1,13 @@
 ﻿@model WebExtras.DemoApp.Models.Core.DatatablesViewModel
 
 @using WebExtras.Core
-@using WebExtras.Mvc.Bootstrap
 @using WebExtras.Mvc.Html
 
 <p>
   Postbacks a way of adding additional filtering to our datatable results. These are especially useful when implementing 
   a search functionality.
 </p>
-<div class="well">
+<div class="ui-well">
   <h4>Creating the postbacks</h4>
   Postbacks are created by instantiating the <strong>WebExtras.JQDataTables.PostBackItem</strong> class. Postbacks are always created in the
   HTTP POST handler of our search method. Let's say that our post back handler entity class is as follows:
@@ -46,7 +45,7 @@
   that is not a .NET base type
 </div>
 
-<div class="well">
+<div class="ui-well">
   <h4>A slightly updated constructor definition for our datatable</h4>
   Now that we have added some postbacks, we need to setup our datatable to be able to handle some postbacks. So we have
   a slightly modified constructor for our datatable
@@ -56,7 +55,7 @@
   Notice that we are not passing in any datatable records. We are just leaving them as null.
 </div>
 
-<div class="well">
+<div class="ui-well">
   <h4>That's the HTTP POST handler</h4>
   <pre><code>
   public Datatable PostHandler(PostbacksSearchModel model)
@@ -82,7 +81,7 @@
   right, the search is not really happening here. This method only creates the skeleton for the view to be displayed to the user.
 </div>
 
-<div class="well">
+<div class="ui-well">
   <h4>An AJAX handler does the grunt work</h4>
   In the HTTP POST handler we have said that we want the AJAX handling to be done at the URL: <span class="highlight">"~/getpostbackdata"</span>.
   So let's now create this AJAX handler. This is where the grunt work of actually filtering/searching happens...
@@ -117,37 +116,39 @@
   </code></pre>
 </div>
 
-<div class="well">
+<div class="ui-well">
   <h4>The default table</h4>
   <p>
     We will be searching records based on this table
   </p>
-  <div class="output">
-    @Html.Partial(MVC.Bootstrap.Core.Views._Datatable, Model.Table)
-  </div>
+  @Html.Partial(MVC.JQueryUI.Core.Views._Datatable, Model.Table)
 </div>
 
-<div class="well">
+<div class="ui-well">
   <h4>Go ahead try it yourself</h4>
-  @using (Html.BeginForm(MVC.Bootstrap.Core.Datatables(), FormMethod.Post, new { @class = "form-horizontal" }))
+  @using (Html.BeginForm(MVC.JQueryUI.Core.Datatables(), FormMethod.Post))
   { 
-    <div class="control-group">
-      @Html.LabelFor(f => f.PostbackFormFields.FirstColumn, new { @class = "control-label" })
-      <div class="controls">
+    <div class="col-group">
+      <div class="col-2">
+        @Html.LabelFor(f => f.PostbackFormFields.FirstColumn)
+      </div>
+      <div class="col-4">
         @Html.TextBoxFor(f => f.PostbackFormFields.FirstColumn)
       </div>
     </div>
 
-    <div class="control-group">
-      @Html.LabelFor(f => f.PostbackFormFields.SecondColumn, new { @class = "control-label" })
-      <div class="controls">
+    <div class="col-group">
+      <div class="col-2">
+        @Html.LabelFor(f => f.PostbackFormFields.SecondColumn)
+      </div>
+      <div class="col-4">
         @Html.TextBoxFor(f => f.PostbackFormFields.SecondColumn)
       </div>
     </div>
 
-    <div class="control-group">
-      <div class="controls">
-        @Html.Button(EButton.Submit, "Submit").AsButton(EBootstrapButton.Primary)
+    <div class="col-group">
+      <div class="col-4 col-offset-2">
+        @Html.Button(EButton.Submit, "Submit").AddCssClass("ui-btn")
       </div>
     </div>
     

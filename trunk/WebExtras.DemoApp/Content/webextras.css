@@ -54,6 +54,19 @@ input[type="radio"] {
 table.dataTable thead th {
   border-bottom: 0;
 }
+table.dataTable thead th div.DataTables_sort_wrapper {
+  padding-right: 20px;
+  position: relative;
+}
+table.dataTable thead th div.DataTables_sort_wrapper span {
+  margin-top: -8px;
+  position: absolute;
+  right: 0;
+  top: 50%;
+}
+table.dataTable thead th .css_right {
+  float: right;
+}
 .dataTables_scrollBody {
   margin-top: -3px;
   background: #ffffff;

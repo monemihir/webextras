@@ -7,7 +7,7 @@
   in the CSS, you are free to modify and use any classes of you choosing.
 </p>
 
-<div class="well">
+<div class="ui-well">
   <h4>Modified Datatable constructor setup</h4>
   We enable the <strong>enableStatusColumn</strong> flag on the Datatable constructor
   <pre><code>   
@@ -15,7 +15,7 @@
   </code></pre>
 </div>
 
-<div class="well">
+<div class="ui-well">
   <h4>Making the data to be displayed</h4>
   Now when making the data to be displayed you can add an extra column containing any CSS classes that you would
   like to be used to add styling to the table rows.
@@ -30,7 +30,7 @@
   </code></pre>
 </div>
 
-<div class="well">
+<div class="ui-well">
   <h4>Modified Datatable constructor setup</h4>
   We enable the <strong>enableStatusColumn</strong> flag on the Datatable constructor
   <pre><code>   
@@ -38,7 +38,7 @@
   </code></pre>
 </div>
 
-<div class="well">
+<div class="ui-well">
   <h4>Extra CSS needed to get the coloring right</h4>
   We need to add the following CSS styles to the standard Datatables CSS file in order to get the coloring to work.  
   <pre><code>   
@@ -53,9 +53,7 @@
 </div>
 
 
-<div class="well">
+<div class="ui-well">
   <h4>And our status column enabled output is</h4>
-  <div class="output">
-    @Html.Partial(MVC.Bootstrap.Core.Views._Datatable, Model)
-  </div>
+  @Html.Partial(MVC.Bootstrap.Core.Views._Datatable, Model)
 </div>
