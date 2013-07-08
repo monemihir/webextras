@@ -69,6 +69,11 @@ namespace WebExtras.Mvc.Html
     /// <summary>
     /// HTML DIV tag
     /// </summary>
-    Div
+    Div,
+
+    /// <summary>
+    /// HTML SPAN tag
+    /// </summary>
+    Span
   }
 }

@@ -1,50 +1,69 @@
-﻿@mainTextColor: #333333;
+﻿@textColor: #333333;
+@borderColor: #AAAAAA;
 @white: #FFFFFF;
+@radius: 4px;
 
 // LESS MIXINS
-.active-or-hover() {
+.active-or-hover()
+{
   background: #0078a3 url(img/jqueryui/ui-bg_glass_40_0078a3_1x400.png) 50% 50% repeat-x;
   color: @white;
 }
 
 /* jQuery UI overrides */
-.ui-widget {
+.ui-widget
+{
   font-family: inherit;
   font-size: inherit;
 }
 
-.ui-button-text-icon-secondary .ui-button-text, .ui-button-text-icons .ui-button-text {
+.ui-button-text-icon-secondary .ui-button-text, .ui-button-text-icons .ui-button-text
+{
   padding: 0.4em 1.75em 0.4em 1em;
 }
 
-.ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited {
+.ui-state-active a, 
+.ui-state-active a:link, 
+.ui-state-active a:visited
+{
   color: inherit;
   text-decoration: none;
 }
 
-.brand {
+.ui-state-default, 
+.ui-widget-content .ui-state-default, 
+.ui-widget-header .ui-state-default {
+    font-weight: normal;
+}
+
+.brand
+{
   font-size: 20px;
   font-weight: 200;
 }
 
-  .brand.ui-menubar-link {
+  .brand.ui-menubar-link
+  {
     padding: 0 !important;
   }
 
-  .brand.ui-state-hover {
+  .brand.ui-state-hover
+  {
     background: none;
     color: inherit;
   }
 
-.ui-menubar {
+.ui-menubar
+{
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
   -webkit-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
   box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
   border-width: 0 0 1px;
-  border-color: @mainTextColor;
+  border-color: @textColor;
 
-  .ui-menubar-link {
+  .ui-menubar-link
+  {
     padding-bottom: 7px;
     padding-top: 6px;
     margin-right: 3px;
@@ -52,7 +71,8 @@
 }
 
 /* jQuery UI additions */
-.ui-well {
+.ui-well
+{
   background: url(img/jqueryui/ui-bg_glass_40_ffc73d_1x400.png) repeat-x scroll 50% 50% #FFC73D;
   border: 1px solid #FFB73D;
   border-radius: 6px;
@@ -61,19 +81,50 @@
   margin-bottom: 1.5em;
 }
 
-.active.ui-menubar-item a {
-  background: #0078a3 url(img/jqueryui/ui-bg_glass_40_0078a3_1x400.png) 50% 50% repeat-x;  
+.active.ui-menubar-item a
+{
+  background: #0078a3 url(img/jqueryui/ui-bg_glass_40_0078a3_1x400.png) 50% 50% repeat-x;
 }
 
-.ui-menubar-fixed-top {
+.ui-menubar-fixed-top
+{
   top: 0;
   position: fixed;
   z-index: 1030;
   width: 980px;
 }
 
+/* jQuery UI Extensions */
+.ui-table
+{
+  border: 1px solid @borderColor;
+  border-spacing: 0;
+  border-collapse: collapse;
+  width: 100%;
+
+  tr
+  {
+    border: 1px solid @borderColor;
+
+    td, th
+    {
+      padding: 0.5em;
+      line-height: 20px;
+      vertical-align: top;
+      border-left: 1px solid @borderColor;
+
+      &:first-child
+      {
+        border-top-left-radius: @radius;
+        border-top-right-radius: @radius;
+      }
+    }
+  }
+}
+
 /* Generic Styles */
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6
+{
   color: inherit;
   font-family: inherit;
   font-weight: bold;
@@ -82,33 +133,39 @@ h1, h2, h3, h4, h5, h6 {
   text-rendering: optimizelegibility;
 }
 
-h1, h2, h3 {
+h1, h2, h3
+{
   line-height: 40px;
 }
 
-h3 {
+h3
+{
   font-size: 24.5px;
 }
 
-h4 {
+h4
+{
   font-size: 17.5px;
-  border-bottom: 1px solid @mainTextColor;
+  border-bottom: 1px solid @textColor;
   padding-bottom: 5px;
 }
 
-[class^="grid_"] {
-  padding: 5px 3px;
+#menu
+{
+  margin-left: 5px;
 }
 
-code, pre {
+code, pre
+{
   border-radius: 3px 3px 3px 3px;
-  color: @mainTextColor;
+  color: @textColor;
   font-family: Monaco,Menlo,Consolas,"Courier New",monospace;
   font-size: 12px;
   padding: 0 3px 2px;
 }
 
-code {
+code
+{
   background-color: #F7F7F9;
   border: 1px solid #E1E1E8;
   color: #DD1144;
@@ -116,7 +173,8 @@ code {
   white-space: nowrap;
 }
 
-pre {
+pre
+{
   background-color: #F5F5F5;
   border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 4px 4px 4px 4px;
@@ -131,7 +189,8 @@ pre {
   -ms-word-wrap: break-word;
   word-wrap: break-word;
 
-  code {
+  code
+  {
     background-color: transparent;
     border: 0 none;
     color: inherit;
@@ -140,56 +199,77 @@ pre {
   }
 }
 
-.affix {
+.affix
+{
   position: fixed;
 }
 
-.documentation-affix {
+.documentation-affix
+{
   background: url("img/jqueryui/ui-bg_gloss-wave_25_333333_500x100.png") repeat-x scroll 50% 50% #333333;
   padding: 4px 10px;
   border-radius: 3px;
   margin-left: 15px;
 }
 
-.main {
+.main
+{
   margin: 40px 5px 0;
 }
 
-small {
+small
+{
   font-size: 85%;
 }
 
-.secondary-nav {
+.secondary-nav
+{
   float: right !important;
 }
 
-.download-btn {
-  .ui-button {
+.download-btn
+{
+  .ui-button
+  {
     padding: 0;
     background: #eeeeee url(img/jqueryui/ui-bg_highlight-soft_80_eeeeee_1x100.png) 50% top repeat-x;
-    color: @mainTextColor;
+    color: @textColor;
     margin-left: 150px;
     margin-top: 6px;
     border-radius: 4px;
   }
 
   .ui-state-active,
-  .ui-state-hover {
+  .ui-state-hover
+  {
     .active-or-hover;
   }
 }
 
-ul, ol {
+ul, ol
+{
   margin: 0 0 10px 25px;
   padding: 0;
 }
 
-li {
+li
+{
   line-height: 20px;
+}
+
+.ui-nav
+{
+  margin: 0;
+
+  li
+  {
+    list-style: none outside none;
+    display: inline-block;   
+  }
 }
 
 /* jQuery DataTables extensions */
 .dataTables_scroll
 {
-  border-color: @mainTextColor;
+  border-color: @textColor;
 }

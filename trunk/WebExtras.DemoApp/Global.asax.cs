@@ -36,7 +36,7 @@ namespace WebExtras.DemoApp
       RouteConfig.RegisterRoutes(RouteTable.Routes);
       BundleConfig.RegisterBundles();
 
-      WebExtrasMvcConstants.EnableAutoIdGeneration = true;
+      //WebExtrasMvcConstants.EnableAutoIdGeneration = true;
     }
   }
 }

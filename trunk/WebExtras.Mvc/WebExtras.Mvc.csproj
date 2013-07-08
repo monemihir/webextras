@@ -105,6 +105,7 @@
     <Compile Include="Bootstrap\EBootstrapNavbar.cs" />
     <Compile Include="Bootstrap\BootstrapProgressBar.cs" />
     <Compile Include="Html\RadioButton.cs" />
+    <Compile Include="Html\Span.cs" />
     <Compile Include="JavascriptHelper.cs" />
     <Compile Include="Core\EActionMessage.cs" />
     <Compile Include="Core\FormHelperExtension.cs" />
@@ -123,6 +124,9 @@
       <Project>{79881816-8CC9-458B-99F7-BBE3E35AB665}</Project>
       <Name>WebExtras</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="JQueryUI\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
