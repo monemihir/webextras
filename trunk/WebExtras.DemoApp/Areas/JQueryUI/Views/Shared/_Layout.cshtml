@@ -37,6 +37,7 @@
 <body>  
   <ul id="menu" class="ui-menubar-fixed-top">
     <li>@Html.Hyperlink("WebExtras", Url.Content("~/")).AddCssClass("brand")</li>
+    <li class="@Html.SelectedTab("Home", "Index")">@Html.ActionLink("Home", MVC.JQueryUI.Home.Index())</li>
     <li class="@Html.SelectedTab("Core", "Generic")">@Html.ActionLink("Core", MVC.JQueryUI.Core.Generic())</li>
     <li class="@Html.SelectedTab("Core", "Datatables")">@Html.ActionLink("jQuery Datatables", MVC.JQueryUI.Core.Datatables())</li>
     <li class="@Html.SelectedTab("Core", "Flot")">@Html.ActionLink("jQuery Flot", MVC.JQueryUI.Core.Flot())</li>
