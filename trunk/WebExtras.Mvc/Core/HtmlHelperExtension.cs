@@ -23,6 +23,7 @@ using System.Reflection;
 using System.Security.Principal;
 using System.Web.Mvc;
 using System.Web.Routing;
+using WebExtras.Core;
 using WebExtras.Mvc.Html;
 
 namespace WebExtras.Mvc.Core
@@ -181,7 +182,7 @@ namespace WebExtras.Mvc.Core
         if (attr.ContainsKey("img"))
           imgAttributes = attr["img"];
       }
-      
+
       Hyperlink link = new Hyperlink(string.Empty, url, linkAttributes);
       Image img = new Image(src, altText, title, imgAttributes);
 
@@ -375,10 +376,22 @@ namespace WebExtras.Mvc.Core
       ActionResult result,
       object htmlAttributes = null)
     {
-      VirtualPathData vpd = RouteTable.Routes.GetVirtualPath(html.ViewContext.RequestContext, result.GetRouteValueDictionary());
-      string url = vpd.VirtualPath;
+      string actionLink = html.ActionLink(linkText, result).ToHtmlString();
+      string[] buff = actionLink.Split('\"');
+      string mUrl = string.Empty;
+      for (int i = 0; i < buff.Length; i++)
+      {
+        if (buff[i].EndsWith("href="))
+        {
+          mUrl = buff[i + 1].Remove("\"");
+          break;
+        }
+      }
 
-      return Hyperlink(html, linkText, url, htmlAttributes);
+      //VirtualPathData vpd = RouteTable.Routes.GetVirtualPath(html.ViewContext.RequestContext, result.GetRouteValueDictionary());
+      //string url = vpd.VirtualPath;
+
+      return Hyperlink(html, linkText, mUrl, htmlAttributes);
     }
 
     #endregion Hyperlink extensions

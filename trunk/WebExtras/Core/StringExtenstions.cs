@@ -46,5 +46,16 @@ namespace WebExtras.Core
     {
       return str.ToLowerInvariant().Contains(value.ToLowerInvariant());
     }
+
+    /// <summary>
+    /// Removes all occurences of the given string from parent
+    /// </summary>
+    /// <param name="str">String parent</param>
+    /// <param name="removeStr">String to be removed from parent</param>
+    /// <returns>Sanitised string with given string patterns removed from parent string</returns>
+    public static string Remove(this string str, string removeStr)
+    {
+      return str.Replace(removeStr, "");
+    }
   }
 }
