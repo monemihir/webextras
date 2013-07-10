@@ -55,7 +55,7 @@ namespace WebExtras.Core
     /// <returns>Sanitised string with given string patterns removed from parent string</returns>
     public static string Remove(this string str, string removeStr)
     {
-      return str.Replace(removeStr, "");
+      return str.Replace(removeStr, "").Trim();
     }
   }
 }

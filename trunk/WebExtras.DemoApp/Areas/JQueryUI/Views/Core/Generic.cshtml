@@ -96,13 +96,10 @@
 <div class="ui-well">
   <h4>String Extensions</h4>
   <p>
-    WebExtras provides two string extension methods viz., ToTitleCase() and ContainsIgnoreCase()
+    WebExtras provides three string extension methods viz., ToTitleCase(), ContainsIgnoreCase() and Remove()
   </p>
   <div class="col-group">
     <div class="col-12">
-      <div class="col-4">
-        Consider the following C# string declaration
-      </div>
       <div class="col-4">
         ToTitleCase() as the method name suggests will convert the string value to it's
           titlecase representation based on the current system culture
@@ -111,16 +108,17 @@
         ContainsIgnoreCase() simply compares the current string with a given string and
           checks whether the current string contains the given string irrespective of case
       </div>
+      <div class="col-4">
+        Remove() method removes all occurences of the given string from it's parent string. This extension 
+        simply uses the Replace() method internally but making use of Remove() is semantically clearer.
+      </div>
     </div>
     <div class="col-12">
       <div class="col-4">
         <pre><code>
   <span class="comment">// String definition</span> 
   string str = "basic"
-          </code></pre>
-      </div>
-      <div class="col-4">
-        <pre><code>
+
   <span class="comment">// Invocation of ToTitleCase</span> 
   str.ToTitleCase()
             
@@ -130,12 +128,27 @@
       </div>
       <div class="col-4">
         <pre><code>
+  <span class="comment">// String definition</span> 
+  string str = "basic"
+
   <span class="comment">// Invocation of ContainsIgnoreCase</span> 
   str.ContainsIgnoreCase("BAS")
             
   <span class="comment">// Output</span> 
   true 
         </code></pre>
+      </div>
+      <div class="col-4">
+        <pre><code>
+  <span class="comment">// String definition</span> 
+  string str = "basically basic"
+
+  <span class="comment">// Invocation of Remove</span> 
+  str.Remove("bas")
+            
+  <span class="comment">// Output</span> 
+  ically ic
+          </code></pre>
       </div>
     </div>
   </div>
