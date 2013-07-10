@@ -223,6 +223,12 @@
     <Content Include="Content\jquery.jScrollPane-2.0.0beta12.css" />
     <Content Include="Content\png\bk.png" />
     <Content Include="Content\png\youtube-logo.png" />
+    <Content Include="Content\style-bootstrap.css">
+      <DependentUpon>style-bootstrap.less</DependentUpon>
+    </Content>
+    <Content Include="Content\style-bootstrap.min.css">
+      <DependentUpon>style-bootstrap.less</DependentUpon>
+    </Content>
     <Content Include="Content\style-jqueryui.css">
       <DependentUpon>style-jqueryui.less</DependentUpon>
     </Content>
@@ -244,7 +250,7 @@
       <DependentUpon>webextras.less</DependentUpon>
     </Content>
     <Content Include="Global.asax" />
-    <Content Include="Content\style-bootstrap.css" />
+    <None Include="Content\style-bootstrap.less" />
     <Content Include="lgpl-3.0.htm">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -1,6 +1,6 @@
 ﻿@model WebExtras.JQFlot.FlotChart
 
-<div class="well">
+<div class="ui-well">
   <h4>Creating the Flot options</h4>
   Flot graph options are created by instantiating the <strong>WebExtras.JQFlot.FlotOptions</strong> class.
   <pre><code>
@@ -13,7 +13,7 @@
   </code></pre>
 </div>
 
-<div class="well">
+<div class="ui-well">
   <h4>Creating the graph data</h4>
   Flot rendering data is a 2 dimensional numeric array. This can be of any numeric type <strong>int, decimal, float or
   double</strong>. In order to compensate for numerals WebExtras uses the biggest of the numeral types provided by .NET - 
@@ -31,7 +31,7 @@
   </code></pre>
 </div>
 
-<div class="well">
+<div class="ui-well">
   <h4>Creating the Flot series to be plotted</h4>
   A Flot series is creating by instantiating the <strong>WebExtras.JQFlot.FlotSeries</strong> class
   <pre><code>
@@ -44,7 +44,7 @@
   </code></pre>
 </div>
 
-<div class="well">
+<div class="ui-well">
   <h4>Creating the Flot Chart</h4>
   All the things we have done so far now get bundled into a Flot chart by instantiating the <strong>WebExtras.JQFlot.FlotChart</strong> object.
   <pre><code>
@@ -57,7 +57,7 @@
   </code></pre>
 </div>
 
-<div class="well">
+<div class="ui-well">
   <h4>Now in your HTML</h4>
   Now that all C# bindings are done, it is time to render our graph. This can be done with a little bit of Javascript.
   <pre><code>
@@ -66,7 +66,7 @@
   </code></pre>
 </div>
 
-<div class="well">
+<div class="ui-well">
   <h4>And finally the output...</h4>
   <div class="content">    
     <div id="line-graph" class="flot-graph">
