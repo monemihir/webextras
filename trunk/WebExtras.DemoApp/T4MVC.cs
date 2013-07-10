@@ -253,8 +253,10 @@ namespace Links
             public static readonly string youtube_logo_png = Url("youtube-logo.png");
         }
     
+        public static readonly string style_bootstrap_less = Url("style-bootstrap.less");
         public static readonly string style_bootstrap_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/style-bootstrap.min.css") ? Url("style-bootstrap.min.css") : Url("style-bootstrap.css");
              
+        public static readonly string style_bootstrap_min_css = Url("style-bootstrap.min.css");
         public static readonly string style_jqueryui_less = Url("style-jqueryui.less");
         public static readonly string style_jqueryui_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/style-jqueryui.min.css") ? Url("style-jqueryui.min.css") : Url("style-jqueryui.css");
              

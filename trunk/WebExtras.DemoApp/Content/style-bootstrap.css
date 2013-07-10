@@ -57,11 +57,11 @@ footer {
   filter: 0;
   border-color: #666666;
 }
-.navbar-inverse .nav .active a {
+.navbar-inverse .nav .active > a {
   background-color: #666666;
 }
-.navbar-inverse .nav .active a:focus,
-.navbar-inverse .nav .active a:hover {
+.navbar-inverse .nav .active > a:focus,
+.navbar-inverse .nav .active > a:hover {
   background-color: #666666;
 }
 .navbar-inverse .nav li.dropdown.open > .dropdown-toggle,

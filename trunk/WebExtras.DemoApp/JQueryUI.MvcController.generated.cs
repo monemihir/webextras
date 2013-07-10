@@ -94,7 +94,13 @@ namespace WebExtras.DemoApp.Areas.JQueryUI.Controllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
+                public readonly string ActionResults = "ActionResults";
+                public readonly string CoreForm = "CoreForm";
+                public readonly string CoreHtml = "CoreHtml";
             }
+            public readonly string ActionResults = "~/Areas/JQueryUI/Views/Mvc/ActionResults.cshtml";
+            public readonly string CoreForm = "~/Areas/JQueryUI/Views/Mvc/CoreForm.cshtml";
+            public readonly string CoreHtml = "~/Areas/JQueryUI/Views/Mvc/CoreHtml.cshtml";
         }
     }
 

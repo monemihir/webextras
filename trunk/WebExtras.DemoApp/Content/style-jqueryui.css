@@ -40,7 +40,6 @@
 .ui-menubar .ui-menubar-link {
   padding-bottom: 7px;
   padding-top: 6px;
-  margin-right: 3px;
 }
 /* jQuery UI additions */
 .ui-well {
@@ -51,13 +50,13 @@
   margin-top: 1em;
   margin-bottom: 1.5em;
 }
-.active.ui-menubar-item a,
+.active.ui-menubar-item > a,
 .ui-nav .active a,
 .ui-menubar-item.ui-state-active {
   background: #0078a3 url(img/jqueryui/ui-bg_glass_40_0078a3_1x400.png) 50% 50% repeat-x;
   border: 1px solid #59b4d4;
 }
-.active.ui-menubar-item a .ui-icon,
+.active.ui-menubar-item > a .ui-icon,
 .ui-nav .active a .ui-icon,
 .ui-menubar-item.ui-state-active .ui-icon {
   background-image: url("img/jqueryui/ui-icons_ffffff_256x240.png");

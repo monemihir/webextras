@@ -194,6 +194,9 @@
     <Content Include="Content\img\jqueryui\ui-icons_cccccc_256x240.png" />
     <Content Include="Content\img\jqueryui\ui-icons_ffffff_256x240.png" />
     <Content Include="Content\jquery.ui.menubar.css" />
+    <Content Include="Areas\JQueryUI\Views\Mvc\ActionResults.cshtml" />
+    <Content Include="Areas\JQueryUI\Views\Mvc\CoreForm.cshtml" />
+    <Content Include="Areas\JQueryUI\Views\Mvc\CoreHtml.cshtml" />
     <None Include="Content\style-jqueryui.less" />
     <Content Include="Content\favicon.ico" />
     <Content Include="Content\favicon.png" />

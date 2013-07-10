@@ -6,28 +6,28 @@
 
 <h3 class="keep-center">Mvc Html Helper Extensions</h3>
 
-<div class="row-fluid">
-  <div class="span6">
-    <div class="row-fluid">
-      <div class="span3">
+<div class="col-group">
+  <div class="col-6">
+    <div class="col-12">
+      <div class="col-3">
         <strong>Assembly</strong>
       </div>
-      <div class="span4">
+      <div class="col-4">
         WebExtras.Mvc.dll
       </div>
     </div>
-    <div class="row-fluid">
-      <div class="span3">
+    <div class="col-12">
+      <div class="col-3">
         <strong>Namespace</strong>
       </div>
-      <div class="span4">
+      <div class="col-4">
         WebExtras.Mvc.Core
       </div>
     </div>
-  </div>
+  </div>  
 </div>
 
-<div class="well">
+<div class="ui-well">
   <h4>Hyperlinks</h4>
   <p>Markup</p>
   <pre><code>
@@ -44,7 +44,7 @@
   </code></pre>
 </div>
 
-<div class="well">
+<div class="ui-well">
   <h4>Images</h4>
   <p>Markup</p>
   <pre><code>
@@ -63,7 +63,7 @@
   <h4>Styled images</h4>
   <div class="content">
     <p>Bootstrap supports styling of images via the following CSS classes:</p>
-    <table class="table table-bordered">
+    <table class="ui-table">
       <tr>
         <td class="keep-middle">.img-circle</td>
         <td>@Html.Image(Links.Content.png.youtube_logo_png, "YouTube", "Take me to YouTube", new { style = "width: 50%; height: 50%" }).AddCssClass("img-circle")</td>
@@ -81,7 +81,7 @@
 </div>
 
 
-<div class="well">
+<div class="ui-well">
   <h4>Imagelinks</h4>
   <p>An image link is basically an image embedded into a hyperlink</p>
   <p>Markup</p>
@@ -113,7 +113,7 @@
   </code></pre>
 </div>
 
-<div class="well">
+<div class="ui-well">
   <h4>Lists</h4>
   <p>Markup</p>
   <pre><code>
@@ -132,12 +132,11 @@
       new HtmlListItem("list item 2"),
       new HtmlListItem("list item 3"),
       new HtmlListItem("list item 4"),
-      new HtmlListItem("list item 5")
-    })
+      new HtmlListItem("list item 5")})
   </div>
 </div>
 
-<div class="well">
+<div class="ui-well">
   <h4>Authenticated extension methods</h4>
   <p>
     These extension methods only return HTML content based on whether the user is authenticated or not. It uses the <strong>System.Security.Principal.IPrincipal.Identity.IsAuthenticated</strong> flag
@@ -150,7 +149,7 @@
   </code></pre>
 </div>
 
-<div class="well">
+<div class="ui-well">
   <h4>Validation extension method</h4>
   <p>This extension method allows you to check whether a particular view model property value has any model state errors. This method looks at the model state dictionary
     and checks whether the given view model property exists and has an error.
@@ -162,7 +161,7 @@
   </code></pre>
 </div>
 
-<div class="well">
+<div class="ui-well">
   <h4>View renderer extension methods</h4>
   <p>These methods allow you to get the rendered content of a view in the controller. It is particularly useful if you want to return a view as a JSON callback.</p>
   <p>Usage/Markup</p>
@@ -193,7 +192,7 @@
   </code></pre>
 </div>
 
-<div class="well">
+<div class="ui-well">
   <h4>Rendering static HTML inline</h4>
   <p>WebExtras provides an extension method to render static HTML content inline. This is especially useful when doing content management external to the system,
     for e.g. system changelogs, known issues list etc.
