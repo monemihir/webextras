@@ -376,7 +376,11 @@ namespace WebExtras.Mvc.Core
       ActionResult result,
       object htmlAttributes = null)
     {
-      string actionLink = html.ActionLink(linkText, result).ToHtmlString();
+      // This is a fix needed since the T4Extensions helper does not allow empty link text
+      // Therefore, create a whitespace link text to retrieve the URL and then send the
+      // actual link text to our helper method for processing
+      string parsedText = string.IsNullOrEmpty(linkText) ? " " : linkText;        
+      string actionLink = html.ActionLink(parsedText, result).ToHtmlString();
       string[] buff = actionLink.Split('\"');
       string mUrl = string.Empty;
       for (int i = 0; i < buff.Length; i++)
