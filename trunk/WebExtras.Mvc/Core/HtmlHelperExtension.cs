@@ -21,6 +21,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Security.Principal;
+using System.Text;
 using System.Web.Mvc;
 using System.Web.Routing;
 using WebExtras.Core;
@@ -376,26 +377,35 @@ namespace WebExtras.Mvc.Core
       ActionResult result,
       object htmlAttributes = null)
     {
-      // This is a fix needed since the T4Extensions helper does not allow empty link text
-      // Therefore, create a whitespace link text to retrieve the URL and then send the
-      // actual link text to our helper method for processing
-      string parsedText = string.IsNullOrEmpty(linkText) ? " " : linkText;        
-      string actionLink = html.ActionLink(parsedText, result).ToHtmlString();
-      string[] buff = actionLink.Split('\"');
-      string mUrl = string.Empty;
-      for (int i = 0; i < buff.Length; i++)
+      StringBuilder route = new StringBuilder();
+      List<string> vars = new List<string>();      
+
+      RouteValueDictionary rvd = result.GetRouteValueDictionary();
+      foreach (string key in rvd.Keys)
       {
-        if (buff[i].EndsWith("href="))
+        switch (key.ToLowerInvariant())
         {
-          mUrl = buff[i + 1].Remove("\"");
-          break;
+          case "area":
+          case "controller":
+          case "action":
+            if (!string.IsNullOrEmpty(rvd[key].ToString()))
+              route.Append("/" + rvd[key]);
+            break;
+
+          default:
+            vars.Add(string.Format("{0}={1}", key, rvd[key]));
+            break;
         }
       }
 
-      //VirtualPathData vpd = RouteTable.Routes.GetVirtualPath(html.ViewContext.RequestContext, result.GetRouteValueDictionary());
-      //string url = vpd.VirtualPath;
+      string actionLink = string.Empty;
 
-      return Hyperlink(html, linkText, mUrl, htmlAttributes);
+      if (vars.Count > 0)
+        actionLink = route.ToString() + "?" + string.Join("&", vars);
+      else
+        actionLink = route.ToString();
+
+      return Hyperlink(html, linkText, actionLink, htmlAttributes);
     }
 
     #endregion Hyperlink extensions

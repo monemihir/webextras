@@ -54,12 +54,16 @@
   </code></pre>
   <p>Output</p>
   <div class="content">
-    @Html.Hyperlink("Take me to google", "http://www.google.com").AsButton(EBootstrapButton.Default)
-    @Html.Hyperlink("Take me to google", "http://www.google.com").AsButton(EBootstrapButton.Primary)
-    @Html.Hyperlink("Take me to google", "http://www.google.com").AsButton(EBootstrapButton.Success)
-    @Html.Hyperlink("Take me to google", "http://www.google.com").AsButton(EBootstrapButton.Info)
-    @Html.Hyperlink("Take me to google", "http://www.google.com").AsButton(EBootstrapButton.Warning)
-    @Html.Button(EButton.Regular, "Take me to google", "goToGoogle()").AsButton(EBootstrapButton.Inverse)
+    <p>
+      @Html.Hyperlink("Take me to google", "http://www.google.com").AsButton(EBootstrapButton.Default)
+      @Html.Hyperlink("Take me to google", "http://www.google.com").AsButton(EBootstrapButton.Primary)
+      @Html.Hyperlink("Take me to google", "http://www.google.com").AsButton(EBootstrapButton.Success)
+    </p>
+    <p>
+      @Html.Hyperlink("Take me to google", "http://www.google.com").AsButton(EBootstrapButton.Info)
+      @Html.Hyperlink("Take me to google", "http://www.google.com").AsButton(EBootstrapButton.Warning)
+      @Html.Button(EButton.Regular, "Take me to google", "goToGoogle()").AsButton(EBootstrapButton.Inverse)
+    </p>
   </div>
   <p>All available extensions</p>
   <pre><code>
@@ -92,7 +96,7 @@
     <div class="row-fluid">
       <div class="span4">
         @Html.DateTextBoxFor(f => f.DateTextBox)
-      </div>      
+      </div>
       <div class="span4">
         @Html.TimeTextBoxFor(f => f.TimeTextBox, new { format = "hh:ii" })
       </div>

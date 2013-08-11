@@ -1,4 +1,4 @@
-﻿/*
+/*
 * This file is part of - WebExtras
 * Copyright (C) 2013 Mihir Mone
 *
@@ -85,6 +85,10 @@ table.dataTable thead th .css_right {
 .input-append .input-prepend input {
   border-radius: 0;
 }
+.controls input[type="checkbox"],
+.controls input[type="radio"] {
+  vertical-align: middle;
+}
 .control-group .text {
   padding-top: 5px;
 }
@@ -93,6 +97,10 @@ table.dataTable thead th .css_right {
 }
 .control-group-large .controls {
   margin-left: 280px;
+}
+.control-group-large .controls input[type="checkbox"],
+.control-group-large .controls input[type="radio"] {
+  vertical-align: middle;
 }
 /** BOOTSTRAP EXTENSIONS AND OVERRIDES END **/
 /** BOOTSTRAP STYLING FOR JQUERY DATATABLES **/
