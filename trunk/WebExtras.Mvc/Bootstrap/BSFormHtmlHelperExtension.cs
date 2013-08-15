@@ -16,13 +16,14 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+using MoreLinq;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Web.Mvc;
 using System.Web.Routing;
-using Newtonsoft.Json;
 
 namespace WebExtras.Mvc.Bootstrap
 {
@@ -196,9 +197,8 @@ namespace WebExtras.Mvc.Bootstrap
       IDictionary<string, object> result = new Dictionary<string, object>(defaultPickerOptions);
 
       if (options != null && options.Count > 0)
-        foreach (var o in options)
-          result[o.Key] = o.Value;
-
+        options.ForEach(f => { result[f.Key] = f.Value; });
+          
       return result;
     }
 

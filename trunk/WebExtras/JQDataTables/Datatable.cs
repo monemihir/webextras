@@ -16,6 +16,7 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+using MoreLinq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -93,11 +94,7 @@ namespace WebExtras.JQDataTables
       int widthAssigned = columns.Where(f => f.Width.HasValue).Select(f => f.Width.Value).Sum();
       int widthLeft = 100 - widthAssigned;
 
-      foreach (DatatableColumn col in columns)
-      {
-        if (!col.Width.HasValue)
-          col.Width = widthLeft / nullWidthColumns;
-      }
+      columns.Where(f => !f.Width.HasValue).ForEach(f => { f.Width = widthLeft / nullWidthColumns; });
 
       // setup the status column if the flag is set
       if (enableStatusColumn)

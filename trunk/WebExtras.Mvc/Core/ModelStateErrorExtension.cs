@@ -16,8 +16,10 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+using MoreLinq;
 using System.Collections.Specialized;
 using System.Web.Mvc;
+using WebExtras.Core;
 
 namespace WebExtras.Mvc.Core
 {
@@ -25,7 +27,7 @@ namespace WebExtras.Mvc.Core
   /// ModelStateDictionary extension class to add custom/server side validation errors
   /// </summary>
   public static class ModelStateErrorExtension
-  {    
+  {
     /// <summary>
     /// ModelStateDictionary extension method which adds custom/server side validation errors for display by MVC
     /// </summary>
@@ -42,8 +44,7 @@ namespace WebExtras.Mvc.Core
 
       keyPrefix = string.IsNullOrEmpty(keyPrefix) ? "" : keyPrefix + ".";
 
-      foreach (string key in errors.Keys)
-        modelState.AddModelError(keyPrefix + key, errors.Get(key));
+      errors.ToDictionary().ForEach(f => modelState.AddModelError(keyPrefix + f.Key, f.Value));
     }
   }
 }

@@ -16,10 +16,12 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+using MoreLinq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using WebExtras.Core;
 
 namespace WebExtras.JQDataTables
 {
@@ -160,8 +162,7 @@ namespace WebExtras.JQDataTables
     {
       Regex.Replace(str, "<.*?>", string.Empty);
 
-      foreach (string sc in AllStripStrings)
-        str = str.ToLowerInvariant().Replace(sc.ToLowerInvariant(), "").Trim();
+      AllStripStrings.ForEach(f => { str = str.ToLowerInvariant().Remove(f.ToLowerInvariant()); });
 
       return str;
     }

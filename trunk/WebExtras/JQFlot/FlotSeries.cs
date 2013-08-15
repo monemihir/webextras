@@ -16,8 +16,8 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System;
 using Newtonsoft.Json;
+using System;
 using WebExtras.JQFlot.Graphs;
 
 namespace WebExtras.JQFlot

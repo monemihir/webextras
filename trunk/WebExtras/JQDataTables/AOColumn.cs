@@ -16,8 +16,8 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System;
 using Newtonsoft.Json;
+using System;
 using WebExtras.Core;
 
 namespace WebExtras.JQDataTables
@@ -128,7 +128,7 @@ namespace WebExtras.JQDataTables
     /// For example: "Mar 26, 2008 5:03 PM"
     /// </summary>
     [JsonConverter(typeof(EAOColumnTypeJsonConverter))]
-    public EAOColumnType? sType;
+    public EAOColumn? sType;
 
     /// <summary>
     /// Defining the width of the column, this parameter may take any CSS value 

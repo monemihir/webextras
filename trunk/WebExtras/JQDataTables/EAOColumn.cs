@@ -16,8 +16,8 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System;
 using Newtonsoft.Json;
+using System;
 using WebExtras.Core;
 
 namespace WebExtras.JQDataTables
@@ -26,7 +26,7 @@ namespace WebExtras.JQDataTables
   /// AO column type
   /// </summary>
   [Serializable]
-  public enum EAOColumnType
+  public enum EAOColumn
   {
     /// <summary>
     /// String column type
@@ -62,7 +62,7 @@ namespace WebExtras.JQDataTables
     /// <returns>true if this instance can convert the specified object type; otherwise, false</returns>
     public override bool CanConvert(Type objectType)
     {
-      return typeof(EAOColumnType).IsAssignableFrom(objectType);
+      return typeof(EAOColumn).IsAssignableFrom(objectType);
     }
 
     /// <summary>
@@ -78,7 +78,7 @@ namespace WebExtras.JQDataTables
       if (existingValue == null)
         return null;
 
-      return Enum.Parse(typeof(EAOColumnType), existingValue.ToString().ToTitleCase());
+      return Enum.Parse(typeof(EAOColumn), existingValue.ToString().ToTitleCase());
     }
 
     /// <summary>
@@ -90,7 +90,7 @@ namespace WebExtras.JQDataTables
     public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
     {
       if (value == null) { writer.WriteNull(); }
-      else { EAOColumnType val = (EAOColumnType)value; writer.WriteValue(val.ToString().ToLowerInvariant()); }
+      else { EAOColumn val = (EAOColumn)value; writer.WriteValue(val.ToString().ToLowerInvariant()); }
     }
   }
 }
