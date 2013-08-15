@@ -17,6 +17,7 @@
 */
 
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -24,8 +25,10 @@ using System.Security.Principal;
 using System.Text;
 using System.Web.Mvc;
 using System.Web.Routing;
+using System.Web.UI;
 using WebExtras.Core;
 using WebExtras.Mvc.Html;
+using MoreLinq;
 
 namespace WebExtras.Mvc.Core
 {
@@ -377,35 +380,17 @@ namespace WebExtras.Mvc.Core
       ActionResult result,
       object htmlAttributes = null)
     {
-      StringBuilder route = new StringBuilder();
-      List<string> vars = new List<string>();      
-
       RouteValueDictionary rvd = result.GetRouteValueDictionary();
-      foreach (string key in rvd.Keys)
-      {
-        switch (key.ToLowerInvariant())
-        {
-          case "area":
-          case "controller":
-          case "action":
-            if (!string.IsNullOrEmpty(rvd[key].ToString()))
-              route.Append("/" + rvd[key]);
-            break;
+      string link = UrlHelper.GenerateUrl(string.Empty, rvd["Action"].ToString(), rvd["Controller"].ToString(), rvd, html.RouteCollection, html.ViewContext.RequestContext, true);
 
-          default:
-            vars.Add(string.Format("{0}={1}", key, rvd[key]));
-            break;
-        }
-      }
-
-      string actionLink = string.Empty;
+      List<string> vars = new List<string>();
+      NameValueCollection nv = html.ViewContext.HttpContext.Request.QueryString;
+      nv.ToDictionary().ForEach(f => vars.Add(string.Format("{0}={1}", f.Key, f.Value)));
 
       if (vars.Count > 0)
-        actionLink = route.ToString() + "?" + string.Join("&", vars);
-      else
-        actionLink = route.ToString();
+        link += "?" + string.Join("&", vars);
 
-      return Hyperlink(html, linkText, actionLink, htmlAttributes);
+      return Hyperlink(html, linkText, link, htmlAttributes);
     }
 
     #endregion Hyperlink extensions
