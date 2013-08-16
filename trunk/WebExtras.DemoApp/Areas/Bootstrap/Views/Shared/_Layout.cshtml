@@ -36,7 +36,7 @@
     <div class="navbar-inner">
       @Html.Hyperlink("WebExtras", Url.Content("~/")).AddCssClass("brand")
       <ul class="nav">
-        <li class="@Html.SelectedTab("Home", "Index")">@Html.ActionLink("Home", MVC.JQueryUI.Home.Index())</li>
+        <li class="@Html.SelectedTab("Home", "Index")">@Html.ActionLink("Home", MVC.Bootstrap.Home.Index())</li>
         <li class="@Html.SelectedTab("Core", "Generic")">@Html.ActionLink("Core", MVC.Bootstrap.Core.Generic())</li>
         <li class="@Html.SelectedTab("Core", "Datatables")">@Html.ActionLink("jQuery Datatables", MVC.Bootstrap.Core.Datatables())</li>
         <li class="@Html.SelectedTab("Core", "Flot")">@Html.ActionLink("jQuery Flot", MVC.Bootstrap.Core.Flot())</li>
