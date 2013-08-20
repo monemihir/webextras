@@ -17,6 +17,7 @@
 */
 
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Linq.Expressions;
@@ -71,10 +72,24 @@ namespace WebExtras.Mvc.Bootstrap
     /// <returns>A Bootstrap icon</returns>
     public static IExtendedHtmlString Icon(this HtmlHelper html, EFontAwesomeIcon icon, EFontAwesomeIconSize size = EFontAwesomeIconSize.Normal, object htmlAttributes = null)
     {
-      Italic i = new Italic();
-      i["class"] = "icon-" + icon.ToString().ToLowerInvariant().Replace("_", "-") + " icon-" + size.GetStringValue();
+      RouteValueDictionary rvd = new RouteValueDictionary(htmlAttributes);
 
-      i.Tag.MergeAttributes<string, object>(new RouteValueDictionary(htmlAttributes));
+      List<string> cssClasses = new List<string>();
+      if (rvd.ContainsKey("class"))
+      {
+        cssClasses.AddRange(rvd["class"].ToString().Split(' '));
+        rvd.Remove("class");
+      }
+
+      cssClasses.Add("icon-" + icon.ToString().ToLowerInvariant().Replace("_", "-"));
+
+      if (size != EFontAwesomeIconSize.Normal)
+        cssClasses.Add("icon-" + size.GetStringValue());
+
+      Italic i = new Italic();
+      i["class"] = string.Join(" ", cssClasses);
+
+      i.Tag.MergeAttributes<string, object>(HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes));
 
       return i;
     }

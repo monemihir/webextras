@@ -17,6 +17,7 @@
 */
 
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Routing;
 using WebExtras.Core;
@@ -41,11 +42,21 @@ namespace WebExtras.Mvc.Bootstrap
     /// <returns>Html element with icon added</returns>
     public static T AddIcon<T>(this T html, EBootstrapIcon icon, object htmlAttributes = null) where T : IExtendedHtmlString
     {
+      RouteValueDictionary rvd = new RouteValueDictionary(htmlAttributes);
+
+      List<string> cssClasses = new List<string>();
+      if (rvd.ContainsKey("class"))
+      {
+        cssClasses.AddRange(rvd["class"].ToString().Split(' '));
+        rvd.Remove("class");
+      }
+
+      cssClasses.Add("icon-" + icon.ToString().ToLowerInvariant().Replace("_", "-"));
+
       Italic i = new Italic();
-      RouteValueDictionary attributes = new RouteValueDictionary(htmlAttributes);
-      i.Tag.MergeAttributes<string, object>(attributes);
-      
-      i["class"] += " icon-" + icon.ToString().ToLowerInvariant().Replace("_", "-");
+      i["class"] = string.Join(" ", cssClasses);
+
+      i.Tag.MergeAttributes<string, object>(rvd);
       
       html.Prepend(i);
 
@@ -62,11 +73,22 @@ namespace WebExtras.Mvc.Bootstrap
     /// <returns>Html element with a white icon added</returns>
     public static T AddWhiteIcon<T>(this T html, EBootstrapIcon icon, object htmlAttributes = null) where T : IExtendedHtmlString
     {
+      RouteValueDictionary rvd = new RouteValueDictionary(htmlAttributes);
+
+      List<string> cssClasses = new List<string>();
+      if (rvd.ContainsKey("class"))
+      {
+        cssClasses.AddRange(rvd["class"].ToString().Split(' '));
+        rvd.Remove("class");
+      }
+
+      cssClasses.Add("icon-white");
+      cssClasses.Add("icon-" + icon.ToString().ToLowerInvariant().Replace("_", "-"));
+
       Italic i = new Italic();
-      RouteValueDictionary attributes = new RouteValueDictionary(htmlAttributes);
-      i.Tag.MergeAttributes<string, object>(attributes);
-      
-      i["class"] = "icon-white icon-" + icon.ToString().ToLowerInvariant().Replace("_", "-");
+      i["class"] = string.Join(" ", cssClasses);
+
+      i.Tag.MergeAttributes<string, object>(rvd);
 
       html.Prepend(i);
 
@@ -84,14 +106,24 @@ namespace WebExtras.Mvc.Bootstrap
     /// <returns>Html element with icon added</returns>
     public static T AddIcon<T>(this T html, EFontAwesomeIcon icon, EFontAwesomeIconSize size = EFontAwesomeIconSize.Normal, object htmlAttributes = null) where T : IExtendedHtmlString
     {
-      Italic i = new Italic();
-      RouteValueDictionary attributes = new RouteValueDictionary(htmlAttributes);
-      i.Tag.MergeAttributes<string, object>(attributes);
+      RouteValueDictionary rvd = new RouteValueDictionary(htmlAttributes);
 
-      i["class"] += " icon-" + icon.ToString().ToLowerInvariant().Replace("_", "-");
+      List<string> cssClasses = new List<string>();
+      if (rvd.ContainsKey("class"))
+      {
+        cssClasses.AddRange(rvd["class"].ToString().Split(' '));
+        rvd.Remove("class");
+      }
+
+      cssClasses.Add("icon-" + icon.ToString().ToLowerInvariant().Replace("_", "-"));
 
       if (size != EFontAwesomeIconSize.Normal)
-        i["class"] += " icon-" + size.GetStringValue();
+        cssClasses.Add("icon-" + size.GetStringValue());
+
+      Italic i = new Italic();
+      i["class"] = string.Join(" ", cssClasses);
+
+      i.Tag.MergeAttributes<string, object>(rvd);
 
       html.Prepend(i);
 
@@ -109,14 +141,25 @@ namespace WebExtras.Mvc.Bootstrap
     /// <returns>Html element with a white icon added</returns>
     public static T AddWhiteIcon<T>(this T html, EFontAwesomeIcon icon, EFontAwesomeIconSize size = EFontAwesomeIconSize.Normal, object htmlAttributes = null) where T : IExtendedHtmlString
     {
-      Italic i = new Italic();
-      RouteValueDictionary attributes = new RouteValueDictionary(htmlAttributes);
-      i.Tag.MergeAttributes<string, object>(attributes);
-      
-      i["class"] = "icon-white icon-" + icon.ToString().ToLowerInvariant().Replace("_", "-");
+      RouteValueDictionary rvd = new RouteValueDictionary(htmlAttributes);
+
+      List<string> cssClasses = new List<string>();
+      if (rvd.ContainsKey("class"))
+      {
+        cssClasses.AddRange(rvd["class"].ToString().Split(' '));
+        rvd.Remove("class");
+      }
+
+      cssClasses.Add("icon-white");
+      cssClasses.Add("icon-" + icon.ToString().ToLowerInvariant().Replace("_", "-"));
 
       if (size != EFontAwesomeIconSize.Normal)
-        i["class"] += " icon-" + size.GetStringValue();
+        cssClasses.Add("icon-" + size.GetStringValue());
+
+      Italic i = new Italic();
+      i["class"] = string.Join(" ", cssClasses);
+
+      i.Tag.MergeAttributes<string, object>(rvd);
             
       html.Prepend(i);
 
