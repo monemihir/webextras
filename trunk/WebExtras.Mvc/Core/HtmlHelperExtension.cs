@@ -379,14 +379,13 @@ namespace WebExtras.Mvc.Core
       object htmlAttributes = null)
     {
       RouteValueDictionary rvd = result.GetRouteValueDictionary();
-      string link = UrlHelper.GenerateUrl(string.Empty, rvd["Action"].ToString(), rvd["Controller"].ToString(), rvd, html.RouteCollection, html.ViewContext.RequestContext, true);
-
-      List<string> vars = new List<string>();
-      NameValueCollection nv = html.ViewContext.HttpContext.Request.QueryString;
-      nv.ToDictionary().ForEach(f => vars.Add(string.Format("{0}={1}", f.Key, f.Value)));
-
-      if (vars.Count > 0)
-        link += "?" + string.Join("&", vars);
+      string link = UrlHelper.GenerateUrl(string.Empty, 
+        rvd["Action"].ToString(), 
+        rvd["Controller"].ToString(), 
+        rvd, 
+        html.RouteCollection, 
+        html.ViewContext.RequestContext, 
+        true);
 
       return Hyperlink(html, linkText, link, htmlAttributes);
     }
