@@ -114,9 +114,9 @@ namespace WebExtras.Core
         fnText.Append("{ " + f.Body + " }");
 
         StringBuilder docReady = new StringBuilder();
-        docReady.Append("$(document).ready(function() {");
+        docReady.Append("$(document).ready(function() { ");
         docReady.Append(fnText.ToString());
-        docReady.Append("});");
+        docReady.Append(" });");
 
         if (f.OnDocumentReady)
           writer.WriteRawValue(docReady.ToString());
