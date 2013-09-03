@@ -270,24 +270,6 @@ namespace WebExtras.tests.JQDataTables
     }
 
     /// <summary>
-    /// Test that the ToString method JSON converts the DatatableRecords
-    /// object properly
-    /// </summary>
-    [TestMethod]
-    public void ToString_Works_Properly()
-    {
-      // Arrange
-      string expected = "{\"iTotalDisplayRecords\":4,\"iTotalRecords\":4,\"sEcho\":\"1\",\"aaData\":[[\"mihir\"]]}";
-      m_records.aaData = new List<string[]> { new string[] { "mihir" } }.ToArray();
-
-      // Act
-      string result = m_records.ToString();
-
-      // Assert
-      Assert.AreEqual(expected, result);
-    }
-
-    /// <summary>
     /// Assert that the 2 given collections are equals
     /// </summary>
     /// <param name="expected">Expected collection</param>
