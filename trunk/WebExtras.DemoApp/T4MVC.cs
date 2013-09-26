@@ -26,8 +26,6 @@ public static class MVC
 {
     static readonly BootstrapClass s_Bootstrap = new BootstrapClass();
     public static BootstrapClass Bootstrap { get { return s_Bootstrap; } }
-    static readonly JQueryUIClass s_JQueryUI = new JQueryUIClass();
-    public static JQueryUIClass JQueryUI { get { return s_JQueryUI; } }
     public static WebExtras.DemoApp.Controllers.AssetsController Assets = new WebExtras.DemoApp.Controllers.T4MVC_AssetsController();
     public static WebExtras.DemoApp.Controllers.FlavourController Flavour = new WebExtras.DemoApp.Controllers.T4MVC_FlavourController();
 }
@@ -42,15 +40,6 @@ namespace T4MVC
         public WebExtras.DemoApp.Areas.Bootstrap.Controllers.HomeController Home = new WebExtras.DemoApp.Areas.Bootstrap.Controllers.T4MVC_HomeController();
         public WebExtras.DemoApp.Areas.Bootstrap.Controllers.MvcController Mvc = new WebExtras.DemoApp.Areas.Bootstrap.Controllers.T4MVC_MvcController();
         public T4MVC.Bootstrap.SharedController Shared = new T4MVC.Bootstrap.SharedController();
-    }
-    [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-    public class JQueryUIClass
-    {
-        public readonly string Name = "jqueryui";
-        public WebExtras.DemoApp.Areas.JQueryUI.Controllers.CoreController Core = new WebExtras.DemoApp.Areas.JQueryUI.Controllers.T4MVC_CoreController();
-        public WebExtras.DemoApp.Areas.JQueryUI.Controllers.HomeController Home = new WebExtras.DemoApp.Areas.JQueryUI.Controllers.T4MVC_HomeController();
-        public WebExtras.DemoApp.Areas.JQueryUI.Controllers.MvcController Mvc = new WebExtras.DemoApp.Areas.JQueryUI.Controllers.T4MVC_MvcController();
-        public T4MVC.JQueryUI.SharedController Shared = new T4MVC.JQueryUI.SharedController();
     }
 }
 
@@ -103,6 +92,7 @@ namespace Links
         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
         public static readonly string bootstrap_2_3_1_min_js = Url("bootstrap-2.3.1.min.js");
+        public static readonly string bootstrap_3_0_0_min_js = Url("bootstrap-3.0.0.min.js");
         public static readonly string jquery_1_9_1_min_js = Url("jquery-1.9.1.min.js");
         public static readonly string jquery_ui_1_10_3_custom_min_js = Url("jquery-ui-1.10.3.custom.min.js");
         public static readonly string jquery_bootstrap_datetimepicker_min_js = Url("jquery.bootstrap.datetimepicker.min.js");
@@ -137,6 +127,8 @@ namespace Links
         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
         public static readonly string bootstrap_2_3_1_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/bootstrap-2.3.1.min.css") ? Url("bootstrap-2.3.1.min.css") : Url("bootstrap-2.3.1.css");
              
+        public static readonly string bootstrap_3_0_0_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/bootstrap-3.0.0.min.css") ? Url("bootstrap-3.0.0.min.css") : Url("bootstrap-3.0.0.css");
+             
         public static readonly string favicon_ico = Url("favicon.ico");
         public static readonly string favicon_png = Url("favicon.png");
         public static readonly string fluidable_less = Url("fluidable.less");
@@ -153,6 +145,10 @@ namespace Links
             public static readonly string fontawesome_webfont_ttf = Url("fontawesome-webfont.ttf");
             public static readonly string fontawesome_webfont_woff = Url("fontawesome-webfont.woff");
             public static readonly string FontAwesome_otf = Url("FontAwesome.otf");
+            public static readonly string glyphicons_halflings_regular_eot = Url("glyphicons-halflings-regular.eot");
+            public static readonly string glyphicons_halflings_regular_svg = Url("glyphicons-halflings-regular.svg");
+            public static readonly string glyphicons_halflings_regular_ttf = Url("glyphicons-halflings-regular.ttf");
+            public static readonly string glyphicons_halflings_regular_woff = Url("glyphicons-halflings-regular.woff");
         }
     
         public static readonly string font_awesome_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/font-awesome.min.css") ? Url("font-awesome.min.css") : Url("font-awesome.css");
