@@ -69,19 +69,28 @@ namespace WebExtras.DemoApp.App_Start
         .Add(Links.Content.style_css)
         .AsCached(ContentBundle.CSSBootstrap.GetStringValue(), ResolveCssPath(ContentBundle.CSSBootstrap));
 
-      // CSS JQuery UI bundle
+      // CSS Bootstrap3 bundle
       Bundle.Css()
-        .Add(Links.Content.fluidable_css)
-        .Add(Links.Content.jquery_ui_1_10_3_custom_css)
-        .Add(Links.Content.jquery_ui_menubar_css)
+        .Add(Links.Content.bootstrap_3_0_0_css)
+        .Add(Links.Content.font_awesome_css)
+        .Add(Links.Content.jquery_bootstrap_datetimepicker_css)
         .Add(Links.Content.jquery_dataTables_css)
-        .Add(Links.Content.jquery_dataTables_jui_css)
         .Add(Links.Content.jquery_jScrollPane_2_0_0beta12_css)
         .Add(Links.Content.webextras_css)
-        .Add(Links.Content.style_jqueryui_css)
-        .Add(Links.Content.style_css)        
-        .AsCached(ContentBundle.CSSJQueryUI.GetStringValue(), ResolveCssPath(ContentBundle.CSSJQueryUI));
+        .Add(Links.Content.style_bootstrap3_css)
+        .Add(Links.Content.style_css)
+        .AsCached(ContentBundle.CSSBootstrap3.GetStringValue(), ResolveCssPath(ContentBundle.CSSBootstrap3));
 
+      // CSS Gumby bundle
+      Bundle.Css()
+        .Add(Links.Content.gumby_2_5_6_css)
+        .Add(Links.Content.jquery_dataTables_css)
+        .Add(Links.Content.jquery_jScrollPane_2_0_0beta12_css)
+        .Add(Links.Content.webextras_css)
+        .Add(Links.Content.style_gumby_css)
+        .Add(Links.Content.style_css)
+        .AsCached(ContentBundle.CSSGumby.GetStringValue(), ResolveCssPath(ContentBundle.CSSGumby));
+     
       // Core javascript libraries' bundle
       Bundle.JavaScript()
         .Add(Links.Scripts.jquery_1_9_1_min_js)
@@ -106,11 +115,17 @@ namespace WebExtras.DemoApp.App_Start
         .Add(Links.Scripts.jquery_bootstrap_hover_dropdown_min_js)
         .AsCached(ContentBundle.JSBootstrap.GetStringValue(), ResolveJsPath(ContentBundle.JSBootstrap));
 
-      // jQuery UI javascript bundle
+      // Bootstrap3 javascript bundle
       Bundle.JavaScript()
-        .Add(Links.Scripts.jquery_ui_1_10_3_custom_min_js)
-        .Add(Links.Scripts.jquery_ui_menubar_js)
-        .AsCached(ContentBundle.JSJQueryUI.GetStringValue(), ResolveJsPath(ContentBundle.JSJQueryUI));
+        .Add(Links.Scripts.bootstrap_3_0_0_min_js)
+        .Add(Links.Scripts.jquery_bootstrap_datetimepicker_min_js)
+        .Add(Links.Scripts.jquery_bootstrap_hover_dropdown_min_js)
+        .AsCached(ContentBundle.JSBootstrap3.GetStringValue(), ResolveJsPath(ContentBundle.JSBootstrap3));
+
+      // Gumby javascript bundle
+      Bundle.JavaScript()
+        .Add(Links.Scripts.gumby_2_5_6_min_js)
+        .AsCached(ContentBundle.JSGumby.GetStringValue(), ResolveJsPath(ContentBundle.JSGumby));
     }
   }
 }

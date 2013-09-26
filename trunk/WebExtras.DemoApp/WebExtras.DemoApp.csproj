@@ -115,6 +115,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Bootstrap\BootstrapAreaRegistration.cs" />
+    <Compile Include="Areas\Bootstrap3\Bootstrap3AreaRegistration.cs" />
+    <Compile Include="Areas\Gumby\GumbyAreaRegistration.cs" />
     <Compile Include="AssetsController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
@@ -163,6 +165,7 @@
       <DependentUpon>fluidable.less</DependentUpon>
     </Content>
     <Content Include="Content\font\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\gumby-2.5.6.css" />
     <Content Include="Content\jquery.dataTables.jui.css" />
     <Content Include="Content\img\jqueryui\ui-bg_flat_30_cccccc_40x100.png" />
     <Content Include="Content\img\jqueryui\ui-bg_flat_50_5c5c5c_40x100.png" />
@@ -178,11 +181,12 @@
     <Content Include="Content\img\jqueryui\ui-icons_a83300_256x240.png" />
     <Content Include="Content\img\jqueryui\ui-icons_cccccc_256x240.png" />
     <Content Include="Content\img\jqueryui\ui-icons_ffffff_256x240.png" />
-    <Content Include="Content\jquery.ui.menubar.css" />
     <Content Include="Content\font\glyphicons-halflings-regular.eot" />
     <Content Include="Content\font\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\font\glyphicons-halflings-regular.woff" />
-    <None Include="Content\style-jqueryui.less" />
+    <Content Include="Content\font\entypo.eot" />
+    <Content Include="Content\font\entypo.ttf" />
+    <Content Include="Content\font\entypo.woff" />
     <Content Include="Content\favicon.ico" />
     <Content Include="Content\favicon.png" />
     <Content Include="Content\font-awesome.css" />
@@ -204,7 +208,6 @@
     <Content Include="Content\img\jqueryui\animated-overlay.gif" />
     <Content Include="Content\inline\build.txt" />
     <Content Include="Content\inline\changelog.html" />
-    <Content Include="Content\jquery-ui-1.10.3.custom.css" />
     <Content Include="Content\jquery.bootstrap.datetimepicker.css" />
     <Content Include="Content\jquery.dataTables.css" />
     <Content Include="Content\jpg\wallpaper1.jpg" />
@@ -217,13 +220,21 @@
     <Content Include="Content\style-bootstrap.min.css">
       <DependentUpon>style-bootstrap.less</DependentUpon>
     </Content>
-    <Content Include="Content\style-jqueryui.css">
-      <DependentUpon>style-jqueryui.less</DependentUpon>
+    <Content Include="Content\style-bootstrap3.css">
+      <DependentUpon>style-bootstrap3.less</DependentUpon>
     </Content>
-    <Content Include="Content\style-jqueryui.min.css">
-      <DependentUpon>style-jqueryui.less</DependentUpon>
+    <Content Include="Content\style-bootstrap3.less" />
+    <Content Include="Content\style-gumby.css">
+      <DependentUpon>style-gumby.less</DependentUpon>
     </Content>
+    <Content Include="Content\style-gumby.less" />
     <None Include="Content\style.less" />
+    <Content Include="Content\style-bootstrap3.min.css">
+      <DependentUpon>style-bootstrap3.less</DependentUpon>
+    </Content>
+    <Content Include="Content\style-gumby.min.css">
+      <DependentUpon>style-gumby.less</DependentUpon>
+    </Content>
     <Content Include="Content\style.css">
       <DependentUpon>style.less</DependentUpon>
     </Content>
@@ -243,7 +254,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\bootstrap-3.0.0.min.js" />
-    <Content Include="Scripts\jquery-ui-1.10.3.custom.min.js" />
+    <Content Include="Scripts\gumby-2.5.6.min.js" />
     <Content Include="Scripts\jquery.bootstrap.datetimepicker.min.js" />
     <Content Include="Scripts\jquery.bootstrap.hover.dropdown.min.js" />
     <Content Include="Scripts\jquery.flot.min.js" />
@@ -260,7 +271,6 @@
     <Content Include="Scripts\jquery.flot.curvedlines.js" />
     <Content Include="Scripts\jquery.flot.dashes.js" />
     <Content Include="Scripts\jquery.migrate-1.1.1.min.js" />
-    <Content Include="Scripts\jquery.ui.menubar.js" />
     <Content Include="T4MVC.tt.settings.xml" />
     <Content Include="Areas\Bootstrap\Views\Core\DatatablePartial.ascx" />
     <Content Include="Web.config" />

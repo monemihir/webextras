@@ -38,10 +38,16 @@ namespace WebExtras.DemoApp.App_Start
     CSSBootstrap,
 
     /// <summary>
-    /// CSS jQuery UI bundle
+    /// CSS Bootstrap3 bundle
     /// </summary>
-    [StringValue("css-jqueryui")]
-    CSSJQueryUI,
+    [StringValue("css-bootstrap3")]
+    CSSBootstrap3,
+
+    /// <summary>
+    /// CSS Gumby bundle
+    /// </summary>
+    [StringValue("css-gumby")]
+    CSSGumby,
 
     /// <summary>
     /// Core javascript libraries' bundle
@@ -56,9 +62,15 @@ namespace WebExtras.DemoApp.App_Start
     JSBootstrap,
 
     /// <summary>
-    /// jQuery UI javascript bundle
+    /// Bootstrap3 javascript bundle
     /// </summary>
-    [StringValue("js-jqueryui")]
-    JSJQueryUI
+    [StringValue("js-bootstrap3")]
+    JSBootstrap3,
+
+    /// <summary>
+    /// Gumby javascript bundle
+    /// </summary>
+    [StringValue("js-gumby")]
+    JSGumby
   }
 }
