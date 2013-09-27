@@ -76,14 +76,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bootstrap3\BS3HtmlStringExtension.cs" />
+    <Compile Include="Bootstrap3\BS3HtmlHelperExtension.cs" />
     <Compile Include="Bootstrap3\EBootstrap3Glyph.cs" />
+    <Compile Include="Bootstrap3\EBootstrap3Button.cs" />
     <Compile Include="Bootstrap\ActionMessageControllerExtension.cs" />
     <Compile Include="Bootstrap\BootstrapNavbarExtension.cs" />
     <Compile Include="Bootstrap\BootstrapNavBar.cs" />
     <Compile Include="Bootstrap\BootstrapProgressBarExtension.cs" />
     <Compile Include="Bootstrap\EBootstrapProgressBar.cs" />
-    <Compile Include="Bootstrap\EFontAwesomeIcon.cs" />
-    <Compile Include="Bootstrap\EFontAwesomeIconSize.cs" />
+    <Compile Include="Misc\EFontAwesomeIcon.cs" />
+    <Compile Include="Misc\EFontAwesomeIconSize.cs" />
     <Compile Include="Core\JsonNetResult.cs" />
     <Compile Include="Core\WebExtrasMvcConstants.cs" />
     <Compile Include="Gumby\EGumbyIcon.cs" />

@@ -21,13 +21,13 @@
 using System;
 using WebExtras.Core;
 
-namespace WebExtras.Mvc.Bootstrap
+namespace WebExtras.Mvc.Bootstrap3
 {
   /// <summary>
   /// A collection of button display types
   /// </summary>
   [Serializable]
-  public enum EBootstrapButton
+  public enum EBootstrap3Button
   {
     [StringValue("btn btn-default")]
     Default,
@@ -44,19 +44,19 @@ namespace WebExtras.Mvc.Bootstrap
     [StringValue("btn btn-warning")]
     Warning,
 
-    [StringValue("btn btn-inverse")]
-    Inverse,
+    [StringValue("btn btn-link")]
+    Link,
 
     [StringValue("btn btn-danger")]
     Danger,
 
-    [StringValue("btn-large")]
+    [StringValue("btn-lg")]
     Large,
 
-    [StringValue("btn-mini")]
-    Mini,
+    [StringValue("btn-xs")]
+    XSmall,
     
-    [StringValue("btn-small")]
+    [StringValue("btn-sm")]
     Small
   }
 }

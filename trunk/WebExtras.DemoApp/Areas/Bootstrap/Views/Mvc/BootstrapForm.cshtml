@@ -50,7 +50,7 @@
     .AsButton(EBootstrapButton.Default)
 
 @@Html.Button(EButton.Regular, "Take me to google", "window.location='http://www.google.com.au'")
-    .AsButton(EBootstrapButton.Inverse)
+    .AsButton(EBootstrapButton.Inverse, EBootstrapButton.Large)
   </code></pre>
   <p>Output</p>
   <div class="content">
@@ -60,9 +60,9 @@
       @Html.Hyperlink("Take me to google", "http://www.google.com").AsButton(EBootstrapButton.Success)
     </p>
     <p>
-      @Html.Hyperlink("Take me to google", "http://www.google.com").AsButton(EBootstrapButton.Info)
-      @Html.Hyperlink("Take me to google", "http://www.google.com").AsButton(EBootstrapButton.Warning)
-      @Html.Button(EButton.Regular, "Take me to google", "goToGoogle()").AsButton(EBootstrapButton.Inverse)
+      @Html.Hyperlink("Take me to google", "http://www.google.com").AsButton(EBootstrapButton.Info, EBootstrapButton.Small)
+      @Html.Hyperlink("Take me to google", "http://www.google.com").AsButton(EBootstrapButton.Warning, EBootstrapButton.Mini)
+      @Html.Button(EButton.Regular, "Take me to google", "goToGoogle()").AsButton(EBootstrapButton.Inverse, EBootstrapButton.Large)
     </p>
   </div>
   <p>All available extensions</p>

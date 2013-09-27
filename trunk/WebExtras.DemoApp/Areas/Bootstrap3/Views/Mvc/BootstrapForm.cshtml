@@ -6,33 +6,33 @@
 
 <h3 class="keep-center">Mvc Bootstrap Form Helper Extensions</h3>
 
-<div class="row-fluid">
-  <div class="span6">
-    <div class="row-fluid">
-      <div class="span3">
+<div class="row">
+  <div class="col-md-6">
+    <div class="row">
+      <div class="col-md-3">
         <strong>Assembly</strong>
       </div>
-      <div class="span4">
+      <div class="col-md-4">
         WebExtras.Mvc.dll
       </div>
     </div>
-    <div class="row-fluid">
-      <div class="span3">
+    <div class="row">
+      <div class="col-md-3">
         <strong>Namespace</strong>
       </div>
-      <div class="span4">
+      <div class="col-md-4">
         WebExtras.Mvc.Bootstrap
       </div>
     </div>
   </div>
-  <div class="span6">
-    <div class="span3">
+  <div class="col-md-6">
+    <div class="col-md-3">
       <strong>Dependancies</strong>
     </div>
-    <div class="span6">
+    <div class="col-md-6">
       <ul class="dependancies">
         <li>webextras.css</li>
-        <li>Bootstrap 2.3.x</li>
+        <li>Bootstrap 3.x</li>
         <li>>= Font Awesome 3.11</li>
         <li>Bootstrap Datetime picker</li>
       </ul>
@@ -47,22 +47,22 @@
   <p>Markup</p>
   <pre><code>
 @@Html.Hyperlink("Take me to google", "http://www.google.com")
-    .AsButton(EBootstrapButton.Default)
+    .AsButton(EBootstrap3Button.Default)
 
 @@Html.Button(EButton.Regular, "Take me to google", "window.location='http://www.google.com.au'")
-    .AsButton(EBootstrapButton.Inverse)
+    .AsButton(EBootstrap3Button.Inverse)
   </code></pre>
   <p>Output</p>
   <div class="content">
     <p>
-      @Html.Hyperlink("Take me to google", "http://www.google.com").AsButton(EBootstrapButton.Default)
-      @Html.Hyperlink("Take me to google", "http://www.google.com").AsButton(EBootstrapButton.Primary)
-      @Html.Hyperlink("Take me to google", "http://www.google.com").AsButton(EBootstrapButton.Success)
+      @Html.Hyperlink("Take me to google", "http://www.google.com").AsButton(EBootstrap3Button.Default)
+      @Html.Hyperlink("Take me to google", "http://www.google.com").AsButton(EBootstrap3Button.Primary, EBootstrap3Button.Mini)
+      @Html.Hyperlink("Take me to google", "http://www.google.com").AsButton(EBootstrap3Button.Success)
     </p>
     <p>
-      @Html.Hyperlink("Take me to google", "http://www.google.com").AsButton(EBootstrapButton.Info)
-      @Html.Hyperlink("Take me to google", "http://www.google.com").AsButton(EBootstrapButton.Warning)
-      @Html.Button(EButton.Regular, "Take me to google", "goToGoogle()").AsButton(EBootstrapButton.Inverse)
+      @Html.Button(EButton.Regular, "Take me to google", "http://www.google.com").AsButton(EBootstrap3Button.Info)
+      @Html.Button(EButton.Regular, "Take me to google", "http://www.google.com").AsButton(EBootstrap3Button.Warning)
+      @Html.Button(EButton.Regular, "Take me to google", "goToGoogle()").AsButton(EBootstrap3Button.Danger, EBootstrap3Button.Large)
     </p>
   </div>
   <p>All available extensions</p>
@@ -88,19 +88,19 @@
   </code></pre>
   <p>Output</p>
   <div class="content">
-    <div class="row-fluid">
-      <div class="span4">Date only picker</div>
-      <div class="span4">Time only picker</div>
-      <div class="span4">Date and time picker</div>
+    <div class="row">
+      <div class="col-md-4">Date only picker</div>
+      <div class="col-md-4">Time only picker</div>
+      <div class="col-md-4">Date and time picker</div>
     </div>
-    <div class="row-fluid">
-      <div class="span4">
+    <div class="row">
+      <div class="col-md-4">
         @Html.DateTextBoxFor(f => f.DateTextBox)
       </div>
-      <div class="span4">
+      <div class="col-md-4">
         @Html.TimeTextBoxFor(f => f.TimeTextBox, new { format = "hh:ii" })
       </div>
-      <div class="span4">
+      <div class="col-md-4">
         @Html.DateTimeTextBoxFor(f => f.DateTimeTextBox, new { format = "dd M yyyy hh:ii" })
       </div>
     </div>

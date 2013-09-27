@@ -19,7 +19,7 @@
 #pragma warning disable 1591
 
 
-namespace WebExtras.Mvc.Bootstrap
+namespace WebExtras.Mvc.Misc
 {
   /// <summary>
   /// A collection of all available Font-Awesome library

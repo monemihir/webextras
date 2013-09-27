@@ -20,7 +20,7 @@
 
 using WebExtras.Core;
 
-namespace WebExtras.Mvc.Bootstrap
+namespace WebExtras.Mvc.Misc
 {
   /// <summary>
   /// Available icon sizes for the Font-Awesome icon library

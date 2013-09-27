@@ -24,14 +24,14 @@ using WebExtras.Core;
 using WebExtras.Mvc.Html;
 using WebExtras.Mvc.Misc;
 
-namespace WebExtras.Mvc.Bootstrap
+namespace WebExtras.Mvc.Bootstrap3
 {
   /// <summary>
   /// Bootstrap hyperlink extensions
   /// </summary>
-  public static class BSHtmlStringExtension
+  public static class BS3HtmlStringExtension
   {
-    #region Icon extensions
+    #region Glyph extensions
 
     /// <summary>
     /// Add an icon
@@ -41,7 +41,7 @@ namespace WebExtras.Mvc.Bootstrap
     /// <param name="icon">Icon to be rendered</param>
     /// <param name="htmlAttributes">[Optional] Extra html attributes</param>
     /// <returns>Html element with icon added</returns>
-    public static T AddIcon<T>(this T html, EBootstrapIcon icon, object htmlAttributes = null) where T : IExtendedHtmlString
+    public static T AddGlyph<T>(this T html, EBootstrap3Glyph icon, object htmlAttributes = null) where T : IExtendedHtmlString
     {
       RouteValueDictionary rvd = new RouteValueDictionary(htmlAttributes);
 
@@ -58,7 +58,7 @@ namespace WebExtras.Mvc.Bootstrap
       i["class"] = string.Join(" ", cssClasses);
 
       i.Tag.MergeAttributes<string, object>(rvd);
-      
+
       html.Prepend(i);
 
       return html;
@@ -72,7 +72,7 @@ namespace WebExtras.Mvc.Bootstrap
     /// <param name="icon">Icon to be rendered</param>
     /// <param name="htmlAttributes">[Optional] Extra html attributes</param>
     /// <returns>Html element with a white icon added</returns>
-    public static T AddWhiteIcon<T>(this T html, EBootstrapIcon icon, object htmlAttributes = null) where T : IExtendedHtmlString
+    public static T AddWhiteGlyph<T>(this T html, EBootstrap3Glyph icon, object htmlAttributes = null) where T : IExtendedHtmlString
     {
       RouteValueDictionary rvd = new RouteValueDictionary(htmlAttributes);
 
@@ -105,7 +105,7 @@ namespace WebExtras.Mvc.Bootstrap
     /// <param name="size">[Optional] Icon size</param>
     /// <param name="htmlAttributes">[Optional] Extra html attributes</param>
     /// <returns>Html element with icon added</returns>
-    public static T AddIcon<T>(this T html, EFontAwesomeIcon icon, EFontAwesomeIconSize size = EFontAwesomeIconSize.Normal, object htmlAttributes = null) where T : IExtendedHtmlString
+    public static T AddGlyph<T>(this T html, EFontAwesomeIcon icon, EFontAwesomeIconSize size = EFontAwesomeIconSize.Normal, object htmlAttributes = null) where T : IExtendedHtmlString
     {
       RouteValueDictionary rvd = new RouteValueDictionary(htmlAttributes);
 
@@ -140,7 +140,7 @@ namespace WebExtras.Mvc.Bootstrap
     /// <param name="size">[Optional] Icon size</param>
     /// <param name="htmlAttributes">[Optional] Extra html attributes</param>
     /// <returns>Html element with a white icon added</returns>
-    public static T AddWhiteIcon<T>(this T html, EFontAwesomeIcon icon, EFontAwesomeIconSize size = EFontAwesomeIconSize.Normal, object htmlAttributes = null) where T : IExtendedHtmlString
+    public static T AddWhiteGlyph<T>(this T html, EFontAwesomeIcon icon, EFontAwesomeIconSize size = EFontAwesomeIconSize.Normal, object htmlAttributes = null) where T : IExtendedHtmlString
     {
       RouteValueDictionary rvd = new RouteValueDictionary(htmlAttributes);
 
@@ -161,13 +161,13 @@ namespace WebExtras.Mvc.Bootstrap
       i["class"] = string.Join(" ", cssClasses);
 
       i.Tag.MergeAttributes<string, object>(rvd);
-            
+
       html.Prepend(i);
 
       return html;
     }
 
-    #endregion Icon extensions
+    #endregion Glyph extensions
 
     #region Button extensions
 
@@ -179,7 +179,7 @@ namespace WebExtras.Mvc.Bootstrap
     /// <returns>A special button</returns>
     public static T AsButton<T>(this T html) where T : IExtendedHtmlString
     {
-      return AsButton<T>(html, EBootstrapButton.Default);
+      return AsButton<T>(html, EBootstrap3Button.Default);
     }
 
     /// <summary>
@@ -189,7 +189,7 @@ namespace WebExtras.Mvc.Bootstrap
     /// <param name="html">Current HTML element</param>
     /// <param name="types">Bootstrap button types</param>
     /// <returns>A special button</returns>
-    public static T AsButton<T>(this T html, params EBootstrapButton[] types) where T : IExtendedHtmlString
+    public static T AsButton<T>(this T html, params EBootstrap3Button[] types) where T : IExtendedHtmlString
     {
       if (CanDisplayAsButton(html))
         html.AddCssClass(string.Join(" ", types.Select(t => t.GetStringValue())));
@@ -216,20 +216,20 @@ namespace WebExtras.Mvc.Bootstrap
 
     #endregion Button extensions
 
-    #region List extensions
+    //#region List extensions
 
-    /// <summary>
-    /// Create an unstyled list
-    /// </summary>
-    /// <param name="list">List to be converted</param>
-    /// <returns>An unstyled list</returns>
-    public static IExtendedHtmlString AsUnstyled(this HtmlList list)
-    {
-      list.AddCssClass("unstyled");
+    ///// <summary>
+    ///// Create an unstyled list
+    ///// </summary>
+    ///// <param name="list">List to be converted</param>
+    ///// <returns>An unstyled list</returns>
+    //public static IExtendedHtmlString AsUnstyled(this HtmlList list)
+    //{
+    //  list.AddCssClass("unstyled");
 
-      return list;
-    }
+    //  return list;
+    //}
 
-    #endregion List extensions
+    //#endregion List extensions
   }
 }
