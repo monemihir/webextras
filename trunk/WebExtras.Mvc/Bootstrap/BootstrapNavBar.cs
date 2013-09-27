@@ -18,6 +18,7 @@
 
 using System;
 using WebExtras.Core;
+using WebExtras.Mvc.Core;
 using WebExtras.Mvc.Html;
 
 namespace WebExtras.Mvc.Bootstrap
@@ -37,7 +38,7 @@ namespace WebExtras.Mvc.Bootstrap
       : base(EHtmlTag.Div)
     {
       HtmlList list = new HtmlList(EList.Unordered);
-      list["class"] = "nav";
+      list["class"] = "nav navbar-nav";
 
       IExtendedHtmlString brand = null;
 
@@ -69,17 +70,34 @@ namespace WebExtras.Mvc.Bootstrap
           }
         }
       }
-      
-      Div innerNav = new Div();
-      innerNav["class"] = "navbar-inner";
-
-      if (brand != null)
-        innerNav.Append(brand);
-      innerNav.Append(list);
 
       this["class"] = type.GetStringValue();
+
+      if (WebExtrasMvcConstants.BootstrapVersion == EBootstrapVersion.V2)
+      {
+        Div innerNav = new Div();
+        innerNav["class"] = "navbar-inner";
+
+        if (brand != null)
+          innerNav.Prepend(brand);
+        innerNav.Append(list);
+
+        this.Append(innerNav);
+      }
+      else if (WebExtrasMvcConstants.BootstrapVersion == EBootstrapVersion.V3)
+      {
+        if (brand != null)
+        {
+          brand.Tag.Attributes["class"] = "navbar-brand";
+          this.Prepend(brand);
+        }
+
+        this.Append(list);
+      }
+      else
+        throw new BootstrapVersionException();
+
       
-      this.Append(innerNav);
     }
   }
 }

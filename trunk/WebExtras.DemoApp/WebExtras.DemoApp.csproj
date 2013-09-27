@@ -114,6 +114,7 @@
     <Compile Include="App_Start\ContentBundle.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Bootstrap3\Controllers\BaseController.cs" />
     <Compile Include="Areas\Bootstrap3\Controllers\CoreController.cs" />
     <Compile Include="Areas\Bootstrap3\Controllers\HomeController.cs" />
     <Compile Include="Areas\Bootstrap3\Controllers\MvcController.cs" />
@@ -121,6 +122,7 @@
     <Compile Include="Areas\Bootstrap3\Models\Mvc\BootstrapHtmlViewModel.cs" />
     <Compile Include="Areas\Bootstrap\BootstrapAreaRegistration.cs" />
     <Compile Include="Areas\Bootstrap3\Bootstrap3AreaRegistration.cs" />
+    <Compile Include="Areas\Bootstrap\Controllers\BaseController.cs" />
     <Compile Include="Areas\Gumby\GumbyAreaRegistration.cs" />
     <Compile Include="AssetsController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>

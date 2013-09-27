@@ -16,39 +16,24 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+#pragma warning disable 1591
+
 using System;
-using WebExtras.Core;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
-namespace WebExtras.Mvc.Bootstrap
-{
+namespace WebExtras.Mvc.Core
+{ 
   /// <summary>
-  /// Types of bootstrap navigation bars available
+  /// Bootstrap version selector
   /// </summary>
-  [Serializable]
-  public enum EBootstrapNavbar
+  public enum EBootstrapVersion
   {
-    /// <summary>
-    /// Regular navigation bar
-    /// </summary>
-    [StringValue("navbar navbar-default")]
-    Normal,
+    NONE,
 
-    /// <summary>
-    /// Navigation bar fixed at top of the viewport
-    /// </summary>
-    [StringValue("navbar-fixed-top")]
-    FixedTop,
+    V2,
 
-    /// <summary>
-    /// Navigation bar fixed at bottom of the viewport
-    /// </summary>
-    [StringValue("navbar-fixed-bottom")]
-    FixedBottom,
-
-    /// <summary>
-    /// Navigation bar fixed at top of the page
-    /// </summary>
-    [StringValue("navbar-static-top")]
-    StaticTop
+    V3
   }
 }

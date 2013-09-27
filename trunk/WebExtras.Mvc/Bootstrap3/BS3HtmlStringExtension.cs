@@ -22,7 +22,6 @@ using System.Linq;
 using System.Web.Routing;
 using WebExtras.Core;
 using WebExtras.Mvc.Html;
-using WebExtras.Mvc.Misc;
 
 namespace WebExtras.Mvc.Bootstrap3
 {
@@ -31,144 +30,6 @@ namespace WebExtras.Mvc.Bootstrap3
   /// </summary>
   public static class BS3HtmlStringExtension
   {
-    #region Glyph extensions
-
-    /// <summary>
-    /// Add an icon
-    /// </summary>
-    /// <typeparam name="T">Generic type to be used. This type must implement IExtendedHtmlString</typeparam>
-    /// <param name="html">Current html element</param>
-    /// <param name="icon">Icon to be rendered</param>
-    /// <param name="htmlAttributes">[Optional] Extra html attributes</param>
-    /// <returns>Html element with icon added</returns>
-    public static T AddGlyph<T>(this T html, EBootstrap3Glyph icon, object htmlAttributes = null) where T : IExtendedHtmlString
-    {
-      RouteValueDictionary rvd = new RouteValueDictionary(htmlAttributes);
-
-      List<string> cssClasses = new List<string>();
-      if (rvd.ContainsKey("class"))
-      {
-        cssClasses.AddRange(rvd["class"].ToString().Split(' '));
-        rvd.Remove("class");
-      }
-
-      cssClasses.Add("icon-" + icon.ToString().ToLowerInvariant().Replace("_", "-"));
-
-      Italic i = new Italic();
-      i["class"] = string.Join(" ", cssClasses);
-
-      i.Tag.MergeAttributes<string, object>(rvd);
-
-      html.Prepend(i);
-
-      return html;
-    }
-
-    /// <summary>
-    /// Add a white icon
-    /// </summary>
-    /// <typeparam name="T">Generic type to be used. This type must implement IExtendedHtmlString</typeparam>
-    /// <param name="html">Current html element</param>
-    /// <param name="icon">Icon to be rendered</param>
-    /// <param name="htmlAttributes">[Optional] Extra html attributes</param>
-    /// <returns>Html element with a white icon added</returns>
-    public static T AddWhiteGlyph<T>(this T html, EBootstrap3Glyph icon, object htmlAttributes = null) where T : IExtendedHtmlString
-    {
-      RouteValueDictionary rvd = new RouteValueDictionary(htmlAttributes);
-
-      List<string> cssClasses = new List<string>();
-      if (rvd.ContainsKey("class"))
-      {
-        cssClasses.AddRange(rvd["class"].ToString().Split(' '));
-        rvd.Remove("class");
-      }
-
-      cssClasses.Add("icon-white");
-      cssClasses.Add("icon-" + icon.ToString().ToLowerInvariant().Replace("_", "-"));
-
-      Italic i = new Italic();
-      i["class"] = string.Join(" ", cssClasses);
-
-      i.Tag.MergeAttributes<string, object>(rvd);
-
-      html.Prepend(i);
-
-      return html;
-    }
-
-    /// <summary>
-    /// Add an icon
-    /// </summary>
-    /// <typeparam name="T">Generic type to be used. This type must implement IExtendedHtmlString</typeparam>
-    /// <param name="html">Current html element</param>
-    /// <param name="icon">Icon to be rendered</param>
-    /// <param name="size">[Optional] Icon size</param>
-    /// <param name="htmlAttributes">[Optional] Extra html attributes</param>
-    /// <returns>Html element with icon added</returns>
-    public static T AddGlyph<T>(this T html, EFontAwesomeIcon icon, EFontAwesomeIconSize size = EFontAwesomeIconSize.Normal, object htmlAttributes = null) where T : IExtendedHtmlString
-    {
-      RouteValueDictionary rvd = new RouteValueDictionary(htmlAttributes);
-
-      List<string> cssClasses = new List<string>();
-      if (rvd.ContainsKey("class"))
-      {
-        cssClasses.AddRange(rvd["class"].ToString().Split(' '));
-        rvd.Remove("class");
-      }
-
-      cssClasses.Add("icon-" + icon.ToString().ToLowerInvariant().Replace("_", "-"));
-
-      if (size != EFontAwesomeIconSize.Normal)
-        cssClasses.Add("icon-" + size.GetStringValue());
-
-      Italic i = new Italic();
-      i["class"] = string.Join(" ", cssClasses);
-
-      i.Tag.MergeAttributes<string, object>(rvd);
-
-      html.Prepend(i);
-
-      return html;
-    }
-
-    /// <summary>
-    /// Add a white icon
-    /// </summary>
-    /// <typeparam name="T">Generic type to be used. This type must implement IExtendedHtmlString</typeparam>
-    /// <param name="html">Current html element</param>
-    /// <param name="icon">Icon to be rendered</param>
-    /// <param name="size">[Optional] Icon size</param>
-    /// <param name="htmlAttributes">[Optional] Extra html attributes</param>
-    /// <returns>Html element with a white icon added</returns>
-    public static T AddWhiteGlyph<T>(this T html, EFontAwesomeIcon icon, EFontAwesomeIconSize size = EFontAwesomeIconSize.Normal, object htmlAttributes = null) where T : IExtendedHtmlString
-    {
-      RouteValueDictionary rvd = new RouteValueDictionary(htmlAttributes);
-
-      List<string> cssClasses = new List<string>();
-      if (rvd.ContainsKey("class"))
-      {
-        cssClasses.AddRange(rvd["class"].ToString().Split(' '));
-        rvd.Remove("class");
-      }
-
-      cssClasses.Add("icon-white");
-      cssClasses.Add("icon-" + icon.ToString().ToLowerInvariant().Replace("_", "-"));
-
-      if (size != EFontAwesomeIconSize.Normal)
-        cssClasses.Add("icon-" + size.GetStringValue());
-
-      Italic i = new Italic();
-      i["class"] = string.Join(" ", cssClasses);
-
-      i.Tag.MergeAttributes<string, object>(rvd);
-
-      html.Prepend(i);
-
-      return html;
-    }
-
-    #endregion Glyph extensions
-
     #region Button extensions
 
     /// <summary>
@@ -216,20 +77,20 @@ namespace WebExtras.Mvc.Bootstrap3
 
     #endregion Button extensions
 
-    //#region List extensions
+    #region List extensions
 
-    ///// <summary>
-    ///// Create an unstyled list
-    ///// </summary>
-    ///// <param name="list">List to be converted</param>
-    ///// <returns>An unstyled list</returns>
-    //public static IExtendedHtmlString AsUnstyled(this HtmlList list)
-    //{
-    //  list.AddCssClass("unstyled");
+    /// <summary>
+    /// Create an unstyled list
+    /// </summary>
+    /// <param name="list">List to be converted</param>
+    /// <returns>An unstyled list</returns>
+    public static IExtendedHtmlString AsUnstyled(this HtmlList list)
+    {
+      list.AddCssClass("unstyled");
 
-    //  return list;
-    //}
+      return list;
+    }
 
-    //#endregion List extensions
+    #endregion List extensions
   }
 }

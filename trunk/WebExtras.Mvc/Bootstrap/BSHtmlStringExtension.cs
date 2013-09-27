@@ -22,7 +22,7 @@ using System.Linq;
 using System.Web.Routing;
 using WebExtras.Core;
 using WebExtras.Mvc.Html;
-using WebExtras.Mvc.Misc;
+using WebExtras.Mvc.Core;
 
 namespace WebExtras.Mvc.Bootstrap
 {
@@ -52,8 +52,13 @@ namespace WebExtras.Mvc.Bootstrap
         rvd.Remove("class");
       }
 
-      cssClasses.Add("icon-" + icon.ToString().ToLowerInvariant().Replace("_", "-"));
-
+      if (WebExtrasMvcConstants.BootstrapVersion == EBootstrapVersion.V2)      
+        cssClasses.Add("icon-" + icon.ToString().ToLowerInvariant().Replace("_", "-"));
+      else if (WebExtrasMvcConstants.BootstrapVersion == EBootstrapVersion.V3)
+        cssClasses.Add("glyphicon glyphicon-" + icon.ToString().ToLowerInvariant().Replace("_", "-"));
+      else
+        throw new BootstrapVersionException();
+                                                  
       Italic i = new Italic();
       i["class"] = string.Join(" ", cssClasses);
 
@@ -83,8 +88,12 @@ namespace WebExtras.Mvc.Bootstrap
         rvd.Remove("class");
       }
 
-      cssClasses.Add("icon-white");
-      cssClasses.Add("icon-" + icon.ToString().ToLowerInvariant().Replace("_", "-"));
+      if (WebExtrasMvcConstants.BootstrapVersion == EBootstrapVersion.V2)
+        cssClasses.Add("icon-white icon-" + icon.ToString().ToLowerInvariant().Replace("_", "-"));
+      else if (WebExtrasMvcConstants.BootstrapVersion == EBootstrapVersion.V3)
+        throw new InvalidOperationException("Since Bootstrap v3, all icons are font based. Therefore, you must use CSS styling to control icon color");
+      else
+        throw new BootstrapVersionException();
 
       Italic i = new Italic();
       i["class"] = string.Join(" ", cssClasses);

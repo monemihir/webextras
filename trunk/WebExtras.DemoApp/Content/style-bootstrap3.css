@@ -14,44 +14,42 @@
   margin: 0 auto;
   right: 1%;
   width: 970px;
-}
-.navbar-inverse {
   border-bottom-right-radius: 15px;
   border-bottom-left-radius: 15px;
 }
-.navbar-inverse .navbar-collapse {
+.navbar-fixed-top .navbar-collapse {
   filter: 0;
   border-color: #666666;
 }
-.navbar-inverse .navbar-brand {
+.navbar-fixed-top .navbar-brand {
   padding-top: 10px;
   padding-bottom: 10px;
   color: #ffffff;
 }
-.navbar-inverse .dropdown-menu {
+.navbar-fixed-top .dropdown-menu {
   background-color: #333333;
   color: #ffffff;
   margin: 5px 0 0;
 }
-.navbar-inverse .dropdown-menu > li > a {
+.navbar-fixed-top .dropdown-menu > li > a {
   color: inherit;
   padding-top: 5px;
   padding-bottom: 5px;
 }
-.navbar-inverse .nav .active > a {
+.navbar-fixed-top .nav .active > a {
   background-color: #666666;
 }
-.navbar-inverse .nav .active > a:focus,
-.navbar-inverse .nav .active > a:hover {
+.navbar-fixed-top .nav .active > a:focus,
+.navbar-fixed-top .nav .active > a:hover {
   background-color: #666666;
 }
-.navbar-inverse .nav a {
+.navbar-fixed-top .nav a {
   padding-top: 10px;
   padding-bottom: 10px;
 }
-.navbar-inverse .nav li.dropdown.open > .dropdown-toggle,
-.navbar-inverse .nav li.dropdown.active > .dropdown-toggle,
-.navbar-inverse .nav li.dropdown.open.active > .dropdown-toggle {
+.navbar-fixed-top .nav li.dropdown.open > .dropdown-toggle,
+.navbar-fixed-top .nav li.dropdown.active > .dropdown-toggle,
+.navbar-fixed-top .nav li.dropdown.open.active > .dropdown-toggle {
   background-color: #666666;
 }
 .nav.nav-pills,

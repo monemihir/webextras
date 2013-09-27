@@ -23,7 +23,7 @@ using WebExtras.Mvc.Bootstrap;
 
 namespace WebExtras.DemoApp.Areas.Bootstrap3.Controllers
 {
-  public partial class MvcController : Controller
+  public partial class MvcController : BaseController
   {
     //
     // GET: /Bootstrap/Mvc

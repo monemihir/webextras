@@ -29,7 +29,7 @@ using WebExtras.JQFlot.SubOptions;
 
 namespace WebExtras.DemoApp.Areas.Bootstrap3.Controllers
 {
-  public partial class CoreController : Controller
+  public partial class CoreController : BaseController
   {
     #region Ctor and attributes
 

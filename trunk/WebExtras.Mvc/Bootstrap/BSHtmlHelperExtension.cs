@@ -25,7 +25,7 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using WebExtras.Core;
 using WebExtras.Mvc.Html;
-using WebExtras.Mvc.Misc;
+using WebExtras.Mvc.Core;
 
 namespace WebExtras.Mvc.Bootstrap
 {
@@ -45,8 +45,25 @@ namespace WebExtras.Mvc.Bootstrap
     /// <returns>A Bootstrap icon</returns>
     public static IExtendedHtmlString Icon(this HtmlHelper html, EBootstrapIcon icon, object htmlAttributes = null)
     {
+
+      RouteValueDictionary rvd = new RouteValueDictionary(htmlAttributes);
+
+      List<string> cssClasses = new List<string>();
+      if (rvd.ContainsKey("class"))
+      {
+        cssClasses.AddRange(rvd["class"].ToString().Split(' '));
+        rvd.Remove("class");
+      }
+
+      if (WebExtrasMvcConstants.BootstrapVersion == EBootstrapVersion.V2)
+        cssClasses.Add("icon-" + icon.ToString().ToLowerInvariant().Replace("_", "-"));
+      else if (WebExtrasMvcConstants.BootstrapVersion == EBootstrapVersion.V3)
+        cssClasses.Add("glyphicon glyphicon-" + icon.ToString().ToLowerInvariant().Replace("_", "-"));
+      else
+        throw new BootstrapVersionException();
+
       Italic i = new Italic();
-      i["class"] = "icon-" + icon.ToString().ToLowerInvariant().Replace("_", "-");
+      i["class"] = string.Join(" ", cssClasses);
 
       return i;
     }
@@ -213,13 +230,24 @@ namespace WebExtras.Mvc.Bootstrap
       string fieldId = exp.Member.Name + "_tip";
 
       TagBuilder i = new TagBuilder("i");
-      i.AddCssClass("icon-info-sign");
+
+      if (WebExtrasMvcConstants.BootstrapVersion == EBootstrapVersion.V2)
+        i.AddCssClass("icon-info-sign");
+      else if (WebExtrasMvcConstants.BootstrapVersion == EBootstrapVersion.V3)
+        i.AddCssClass("glyphicon glyphicon-info-sign");
+      else 
+        throw new BootstrapVersionException();
+
       i.AddCssClass("help-inline");
       i.Attributes["id"] = fieldId;
+      i.Attributes["data-toggle"] = "tooltip";
+      i.Attributes["data-original-title"] = tooltipText;
+      i.Attributes["data-placement"] = placement;
+      i.Attributes["data-trigger"] = trigger;
 
       TagBuilder script = new TagBuilder("script");
       script.Attributes["type"] = "text/javascript";
-      script.InnerHtml = "$('#" + fieldId + "').tooltip({ title: '" + tooltipText + "', placement: '" + placement + "', trigger: '" + trigger + "' });";
+      script.InnerHtml = "$('#" + fieldId + "').tooltip();";
 
       return MvcHtmlString.Create(i.ToString(TagRenderMode.Normal) + script.ToString(TagRenderMode.Normal));
     }

@@ -30,25 +30,21 @@ namespace WebExtras.Mvc.Bootstrap
     /// <summary>
     /// A default progress bar
     /// </summary>
-    [StringValue("")]
     Default,
 
     /// <summary>
     /// A success progress bar
     /// </summary>
-    [StringValue("bar-success")]
     Success,
 
     /// <summary>
     /// A warning progress bar
     /// </summary>
-    [StringValue("bar-warning")]
     Warning,
 
     /// <summary>
     /// A danger progress bar
     /// </summary>
-    [StringValue("bar-danger")]
     Danger
   }
 }

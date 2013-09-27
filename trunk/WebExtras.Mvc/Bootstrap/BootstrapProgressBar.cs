@@ -19,6 +19,7 @@
 using System;
 using System.Web.Mvc;
 using WebExtras.Core;
+using WebExtras.Mvc.Core;
 using WebExtras.Mvc.Html;
 
 namespace WebExtras.Mvc.Bootstrap
@@ -55,9 +56,33 @@ namespace WebExtras.Mvc.Bootstrap
       this["class"] += "progress";
 
       Div inner = new Div();
-      inner["class"] = string.Format("bar {0}", type.GetStringValue());
+
+      switch (WebExtrasMvcConstants.BootstrapVersion)
+      {
+        case EBootstrapVersion.NONE:
+          throw new BootstrapVersionException();
+
+        case EBootstrapVersion.V2:
+          inner["class"] = string.Format("bar bar-{0}", type.ToString().ToLowerInvariant());
+          break;
+
+        case EBootstrapVersion.V3:
+          inner["class"] = string.Format("progress-bar progress-bar-{0}", type.ToString().ToLowerInvariant());
+          inner["role"] = "progressbar";
+          inner["aria-valuenow"] = percent.ToString();
+          inner["aria-valuemin"] = "0";
+          inner["aria-valuemax"] = "100";
+
+          Span spanInner = new Span(percent + "% Complete");
+          spanInner["class"] = "sr-only";
+
+          inner.Append(spanInner);
+          break;
+      }
 
       Append(inner);
+
+      this.Tag.MergeAttributes(HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes));
     }
 
     /// <summary>
@@ -68,7 +93,7 @@ namespace WebExtras.Mvc.Bootstrap
     /// <returns>MVC HTML string representation of the current element</returns>
     public override string ToHtmlString(TagRenderMode renderMode)
     {
-      AppendTags[0].Tag.Attributes["style"] = string.Format("; width: {0}%", Percent);
+      AppendTags[0].Tag.Attributes["style"] = string.Format("width: {0}%", Percent);
 
       return base.ToHtmlString(renderMode);
     }

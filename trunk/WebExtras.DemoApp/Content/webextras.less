@@ -22,40 +22,49 @@
 /** GENERIC STYLING **/
 
 input[type="checkbox"],
-input[type="radio"] {
+input[type="radio"]
+{
   vertical-align: top;
 }
 
 .checkbox-group,
-.radiobutton-group {
+.radiobutton-group
+{
   width: 100%;
 }
 
-.keep-center {
+.keep-center
+{
   text-align: center !important;
 }
 
-.keep-right {
+.keep-right
+{
   text-align: right !important;
 }
 
-.keep-left {
+.keep-left
+{
   text-align: left !important;
 }
 
-.keep-middle {
+.keep-middle
+{
   vertical-align: middle !important;
 }
 
-.pull-right {
+.pull-right
+{
   float: right;
 }
 
-.pull-left {
+.pull-left
+{
   float: left;
 }
 
-#actionmessage {
+#actionmessage
+{
   position: fixed;
   top: 0;
   right: 0.2%;
@@ -66,14 +75,17 @@ input[type="radio"] {
 
 /** GENERIC DATATABLES EXTENSIONS AND OVERRIDES **/
 
-table.dataTable thead th {
+table.dataTable thead th
+{
   border-bottom: 0;
 
-  div.DataTables_sort_wrapper {
+  div.DataTables_sort_wrapper
+  {
     padding-right: 20px;
     position: relative;
 
-    span {
+    span
+    {
       margin-top: -8px;
       position: absolute;
       right: 0;
@@ -81,17 +93,20 @@ table.dataTable thead th {
     }
   }
 
-  .css_right {
+  .css_right
+  {
     float: right;
   }
 }
 
-.dataTables_scrollBody {
+.dataTables_scrollBody
+{
   margin-top: -3px;
   background: @white;
 }
 
-.dataTables_scroll {
+.dataTables_scroll
+{
   border-left: 1px solid;
   border-right: 1px solid;
 }
@@ -100,39 +115,49 @@ table.dataTable thead th {
 
 /** BOOTSTRAP EXTENSIONS AND OVERRIDES **/
 
-[class^="icon-"], [class*=" icon-"] {
+[class^="icon-"], [class*=" icon-"]
+{
   margin-left: 0;
   margin-right: 5px;
 }
 
 .input-prepend .input-append,
-.input-append .input-prepend {
-  input {
+.input-append .input-prepend
+{
+  input
+  {
     border-radius: 0;
   }
 }
 
-.controls {
+.controls
+{
   input[type="checkbox"],
-  input[type="radio"] {
+  input[type="radio"]
+  {
     vertical-align: middle;
   }
 }
 
-.control-group .text {
+.control-group .text
+{
   padding-top: 5px;
 }
 
-.control-group-large {
-  .control-label {
+.control-group-large
+{
+  .control-label
+  {
     width: 260px;
   }
 
-  .controls {
+  .controls
+  {
     margin-left: 280px;
 
     input[type="checkbox"],
-    input[type="radio"] {
+    input[type="radio"]
+    {
       vertical-align: middle;
     }
   }
@@ -140,45 +165,66 @@ table.dataTable thead th {
 
 /** BOOTSTRAP EXTENSIONS AND OVERRIDES END **/
 
+/** BOOTSTRAP 3 EXTENSIONS AND OVERRIDES **/
+
+.glyphicon
+{
+  margin-right: 5px;
+}
+
+/** BOOTSTRAP 3 EXTENSIONS AND OVERRIDES END **/
+
 /** BOOTSTRAP STYLING FOR JQUERY DATATABLES **/
 
-.paging_bootstrap, .pagination {
+.paging_bootstrap, .pagination
+{
   margin: 0.3em 0 0 0;
 
-  > li > a {
+  > li > a
+  {
     padding: 5px 12px;
   }
 }
 
-.sorting_asc, .sorting_desc {
+.sorting_asc, .sorting_desc
+{
   background-color: rgba(141, 192, 219, 0.25);
   -webkit-text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
 }
 
-table.dataTable {
-  tbody {
-    tr.success td {
+table.dataTable
+{
+  tbody
+  {
+    tr.success td
+    {
       background-color: #dff0d8;
     }
 
-    tr.error td {
+    tr.error td
+    {
       background-color: #f2dede;
     }
 
-    tr.warning td {
+    tr.warning td
+    {
       background-color: #fcf8e3;
     }
 
-    tr.info td {
+    tr.info td
+    {
       background-color: #d9edf7;
     }
   }
 }
 
-.dataTables_wrapper {
-  .row-fluid, .row {
-    .dataTables_info {
+.dataTables_wrapper
+{
+  .row-fluid, .row
+  {
+    .dataTables_info
+    {
       padding-top: 4px;
     }
   }
@@ -188,17 +234,21 @@ table.dataTable {
 
 /** BOOTSTRAP DATE TIME PICKER OVERRIDES AND EXTENSIONS */
 
-[class*="datetimepicker-dropdown"] {
-  &:after {
+[class*="datetimepicker-dropdown"]
+{
+  &:after
+  {
     border: 0;
   }
 
-  &:before {
+  &:before
+  {
     border: 0;
   }
 }
 
-.datetimepicker.dropdown-menu {
+.datetimepicker.dropdown-menu
+{
   background-color: @white;
   color: @textColor;
   background-image: none;
@@ -209,7 +259,8 @@ table.dataTable {
 
 /** STYLING FOR FLOT GRAPHS */
 
-.legendLabel {
+.legendLabel
+{
   padding-right: 1em;
 }
 

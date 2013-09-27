@@ -17,38 +17,34 @@
 */
 
 using System;
-using WebExtras.Core;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
-namespace WebExtras.Mvc.Bootstrap
+namespace WebExtras.Mvc.Core
 {
   /// <summary>
-  /// Types of bootstrap navigation bars available
+  /// Bootstrap version exception thrown when a valid 
+  /// Bootstrap version is not selected
   /// </summary>
-  [Serializable]
-  public enum EBootstrapNavbar
+  public class BootstrapVersionException : Exception
   {
     /// <summary>
-    /// Regular navigation bar
+    /// The error message that explains the reason for the exception
     /// </summary>
-    [StringValue("navbar navbar-default")]
-    Normal,
+    public override string Message
+    {
+      get
+      {
+        return "Please select your desired Bootstrap version by setting the WebExtrasMvcConstants.BootstrapVersion property";
+      }
+    }
 
     /// <summary>
-    /// Navigation bar fixed at top of the viewport
+    /// Constructor
     /// </summary>
-    [StringValue("navbar-fixed-top")]
-    FixedTop,
-
-    /// <summary>
-    /// Navigation bar fixed at bottom of the viewport
-    /// </summary>
-    [StringValue("navbar-fixed-bottom")]
-    FixedBottom,
-
-    /// <summary>
-    /// Navigation bar fixed at top of the page
-    /// </summary>
-    [StringValue("navbar-static-top")]
-    StaticTop
+    public BootstrapVersionException()
+      : base()
+    { }
   }
 }

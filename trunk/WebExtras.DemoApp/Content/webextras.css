@@ -103,6 +103,11 @@ table.dataTable thead th .css_right {
   vertical-align: middle;
 }
 /** BOOTSTRAP EXTENSIONS AND OVERRIDES END **/
+/** BOOTSTRAP 3 EXTENSIONS AND OVERRIDES **/
+.glyphicon {
+  margin-right: 5px;
+}
+/** BOOTSTRAP 3 EXTENSIONS AND OVERRIDES END **/
 /** BOOTSTRAP STYLING FOR JQUERY DATATABLES **/
 .paging_bootstrap,
 .pagination {

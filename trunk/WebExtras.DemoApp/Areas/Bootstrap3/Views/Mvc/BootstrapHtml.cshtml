@@ -1,6 +1,6 @@
 ﻿@model WebExtras.DemoApp.Areas.Bootstrap.Models.Mvc.BootstrapHtmlViewModel
 @{
-  ViewBag.Title = "Mvc Bootstrap Html Helper Extensions";
+  ViewBag.Title = "Mvc Bootstrap 3 Html Helper Extensions";
 }
 
 @if (Model.ShowMessage)
@@ -8,35 +8,35 @@
   @Html.GetLastActionMessage()
 }
 
-<h3 class="keep-center">Mvc Bootstrap Html Helper Extensions</h3>
+<h3 class="keep-center">Mvc Bootstrap 3 Html Helper Extensions</h3>
 
-<div class="row-fluid">
-  <div class="span6">
-    <div class="row-fluid">
-      <div class="span3">
+<div class="row">
+  <div class="col-md-6">
+    <div class="row">
+      <div class="col-md-3">
         <strong>Assembly</strong>
       </div>
-      <div class="span4">
+      <div class="col-md-4">
         WebExtras.Mvc.dll
       </div>
     </div>
-    <div class="row-fluid">
-      <div class="span3">
+    <div class="row">
+      <div class="col-md-3">
         <strong>Namespace</strong>
       </div>
-      <div class="span4">
+      <div class="col-md-4">
         WebExtras.Mvc.Bootstrap
       </div>
     </div>
   </div>
-  <div class="span6">
-    <div class="span3">
+  <div class="col-md-6">
+    <div class="col-md-3">
       <strong>Dependancies</strong>
     </div>
-    <div class="span6">
+    <div class="col-md-6">
       <ul class="dependancies">
         <li>webextras.css</li>
-        <li>Bootstrap 2.3.x</li>
+        <li>Bootstrap 3.x</li>
         <li>>= Font Awesome 3.11</li>
       </ul>
     </div>
@@ -57,21 +57,21 @@
     Output
   </p>
   <div class="content">
-    <div class="row-fluid">
-      <div class="span4">Default Bootstrap Icons</div>
-      <div class="span4">Font Awesome Icons</div>
-      <div class="span4">Sized Font Awesome Icons</div>
+    <div class="row">
+      <div class="col-md-4">Default Bootstrap Icons</div>
+      <div class="col-md-4">Font Awesome Icons</div>
+      <div class="col-md-4">Sized Font Awesome Icons</div>
     </div>
-    <div class="row-fluid">
-      <div class="span4">
+    <div class="row">
+      <div class="col-md-4">
         @Html.Icon(EBootstrapIcon.Thumbs_Up) @Html.Icon(EBootstrapIcon.Arrow_Down) @Html.Icon(EBootstrapIcon.Backward)
         @Html.Icon(EBootstrapIcon.Ban_Circle) @Html.Icon(EBootstrapIcon.Tint)
       </div>
-      <div class="span4">
+      <div class="col-md-4">
         @Html.Icon(EFontAwesomeIcon.Thumbs_Up) @Html.Icon(EFontAwesomeIcon.Arrow_Down) @Html.Icon(EFontAwesomeIcon.Backward)
         @Html.Icon(EFontAwesomeIcon.Ban_Circle) @Html.Icon(EFontAwesomeIcon.Tint)
       </div>
-      <div class="span4">
+      <div class="col-md-4">
         @Html.Icon(EFontAwesomeIcon.Thumbs_Up, EFontAwesomeIconSize.Normal) @Html.Icon(EFontAwesomeIcon.Arrow_Down, EFontAwesomeIconSize.Large) @Html.Icon(EFontAwesomeIcon.Backward, EFontAwesomeIconSize.TwoX)
         @Html.Icon(EFontAwesomeIcon.Ban_Circle, EFontAwesomeIconSize.ThreeX) @Html.Icon(EFontAwesomeIcon.Tint, EFontAwesomeIconSize.FourX)
       </div>
@@ -80,7 +80,7 @@
 </div>
 
 <div class="well">
-  <h4>Adding icons to existing elements</h4>
+  <h4>Adding Icons to existing elements</h4>
   <p>
     Markup
   </p>
@@ -97,14 +97,18 @@
     All available extensions
   </p>
   <pre><code>
-<span class="comment">// Note that the 'icon' can be a default Bootstrap icon or a Font Awesome icon</span>
-.AddIcon(bootstrap-icon)                
-.AddIcon(fontawesome-icon)
-.AddIcon(fontawesome-icon, fontawesome-icon-size)
-.AddWhiteIcon(bootstrap-icon)
-.AddWhiteIcon(fontawesome-icon) 
-.AddWhiteIcon(fontawesome-icon, fontawesome-icon-size)
+<span class="comment">// Note that the 'Icon' can be a default Bootstrap Icon or a Font Awesome Icon</span>
+.AddIcon(bootstrap-Icon)                
+.AddIcon(fontawesome-Icon)
+.AddIcon(fontawesome-Icon, fontawesome-Icon-size)
   </code></pre>
+  <p>
+    As of Bootstrap v3.0 all icons/glyphicons are font based. Therefore, you can control the coloring of the
+    icons using basic CSS styling.
+    <br />
+    As such if you try to use the <span class="highlight">AddWhiteIcon()</span> extension you will get an
+    <span class="highlight">InvalidOperationException</span>.
+  </p>
 </div>
 
 <div class="well">
@@ -114,14 +118,14 @@
   </p>
   <pre><code>
 @@Html.Hyperlink("Take me to google", "http://www.google.com")
-  .AddWhiteIcon(EBootstrapIcon.Ok)
+  .AddIcon(EBootstrapIcon.Ok)
   .AsButton(EBootstrapButton.Info) 
   </code></pre>
   <p>
     Output
   </p>
   <div class="content">
-    @Html.Hyperlink("Take me to google", "http://www.google.com").AddWhiteIcon(EBootstrapIcon.Ok).AsButton(EBootstrapButton.Info)
+    @Html.Hyperlink("Take me to google", "http://www.google.com").AddIcon(EBootstrapIcon.Ok).AsButton(EBootstrapButton.Info)
   </div>
   <p>
     All available extensions
@@ -158,7 +162,7 @@
     Output
   </p>
   <div class="content">
-    <div class="container-fluid">
+    <div class="container">
       @{
         Hyperlink link1 = new Hyperlink("Link 1", "#");
         Hyperlink link2 = new Hyperlink("Link 2", "#");
@@ -205,9 +209,9 @@
   </code></pre>
   <p>Output</p>
   <div class="content">
-    <div class="row-fluid">        
-      <div class="span3">First call result @Html.Icon(EFontAwesomeIcon.Angle_Right) @Html.TooltipFor(f => f.SomeProperty, "This is a tooltip")</div>
-      <div class="span3">Second call result @Html.Icon(EFontAwesomeIcon.Angle_Right) @Html.TooltipFor(f => f.SomeProperty2)</div>
+    <div class="row">        
+      <div class="col-md-3">First call result @Html.Icon(EFontAwesomeIcon.Angle_Right) @Html.TooltipFor(f => f.SomeProperty, "This is a tooltip")</div>
+      <div class="col-md-6">Second call result @Html.Icon(EFontAwesomeIcon.Angle_Right) @Html.TooltipFor(f => f.SomeProperty2)</div>
     </div>
   </div>
   <p>All available extensions</p>

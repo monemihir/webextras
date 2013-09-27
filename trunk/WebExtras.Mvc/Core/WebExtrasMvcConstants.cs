@@ -32,5 +32,11 @@ namespace WebExtras.Mvc.Core
     /// the WebExtras.Mvc library
     /// </summary>
     public static bool EnableAutoIdGeneration { get; set; }
+
+    /// <summary>
+    /// The version of Bootstrap whose extensions you want
+    /// to use
+    /// </summary>
+    public static EBootstrapVersion BootstrapVersion = EBootstrapVersion.NONE;
   }
 }

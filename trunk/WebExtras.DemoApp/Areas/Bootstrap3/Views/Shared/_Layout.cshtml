@@ -5,6 +5,7 @@
 @using WebExtras.Mvc.Core
 @using WebExtras.Mvc.Html
 @using WebExtras.Mvc.Bootstrap
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -60,7 +61,7 @@
         <li>@(Html.Button(EButton.Regular, "Get WebExtras", "gotoDownload()")
                 .AddCssClass("download-btn")
                 .AsButton(EBootstrapButton.Primary)
-                .AddWhiteIcon(EBootstrapIcon.Arrow_Down))</li>
+                .AddIcon(EFontAwesomeIcon.Arrow_Down))</li>
       </ul>
     </div>
   </div>

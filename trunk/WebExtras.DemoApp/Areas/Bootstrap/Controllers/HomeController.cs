@@ -23,7 +23,7 @@ namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
   /// <summary>
   /// About controller
   /// </summary>
-  public partial class HomeController : Controller
+  public partial class HomeController : BaseController
   {
     //
     // GET: /Bootstrap/Home/

@@ -2,49 +2,55 @@
 @color666: #666666;
 @colorFFF: #ffffff;
 
-.bk666 {
+.bk666
+{
   background-color: @color666;
 }
 
-.pad-top-bot-10 {
+.pad-top-bot-10
+{
   padding-top: 10px;
   padding-bottom: 10px;
 }
 
 /* BOOTSTRAP 3 OVERRIDES */
 
-.navbar {
+.navbar
+{
   min-height: 40px;
 }
 
-.navbar-fixed-top {
+.navbar-fixed-top
+{
   left: 1%;
   margin: 0 auto;
   right: 1%;
   width: 970px;
-}
-
-.navbar-inverse {
   border-bottom-right-radius: 15px;
   border-bottom-left-radius: 15px;
 
-  .navbar-collapse {
+  .navbar-collapse
+  {
     filter: 0;
     border-color: @color666;
   }
 
-  .navbar-brand {
+  .navbar-brand
+  {
     .pad-top-bot-10();
     color: @colorFFF;
   }
 
-  .dropdown-menu {
+  .dropdown-menu
+  {
     background-color: @color333;
     color: #ffffff;
     margin: 5px 0 0;
 
-    > li {
-      > a {
+    > li
+    {
+      > a
+      {
         color: inherit;
         padding-top: 5px;
         padding-bottom: 5px;
@@ -52,26 +58,33 @@
     }
   }
 
-  .nav {
-    .active {
-      > a {
+  .nav
+  {
+    .active
+    {
+      > a
+      {
         .bk666();
 
         &:focus,
-        &:hover {
+        &:hover
+        {
           .bk666();
         }
       }
     }
 
-    a {
+    a
+    {
       .pad-top-bot-10();
     }
 
     li.dropdown.open,
     li.dropdown.active,
-    li.dropdown.open.active {
-      > .dropdown-toggle {
+    li.dropdown.open.active
+    {
+      > .dropdown-toggle
+      {
         .bk666();
       }
     }
@@ -79,53 +92,65 @@
 }
 
 .nav.nav-pills,
-.nav.nav-tabs {
+.nav.nav-tabs
+{
   margin-bottom: 20px;
 }
 
 .nav-tabs,
-.nav-pills {
-  > li {
+.nav-pills
+{
+  > li
+  {
     padding-left: 3px;
     padding-right: 3px;
 
-    > a {
+    > a
+    {
       padding: 6px 15px;
     }
   }
 }
 
-.row {
-  [class*="col"] {
+.row
+{
+  [class*="col"]
+  {
     min-height: 30px;
   }
 }
 
-.well {
+.well
+{
   padding: 10px;
 }
 
-h4 {
+h4
+{
   border-bottom: 1px solid #333333;
   padding-bottom: 5px;
 }
 
-.btn {
+.btn
+{
   padding: 5px 10px;
 }
 
 /* DEFAULT STYLES */
 
-.main {
+.main
+{
   margin-top: 20px;
 }
 
-.download-btn {
+.download-btn
+{
   margin-top: 5px;
   margin-right: 15px;
 }
 
-.documentation-affix {
+.documentation-affix
+{
   background-color: #1B1B1B;
   background-image: linear-gradient(to bottom, #111111, #222222);
   background-repeat: repeat-x;
