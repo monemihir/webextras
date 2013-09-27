@@ -72,9 +72,11 @@ namespace WebExtras.DemoApp.App_Start
       // CSS Bootstrap3 bundle
       Bundle.Css()
         .Add(Links.Content.bootstrap_3_0_0_css)
+        .Add(Links.Content.bootstrap_theme_3_0_0_css)
         .Add(Links.Content.font_awesome_css)
         .Add(Links.Content.jquery_bootstrap_datetimepicker_css)
         .Add(Links.Content.jquery_dataTables_css)
+        .Add(Links.Content.jquery_datatables_bootstrap3_css)
         .Add(Links.Content.jquery_jScrollPane_2_0_0beta12_css)
         .Add(Links.Content.webextras_css)
         .Add(Links.Content.style_bootstrap3_css)
@@ -96,7 +98,6 @@ namespace WebExtras.DemoApp.App_Start
         .Add(Links.Scripts.jquery_1_9_1_min_js)
         .Add(Links.Scripts.jquery_migrate_1_1_1_min_js)
         .Add(Links.Scripts.jquery_datatables_min_js)
-        .Add(Links.Scripts.jquery_datatables_pagination_js)
         .Add(Links.Scripts.jquery_flot_min_js)
         .Add(Links.Scripts.jquery_flot_curvedlines_js)
         .Add(Links.Scripts.jquery_flot_dashes_js)
@@ -111,6 +112,7 @@ namespace WebExtras.DemoApp.App_Start
       // Bootstrap javascript bundle
       Bundle.JavaScript()
         .Add(Links.Scripts.bootstrap_2_3_1_min_js)
+        .Add(Links.Scripts.jquery_datatables_bootstrap_js)
         .Add(Links.Scripts.jquery_bootstrap_datetimepicker_min_js)
         .Add(Links.Scripts.jquery_bootstrap_hover_dropdown_min_js)
         .AsCached(ContentBundle.JSBootstrap.GetStringValue(), ResolveJsPath(ContentBundle.JSBootstrap));
@@ -118,6 +120,7 @@ namespace WebExtras.DemoApp.App_Start
       // Bootstrap3 javascript bundle
       Bundle.JavaScript()
         .Add(Links.Scripts.bootstrap_3_0_0_min_js)
+        .Add(Links.Scripts.jquery_datatables_bootstrap3_js)
         .Add(Links.Scripts.jquery_bootstrap_datetimepicker_min_js)
         .Add(Links.Scripts.jquery_bootstrap_hover_dropdown_min_js)
         .AsCached(ContentBundle.JSBootstrap3.GetStringValue(), ResolveJsPath(ContentBundle.JSBootstrap3));

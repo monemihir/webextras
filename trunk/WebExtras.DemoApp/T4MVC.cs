@@ -32,6 +32,7 @@ public static class MVC
     public static GumbyClass Gumby { get { return s_Gumby; } }
     public static WebExtras.DemoApp.Controllers.AssetsController Assets = new WebExtras.DemoApp.Controllers.T4MVC_AssetsController();
     public static WebExtras.DemoApp.Controllers.FlavourController Flavour = new WebExtras.DemoApp.Controllers.T4MVC_FlavourController();
+    public static T4MVC.SharedController Shared = new T4MVC.SharedController();
 }
 
 namespace T4MVC
@@ -49,6 +50,10 @@ namespace T4MVC
     public class Bootstrap3Class
     {
         public readonly string Name = "bootstrap3";
+        public WebExtras.DemoApp.Areas.Bootstrap3.Controllers.CoreController Core = new WebExtras.DemoApp.Areas.Bootstrap3.Controllers.T4MVC_CoreController();
+        public WebExtras.DemoApp.Areas.Bootstrap3.Controllers.HomeController Home = new WebExtras.DemoApp.Areas.Bootstrap3.Controllers.T4MVC_HomeController();
+        public WebExtras.DemoApp.Areas.Bootstrap3.Controllers.MvcController Mvc = new WebExtras.DemoApp.Areas.Bootstrap3.Controllers.T4MVC_MvcController();
+        public T4MVC.Bootstrap3.SharedController Shared = new T4MVC.Bootstrap3.SharedController();
     }
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
     public class GumbyClass
@@ -111,9 +116,11 @@ namespace Links
         public static readonly string jquery_1_9_1_min_js = Url("jquery-1.9.1.min.js");
         public static readonly string jquery_bootstrap_datetimepicker_min_js = Url("jquery.bootstrap.datetimepicker.min.js");
         public static readonly string jquery_bootstrap_hover_dropdown_min_js = Url("jquery.bootstrap.hover.dropdown.min.js");
-        public static readonly string jquery_datatables_min_js = Url("jquery.datatables.min.js");
-        public static readonly string jquery_datatables_pagination_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.datatables.pagination.min.js") ? Url("jquery.datatables.pagination.min.js") : Url("jquery.datatables.pagination.js");
+        public static readonly string jquery_datatables_bootstrap_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.datatables.bootstrap.min.js") ? Url("jquery.datatables.bootstrap.min.js") : Url("jquery.datatables.bootstrap.js");
                       
+        public static readonly string jquery_datatables_bootstrap3_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.datatables.bootstrap3.min.js") ? Url("jquery.datatables.bootstrap3.min.js") : Url("jquery.datatables.bootstrap3.js");
+                      
+        public static readonly string jquery_datatables_min_js = Url("jquery.datatables.min.js");
         public static readonly string jquery_flot_axislabels_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.flot.axislabels.min.js") ? Url("jquery.flot.axislabels.min.js") : Url("jquery.flot.axislabels.js");
                       
         public static readonly string jquery_flot_curvedlines_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.flot.curvedlines.min.js") ? Url("jquery.flot.curvedlines.min.js") : Url("jquery.flot.curvedlines.js");
@@ -140,6 +147,8 @@ namespace Links
         public static readonly string bootstrap_2_3_1_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/bootstrap-2.3.1.min.css") ? Url("bootstrap-2.3.1.min.css") : Url("bootstrap-2.3.1.css");
              
         public static readonly string bootstrap_3_0_0_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/bootstrap-3.0.0.min.css") ? Url("bootstrap-3.0.0.min.css") : Url("bootstrap-3.0.0.css");
+             
+        public static readonly string bootstrap_theme_3_0_0_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/bootstrap-theme-3.0.0.min.css") ? Url("bootstrap-theme-3.0.0.min.css") : Url("bootstrap-theme-3.0.0.css");
              
         public static readonly string favicon_ico = Url("favicon.ico");
         public static readonly string favicon_png = Url("favicon.png");
@@ -246,6 +255,8 @@ namespace Links
         }
     
         public static readonly string jquery_bootstrap_datetimepicker_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.bootstrap.datetimepicker.min.css") ? Url("jquery.bootstrap.datetimepicker.min.css") : Url("jquery.bootstrap.datetimepicker.css");
+             
+        public static readonly string jquery_datatables_bootstrap3_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.datatables.bootstrap3.min.css") ? Url("jquery.datatables.bootstrap3.min.css") : Url("jquery.datatables.bootstrap3.css");
              
         public static readonly string jquery_dataTables_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.dataTables.min.css") ? Url("jquery.dataTables.min.css") : Url("jquery.dataTables.css");
              

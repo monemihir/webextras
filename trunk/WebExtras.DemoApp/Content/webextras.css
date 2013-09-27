@@ -1,4 +1,4 @@
-/*
+﻿/*
 * This file is part of - WebExtras
 * Copyright (C) 2013 Mihir Mone
 *
@@ -107,6 +107,10 @@ table.dataTable thead th .css_right {
 .paging_bootstrap,
 .pagination {
   margin: 0.3em 0 0 0;
+}
+.paging_bootstrap > li > a,
+.pagination > li > a {
+  padding: 5px 12px;
 }
 .sorting_asc,
 .sorting_desc {

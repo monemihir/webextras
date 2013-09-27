@@ -16,7 +16,10 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+using System.Linq;
 using System.Globalization;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace WebExtras.Core
 {
@@ -29,9 +32,18 @@ namespace WebExtras.Core
     /// Converts a given string to title case
     /// </summary>
     /// <param name="str">String to be converted to titlecase</param>
+    /// <param name="allWords">[Optional] Flag indicating whether to title case each 
+    /// individual word. Defaults to false</param>
     /// <returns>Titlecase converted string</returns>
-    public static string ToTitleCase(this string str)
+    public static string ToTitleCase(this string str, bool allWords = false)
     {
+      if (allWords)
+      {
+        IEnumerable<string> parsed = str.Split(' ').Select(f => ToTitleCase(f));
+
+        return string.Join(" ", parsed);
+      }
+
       return CultureInfo.CurrentCulture.TextInfo.ToTitleCase(str);
     }
 

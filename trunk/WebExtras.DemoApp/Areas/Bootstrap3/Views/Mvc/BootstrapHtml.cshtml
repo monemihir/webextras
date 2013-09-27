@@ -1,0 +1,261 @@
+﻿@model WebExtras.DemoApp.Areas.Bootstrap.Models.Mvc.BootstrapHtmlViewModel
+@{
+  ViewBag.Title = "Mvc Bootstrap Html Helper Extensions";
+}
+
+@if (Model.ShowMessage)
+{
+  @Html.GetLastActionMessage()
+}
+
+<h3 class="keep-center">Mvc Bootstrap Html Helper Extensions</h3>
+
+<div class="row-fluid">
+  <div class="span6">
+    <div class="row-fluid">
+      <div class="span3">
+        <strong>Assembly</strong>
+      </div>
+      <div class="span4">
+        WebExtras.Mvc.dll
+      </div>
+    </div>
+    <div class="row-fluid">
+      <div class="span3">
+        <strong>Namespace</strong>
+      </div>
+      <div class="span4">
+        WebExtras.Mvc.Bootstrap
+      </div>
+    </div>
+  </div>
+  <div class="span6">
+    <div class="span3">
+      <strong>Dependancies</strong>
+    </div>
+    <div class="span6">
+      <ul class="dependancies">
+        <li>webextras.css</li>
+        <li>Bootstrap 2.3.x</li>
+        <li>>= Font Awesome 3.11</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="well">
+  <h4>Icon</h4>
+  <p>
+    Markup
+  </p>
+  <pre><code>
+@@Html.Icon(EBootstrapIcon.Ok)
+@@Html.Icon(EFontAwesomeIcon.Ok)
+@@Html.Icon(EFontAwesomeIcon.Ok, EFontAwesomeIconSize.Large)
+  </code></pre>
+  <p>
+    Output
+  </p>
+  <div class="content">
+    <div class="row-fluid">
+      <div class="span4">Default Bootstrap Icons</div>
+      <div class="span4">Font Awesome Icons</div>
+      <div class="span4">Sized Font Awesome Icons</div>
+    </div>
+    <div class="row-fluid">
+      <div class="span4">
+        @Html.Icon(EBootstrapIcon.Thumbs_Up) @Html.Icon(EBootstrapIcon.Arrow_Down) @Html.Icon(EBootstrapIcon.Backward)
+        @Html.Icon(EBootstrapIcon.Ban_Circle) @Html.Icon(EBootstrapIcon.Tint)
+      </div>
+      <div class="span4">
+        @Html.Icon(EFontAwesomeIcon.Thumbs_Up) @Html.Icon(EFontAwesomeIcon.Arrow_Down) @Html.Icon(EFontAwesomeIcon.Backward)
+        @Html.Icon(EFontAwesomeIcon.Ban_Circle) @Html.Icon(EFontAwesomeIcon.Tint)
+      </div>
+      <div class="span4">
+        @Html.Icon(EFontAwesomeIcon.Thumbs_Up, EFontAwesomeIconSize.Normal) @Html.Icon(EFontAwesomeIcon.Arrow_Down, EFontAwesomeIconSize.Large) @Html.Icon(EFontAwesomeIcon.Backward, EFontAwesomeIconSize.TwoX)
+        @Html.Icon(EFontAwesomeIcon.Ban_Circle, EFontAwesomeIconSize.ThreeX) @Html.Icon(EFontAwesomeIcon.Tint, EFontAwesomeIconSize.FourX)
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="well">
+  <h4>Adding icons to existing elements</h4>
+  <p>
+    Markup
+  </p>
+  <pre><code>
+@@Html.Hyperlink("Take me to google", "http://www.google.com").AddIcon(EBootstrapIcon.Ok)
+  </code></pre>
+  <p>
+    Output
+  </p>
+  <div class="content">
+    @Html.Hyperlink("Take me to google", "http://www.google.com").AddIcon(EBootstrapIcon.Ok)
+  </div>
+  <p>
+    All available extensions
+  </p>
+  <pre><code>
+<span class="comment">// Note that the 'icon' can be a default Bootstrap icon or a Font Awesome icon</span>
+.AddIcon(bootstrap-icon)                
+.AddIcon(fontawesome-icon)
+.AddIcon(fontawesome-icon, fontawesome-icon-size)
+.AddWhiteIcon(bootstrap-icon)
+.AddWhiteIcon(fontawesome-icon) 
+.AddWhiteIcon(fontawesome-icon, fontawesome-icon-size)
+  </code></pre>
+</div>
+
+<div class="well">
+  <h4>Button styled hyperlinks</h4>
+  <p>
+    Markup
+  </p>
+  <pre><code>
+@@Html.Hyperlink("Take me to google", "http://www.google.com")
+  .AddWhiteIcon(EBootstrapIcon.Ok)
+  .AsButton(EBootstrapButton.Info) 
+  </code></pre>
+  <p>
+    Output
+  </p>
+  <div class="content">
+    @Html.Hyperlink("Take me to google", "http://www.google.com").AddWhiteIcon(EBootstrapIcon.Ok).AsButton(EBootstrapButton.Info)
+  </div>
+  <p>
+    All available extensions
+  </p>
+  <pre><code>
+<span class="comment">// Note that this extension can only be used for hyperlinks and button elements</span> 
+.AsButton(type) 
+  </code></pre>
+</div>
+
+<div class="well">
+  <h4>Navbar</h4>
+  <p>Markup</p>
+  <pre><code>
+@@{
+  <span class="comment">// You can use hyperlink elements or HtmlListItem elements or even a HtmlList element to render a navbar</span>
+  Hyperlink link1 = new Hyperlink("Link 1", "#");
+  Hyperlink link2 = new Hyperlink("Link 2", "#");
+  Hyperlink link3 = new Hyperlink("Link 3", "#");
+  Hyperlink link4 = new Hyperlink("Brand", "#", new { @@class = "brand" });
+        
+  HtmlListItem item3 = new HtmlListItem(string.Empty);
+  item3.Append(link3);        
+
+  HtmlList list = new HtmlList(EList.Unordered, new HtmlListItem[] { item3 });    
+}      
+
+@@Html.Navbar(EBootstrapNavbar.Normal, list)
+
+<span class="comment">// Use appropriate navbar type to get all bootstrap effects</span>
+@@Html.Navbar(EBootstrapNavbar.Normal, link1, link2, item3, link4)<span class="highlight">.AsInverse()</span>  <span class="comment">// Creates an inverse styled navbar</span>
+  </code></pre>
+  <p>
+    Output
+  </p>
+  <div class="content">
+    <div class="container-fluid">
+      @{
+        Hyperlink link1 = new Hyperlink("Link 1", "#");
+        Hyperlink link2 = new Hyperlink("Link 2", "#");
+        Hyperlink link3 = new Hyperlink("Link 3", "#");
+        Hyperlink link4 = new Hyperlink("Brand", "#", new { @class = "brand" });
+
+        HtmlListItem item3 = new HtmlListItem(string.Empty);
+        item3.Append(link3);
+
+        HtmlList list = new HtmlList(EList.Unordered, new HtmlListItem[] { item3 });    
+      }
+
+      @Html.Navbar(EBootstrapNavbar.Normal, list)
+
+      @Html.Navbar(EBootstrapNavbar.Normal, link1, link2, item3, link4).AsInverse()
+    </div>
+  </div>
+</div>
+
+<div class="well">
+  <h4>Progress Bars</h4>
+  <p>Markup</p>
+  <pre><code>
+@@Html.ProgressBar(EBootstrapProgressBar.Default, 10)
+@@Html.ProgressBar(EBootstrapProgressBar.Success, 25)
+@@Html.ProgressBar(EBootstrapProgressBar.Warning, 50)<span class="highlight">.AsStriped()</span>
+@@Html.ProgressBar(EBootstrapProgressBar.Danger, 75)<span class="highlight">.AsAnimated()</span>
+  </code></pre>
+  <p>Output</p>
+  <div class="content">
+    @Html.ProgressBar(EBootstrapProgressBar.Default, 10)
+    @Html.ProgressBar(EBootstrapProgressBar.Success, 25)
+    @Html.ProgressBar(EBootstrapProgressBar.Warning, 50).AsStriped()
+    @Html.ProgressBar(EBootstrapProgressBar.Danger, 75).AsAnimated()
+  </div>
+</div>
+
+<div class="well">
+  <h4>Tooltips</h4>
+  <p>Markup</p>
+  <pre><code>
+@@Html.TooltipFor(f => f.SomeProperty, "This is a tooltip")
+@@Html.TooltipFor(f => f.SomeProperty2)
+  </code></pre>
+  <p>Output</p>
+  <div class="content">
+    <div class="row-fluid">        
+      <div class="span3">First call result @Html.Icon(EFontAwesomeIcon.Angle_Right) @Html.TooltipFor(f => f.SomeProperty, "This is a tooltip")</div>
+      <div class="span3">Second call result @Html.Icon(EFontAwesomeIcon.Angle_Right) @Html.TooltipFor(f => f.SomeProperty2)</div>
+    </div>
+  </div>
+  <p>All available extensions</p>
+  <pre><code>
+<span class="comment">// Tooltip text retrieved from the System.ComponentModel.DescriptionAttribute added to the view model property</span>
+@@Html.TooltipFor(propertySelector)
+@@Html.TooltipFor(propertySelector, placement, trigger)
+
+<span class="comment">// Tooltip text retrieved from the function parameter passed in</span>
+@@Html.TooltipFor(propertySelector, tooltipText)
+@@Html.TooltipFor(propertySelector, tooltipText, placement, trigger)
+  </code></pre>
+</div>
+
+<div class="well">
+  <h4>Action messages</h4>
+  <p>WebExtras provides a way to add action messages to denote status of action to notify a user. For e.g. you may want to add a message to the user when he is moved to a different
+    page on a form submit or on a particular action
+  </p>
+  <p>Usage</p>
+  <pre><code>
+<span class="comment">// In the controller</span>
+using WebExtras.MVC.Bootstrap.Core
+
+public class HomeController : ControllerBase
+{
+  public ActionResult SomeAction()
+  {
+    SomeModel model = new SomeModel();
+    return <span class="highlight">this.</span>View("myview", model, "Your action has been performed");
+  }
+
+  public ActionResult SomeOtherAction()
+  {
+    SomeModel model = new SomeModel();
+    return <span class="highlight">this.</span>RedirectToAction(myActionResult, "Your action failed", EActionMessage.Error);
+  }
+}
+
+<span class="comment">// In the view</span>
+@@Html.GetLastActionMessage()
+  </code></pre>
+  <p>Output</p>
+  <div class="content">
+    <span class="comment">// Click the link below to see an action message demo. <br /></span>
+    <span class="comment">// Action message by default appear on the top right corner of the screen. <br /></span>
+    <span class="comment">// It's position can be controlled via CSS though. See the accompanying webextras.css file. <br /></span>
+    <br />
+    @Html.Hyperlink("Action Message Demo", MVC.Bootstrap.Mvc.ActionMessageDemo())
+  </div>
+</div>

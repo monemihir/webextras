@@ -304,6 +304,15 @@ namespace WebExtras.JQDataTables
 
     #endregion Some extra settings
 
+    #region Properties
+
+    /// <summary>
+    /// The current paging scheme
+    /// </summary>
+    public EPagination Paging { get; private set; }
+
+    #endregion Properties
+
     #region Callbacks
 
     /// <summary>
@@ -577,11 +586,17 @@ namespace WebExtras.JQDataTables
           sDom = "t<'row-fluid'<'span6'i><'span6'p>>";
           goto default;
 
+        case EPagination.Bootstrap3:
+          sDom = "t<'row'<'col-sm-6'i><'col-sm-6'p>>";
+          goto default;
+
         default:
           bPaginate = true;
           sPaginationType = type.GetStringValue();
           break;
       }
+
+      Paging = type;
     }
 
     /// <summary>

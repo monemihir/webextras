@@ -114,6 +114,11 @@
     <Compile Include="App_Start\ContentBundle.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Bootstrap3\Controllers\CoreController.cs" />
+    <Compile Include="Areas\Bootstrap3\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Bootstrap3\Controllers\MvcController.cs" />
+    <Compile Include="Areas\Bootstrap3\Models\Mvc\BootstrapFormViewModel.cs" />
+    <Compile Include="Areas\Bootstrap3\Models\Mvc\BootstrapHtmlViewModel.cs" />
     <Compile Include="Areas\Bootstrap\BootstrapAreaRegistration.cs" />
     <Compile Include="Areas\Bootstrap3\Bootstrap3AreaRegistration.cs" />
     <Compile Include="Areas\Gumby\GumbyAreaRegistration.cs" />
@@ -133,6 +138,18 @@
     <Compile Include="Bootstrap.SharedController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
+    <Compile Include="Bootstrap3.CoreController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Bootstrap3.HomeController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Bootstrap3.MvcController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Bootstrap3.SharedController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\AssetsController.cs" />
     <Compile Include="Areas\Bootstrap\Controllers\CoreController.cs" />
     <Compile Include="Areas\Bootstrap\Controllers\MvcController.cs" />
@@ -149,6 +166,9 @@
     <Compile Include="Models\Core\FlotViewModel.cs" />
     <Compile Include="Models\Core\PostbackSetupViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SharedController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
     <Compile Include="T4MVC.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -156,8 +176,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Views\Shared\DatatablePartial.ascx" />
     <Content Include="Content\bootstrap-2.3.1.css" />
     <Content Include="Content\bootstrap-3.0.0.css" />
+    <Content Include="Content\bootstrap-theme-3.0.0.css" />
+    <Content Include="Content\jquery.datatables.bootstrap3.css" />
     <Content Include="Content\fluidable.css">
       <DependentUpon>fluidable.less</DependentUpon>
     </Content>
@@ -228,6 +251,36 @@
       <DependentUpon>style-gumby.less</DependentUpon>
     </Content>
     <Content Include="Content\style-gumby.less" />
+    <Content Include="Areas\Bootstrap3\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Bootstrap3\Views\Core\_AjaxSetup.cshtml" />
+    <Content Include="Areas\Bootstrap3\Views\Core\_AxisLabels.cshtml" />
+    <Content Include="Areas\Bootstrap3\Views\Core\_BarGraph.cshtml" />
+    <Content Include="Areas\Bootstrap3\Views\Core\_BasicSetup.cshtml" />
+    <Content Include="Areas\Bootstrap3\Views\Core\_CurvedLineGraph.cshtml" />
+    <Content Include="Areas\Bootstrap3\Views\Core\_CustomFlotFormatters.cshtml" />
+    <Content Include="Areas\Bootstrap3\Views\Core\_DashedGraph.cshtml" />
+    <Content Include="Views\Shared\_Datatable.cshtml" />
+    <Content Include="Areas\Bootstrap3\Views\Core\_DatatableDeprecated.cshtml" />
+    <Content Include="Areas\Bootstrap3\Views\Core\_LineGraph.cshtml" />
+    <Content Include="Areas\Bootstrap3\Views\Core\_PagedSetup.cshtml" />
+    <Content Include="Areas\Bootstrap3\Views\Core\_PieGraph.cshtml" />
+    <Content Include="Areas\Bootstrap3\Views\Core\_PostbackResult.cshtml" />
+    <Content Include="Areas\Bootstrap3\Views\Core\_PostbackSetup.cshtml" />
+    <Content Include="Areas\Bootstrap3\Views\Core\_SortedSetup.cshtml" />
+    <Content Include="Areas\Bootstrap3\Views\Core\_StatusSetup.cshtml" />
+    <Content Include="Areas\Bootstrap3\Views\Core\Datatables.cshtml" />
+    <Content Include="Areas\Bootstrap3\Views\Core\Flot.cshtml" />
+    <Content Include="Areas\Bootstrap3\Views\Core\Generic.cshtml" />
+    <Content Include="Areas\Bootstrap3\Views\Home\Download.cshtml" />
+    <Content Include="Areas\Bootstrap3\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Bootstrap3\Views\Mvc\ActionResults.cshtml" />
+    <Content Include="Areas\Bootstrap3\Views\Mvc\BootstrapForm.cshtml" />
+    <Content Include="Areas\Bootstrap3\Views\Mvc\BootstrapHtml.cshtml" />
+    <Content Include="Areas\Bootstrap3\Views\Mvc\CoreForm.cshtml" />
+    <Content Include="Areas\Bootstrap3\Views\Mvc\CoreHtml.cshtml" />
+    <Content Include="Areas\Bootstrap3\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Bootstrap3\Views\Shared\Error.cshtml" />
+    <Content Include="Areas\Bootstrap3\Views\Web.config" />
     <None Include="Content\style.less" />
     <Content Include="Content\style-bootstrap3.min.css">
       <DependentUpon>style-bootstrap3.less</DependentUpon>
@@ -254,6 +307,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\bootstrap-3.0.0.min.js" />
+    <Content Include="Scripts\jquery.datatables.bootstrap3.js" />
     <Content Include="Scripts\gumby-2.5.6.min.js" />
     <Content Include="Scripts\jquery.bootstrap.datetimepicker.min.js" />
     <Content Include="Scripts\jquery.bootstrap.hover.dropdown.min.js" />
@@ -267,7 +321,7 @@
     <Content Include="Scripts\bootstrap-2.3.1.min.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
     <Content Include="Scripts\jquery.datatables.min.js" />
-    <Content Include="Scripts\jquery.datatables.pagination.js" />
+    <Content Include="Scripts\jquery.datatables.bootstrap.js" />
     <Content Include="Scripts\jquery.flot.curvedlines.js" />
     <Content Include="Scripts\jquery.flot.dashes.js" />
     <Content Include="Scripts\jquery.migrate-1.1.1.min.js" />
