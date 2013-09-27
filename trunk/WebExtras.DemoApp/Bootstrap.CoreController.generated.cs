@@ -171,8 +171,6 @@ namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
                 public readonly string _CurvedLineGraph = "_CurvedLineGraph";
                 public readonly string _CustomFlotFormatters = "_CustomFlotFormatters";
                 public readonly string _DashedGraph = "_DashedGraph";
-                public readonly string _Datatable = "_Datatable";
-                public readonly string _DatatableDeprecated = "_DatatableDeprecated";
                 public readonly string _LineGraph = "_LineGraph";
                 public readonly string _PagedSetup = "_PagedSetup";
                 public readonly string _PieGraph = "_PieGraph";
@@ -180,7 +178,6 @@ namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
                 public readonly string _PostbackSetup = "_PostbackSetup";
                 public readonly string _SortedSetup = "_SortedSetup";
                 public readonly string _StatusSetup = "_StatusSetup";
-                public readonly string DatatablePartial = "DatatablePartial";
                 public readonly string Datatables = "Datatables";
                 public readonly string Flot = "Flot";
                 public readonly string Generic = "Generic";
@@ -192,8 +189,6 @@ namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
             public readonly string _CurvedLineGraph = "~/Areas/Bootstrap/Views/Core/_CurvedLineGraph.cshtml";
             public readonly string _CustomFlotFormatters = "~/Areas/Bootstrap/Views/Core/_CustomFlotFormatters.cshtml";
             public readonly string _DashedGraph = "~/Areas/Bootstrap/Views/Core/_DashedGraph.cshtml";
-            public readonly string _Datatable = "~/Areas/Bootstrap/Views/Core/_Datatable.cshtml";
-            public readonly string _DatatableDeprecated = "~/Areas/Bootstrap/Views/Core/_DatatableDeprecated.cshtml";
             public readonly string _LineGraph = "~/Areas/Bootstrap/Views/Core/_LineGraph.cshtml";
             public readonly string _PagedSetup = "~/Areas/Bootstrap/Views/Core/_PagedSetup.cshtml";
             public readonly string _PieGraph = "~/Areas/Bootstrap/Views/Core/_PieGraph.cshtml";
@@ -201,7 +196,6 @@ namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
             public readonly string _PostbackSetup = "~/Areas/Bootstrap/Views/Core/_PostbackSetup.cshtml";
             public readonly string _SortedSetup = "~/Areas/Bootstrap/Views/Core/_SortedSetup.cshtml";
             public readonly string _StatusSetup = "~/Areas/Bootstrap/Views/Core/_StatusSetup.cshtml";
-            public readonly string DatatablePartial = "~/Areas/Bootstrap/Views/Core/DatatablePartial.ascx";
             public readonly string Datatables = "~/Areas/Bootstrap/Views/Core/Datatables.cshtml";
             public readonly string Flot = "~/Areas/Bootstrap/Views/Core/Flot.cshtml";
             public readonly string Generic = "~/Areas/Bootstrap/Views/Core/Generic.cshtml";

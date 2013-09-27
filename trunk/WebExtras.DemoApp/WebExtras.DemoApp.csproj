@@ -281,6 +281,7 @@
     <Content Include="Areas\Bootstrap3\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Bootstrap3\Views\Shared\Error.cshtml" />
     <Content Include="Areas\Bootstrap3\Views\Web.config" />
+    <Content Include="Areas\Bootstrap\Views\Core\Datatables.cshtml" />
     <None Include="Content\style.less" />
     <Content Include="Content\style-bootstrap3.min.css">
       <DependentUpon>style-bootstrap3.less</DependentUpon>
@@ -326,7 +327,6 @@
     <Content Include="Scripts\jquery.flot.dashes.js" />
     <Content Include="Scripts\jquery.migrate-1.1.1.min.js" />
     <Content Include="T4MVC.tt.settings.xml" />
-    <Content Include="Areas\Bootstrap\Views\Core\DatatablePartial.ascx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -372,12 +372,6 @@
     <Content Include="Areas\Bootstrap\Views\Core\Generic.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Areas\Bootstrap\Views\Core\_Datatable.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Areas\Bootstrap\Views\Core\Datatables.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Areas\Bootstrap\Views\Core\Flot.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -406,7 +400,7 @@
     <Content Include="Areas\Bootstrap\Views\Mvc\BootstrapForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Areas\Bootstrap\Views\Core\_DatatableDeprecated.cshtml" />
+    <Content Include="Views\Shared\_DatatableDeprecated.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Bootstrap\Views\Home\Index.cshtml" />

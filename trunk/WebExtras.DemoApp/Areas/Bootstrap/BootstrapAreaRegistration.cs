@@ -26,15 +26,15 @@ namespace WebExtras.DemoApp.Areas.Bootstrap
     {
       get
       {
-        return "Bootstrap";
+        return "bootstrap";
       }
     }
 
     public override void RegisterArea(AreaRegistrationContext context)
     {
       context.MapRoute(
-          "Bootstrap_default",
-          "Bootstrap/{controller}/{action}/{id}",
+          "bootstrap_default",
+          "bootstrap/{controller}/{action}/{id}",
           new { controller = "Home", action = "Index", id = UrlParameter.Optional }
       );
     }

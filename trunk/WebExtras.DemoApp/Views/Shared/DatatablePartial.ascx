@@ -47,6 +47,12 @@
       
   <%= Html.Raw(string.Format("var {0}_tbl = $('#{0}').dataTable(dtSettings);", Model.ID)) %>
     
+  <% if (Model.Settings.Paging == EPagination.Bootstrap3)
+     { %>
+  <%= Html.Raw(string.Format("var {0}_search_input = {0}_tbl.closest('.dataTables_wrapper').find('div[id$=_filter] input'); {0}_search_input.attr('placeholder', 'Search'); {0}_search_input.addClass('form-control input-sm');", Model.ID)) %>
+  <%= Html.Raw(string.Format("var {0}_length_sel = {0}_tbl.closest('.dataTables_wrapper').find('div[id$=_length] select'); {0}_length_sel.addClass('form-control input-sm');", Model.ID)) %>
+  <% } %>
+
   <%if (Model.Settings.bServerSide)
     { %>
   <%= Html.Raw(string.Format("{0}_settings = {0}_tbl.fnSettings(); {0}_settings.oFeatures.bServerSide = true; {0}_settings.sAjaxSource = '{1}';", Model.ID, Model.Settings.sAjaxSource)) %>

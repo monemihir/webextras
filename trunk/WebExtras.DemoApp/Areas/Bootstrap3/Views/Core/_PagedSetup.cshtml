@@ -79,7 +79,7 @@
 <div class="well">
   <h4>And our paging enabled output is</h4>
   <div class="output">
-    @Html.Partial(MVC.Bootstrap.Core.Views._Datatable, Model)
+    @Html.Partial(MVC.Shared.Views._Datatable, Model)
   </div>
 </div>
 
@@ -94,7 +94,7 @@
     as <strong>None</strong>.
   </p>
   <div class="output">
-    <table class="table">
+    <table class="table table-bordered">
       <tr>
         <th style="width: 20%">Pagination type</th>
         <th>Description</th>
@@ -113,8 +113,13 @@
       </tr>
       <tr>
         <td>Bootstrap</td>
-        <td>This comes from a plug-in and provides the mark-up needed for using Twitter Bootstrap's pagination styling with 
+        <td>This comes from a plug-in and provides the mark-up needed for using pagination styling of Bootstrap 2.x with 
           DataTables. Note that this plug-in uses the fnPagingInfo API plug-in method to obtain paging information.</td>
+      </tr>
+      <tr>
+        <td>Bootstrap3</td>
+        <td>This comes from a plug-in and provides the mark-up needed for using pagination styling of Bootstrap 3 with 
+          DataTables.</td>
       </tr>
       <tr>
         <td>Four Button</td>

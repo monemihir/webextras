@@ -123,30 +123,30 @@
     We will be searching records based on this table
   </p>
   <div class="output">
-    @Html.Partial(MVC.Bootstrap.Core.Views._Datatable, Model.Table)
+    @Html.Partial(MVC.Shared.Views._Datatable, Model.Table)
   </div>
 </div>
 
 <div class="well">
   <h4>Go ahead try it yourself</h4>
-  @using (Html.BeginForm(MVC.Bootstrap.Core.Datatables(), FormMethod.Post, new { @class = "form-horizontal" }))
+  @using (Html.BeginForm(MVC.Bootstrap3.Core.Datatables(), FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
   { 
-    <div class="control-group">
-      @Html.LabelFor(f => f.PostbackFormFields.FirstColumn, new { @class = "control-label" })
-      <div class="controls">
-        @Html.TextBoxFor(f => f.PostbackFormFields.FirstColumn)
+    <div class="form-group">
+      @Html.LabelFor(f => f.PostbackFormFields.FirstColumn, new { @class = "col-md-2 control-label" })
+      <div class="col-md-3">
+        @Html.TextBoxFor(f => f.PostbackFormFields.FirstColumn, new { @class = "form-control" })
       </div>
     </div>
 
-    <div class="control-group">
-      @Html.LabelFor(f => f.PostbackFormFields.SecondColumn, new { @class = "control-label" })
-      <div class="controls">
-        @Html.TextBoxFor(f => f.PostbackFormFields.SecondColumn)
+    <div class="form-group">
+      @Html.LabelFor(f => f.PostbackFormFields.SecondColumn, new { @class = "col-md-2 control-label" })
+      <div class="col-md-3">
+        @Html.TextBoxFor(f => f.PostbackFormFields.SecondColumn, new { @class = "form-control" })
       </div>
     </div>
 
-    <div class="control-group">
-      <div class="controls">
+    <div class="form-group">
+      <div class="col-md-offset-2 col-md-2">
         @Html.Button(EButton.Submit, "Submit").AsButton(EBootstrapButton.Primary)
       </div>
     </div>

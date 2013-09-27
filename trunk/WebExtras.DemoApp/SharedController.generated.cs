@@ -36,9 +36,11 @@ namespace T4MVC
             public class _ViewNamesClass
             {
                 public readonly string _Datatable = "_Datatable";
+                public readonly string _DatatableDeprecated = "_DatatableDeprecated";
                 public readonly string DatatablePartial = "DatatablePartial";
             }
             public readonly string _Datatable = "~/Views/Shared/_Datatable.cshtml";
+            public readonly string _DatatableDeprecated = "~/Views/Shared/_DatatableDeprecated.cshtml";
             public readonly string DatatablePartial = "~/Views/Shared/DatatablePartial.ascx";
         }
     }

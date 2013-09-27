@@ -79,7 +79,7 @@
 <div class="well">
   <h4>And our paging enabled output is</h4>
   <div class="output">
-    @Html.Partial(MVC.Bootstrap.Core.Views._Datatable, Model)
+    @Html.Partial(MVC.Shared.Views._Datatable, Model)
   </div>
 </div>
 
@@ -90,7 +90,8 @@
     from plugins.
   </p>
   <p>Paging mechanism is controlled by the <strong>SetupPaging()</strong> method on the <strong>WebExtras.JQDataTables.DatatableSettings</strong> class.</p>
-  <p>By default the <strong>Bootstrap</strong> paging mechanism will be selected by the library. Paging can be disabled by setting the pagination type
+  <p>
+    By default the <strong>Bootstrap</strong> paging mechanism will be selected by the library. Paging can be disabled by setting the pagination type
     as <strong>None</strong>.
   </p>
   <div class="output">
@@ -113,8 +114,13 @@
       </tr>
       <tr>
         <td>Bootstrap</td>
-        <td>This comes from a plug-in and provides the mark-up needed for using Twitter Bootstrap's pagination styling with 
+        <td>This comes from a plug-in and provides the mark-up needed for using pagination styling of Bootstrap 2.x with 
           DataTables. Note that this plug-in uses the fnPagingInfo API plug-in method to obtain paging information.</td>
+      </tr>
+      <tr>
+        <td>Bootstrap3</td>
+        <td>This comes from a plug-in and provides the mark-up needed for using pagination styling of Bootstrap 3 with 
+          DataTables.</td>
       </tr>
       <tr>
         <td>Four Button</td>
@@ -126,8 +132,7 @@
       </tr>
       <tr>
         <td>Scrolling</td>
-        <td>
-          This modification of DataTables' standard two button pagination controls adds a 
+        <td>This modification of DataTables' standard two button pagination controls adds a 
           little animation effect to the paging action by redrawing the table multiple times 
           for each event, each draw progressing by one row until the required point in the 
           table is reached.

@@ -26,15 +26,15 @@ namespace WebExtras.DemoApp.Areas.Gumby
     {
       get
       {
-        return "Gumby";
+        return "gumby";
       }
     }
 
     public override void RegisterArea(AreaRegistrationContext context)
     {
       context.MapRoute(
-          "Gumby_default",
-          "Gumby/{controller}/{action}/{id}",
+          "gumby_default",
+          "gumby/{controller}/{action}/{id}",
           new { controller = "Home", action = "Index", id = UrlParameter.Optional }
       );
     }
