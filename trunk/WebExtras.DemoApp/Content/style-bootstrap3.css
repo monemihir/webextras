@@ -75,15 +75,12 @@ h4 {
   border-bottom: 1px solid #333333;
   padding-bottom: 5px;
 }
-.btn {
-  padding: 5px 10px;
-}
 /* DEFAULT STYLES */
 .main {
   margin-top: 20px;
 }
 .download-btn {
-  margin-top: 5px;
+  margin-top: 3px;
   margin-right: 15px;
 }
 .documentation-affix {

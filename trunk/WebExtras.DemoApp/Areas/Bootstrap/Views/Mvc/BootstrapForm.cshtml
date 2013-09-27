@@ -109,10 +109,12 @@
 </div>
 
 <div class="well">
-  <h4>Creating unstyled lists</h4>
-  <p>Unstyled lists can be created by using the <strong>AsUnstyled()</strong> decorator.</p>
-  <p>Markup</p>
-  <pre><code>
+  <h4>Manipulating lists</h4>
+  <div class="row-fluid">
+    <div class="span6">
+      <p>Unstyled lists can be created by using the <strong>AsUnstyled()</strong> decorator.</p>
+      <p>Markup</p>
+      <pre><code>
 @@Html.List(EList.Unordered, new HtmlListItem[] { 
   new HtmlListItem("list item 1"),
   new HtmlListItem("list item 2"),
@@ -121,14 +123,39 @@
   new HtmlListItem("list item 5")
 }).AsUnstyled()
   </code></pre>
-  <p>Output</p>
-  <div class="content">
-    @Html.List(EList.Unordered, new HtmlListItem[] { 
+      <p>Output</p>
+      <div class="content">
+        @Html.List(EList.Unordered, new HtmlListItem[] { 
       new HtmlListItem("list item 1"),
       new HtmlListItem("list item 2"),
       new HtmlListItem("list item 3"),
       new HtmlListItem("list item 4"),
       new HtmlListItem("list item 5")
     }).AsUnstyled()
+      </div>
+    </div>
+    <div class="span6">
+      <p>Inline lists can be created by using the <strong>AsInline()</strong> decorator.</p>
+      <p>Markup</p>
+      <pre><code>
+@@Html.List(EList.Unordered, new HtmlListItem[] { 
+  new HtmlListItem("list item 1"),
+  new HtmlListItem("list item 2"),
+  new HtmlListItem("list item 3"),
+  new HtmlListItem("list item 4"),
+  new HtmlListItem("list item 5")
+}).AsInline()
+  </code></pre>
+      <p>Output</p>
+      <div class="content">
+        @Html.List(EList.Unordered, new HtmlListItem[] { 
+      new HtmlListItem("list item 1"),
+      new HtmlListItem("list item 2"),
+      new HtmlListItem("list item 3"),
+      new HtmlListItem("list item 4"),
+      new HtmlListItem("list item 5")
+    }).AsInline()
+      </div>
+    </div>
   </div>
 </div>

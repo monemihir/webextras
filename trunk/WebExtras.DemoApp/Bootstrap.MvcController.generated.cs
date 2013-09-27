@@ -50,6 +50,12 @@ namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
         {
             return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.BootstrapHtml);
         }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult ActionMessageDemo()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ActionMessageDemo);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public MvcController Actions { get { return MVC.Bootstrap.Mvc; } }
@@ -83,6 +89,14 @@ namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
         public class ActionParamsClass_BootstrapHtml
         {
             public readonly string msg = ("msg").ToLowerInvariant();
+        }
+        static readonly ActionParamsClass_ActionMessageDemo s_params_ActionMessageDemo = new ActionParamsClass_ActionMessageDemo();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_ActionMessageDemo ActionMessageDemoParams { get { return s_params_ActionMessageDemo; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_ActionMessageDemo
+        {
+            public readonly string success = ("success").ToLowerInvariant();
         }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -144,9 +158,10 @@ namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult ActionMessageDemo()
+        public override System.Web.Mvc.ActionResult ActionMessageDemo(bool success)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ActionMessageDemo);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "success", success);
             return callInfo;
         }
 

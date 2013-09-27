@@ -1,10 +1,10 @@
 ﻿@model WebExtras.DemoApp.Areas.Bootstrap.Models.Mvc.BootstrapFormViewModel
 
 @{
-  ViewBag.Title = "Mvc Bootstrap Form Helper Extensions";
+  ViewBag.Title = "Mvc Bootstrap 3 Form Helper Extensions";
 }
 
-<h3 class="keep-center">Mvc Bootstrap Form Helper Extensions</h3>
+<h3 class="keep-center">Mvc Bootstrap 3 Form Helper Extensions</h3>
 
 <div class="row">
   <div class="col-md-6">
@@ -29,7 +29,7 @@
     <div class="col-md-3">
       <strong>Dependancies</strong>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-8">
       <ul class="dependancies">
         <li>webextras.css</li>
         <li>Bootstrap 3.x</li>
@@ -47,10 +47,10 @@
   <p>Markup</p>
   <pre><code>
 @@Html.Hyperlink("Take me to google", "http://www.google.com")
-    .AsButton(EBootstrap3Button.Default)
+    .AsButton(EBootstrapButton.Default)
 
 @@Html.Button(EButton.Regular, "Take me to google", "window.location='http://www.google.com.au'")
-    .AsButton(EBootstrap3Button.Inverse)
+    .AsButton(EBootstrapButton.Danger, EBootstrapButton.Large)
   </code></pre>
   <p>Output</p>
   <div class="content">
@@ -60,7 +60,7 @@
       @Html.Hyperlink("Take me to google", "http://www.google.com").AsButton(EBootstrapButton.Success)
     </p>
     <p>
-      @Html.Button(EButton.Regular, "Take me to google", "http://www.google.com").AsButton(EBootstrapButton.Info, EBootstrapButton.Mini)
+      @Html.Button(EButton.Regular, "Take me to google", "http://www.google.com").AsButton(EBootstrapButton.Info, EBootstrapButton.XSmall)
       @Html.Button(EButton.Regular, "Take me to google", "http://www.google.com").AsButton(EBootstrapButton.Warning, EBootstrapButton.Small)
       @Html.Button(EButton.Regular, "Take me to google", "goToGoogle()").AsButton(EBootstrapButton.Danger, EBootstrapButton.Large)
     </p>
@@ -109,10 +109,12 @@
 </div>
 
 <div class="well">
-  <h4>Creating unstyled lists</h4>
-  <p>Unstyled lists can be created by using the <strong>AsUnstyled()</strong> decorator.</p>
-  <p>Markup</p>
-  <pre><code>
+  <h4>Manipulating lists</h4>
+  <div class="row">
+    <div class="col-md-6">
+      <p>Unstyled lists can be created by using the <strong>AsUnstyled()</strong> decorator.</p>
+      <p>Markup</p>
+      <pre><code>
 @@Html.List(EList.Unordered, new HtmlListItem[] { 
   new HtmlListItem("list item 1"),
   new HtmlListItem("list item 2"),
@@ -121,14 +123,39 @@
   new HtmlListItem("list item 5")
 }).AsUnstyled()
   </code></pre>
-  <p>Output</p>
-  <div class="content">
-    @Html.List(EList.Unordered, new HtmlListItem[] { 
+      <p>Output</p>
+      <div class="content">
+        @Html.List(EList.Unordered, new HtmlListItem[] { 
       new HtmlListItem("list item 1"),
       new HtmlListItem("list item 2"),
       new HtmlListItem("list item 3"),
       new HtmlListItem("list item 4"),
       new HtmlListItem("list item 5")
     }).AsUnstyled()
+      </div>
+    </div>
+    <div class="col-md-6">
+      <p>Inline lists can be created by using the <strong>AsInline()</strong> decorator.</p>
+      <p>Markup</p>
+      <pre><code>
+@@Html.List(EList.Unordered, new HtmlListItem[] { 
+  new HtmlListItem("list item 1"),
+  new HtmlListItem("list item 2"),
+  new HtmlListItem("list item 3"),
+  new HtmlListItem("list item 4"),
+  new HtmlListItem("list item 5")
+}).AsInline()
+  </code></pre>
+      <p>Output</p>
+      <div class="content">
+        @Html.List(EList.Unordered, new HtmlListItem[] { 
+      new HtmlListItem("list item 1"),
+      new HtmlListItem("list item 2"),
+      new HtmlListItem("list item 3"),
+      new HtmlListItem("list item 4"),
+      new HtmlListItem("list item 5")
+    }).AsInline()
+      </div>
+    </div>
   </div>
 </div>

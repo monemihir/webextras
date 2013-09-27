@@ -30,25 +30,25 @@ namespace WebExtras.Mvc.Core
     /// <summary>
     /// Success message
     /// </summary>
-    [StringValue("success")]
+    [StringValue("alert-success")]
     Success,
 
     /// <summary>
     /// Error message
     /// </summary>
-    [StringValue("error")]
+    [StringValue("alert-error alert-danger")]
     Error,
 
     /// <summary>
     /// Warning message
     /// </summary>
-    [StringValue("warning")]
+    [StringValue("alert-warning")]
     Warning,
 
     /// <summary>
     /// Information message
     /// </summary>
-    [StringValue("info")]
+    [StringValue("alert-info")]
     Information
   }
 }

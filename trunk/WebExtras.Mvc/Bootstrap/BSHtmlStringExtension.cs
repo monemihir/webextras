@@ -234,7 +234,19 @@ namespace WebExtras.Mvc.Bootstrap
     /// <returns>An unstyled list</returns>
     public static IExtendedHtmlString AsUnstyled(this HtmlList list)
     {
-      list.AddCssClass("unstyled");
+      list.AddCssClass("unstyled list-unstyled");
+
+      return list;
+    }
+
+    /// <summary>
+    /// Create an inline list.
+    /// </summary>
+    /// <param name="list">List to be converted</param>
+    /// <returns>An inline list</returns>
+    public static IExtendedHtmlString AsInline(this HtmlList list)
+    {
+      list.AddCssClass("inline list-inline");
 
       return list;
     }

@@ -194,6 +194,7 @@
     @Html.ProgressBar(EBootstrapProgressBar.Warning, 50).AsStriped()
     @Html.ProgressBar(EBootstrapProgressBar.Danger, 75).AsAnimated()
   </div>
+  <p>Striped and Animated progress bar CSS effects are not supported in Internet Explorer 9 and below and on Opera 12</p>
 </div>
 
 <div class="well">
@@ -253,9 +254,11 @@ public class HomeController : ControllerBase
   <p>Output</p>
   <div class="content">
     <span class="comment">// Click the link below to see an action message demo. <br /></span>
-    <span class="comment">// Action message by default appear on the top right corner of the screen. <br /></span>
+    <span class="comment">// Action messages by default appear on the top right corner of the screen. <br /></span>
     <span class="comment">// It's position can be controlled via CSS though. See the accompanying webextras.css file. <br /></span>
     <br />
-    @Html.Hyperlink("Action Message Demo", MVC.Bootstrap.Mvc.ActionMessageDemo())
+     @Html.Hyperlink("Action Successful Message Demo", MVC.Bootstrap.Mvc.ActionMessageDemo(true))
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    @Html.Hyperlink("Action Error Message Demo", MVC.Bootstrap.Mvc.ActionMessageDemo(false))
   </div>
 </div>

@@ -20,6 +20,7 @@ using System;
 using System.Web.Mvc;
 using WebExtras.DemoApp.Areas.Bootstrap.Models.Mvc;
 using WebExtras.Mvc.Bootstrap;
+using WebExtras.Mvc.Core;
 
 namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
 {
@@ -75,9 +76,11 @@ namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
 
     //
     // GET: /Bootstrap/Mvc/ActionMessageDemo
-    public virtual ActionResult ActionMessageDemo()
+    public virtual ActionResult ActionMessageDemo(bool success)
     {
-      return this.RedirectToAction(Actions.BootstrapHtml(true), "This is an action message demo");
+      if (!success)
+        return this.RedirectToAction(Actions.BootstrapHtml(true), "Your action failed", EActionMessage.Error);
+      return this.RedirectToAction(Actions.BootstrapHtml(true), "Your action was successful");
     }
 
     //

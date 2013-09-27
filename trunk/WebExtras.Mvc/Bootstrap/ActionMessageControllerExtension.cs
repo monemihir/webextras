@@ -111,12 +111,20 @@ namespace WebExtras.Mvc.Bootstrap
         EActionMessage type = (EActionMessage)helper.ViewContext.TempData[TempDataMessageTypeKey];
         string controlId = "actionmessage";
 
+        // create the dismiss button
+        //<button type="button" class="close" data-dismiss="alert">&times;</button>
+        TagBuilder dismissBtn = new TagBuilder("button");
+        dismissBtn.AddCssClass("close");
+        dismissBtn.Attributes["data-dismiss"] = "alert";
+        dismissBtn.Attributes["aria-hidden"] = "true";
+        dismissBtn.InnerHtml = "&times;";
+
         // create action message div
         TagBuilder builder = new TagBuilder("div");
-        builder.Attributes["class"] = "alert keep-center strong";
+        builder.Attributes["class"] = "alert alert-dismissable keep-center strong";
         builder.GenerateId(controlId);
-        builder.AddCssClass("alert-" + type.GetStringValue());
-        builder.InnerHtml = message;
+        builder.AddCssClass(type.GetStringValue());
+        builder.InnerHtml = dismissBtn.ToString(TagRenderMode.Normal) + message;
 
         // create the script tag
         TagBuilder script = new TagBuilder("script");

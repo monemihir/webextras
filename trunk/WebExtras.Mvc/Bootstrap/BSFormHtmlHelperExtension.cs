@@ -137,20 +137,19 @@ namespace WebExtras.Mvc.Bootstrap
       input.Attributes["type"] = "text";
       input.Attributes["value"] = ((DateTime)ModelMetadata.FromLambdaExpression(expression, html.ViewData).Model).ToString(datetimeformat);
       input.Attributes["name"] = fieldName;
+      input.Attributes["class"] = "form-control";
       input.MergeAttributes<string, object>((IDictionary<string, object>)new RouteValueDictionary(htmlAttributes));
 
       // create addon
       TagBuilder addOn = new TagBuilder("span");
-      addOn.AddCssClass("add-on");
+      addOn.AddCssClass("add-on input-group-addon");
 
       TagBuilder icons = new TagBuilder("i");
       icons.AddCssClass("icon-calendar");
 
       TagBuilder control = new TagBuilder("div");
       control.Attributes["id"] = fieldId;
-      control.AddCssClass("input-append");
-      control.AddCssClass("date");
-      control.AddCssClass("form_datetime");
+      control.Attributes["class"] = "input-append input-group date form_datetime";
 
       addOn.InnerHtml = icons.ToString(TagRenderMode.Normal);
       control.InnerHtml = input.ToString(TagRenderMode.SelfClosing) + addOn.ToString(TagRenderMode.Normal);

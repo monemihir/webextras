@@ -44,19 +44,37 @@ namespace WebExtras.Mvc.Bootstrap
     [StringValue("btn btn-warning")]
     Warning,
 
+    /// <summary>
+    /// Only available in Bootstrap 2.x
+    /// </summary>
     [StringValue("btn btn-inverse")]
     Inverse,
 
     [StringValue("btn btn-danger")]
     Danger,
 
-    [StringValue("btn-large")]
+    [StringValue("btn-large btn-lg")]
     Large,
 
+    /// <summary>
+    /// Only available in Bootstrap 2.x
+    /// </summary>
     [StringValue("btn-mini")]
     Mini,
     
-    [StringValue("btn-small")]
-    Small
+    [StringValue("btn-small btn-sm")]
+    Small,
+
+    /// <summary>
+    /// Only available in Bootstrap 3.x
+    /// </summary>
+    [StringValue("btn-xs")]
+    XSmall,
+
+    /// <summary>
+    /// Only available in Bootstrap 3.x
+    /// </summary>
+    [StringValue("btn-link")]
+    Link
   }
 }

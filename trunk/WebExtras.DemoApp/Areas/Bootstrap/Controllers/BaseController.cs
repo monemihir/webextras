@@ -7,7 +7,7 @@ using WebExtras.Mvc.Core;
 
 namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
 {
-    public abstract class BaseController : Controller
+  public abstract partial class BaseController : Controller
     {
       protected override void OnActionExecuting(ActionExecutingContext filterContext)
       {
