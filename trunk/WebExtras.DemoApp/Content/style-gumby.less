@@ -1,6 +1,33 @@
 ﻿@color333: #333333;
 @color666: #666666;
 
-.bk666 {
+.bk666
+{
   background-color: @color666;
 }
+
+/* GUMBY OVERRIDES AND EXTENSIONS */
+
+.gumby-no-touch .navbar ul li:hover .dropdown,
+.gumby-touch .navbar ul li.active .dropdown
+{
+  width: auto;
+}
+
+.navbar
+{
+  min-height: 40px;
+
+  .logo a
+  {
+    color: #FFFFFF;
+    font-weight: bold;
+  }
+}
+
+small
+{
+  font-size: 85%;
+}
+
+/* GUMBY OVERRIDES AND EXTENSIONS END */

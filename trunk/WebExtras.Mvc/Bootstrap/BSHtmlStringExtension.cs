@@ -27,7 +27,7 @@ using WebExtras.Mvc.Core;
 namespace WebExtras.Mvc.Bootstrap
 {
   /// <summary>
-  /// Bootstrap hyperlink extensions
+  /// Bootstrap hyperlink/button decorators
   /// </summary>
   public static class BSHtmlStringExtension
   {

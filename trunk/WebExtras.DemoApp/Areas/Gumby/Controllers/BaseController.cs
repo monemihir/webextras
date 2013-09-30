@@ -23,7 +23,7 @@ using System.Web;
 using System.Web.Mvc;
 using WebExtras.Mvc.Core;
 
-namespace WebExtras.DemoApp.Areas.Bootstrap3.Controllers
+namespace WebExtras.DemoApp.Areas.Gumby.Controllers
 {
   public abstract partial class BaseController : Controller
     {
@@ -31,7 +31,7 @@ namespace WebExtras.DemoApp.Areas.Bootstrap3.Controllers
       {
         base.OnActionExecuting(filterContext);
 
-        WebExtrasMvcConstants.BootstrapVersion = EBootstrapVersion.V3;
+        WebExtrasMvcConstants.GumbyTheme = EGumbyTheme.Metro;
       }
     }
 }

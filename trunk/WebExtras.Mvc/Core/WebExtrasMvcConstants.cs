@@ -34,9 +34,13 @@ namespace WebExtras.Mvc.Core
     public static bool EnableAutoIdGeneration { get; set; }
 
     /// <summary>
-    /// The version of Bootstrap whose extensions you want
-    /// to use
+    /// The version of Bootstrap whose extensions you want to use
     /// </summary>
     public static EBootstrapVersion BootstrapVersion = EBootstrapVersion.NONE;
+
+    /// <summary>
+    /// Gumby theme to use
+    /// </summary>
+    public static EGumbyTheme GumbyTheme = EGumbyTheme.None;
   }
 }

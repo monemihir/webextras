@@ -1,0 +1,112 @@
+﻿@using WebExtras.DemoApp.App_Start
+@using WebExtras.Core
+@using SquishIt.Framework
+@using SquishIt.Mvc
+@using WebExtras.Mvc.Core
+@using WebExtras.Mvc.Html
+@using WebExtras.Mvc.Gumby
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>@ViewBag.Title - Gumby - WebExtras</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <meta name="author" content="Mihir Mone" />
+  <meta name="application-name" content="WebExtras" />
+  <meta name="description" content=".net mvc, .net mvc 4, .net mvc helpers, bootstrap, flot, datatables" />
+
+  <link rel="icon" type="image/ico" href="@Links.Content.favicon_ico" />
+  @Bundle.Css().MvcRenderCachedAssetTag(ContentBundle.CSSGumby.GetStringValue())
+  @Bundle.JavaScript().MvcRenderCachedAssetTag(ContentBundle.JSBase.GetStringValue())
+  @Bundle.JavaScript().MvcRenderCachedAssetTag(ContentBundle.JSGumby.GetStringValue())
+  <script type="text/javascript">
+    function goToGoogle() { window.location = "http://www.google.com.au"; }
+    function goToYoutube() { window.location = "http://www.youtube.com"; }
+    function gotoCodeplex() { window.open('http://webextras.codeplex.com/releases', '_blank'); }
+    function gotoDownload() { window.open('@Url.Action(MVC.Bootstrap3.Home.Download())', '_self'); }
+
+  </script>
+</head>
+<body>
+  <br />
+  <div id="navbar" class="row navbar pretty" gumby-fixed="top">
+    <h4 class="two columns logo">
+      @Html.Hyperlink("WebExtras", Url.Content("~/"))
+    </h4>
+    <ul class="eight columns">
+      <li class="@Html.SelectedTab("Home", "Index")">@Html.Hyperlink("Home", MVC.Gumby.Home.Index())</li>
+      <li class="@Html.SelectedTab("Home", "Index")">@Html.Hyperlink("Core", MVC.Gumby.Home.Index())</li>
+      <li class="@Html.SelectedTab("Home", "Index")">@Html.Hyperlink("jQuery Datatables", MVC.Gumby.Home.Index())</li>
+      <li class="@Html.SelectedTab("Home", "Index")">@Html.Hyperlink("jQuery Flot", MVC.Gumby.Home.Index())</li>
+      <li class="@Html.SelectedTab("Home", "Index")">@Html.Hyperlink("Mvc Core", MVC.Gumby.Home.Index())
+        <div class="dropdown">
+          <ul>
+            <li><a href="#">Custom Action Results</a></li>
+            <li><a href="#">Html Extensions</a></li>
+            <li><a href="#">Form Extensions</a></li>
+          </ul>
+        </div>
+      </li>
+      <li class="@Html.SelectedTab("Home", "Index")">@Html.Hyperlink("Mvc Gumby", MVC.Gumby.Home.Index())
+        <div class="dropdown">
+          <ul>
+            <li><a href="#">Html Extensions</a></li>
+            <li><a href="#">Form Extensions</a></li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="row">
+    <div class="three columns">
+      @Html.Hyperlink("Stable Docs", "http://mihirmone.dyndns.org/appdocs/webextras/gumby") | @Html.Hyperlink("Nightly Docs", "http://mihirmone.dyndns.org/nightly/webextras/gumby")
+    </div>
+    <div class="three columns push_six keep-right">
+      @(Html.Button(EButton.Regular, "Get WebExtras", "gotoDownload()")
+        .AsButton(EGumbyButton.Primary, EGumbyButtonStyle.Rounded, EGumbyButtonStyle.Medium))
+    </div>
+  </div>
+
+  @*<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="collapse navbar-collapse">
+      @Html.Hyperlink("WebExtras", Url.Content("~/")).AddCssClass("navbar-brand")
+      <ul class="nav navbar-nav">
+        <li class="@Html.SelectedTab("Home", "Index")">@Html.ActionLink("Home", MVC.Bootstrap3.Home.Index())</li>
+        <li class="@Html.SelectedTab("Core", "Generic")">@Html.ActionLink("Core", MVC.Bootstrap3.Core.Generic())</li>
+        <li class="@Html.SelectedTab("Core", "Datatables")">@Html.ActionLink("jQuery Datatables", MVC.Bootstrap3.Core.Datatables())</li>
+        <li class="@Html.SelectedTab("Core", "Flot")">@Html.ActionLink("jQuery Flot", MVC.Bootstrap3.Core.Flot())</li>
+        <li class="@Html.SelectedTab("Mvc", new string[] { "CoreHtml", "CoreForm" }) dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Mvc Core<i class="caret"></i></a>
+          <ul class="dropdown-menu">
+            <li>@Html.ActionLink("Custom Action Results", MVC.Bootstrap3.Mvc.ActionResults())</li>
+            <li>@Html.ActionLink("Html extensions", MVC.Bootstrap3.Mvc.CoreHtml())</li>
+            <li>@Html.ActionLink("Form extensions", MVC.Bootstrap3.Mvc.CoreForm())</li>
+          </ul>
+        </li>
+        <li class="@Html.SelectedTab("Mvc", new string[] { "BootstrapHtml", "BootstrapForm" }) dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Mvc Bootstrap<i class="caret"></i></a>
+          <ul class="dropdown-menu">
+            <li>@Html.ActionLink("Html extensions", MVC.Bootstrap3.Mvc.BootstrapHtml())</li>
+            <li>@Html.ActionLink("Form extensions", MVC.Bootstrap3.Mvc.BootstrapForm())</li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>@(Html.Button(EButton.Regular, "Get WebExtras", "gotoDownload()")
+                .AddCssClass("download-btn")
+                .AsButton(EBootstrapButton.Primary)
+                .AddIcon(EFontAwesomeIcon.Arrow_Down))</li>
+      </ul>
+    </div>
+  </div>*@
+  <div class="container main">
+    @RenderBody()
+  </div>
+  <footer>
+    <small class="pull-left" id="build-date">@Html.Inline(Links.Content.inline.build_txt)</small>
+    <small>Copyright &copy; @DateTime.Now.Year Mihir Mone. All Rights Reserved. @*@Html.Icon(EFontAwesomeIcon.Css3, new { title = "Valid CSS3" }) @Html.Icon(EFontAwesomeIcon.Html5, new { title = "Valid HTML5" })*@</small>
+  </footer>
+  @RenderSection("scripts", required: false)
+</body>
+</html>

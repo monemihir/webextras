@@ -37,10 +37,10 @@ input[type="radio"] {
   vertical-align: middle !important;
 }
 .pull-right {
-  float: right;
+  float: right !important;
 }
 .pull-left {
-  float: left;
+  float: left !important;
 }
 #actionmessage {
   position: fixed;

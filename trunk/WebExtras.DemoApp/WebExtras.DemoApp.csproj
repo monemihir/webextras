@@ -123,6 +123,8 @@
     <Compile Include="Areas\Bootstrap\BootstrapAreaRegistration.cs" />
     <Compile Include="Areas\Bootstrap3\Bootstrap3AreaRegistration.cs" />
     <Compile Include="Areas\Bootstrap\Controllers\BaseController.cs" />
+    <Compile Include="Areas\Gumby\Controllers\BaseController.cs" />
+    <Compile Include="Areas\Gumby\Controllers\HomeController.cs" />
     <Compile Include="Areas\Gumby\GumbyAreaRegistration.cs" />
     <Compile Include="AssetsController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
@@ -164,6 +166,12 @@
     </Compile>
     <Compile Include="Areas\Bootstrap\Models\Mvc\BootstrapFormViewModel.cs" />
     <Compile Include="Areas\Bootstrap\Models\Mvc\BootstrapHtmlViewModel.cs" />
+    <Compile Include="Gumby.HomeController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Gumby.SharedController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Core\DatatablesViewModel.cs" />
     <Compile Include="Models\Core\FlotViewModel.cs" />
     <Compile Include="Models\Core\PostbackSetupViewModel.cs" />
@@ -178,6 +186,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Scripts\modernizr-2.6.1.js" />
     <Content Include="Views\Shared\DatatablePartial.ascx" />
     <Content Include="Content\bootstrap-2.3.1.css" />
     <Content Include="Content\bootstrap-3.0.0.css" />
@@ -283,6 +292,12 @@
     <Content Include="Areas\Bootstrap3\Views\Shared\Error.cshtml" />
     <Content Include="Areas\Bootstrap3\Views\Web.config" />
     <Content Include="Areas\Bootstrap\Views\Core\Datatables.cshtml" />
+    <Content Include="Areas\Gumby\Views\Web.config" />
+    <Content Include="Areas\Gumby\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Gumby\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Gumby\Views\Shared\Error.cshtml" />
+    <Content Include="Areas\Gumby\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Gumby\Views\Home\Download.cshtml" />
     <None Include="Content\style.less" />
     <Content Include="Content\style-bootstrap3.min.css">
       <DependentUpon>style-bootstrap3.less</DependentUpon>

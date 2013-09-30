@@ -91,7 +91,9 @@
       background-image: linear-gradient(to bottom, #428BCA 0%, #3071A9 100%);
       background-repeat: repeat-x;
       border-color: #2D6CA2;
+      -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.15) inset, 0 1px 1px rgba(0, 0, 0, 0.075);
       box-shadow: 0 1px 0 rgba(255, 255, 255, 0.15) inset, 0 1px 1px rgba(0, 0, 0, 0.075);
+      -webkit-text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
       text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
       background-color: #428BCA;
       border-radius: 6px 6px 6px 6px;
@@ -108,12 +110,16 @@
       white-space: nowrap;
       text-decoration: none;
       -moz-user-select: none;
+      -ms-user-select: none;
+      -webkit-user-select: none;
+      user-select: none;
     }
 
     .gumby-button
     {
       background-image: linear-gradient(#85B7E7, #2A85DC);
       border: 1px solid #1F5E9B;
+      -webkit-box-shadow: 0 0 3px #F0F6FC inset;
       box-shadow: 0 0 3px #F0F6FC inset;
       color: #FFFFFF;
     }

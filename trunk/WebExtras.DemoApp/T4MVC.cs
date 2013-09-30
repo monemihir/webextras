@@ -59,6 +59,8 @@ namespace T4MVC
     public class GumbyClass
     {
         public readonly string Name = "gumby";
+        public WebExtras.DemoApp.Areas.Gumby.Controllers.HomeController Home = new WebExtras.DemoApp.Areas.Gumby.Controllers.T4MVC_HomeController();
+        public T4MVC.Gumby.SharedController Shared = new T4MVC.Gumby.SharedController();
     }
 }
 
@@ -136,6 +138,8 @@ namespace Links
         public static readonly string jquery_mousewheel_3_0_6_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.mousewheel-3.0.6.min.js") ? Url("jquery.mousewheel-3.0.6.min.js") : Url("jquery.mousewheel-3.0.6.js");
                       
         public static readonly string jquery_mwheelIntent_1_2_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.mwheelIntent-1.2.min.js") ? Url("jquery.mwheelIntent-1.2.min.js") : Url("jquery.mwheelIntent-1.2.js");
+                      
+        public static readonly string modernizr_2_6_1_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/modernizr-2.6.1.min.js") ? Url("modernizr-2.6.1.min.js") : Url("modernizr-2.6.1.js");
                       
     }
 
