@@ -134,11 +134,15 @@ namespace WebExtras.Mvc.Bootstrap
 
       // create the text box
       TagBuilder input = new TagBuilder("input");
+      input.MergeAttributes(HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes));
       input.Attributes["type"] = "text";
       input.Attributes["value"] = ((DateTime)ModelMetadata.FromLambdaExpression(expression, html.ViewData).Model).ToString(datetimeformat);
       input.Attributes["name"] = fieldName;
-      input.Attributes["class"] = "form-control";
-      input.MergeAttributes<string, object>((IDictionary<string, object>)new RouteValueDictionary(htmlAttributes));
+
+      if (input.Attributes.ContainsKey("class"))
+        input.Attributes["class"] += " form-control";
+      else
+        input.Attributes["class"] = "form-control";
 
       // create addon
       TagBuilder addOn = new TagBuilder("span");
@@ -197,7 +201,7 @@ namespace WebExtras.Mvc.Bootstrap
 
       if (options != null && options.Count > 0)
         options.ForEach(f => { result[f.Key] = f.Value; });
-          
+
       return result;
     }
 
