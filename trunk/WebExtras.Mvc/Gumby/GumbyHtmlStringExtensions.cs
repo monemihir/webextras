@@ -30,41 +30,39 @@ namespace WebExtras.Mvc.Gumby
   /// </summary>
   public static class GumbyHtmlStringExtensions
   {
-    /// <summary>
-    /// Create Gumby buttons
-    /// </summary>
-    /// <param name="btn">Current HTML button to be restyled</param>
-    /// <param name="type">Gumby button type</param>
-    /// <param name="style">Gumby button styles</param>
-    /// <returns>A Gumby styled button</returns>
-    public static IExtendedHtmlString AsButton(this Button btn, EGumbyButton type, params EGumbyButtonStyle[] style)
-    {
-      return GetButton(btn, type, style);
-    }
+    ///// <summary>
+    ///// Add an icon
+    ///// </summary>
+    ///// <typeparam name="T">Generic type to be used. This type must implement IExtendedHtmlString</typeparam>
+    ///// <param name="html">Current HTML element</param>
+    ///// <param name="icon">Gumby icon to be added</param>
+    ///// <param name="iconLeft">[Optional] Flag indicating whether to place icon on left. Defaults to true</param>
+    ///// <returns>HTML element with icon added</returns>
+    //public static T AddIcon<T>(this T html, EGumbyIcon icon, bool iconLeft = true) where T : IExtendedHtmlString
+    //{
+    //  if (iconLeft)
+    //    html.Tag.AddCssClass("icon-left icon-" + icon.ToString().ToLowerInvariant());
+    //  else
+    //    html.Tag.AddCssClass("icon-right icon-" + icon.ToString().ToLowerInvariant());
+
+    //  return html;
+    //}
 
     /// <summary>
-    /// Add Gumby button styling to hyperlinks
+    /// Create special buttons
     /// </summary>
-    /// <param name="link">Current HTML hyperlink to be restyled</param>
+    /// <typeparam name="T">Generic type to be used. This type must implement IExtendedHtmlString</typeparam>
+    /// <param name="html">Current HTML element</param>
     /// <param name="type">Gumby button type</param>
     /// <param name="style">Gumby button styles</param>
     /// <returns>A Gumby button styled hyperlink</returns>
-    public static IExtendedHtmlString AsButton(this Hyperlink link, EGumbyButton type, params EGumbyButtonStyle[] style)
-    {
-      return GetButton(link, type, style);
-    }
-
-    /// <summary>
-    /// Get a Gumby button styled element
-    /// </summary>
-    /// <param name="element">HTML element to be styled</param>
-    /// <param name="type">Gumby button type</param>
-    /// <param name="style">Gumby button styles</param>
-    /// <returns>A Gumby button styled element</returns>
-    private static IExtendedHtmlString GetButton(IExtendedHtmlString element, EGumbyButton type, EGumbyButtonStyle[] style)
+    public static IExtendedHtmlString AsButton<T>(this T html, EGumbyButton type, params EGumbyButtonStyle[] style) where T : IExtendedHtmlString
     {
       if (WebExtrasMvcConstants.GumbyTheme == EGumbyTheme.None)
         throw new GumbyThemeException();
+
+      if (!HtmlStringUtil.CanDisplayAsButton(html))
+        throw new InvalidOperationException("The AsButton decorator can only be used with Button and Hyperlink extensions");
 
       string[] classes = new string[] { 
         "btn",
@@ -76,7 +74,7 @@ namespace WebExtras.Mvc.Gumby
 
       div["class"] = string.Join(" ", classes.Concat(style.Select(s => s.ToString().ToLowerInvariant())));
 
-      div.Append(element);
+      div.Append(html);
 
       return div;
     }

@@ -52,18 +52,18 @@ namespace WebExtras.Mvc.Bootstrap
         rvd.Remove("class");
       }
 
-      if (WebExtrasMvcConstants.BootstrapVersion == EBootstrapVersion.V2)      
+      if (WebExtrasMvcConstants.BootstrapVersion == EBootstrapVersion.V2)
         cssClasses.Add("icon-" + icon.ToString().ToLowerInvariant().Replace("_", "-"));
       else if (WebExtrasMvcConstants.BootstrapVersion == EBootstrapVersion.V3)
         cssClasses.Add("glyphicon glyphicon-" + icon.ToString().ToLowerInvariant().Replace("_", "-"));
       else
         throw new BootstrapVersionException();
-                                                  
+
       Italic i = new Italic();
       i["class"] = string.Join(" ", cssClasses);
 
       i.Tag.MergeAttributes<string, object>(rvd);
-      
+
       html.Prepend(i);
 
       return html;
@@ -170,7 +170,7 @@ namespace WebExtras.Mvc.Bootstrap
       i["class"] = string.Join(" ", cssClasses);
 
       i.Tag.MergeAttributes<string, object>(rvd);
-            
+
       html.Prepend(i);
 
       return html;
@@ -200,27 +200,12 @@ namespace WebExtras.Mvc.Bootstrap
     /// <returns>A special button</returns>
     public static T AsButton<T>(this T html, params EBootstrapButton[] types) where T : IExtendedHtmlString
     {
-      if (CanDisplayAsButton(html))
-        html.AddCssClass(string.Join(" ", types.Select(t => t.GetStringValue())));
+      if (!HtmlStringUtil.CanDisplayAsButton(html))
+        throw new InvalidOperationException("The AsButton decorator can only be used with Button and Hyperlink extensions");
+
+      html.AddCssClass(string.Join(" ", types.Select(t => t.GetStringValue())));
 
       return html;
-    }
-
-    /// <summary>
-    /// Check whether we can actually display as button
-    /// </summary>
-    /// <param name="html">Current HTML element</param>
-    /// <returns>True if can display as button, else False</returns>
-    private static bool CanDisplayAsButton(IExtendedHtmlString html)
-    {
-      // We can only display hyperlinks and button as buttons
-      try { Hyperlink h = html as Hyperlink; return true; }
-      catch (Exception) { }
-
-      try { Button b = html as Button; return true; }
-      catch (Exception) { }
-
-      return false;
     }
 
     #endregion Button extensions

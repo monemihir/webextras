@@ -5,16 +5,18 @@
 </h3>
 <div class="row-fluid">
   <div class="keep-center">
-@*    @(Html.Hyperlink(" Stable<small> (v1.2.0)</small>", "http://mihirmone.dyndns.org/app-downloads/webextras/webextras-1.2.0.zip")
+    @*    @(Html.Hyperlink(" Stable<small> (v1.2.0)</small>", "http://mihirmone.dyndns.org/app-downloads/webextras/webextras-1.2.0.zip")
       .AddCssClass("btn-large")
       .AsButton(EBootstrapButton.Success)      
       .AddWhiteIcon(EFontAwesomeIcon.Download_Alt, EFontAwesomeIconSize.Large))*@
 
+    @(Html.Hyperlink("Stable<small> (v1.2.0)</small>", "http://mihirmone.dyndns.org/app-downloads/webextras/webextras-1.2.0.zip")
+      .AsButton(EGumbyButton.Success, EGumbyButtonStyle.Large, EGumbyButtonStyle.Rounded))
+
     &nbsp;&nbsp;&nbsp;
 
- @*   @(Html.Hyperlink(" Nightly", "http://mihirmone.dyndns.org/app-downloads/webextras/webextras-nightly.zip")
-      .AddCssClass("btn-large").AsButton()
-      .AddIcon(EFontAwesomeIcon.Download_Alt, EFontAwesomeIconSize.Large))*@
+    @(Html.Hyperlink(" Nightly", "http://mihirmone.dyndns.org/app-downloads/webextras/webextras-nightly.zip")
+      .AsButton(EGumbyButton.Info, EGumbyButtonStyle.Rounded, EGumbyButtonStyle.Large))
 
     <br />
     @Html.Hyperlink("Older versions", "javascript:gotoCodeplex()")

@@ -139,8 +139,7 @@ namespace Links
                       
         public static readonly string jquery_mwheelIntent_1_2_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.mwheelIntent-1.2.min.js") ? Url("jquery.mwheelIntent-1.2.min.js") : Url("jquery.mwheelIntent-1.2.js");
                       
-        public static readonly string modernizr_2_6_1_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/modernizr-2.6.1.min.js") ? Url("modernizr-2.6.1.min.js") : Url("modernizr-2.6.1.js");
-                      
+        public static readonly string modernizr_2_6_2_min_js = Url("modernizr-2.6.2.min.js");
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]

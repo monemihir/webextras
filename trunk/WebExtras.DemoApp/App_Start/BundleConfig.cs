@@ -127,8 +127,8 @@ namespace WebExtras.DemoApp.App_Start
 
       // Gumby javascript bundle
       Bundle.JavaScript()
-        .Add(Links.Scripts.modernizr_2_6_1_js)
         .Add(Links.Scripts.gumby_2_5_6_min_js)
+        .Add(Links.Scripts.modernizr_2_6_2_min_js)
         .AsCached(ContentBundle.JSGumby.GetStringValue(), ResolveJsPath(ContentBundle.JSGumby));
     }
   }
