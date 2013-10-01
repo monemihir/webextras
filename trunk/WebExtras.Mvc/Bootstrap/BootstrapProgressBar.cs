@@ -18,7 +18,6 @@
 
 using System;
 using System.Web.Mvc;
-using WebExtras.Core;
 using WebExtras.Mvc.Core;
 using WebExtras.Mvc.Html;
 

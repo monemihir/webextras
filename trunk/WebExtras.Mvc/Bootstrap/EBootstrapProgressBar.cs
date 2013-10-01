@@ -17,7 +17,6 @@
 */
 
 using System;
-using WebExtras.Core;
 
 namespace WebExtras.Mvc.Bootstrap
 {

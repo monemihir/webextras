@@ -21,8 +21,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Routing;
 using WebExtras.Core;
-using WebExtras.Mvc.Html;
 using WebExtras.Mvc.Core;
+using WebExtras.Mvc.Html;
 
 namespace WebExtras.Mvc.Bootstrap
 {
