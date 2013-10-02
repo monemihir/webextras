@@ -79,7 +79,7 @@ namespace WebExtras.Mvc.Core
     {
       Data = data;
       ContentType = contentType;
-      ContentEncoding = ContentEncoding;
+      ContentEncoding = contentEncoding;
       SerialiserSettings = settings ?? new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore };
     }
 
