@@ -36,23 +36,23 @@
     <div class="navbar-inner">
       @Html.Hyperlink("WebExtras", Url.Content("~/")).AddCssClass("brand")
       <ul class="nav">
-        <li class="@Html.SelectedTab("Home", "Index")">@Html.ActionLink("Home", MVC.Bootstrap.Home.Index())</li>
-        <li class="@Html.SelectedTab("Core", "Generic")">@Html.ActionLink("Core", MVC.Bootstrap.Core.Generic())</li>
-        <li class="@Html.SelectedTab("Core", "Datatables")">@Html.ActionLink("jQuery Datatables", MVC.Bootstrap.Core.Datatables())</li>
-        <li class="@Html.SelectedTab("Core", "Flot")">@Html.ActionLink("jQuery Flot", MVC.Bootstrap.Core.Flot())</li>
+        <li class="@Html.SelectedTab("Home", "Index")">@Html.Hyperlink("Home", MVC.Bootstrap.Home.Index())</li>
+        <li class="@Html.SelectedTab("Core", "Generic")">@Html.Hyperlink("Core", MVC.Bootstrap.Core.Generic())</li>
+        <li class="@Html.SelectedTab("Core", "Datatables")">@Html.Hyperlink("jQuery Datatables", MVC.Bootstrap.Core.Datatables())</li>
+        <li class="@Html.SelectedTab("Core", "Flot")">@Html.Hyperlink("jQuery Flot", MVC.Bootstrap.Core.Flot())</li>
         <li class="@Html.SelectedTab("Mvc", new string[] { "CoreHtml", "CoreForm" }) dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Mvc Core<i class="caret"></i></a>
           <ul class="dropdown-menu">
-            <li>@Html.ActionLink("Custom Action Results", MVC.Bootstrap.Mvc.ActionResults())</li>
-            <li>@Html.ActionLink("Html extensions", MVC.Bootstrap.Mvc.CoreHtml())</li>
-            <li>@Html.ActionLink("Form extensions", MVC.Bootstrap.Mvc.CoreForm())</li>
+            <li>@Html.Hyperlink("Custom Action Results", MVC.Bootstrap.Mvc.ActionResults())</li>
+            <li>@Html.Hyperlink("Html extensions", MVC.Bootstrap.Mvc.CoreHtml())</li>
+            <li>@Html.Hyperlink("Form extensions", MVC.Bootstrap.Mvc.CoreForm())</li>
           </ul>
         </li>
         <li class="@Html.SelectedTab("Mvc", new string[] { "BootstrapHtml", "BootstrapForm" }) dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Mvc Bootstrap<i class="caret"></i></a>
           <ul class="dropdown-menu">
-            <li>@Html.ActionLink("Html extensions", MVC.Bootstrap.Mvc.BootstrapHtml())</li>
-            <li>@Html.ActionLink("Form extensions", MVC.Bootstrap.Mvc.BootstrapForm())</li>
+            <li>@Html.Hyperlink("Html extensions", MVC.Bootstrap.Mvc.BootstrapHtml())</li>
+            <li>@Html.Hyperlink("Form extensions", MVC.Bootstrap.Mvc.BootstrapForm())</li>
           </ul>
         </li>
       </ul>

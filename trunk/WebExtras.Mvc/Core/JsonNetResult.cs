@@ -55,8 +55,31 @@ namespace WebExtras.Mvc.Core
     /// <param name="data">Data to be returned</param>
     /// <param name="settings">JSON serialiser settings</param>
     public JsonNetResult(object data, JsonSerializerSettings settings = null)
+      : this(data, "application/json", Encoding.UTF8, settings)
+    { }
+
+    /// <summary>
+    /// Constructor
+    /// </summary>
+    /// <param name="data">Data to be returned</param>
+    /// <param name="contentType">Content type</param>
+    /// <param name="settings">JSON serialiser settings</param>
+    public JsonNetResult(object data, string contentType, JsonSerializerSettings settings = null)
+      : this(data, contentType, Encoding.UTF8, settings)
+    { }
+
+    /// <summary>
+    /// Constructor
+    /// </summary>
+    /// <param name="data">Data to be returned</param>
+    /// <param name="contentType">Content type</param>
+    /// <param name="contentEncoding">Content encoding</param>
+    /// <param name="settings">JSON serialiser settings</param>
+    public JsonNetResult(object data, string contentType, Encoding contentEncoding, JsonSerializerSettings settings = null)
     {
       Data = data;
+      ContentType = contentType;
+      ContentEncoding = ContentEncoding;
       SerialiserSettings = settings ?? new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore };
     }
 
@@ -71,12 +94,8 @@ namespace WebExtras.Mvc.Core
 
       HttpResponseBase response = context.HttpContext.Response;
 
-      response.ContentType = !string.IsNullOrEmpty(ContentType)
-        ? ContentType
-        : "application/json";
-
-      if (ContentEncoding != null)
-        response.ContentEncoding = ContentEncoding;
+      response.ContentType = ContentType;
+      response.ContentEncoding = ContentEncoding;
 
       if (Data != null)
       {
