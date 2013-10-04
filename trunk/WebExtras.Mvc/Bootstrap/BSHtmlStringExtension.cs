@@ -43,15 +43,7 @@ namespace WebExtras.Mvc.Bootstrap
     /// <returns>Html element with icon added</returns>
     public static T AddIcon<T>(this T html, EBootstrapIcon icon, object htmlAttributes = null) where T : IExtendedHtmlString
     {
-      RouteValueDictionary rvd = new RouteValueDictionary(htmlAttributes);
-
       List<string> cssClasses = new List<string>();
-      if (rvd.ContainsKey("class"))
-      {
-        cssClasses.AddRange(rvd["class"].ToString().Split(' '));
-        rvd.Remove("class");
-      }
-
       if (WebExtrasMvcConstants.BootstrapVersion == EBootstrapVersion.V2)
         cssClasses.Add("icon-" + icon.ToString().ToLowerInvariant().Replace("_", "-"));
       else if (WebExtrasMvcConstants.BootstrapVersion == EBootstrapVersion.V3)
@@ -59,12 +51,7 @@ namespace WebExtras.Mvc.Bootstrap
       else
         throw new BootstrapVersionException();
 
-      Italic i = new Italic();
-      i["class"] = string.Join(" ", cssClasses);
-
-      i.Tag.MergeAttributes<string, object>(rvd);
-
-      html.Prepend(i);
+      html = AddIcon(html, cssClasses, htmlAttributes);
 
       return html;
     }
@@ -79,15 +66,7 @@ namespace WebExtras.Mvc.Bootstrap
     /// <returns>Html element with a white icon added</returns>
     public static T AddWhiteIcon<T>(this T html, EBootstrapIcon icon, object htmlAttributes = null) where T : IExtendedHtmlString
     {
-      RouteValueDictionary rvd = new RouteValueDictionary(htmlAttributes);
-
       List<string> cssClasses = new List<string>();
-      if (rvd.ContainsKey("class"))
-      {
-        cssClasses.AddRange(rvd["class"].ToString().Split(' '));
-        rvd.Remove("class");
-      }
-
       if (WebExtrasMvcConstants.BootstrapVersion == EBootstrapVersion.V2)
         cssClasses.Add("icon-white icon-" + icon.ToString().ToLowerInvariant().Replace("_", "-"));
       else if (WebExtrasMvcConstants.BootstrapVersion == EBootstrapVersion.V3)
@@ -95,12 +74,7 @@ namespace WebExtras.Mvc.Bootstrap
       else
         throw new BootstrapVersionException();
 
-      Italic i = new Italic();
-      i["class"] = string.Join(" ", cssClasses);
-
-      i.Tag.MergeAttributes<string, object>(rvd);
-
-      html.Prepend(i);
+      html = AddIcon(html, cssClasses, htmlAttributes);
 
       return html;
     }
@@ -116,62 +90,75 @@ namespace WebExtras.Mvc.Bootstrap
     /// <returns>Html element with icon added</returns>
     public static T AddIcon<T>(this T html, EFontAwesomeIcon icon, EFontAwesomeIconSize size = EFontAwesomeIconSize.Normal, object htmlAttributes = null) where T : IExtendedHtmlString
     {
-      RouteValueDictionary rvd = new RouteValueDictionary(htmlAttributes);
-
       List<string> cssClasses = new List<string>();
-      if (rvd.ContainsKey("class"))
-      {
-        cssClasses.AddRange(rvd["class"].ToString().Split(' '));
-        rvd.Remove("class");
-      }
-
       cssClasses.Add("icon-" + icon.ToString().ToLowerInvariant().Replace("_", "-"));
 
       if (size != EFontAwesomeIconSize.Normal)
         cssClasses.Add("icon-" + size.GetStringValue());
 
-      Italic i = new Italic();
-      i["class"] = string.Join(" ", cssClasses);
-
-      i.Tag.MergeAttributes<string, object>(rvd);
-
-      html.Prepend(i);
+      html = AddIcon(html, cssClasses, htmlAttributes);
 
       return html;
     }
 
+    ///// <summary>
+    ///// Add a white icon
+    ///// </summary>
+    ///// <typeparam name="T">Generic type to be used. This type must implement IExtendedHtmlString</typeparam>
+    ///// <param name="html">Current html element</param>
+    ///// <param name="icon">Icon to be rendered</param>
+    ///// <param name="size">[Optional] Icon size</param>
+    ///// <param name="htmlAttributes">[Optional] Extra html attributes</param>
+    ///// <returns>Html element with a white icon added</returns>
+    //public static T AddWhiteIcon<T>(this T html, EFontAwesomeIcon icon, EFontAwesomeIconSize size = EFontAwesomeIconSize.Normal, object htmlAttributes = null) where T : IExtendedHtmlString
+    //{
+    //  List<string> cssClasses = new List<string>();
+    //  cssClasses.Add("icon-white");
+    //  cssClasses.Add("icon-" + icon.ToString().ToLowerInvariant().Replace("_", "-"));
+
+    //  if (size != EFontAwesomeIconSize.Normal)
+    //    cssClasses.Add("icon-" + size.GetStringValue());
+
+    //  html = AddIcon(html, cssClasses, htmlAttributes);
+
+    //  return html;
+    //}
+
     /// <summary>
-    /// Add a white icon
+    /// Add an icon
     /// </summary>
     /// <typeparam name="T">Generic type to be used. This type must implement IExtendedHtmlString</typeparam>
     /// <param name="html">Current html element</param>
-    /// <param name="icon">Icon to be rendered</param>
-    /// <param name="size">[Optional] Icon size</param>
+    /// <param name="cssClasses">Css classes to be added</param>
     /// <param name="htmlAttributes">[Optional] Extra html attributes</param>
-    /// <returns>Html element with a white icon added</returns>
-    public static T AddWhiteIcon<T>(this T html, EFontAwesomeIcon icon, EFontAwesomeIconSize size = EFontAwesomeIconSize.Normal, object htmlAttributes = null) where T : IExtendedHtmlString
+    /// <returns>Html element with icon added</returns>
+    private static T AddIcon<T>(T html, IEnumerable<string> cssClasses, object htmlAttributes = null) where T : IExtendedHtmlString
     {
       RouteValueDictionary rvd = new RouteValueDictionary(htmlAttributes);
 
-      List<string> cssClasses = new List<string>();
+      List<string> finalClasses = new List<string>(cssClasses);
       if (rvd.ContainsKey("class"))
       {
-        cssClasses.AddRange(rvd["class"].ToString().Split(' '));
+        finalClasses.AddRange(rvd["class"].ToString().Split(' '));
         rvd.Remove("class");
       }
 
-      cssClasses.Add("icon-white");
-      cssClasses.Add("icon-" + icon.ToString().ToLowerInvariant().Replace("_", "-"));
-
-      if (size != EFontAwesomeIconSize.Normal)
-        cssClasses.Add("icon-" + size.GetStringValue());
-
       Italic i = new Italic();
-      i["class"] = string.Join(" ", cssClasses);
+      i["class"] = string.Join(" ", finalClasses);
 
       i.Tag.MergeAttributes<string, object>(rvd);
 
       html.Prepend(i);
+
+      if (html.Tag.Attributes.ContainsKey("style"))
+      {
+        string style = html.Tag.Attributes["style"];
+        style = style.EndsWith(";") ? style : style + ";";
+
+        html.Tag.Attributes["style"] += "text-decoration:none";
+      }
+      else
+        html.Tag.Attributes["style"] = "text-decoration:none";
 
       return html;
     }

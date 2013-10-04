@@ -27,23 +27,8 @@ namespace WebExtras.Mvc.Core
   /// <summary>
   /// JSON.Net action result
   /// </summary>
-  public class JsonNetResult : ActionResult
+  public class JsonNetResult : JsonResult
   {
-    /// <summary>
-    /// Content encoding
-    /// </summary>
-    public Encoding ContentEncoding { get; set; }
-
-    /// <summary>
-    /// Content type
-    /// </summary>
-    public string ContentType { get; set; }
-
-    /// <summary>
-    /// Data to be returned
-    /// </summary>
-    public object Data { get; set; }
-
     /// <summary>
     /// JSON serialiser settings
     /// </summary>
@@ -81,6 +66,7 @@ namespace WebExtras.Mvc.Core
       ContentType = contentType;
       ContentEncoding = contentEncoding;
       SerialiserSettings = settings ?? new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore };
+      JsonRequestBehavior = JsonRequestBehavior.DenyGet;
     }
 
     /// <summary>
@@ -91,6 +77,9 @@ namespace WebExtras.Mvc.Core
     {
       if (context == null)
         throw new ArgumentNullException("context");
+
+      if (JsonRequestBehavior == JsonRequestBehavior.DenyGet && context.HttpContext.Request.HttpMethod.ToLowerInvariant() == "get")
+        throw new InvalidOperationException("Json GET request is not allowed");
 
       HttpResponseBase response = context.HttpContext.Response;
 
