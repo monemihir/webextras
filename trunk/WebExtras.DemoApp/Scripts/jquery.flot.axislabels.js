@@ -1,31 +1,21 @@
 ﻿/*
-Axis Labels Plugin for flot.
+Axis Labels Plugin for flot. :P
 http://github.com/markrcote/flot-axislabels
-
-Original code is Copyright (c) 2010 Xuan Luo.
-Original code was released under the GPLv3 license by Xuan Luo, September 2010.
-Original code was rereleased under the MIT license by Xuan Luo, April 2012.
-
+Released under the GPLv3 license by Xuan Luo, September 2010.
 Improvements by Mark Cote.
 
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-"Software"), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
 
-The above copyright notice and this permission notice shall be
-included in all copies or substantial portions of the Software.
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
-LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
-WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
  */
 (function ($) {
@@ -237,13 +227,8 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
   CssTransformAxisLabel.prototype.draw = function (box) {
     this.plot.getPlaceholder().find("." + this.axisName + "Label").remove();
     var offsets = this.calculateOffsets(box);
-
-    if (this.opts.axisLabelColor === undefined)
-      this.opts.axisLabelColor = this.opts.color;
-
     var elem = $('<div class="axisLabels ' + this.axisName +
                  'Label" style="position:absolute; ' +
-                 'color: ' + this.opts.axisLabelColor + '; ' +
                  this.transforms(offsets.degrees, offsets.x, offsets.y) +
                  '">' + this.opts.axisLabel + '</div>');
     this.plot.getPlaceholder().append(elem);
@@ -331,16 +316,14 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
     var defaultPadding = 2;  // padding between axis and tick labels
     plot.hooks.draw.push(function (plot, ctx) {
-      var hasAxisLabels = false;
       if (!secondPass) {
         // MEASURE AND SET OPTIONS
         $.each(plot.getAxes(), function (axisName, axis) {
           var opts = axis.options // Flot 0.7
               || plot.getOptions()[axisName]; // Flot 0.6
-          if (!opts || !opts.axisLabel || !axis.show)
+          if (!opts || !opts.axisLabel)
             return;
 
-          hasAxisLabels = true;
           var renderer = null;
 
           if (!opts.axisLabelUseHtml &&
@@ -390,18 +373,16 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
           opts.labelHeight = axis.labelHeight;
           opts.labelWidth = axis.labelWidth;
         });
-        // if there are axis labels re-draw with new label widths and heights
-        if (hasAxisLabels) {
-          secondPass = true;
-          plot.setupGrid();
-          plot.draw();
-        }
+        // re-draw with new label widths and heights
+        secondPass = true;
+        plot.setupGrid();
+        plot.draw();
       } else {
         // DRAW
         $.each(plot.getAxes(), function (axisName, axis) {
           var opts = axis.options // Flot 0.7
               || plot.getOptions()[axisName]; // Flot 0.6
-          if (!opts || !opts.axisLabel || !axis.show)
+          if (!opts || !opts.axisLabel)
             return;
 
           axisLabels[axisName].draw(axis.box);
@@ -415,6 +396,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     init: init,
     options: options,
     name: 'axisLabels',
-    version: '2.0b0'
+    version: '2.0.1'
   });
 })(jQuery);
