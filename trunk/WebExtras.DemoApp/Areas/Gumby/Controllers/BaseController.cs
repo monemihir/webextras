@@ -31,6 +31,7 @@ namespace WebExtras.DemoApp.Areas.Gumby.Controllers
       {
         base.OnActionExecuting(filterContext);
 
+        ViewData["layout_path"] = MVC.Gumby.Shared.Views._Layout;
         WebExtrasMvcConstants.GumbyTheme = EGumbyTheme.Metro;
       }
     }

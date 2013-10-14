@@ -76,10 +76,8 @@ namespace WebExtras.DemoApp.Areas.Gumby.Controllers
             public class _ViewNamesClass
             {
                 public readonly string Download = "Download";
-                public readonly string Index = "Index";
             }
             public readonly string Download = "~/Areas/Gumby/Views/Home/Download.cshtml";
-            public readonly string Index = "~/Areas/Gumby/Views/Home/Index.cshtml";
         }
     }
 

@@ -172,6 +172,9 @@
     <Compile Include="Gumby.SharedController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
+    <Compile Include="HomeController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Core\DatatablesViewModel.cs" />
     <Compile Include="Models\Core\FlotViewModel.cs" />
     <Compile Include="Models\Core\PostbackSetupViewModel.cs" />
@@ -282,7 +285,6 @@
     <Content Include="Areas\Bootstrap3\Views\Core\Flot.cshtml" />
     <Content Include="Areas\Bootstrap3\Views\Core\Generic.cshtml" />
     <Content Include="Areas\Bootstrap3\Views\Home\Download.cshtml" />
-    <Content Include="Areas\Bootstrap3\Views\Home\Index.cshtml" />
     <Content Include="Areas\Bootstrap3\Views\Mvc\ActionResults.cshtml" />
     <Content Include="Areas\Bootstrap3\Views\Mvc\BootstrapForm.cshtml" />
     <Content Include="Areas\Bootstrap3\Views\Mvc\BootstrapHtml.cshtml" />
@@ -296,7 +298,6 @@
     <Content Include="Areas\Gumby\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Gumby\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Gumby\Views\Shared\Error.cshtml" />
-    <Content Include="Areas\Gumby\Views\Home\Index.cshtml" />
     <Content Include="Areas\Gumby\Views\Home\Download.cshtml" />
     <None Include="Content\style.less" />
     <Content Include="Content\style-bootstrap3.min.css">
@@ -354,6 +355,7 @@
     <Content Include="Areas\Bootstrap\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Bootstrap\Views\Shared\Error.cshtml" />
     <Content Include="Areas\Bootstrap\Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -417,9 +419,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\_DatatableDeprecated.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Areas\Bootstrap\Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Bootstrap\Views\Home\Download.cshtml" />

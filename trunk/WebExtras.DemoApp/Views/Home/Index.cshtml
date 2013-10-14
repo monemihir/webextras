@@ -1,5 +1,6 @@
 ﻿@{
   ViewBag.Title = "Home";
+  Layout = ViewData["layout_path"].ToString();
 }
 <h3 class="keep-center">
   WebExtras
@@ -12,8 +13,8 @@
 <p>
   <strong>WebExtras.dll</strong>
 </p>
-<table class="table table-bordered table-striped">
-  <tbody>
+<table class="striped rounded table table-striped table-bordered">
+  <thead>
     <tr>
       <th>
         Major namespaces
@@ -22,6 +23,8 @@
         Description
       </th>
     </tr>
+  </thead>
+  <tbody>    
     <tr>
       <td>
         WebExtras.Core
@@ -56,8 +59,8 @@
 <p>
   <strong>WebExtras.Mvc.dll</strong>
 </p>
-<table class="table table-bordered table-striped">
-  <tbody>
+<table class="striped rounded table table-striped table-bordered">
+  <thead>
     <tr>
       <th>
         Major namespaces
@@ -66,6 +69,8 @@
         Description
       </th>
     </tr>
+  </thead>
+  <tbody>
     <tr>
       <td>
         WebExtras.Mvc.Core
@@ -82,16 +87,7 @@
         Helper methods for the popular @Html.Hyperlink("Bootstrap v2.x", "http://getbootstrap.com/2.3.2/")
         theming and griding framework
       </td>
-    </tr>
-    <tr>
-      <td>
-        WebExtras.Mvc.Bootstrap3
-      </td>
-      <td>
-        Helper methods for the new @Html.Hyperlink("Bootstrap v3.x", "http://getbootstrap.com/2.3.2/")
-        theming and griding framework
-      </td>
-    </tr>
+    </tr>    
     <tr>
       <td>
         WebExtras.Mvc.Gumby

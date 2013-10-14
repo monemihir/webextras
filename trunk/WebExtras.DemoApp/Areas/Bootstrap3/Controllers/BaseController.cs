@@ -31,6 +31,7 @@ namespace WebExtras.DemoApp.Areas.Bootstrap3.Controllers
       {
         base.OnActionExecuting(filterContext);
 
+        ViewData["layout_path"] = MVC.Bootstrap3.Shared.Views._Layout;
         WebExtrasMvcConstants.BootstrapVersion = EBootstrapVersion.V3;
       }
     }

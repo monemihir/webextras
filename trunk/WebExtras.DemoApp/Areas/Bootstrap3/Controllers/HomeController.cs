@@ -29,7 +29,7 @@ namespace WebExtras.DemoApp.Areas.Bootstrap3.Controllers
     // GET: /Bootstrap/Home/
     public virtual ActionResult Index()
     {
-      return View();
+      return View(MVC.Home.Views.Index);
     }
 
     //

@@ -76,10 +76,8 @@ namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
             public class _ViewNamesClass
             {
                 public readonly string Download = "Download";
-                public readonly string Index = "Index";
             }
             public readonly string Download = "~/Areas/Bootstrap/Views/Home/Download.cshtml";
-            public readonly string Index = "~/Areas/Bootstrap/Views/Home/Index.cshtml";
         }
     }
 

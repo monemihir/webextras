@@ -26,14 +26,14 @@ namespace WebExtras.DemoApp.Areas.Gumby.Controllers
   public partial class HomeController : BaseController
   {
     //
-    // GET: /Bootstrap/Home/
+    // GET: /Gumby/Home/
     public virtual ActionResult Index()
     {
-      return View();
+      return View(MVC.Home.Views.Index);
     }
 
     //
-    // GET: /Bootstrap/Home/Download
+    // GET: /Gumby/Home/Download
     public virtual ActionResult Download()
     {
       return View();
