@@ -173,7 +173,6 @@ namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
                 public readonly string _PieGraph = "_PieGraph";
                 public readonly string _PostbackResult = "_PostbackResult";
                 public readonly string _PostbackSetup = "_PostbackSetup";
-                public readonly string _SortedSetup = "_SortedSetup";
                 public readonly string _StatusSetup = "_StatusSetup";
                 public readonly string Datatables = "Datatables";
                 public readonly string Flot = "Flot";
@@ -188,7 +187,6 @@ namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
             public readonly string _PieGraph = "~/Areas/Bootstrap/Views/Core/_PieGraph.cshtml";
             public readonly string _PostbackResult = "~/Areas/Bootstrap/Views/Core/_PostbackResult.cshtml";
             public readonly string _PostbackSetup = "~/Areas/Bootstrap/Views/Core/_PostbackSetup.cshtml";
-            public readonly string _SortedSetup = "~/Areas/Bootstrap/Views/Core/_SortedSetup.cshtml";
             public readonly string _StatusSetup = "~/Areas/Bootstrap/Views/Core/_StatusSetup.cshtml";
             public readonly string Datatables = "~/Areas/Bootstrap/Views/Core/Datatables.cshtml";
             public readonly string Flot = "~/Areas/Bootstrap/Views/Core/Flot.cshtml";
