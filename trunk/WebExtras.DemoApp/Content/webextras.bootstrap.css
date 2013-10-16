@@ -48,6 +48,9 @@ input[type="radio"] {
   right: 0.2%;
   z-index: 2000;
 }
+.required {
+  color: #b94a48;
+}
 /** GENERIC STYLING END **/
 /** GENERIC DATATABLES EXTENSIONS AND OVERRIDES **/
 table.dataTable thead th {

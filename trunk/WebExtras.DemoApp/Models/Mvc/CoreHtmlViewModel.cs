@@ -17,11 +17,13 @@
 */
 
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
-namespace WebExtras.DemoApp.Areas.Bootstrap3.Models.Mvc
+namespace WebExtras.DemoApp.Models.Mvc
 {
-  public class BootstrapHtmlViewModel
+  public class CoreHtmlViewModel
   {
+    [Required]
     public string SomeProperty { get; set; }
 
     [Description("This is the second property")]

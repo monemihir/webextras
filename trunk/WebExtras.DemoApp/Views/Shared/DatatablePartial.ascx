@@ -19,7 +19,7 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
 
-<table class="dataTable table table-bordered table-striped" id="<%= Model.ID %>">
+<table class="dataTable table table-bordered table-striped striped rounded" id="<%= Model.ID %>">
   <thead>
     <tr>
       <% foreach (AOColumn col in Model.Settings.aoColumns)

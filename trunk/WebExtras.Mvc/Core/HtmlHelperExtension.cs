@@ -16,13 +16,18 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.IO;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Reflection;
 using System.Security.Principal;
 using System.Web.Mvc;
+using System.Web.Mvc.Html;
 using System.Web.Routing;
+using System.Xml.Linq;
 using WebExtras.Mvc.Html;
 
 namespace WebExtras.Mvc.Core
@@ -376,12 +381,12 @@ namespace WebExtras.Mvc.Core
       object htmlAttributes = null)
     {
       RouteValueDictionary rvd = result.GetRouteValueDictionary();
-      string link = UrlHelper.GenerateUrl(string.Empty, 
-        rvd["Action"].ToString(), 
-        rvd["Controller"].ToString(), 
-        rvd, 
-        html.RouteCollection, 
-        html.ViewContext.RequestContext, 
+      string link = UrlHelper.GenerateUrl(string.Empty,
+        rvd["Action"].ToString(),
+        rvd["Controller"].ToString(),
+        rvd,
+        html.RouteCollection,
+        html.ViewContext.RequestContext,
         true);
 
       return Hyperlink(html, linkText, link, htmlAttributes);
@@ -574,5 +579,51 @@ namespace WebExtras.Mvc.Core
     }
 
     #endregion List extensions
+
+    #region Label extensions
+
+    /// <summary>
+    /// Create a label with the required field asterix
+    /// </summary>
+    /// <typeparam name="TModel">Type to be scanned</typeparam>
+    /// <typeparam name="TValue">Property to be scanned</typeparam>
+    /// <param name="html">Htmlhelper extension</param>
+    /// <param name="expression">The property lamba expression</param>
+    /// <param name="htmlAttributes">[Optional] Extra html attributes</param>
+    /// <returns>A label with the required field asterix</returns>
+    public static MvcHtmlString LabelForV2<TModel, TValue>(this HtmlHelper<TModel> html, Expression<Func<TModel, TValue>> expression, object htmlAttributes = null)
+    {
+      return LabelForV2(html, expression, string.Empty, htmlAttributes);
+    }
+
+    /// <summary>
+    /// Create a label with the required field asterix
+    /// </summary>
+    /// <typeparam name="TModel">Type to be scanned</typeparam>
+    /// <typeparam name="TValue">Property to be scanned</typeparam>
+    /// <param name="html">Htmlhelper extension</param>
+    /// <param name="expression">The property lamba expression</param>
+    /// <param name="labelText">Label text to be shown</param>
+    /// <param name="htmlAttributes">[Optional] Extra html attributes</param>
+    /// <returns>A label with the required field asterix</returns>
+    public static MvcHtmlString LabelForV2<TModel, TValue>(this HtmlHelper<TModel> html, Expression<Func<TModel, TValue>> expression, string labelText, object htmlAttributes = null)
+    {
+      MvcHtmlString str = string.IsNullOrEmpty(labelText) ? html.LabelFor(expression, htmlAttributes) : html.LabelFor(expression, labelText, htmlAttributes);
+      XElement xe = XElement.Parse(str.ToHtmlString());
+
+      MemberExpression exp = expression.Body as MemberExpression;
+
+      if (exp.Member.GetCustomAttributes(typeof(RequiredAttribute), true).Any())
+      {
+        TagBuilder span = new TagBuilder("span");
+        span.AddCssClass("required");
+        span.SetInnerText(" *");
+        xe.Add(XElement.Parse(span.ToString()));
+      }
+
+      return MvcHtmlString.Create(xe.ToString());
+    }
+
+    #endregion Label extensions
   }
 }

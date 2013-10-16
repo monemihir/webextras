@@ -119,7 +119,7 @@
     <Compile Include="Areas\Bootstrap3\Controllers\HomeController.cs" />
     <Compile Include="Areas\Bootstrap3\Controllers\MvcController.cs" />
     <Compile Include="Areas\Bootstrap3\Models\Mvc\BootstrapFormViewModel.cs" />
-    <Compile Include="Areas\Bootstrap3\Models\Mvc\BootstrapHtmlViewModel.cs" />
+    <Compile Include="Models\Mvc\CoreHtmlViewModel.cs" />
     <Compile Include="Areas\Bootstrap\BootstrapAreaRegistration.cs" />
     <Compile Include="Areas\Bootstrap3\Bootstrap3AreaRegistration.cs" />
     <Compile Include="Areas\Bootstrap\Controllers\BaseController.cs" />
@@ -169,7 +169,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Areas\Bootstrap\Models\Mvc\BootstrapFormViewModel.cs" />
-    <Compile Include="Areas\Bootstrap\Models\Mvc\BootstrapHtmlViewModel.cs" />
     <Compile Include="Gumby.CoreController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>

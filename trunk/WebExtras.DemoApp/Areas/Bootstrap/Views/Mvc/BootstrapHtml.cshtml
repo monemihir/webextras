@@ -1,4 +1,4 @@
-﻿@model WebExtras.DemoApp.Areas.Bootstrap.Models.Mvc.BootstrapHtmlViewModel
+﻿@model WebExtras.DemoApp.Models.Mvc.CoreHtmlViewModel
 @{
   ViewBag.Title = "Mvc Bootstrap Html Helper Extensions";
 }
@@ -35,9 +35,9 @@
     </div>
     <div class="span6">
       <ul class="dependancies">
-        <li>webextras.css</li>
         <li>Bootstrap 2.3.x</li>
         <li>>= Font Awesome 3.11</li>
+        <li>webextras.bootstrap.css</li>
       </ul>
     </div>
   </div>
@@ -206,7 +206,7 @@
   </code></pre>
   <p>Output</p>
   <div class="content">
-    <div class="row-fluid">        
+    <div class="row-fluid">
       <div class="span3">First call result @Html.Icon(EFontAwesomeIcon.Angle_Right) @Html.TooltipFor(f => f.SomeProperty, "This is a tooltip")</div>
       <div class="span3">Second call result @Html.Icon(EFontAwesomeIcon.Angle_Right) @Html.TooltipFor(f => f.SomeProperty2)</div>
     </div>
@@ -225,7 +225,8 @@
 
 <div class="well">
   <h4>Action messages</h4>
-  <p>WebExtras provides a way to add action messages to denote status of action to notify a user. For e.g. you may want to add a message to the user when he is moved to a different
+  <p>
+    WebExtras provides a way to add action messages to denote status of action to notify a user. For e.g. you may want to add a message to the user when he is moved to a different
     page on a form submit or on a particular action
   </p>
   <p>Usage</p>
@@ -253,11 +254,17 @@ public class HomeController : ControllerBase
   </code></pre>
   <p>Output</p>
   <div class="content">
-    <span class="comment">// Click the link below to see an action message demo. <br /></span>
-    <span class="comment">// Action messages by default appear on the top right corner of the screen. <br /></span>
-    <span class="comment">// It's position can be controlled via CSS though. See the accompanying webextras.css file. <br /></span>
+    <span class="comment">// Click the link below to see an action message demo.
+      <br />
+    </span>
+    <span class="comment">// Action messages by default appear on the top right corner of the screen.
+      <br />
+    </span>
+    <span class="comment">// It's position can be controlled via CSS though. See the accompanying webextras.css file.
+      <br />
+    </span>
     <br />
-     @Html.Hyperlink("Action Successful Message Demo", MVC.Bootstrap.Mvc.ActionMessageDemo(true))
+    @Html.Hyperlink("Action Successful Message Demo", MVC.Bootstrap.Mvc.ActionMessageDemo(true))
     &nbsp;&nbsp;&nbsp;&nbsp;
     @Html.Hyperlink("Action Error Message Demo", MVC.Bootstrap.Mvc.ActionMessageDemo(false))
   </div>

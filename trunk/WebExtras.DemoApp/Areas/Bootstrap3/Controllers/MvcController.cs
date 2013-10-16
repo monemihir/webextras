@@ -19,6 +19,7 @@
 using System;
 using System.Web.Mvc;
 using WebExtras.DemoApp.Areas.Bootstrap.Models.Mvc;
+using WebExtras.DemoApp.Models.Mvc;
 using WebExtras.Mvc.Bootstrap;
 using WebExtras.Mvc.Core;
 
@@ -27,31 +28,37 @@ namespace WebExtras.DemoApp.Areas.Bootstrap3.Controllers
   public partial class MvcController : BaseController
   {
     //
-    // GET: /Bootstrap/Mvc
+    // GET: /Bootstrap3/Mvc
     public virtual ActionResult Index()
     {
       return RedirectToAction(Actions.CoreHtml());
     }
 
     //
-    // GET: /Bootstrap/Mvc/CoreHtml
+    // GET: /Bootstrap3/Mvc/CoreHtml
     public virtual ActionResult CoreHtml()
     {
-      return View();
+      CoreHtmlViewModel model = new CoreHtmlViewModel
+      {
+        SomeProperty = "Blah blah",
+        ShowMessage = false
+      };
+
+      return View(model);
     }
 
     //
-    // GET: /Bootstrap/Mvc/CoreForm
+    // GET: /Bootstrap3/Mvc/CoreForm
     public virtual ActionResult CoreForm()
     {
       return View();
     }
 
     //
-    // GET: /Bootstrap/Mvc/BootstrapHtml
+    // GET: /Bootstrap3/Mvc/BootstrapHtml
     public virtual ActionResult BootstrapHtml(bool? msg)
     {
-      BootstrapHtmlViewModel model = new BootstrapHtmlViewModel
+      CoreHtmlViewModel model = new CoreHtmlViewModel
       {
         SomeProperty = "Blah blah",
         ShowMessage = msg.HasValue
@@ -61,7 +68,7 @@ namespace WebExtras.DemoApp.Areas.Bootstrap3.Controllers
     }
 
     //
-    // GET: /Bootstrap/Mvc/BootstrapForm
+    // GET: /Bootstrap3/Mvc/BootstrapForm
     public virtual ActionResult BootstrapForm()
     {
       BootstrapFormViewModel model = new BootstrapFormViewModel
@@ -75,7 +82,7 @@ namespace WebExtras.DemoApp.Areas.Bootstrap3.Controllers
     }
 
     //
-    // GET: /Bootstrap/Mvc/ActionMessageDemo
+    // GET: /Bootstrap3/Mvc/ActionMessageDemo
     public virtual ActionResult ActionMessageDemo(bool success)
     {
       if (!success)
@@ -84,7 +91,7 @@ namespace WebExtras.DemoApp.Areas.Bootstrap3.Controllers
     }
 
     //
-    // GET: /Bootstrap/Mvc/ActionResults
+    // GET: /Bootstrap3/Mvc/ActionResults
     public virtual ActionResult ActionResults()
     {
       return View();

@@ -19,6 +19,7 @@
 using System;
 using System.Web.Mvc;
 using WebExtras.DemoApp.Areas.Bootstrap.Models.Mvc;
+using WebExtras.DemoApp.Models.Mvc;
 using WebExtras.Mvc.Bootstrap;
 using WebExtras.Mvc.Core;
 
@@ -37,7 +38,13 @@ namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
     // GET: /Bootstrap/Mvc/CoreHtml
     public virtual ActionResult CoreHtml()
     {
-      return View();
+      CoreHtmlViewModel model = new CoreHtmlViewModel
+      {
+        SomeProperty = "Blah blah",
+        ShowMessage = false
+      };
+
+      return View(model);
     }
 
     //
@@ -51,7 +58,7 @@ namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
     // GET: /Bootstrap/Mvc/BootstrapHtml
     public virtual ActionResult BootstrapHtml(bool? msg)
     {
-      BootstrapHtmlViewModel model = new BootstrapHtmlViewModel
+      CoreHtmlViewModel model = new CoreHtmlViewModel
       {
         SomeProperty = "Blah blah",
         ShowMessage = msg.HasValue

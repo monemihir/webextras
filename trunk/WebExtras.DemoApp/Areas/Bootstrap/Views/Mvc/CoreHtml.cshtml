@@ -1,8 +1,7 @@
-﻿@{
+﻿@model WebExtras.DemoApp.Models.Mvc.CoreHtmlViewModel
+@{
   ViewBag.Title = "Mvc Html Helper Extensions";
 }
-
-
 
 <h3 class="keep-center">Mvc Html Helper Extensions</h3>
 
@@ -201,5 +200,33 @@
   <p>Usage</p>
   <pre><code>
   @@Html.Inline("relative path to the static content file")
+  </code></pre>
+</div>
+
+<div class="well">
+  <h4>Label with required field asterix</h4>
+  <p>Markup</p>
+  <pre><code>
+@@Html.LabelForV2(f => f.SomeProperty)
+@@Html.LabelForV2(f => f.SomeProperty, "My random label")
+  </code></pre>
+  <p>Output</p>
+  <div class="content">
+    <div class="row-fluid">
+      <div class="span2">
+        @Html.LabelForV2(f => f.SomeProperty)
+      </div>
+      <div class="span2">
+        @Html.LabelForV2(f => f.SomeProperty, "My random label")
+      </div>
+    </div>
+  </div>
+  <p>All available extensions</p>
+  <pre><code>
+<span class="comment">// The displaying of the asterix is decided by inspecting the <br />// System.ComponentModel.RequiredAttribute added to the view model property</span>
+@@Html.LabelForV2(propertySelector)
+@@Html.LabelForV2(propertySelector, htmlAttributes)
+@@Html.LabelForV2(propertySelector, labelText)
+@@Html.LabelForV2(propertySelector, labelText, htmlAttributes)
   </code></pre>
 </div>
