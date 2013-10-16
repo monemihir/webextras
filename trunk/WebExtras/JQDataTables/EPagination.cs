@@ -75,6 +75,12 @@ namespace WebExtras.JQDataTables
     /// Two button pagination
     /// </summary>
     [StringValue("two_button")]
-    TwoButton
+    TwoButton,
+
+    /// <summary>
+    /// Gumby pagination
+    /// </summary>
+    [StringValue("full_numbers")]
+    Gumby
   }
 }

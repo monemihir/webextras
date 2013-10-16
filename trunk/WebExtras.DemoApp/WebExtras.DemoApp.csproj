@@ -159,6 +159,9 @@
     <Compile Include="Areas\Bootstrap\Controllers\CoreController.cs" />
     <Compile Include="Areas\Bootstrap\Controllers\MvcController.cs" />
     <Compile Include="Controllers\FlavourController.cs" />
+    <Compile Include="CoreController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
     <Compile Include="FlavourController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
@@ -327,6 +330,22 @@
     <Content Include="Areas\Gumby\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Gumby\Views\Shared\Error.cshtml" />
     <Content Include="Areas\Gumby\Views\Home\Download.cshtml" />
+    <Content Include="Areas\Gumby\Views\Core\Flot.cshtml" />
+    <Content Include="Areas\Gumby\Views\Core\_AjaxSetup.cshtml" />
+    <Content Include="Areas\Gumby\Views\Core\_AxisLabels.cshtml" />
+    <Content Include="Areas\Gumby\Views\Core\_BarGraph.cshtml" />
+    <Content Include="Views\Core\_BasicSetup.cshtml" />
+    <Content Include="Areas\Gumby\Views\Core\_CurvedLineGraph.cshtml" />
+    <Content Include="Areas\Gumby\Views\Core\_CustomFlotFormatters.cshtml" />
+    <Content Include="Areas\Gumby\Views\Core\_DashedGraph.cshtml" />
+    <Content Include="Areas\Gumby\Views\Core\_LineGraph.cshtml" />
+    <Content Include="Areas\Gumby\Views\Core\_PagedSetup.cshtml" />
+    <Content Include="Areas\Gumby\Views\Core\_PieGraph.cshtml" />
+    <Content Include="Areas\Gumby\Views\Core\_PostbackResult.cshtml" />
+    <Content Include="Areas\Gumby\Views\Core\_PostbackSetup.cshtml" />
+    <Content Include="Areas\Gumby\Views\Core\_SortedSetup.cshtml" />
+    <Content Include="Areas\Gumby\Views\Core\_StatusSetup.cshtml" />
+    <Content Include="Areas\Gumby\Views\Core\Datatables.cshtml" />
     <None Include="Content\style.less" />
     <Content Include="Content\style-bootstrap3.min.css">
       <DependentUpon>style-bootstrap3.less</DependentUpon>

@@ -167,7 +167,6 @@ namespace WebExtras.DemoApp.Areas.Bootstrap3.Controllers
                 public readonly string _AjaxSetup = "_AjaxSetup";
                 public readonly string _AxisLabels = "_AxisLabels";
                 public readonly string _BarGraph = "_BarGraph";
-                public readonly string _BasicSetup = "_BasicSetup";
                 public readonly string _CurvedLineGraph = "_CurvedLineGraph";
                 public readonly string _CustomFlotFormatters = "_CustomFlotFormatters";
                 public readonly string _DashedGraph = "_DashedGraph";
@@ -185,7 +184,6 @@ namespace WebExtras.DemoApp.Areas.Bootstrap3.Controllers
             public readonly string _AjaxSetup = "~/Areas/Bootstrap3/Views/Core/_AjaxSetup.cshtml";
             public readonly string _AxisLabels = "~/Areas/Bootstrap3/Views/Core/_AxisLabels.cshtml";
             public readonly string _BarGraph = "~/Areas/Bootstrap3/Views/Core/_BarGraph.cshtml";
-            public readonly string _BasicSetup = "~/Areas/Bootstrap3/Views/Core/_BasicSetup.cshtml";
             public readonly string _CurvedLineGraph = "~/Areas/Bootstrap3/Views/Core/_CurvedLineGraph.cshtml";
             public readonly string _CustomFlotFormatters = "~/Areas/Bootstrap3/Views/Core/_CustomFlotFormatters.cshtml";
             public readonly string _DashedGraph = "~/Areas/Bootstrap3/Views/Core/_DashedGraph.cshtml";

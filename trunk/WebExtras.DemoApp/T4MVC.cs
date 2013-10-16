@@ -32,6 +32,7 @@ public static class MVC
     public static GumbyClass Gumby { get { return s_Gumby; } }
     public static WebExtras.DemoApp.Controllers.AssetsController Assets = new WebExtras.DemoApp.Controllers.T4MVC_AssetsController();
     public static WebExtras.DemoApp.Controllers.FlavourController Flavour = new WebExtras.DemoApp.Controllers.T4MVC_FlavourController();
+    public static T4MVC.CoreController Core = new T4MVC.CoreController();
     public static T4MVC.HomeController Home = new T4MVC.HomeController();
     public static T4MVC.SharedController Shared = new T4MVC.SharedController();
 }

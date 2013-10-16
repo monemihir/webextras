@@ -16,11 +16,11 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Newtonsoft.Json;
 using WebExtras.Core;
 
 namespace WebExtras.JQDataTables
@@ -590,6 +590,10 @@ namespace WebExtras.JQDataTables
           sDom = "t<'row'<'col-sm-6'i><'col-sm-6'p>>";
           goto default;
 
+        case EPagination.Gumby:
+          sDom = "t<'row'<'six columns'i><'six columns'p>>";
+          goto default;
+
         default:
           bPaginate = true;
           sPaginationType = type.GetStringValue();
@@ -654,7 +658,7 @@ namespace WebExtras.JQDataTables
         if (sDom.Contains("row-fluid") || sDom.Contains("span") || sDom.Contains("row"))
           sDom = null;
       }
-        
+
 
       return JsonConvert.SerializeObject(
         this,

@@ -61,12 +61,6 @@
   <li>@Html.ActionLink("Adding extra postbacks", MVC.Bootstrap3.Core.Datatables(5))</li>
 </ul>
 
-<script type="text/javascript">
-  $(document).ready(function () {
-    $('#dt-nav li:eq(' + @Model.DisplayMode + ')').addClass('active');
-  });
-</script>
-
 @switch (Model.DisplayMode)
 {
   case 1:
@@ -95,6 +89,12 @@
 
   case 0:
   default:
-  @Html.Partial(MVC.Bootstrap3.Core.Views._BasicSetup, Model.Table)
+  @Html.Partial(MVC.Core.Views._BasicSetup, Model.Table)
     break;
 }
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $('#dt-nav li:eq(' + @Model.DisplayMode + ')').addClass('active');
+  });
+</script>

@@ -159,7 +159,7 @@ namespace WebExtras.DemoApp.Areas.Gumby.Controllers
           break;
       }
 
-      dtSettings.SetupPaging(EPagination.Bootstrap3);
+      dtSettings.SetupPaging(EPagination.Gumby);
 
       // Let's create the datatable object with an HTML ID, our settings, columns and records
       model.DisplayMode = mode.Value;
@@ -179,7 +179,8 @@ namespace WebExtras.DemoApp.Areas.Gumby.Controllers
       };
 
       DatatableSettings dtSettings = new DatatableSettings(5, dtAOColumns, new AASort(0, ESort.Ascending), null, "basic records", tableHeight);
-      dtSettings.SetupPaging(EPagination.Bootstrap3);
+      dtSettings.SetupPaging(EPagination.Gumby);
+
       IEnumerable<string[]> dtData = new string[][]
       {
         new string[] { "first column row 1", "second column row 1" },    
@@ -199,7 +200,8 @@ namespace WebExtras.DemoApp.Areas.Gumby.Controllers
       // create the postbacks enabled table
       IEnumerable<PostbackItem> dtPostbacks = PostbackItem.FromObject(viewModel.PostbackFormFields);
       dtSettings = new DatatableSettings(5, dtAOColumns, new AASort(0, ESort.Ascending), MVC.Bootstrap.Core.ActionNames.GetPostbackData, "searched/filtered records", tableHeight);
-      dtSettings.SetupPaging(EPagination.Bootstrap3);
+      dtSettings.SetupPaging(EPagination.Gumby);
+
       viewModel.PostbackEnabledTable = new Datatable("postbacks-table", dtSettings, null, dtPostbacks);
 
       // update the display mode
@@ -448,7 +450,7 @@ namespace WebExtras.DemoApp.Areas.Gumby.Controllers
           series.Add(serie);
           break;
 
-        case 0:        
+        case 0:
         default:
           serie = new FlotSeries
           {

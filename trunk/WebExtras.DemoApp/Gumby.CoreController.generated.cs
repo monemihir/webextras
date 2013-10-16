@@ -164,8 +164,38 @@ namespace WebExtras.DemoApp.Areas.Gumby.Controllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
+                public readonly string _AjaxSetup = "_AjaxSetup";
+                public readonly string _AxisLabels = "_AxisLabels";
+                public readonly string _BarGraph = "_BarGraph";
+                public readonly string _CurvedLineGraph = "_CurvedLineGraph";
+                public readonly string _CustomFlotFormatters = "_CustomFlotFormatters";
+                public readonly string _DashedGraph = "_DashedGraph";
+                public readonly string _LineGraph = "_LineGraph";
+                public readonly string _PagedSetup = "_PagedSetup";
+                public readonly string _PieGraph = "_PieGraph";
+                public readonly string _PostbackResult = "_PostbackResult";
+                public readonly string _PostbackSetup = "_PostbackSetup";
+                public readonly string _SortedSetup = "_SortedSetup";
+                public readonly string _StatusSetup = "_StatusSetup";
+                public readonly string Datatables = "Datatables";
+                public readonly string Flot = "Flot";
                 public readonly string Generic = "Generic";
             }
+            public readonly string _AjaxSetup = "~/Areas/Gumby/Views/Core/_AjaxSetup.cshtml";
+            public readonly string _AxisLabels = "~/Areas/Gumby/Views/Core/_AxisLabels.cshtml";
+            public readonly string _BarGraph = "~/Areas/Gumby/Views/Core/_BarGraph.cshtml";
+            public readonly string _CurvedLineGraph = "~/Areas/Gumby/Views/Core/_CurvedLineGraph.cshtml";
+            public readonly string _CustomFlotFormatters = "~/Areas/Gumby/Views/Core/_CustomFlotFormatters.cshtml";
+            public readonly string _DashedGraph = "~/Areas/Gumby/Views/Core/_DashedGraph.cshtml";
+            public readonly string _LineGraph = "~/Areas/Gumby/Views/Core/_LineGraph.cshtml";
+            public readonly string _PagedSetup = "~/Areas/Gumby/Views/Core/_PagedSetup.cshtml";
+            public readonly string _PieGraph = "~/Areas/Gumby/Views/Core/_PieGraph.cshtml";
+            public readonly string _PostbackResult = "~/Areas/Gumby/Views/Core/_PostbackResult.cshtml";
+            public readonly string _PostbackSetup = "~/Areas/Gumby/Views/Core/_PostbackSetup.cshtml";
+            public readonly string _SortedSetup = "~/Areas/Gumby/Views/Core/_SortedSetup.cshtml";
+            public readonly string _StatusSetup = "~/Areas/Gumby/Views/Core/_StatusSetup.cshtml";
+            public readonly string Datatables = "~/Areas/Gumby/Views/Core/Datatables.cshtml";
+            public readonly string Flot = "~/Areas/Gumby/Views/Core/Flot.cshtml";
             public readonly string Generic = "~/Areas/Gumby/Views/Core/Generic.cshtml";
         }
     }
