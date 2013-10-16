@@ -60,6 +60,7 @@ namespace T4MVC
     public class GumbyClass
     {
         public readonly string Name = "gumby";
+        public WebExtras.DemoApp.Areas.Gumby.Controllers.CoreController Core = new WebExtras.DemoApp.Areas.Gumby.Controllers.T4MVC_CoreController();
         public WebExtras.DemoApp.Areas.Gumby.Controllers.HomeController Home = new WebExtras.DemoApp.Areas.Gumby.Controllers.T4MVC_HomeController();
         public T4MVC.Gumby.SharedController Shared = new T4MVC.Gumby.SharedController();
     }
@@ -293,6 +294,22 @@ namespace Links
         public static readonly string style_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/style.min.css") ? Url("style.min.css") : Url("style.css");
              
         public static readonly string style_min_css = Url("style.min.css");
+        public static readonly string webextras_bootstrap_less = Url("webextras.bootstrap.less");
+        public static readonly string webextras_bootstrap_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/webextras.bootstrap.min.css") ? Url("webextras.bootstrap.min.css") : Url("webextras.bootstrap.css");
+             
+        public static readonly string webextras_bootstrap_min_css = Url("webextras.bootstrap.min.css");
+        public static readonly string webextras_bootstrap3_less = Url("webextras.bootstrap3.less");
+        public static readonly string webextras_bootstrap3_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/webextras.bootstrap3.min.css") ? Url("webextras.bootstrap3.min.css") : Url("webextras.bootstrap3.css");
+             
+        public static readonly string webextras_bootstrap3_min_css = Url("webextras.bootstrap3.min.css");
+        public static readonly string webextras_common_less = Url("webextras.common.less");
+        public static readonly string webextras_common_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/webextras.common.min.css") ? Url("webextras.common.min.css") : Url("webextras.common.css");
+             
+        public static readonly string webextras_common_min_css = Url("webextras.common.min.css");
+        public static readonly string webextras_gumby_less = Url("webextras.gumby.less");
+        public static readonly string webextras_gumby_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/webextras.gumby.min.css") ? Url("webextras.gumby.min.css") : Url("webextras.gumby.css");
+             
+        public static readonly string webextras_gumby_min_css = Url("webextras.gumby.min.css");
         public static readonly string webextras_less = Url("webextras.less");
         public static readonly string webextras_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/webextras.min.css") ? Url("webextras.min.css") : Url("webextras.css");
              

@@ -64,7 +64,7 @@ namespace WebExtras.DemoApp.App_Start
         .Add(Links.Content.jquery_bootstrap_datetimepicker_css)
         .Add(Links.Content.jquery_dataTables_css)
         .Add(Links.Content.jquery_jScrollPane_2_0_0beta12_css)
-        .Add(Links.Content.webextras_css)
+        .Add(Links.Content.webextras_bootstrap_css)
         .Add(Links.Content.style_bootstrap_css)
         .Add(Links.Content.style_css)
         .AsCached(ContentBundle.CSSBootstrap.GetStringValue(), ResolveCssPath(ContentBundle.CSSBootstrap));
@@ -78,7 +78,8 @@ namespace WebExtras.DemoApp.App_Start
         .Add(Links.Content.jquery_dataTables_css)
         .Add(Links.Content.jquery_datatables_bootstrap3_css)
         .Add(Links.Content.jquery_jScrollPane_2_0_0beta12_css)
-        .Add(Links.Content.webextras_css)
+        .Add(Links.Content.webextras_common_css)
+        .Add(Links.Content.webextras_bootstrap3_css)
         .Add(Links.Content.style_bootstrap3_css)
         .Add(Links.Content.style_css)
         .AsCached(ContentBundle.CSSBootstrap3.GetStringValue(), ResolveCssPath(ContentBundle.CSSBootstrap3));
@@ -88,11 +89,11 @@ namespace WebExtras.DemoApp.App_Start
         .Add(Links.Content.gumby_2_5_6_css)
         .Add(Links.Content.jquery_dataTables_css)
         .Add(Links.Content.jquery_jScrollPane_2_0_0beta12_css)
-        .Add(Links.Content.webextras_css)
+        .Add(Links.Content.webextras_gumby_css)
         .Add(Links.Content.style_gumby_css)
         .Add(Links.Content.style_css)
         .AsCached(ContentBundle.CSSGumby.GetStringValue(), ResolveCssPath(ContentBundle.CSSGumby));
-     
+
       // Core javascript libraries' bundle
       Bundle.JavaScript()
         .Add(Links.Scripts.jquery_1_9_1_min_js)

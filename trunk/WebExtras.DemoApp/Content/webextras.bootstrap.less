@@ -1,0 +1,168 @@
+﻿/*
+* This file is part of - WebExtras
+* Copyright (C) 2013 Mihir Mone
+*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU Lesser General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU Lesser General Public License for more details.
+*
+* You should have received a copy of the GNU Lesser General Public License
+* along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+@import "webextras.common.less";
+
+/** BOOTSTRAP EXTENSIONS AND OVERRIDES **/
+
+[class^="icon-"], [class*=" icon-"]
+{
+  margin-left: 0;
+  margin-right: 5px;
+}
+
+.input-prepend .input-append,
+.input-append .input-prepend
+{
+  input
+  {
+    border-radius: 0;
+  }
+}
+
+.controls
+{
+  input[type="checkbox"],
+  input[type="radio"]
+  {
+    vertical-align: middle;
+  }
+}
+
+.control-group .text
+{
+  padding-top: 5px;
+}
+
+.control-group-large
+{
+  .control-label
+  {
+    width: 260px;
+  }
+
+  .controls
+  {
+    margin-left: 280px;
+
+    input[type="checkbox"],
+    input[type="radio"]
+    {
+      vertical-align: middle;
+    }
+  }
+}
+
+/** BOOTSTRAP EXTENSIONS AND OVERRIDES END **/
+
+/** BOOTSTRAP STYLING FOR JQUERY DATATABLES **/
+
+.paging_bootstrap, .pagination
+{
+  margin: 0.3em 0 0 0;
+
+  > li > a
+  {
+    padding: 5px 12px;
+  }
+}
+
+.sorting_asc, .sorting_desc
+{
+  background-color: rgba(141, 192, 219, 0.25);
+  -webkit-text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+}
+
+table.dataTable
+{
+  tbody
+  {
+    tr.success td
+    {
+      background-color: #dff0d8;
+    }
+
+    tr.error td
+    {
+      background-color: #f2dede;
+    }
+
+    tr.warning td
+    {
+      background-color: #fcf8e3;
+    }
+
+    tr.info td
+    {
+      background-color: #d9edf7;
+    }
+  }
+}
+
+.dataTables_wrapper
+{
+  .row-fluid, .row
+  {
+    .dataTables_info
+    {
+      padding-top: 4px;
+    }
+  }
+}
+
+/** BOOTSTRAP STYLING FOR JQUERY DATATABLES END **/
+
+/** BOOTSTRAP DATE TIME PICKER OVERRIDES AND EXTENSIONS */
+
+[class*="datetimepicker-dropdown"]
+{
+  &:after
+  {
+    border: 0;
+  }
+
+  &:before
+  {
+    border: 0;
+  }
+}
+
+.datetimepicker.dropdown-menu
+{
+  background-color: @white;
+  color: @textColor;
+  background-image: none;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+/** BOOTSTRAP DATE TIME PICKER OVERRIDES AND EXTENSIONS END */
+
+/** STYLING FOR FLOT GRAPHS */
+
+.legendLabel
+{
+  padding-right: 1em;
+}
+
+.axisLabels {
+  font: 0.9em sans-serif;
+  color: #666666;
+}
+
+/** STYLING FOR FLOT GRAPHS END */

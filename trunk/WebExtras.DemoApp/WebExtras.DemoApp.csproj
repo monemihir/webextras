@@ -124,6 +124,7 @@
     <Compile Include="Areas\Bootstrap3\Bootstrap3AreaRegistration.cs" />
     <Compile Include="Areas\Bootstrap\Controllers\BaseController.cs" />
     <Compile Include="Areas\Gumby\Controllers\BaseController.cs" />
+    <Compile Include="Areas\Gumby\Controllers\CoreController.cs" />
     <Compile Include="Areas\Gumby\Controllers\HomeController.cs" />
     <Compile Include="Areas\Gumby\GumbyAreaRegistration.cs" />
     <Compile Include="AssetsController.generated.cs">
@@ -166,6 +167,9 @@
     </Compile>
     <Compile Include="Areas\Bootstrap\Models\Mvc\BootstrapFormViewModel.cs" />
     <Compile Include="Areas\Bootstrap\Models\Mvc\BootstrapHtmlViewModel.cs" />
+    <Compile Include="Gumby.CoreController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
     <Compile Include="Gumby.HomeController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
@@ -189,6 +193,30 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\webextras.bootstrap.css">
+      <DependentUpon>webextras.bootstrap.less</DependentUpon>
+    </Content>
+    <Content Include="Content\webextras.bootstrap.min.css">
+      <DependentUpon>webextras.bootstrap.less</DependentUpon>
+    </Content>
+    <Content Include="Content\webextras.bootstrap3.css">
+      <DependentUpon>webextras.bootstrap3.less</DependentUpon>
+    </Content>
+    <Content Include="Content\webextras.bootstrap3.min.css">
+      <DependentUpon>webextras.bootstrap3.less</DependentUpon>
+    </Content>
+    <Content Include="Content\webextras.common.css">
+      <DependentUpon>webextras.common.less</DependentUpon>
+    </Content>
+    <Content Include="Content\webextras.common.min.css">
+      <DependentUpon>webextras.common.less</DependentUpon>
+    </Content>
+    <Content Include="Content\webextras.gumby.css">
+      <DependentUpon>webextras.gumby.less</DependentUpon>
+    </Content>
+    <Content Include="Content\webextras.gumby.min.css">
+      <DependentUpon>webextras.gumby.less</DependentUpon>
+    </Content>
     <Content Include="Scripts\modernizr-2.6.2.min.js" />
     <Content Include="Views\Shared\DatatablePartial.ascx" />
     <Content Include="Content\bootstrap-2.3.1.css" />
@@ -312,6 +340,10 @@
     <Content Include="Content\style.min.css">
       <DependentUpon>style.less</DependentUpon>
     </Content>
+    <Content Include="Content\webextras.common.less" />
+    <Content Include="Content\webextras.bootstrap.less" />
+    <Content Include="Content\webextras.bootstrap3.less" />
+    <Content Include="Content\webextras.gumby.less" />
     <None Include="Content\webextras.less" />
     <Content Include="Content\webextras.css">
       <DependentUpon>webextras.less</DependentUpon>
@@ -356,6 +388,7 @@
     <Content Include="Areas\Bootstrap\Views\Shared\Error.cshtml" />
     <Content Include="Areas\Bootstrap\Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Areas\Gumby\Views\Core\Generic.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

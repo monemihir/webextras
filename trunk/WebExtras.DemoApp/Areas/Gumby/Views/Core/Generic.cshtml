@@ -1,0 +1,169 @@
+﻿@{
+  ViewBag.Title = "Generic .NET Extensions";
+}
+<h3 class="keep-center">Generic .NET Extensions and Helpers</h3>
+<div class="row">
+  <div class="six columns">
+    <div class="row">
+      <div class="three columns">
+        <strong>Assembly</strong>
+      </div>
+      <div class="three columns">
+        WebExtras.dll
+      </div>
+    </div>
+    <div class="row">
+      <div class="three columns">
+        <strong>Namespace</strong>
+      </div>
+      <div class="three columns">
+        WebExtras.Core
+      </div>
+    </div>
+  </div>
+</div>
+
+@*Object Extensions*@
+<div class="well">
+  <h4>Object Extensions</h4>
+  <p>
+    WebExtras provides a general purpose object cloner which performs a deep clone of the given object.
+    However, in order for the cloning to work, all objects (including any child object of the class) to 
+    be cloned must be marked as serializable using the [Serializable] decorator attribute.
+  </p>
+  <p>Markup</p>
+  <pre><code>
+  SomeClass object1 = new SomeClass();
+  SomeClass object2 = object1.DeepClone();
+  </code></pre>
+</div>
+
+@*Enum Extensions*@
+<div class="well">
+  <h4>Enum Extensions</h4>
+  <p>WebExtras provides two enum extension methods viz., ToTitleCase() and GetStringValue()</p>
+  <div class="row">
+    <div class="four columns">Consider the following C# enumeration</div>
+    <div class="four columns">
+      ToTitleCase() as the method name suggests will convert the enum 
+      value to it's titlecase representation based on the current system culture
+    </div>
+    <div class="four columns">
+      GetStringValue() simply retrieves the string value decorated using the 
+      StringValue attribute. This is especially useful if you want an enum value to have an
+      integer representation as well as a string representation
+    </div>    
+  </div>
+  <div class="row">
+    <div class="four columns">
+      <pre><code>
+  <span class="comment">// Enum definition</span>
+  public enum TestEnum
+  {
+    [StringValue("My great Enum")]
+    enumvalue = 0
+  }
+    </code></pre>
+    </div>
+    <div class="four columns">
+      <pre><code>
+  <span class="comment">// Invocation of ToTitleCase</span>
+  TestEnum.enumvalue.ToTitleCase()
+
+  <span class="comment">// Output</span>
+  Enumvalue
+    </code></pre>
+    </div>
+    <div class="four columns">
+      <pre><code>
+  <span class="comment">// Invocation of GetStringValue</span>
+  TestEnum.enumvalue.GetStringValue()
+
+  <span class="comment">// Output</span>
+  My great Enum
+    </code></pre>
+    </div>
+  </div>
+</div>
+
+@*String Extensions*@
+<div class="well">
+  <h4>String Extensions</h4>
+  <p>WebExtras provides two string extension methods viz., ToTitleCase() and ContainsIgnoreCase()</p>
+  <div class="row">
+    <div class="four columns">
+      ToTitleCase() as the method name suggests will convert the string 
+      value to it's titlecase representation based on the current system culture
+    </div>
+    <div class="four columns">
+      ContainsIgnoreCase() simply compares the current string with a given string and
+      checks whether the current string contains the given string irrespective of case
+    </div>
+    <div class="four columns">
+        Remove() method removes all occurences of the given string from it's parent string. This extension 
+        simply uses the Replace() method internally but making use of Remove() is semantically clearer.
+      </div>
+  </div>
+  <div class="row">    
+    <div class="four columns">
+      <pre><code>
+  <span class="comment">// String definition</span>
+  string str = "basic"
+
+  <span class="comment">// Invocation of ToTitleCase</span>
+  str.ToTitleCase()
+
+  <span class="comment">// Output</span>
+  Basic
+    </code></pre>
+    </div>
+    <div class="four columns">
+      <pre><code>
+  <span class="comment">// String definition</span>
+  string str = "basic"
+
+  <span class="comment">// Invocation of ContainsIgnoreCase</span>
+  str.ContainsIgnoreCase("BAS")
+
+  <span class="comment">// Output</span>
+  true
+    </code></pre>
+    </div>
+    <div class="four columns">
+        <pre><code>
+  <span class="comment">// String definition</span> 
+  string str = "basically basic"
+
+  <span class="comment">// Invocation of Remove</span> 
+  str.Remove("bas")
+            
+  <span class="comment">// Output</span> 
+  ically ic
+          </code></pre>
+      </div>
+  </div>
+</div>
+
+@*Double Extensions*@
+<div class="well">
+  <h4>Double Extensions</h4>
+  <p>WebExtras provides ability to convert JavaScript ticks to a .NET DateTime object by using the ToDateTime()
+    extension method available to all double values
+  </p>
+  <pre><code>
+  double ticks = 1356998400000;
+  DateTime dt = ticks.ToDateTime();       <span class="comment">// Parsed date time is 01/01/2013 12:00:00 AM</span>
+  </code></pre>
+</div>
+
+@*DateTime Extensions*@
+<div class="well">
+  <h4>DateTime Extensions</h4>
+  <p>As with doubles, WebExtras also provides ability to convert a .NET DateTime object to it's equivalent
+    JavaScript timestamp by using the ToJavaScriptDate() extension method available to all DateTime values
+  </p>
+  <pre><code>
+  DateTime dt = DateTime.Parse("2013-01-01 00:00:00");
+  double ticks = dt.ToJavaScriptDate();       <span class="comment">// Parsed JavaScript ticks are 1356998400000</span>
+  </code></pre>
+</div>
