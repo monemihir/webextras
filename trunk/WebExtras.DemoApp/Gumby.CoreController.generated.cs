@@ -164,7 +164,6 @@ namespace WebExtras.DemoApp.Areas.Gumby.Controllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
-                public readonly string _AjaxSetup = "_AjaxSetup";
                 public readonly string _AxisLabels = "_AxisLabels";
                 public readonly string _BarGraph = "_BarGraph";
                 public readonly string _CurvedLineGraph = "_CurvedLineGraph";
@@ -181,7 +180,6 @@ namespace WebExtras.DemoApp.Areas.Gumby.Controllers
                 public readonly string Flot = "Flot";
                 public readonly string Generic = "Generic";
             }
-            public readonly string _AjaxSetup = "~/Areas/Gumby/Views/Core/_AjaxSetup.cshtml";
             public readonly string _AxisLabels = "~/Areas/Gumby/Views/Core/_AxisLabels.cshtml";
             public readonly string _BarGraph = "~/Areas/Gumby/Views/Core/_BarGraph.cshtml";
             public readonly string _CurvedLineGraph = "~/Areas/Gumby/Views/Core/_CurvedLineGraph.cshtml";

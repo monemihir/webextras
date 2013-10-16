@@ -297,10 +297,8 @@
     </Content>
     <Content Include="Content\style-gumby.less" />
     <Content Include="Areas\Bootstrap3\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Bootstrap3\Views\Core\_AjaxSetup.cshtml" />
     <Content Include="Areas\Bootstrap3\Views\Core\_AxisLabels.cshtml" />
     <Content Include="Areas\Bootstrap3\Views\Core\_BarGraph.cshtml" />
-    <Content Include="Areas\Bootstrap3\Views\Core\_BasicSetup.cshtml" />
     <Content Include="Areas\Bootstrap3\Views\Core\_CurvedLineGraph.cshtml" />
     <Content Include="Areas\Bootstrap3\Views\Core\_CustomFlotFormatters.cshtml" />
     <Content Include="Areas\Bootstrap3\Views\Core\_DashedGraph.cshtml" />
@@ -331,7 +329,6 @@
     <Content Include="Areas\Gumby\Views\Shared\Error.cshtml" />
     <Content Include="Areas\Gumby\Views\Home\Download.cshtml" />
     <Content Include="Areas\Gumby\Views\Core\Flot.cshtml" />
-    <Content Include="Areas\Gumby\Views\Core\_AjaxSetup.cshtml" />
     <Content Include="Areas\Gumby\Views\Core\_AxisLabels.cshtml" />
     <Content Include="Areas\Gumby\Views\Core\_BarGraph.cshtml" />
     <Content Include="Views\Core\_BasicSetup.cshtml" />
@@ -445,10 +442,7 @@
     <Content Include="Areas\Bootstrap\Views\Core\Flot.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Areas\Bootstrap\Views\Core\_BasicSetup.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Areas\Bootstrap\Views\Core\_AjaxSetup.cshtml" />
+    <Content Include="Views\Core\_AjaxSetup.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Bootstrap\Views\Core\_PagedSetup.cshtml" />

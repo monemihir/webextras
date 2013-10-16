@@ -35,8 +35,10 @@ namespace T4MVC
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
+                public readonly string _AjaxSetup = "_AjaxSetup";
                 public readonly string _BasicSetup = "_BasicSetup";
             }
+            public readonly string _AjaxSetup = "~/Views/Core/_AjaxSetup.cshtml";
             public readonly string _BasicSetup = "~/Views/Core/_BasicSetup.cshtml";
         }
     }
