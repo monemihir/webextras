@@ -167,3 +167,30 @@
   double ticks = dt.ToJavaScriptDate();       <span class="comment">// Parsed JavaScript ticks are 1356998400000</span>
   </code></pre>
 </div>
+
+@*JsFunc utility class*@
+<div class="well">
+  <h4>JsFunc utility class</h4>
+  <p>In order to create and return custom JavaScript functions for the DataTables and Flot hooks, WebExtras provides
+    the <strong>WebExtras.Core.JsFunc</strong> class.
+  </p>
+  <p>Markup</p>
+  <pre><code>
+  JsFunc foo = new JsFunc
+  {
+    Name = "foo",
+    ParameterNames = new string[] { "myParam1", "myParam2" },
+    Body = "alert(myParam1 + '...' + myParam2);",
+    OnDocumentReady = true
+  };
+  </code></pre>
+  <p>And the serialised output will be</p>
+  <pre><code>
+  <span class="comment">// You MUST use the Json.NET serialiser in order to serialise properly</span>
+  $(document).ready(function() {
+    function foo(myParam1, myParam2) {
+      alert(myParam1 + '...' + myParam2);
+    };
+  });
+  </code></pre>
+</div>

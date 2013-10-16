@@ -131,23 +131,23 @@
   <h4>Go ahead try it yourself</h4>
   @using (Html.BeginForm(MVC.Gumby.Core.Datatables(), FormMethod.Post, new { @class = "form-horizontal" }))
   { 
-    <div class="control-group">
-      @Html.LabelFor(f => f.PostbackFormFields.FirstColumn, new { @class = "control-label" })
-      <div class="controls">
-        @Html.TextBoxFor(f => f.PostbackFormFields.FirstColumn)
+    <div class="row">
+      <strong>@Html.LabelFor(f => f.PostbackFormFields.FirstColumn, new { @class = "two columns keep-right" })</strong>
+      <div class="field four columns">
+        @Html.TextBoxFor(f => f.PostbackFormFields.FirstColumn, new { @class = "input" })
+      </div>
+    </div>
+    
+    <div class="row">
+      <strong>@Html.LabelFor(f => f.PostbackFormFields.SecondColumn, new { @class = "two columns keep-right" })</strong>
+      <div class="field four columns">
+        @Html.TextBoxFor(f => f.PostbackFormFields.SecondColumn, new { @class = "input" })
       </div>
     </div>
 
-    <div class="control-group">
-      @Html.LabelFor(f => f.PostbackFormFields.SecondColumn, new { @class = "control-label" })
-      <div class="controls">
-        @Html.TextBoxFor(f => f.PostbackFormFields.SecondColumn)
-      </div>
-    </div>
-
-    <div class="control-group">
-      <div class="controls">
-        @Html.Button(EButton.Submit, "Submit").AsButton(EBootstrapButton.Primary)
+    <div class="row">
+      <div class="push_two four columns">
+        @Html.Button(EButton.Submit, "Submit").AsButton(EGumbyButton.Primary, EGumbyButtonStyle.Medium)
       </div>
     </div>
     

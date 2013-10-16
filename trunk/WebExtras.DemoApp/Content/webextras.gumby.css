@@ -31,6 +31,9 @@ input[type="radio"] {
   right: 0.2%;
   z-index: 2000;
 }
+.required {
+  color: #b94a48;
+}
 /** GENERIC STYLING END **/
 /** GENERIC DATATABLES EXTENSIONS AND OVERRIDES **/
 table.dataTable thead th {
@@ -57,4 +60,23 @@ table.dataTable thead th .css_right {
   border-left: 1px solid;
   border-right: 1px solid;
 }
-/** GENERIC DATATABLES EXTENSIONS AND OVERRIDES END **/
+/** GENERIC DATATABLES EXTENSIONS AND OVERRIDES END **//** GUMBY OVERRIDES AND EXTENSIONS **/
+table tr td:first-child {
+  font-weight: normal;
+}
+/** GUMBY OVERRIDES AND EXTENSIONS END **/
+/** DATATABLE OVERRIDES AND EXTENSIONS **/
+table.dataTable tbody tr.success td {
+  background-color: #80CB92;
+}
+table.dataTable tbody tr.error td,
+table.dataTable tbody tr.danger td {
+  background-color: #DF8989;
+}
+table.dataTable tbody tr.warning td {
+  background-color: #FBDCA0;
+}
+table.dataTable tbody tr.info td {
+  background-color: #7B8085;
+}
+/** DATATABLE OVERRIDES AND EXTENSIONS END **/

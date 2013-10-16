@@ -1,1 +1,36 @@
 ﻿@import "webextras.common.less";
+
+/** GUMBY OVERRIDES AND EXTENSIONS **/
+
+table {
+  tr td:first-child {
+    font-weight: normal;
+  }
+}
+
+/** GUMBY OVERRIDES AND EXTENSIONS END **/
+   
+/** DATATABLE OVERRIDES AND EXTENSIONS **/
+
+table.dataTable {
+  tbody {
+    tr.success td {
+      background-color: #80CB92;
+    }
+    
+    tr.error td,
+    tr.danger td {
+      background-color: #DF8989;
+    }
+
+    tr.warning td {
+      background-color: #FBDCA0;
+    }
+
+    tr.info td {
+      background-color: #7B8085;
+    }
+  }
+}
+
+/** DATATABLE OVERRIDES AND EXTENSIONS END **/
