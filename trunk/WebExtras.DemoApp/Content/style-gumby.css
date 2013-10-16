@@ -27,6 +27,12 @@
   font-weight: bold;
   padding-left: 10px;
 }
+.navbar ul {
+  margin: 0 auto;
+}
+.navbar li.active {
+  background: #868d92;
+}
 small {
   font-size: 85%;
 }

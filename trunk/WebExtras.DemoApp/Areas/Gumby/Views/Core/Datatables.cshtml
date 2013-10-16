@@ -50,9 +50,10 @@
     </ul>
   </div>
 </div>
+
 <div class="row">
-  <section class="tabs">
-    <ul id="dt-nav" class="tab-nav">
+  <div class="navbar metro ten columns centered">
+    <ul id="dt-nav">
       <li>@Html.Hyperlink("Basic Setup", MVC.Gumby.Core.Datatables(0))</li>
       <li>@Html.ActionLink("Ajax Setup", MVC.Gumby.Core.Datatables(1))</li>
       <li>@Html.ActionLink("Paging", MVC.Gumby.Core.Datatables(2))</li>
@@ -60,46 +61,43 @@
       <li>@Html.ActionLink("Adding status column", MVC.Gumby.Core.Datatables(4))</li>
       <li>@Html.ActionLink("Adding extra postbacks", MVC.Gumby.Core.Datatables(5))</li>
     </ul>
-
-    <div class="tab-content active">
-      @switch (Model.DisplayMode)
-      {
-        case 1:
-        @Html.Partial(MVC.Core.Views._AjaxSetup, Model.Table)
-          break;
-
-        case 2:
-        @Html.Partial(MVC.Core.Views._PagedSetup, Model.Table)
-          break;
-
-        case 3:
-        @Html.Partial(MVC.Core.Views._SortedSetup, Model.Table)
-          break;
-
-        case 4:
-        @Html.Partial(MVC.Core.Views._StatusSetup, Model.Table)
-          break;
-
-        case 5:
-        @Html.Partial(MVC.Gumby.Core.Views._PostbackSetup, Model)
-          break;
-
-        case 6:
-        @Html.Partial(MVC.Core.Views._PostbackResult, Model)
-          break;
-
-        case 0:
-        default:
-        @Html.Partial(MVC.Core.Views._BasicSetup, Model.Table)
-          break;
-      }
-    </div>
-  </section>
-
-  <script type="text/javascript">
-    $(document).ready(function () {
-      $('#dt-nav li:eq(' + @Model.DisplayMode + ')').addClass('active');
-    });
-  </script>
-
+  </div>
 </div>
+
+@switch (Model.DisplayMode)
+{
+  case 1:
+  @Html.Partial(MVC.Core.Views._AjaxSetup, Model.Table)
+    break;
+
+  case 2:
+  @Html.Partial(MVC.Core.Views._PagedSetup, Model.Table)
+    break;
+
+  case 3:
+  @Html.Partial(MVC.Core.Views._SortedSetup, Model.Table)
+    break;
+
+  case 4:
+  @Html.Partial(MVC.Core.Views._StatusSetup, Model.Table)
+    break;
+
+  case 5:
+  @Html.Partial(MVC.Gumby.Core.Views._PostbackSetup, Model)
+    break;
+
+  case 6:
+  @Html.Partial(MVC.Core.Views._PostbackResult, Model)
+    break;
+
+  case 0:
+  default:
+  @Html.Partial(MVC.Core.Views._BasicSetup, Model.Table)
+    break;
+}
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $('#dt-nav li:eq(' + @Model.DisplayMode + ')').addClass('active');
+  });
+</script>
