@@ -336,7 +336,7 @@
     <Content Include="Areas\Gumby\Views\Core\_CustomFlotFormatters.cshtml" />
     <Content Include="Areas\Gumby\Views\Core\_DashedGraph.cshtml" />
     <Content Include="Areas\Gumby\Views\Core\_LineGraph.cshtml" />
-    <Content Include="Areas\Gumby\Views\Core\_PagedSetup.cshtml" />
+    <Content Include="Views\Core\_PagedSetup.cshtml" />
     <Content Include="Areas\Gumby\Views\Core\_PieGraph.cshtml" />
     <Content Include="Areas\Gumby\Views\Core\_PostbackResult.cshtml" />
     <Content Include="Areas\Gumby\Views\Core\_PostbackSetup.cshtml" />

@@ -170,7 +170,6 @@ namespace WebExtras.DemoApp.Areas.Bootstrap3.Controllers
                 public readonly string _CustomFlotFormatters = "_CustomFlotFormatters";
                 public readonly string _DashedGraph = "_DashedGraph";
                 public readonly string _LineGraph = "_LineGraph";
-                public readonly string _PagedSetup = "_PagedSetup";
                 public readonly string _PieGraph = "_PieGraph";
                 public readonly string _PostbackResult = "_PostbackResult";
                 public readonly string _PostbackSetup = "_PostbackSetup";
@@ -186,7 +185,6 @@ namespace WebExtras.DemoApp.Areas.Bootstrap3.Controllers
             public readonly string _CustomFlotFormatters = "~/Areas/Bootstrap3/Views/Core/_CustomFlotFormatters.cshtml";
             public readonly string _DashedGraph = "~/Areas/Bootstrap3/Views/Core/_DashedGraph.cshtml";
             public readonly string _LineGraph = "~/Areas/Bootstrap3/Views/Core/_LineGraph.cshtml";
-            public readonly string _PagedSetup = "~/Areas/Bootstrap3/Views/Core/_PagedSetup.cshtml";
             public readonly string _PieGraph = "~/Areas/Bootstrap3/Views/Core/_PieGraph.cshtml";
             public readonly string _PostbackResult = "~/Areas/Bootstrap3/Views/Core/_PostbackResult.cshtml";
             public readonly string _PostbackSetup = "~/Areas/Bootstrap3/Views/Core/_PostbackSetup.cshtml";

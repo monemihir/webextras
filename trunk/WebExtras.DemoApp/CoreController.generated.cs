@@ -37,9 +37,11 @@ namespace T4MVC
             {
                 public readonly string _AjaxSetup = "_AjaxSetup";
                 public readonly string _BasicSetup = "_BasicSetup";
+                public readonly string _PagedSetup = "_PagedSetup";
             }
             public readonly string _AjaxSetup = "~/Views/Core/_AjaxSetup.cshtml";
             public readonly string _BasicSetup = "~/Views/Core/_BasicSetup.cshtml";
+            public readonly string _PagedSetup = "~/Views/Core/_PagedSetup.cshtml";
         }
     }
 

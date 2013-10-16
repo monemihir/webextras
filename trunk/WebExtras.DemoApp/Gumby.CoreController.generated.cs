@@ -170,7 +170,6 @@ namespace WebExtras.DemoApp.Areas.Gumby.Controllers
                 public readonly string _CustomFlotFormatters = "_CustomFlotFormatters";
                 public readonly string _DashedGraph = "_DashedGraph";
                 public readonly string _LineGraph = "_LineGraph";
-                public readonly string _PagedSetup = "_PagedSetup";
                 public readonly string _PieGraph = "_PieGraph";
                 public readonly string _PostbackResult = "_PostbackResult";
                 public readonly string _PostbackSetup = "_PostbackSetup";
@@ -186,7 +185,6 @@ namespace WebExtras.DemoApp.Areas.Gumby.Controllers
             public readonly string _CustomFlotFormatters = "~/Areas/Gumby/Views/Core/_CustomFlotFormatters.cshtml";
             public readonly string _DashedGraph = "~/Areas/Gumby/Views/Core/_DashedGraph.cshtml";
             public readonly string _LineGraph = "~/Areas/Gumby/Views/Core/_LineGraph.cshtml";
-            public readonly string _PagedSetup = "~/Areas/Gumby/Views/Core/_PagedSetup.cshtml";
             public readonly string _PieGraph = "~/Areas/Gumby/Views/Core/_PieGraph.cshtml";
             public readonly string _PostbackResult = "~/Areas/Gumby/Views/Core/_PostbackResult.cshtml";
             public readonly string _PostbackSetup = "~/Areas/Gumby/Views/Core/_PostbackSetup.cshtml";
