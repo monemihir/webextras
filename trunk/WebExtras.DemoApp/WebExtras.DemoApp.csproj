@@ -305,7 +305,6 @@
     <Content Include="Views\Shared\_Datatable.cshtml" />
     <Content Include="Areas\Bootstrap3\Views\Core\_LineGraph.cshtml" />
     <Content Include="Areas\Bootstrap3\Views\Core\_PieGraph.cshtml" />
-    <Content Include="Areas\Bootstrap3\Views\Core\_PostbackResult.cshtml" />
     <Content Include="Areas\Bootstrap3\Views\Core\_PostbackSetup.cshtml" />
     <Content Include="Areas\Bootstrap3\Views\Core\Datatables.cshtml" />
     <Content Include="Areas\Bootstrap3\Views\Core\Flot.cshtml" />
@@ -335,7 +334,7 @@
     <Content Include="Areas\Gumby\Views\Core\_LineGraph.cshtml" />
     <Content Include="Views\Core\_PagedSetup.cshtml" />
     <Content Include="Areas\Gumby\Views\Core\_PieGraph.cshtml" />
-    <Content Include="Areas\Gumby\Views\Core\_PostbackResult.cshtml" />
+    <Content Include="Views\Core\_PostbackResult.cshtml" />
     <Content Include="Areas\Gumby\Views\Core\_PostbackSetup.cshtml" />
     <Content Include="Views\Core\_SortedSetup.cshtml" />
     <Content Include="Views\Core\_StatusSetup.cshtml" />
@@ -443,7 +442,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Bootstrap\Views\Core\_PostbackSetup.cshtml" />
-    <Content Include="Areas\Bootstrap\Views\Core\_PostbackResult.cshtml" />
     <Content Include="Areas\Bootstrap\Views\Core\_LineGraph.cshtml" />
     <Content Include="Areas\Bootstrap\Views\Core\_DashedGraph.cshtml" />
     <Content Include="Areas\Bootstrap\Views\Core\_CurvedLineGraph.cshtml" />

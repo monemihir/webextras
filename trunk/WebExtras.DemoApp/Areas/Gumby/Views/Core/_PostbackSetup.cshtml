@@ -129,7 +129,7 @@
 
 <div class="well">
   <h4>Go ahead try it yourself</h4>
-  @using (Html.BeginForm(MVC.Bootstrap.Core.Datatables(), FormMethod.Post, new { @class = "form-horizontal" }))
+  @using (Html.BeginForm(MVC.Gumby.Core.Datatables(), FormMethod.Post, new { @class = "form-horizontal" }))
   { 
     <div class="control-group">
       @Html.LabelFor(f => f.PostbackFormFields.FirstColumn, new { @class = "control-label" })

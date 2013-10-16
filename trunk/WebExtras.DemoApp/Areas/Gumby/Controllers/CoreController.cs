@@ -207,7 +207,7 @@ namespace WebExtras.DemoApp.Areas.Gumby.Controllers
       // update the display mode
       viewModel.DisplayMode = 6;
 
-      return View(MVC.Bootstrap3.Core.Views.Datatables, viewModel);
+      return View(MVC.Gumby.Core.Views.Datatables, viewModel);
     }
 
     //
