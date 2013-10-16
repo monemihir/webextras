@@ -120,7 +120,8 @@ table.dataTable thead th .css_right {
 table.dataTable tbody tr.success td {
   background-color: #dff0d8;
 }
-table.dataTable tbody tr.error td {
+table.dataTable tbody tr.error td,
+table.dataTable tbody tr.danger td {
   background-color: #f2dede;
 }
 table.dataTable tbody tr.warning td {

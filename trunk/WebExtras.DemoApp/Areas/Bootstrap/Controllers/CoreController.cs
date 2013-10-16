@@ -123,7 +123,7 @@ namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
           dtSettings = new DatatableSettings(5, dtAOColumns, new AASort(0, ESort.Ascending), null, "status records", tableHeight);
           IEnumerable<string[]> statusData = new string[][]
           {
-            new string[] { "first column row 1", "second column row 1", "error" },    
+            new string[] { "first column row 1", "second column row 1", "error danger" },    
             new string[] { "first column row 2", "second column row 2", "warning" },
             new string[] { "first column row 3", "second column row 3", "info" },
             new string[] { "first column row 4", "second column row 4", "success" }
@@ -444,7 +444,7 @@ namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
           series.Add(serie);
           break;
 
-        case 0:        
+        case 0:
         default:
           serie = new FlotSeries
           {

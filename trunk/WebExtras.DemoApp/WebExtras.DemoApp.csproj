@@ -307,7 +307,6 @@
     <Content Include="Areas\Bootstrap3\Views\Core\_PieGraph.cshtml" />
     <Content Include="Areas\Bootstrap3\Views\Core\_PostbackResult.cshtml" />
     <Content Include="Areas\Bootstrap3\Views\Core\_PostbackSetup.cshtml" />
-    <Content Include="Areas\Bootstrap3\Views\Core\_StatusSetup.cshtml" />
     <Content Include="Areas\Bootstrap3\Views\Core\Datatables.cshtml" />
     <Content Include="Areas\Bootstrap3\Views\Core\Flot.cshtml" />
     <Content Include="Areas\Bootstrap3\Views\Core\Generic.cshtml" />
@@ -339,7 +338,7 @@
     <Content Include="Areas\Gumby\Views\Core\_PostbackResult.cshtml" />
     <Content Include="Areas\Gumby\Views\Core\_PostbackSetup.cshtml" />
     <Content Include="Views\Core\_SortedSetup.cshtml" />
-    <Content Include="Areas\Gumby\Views\Core\_StatusSetup.cshtml" />
+    <Content Include="Views\Core\_StatusSetup.cshtml" />
     <Content Include="Areas\Gumby\Views\Core\Datatables.cshtml" />
     <None Include="Content\style.less" />
     <Content Include="Content\style-bootstrap3.min.css">
@@ -443,7 +442,6 @@
     <Content Include="Views\Core\_AjaxSetup.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Areas\Bootstrap\Views\Core\_StatusSetup.cshtml" />
     <Content Include="Areas\Bootstrap\Views\Core\_PostbackSetup.cshtml" />
     <Content Include="Areas\Bootstrap\Views\Core\_PostbackResult.cshtml" />
     <Content Include="Areas\Bootstrap\Views\Core\_LineGraph.cshtml" />
