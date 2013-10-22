@@ -38,7 +38,7 @@
       <li class="@Html.SelectedTab("Core", "Generic")">@Html.Hyperlink("Core", MVC.Gumby.Core.Index())</li>
       <li class="@Html.SelectedTab("Core", "Datatables")">@Html.Hyperlink("jQuery Datatables", MVC.Gumby.Core.Datatables())</li>
       <li class="@Html.SelectedTab("Core", "Flot")">@Html.Hyperlink("jQuery Flot", MVC.Gumby.Core.Flot())</li>
-      <li class="@Html.SelectedTab("Mvc")">@Html.Hyperlink("Mvc Core", "#")
+      <li class="@Html.SelectedTab("Mvc", new string[] { "ActionResults", "CoreHtml", "CoreForm" })">@Html.Hyperlink("Mvc Core", "#")
         <div class="dropdown">
           <ul>
             <li>@Html.Hyperlink("Custom Action Results", MVC.Gumby.Mvc.ActionResults())</li>
@@ -47,10 +47,10 @@
           </ul>
         </div>
       </li>
-      <li class="@Html.SelectedTab("Home", "Index")">@Html.Hyperlink("Mvc Gumby", MVC.Gumby.Home.Index())
+      <li class="@Html.SelectedTab("Mvc", new string[] { "GumbyHtml", "GumbyForm"})">@Html.Hyperlink("Mvc Gumby", "#")
         <div class="dropdown">
           <ul>
-            <li><a href="#">Html Extensions</a></li>
+            <li>@Html.Hyperlink("Html Extensions", MVC.Gumby.Mvc.GumbyHtml())</li>
             <li><a href="#">Form Extensions</a></li>
           </ul>
         </div>

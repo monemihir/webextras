@@ -19,9 +19,8 @@
 using System.Text;
 using System.Web.Mvc;
 using WebExtras.Core;
-using WebExtras.Mvc.Core;
 
-namespace WebExtras.Mvc.Bootstrap
+namespace WebExtras.Mvc.Core
 {
   /// <summary>
   /// A class to store and retrieve messages for display after an action has occurred
@@ -32,12 +31,12 @@ namespace WebExtras.Mvc.Bootstrap
     /// <summary>
     /// The key used to store the message in the TempData object
     /// </summary>
-    public const string TempDataMessageKey = "<Bootstrap_LastActionMessage>";
+    public const string TempDataMessageKey = "<WebExtras_LastActionMessage>";
 
     /// <summary>
     /// The key used to store the message type i.e success/failure in the TempData object
     /// </summary>
-    public const string TempDataMessageTypeKey = "<Bootstrap_LastActionMessageType>";
+    public const string TempDataMessageTypeKey = "<WebExtras_LastActionMessageType>";
 
     /// <summary>
     /// Overload of the RedirectToAction method, which allows the saving of an action message

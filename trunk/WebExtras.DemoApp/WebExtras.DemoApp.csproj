@@ -342,6 +342,7 @@
     <Content Include="Areas\Gumby\Views\Mvc\CoreHtml.cshtml" />
     <Content Include="Areas\Gumby\Views\Mvc\CoreForm.cshtml" />
     <Content Include="Areas\Gumby\Views\Mvc\ActionResults.cshtml" />
+    <Content Include="Areas\Gumby\Views\Mvc\GumbyHtml.cshtml" />
     <None Include="Content\style.less" />
     <Content Include="Content\style-bootstrap3.min.css">
       <DependentUpon>style-bootstrap3.less</DependentUpon>

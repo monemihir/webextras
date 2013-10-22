@@ -28,23 +28,26 @@ namespace WebExtras.Mvc.Gumby
   /// </summary>
   public static class GumbyHtmlStringExtensions
   {
-    ///// <summary>
-    ///// Add an icon
-    ///// </summary>
-    ///// <typeparam name="T">Generic type to be used. This type must implement IExtendedHtmlString</typeparam>
-    ///// <param name="html">Current HTML element</param>
-    ///// <param name="icon">Gumby icon to be added</param>
-    ///// <param name="iconLeft">[Optional] Flag indicating whether to place icon on left. Defaults to true</param>
-    ///// <returns>HTML element with icon added</returns>
-    //public static T AddIcon<T>(this T html, EGumbyIcon icon, bool iconLeft = true) where T : IExtendedHtmlString
-    //{
-    //  if (iconLeft)
-    //    html.Tag.AddCssClass("icon-left icon-" + icon.ToString().ToLowerInvariant());
-    //  else
-    //    html.Tag.AddCssClass("icon-right icon-" + icon.ToString().ToLowerInvariant());
+    /// <summary>
+    /// Add an icon
+    /// </summary>
+    /// <typeparam name="T">Generic type to be used. This type must implement IExtendedHtmlString</typeparam>
+    /// <param name="html">Current HTML element</param>
+    /// <param name="icon">Gumby icon to be added</param>
+    /// <param name="iconLeft">[Optional] Flag indicating whether to place icon on left. Defaults to true</param>
+    /// <returns>HTML element with icon added</returns>
+    public static T AddIcon<T>(this T html, EGumbyIcon icon, bool iconLeft = true) where T : IExtendedHtmlString
+    {
+      Italic i = new Italic();
+      i["class"] = "icon-" + icon.ToString().ToLowerInvariant().Replace('_', '-');
 
-    //  return html;
-    //}
+      if (iconLeft)
+        html.Prepend(i);
+      else
+        html.Append(i);
+
+      return html;
+    }
 
     /// <summary>
     /// Create special buttons
