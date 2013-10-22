@@ -119,6 +119,10 @@
     <Compile Include="Areas\Bootstrap3\Controllers\HomeController.cs" />
     <Compile Include="Areas\Bootstrap3\Controllers\MvcController.cs" />
     <Compile Include="Areas\Bootstrap3\Models\Mvc\BootstrapFormViewModel.cs" />
+    <Compile Include="Areas\Gumby\Controllers\MvcController.cs" />
+    <Compile Include="Gumby.MvcController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Mvc\CoreHtmlViewModel.cs" />
     <Compile Include="Areas\Bootstrap\BootstrapAreaRegistration.cs" />
     <Compile Include="Areas\Bootstrap3\Bootstrap3AreaRegistration.cs" />
@@ -184,6 +188,9 @@
     <Compile Include="Models\Core\DatatablesViewModel.cs" />
     <Compile Include="Models\Core\FlotViewModel.cs" />
     <Compile Include="Models\Core\PostbackSetupViewModel.cs" />
+    <Compile Include="MvcController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SharedController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
@@ -332,6 +339,9 @@
     <Content Include="Views\Core\_SortedSetup.cshtml" />
     <Content Include="Views\Core\_StatusSetup.cshtml" />
     <Content Include="Areas\Gumby\Views\Core\Datatables.cshtml" />
+    <Content Include="Areas\Gumby\Views\Mvc\CoreHtml.cshtml" />
+    <Content Include="Areas\Gumby\Views\Mvc\CoreForm.cshtml" />
+    <Content Include="Areas\Gumby\Views\Mvc\ActionResults.cshtml" />
     <None Include="Content\style.less" />
     <Content Include="Content\style-bootstrap3.min.css">
       <DependentUpon>style-bootstrap3.less</DependentUpon>
@@ -394,6 +404,7 @@
     <Content Include="Areas\Bootstrap\Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Areas\Gumby\Views\Core\Generic.cshtml" />
+    <Content Include="Views\Mvc\_JsonNetResult.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

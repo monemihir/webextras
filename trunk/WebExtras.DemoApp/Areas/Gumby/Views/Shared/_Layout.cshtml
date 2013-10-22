@@ -38,12 +38,12 @@
       <li class="@Html.SelectedTab("Core", "Generic")">@Html.Hyperlink("Core", MVC.Gumby.Core.Index())</li>
       <li class="@Html.SelectedTab("Core", "Datatables")">@Html.Hyperlink("jQuery Datatables", MVC.Gumby.Core.Datatables())</li>
       <li class="@Html.SelectedTab("Core", "Flot")">@Html.Hyperlink("jQuery Flot", MVC.Gumby.Core.Flot())</li>
-      <li class="@Html.SelectedTab("Home", "Index")">@Html.Hyperlink("Mvc Core", MVC.Gumby.Home.Index())
+      <li class="@Html.SelectedTab("Mvc")">@Html.Hyperlink("Mvc Core", "#")
         <div class="dropdown">
           <ul>
-            <li><a href="#">Custom Action Results</a></li>
-            <li><a href="#">Html Extensions</a></li>
-            <li><a href="#">Form Extensions</a></li>
+            <li>@Html.Hyperlink("Custom Action Results", MVC.Gumby.Mvc.ActionResults())</li>
+            <li>@Html.Hyperlink("Html Extensions", MVC.Gumby.Mvc.CoreHtml())</li>
+            <li>@Html.Hyperlink("Form Extensions", MVC.Gumby.Mvc.CoreForm())</li>
           </ul>
         </div>
       </li>
@@ -61,12 +61,12 @@
       </li>
     </ul>
   </div>
-  <div class="row">
+  @*<div class="row">
     <div class="three columns">
       @Html.Hyperlink("Stable Docs", "http://mihirmone.dyndns.org/appdocs/webextras/gumby") | @Html.Hyperlink("Nightly Docs", "http://mihirmone.dyndns.org/nightly/webextras/gumby")
     </div>
-  </div>
-    
+  </div>*@
+
   <div class="container main">
     @RenderBody()
   </div>

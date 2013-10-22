@@ -34,6 +34,7 @@ public static class MVC
     public static WebExtras.DemoApp.Controllers.FlavourController Flavour = new WebExtras.DemoApp.Controllers.T4MVC_FlavourController();
     public static T4MVC.CoreController Core = new T4MVC.CoreController();
     public static T4MVC.HomeController Home = new T4MVC.HomeController();
+    public static T4MVC.MvcController Mvc = new T4MVC.MvcController();
     public static T4MVC.SharedController Shared = new T4MVC.SharedController();
 }
 
@@ -63,6 +64,7 @@ namespace T4MVC
         public readonly string Name = "gumby";
         public WebExtras.DemoApp.Areas.Gumby.Controllers.CoreController Core = new WebExtras.DemoApp.Areas.Gumby.Controllers.T4MVC_CoreController();
         public WebExtras.DemoApp.Areas.Gumby.Controllers.HomeController Home = new WebExtras.DemoApp.Areas.Gumby.Controllers.T4MVC_HomeController();
+        public WebExtras.DemoApp.Areas.Gumby.Controllers.MvcController Mvc = new WebExtras.DemoApp.Areas.Gumby.Controllers.T4MVC_MvcController();
         public T4MVC.Gumby.SharedController Shared = new T4MVC.Gumby.SharedController();
     }
 }

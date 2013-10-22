@@ -1,0 +1,215 @@
+﻿@model WebExtras.DemoApp.Models.Mvc.CoreHtmlViewModel
+@{
+  ViewBag.Title = "Mvc Html Helper Extensions";
+}
+
+<h3 class="keep-center">Mvc Html Helper Extensions</h3>
+
+<div class="row">
+  <div class="six columns">
+    <div class="row">
+      <div class="three columns">
+        <strong>Assembly</strong>
+      </div>
+      <div class="four columns">
+        WebExtras.Mvc.dll
+      </div>
+    </div>
+    <div class="row">
+      <div class="three columns">
+        <strong>Namespace</strong>
+      </div>
+      <div class="four columns">
+        WebExtras.Mvc.Core
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="well">
+  <h4>Hyperlinks</h4>
+  <p>Markup</p>
+  <pre><code>
+  @@Html.Hyperlink("Take me to google", "http://www.google.com")
+  </code></pre>
+  <p>Output</p>
+  <div class="content">
+    @Html.Hyperlink("Take me to google", "http://www.google.com")
+  </div>
+  <p>All available extensions</p>
+  <pre><code>
+  @@Html.Hyperlink(linkText, url, htmlAttributes)
+  @@Html.Hyperlink(linkText, actionresult, htmlAttributes)    
+  </code></pre>
+</div>
+
+<div class="well">
+  <h4>Images</h4>
+  <p>Markup</p>
+  <pre><code>
+  @@Html.Image("/Content/png/youtube-logo.png", "YouTube", "Take me to YouTube")
+  </code></pre>
+  <p>Output</p>
+  <div class="content">
+    @Html.Image(Links.Content.png.youtube_logo_png, "YouTube", "Take me to YouTube")
+  </div>
+  <p>All available extensions</p>
+  <pre><code>
+  @@Html.Image(src, htmlAttributes)
+  @@Html.Image(src, altText, htmlAttributes)
+  @@Html.Image(src, altText, title, htmlAttributes)
+  </code></pre>
+</div>
+
+
+<div class="well">
+  <h4>Imagelinks</h4>
+  <p>An image link is basically an image embedded into a hyperlink</p>
+  <p>Markup</p>
+  <pre><code>
+  @@Html.Imagelink("/Content/png/youtube-logo.png", "YouTube", "Take me to YouTube", "http://www.youtube.com")
+  </code></pre>
+  <p>Output</p>
+  <div class="content">
+    @Html.Imagelink(Links.Content.png.youtube_logo_png, "YouTube", "Take me to YouTube", "http://www.youtube.com")
+  </div>
+  <p>All available extensions</p>
+  <pre><code>
+  @@Html.Imagelink(src, url, htmlAttributes)
+  @@Html.Imagelink(src, altText, url, htmlAttributes)
+  @@Html.Imagelink(src, altText, title, url, htmlAttributes)
+  @@Html.Imagelink(src, actionresult, htmlAttributes)
+  @@Html.Imagelink(src, altText, actionresult, htmlAttributes)
+  @@Html.Imagelink(src, altText, title, actionresult, htmlAttributes)
+  </code></pre>
+  <p>Notes</p>
+  <div class="content">
+    By default any extra HTML attributes specified by the <strong>htmlAttributes</strong> parameter will get applied to the A tag i.e the link. If you would like
+    to add HTML attributes to the IMG tag you must specify the <strong>htmlAttributes</strong> parameter in the following format:    
+  </div>
+  <pre><code>
+  <span class="comment">// Any attributes specified with property name 'a' will be applied to the link</span>
+  <span class="comment">// and those specified with property name 'img' will be applied to the image</span>
+  new { a = new { attr1 = value1 ... }, img = new { attr1 = value1 } }
+  </code></pre>
+</div>
+
+<div class="well">
+  <h4>Lists</h4>
+  <p>Markup</p>
+  <pre><code>
+  @@Html.List(EList.Unordered, new HtmlListItem[] {        <span class="comment">// You can create an ordered list by changing the list type</span>
+    new HtmlListItem("list item 1"),
+    new HtmlListItem("list item 2"),
+    new HtmlListItem("list item 3"),
+    new HtmlListItem("list item 4"),
+    new HtmlListItem("list item 5")
+  })
+  </code></pre>
+  <p>Output</p>
+  <div class="content">
+    @Html.List(EList.Unordered, new HtmlListItem[] { 
+      new HtmlListItem("list item 1"),
+      new HtmlListItem("list item 2"),
+      new HtmlListItem("list item 3"),
+      new HtmlListItem("list item 4"),
+      new HtmlListItem("list item 5")
+    })
+  </div>
+</div>
+
+<div class="well">
+  <h4>Authenticated extension methods</h4>
+  <p>
+    These extension methods only return HTML content based on whether the user is authenticated or not. It uses the <strong>System.Security.Principal.IPrincipal.Identity.IsAuthenticated</strong> flag
+  in order to decide whether a user is authenticated or not.
+  </p>
+  <p>Usage</p>
+  <pre><code>
+  @@Html.AuthHyperlink(...)         <span class="comment">// Provides all the same overloads as the @@Html.Hyperlink(...) extension</span>
+  @@Html.AuthImagelink(...)         <span class="comment">// Provides all the same overloads as the @@Html.Imagelink(...) extension</span>
+  </code></pre>
+</div>
+
+<div class="well">
+  <h4>Validation extension method</h4>
+  <p>This extension method allows you to check whether a particular view model property value has any model state errors. This method looks at the model state dictionary
+    and checks whether the given view model property exists and has an error.
+  </p>
+  <p>Usage</p>
+  <pre><code>
+  @@Html.IsValidFor(f => f.PropertyName)
+  @@Html.IsValidFor(PropertyName)
+  </code></pre>
+</div>
+
+<div class="well">
+  <h4>View renderer extension methods</h4>
+  <p>These methods allow you to get the rendered content of a view in the controller. It is particularly useful if you want to return a view as a JSON callback.</p>
+  <p>Usage/Markup</p>
+  <pre><code>
+  <span class="comment">// The following controller action demonstrates how you would use these extension methods</span>
+  using WebExtras.Mvc.Core
+
+  public class HomeController : ControllerBase
+  {
+    public JsonResult GetJsonView()
+    {
+      string content = string.Empty;
+      SomeViewModel myModel = new SomeViewModel();
+      if(Request.IsAjaxRequest)
+        content = <span class="hightlight">this.</span>GetRenderedPartialView("mypartialviewname", myModel);
+      else
+        content = <span class="hightlight">this.</span>GetRenderedView("myfullviewname", "mymasterpagename", myModel);
+
+      return Json(content, JsonRequestBehavior.AllowGet);
+    }
+  }
+  </code></pre>
+  <p>All available extension methods</p>
+  <pre><code>
+  GetRenderedView(viewName, model);
+  GetRenderedView(viewName, masterPageName, model);
+  GetRenderedPartialView(partialViewName, model);
+  </code></pre>
+</div>
+
+<div class="well">
+  <h4>Rendering static HTML inline</h4>
+  <p>WebExtras provides an extension method to render static HTML content inline. This is especially useful when doing content management external to the system,
+    for e.g. system changelogs, known issues list etc.
+  </p>
+  <p>Usage</p>
+  <pre><code>
+  @@Html.Inline("relative path to the static content file")
+  </code></pre>
+</div>
+
+<div class="well">
+  <h4>Label with required field asterix</h4>
+  <p>Markup</p>
+  <pre><code>
+  @@Html.LabelForV2(f => f.SomeProperty)
+  @@Html.LabelForV2(f => f.SomeProperty, "My random label")
+  </code></pre>
+  <p>Output</p>
+  <div class="content">
+    <div class="row">
+      <div class="two columns">
+        @Html.LabelForV2(f => f.SomeProperty)
+      </div>
+      <div class="two columns">
+        @Html.LabelForV2(f => f.SomeProperty, "My random label")
+      </div>
+    </div>
+  </div>
+  <p>All available extensions</p>
+  <pre><code>
+  <span class="comment">// The displaying of the asterix is decided by inspecting the
+  // System.ComponentModel.RequiredAttribute added to the view model property</span>
+  @@Html.LabelForV2(propertySelector)
+  @@Html.LabelForV2(propertySelector, htmlAttributes)
+  @@Html.LabelForV2(propertySelector, labelText)
+  @@Html.LabelForV2(propertySelector, labelText, htmlAttributes)
+  </code></pre>
+</div>
