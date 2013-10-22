@@ -165,24 +165,12 @@ namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
             public class _ViewNamesClass
             {
                 public readonly string _AxisLabels = "_AxisLabels";
-                public readonly string _BarGraph = "_BarGraph";
-                public readonly string _CurvedLineGraph = "_CurvedLineGraph";
-                public readonly string _CustomFlotFormatters = "_CustomFlotFormatters";
-                public readonly string _DashedGraph = "_DashedGraph";
-                public readonly string _LineGraph = "_LineGraph";
-                public readonly string _PieGraph = "_PieGraph";
                 public readonly string _PostbackSetup = "_PostbackSetup";
                 public readonly string Datatables = "Datatables";
                 public readonly string Flot = "Flot";
                 public readonly string Generic = "Generic";
             }
             public readonly string _AxisLabels = "~/Areas/Bootstrap/Views/Core/_AxisLabels.cshtml";
-            public readonly string _BarGraph = "~/Areas/Bootstrap/Views/Core/_BarGraph.cshtml";
-            public readonly string _CurvedLineGraph = "~/Areas/Bootstrap/Views/Core/_CurvedLineGraph.cshtml";
-            public readonly string _CustomFlotFormatters = "~/Areas/Bootstrap/Views/Core/_CustomFlotFormatters.cshtml";
-            public readonly string _DashedGraph = "~/Areas/Bootstrap/Views/Core/_DashedGraph.cshtml";
-            public readonly string _LineGraph = "~/Areas/Bootstrap/Views/Core/_LineGraph.cshtml";
-            public readonly string _PieGraph = "~/Areas/Bootstrap/Views/Core/_PieGraph.cshtml";
             public readonly string _PostbackSetup = "~/Areas/Bootstrap/Views/Core/_PostbackSetup.cshtml";
             public readonly string Datatables = "~/Areas/Bootstrap/Views/Core/Datatables.cshtml";
             public readonly string Flot = "~/Areas/Bootstrap/Views/Core/Flot.cshtml";

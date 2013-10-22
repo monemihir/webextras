@@ -9,30 +9,30 @@
   <p>Let's setup a custom tick formatter as shown in the Flot API @Html.Hyperlink("here", "https://github.com/flot/flot/blob/master/API.md") for our X axis.</p>
   <p>Markup</p>
   <pre><code>
-<span class="comment">// Lets setup the X axis's tick formatter</span>
-FlotOptions options = new FlotOptions
-{
-  xaxis = new AxisOptions
+  <span class="comment">// Lets setup the X axis's tick formatter</span>
+  FlotOptions options = new FlotOptions
   {
-    tickDecimals = 2,
-    tickFormatter = new JsFunc
+    xaxis = new AxisOptions
     {
-      ParameterNames = new string[] { "val", "axis" },
-      Body = "return val.toFixed(axis.tickDecimals);"
+      tickDecimals = 2,
+      tickFormatter = new JsFunc
+      {
+        ParameterNames = new string[] { "val", "axis" },
+        Body = "return val.toFixed(axis.tickDecimals);"
+      }
     }
-  }
-};
+  };
   </code></pre>
   <p>All the remaining process remains the same i.e creating the series and any other options you want.</p>
   <p>Output</p>
   <pre><code>
-<span class="comment">// This is how our Flot options will get serialized down</span>
-options = {
-  "xaxis": {
-    "tickFormatter": function (val, axis) { return val.toFixed(axis.tickDecimals); },
-    "tickDecimals": 2
-  }
-};    
+  <span class="comment">// This is how our Flot options will get serialized down</span>
+  options = {
+    "xaxis": {
+      "tickFormatter": function (val, axis) { return val.toFixed(axis.tickDecimals); },
+      "tickDecimals": 2
+    }
+  };    
   </code></pre>
 </div>
 

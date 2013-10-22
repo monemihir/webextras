@@ -297,13 +297,7 @@
     <Content Include="Content\style-gumby.less" />
     <Content Include="Areas\Bootstrap3\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Bootstrap3\Views\Core\_AxisLabels.cshtml" />
-    <Content Include="Areas\Bootstrap3\Views\Core\_BarGraph.cshtml" />
-    <Content Include="Areas\Bootstrap3\Views\Core\_CurvedLineGraph.cshtml" />
-    <Content Include="Areas\Bootstrap3\Views\Core\_CustomFlotFormatters.cshtml" />
-    <Content Include="Areas\Bootstrap3\Views\Core\_DashedGraph.cshtml" />
     <Content Include="Views\Shared\_Datatable.cshtml" />
-    <Content Include="Areas\Bootstrap3\Views\Core\_LineGraph.cshtml" />
-    <Content Include="Areas\Bootstrap3\Views\Core\_PieGraph.cshtml" />
     <Content Include="Areas\Bootstrap3\Views\Core\_PostbackSetup.cshtml" />
     <Content Include="Areas\Bootstrap3\Views\Core\Datatables.cshtml" />
     <Content Include="Areas\Bootstrap3\Views\Core\Flot.cshtml" />
@@ -325,14 +319,14 @@
     <Content Include="Areas\Gumby\Views\Home\Download.cshtml" />
     <Content Include="Areas\Gumby\Views\Core\Flot.cshtml" />
     <Content Include="Areas\Gumby\Views\Core\_AxisLabels.cshtml" />
-    <Content Include="Areas\Gumby\Views\Core\_BarGraph.cshtml" />
+    <Content Include="Views\Core\_BarGraph.cshtml" />
     <Content Include="Views\Core\_BasicSetup.cshtml" />
-    <Content Include="Areas\Gumby\Views\Core\_CurvedLineGraph.cshtml" />
-    <Content Include="Areas\Gumby\Views\Core\_CustomFlotFormatters.cshtml" />
-    <Content Include="Areas\Gumby\Views\Core\_DashedGraph.cshtml" />
-    <Content Include="Areas\Gumby\Views\Core\_LineGraph.cshtml" />
+    <Content Include="Views\Core\_CurvedLineGraph.cshtml" />
+    <Content Include="Views\Core\_CustomFlotFormatters.cshtml" />
+    <Content Include="Views\Core\_DashedGraph.cshtml" />
+    <Content Include="Views\Core\_LineGraph.cshtml" />
     <Content Include="Views\Core\_PagedSetup.cshtml" />
-    <Content Include="Areas\Gumby\Views\Core\_PieGraph.cshtml" />
+    <Content Include="Views\Core\_PieGraph.cshtml" />
     <Content Include="Views\Core\_PostbackResult.cshtml" />
     <Content Include="Areas\Gumby\Views\Core\_PostbackSetup.cshtml" />
     <Content Include="Views\Core\_SortedSetup.cshtml" />
@@ -441,9 +435,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Bootstrap\Views\Core\_PostbackSetup.cshtml" />
-    <Content Include="Areas\Bootstrap\Views\Core\_LineGraph.cshtml" />
-    <Content Include="Areas\Bootstrap\Views\Core\_DashedGraph.cshtml" />
-    <Content Include="Areas\Bootstrap\Views\Core\_CurvedLineGraph.cshtml" />
     <Content Include="Areas\Bootstrap\Views\Core\_AxisLabels.cshtml" />
     <Content Include="Areas\Bootstrap\Views\Mvc\CoreHtml.cshtml" />
     <Content Include="Areas\Bootstrap\Views\Mvc\CoreForm.cshtml" />
@@ -464,11 +455,8 @@
     <Content Include="Areas\Bootstrap\Views\Web.config" />
     <Content Include="Content\fluidable.less" />
     <None Include="Properties\PublishProfiles\Default.pubxml" />
-    <Content Include="Areas\Bootstrap\Views\Core\_PieGraph.cshtml" />
-    <Content Include="Areas\Bootstrap\Views\Core\_BarGraph.cshtml" />
     <Content Include="Areas\Bootstrap\Views\Mvc\ActionResults.cshtml" />
     <None Include="Properties\PublishProfiles\Staging.pubxml" />
-    <Content Include="Areas\Bootstrap\Views\Core\_CustomFlotFormatters.cshtml" />
     <Content Include="Views\Flavour\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>

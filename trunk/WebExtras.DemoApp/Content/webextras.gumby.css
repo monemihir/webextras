@@ -80,3 +80,13 @@ table.dataTable tbody tr.info td {
   background-color: #7B8085;
 }
 /** DATATABLE OVERRIDES AND EXTENSIONS END **/
+/** FLOT EXTENSIONS **/
+.legend table {
+  width: auto;
+}
+.legend table td {
+  font-size: 11px;
+  padding: 0 2px;
+  vertical-align: middle;
+}
+/** FLOT EXTENSIONS END **/

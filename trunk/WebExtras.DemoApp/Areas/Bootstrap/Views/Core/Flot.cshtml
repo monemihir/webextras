@@ -71,7 +71,7 @@
 @switch (Model.DisplayMode)
 {
   case 6:
-  @Html.Partial(MVC.Bootstrap.Core.Views._CustomFlotFormatters, Model.Chart)
+  @Html.Partial(MVC.Core.Views._CustomFlotFormatters, Model.Chart)
     break;
 
   case 5:
@@ -79,23 +79,23 @@
     break;
 
   case 4:
-  @Html.Partial(MVC.Bootstrap.Core.Views._PieGraph, Model.Chart)
+  @Html.Partial(MVC.Core.Views._PieGraph, Model.Chart)
     break;
 
   case 3:
-  @Html.Partial(MVC.Bootstrap.Core.Views._BarGraph, Model.Chart)
+  @Html.Partial(MVC.Core.Views._BarGraph, Model.Chart)
     break;
 
   case 2:
-  @Html.Partial(MVC.Bootstrap.Core.Views._CurvedLineGraph, Model.Chart)
+  @Html.Partial(MVC.Core.Views._CurvedLineGraph, Model.Chart)
     break;
 
   case 1:
-  @Html.Partial(MVC.Bootstrap.Core.Views._DashedGraph, Model.Chart)
+  @Html.Partial(MVC.Core.Views._DashedGraph, Model.Chart)
     break;
 
   case 0:
   default:
-  @Html.Partial(MVC.Bootstrap.Core.Views._LineGraph, Model.Chart)
+  @Html.Partial(MVC.Core.Views._LineGraph, Model.Chart)
     break;
 }
