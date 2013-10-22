@@ -104,6 +104,7 @@
     <Compile Include="Gumby\EGumbyButtonStyle.cs" />
     <Compile Include="Gumby\EGumbyIcon.cs" />
     <Compile Include="Core\EGumbyTheme.cs" />
+    <Compile Include="Gumby\GumbyHtmlHelperExtension.cs" />
     <Compile Include="Gumby\GumbyHtmlStringExtensions.cs" />
     <Compile Include="Html\Button.cs" />
     <Compile Include="Bootstrap\EBootstrapButton.cs" />
