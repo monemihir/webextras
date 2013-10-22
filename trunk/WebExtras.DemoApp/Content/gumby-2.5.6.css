@@ -1232,9 +1232,9 @@ i.icon-note:before { content: "\266a"; height: inherit; }
 
 i.icon-note-beamed:before { content: "\266b"; height: inherit; }
 
-.icon-music.icon-left a:before, .icon-music.icon-right a:after { content: "ðŸŽµ"; height: inherit; }
+.icon-music.icon-left a:before, .icon-music.icon-right a:after { content: "\1f3b5"; height: inherit; }
 
-i.icon-music:before { content: "ðŸŽµ"; height: inherit; }
+i.icon-music:before { content: "\1f3b5"; height: inherit; }
 
 .icon-search.icon-left a:before, .icon-search.icon-right a:after { content: "ðŸ”"; height: inherit; }
 
@@ -1404,9 +1404,9 @@ i.icon-thumbs-up:before { content: "ðŸ‘"; height: inherit; }
 
 i.icon-thumbs-down:before { content: "ðŸ‘Ž"; height: inherit; }
 
-.icon-download.icon-left a:before, .icon-download.icon-right a:after { content: "ðŸ“¥"; height: inherit; }
+.icon-download.icon-left a:before, .icon-download.icon-right a:after { content: "\1f4e5"; height: inherit; }
 
-i.icon-download:before { content: "ðŸ“¥"; height: inherit; }
+i.icon-download:before { content: "\1f4e5"; height: inherit; }
 
 .icon-upload.icon-left a:before, .icon-upload.icon-right a:after { content: "ðŸ“¤"; height: inherit; }
 
