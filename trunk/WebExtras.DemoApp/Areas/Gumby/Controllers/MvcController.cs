@@ -81,12 +81,12 @@ namespace WebExtras.DemoApp.Areas.Gumby.Controllers
 
     //
     // GET: /Gumby/Mvc/ActionMessageDemo
-    //public virtual ActionResult ActionMessageDemo(bool success)
-    //{
-    //  if (!success)
-    //    return this.RedirectToAction(Actions.BootstrapHtml(true), "Your action failed", EActionMessage.Error);
-    //  return this.RedirectToAction(Actions.BootstrapHtml(true), "Your action was successful");
-    //}
+    public virtual ActionResult ActionMessageDemo(bool success)
+    {
+      if (!success)
+        return this.RedirectToAction(Actions.GumbyHtml(true), "Your action failed", EActionMessage.Error);
+      return this.RedirectToAction(Actions.GumbyHtml(true), "Your action was successful");
+    }
 
     //
     // GET: /Gumby/Mvc/ActionResults

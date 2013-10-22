@@ -50,6 +50,12 @@ namespace WebExtras.DemoApp.Areas.Gumby.Controllers
         {
             return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.GumbyHtml);
         }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult ActionMessageDemo()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ActionMessageDemo);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public MvcController Actions { get { return MVC.Gumby.Mvc; } }
@@ -71,6 +77,7 @@ namespace WebExtras.DemoApp.Areas.Gumby.Controllers
             public readonly string CoreForm = ("CoreForm").ToLowerInvariant();
             public readonly string GumbyHtml = ("GumbyHtml").ToLowerInvariant();
             public readonly string GumbyForm = ("GumbyForm").ToLowerInvariant();
+            public readonly string ActionMessageDemo = ("ActionMessageDemo").ToLowerInvariant();
             public readonly string ActionResults = ("ActionResults").ToLowerInvariant();
         }
 
@@ -82,6 +89,14 @@ namespace WebExtras.DemoApp.Areas.Gumby.Controllers
         public class ActionParamsClass_GumbyHtml
         {
             public readonly string msg = ("msg").ToLowerInvariant();
+        }
+        static readonly ActionParamsClass_ActionMessageDemo s_params_ActionMessageDemo = new ActionParamsClass_ActionMessageDemo();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_ActionMessageDemo ActionMessageDemoParams { get { return s_params_ActionMessageDemo; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_ActionMessageDemo
+        {
+            public readonly string success = ("success").ToLowerInvariant();
         }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -138,6 +153,13 @@ namespace WebExtras.DemoApp.Areas.Gumby.Controllers
         public override System.Web.Mvc.ActionResult GumbyForm()
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.GumbyForm);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult ActionMessageDemo(bool success)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ActionMessageDemo);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "success", success);
             return callInfo;
         }
 

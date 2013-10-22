@@ -54,7 +54,7 @@
     Output
   </p>
   <div class="content">
-    @Html.Icon(EGumbyIcon.Music)
+    @Html.Icon(EGumbyIcon.Chart_Pie)
   </div>
 </div>
 
@@ -81,30 +81,31 @@
   </code></pre>
 </div>
 
-@*<div class="well">
+<div class="well">
   <h4>Button styled hyperlinks</h4>
   <p>
     Markup
   </p>
   <pre><code>
   @@Html.Hyperlink("Take me to google", "http://www.google.com")
-    .AddWhiteIcon(EBootstrapIcon.Ok)
-    .AsButton(EBootstrapButton.Info) 
+    .AddIcon(EGumbyIcon.Check)
+    .AsButton(EGumbyButton.Info) 
   </code></pre>
   <p>
     Output
   </p>
   <div class="content">
-    @Html.Hyperlink("Take me to google", "http://www.google.com").AddWhiteIcon(EBootstrapIcon.Ok).AsButton(EBootstrapButton.Info)
+    @Html.Hyperlink("Take me to google", "http://www.google.com").AddIcon(EGumbyIcon.Check).AsButton(EGumbyButton.Info, EGumbyButtonStyle.Medium)
   </div>
   <p>
     All available extensions
   </p>
   <pre><code>
   <span class="comment">// Note that this extension can only be used for hyperlinks and button elements</span> 
-  .AsButton(type) 
+  .AsButton(type)
+  .AsButton(type, size/style)
   </code></pre>
-</div>*@
+</div>
 
 @*<div class="well">
   <h4>Navbar</h4>
@@ -171,7 +172,7 @@
   <p>Striped and Animated progress bar CSS effects are not supported in Internet Explorer 9 and below and on Opera 12</p>
 </div>*@
 
-@*<div class="well">
+<div class="well">
   <h4>Tooltips</h4>
   <p>Markup</p>
   <pre><code>
@@ -181,8 +182,8 @@
   <p>Output</p>
   <div class="content">
     <div class="row">
-      <div class="three columns">First call result @Html.Icon(EFontAwesomeIcon.Angle_Right) @Html.TooltipFor(f => f.SomeProperty, "This is a tooltip")</div>
-      <div class="three columns">Second call result @Html.Icon(EFontAwesomeIcon.Angle_Right) @Html.TooltipFor(f => f.SomeProperty2)</div>
+      <div class="three columns">First call result @Html.Icon(EGumbyIcon.Right_Open_Big) @Html.TooltipFor(f => f.SomeProperty, "This is a tooltip")</div>
+      <div class="three columns">Second call result @Html.Icon(EGumbyIcon.Right_Open_Big) @Html.TooltipFor(f => f.SomeProperty2)</div>
     </div>
   </div>
   <p>All available extensions</p>
@@ -195,7 +196,7 @@
   @@Html.TooltipFor(propertySelector, tooltipText)
   @@Html.TooltipFor(propertySelector, tooltipText, placement, trigger)
   </code></pre>
-</div>*@
+</div>
 
 <div class="well">
   <h4>Action messages</h4>
@@ -238,8 +239,8 @@
       <br />
     </span>
     <br />
-    @Html.Hyperlink("Action Successful Message Demo", MVC.Bootstrap.Mvc.ActionMessageDemo(true))
+    @Html.Hyperlink("Action Successful Message Demo", MVC.Gumby.Mvc.ActionMessageDemo(true))
     &nbsp;&nbsp;&nbsp;&nbsp;
-    @Html.Hyperlink("Action Error Message Demo", MVC.Bootstrap.Mvc.ActionMessageDemo(false))
+    @Html.Hyperlink("Action Error Message Demo", MVC.Gumby.Mvc.ActionMessageDemo(false))
   </div>
 </div>

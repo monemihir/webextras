@@ -179,9 +179,6 @@ namespace WebExtras.Mvc.Bootstrap
       Expression<Func<TModel, TValue>> expression,
       string tooltipText)
     {
-      MemberExpression exp = expression.Body as MemberExpression;
-      string tooltip = GetTooltipFor(html, expression);
-
       return TooltipFor(html, expression, tooltipText, "right", "hover");
     }
 
