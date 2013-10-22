@@ -17,11 +17,14 @@
 */
 
 
+using System;
+
 namespace WebExtras.JQFlot.SubOptions
 {
   /// <summary>
   /// Represents a pie graph's shadow definition
   /// </summary>
+  [Serializable]
   public class PieShadowOptions
   {
     /// <summary>

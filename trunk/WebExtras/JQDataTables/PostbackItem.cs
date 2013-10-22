@@ -84,6 +84,7 @@ namespace WebExtras.JQDataTables
   /// <summary>
   /// PostbackItem JSON converter
   /// </summary>
+  [Serializable]
   public class PostbackItemConverter : JsonConverter
   {
     /// <summary>

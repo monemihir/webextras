@@ -16,12 +16,14 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+using System;
 
 namespace WebExtras.JQFlot.Graphs
 {
   /// <summary>
   /// Represents a bar graph
   /// </summary>
+  [Serializable]
   public class BarGraph : BaseGraph
   {
     /// <summary>

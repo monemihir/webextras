@@ -16,11 +16,14 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+using System;
+
 namespace WebExtras.JQFlot.SubOptions
 {
   /// <summary>
   /// Represents Pie graph's hightlight options
   /// </summary>
+  [Serializable]
   public class PieHightlightOptions
   {
     /// <summary>

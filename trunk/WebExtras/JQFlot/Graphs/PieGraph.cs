@@ -16,6 +16,7 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+using System;
 using WebExtras.JQFlot.SubOptions;
 
 namespace WebExtras.JQFlot.Graphs
@@ -23,6 +24,7 @@ namespace WebExtras.JQFlot.Graphs
   /// <summary>
   /// Represents a Pie graph
   /// </summary>
+  [Serializable]
   public class PieGraph
   {
     /// <summary>

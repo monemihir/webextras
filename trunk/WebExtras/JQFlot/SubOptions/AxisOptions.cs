@@ -242,11 +242,7 @@ namespace WebExtras.JQFlot.SubOptions
     /// </summary>
     public AxisOptions()
     {
-      //tickFormatter = new JsFunc
-      //{
-      //  ParameterNames = new string[] { "val", "axis" },
-      //  Body = "return val.toFixed(2);"
-      //};
+      axisLabel = string.Empty;
     }
   }
 }

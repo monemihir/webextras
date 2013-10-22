@@ -25,6 +25,7 @@ namespace WebExtras.Core
   /// <summary>
   /// Represents a Javascript function
   /// </summary>
+  [Serializable]
   [JsonConverter(typeof(JsFuncConverter))]
   public class JsFunc
   {
@@ -61,6 +62,7 @@ namespace WebExtras.Core
   /// <summary>
   /// Custom JSON converter for JsFunc class
   /// </summary>
+  [Serializable]
   public class JsFuncConverter : JsonConverter
   {
     /// <summary>

@@ -17,11 +17,14 @@
 */
 
 
+using System;
+
 namespace WebExtras.JQFlot.SubOptions
 {
   /// <summary>
   /// Represents Flot font options.
   /// </summary>
+  [Serializable]
   public class FontOptions
   {
     /// <summary>

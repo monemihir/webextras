@@ -16,6 +16,7 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+using System;
 using WebExtras.Core;
 
 namespace WebExtras.JQFlot.SubOptions
@@ -23,6 +24,7 @@ namespace WebExtras.JQFlot.SubOptions
   /// <summary>
   /// Represents Flot legend options
   /// </summary>
+  [Serializable]
   public class LegendOptions
   {
     /// <summary>
