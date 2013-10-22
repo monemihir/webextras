@@ -30,7 +30,10 @@
 .navbar ul {
   margin: 0 auto;
 }
-.navbar li.active {
+.navbar ul li > a {
+  margin: 0 2px;
+}
+.navbar ul li.active {
   background: #868d92;
 }
 small {

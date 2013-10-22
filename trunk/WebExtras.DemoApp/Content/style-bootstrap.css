@@ -33,7 +33,7 @@ footer {
   background-color: #dddddd;
 }
 .navbar-inner {
-  filter: 0;
+  filter: none;
 }
 .navbar .brand {
   margin-left: 0;
@@ -53,7 +53,7 @@ footer {
   border-bottom-left-radius: 15px;
 }
 .navbar-inverse .navbar-inner {
-  filter: 0;
+  filter: none;
   border-color: #666666;
 }
 .navbar-inverse .nav .active > a {

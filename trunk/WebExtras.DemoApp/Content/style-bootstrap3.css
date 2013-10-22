@@ -18,7 +18,7 @@
   border-bottom-left-radius: 15px;
 }
 .navbar-fixed-top .navbar-collapse {
-  filter: 0;
+  filter: none;
   border-color: #666666;
 }
 .navbar-fixed-top .navbar-brand {
