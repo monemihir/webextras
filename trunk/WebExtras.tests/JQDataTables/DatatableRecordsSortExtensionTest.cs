@@ -42,7 +42,7 @@ namespace WebExtras.tests.JQDataTables
       m_records.aaData = new List<string[]> {
         new string[] { "<a href='/displayplan/4'>4</a>", "mihir", "02-Jan-13", "&euro;15.00" },
         new string[] { "<a href='/displayplan/24'>3</a>", "sneha", "2013-Mar-12", "&pound;12.00" },
-        new string[] { "<a href='/displayplan/11'>1</a>", "mohan", "20 Mar 13", "rs.151.00" },
+        new string[] { "<a href='/displayplan/11'>1</a>", "mohan", "20 Mar 13", "$151.00" },
         new string[] { "<a href='/displayplan/16'>2</a>", "swati", "29May13", "$201.00" }
       }.ToArray();
       m_records.iTotalDisplayRecords = m_records.aaData.Count();
@@ -76,7 +76,7 @@ namespace WebExtras.tests.JQDataTables
       // Arrange
       // sorted on numeric column 0
       string[][] expected0 = new List<string[]> {
-        new string[] { "<a href='/displayplan/11'>1</a>", "mohan", "20 Mar 13", "rs.151.00" },
+        new string[] { "<a href='/displayplan/11'>1</a>", "mohan", "20 Mar 13", "$151.00" },
         new string[] { "<a href='/displayplan/16'>2</a>", "swati", "29May13", "$201.00" },
         new string[] { "<a href='/displayplan/24'>3</a>", "sneha", "2013-Mar-12", "&pound;12.00" },
         new string[] { "<a href='/displayplan/4'>4</a>", "mihir", "02-Jan-13", "&euro;15.00" },
@@ -85,7 +85,7 @@ namespace WebExtras.tests.JQDataTables
       // sorted on string column 1
       string[][] expected1 = new List<string[]> {
         new string[] { "<a href='/displayplan/4'>4</a>", "mihir", "02-Jan-13", "&euro;15.00" },
-        new string[] { "<a href='/displayplan/11'>1</a>", "mohan", "20 Mar 13", "rs.151.00" },
+        new string[] { "<a href='/displayplan/11'>1</a>", "mohan", "20 Mar 13", "$151.00" },
         new string[] { "<a href='/displayplan/24'>3</a>", "sneha", "2013-Mar-12", "&pound;12.00" },
         new string[] { "<a href='/displayplan/16'>2</a>", "swati", "29May13", "$201.00" }
       }.ToArray();
@@ -94,7 +94,7 @@ namespace WebExtras.tests.JQDataTables
       string[][] expected2 = new List<string[]> {
         new string[] { "<a href='/displayplan/4'>4</a>", "mihir", "02-Jan-13", "&euro;15.00" },
         new string[] { "<a href='/displayplan/24'>3</a>", "sneha", "2013-Mar-12", "&pound;12.00" },
-        new string[] { "<a href='/displayplan/11'>1</a>", "mohan", "20 Mar 13", "rs.151.00" },
+        new string[] { "<a href='/displayplan/11'>1</a>", "mohan", "20 Mar 13", "$151.00" },
         new string[] { "<a href='/displayplan/16'>2</a>", "swati", "29May13", "$201.00" }
       }.ToArray();
 
@@ -102,7 +102,7 @@ namespace WebExtras.tests.JQDataTables
       string[][] expected3 = new List<string[]> {
         new string[] { "<a href='/displayplan/24'>3</a>", "sneha", "2013-Mar-12", "&pound;12.00" },
         new string[] { "<a href='/displayplan/4'>4</a>", "mihir", "02-Jan-13", "&euro;15.00" },
-        new string[] { "<a href='/displayplan/11'>1</a>", "mohan", "20 Mar 13", "rs.151.00" },
+        new string[] { "<a href='/displayplan/11'>1</a>", "mohan", "20 Mar 13", "$151.00" },
         new string[] { "<a href='/displayplan/16'>2</a>", "swati", "29May13", "$201.00" }
       }.ToArray();
 
@@ -155,7 +155,7 @@ namespace WebExtras.tests.JQDataTables
       // sorted with the custom parser
       string[][] expected = new List<string[]> {
         new string[] { "<a href='/displayplan/4'>4</a>", "mihir", "02-Jan-13", "&euro;15.00" },
-        new string[] { "<a href='/displayplan/11'>1</a>", "mohan", "20 Mar 13", "rs.151.00" },
+        new string[] { "<a href='/displayplan/11'>1</a>", "mohan", "20 Mar 13", "$151.00" },
         new string[] { "<a href='/displayplan/16'>2</a>", "swati", "29May13", "$201.00" },
         new string[] { "<a href='/displayplan/24'>3</a>", "sneha", "2013-Mar-12", "&pound;12.00" }
       }.ToArray();
@@ -180,21 +180,21 @@ namespace WebExtras.tests.JQDataTables
         new string[] { "<a href='/displayplan/4'>4</a>", "mihir", "02-Jan-13", "&euro;15.00" },
         new string[] { "<a href='/displayplan/24'>3</a>", "sneha", "2013-Mar-12", "&pound;12.00" },
         new string[] { "<a href='/displayplan/16'>2</a>", "swati", "29May13", "$201.00" },
-        new string[] { "<a href='/displayplan/11'>1</a>", "mohan", "20 Mar 13", "rs.151.00" }
+        new string[] { "<a href='/displayplan/11'>1</a>", "mohan", "20 Mar 13", "$151.00" }
       }.ToArray();
 
       // sorted on string column 1
       string[][] expected1 = new List<string[]> {
         new string[] { "<a href='/displayplan/16'>2</a>", "swati", "29May13", "$201.00" },
         new string[] { "<a href='/displayplan/24'>3</a>", "sneha", "2013-Mar-12", "&pound;12.00" },
-        new string[] { "<a href='/displayplan/11'>1</a>", "mohan", "20 Mar 13", "rs.151.00" },
+        new string[] { "<a href='/displayplan/11'>1</a>", "mohan", "20 Mar 13", "$151.00" },
         new string[] { "<a href='/displayplan/4'>4</a>", "mihir", "02-Jan-13", "&euro;15.00" }
       }.ToArray();
 
       // sorted on date time column 2
       string[][] expected2 = new List<string[]> {
         new string[] { "<a href='/displayplan/16'>2</a>", "swati", "29May13", "$201.00" },
-        new string[] { "<a href='/displayplan/11'>1</a>", "mohan", "20 Mar 13", "rs.151.00" },
+        new string[] { "<a href='/displayplan/11'>1</a>", "mohan", "20 Mar 13", "$151.00" },
         new string[] { "<a href='/displayplan/24'>3</a>", "sneha", "2013-Mar-12", "&pound;12.00" },
         new string[] { "<a href='/displayplan/4'>4</a>", "mihir", "02-Jan-13", "&euro;15.00" }
       }.ToArray();
@@ -202,7 +202,7 @@ namespace WebExtras.tests.JQDataTables
       // sorted on currency column 3
       string[][] expected3 = new List<string[]> {
         new string[] { "<a href='/displayplan/16'>2</a>", "swati", "29May13", "$201.00" },
-        new string[] { "<a href='/displayplan/11'>1</a>", "mohan", "20 Mar 13", "rs.151.00" },
+        new string[] { "<a href='/displayplan/11'>1</a>", "mohan", "20 Mar 13", "$151.00" },
         new string[] { "<a href='/displayplan/4'>4</a>", "mihir", "02-Jan-13", "&euro;15.00" },
         new string[] { "<a href='/displayplan/24'>3</a>", "sneha", "2013-Mar-12", "&pound;12.00" },
       }.ToArray();
@@ -257,7 +257,7 @@ namespace WebExtras.tests.JQDataTables
       string[][] expected = new List<string[]> {
         new string[] { "<a href='/displayplan/24'>3</a>", "sneha", "2013-Mar-12", "&pound;12.00" },
         new string[] { "<a href='/displayplan/16'>2</a>", "swati", "29May13", "$201.00" },
-        new string[] { "<a href='/displayplan/11'>1</a>", "mohan", "20 Mar 13", "rs.151.00" },
+        new string[] { "<a href='/displayplan/11'>1</a>", "mohan", "20 Mar 13", "$151.00" },
         new string[] { "<a href='/displayplan/4'>4</a>", "mihir", "02-Jan-13", "&euro;15.00" }
       }.ToArray();
 
