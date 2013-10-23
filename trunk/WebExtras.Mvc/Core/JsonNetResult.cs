@@ -38,35 +38,22 @@ namespace WebExtras.Mvc.Core
     /// Constructor
     /// </summary>
     /// <param name="data">Data to be returned</param>
-    /// <param name="settings">JSON serialiser settings</param>
-    public JsonNetResult(object data, JsonSerializerSettings settings = null)
-      : this(data, "application/json", Encoding.UTF8, settings)
+    /// <param name="behavior">[Optional] JSON request behavior</param>
+    public JsonNetResult(object data, JsonRequestBehavior behavior)
+      : this(data, null, behavior)
     { }
 
     /// <summary>
     /// Constructor
     /// </summary>
     /// <param name="data">Data to be returned</param>
-    /// <param name="contentType">Content type</param>
-    /// <param name="settings">JSON serialiser settings</param>
-    public JsonNetResult(object data, string contentType, JsonSerializerSettings settings = null)
-      : this(data, contentType, Encoding.UTF8, settings)
-    { }
-
-    /// <summary>
-    /// Constructor
-    /// </summary>
-    /// <param name="data">Data to be returned</param>
-    /// <param name="contentType">Content type</param>
-    /// <param name="contentEncoding">Content encoding</param>
-    /// <param name="settings">JSON serialiser settings</param>
-    public JsonNetResult(object data, string contentType, Encoding contentEncoding, JsonSerializerSettings settings = null)
+    /// <param name="settings">[Optional] JSON serialiser settings</param>
+    /// <param name="behavior">[Optional] JSON request behavior</param>
+    public JsonNetResult(object data, JsonSerializerSettings settings = null, JsonRequestBehavior behavior = JsonRequestBehavior.DenyGet)    
     {
       Data = data;
-      ContentType = contentType;
-      ContentEncoding = contentEncoding;
       SerialiserSettings = settings ?? new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore };
-      JsonRequestBehavior = JsonRequestBehavior.DenyGet;
+      JsonRequestBehavior = behavior;
     }
 
     /// <summary>
@@ -83,8 +70,8 @@ namespace WebExtras.Mvc.Core
 
       HttpResponseBase response = context.HttpContext.Response;
 
-      response.ContentType = ContentType;
-      response.ContentEncoding = ContentEncoding;
+      response.ContentType = "application/json";
+      response.ContentEncoding = Encoding.UTF8;
 
       if (Data != null)
       {
