@@ -107,51 +107,67 @@
   </code></pre>
 </div>
 
-@*<div class="well">
+<div class="well">
   <h4>Navbar</h4>
   <p>Markup</p>
   <pre><code>
   @@{
-    <span class="comment">// You can use hyperlink elements or HtmlListItem elements or even a HtmlList element to render a navbar</span>
-    Hyperlink link1 = new Hyperlink("Link 1", "#");
-    Hyperlink link2 = new Hyperlink("Link 2", "#");
-    Hyperlink link3 = new Hyperlink("Link 3", "#");
-    Hyperlink link4 = new Hyperlink("Brand", "#", new { @@class = "brand" });
-        
-    HtmlListItem item3 = new HtmlListItem(string.Empty);
-    item3.Append(link3);        
-
-    HtmlList list = new HtmlList(EList.Unordered, new HtmlListItem[] { item3 });    
-  }      
-
-  @@Html.Navbar(EBootstrapNavbar.Normal, list)
-
-  <span class="comment">// Use appropriate navbar type to get all bootstrap effects</span>
-  @@Html.Navbar(EBootstrapNavbar.Normal, link1, link2, item3, link4)<span class="highlight">.AsInverse()</span>  <span class="comment">// Creates an inverse styled navbar</span>
+      <span class="comment">// You can use Hyperlink elements or a HtmlList element to render a navbar</span>
+      Hyperlink logo = new Hyperlink("Metro Logo", "/").AddCssClass("two columns logo");
+      Hyperlink link = new Hyperlink("Link", "#");
+      IExtendedHtmlString list = new HtmlList(EList.Unordered, new HtmlListItem[]
+      {
+        HtmlListItem.From(link),
+        HtmlListItem.From(link),
+        HtmlListItem.From(link),
+        HtmlListItem.From(link),
+        HtmlListItem.From(link),
+        HtmlListItem.From(link),
+        HtmlListItem.From(link),
+      }).AddCssClass("ten columns");
+    }
+  @@Html.Navbar(logo, list)
   </code></pre>
   <p>
     Output
   </p>
-  <div class="content">
-    <div class="container-fluid">
+  <div class="content row">
+    <div class="ten columns">
       @{
-        Hyperlink link1 = new Hyperlink("Link 1", "#");
-        Hyperlink link2 = new Hyperlink("Link 2", "#");
-        Hyperlink link3 = new Hyperlink("Link 3", "#");
-        Hyperlink link4 = new Hyperlink("Brand", "#", new { @class = "brand" });
-
-        HtmlListItem item3 = new HtmlListItem(string.Empty);
-        item3.Append(link3);
-
-        HtmlList list = new HtmlList(EList.Unordered, new HtmlListItem[] { item3 });    
+        Hyperlink logo1 = new Hyperlink("Metro Logo", "/", new { @class = "two columns logo" });
+        Hyperlink logo2 = new Hyperlink("Pretty Logo", "/", new { @class = "two columns logo" });
+        
+        Hyperlink link = new Hyperlink("Link", "#");
+        
+        IExtendedHtmlString list = new HtmlList(EList.Unordered, new HtmlListItem[]
+        {
+          HtmlListItem.From(link),
+          HtmlListItem.From(link),
+          HtmlListItem.From(link),
+          HtmlListItem.From(link),
+          HtmlListItem.From(link),
+          HtmlListItem.From(link),
+          HtmlListItem.From(link)
+        }).AddCssClass("ten columns");
       }
 
-      @Html.Navbar(EBootstrapNavbar.Normal, list)
-
-      @Html.Navbar(EBootstrapNavbar.Normal, link1, link2, item3, link4).AsInverse()
+      @Html.Navbar(logo1, list)
+      
+      @Html.Navbar(logo2, list).AsPretty()
     </div>
   </div>
-</div>*@
+  <p>
+    All available extensions
+  </p>
+  <pre><code>
+  .AsMetro()
+  .AsPretty()
+  .FixAt(location)
+  .FixAt(location, offset)
+  .PinAt(location)
+  .PinAt(location, offset)
+  </code></pre>
+</div>
 
 @*<div class="well">
   <h4>Progress Bars</h4>
@@ -188,13 +204,11 @@
   </div>
   <p>All available extensions</p>
   <pre><code>
-  <span class="comment">// Tooltip text retrieved from the System.ComponentModel.DescriptionAttribute added to the view model property</span>
+  <span class="comment">// Tooltip text retrieved from the <span class="highlight">System.ComponentModel.DescriptionAttribute</span> added to the view model property</span>
   @@Html.TooltipFor(propertySelector)
-  @@Html.TooltipFor(propertySelector, placement, trigger)
 
   <span class="comment">// Tooltip text retrieved from the function parameter passed in</span>
   @@Html.TooltipFor(propertySelector, tooltipText)
-  @@Html.TooltipFor(propertySelector, tooltipText, placement, trigger)
   </code></pre>
 </div>
 
@@ -214,7 +228,7 @@
     public ActionResult SomeAction()
     {
       SomeModel model = new SomeModel();
-      return <span class="highlight">this.</span>View("myview", model, "Your action has been performed");
+      return <span class="highlight">this.</span>View("myview", model, "Your action was successful");
     }
 
     public ActionResult SomeOtherAction()

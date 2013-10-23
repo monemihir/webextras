@@ -43,5 +43,18 @@ namespace WebExtras.Mvc.Html
       Tag = new TagBuilder("li");
       Text = text;
     }
+
+    /// <summary>
+    /// Create an HtmlListItem from the given item
+    /// </summary>
+    /// <param name="item">Item to convert to a list item</param>
+    /// <returns>An HtmlListItem</returns>
+    public static HtmlListItem From(IExtendedHtmlString item)
+    {
+      HtmlListItem li = new HtmlListItem(string.Empty);
+      li.Append(item);
+
+      return li;
+    }
   }
 }

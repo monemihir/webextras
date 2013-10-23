@@ -94,7 +94,7 @@ namespace WebExtras.Mvc.Html
     /// <returns>Value of attribute if available, else null</returns>
     public string this[string attribute]
     {
-      get { return Tag.Attributes.ContainsKey(attribute) ? Tag.Attributes[attribute].ToString() : null; }
+      get { return Tag.Attributes.ContainsKey(attribute) ? Tag.Attributes[attribute].ToString() : string.Empty; }
       set
       {
         if (Tag.Attributes.ContainsKey(attribute))

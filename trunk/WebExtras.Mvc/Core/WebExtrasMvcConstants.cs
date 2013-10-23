@@ -36,7 +36,7 @@ namespace WebExtras.Mvc.Core
     /// <summary>
     /// The version of Bootstrap whose extensions you want to use
     /// </summary>
-    public static EBootstrapVersion BootstrapVersion = EBootstrapVersion.NONE;
+    public static EBootstrapVersion BootstrapVersion = EBootstrapVersion.None;
 
     /// <summary>
     /// Gumby theme to use

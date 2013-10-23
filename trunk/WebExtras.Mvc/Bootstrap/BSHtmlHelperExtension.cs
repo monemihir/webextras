@@ -117,12 +117,12 @@ namespace WebExtras.Mvc.Bootstrap
     #region Navbar extension
 
     /// <summary>
-    /// Create a bootstrap navigation bar
+    /// Create a navigation bar
     /// </summary>
     /// <param name="html">Current HTML helper object</param>
     /// <param name="type">Navigation bar type</param>
     /// <param name="items">Navigation bar items</param>
-    /// <returns>A bootstrap navigation bar</returns>
+    /// <returns>A navigation bar</returns>
     public static BootstrapNavBar Navbar(this HtmlHelper html, EBootstrapNavbar type, params IExtendedHtmlString[] items)
     {
       return new BootstrapNavBar(type, items);
@@ -232,7 +232,7 @@ namespace WebExtras.Mvc.Bootstrap
         i.AddCssClass("icon-info-sign");
       else if (WebExtrasMvcConstants.BootstrapVersion == EBootstrapVersion.V3)
         i.AddCssClass("glyphicon glyphicon-info-sign");
-      else 
+      else
         throw new BootstrapVersionException();
 
       i.AddCssClass("help-inline");

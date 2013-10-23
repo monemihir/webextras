@@ -32,15 +32,18 @@ namespace WebExtras.Mvc.Core
     {
       get
       {
-        return "Please select your desired Gumby theme by setting the WebExtrasMvcConstants.GumbyTheme property";
+        const string msg = "Please select your desired Gumby theme by setting the WebExtrasMvcConstants.GumbyTheme property.\n" +
+                           "The simplest way of doing this is to set the value in your Global.asax.cs as shown below:\n\n" +
+                           "  public class MvcApplication : System.Web.HttpApplication\n" +
+                           "  {\n" +
+                           "      protected void Application_Start()\n" +
+                           "      {\n" +
+                           "          WebExtrasMvcConstants.GumbyTheme = EGumbyTheme.Metro;\n" +
+                           "      }\n" +
+                           "  }\n";
+
+        return msg;
       }
     }
-
-    /// <summary>
-    /// Constructor
-    /// </summary>
-    public GumbyThemeException()
-      : base()
-    { }
   }
 }

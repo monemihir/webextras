@@ -17,11 +17,9 @@
 */
 
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
 using System.Web.Mvc;
 using WebExtras.Mvc.Html;
 
@@ -66,7 +64,6 @@ namespace WebExtras.Mvc.Gumby
       this HtmlHelper<TModel> html,
       Expression<Func<TModel, TValue>> expression)
     {
-      MemberExpression exp = expression.Body as MemberExpression;
       string tooltip = GetTooltipFor(html, expression);
 
       return TooltipFor(html, expression, tooltip);
@@ -87,6 +84,10 @@ namespace WebExtras.Mvc.Gumby
       string tooltipText)
     {
       MemberExpression exp = expression.Body as MemberExpression;
+
+      if (exp == null)
+        throw new ArgumentNullException("expression");
+
       string fieldId = exp.Member.Name + "_tip";
 
       TagBuilder span = new TagBuilder("span");
@@ -127,5 +128,21 @@ namespace WebExtras.Mvc.Gumby
     }
 
     #endregion TooltipFor extensions
+
+    #region Navbar extensions
+
+    /// <summary>
+    /// Create a navigation bar
+    /// </summary>
+    /// <param name="html">Current Html helper object</param>
+    /// <param name="items">Navigation bar items</param>
+    /// <returns>A navigation bar</returns>
+    public static GumbyNavbar Navbar(this HtmlHelper html, params IExtendedHtmlString[] items)
+    {
+      return new GumbyNavbar(items);
+    }
+
+    #endregion Navbar extensions
   }
 }
+

@@ -26,7 +26,7 @@ namespace WebExtras.Mvc.Gumby
   /// <summary>
   /// Gumby hyperlink/button decorator
   /// </summary>
-  public static class GumbyHtmlStringExtensions
+  public static class GumbyHtmlStringExtension
   {
     /// <summary>
     /// Add an icon
@@ -65,7 +65,8 @@ namespace WebExtras.Mvc.Gumby
       if (!HtmlStringUtil.CanDisplayAsButton(html))
         throw new InvalidOperationException("The AsButton decorator can only be used with Button and Hyperlink extensions");
 
-      string[] classes = new string[] { 
+      string[] classes =
+      { 
         "btn",
         type.ToString().ToLowerInvariant(),
         WebExtrasMvcConstants.GumbyTheme.ToString().ToLowerInvariant()

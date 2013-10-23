@@ -18,18 +18,15 @@
 
 #pragma warning disable 1591
 
-
 namespace WebExtras.Mvc.Core
-{ 
+{
   /// <summary>
   /// Bootstrap version selector
   /// </summary>
   public enum EBootstrapVersion
   {
-    NONE,
-
+    None,
     V2,
-
     V3
   }
 }

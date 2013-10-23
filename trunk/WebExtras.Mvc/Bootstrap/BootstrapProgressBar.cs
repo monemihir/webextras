@@ -58,7 +58,7 @@ namespace WebExtras.Mvc.Bootstrap
 
       switch (WebExtrasMvcConstants.BootstrapVersion)
       {
-        case EBootstrapVersion.NONE:
+        case EBootstrapVersion.None:
           throw new BootstrapVersionException();
 
         case EBootstrapVersion.V2:

@@ -217,7 +217,7 @@
   </div>
   <p>All available extensions</p>
   <pre><code>
-<span class="comment">// Tooltip text retrieved from the System.ComponentModel.DescriptionAttribute added to the view model property</span>
+<span class="comment">// Tooltip text retrieved from the <span class="highlight">System.ComponentModel.DescriptionAttribute</span> added to the view model property</span>
 @@Html.TooltipFor(propertySelector)
 @@Html.TooltipFor(propertySelector, placement, trigger)
 
@@ -242,7 +242,7 @@ public class HomeController : ControllerBase
   public ActionResult SomeAction()
   {
     SomeModel model = new SomeModel();
-    return <span class="highlight">this.</span>View("myview", model, "Your action has been performed");
+    return <span class="highlight">this.</span>View("myview", model, "Your action was successful");
   }
 
   public ActionResult SomeOtherAction()

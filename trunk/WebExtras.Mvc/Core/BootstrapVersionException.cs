@@ -33,15 +33,18 @@ namespace WebExtras.Mvc.Core
     {
       get
       {
-        return "Please select your desired Bootstrap version by setting the WebExtrasMvcConstants.BootstrapVersion property";
+        const string msg = "Please select your desired Bootstrap version by setting the WebExtrasMvcConstants.BootstrapVersion property.\n" +
+                           "The simplest way of doing this is to set the value in your Global.asax.cs as shown below:\n\n" +
+                           "  public class MvcApplication : System.Web.HttpApplication\n" +
+                           "  {\n" +
+                           "      protected void Application_Start()\n" +
+                           "      {\n" +
+                           "          WebExtrasMvcConstants.BootstrapVersion = EBootstrapVersion.V2;\n" +
+                           "      }\n" +
+                           "  }\n";
+
+        return msg;
       }
     }
-
-    /// <summary>
-    /// Constructor
-    /// </summary>
-    public BootstrapVersionException()
-      : base()
-    { }
   }
 }

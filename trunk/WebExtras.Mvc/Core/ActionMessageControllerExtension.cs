@@ -31,12 +31,12 @@ namespace WebExtras.Mvc.Core
     /// <summary>
     /// The key used to store the message in the TempData object
     /// </summary>
-    public const string TempDataMessageKey = "<WebExtras_LastActionMessage>";
+    private const string TempDataMessageKey = "<WebExtras_LastActionMessage>";
 
     /// <summary>
     /// The key used to store the message type i.e success/failure in the TempData object
     /// </summary>
-    public const string TempDataMessageTypeKey = "<WebExtras_LastActionMessageType>";
+    private const string TempDataMessageTypeKey = "<WebExtras_LastActionMessageType>";
 
     /// <summary>
     /// Overload of the RedirectToAction method, which allows the saving of an action message
@@ -103,57 +103,55 @@ namespace WebExtras.Mvc.Core
     /// <returns>The last message if available in a div object</returns>
     public static MvcHtmlString GetLastActionMessage(this HtmlHelper helper)
     {
-      if (helper.ViewContext.TempData.ContainsKey(TempDataMessageKey))
+      if (!helper.ViewContext.TempData.ContainsKey(TempDataMessageKey))
+        return MvcHtmlString.Empty;
+
+      // get message
+      string message = helper.ViewContext.TempData[TempDataMessageKey].ToString();
+      EActionMessage type = (EActionMessage)helper.ViewContext.TempData[TempDataMessageTypeKey];
+      const string controlId = "actionmessage";
+
+      // create the dismiss button
+      //<button type="button" class="close" data-dismiss="alert">&times;</button>
+      TagBuilder dismissBtn = new TagBuilder("button");
+      dismissBtn.AddCssClass("close");
+      dismissBtn.Attributes["data-dismiss"] = "alert";
+      dismissBtn.Attributes["aria-hidden"] = "true";
+      dismissBtn.InnerHtml = "&times;";
+
+      // create action message div
+      TagBuilder builder = new TagBuilder("div");
+      builder.Attributes["class"] = "alert alert-dismissable keep-center strong";
+      builder.GenerateId(controlId);
+      builder.AddCssClass(type.GetStringValue());
+      builder.InnerHtml = dismissBtn.ToString(TagRenderMode.Normal) + message;
+
+      // create the script tag
+      TagBuilder script = new TagBuilder("script");
+      script.Attributes["type"] = "text/javascript";
+
+      StringBuilder sb = new StringBuilder();
+      sb.Append("$(document).ready(function () { ");
+      sb.Append("\n");
+      sb.Append("var control = $('#" + controlId + "');");
+      sb.Append("\n");
+
+      switch (type)
       {
-        // get message
-        string message = helper.ViewContext.TempData[TempDataMessageKey].ToString();
-        EActionMessage type = (EActionMessage)helper.ViewContext.TempData[TempDataMessageTypeKey];
-        string controlId = "actionmessage";
+        case EActionMessage.Success:
+          sb.Append("control.delay(3000).fadeOut('500');");
+          break;
 
-        // create the dismiss button
-        //<button type="button" class="close" data-dismiss="alert">&times;</button>
-        TagBuilder dismissBtn = new TagBuilder("button");
-        dismissBtn.AddCssClass("close");
-        dismissBtn.Attributes["data-dismiss"] = "alert";
-        dismissBtn.Attributes["aria-hidden"] = "true";
-        dismissBtn.InnerHtml = "&times;";
-
-        // create action message div
-        TagBuilder builder = new TagBuilder("div");
-        builder.Attributes["class"] = "alert alert-dismissable keep-center strong";
-        builder.GenerateId(controlId);
-        builder.AddCssClass(type.GetStringValue());
-        builder.InnerHtml = dismissBtn.ToString(TagRenderMode.Normal) + message;
-
-        // create the script tag
-        TagBuilder script = new TagBuilder("script");
-        script.Attributes["type"] = "text/javascript";
-
-        StringBuilder sb = new StringBuilder();
-        sb.Append("$(document).ready(function () { ");
-        sb.Append("\n");
-        sb.Append("var control = $('#" + controlId + "');");
-        sb.Append("\n");
-
-        switch (type)
-        {
-          case EActionMessage.Success:
-            sb.Append("control.delay(3000).fadeOut('500');");
-            break;
-
-          default:
-            sb.Append("control.fadeIn('500');");
-            break;
-        }
-        sb.Append("\n");
-        sb.Append("});");
-
-        script.InnerHtml = sb.ToString();
-
-        return MvcHtmlString.Create(builder.ToString(TagRenderMode.Normal) + script.ToString(TagRenderMode.Normal));
+        default:
+          sb.Append("control.fadeIn('500');");
+          break;
       }
+      sb.Append("\n");
+      sb.Append("});");
 
-      return MvcHtmlString.Empty;
+      script.InnerHtml = sb.ToString();
+
+      return MvcHtmlString.Create(builder.ToString(TagRenderMode.Normal) + script.ToString(TagRenderMode.Normal));
     }
   }
 }
