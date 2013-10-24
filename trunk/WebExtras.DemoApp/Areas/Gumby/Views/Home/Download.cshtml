@@ -6,13 +6,14 @@
 <div class="row">
   <div class="keep-center">
     
-    @(Html.Hyperlink("Stable<small> (v1.2.0)</small>", "http://mihirmone.dyndns.org/app-downloads/webextras/webextras-1.2.0.zip")
+    @(Html.Hyperlink(" Stable<small> (v1.2.0)</small>", "http://mihirmone.dyndns.org/app-downloads/webextras/webextras-1.2.0.zip")
           .AddIcon(EGumbyIcon.Download)
           .AsButton(EGumbyButton.Success, EGumbyButtonStyle.Large, EGumbyButtonStyle.Rounded))
 
     &nbsp;&nbsp;&nbsp;
 
     @(Html.Hyperlink(" Nightly", "http://mihirmone.dyndns.org/app-downloads/webextras/webextras-nightly.zip")
+      .AddIcon(EGumbyIcon.Download)
       .AsButton(EGumbyButton.Info, EGumbyButtonStyle.Rounded, EGumbyButtonStyle.Large))
 
     <br />

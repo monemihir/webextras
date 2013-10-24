@@ -73,14 +73,14 @@ namespace WebExtras.Mvc.Core
       response.ContentType = "application/json";
       response.ContentEncoding = Encoding.UTF8;
 
-      if (Data != null)
-      {
-        JsonTextWriter writer = new JsonTextWriter(response.Output);
-        JsonSerializer serializer = JsonSerializer.Create(SerialiserSettings);
-        serializer.Serialize(writer, Data);
+      if (Data == null) 
+        return;
 
-        writer.Flush();
-      }
+      JsonTextWriter writer = new JsonTextWriter(response.Output);
+      JsonSerializer serializer = JsonSerializer.Create(SerialiserSettings);
+      serializer.Serialize(writer, Data);
+
+      writer.Flush();
     }
   }
 }

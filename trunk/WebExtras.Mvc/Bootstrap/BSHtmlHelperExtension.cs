@@ -19,6 +19,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Web.Mvc;
@@ -107,7 +108,7 @@ namespace WebExtras.Mvc.Bootstrap
       Italic i = new Italic();
       i["class"] = string.Join(" ", cssClasses);
 
-      i.Tag.MergeAttributes<string, object>(HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes));
+      i.Tag.MergeAttributes(HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes));
 
       return i;
     }
@@ -223,17 +224,26 @@ namespace WebExtras.Mvc.Bootstrap
       string placement,
       string trigger)
     {
+      if (expression == null)
+        throw new ArgumentNullException("expression");
+
       MemberExpression exp = expression.Body as MemberExpression;
+
       string fieldId = exp.Member.Name + "_tip";
 
       TagBuilder i = new TagBuilder("i");
 
-      if (WebExtrasMvcConstants.BootstrapVersion == EBootstrapVersion.V2)
-        i.AddCssClass("icon-info-sign");
-      else if (WebExtrasMvcConstants.BootstrapVersion == EBootstrapVersion.V3)
-        i.AddCssClass("glyphicon glyphicon-info-sign");
-      else
-        throw new BootstrapVersionException();
+      switch (WebExtrasMvcConstants.BootstrapVersion)
+      {
+        case EBootstrapVersion.V2:
+          i.AddCssClass("icon-info-sign");
+          break;
+        case EBootstrapVersion.V3:
+          i.AddCssClass("glyphicon glyphicon-info-sign");
+          break;
+        default:
+          throw new BootstrapVersionException();
+      }
 
       i.AddCssClass("help-inline");
       i.Attributes["id"] = fieldId;
@@ -259,11 +269,15 @@ namespace WebExtras.Mvc.Bootstrap
     /// <returns>Tooltip text to be displayed</returns>
     private static string GetTooltipFor<TModel, TValue>(this HtmlHelper<TModel> html, Expression<Func<TModel, TValue>> expression)
     {
-      string tooltip = null;
+      string tooltip;
       MemberExpression exp = expression.Body as MemberExpression;
       if (exp != null)
       {
-        DescriptionAttribute descAtt = exp.Member.GetCustomAttributes(typeof(DescriptionAttribute), false).Cast<DescriptionAttribute>().FirstOrDefault();
+        DescriptionAttribute descAtt = exp.Member
+          .GetCustomAttributes(typeof(DescriptionAttribute), false)
+          .Cast<DescriptionAttribute>()
+          .FirstOrDefault();
+
         tooltip = (descAtt == null) ? null : descAtt.Description;
       }
       else

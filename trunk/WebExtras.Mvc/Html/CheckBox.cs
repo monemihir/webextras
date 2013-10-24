@@ -82,8 +82,8 @@ namespace WebExtras.Mvc.Html
     /// <param name="text">Text to be displayed for the check box</param>
     /// <param name="value">Value for check box</param>
     /// <param name="isChecked">Flag indicating whether the check box is checked</param>
-    /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
-    public CheckBox(string text, string value, bool isChecked, object htmlAttributes = null)
+    /// <param name="htmlAttributes">Extra HTML attributes</param>
+    public CheckBox(string text, string value, bool isChecked, object htmlAttributes)
       : this(text, value, isChecked, false, htmlAttributes)
     { }
 
@@ -106,7 +106,7 @@ namespace WebExtras.Mvc.Html
     /// <param name="isChecked">Flag indicating whether the check box is checked</param>
     /// <param name="isDisabled">Flag indicating whether the check box is disabled</param>
     /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
-    public CheckBox(string text, string value, bool isChecked, bool isDisabled, object htmlAttributes = null)
+    public CheckBox(string text, string value, bool isChecked, bool isDisabled, object htmlAttributes)
       : base(EHtmlTag.Input, htmlAttributes)
     {
       this["type"] = "checkbox";

@@ -40,7 +40,7 @@ namespace WebExtras.Mvc.Core
     {
       c.ViewData.Model = model;
 
-      var content = string.Empty;
+      string content;
       var view = ViewEngines.Engines.FindPartialView(c.ControllerContext, partialViewName);
       using (var writer = new StringWriter())
       {
@@ -70,7 +70,7 @@ namespace WebExtras.Mvc.Core
     {
       c.ViewData.Model = model;
 
-      var content = string.Empty;
+      string content;
       var view = ViewEngines.Engines.FindView(c.ControllerContext, viewName, masterPageName);
       using (var writer = new StringWriter())
       {
@@ -95,7 +95,7 @@ namespace WebExtras.Mvc.Core
     {
       c.ViewData.Model = model;
 
-      var content = string.Empty;
+      string content;
       var view = ViewEngines.Engines.FindView(c.ControllerContext, viewName, null);
       using (var writer = new StringWriter())
       {

@@ -17,6 +17,7 @@
 */
 
 using System;
+using System.Globalization;
 using System.Web.Mvc;
 using WebExtras.Mvc.Core;
 using WebExtras.Mvc.Html;
@@ -68,7 +69,7 @@ namespace WebExtras.Mvc.Bootstrap
         case EBootstrapVersion.V3:
           inner["class"] = string.Format("progress-bar progress-bar-{0}", type.ToString().ToLowerInvariant());
           inner["role"] = "progressbar";
-          inner["aria-valuenow"] = percent.ToString();
+          inner["aria-valuenow"] = percent.ToString(CultureInfo.InvariantCulture);
           inner["aria-valuemin"] = "0";
           inner["aria-valuemax"] = "100";
 

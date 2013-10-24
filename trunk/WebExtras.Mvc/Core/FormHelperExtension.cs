@@ -20,6 +20,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using WebExtras.Mvc.Html;
+using System;
 
 namespace WebExtras.Mvc.Core
 {
@@ -103,13 +104,13 @@ namespace WebExtras.Mvc.Core
       int boxesPerLine,
       object htmlAttributes = null)
     {
-      foreach (CheckBox c in checkboxes)
-        c["name"] = name;
+      CheckBox[] checkBoxs = checkboxes as CheckBox[] ?? checkboxes.ToArray();
+      Array.ForEach(checkBoxs, c => c["name"] = name);
 
       List<string> rows = new List<string>();
-      for (int i = 0; i < checkboxes.Count(); i += boxesPerLine)
+      for (int i = 0; i < checkBoxs.Length; i += boxesPerLine)
       {
-        IEnumerable<string> datas = checkboxes
+        IEnumerable<string> datas = checkBoxs
           .Skip(i)
           .Take(boxesPerLine)
           .Select(f => string.Format("<td>{0}</td>\n", f.ToHtmlString()));
@@ -162,13 +163,13 @@ namespace WebExtras.Mvc.Core
       int buttonsPerLine,
       object htmlAttributes = null)
     {
-      foreach (RadioButton r in radioButtons)
-        r["name"] = name;
+      RadioButton[] radioBtns = radioButtons as RadioButton[] ?? radioButtons.ToArray();
+      Array.ForEach(radioBtns, r => r["name"] = name);
 
       List<string> rows = new List<string>();
-      for (int i = 0; i < radioButtons.Count(); i += buttonsPerLine)
+      for (int i = 0; i < radioBtns.Length; i += buttonsPerLine)
       {
-        IEnumerable<string> datas = radioButtons
+        IEnumerable<string> datas = radioBtns
           .Skip(i)
           .Take(buttonsPerLine)
           .Select(f => string.Format("<td>{0}</td>\n", f.ToHtmlString()));
@@ -179,11 +180,11 @@ namespace WebExtras.Mvc.Core
       TagBuilder table = new TagBuilder("table");
       table.AddCssClass("radiobutton-group");
       table.InnerHtml = string.Join("", rows);
-      table.MergeAttributes<string, object>(HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes));
+      table.MergeAttributes(HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes));
 
       return MvcHtmlString.Create(table.ToString(TagRenderMode.Normal));
     }
 
-    #endregion RadioButtonGroup extensions    
+    #endregion RadioButtonGroup extensions
   }
 }

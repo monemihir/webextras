@@ -73,31 +73,29 @@ namespace WebExtras.Mvc.Bootstrap
 
       this["class"] = type.GetStringValue();
 
-      if (WebExtrasMvcConstants.BootstrapVersion == EBootstrapVersion.V2)
+      switch (WebExtrasMvcConstants.BootstrapVersion)
       {
-        Div innerNav = new Div();
-        innerNav["class"] = "navbar-inner";
+        case EBootstrapVersion.V2:
+          Div innerNav = new Div();
+          innerNav["class"] = "navbar-inner";
 
-        if (brand != null)
-          innerNav.Prepend(brand);
-        innerNav.Append(list);
+          if (brand != null)
+            innerNav.Prepend(brand);
+          innerNav.Append(list);
 
-        this.Append(innerNav);
+          Append(innerNav);
+          break;
+        case EBootstrapVersion.V3:
+          if (brand != null)
+          {
+            brand.Tag.Attributes["class"] = "navbar-brand";
+            Prepend(brand);
+          }
+          Append(list);
+          break;
+        default:
+          throw new BootstrapVersionException();
       }
-      else if (WebExtrasMvcConstants.BootstrapVersion == EBootstrapVersion.V3)
-      {
-        if (brand != null)
-        {
-          brand.Tag.Attributes["class"] = "navbar-brand";
-          this.Prepend(brand);
-        }
-
-        this.Append(list);
-      }
-      else
-        throw new BootstrapVersionException();
-
-      
     }
   }
 }

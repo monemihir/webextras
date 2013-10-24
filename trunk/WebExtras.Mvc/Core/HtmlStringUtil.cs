@@ -34,14 +34,9 @@ namespace WebExtras.Mvc.Core
     public static bool CanDisplayAsButton(IExtendedHtmlString html)
     {
       // We can only display hyperlinks and button as buttons
-      try { Hyperlink h = html as Hyperlink; return true; }
-      catch (Exception) { }
+      Type t = html.GetType();
 
-      try { Button b = html as Button; return true; }
-      catch (Exception) { }
-
-      return false;
+      return t == typeof(Hyperlink) || t == typeof(Button);
     }
-
   }
 }

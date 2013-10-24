@@ -115,11 +115,15 @@ namespace WebExtras.Mvc.Gumby
     /// <returns>Tooltip text to be displayed</returns>
     private static string GetTooltipFor<TModel, TValue>(this HtmlHelper<TModel> html, Expression<Func<TModel, TValue>> expression)
     {
-      string tooltip = null;
+      string tooltip;
       MemberExpression exp = expression.Body as MemberExpression;
       if (exp != null)
       {
-        DescriptionAttribute descAtt = exp.Member.GetCustomAttributes(typeof(DescriptionAttribute), false).Cast<DescriptionAttribute>().FirstOrDefault();
+        DescriptionAttribute descAtt = exp.Member
+          .GetCustomAttributes(typeof(DescriptionAttribute), false)
+          .Cast<DescriptionAttribute>()
+          .FirstOrDefault();
+
         tooltip = (descAtt == null) ? null : descAtt.Description;
       }
       else

@@ -72,7 +72,7 @@ namespace WebExtras.Mvc.Html
       : this(tag)
     {
       if (htmlAttributes != null)
-        Tag.MergeAttributes<string, object>(htmlAttributes);
+        Tag.MergeAttributes(htmlAttributes);
     }
 
     /// <summary>
@@ -84,7 +84,7 @@ namespace WebExtras.Mvc.Html
       : this(tag)
     {
       if (htmlAttributes != null)
-        Tag.MergeAttributes<string, object>(HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes));
+        Tag.MergeAttributes(HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes));
     }
 
     /// <summary>
@@ -94,13 +94,13 @@ namespace WebExtras.Mvc.Html
     /// <returns>Value of attribute if available, else null</returns>
     public string this[string attribute]
     {
-      get { return Tag.Attributes.ContainsKey(attribute) ? Tag.Attributes[attribute].ToString() : string.Empty; }
+      get
+      {
+        return Tag.Attributes.ContainsKey(attribute) ? Tag.Attributes[attribute] : string.Empty;
+      }
       set
       {
-        if (Tag.Attributes.ContainsKey(attribute))
-          Tag.Attributes[attribute] += " " + value;
-        else
-          Tag.Attributes.Add(attribute, value);
+        Tag.Attributes[attribute] = value;
       }
     }
 
@@ -113,7 +113,7 @@ namespace WebExtras.Mvc.Html
     {
       AppendTags.Add(element);
     }
-    
+
     /// <summary>
     /// Appends the given HTML elements at the end of the current 
     /// element
@@ -162,7 +162,7 @@ namespace WebExtras.Mvc.Html
     public virtual string ToHtmlString(TagRenderMode renderMode)
     {
       if (!Tag.Attributes.ContainsKey("id") && WebExtrasMvcConstants.EnableAutoIdGeneration)
-        this["id"] = string.Format("auto_{0}", m_rand.Next(1, 9999).ToString());
+        this["id"] = string.Format("auto_{0}", m_rand.Next(1, 9999));
 
       string innerHtml = Tag.InnerHtml;
 

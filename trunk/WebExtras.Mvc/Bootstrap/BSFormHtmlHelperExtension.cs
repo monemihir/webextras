@@ -35,7 +35,7 @@ namespace WebExtras.Mvc.Bootstrap
     /// <summary>
     /// Default date time picker options
     /// </summary>
-    private static readonly IDictionary<string, object> defaultPickerOptions = new Dictionary<string, object>() { 
+    private static readonly IDictionary<string, object> DefaultPickerOptions = new Dictionary<string, object>() { 
       { "format", "dd M yyyy" },
       { "autoclose" , true },
       { "todayBtn", true },
@@ -197,7 +197,7 @@ namespace WebExtras.Mvc.Bootstrap
     /// <returns>Merged options</returns>
     private static IDictionary<string, object> MergeOptions(IDictionary<string, object> options)
     {
-      IDictionary<string, object> result = new Dictionary<string, object>(defaultPickerOptions);
+      IDictionary<string, object> result = new Dictionary<string, object>(DefaultPickerOptions);
 
       if (options != null && options.Count > 0)
         options.ForEach(f => { result[f.Key] = f.Value; });
@@ -213,46 +213,43 @@ namespace WebExtras.Mvc.Bootstrap
     private static string ConvertToCSDateFormat(string jsformat)
     {
       char[] parts = jsformat.ToCharArray();
-      string cs_format = new string(parts);
+      string csFormat = new string(parts);
 
       int uMnthCount = parts.Count(f => f == 'M');
       switch (uMnthCount)
       {
         case 1:
-          cs_format = cs_format.Replace("M", "MMM");
+          csFormat = csFormat.Replace("M", "MMM");
           break;
         case 2:
-          cs_format = cs_format.Replace("MM", "MMMM");
+          csFormat = csFormat.Replace("MM", "MMMM");
           break;
-        default: break;
       }
 
       int lMnthCount = parts.Count(f => f == 'm');
       switch (lMnthCount)
       {
         case 1:
-          cs_format = cs_format.Replace("m", "M");
+          csFormat = csFormat.Replace("m", "M");
           break;
 
         case 2:
-          cs_format = cs_format.Replace("mm", "MM");
+          csFormat = csFormat.Replace("mm", "MM");
           break;
-
-        default: break;
       }
 
-      cs_format = cs_format.Replace('i', 'm');
+      csFormat = csFormat.Replace('i', 'm');
 
       // toggle the 'h' and 'H' from the JS date format
-      cs_format = cs_format.Replace('h', '$');
-      cs_format = cs_format.Replace('H', 'h');
-      cs_format = cs_format.Replace('$', 'H');
+      csFormat = csFormat.Replace('h', '$');
+      csFormat = csFormat.Replace('H', 'h');
+      csFormat = csFormat.Replace('$', 'H');
 
       // convert meridian notification from 'p' to 't'
-      cs_format = cs_format.Replace('p', 't');
-      cs_format = cs_format.Replace('P', 't');
+      csFormat = csFormat.Replace('p', 't');
+      csFormat = csFormat.Replace('P', 't');
 
-      return cs_format;
+      return csFormat;
     }
 
     #endregion Misc methods

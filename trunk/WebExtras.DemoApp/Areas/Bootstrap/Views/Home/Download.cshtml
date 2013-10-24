@@ -6,14 +6,13 @@
 <div class="row-fluid">
   <div class="keep-center">
     @(Html.Hyperlink(" Stable<small> (v1.2.0)</small>", "http://mihirmone.dyndns.org/app-downloads/webextras/webextras-1.2.0.zip")
-      .AddCssClass("btn-large")
-      .AsButton(EBootstrapButton.Success)      
+      .AsButton(EBootstrapButton.Success, EBootstrapButton.Large)
       .AddIcon(EFontAwesomeIcon.Download_Alt, EFontAwesomeIconSize.Large))
 
     &nbsp;&nbsp;&nbsp;
 
     @(Html.Hyperlink(" Nightly", "http://mihirmone.dyndns.org/app-downloads/webextras/webextras-nightly.zip")
-      .AddCssClass("btn-large").AsButton()
+      .AsButton(EBootstrapButton.Default, EBootstrapButton.Large)
       .AddIcon(EFontAwesomeIcon.Download_Alt, EFontAwesomeIconSize.Large))
 
     <br />

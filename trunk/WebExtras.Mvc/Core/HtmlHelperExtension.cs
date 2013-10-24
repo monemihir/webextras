@@ -145,7 +145,7 @@ namespace WebExtras.Mvc.Core
       object htmlAttributes = null)
     {
       VirtualPathData vpd = RouteTable.Routes.GetVirtualPath(html.ViewContext.RequestContext, result.GetRouteValueDictionary());
-      string url = vpd.VirtualPath;
+      string url = vpd == null ? string.Empty : vpd.VirtualPath;
 
       return Imagelink(html, src, altText, title, url, htmlAttributes);
     }
@@ -309,10 +309,9 @@ namespace WebExtras.Mvc.Core
       ActionResult result,
       object htmlAttributes = null)
     {
-      if (user.Identity.IsAuthenticated)
-        return Imagelink(html, src, altText, title, result, htmlAttributes);
-
-      return HtmlElement.Empty;
+      return user.Identity.IsAuthenticated
+        ? Imagelink(html, src, altText, title, result, htmlAttributes)
+        : HtmlElement.Empty;
     }
 
     /// <summary>
@@ -337,10 +336,9 @@ namespace WebExtras.Mvc.Core
       string url,
       object htmlAttributes = null)
     {
-      if (user.Identity.IsAuthenticated)
-        return Imagelink(html, src, altText, title, url, htmlAttributes);
-
-      return HtmlElement.Empty;
+      return user.Identity.IsAuthenticated
+        ? Imagelink(html, src, altText, title, url, htmlAttributes)
+        : HtmlElement.Empty;
     }
 
     #endregion AuthImagelink extensions
@@ -412,10 +410,9 @@ namespace WebExtras.Mvc.Core
       string url,
       object htmlAttributes = null)
     {
-      if (user.Identity.IsAuthenticated)
-        return new Hyperlink(linkText, url, htmlAttributes);
-
-      return HtmlElement.Empty;
+      return user.Identity.IsAuthenticated
+        ? new Hyperlink(linkText, url, htmlAttributes)
+        : HtmlElement.Empty;
     }
 
     /// <summary>
@@ -434,15 +431,13 @@ namespace WebExtras.Mvc.Core
       ActionResult result,
       object htmlAttributes = null)
     {
-      if (user.Identity.IsAuthenticated)
-      {
-        VirtualPathData vpd = RouteTable.Routes.GetVirtualPath(html.ViewContext.RequestContext, result.GetRouteValueDictionary());
-        string url = vpd.VirtualPath;
+      if (!user.Identity.IsAuthenticated)
+        return HtmlElement.Empty;
 
-        return Hyperlink(html, linkText, url, htmlAttributes);
-      }
+      VirtualPathData vpd = RouteTable.Routes.GetVirtualPath(html.ViewContext.RequestContext, result.GetRouteValueDictionary());
+      string url = vpd == null ? string.Empty : vpd.VirtualPath;
 
-      return HtmlElement.Empty;
+      return Hyperlink(html, linkText, url, htmlAttributes);
     }
 
     #endregion AuthHyperlink extensions
@@ -608,18 +603,21 @@ namespace WebExtras.Mvc.Core
     /// <returns>A label with the required field asterix</returns>
     public static MvcHtmlString LabelForV2<TModel, TValue>(this HtmlHelper<TModel> html, Expression<Func<TModel, TValue>> expression, string labelText, object htmlAttributes = null)
     {
-      MvcHtmlString str = string.IsNullOrEmpty(labelText) ? html.LabelFor(expression, htmlAttributes) : html.LabelFor(expression, labelText, htmlAttributes);
-      XElement xe = XElement.Parse(str.ToHtmlString());
+      if (expression == null)
+        throw new ArgumentNullException("expression");
 
       MemberExpression exp = expression.Body as MemberExpression;
 
-      if (exp.Member.GetCustomAttributes(typeof(RequiredAttribute), true).Any())
-      {
-        TagBuilder span = new TagBuilder("span");
-        span.AddCssClass("required");
-        span.SetInnerText(" *");
-        xe.Add(XElement.Parse(span.ToString()));
-      }
+      MvcHtmlString str = string.IsNullOrEmpty(labelText) ? html.LabelFor(expression, htmlAttributes) : html.LabelFor(expression, labelText, htmlAttributes);
+      XElement xe = XElement.Parse(str.ToHtmlString());
+
+      if (!exp.Member.GetCustomAttributes(typeof(RequiredAttribute), true).Any())
+        return MvcHtmlString.Create(xe.ToString());
+
+      TagBuilder span = new TagBuilder("span");
+      span.AddCssClass("required");
+      span.SetInnerText(" *");
+      xe.Add(XElement.Parse(span.ToString()));
 
       return MvcHtmlString.Create(xe.ToString());
     }

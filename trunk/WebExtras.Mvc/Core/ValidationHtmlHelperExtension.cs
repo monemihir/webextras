@@ -41,17 +41,20 @@ namespace WebExtras.Mvc.Core
     /// <returns>True if state is valid, else False</returns>
     public static bool IsValidFor<TModel, TValue>(this HtmlHelper<TModel> html, Expression<Func<TModel, TValue>> expression)
     {
+      if (expression == null)
+        throw new ArgumentNullException("expression");
+
       MemberExpression exp = expression.Body as MemberExpression;
       bool result = true;
 
       List<string> buff = exp.ToString().Split('.').ToList();
       buff.RemoveAt(0);
-      string mname = string.Join(".",buff);
+      string mname = string.Join(".", buff);
 
       //if (html.ViewData.ModelState.ContainsKey(exp.Member.Name))
       //  result = !(html.ViewData.ModelState[exp.Member.Name].Errors.Count > 0);
 
-      if(html.ViewData.ModelState.ContainsKey(mname))
+      if (html.ViewData.ModelState.ContainsKey(mname))
         result = !(html.ViewData.ModelState[mname].Errors.Count > 0);
 
       return result;

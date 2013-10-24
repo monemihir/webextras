@@ -44,12 +44,18 @@ namespace WebExtras.Mvc.Bootstrap
     public static T AddIcon<T>(this T html, EBootstrapIcon icon, object htmlAttributes = null) where T : IExtendedHtmlString
     {
       List<string> cssClasses = new List<string>();
-      if (WebExtrasMvcConstants.BootstrapVersion == EBootstrapVersion.V2)
-        cssClasses.Add("icon-" + icon.ToString().ToLowerInvariant().Replace("_", "-"));
-      else if (WebExtrasMvcConstants.BootstrapVersion == EBootstrapVersion.V3)
-        cssClasses.Add("glyphicon glyphicon-" + icon.ToString().ToLowerInvariant().Replace("_", "-"));
-      else
-        throw new BootstrapVersionException();
+
+      switch (WebExtrasMvcConstants.BootstrapVersion)
+      {
+        case EBootstrapVersion.V2:
+          cssClasses.Add("icon-" + icon.ToString().ToLowerInvariant().Replace("_", "-"));
+          break;
+        case EBootstrapVersion.V3:
+          cssClasses.Add("glyphicon glyphicon-" + icon.ToString().ToLowerInvariant().Replace("_", "-"));
+          break;
+        default:
+          throw new BootstrapVersionException();
+      }
 
       html = AddIcon(html, cssClasses, htmlAttributes);
 
@@ -67,12 +73,17 @@ namespace WebExtras.Mvc.Bootstrap
     public static T AddWhiteIcon<T>(this T html, EBootstrapIcon icon, object htmlAttributes = null) where T : IExtendedHtmlString
     {
       List<string> cssClasses = new List<string>();
-      if (WebExtrasMvcConstants.BootstrapVersion == EBootstrapVersion.V2)
-        cssClasses.Add("icon-white icon-" + icon.ToString().ToLowerInvariant().Replace("_", "-"));
-      else if (WebExtrasMvcConstants.BootstrapVersion == EBootstrapVersion.V3)
-        throw new InvalidOperationException("Since Bootstrap v3, all icons are font based. Therefore, you must use CSS styling to control icon color");
-      else
-        throw new BootstrapVersionException();
+
+      switch (WebExtrasMvcConstants.BootstrapVersion)
+      {
+        case EBootstrapVersion.V2:
+          cssClasses.Add("icon-white icon-" + icon.ToString().ToLowerInvariant().Replace("_", "-"));
+          break;
+        case EBootstrapVersion.V3:
+          throw new InvalidOperationException("Since Bootstrap v3, all icons are font based. Therefore, you must use CSS styling to control icon color");
+        default:
+          throw new BootstrapVersionException();
+      }
 
       html = AddIcon(html, cssClasses, htmlAttributes);
 
@@ -90,8 +101,10 @@ namespace WebExtras.Mvc.Bootstrap
     /// <returns>Html element with icon added</returns>
     public static T AddIcon<T>(this T html, EFontAwesomeIcon icon, EFontAwesomeIconSize size = EFontAwesomeIconSize.Normal, object htmlAttributes = null) where T : IExtendedHtmlString
     {
-      List<string> cssClasses = new List<string>();
-      cssClasses.Add("icon-" + icon.ToString().ToLowerInvariant().Replace("_", "-"));
+      List<string> cssClasses = new List<string>
+      {
+        "icon-" + icon.ToString().ToLowerInvariant().Replace("_", "-")
+      };
 
       if (size != EFontAwesomeIconSize.Normal)
         cssClasses.Add("icon-" + size.GetStringValue());
@@ -100,29 +113,6 @@ namespace WebExtras.Mvc.Bootstrap
 
       return html;
     }
-
-    ///// <summary>
-    ///// Add a white icon
-    ///// </summary>
-    ///// <typeparam name="T">Generic type to be used. This type must implement IExtendedHtmlString</typeparam>
-    ///// <param name="html">Current html element</param>
-    ///// <param name="icon">Icon to be rendered</param>
-    ///// <param name="size">[Optional] Icon size</param>
-    ///// <param name="htmlAttributes">[Optional] Extra html attributes</param>
-    ///// <returns>Html element with a white icon added</returns>
-    //public static T AddWhiteIcon<T>(this T html, EFontAwesomeIcon icon, EFontAwesomeIconSize size = EFontAwesomeIconSize.Normal, object htmlAttributes = null) where T : IExtendedHtmlString
-    //{
-    //  List<string> cssClasses = new List<string>();
-    //  cssClasses.Add("icon-white");
-    //  cssClasses.Add("icon-" + icon.ToString().ToLowerInvariant().Replace("_", "-"));
-
-    //  if (size != EFontAwesomeIconSize.Normal)
-    //    cssClasses.Add("icon-" + size.GetStringValue());
-
-    //  html = AddIcon(html, cssClasses, htmlAttributes);
-
-    //  return html;
-    //}
 
     /// <summary>
     /// Add an icon
@@ -137,6 +127,7 @@ namespace WebExtras.Mvc.Bootstrap
       RouteValueDictionary rvd = new RouteValueDictionary(htmlAttributes);
 
       List<string> finalClasses = new List<string>(cssClasses);
+
       if (rvd.ContainsKey("class"))
       {
         finalClasses.AddRange(rvd["class"].ToString().Split(' '));
@@ -146,17 +137,12 @@ namespace WebExtras.Mvc.Bootstrap
       Italic i = new Italic();
       i["class"] = string.Join(" ", finalClasses);
 
-      i.Tag.MergeAttributes<string, object>(rvd);
+      i.Tag.MergeAttributes(rvd);
 
       html.Prepend(i);
 
       if (html.Tag.Attributes.ContainsKey("style"))
-      {
-        string style = html.Tag.Attributes["style"];
-        style = style.EndsWith(";") ? style : style + ";";
-
-        html.Tag.Attributes["style"] += "text-decoration:none";
-      }
+        html.Tag.Attributes["style"] += ";text-decoration:none";
       else
         html.Tag.Attributes["style"] = "text-decoration:none";
 
@@ -175,7 +161,7 @@ namespace WebExtras.Mvc.Bootstrap
     /// <returns>A special button</returns>
     public static T AsButton<T>(this T html) where T : IExtendedHtmlString
     {
-      return AsButton<T>(html, EBootstrapButton.Default);
+      return AsButton(html, EBootstrapButton.Default);
     }
 
     /// <summary>
