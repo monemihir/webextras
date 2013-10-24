@@ -50,7 +50,7 @@ namespace WebExtras.JQDataTables
     public AASort(int columnNumber, ESort sort)
     {
       this.columnNumber = columnNumber;
-      this.sortType = sort.GetStringValue();
+      sortType = sort.GetStringValue();
     }
 
     /// <summary>

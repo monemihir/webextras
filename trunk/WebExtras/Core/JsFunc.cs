@@ -16,9 +16,9 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using Newtonsoft.Json;
 using System;
 using System.Text;
+using Newtonsoft.Json;
 
 namespace WebExtras.Core
 {
@@ -99,32 +99,28 @@ namespace WebExtras.Core
     {
       JsFunc f = (JsFunc)value;
 
-      if (!string.IsNullOrEmpty(f.Body))
-      {
-        StringBuilder fnText = new StringBuilder();
+      if (string.IsNullOrEmpty(f.Body)) return;
 
-        fnText.Append("function ");
+      StringBuilder fnText = new StringBuilder();
 
-        if (!string.IsNullOrEmpty(f.Name))
-          fnText.Append(f.Name);
+      fnText.Append("function ");
 
-        if (f.ParameterNames.Length > 0)
-          fnText.Append("(" + string.Join(", ", f.ParameterNames) + ") ");
-        else
-          fnText.Append("() ");
+      if (!string.IsNullOrEmpty(f.Name))
+        fnText.Append(f.Name);
 
-        fnText.Append("{ " + f.Body + " }");
+      if (f.ParameterNames.Length > 0)
+        fnText.Append("(" + string.Join(", ", f.ParameterNames) + ") ");
+      else
+        fnText.Append("() ");
 
-        StringBuilder docReady = new StringBuilder();
-        docReady.Append("$(document).ready(function() { ");
-        docReady.Append(fnText.ToString());
-        docReady.Append(" });");
+      fnText.Append("{ " + f.Body + " }");
 
-        if (f.OnDocumentReady)
-          writer.WriteRawValue(docReady.ToString());
-        else
-          writer.WriteRawValue(fnText.ToString());
-      }
+      StringBuilder docReady = new StringBuilder();
+      docReady.Append("$(document).ready(function() { ");
+      docReady.Append(fnText.ToString());
+      docReady.Append(" });");
+
+      writer.WriteRawValue(f.OnDocumentReady ? docReady.ToString() : fnText.ToString());
     }
   }
 }

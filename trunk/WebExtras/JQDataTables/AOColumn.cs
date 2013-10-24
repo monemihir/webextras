@@ -16,8 +16,8 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using Newtonsoft.Json;
 using System;
+using Newtonsoft.Json;
 using WebExtras.Core;
 
 namespace WebExtras.JQDataTables
@@ -185,8 +185,8 @@ namespace WebExtras.JQDataTables
     {
       if (string.IsNullOrEmpty(title))
         throw new ArgumentNullException("title");
-      else
-        sTitle = title;
+
+      sTitle = title;
     }
   }
 }

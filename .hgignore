@@ -4,6 +4,7 @@ syntax: glob
 **/obj
 bin/*
 obj/*
-*.csproj.user
+*.user
 *.suo
 packages/*
+**/_ReSharper*/*

@@ -30,7 +30,7 @@ namespace WebExtras.Core
     /// <summary>
     /// String value
     /// </summary>
-    private string m_value;
+    private readonly string m_value;
 
     /// <summary>
     /// String value

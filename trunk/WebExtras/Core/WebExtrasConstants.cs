@@ -16,28 +16,22 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System;
+using Newtonsoft.Json;
 
-namespace WebExtras.JQDataTables
+namespace WebExtras.Core
 {
   /// <summary>
-  /// Language init options
+  /// WebExtras library constants
   /// </summary>
-  [Serializable]
-  public class OLanguage
+  public static class WebExtrasConstants
   {
     /// <summary>
-    /// This string gives information to the end user about the information that is current on
-    /// display on the page. The _START_, _END_ and _TOTAL_ variables are all dynamically
-    /// replaced as the table display updates, and can be freely moved or removed as the
-    /// language requirements change
+    /// Json.NET data serialization settings
     /// </summary>
-    public string sInfo;
-
-    /// <summary>
-    /// Display information string for when the table is empty. Typically the format of this
-    /// string should match sInfo
-    /// </summary>
-    public string sInfoEmpty;
+    public static JsonSerializerSettings JsonSerializerSettings = new JsonSerializerSettings
+        {
+          Formatting = Formatting.Indented,
+          NullValueHandling = NullValueHandling.Ignore
+        };
   }
 }

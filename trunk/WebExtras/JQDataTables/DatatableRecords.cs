@@ -16,10 +16,11 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Newtonsoft.Json;
+using WebExtras.Core;
 
 namespace WebExtras.JQDataTables
 {
@@ -78,13 +79,14 @@ namespace WebExtras.JQDataTables
     {
       if (toBeSanitised != null)
       {
-        string[][] newAAData = toBeSanitised.Select(f => f.ToArray()).ToArray();
+        IEnumerable<IEnumerable<string>> beSanitised = toBeSanitised as IEnumerable<string>[] ?? toBeSanitised.ToArray();
+        string[][] newAAData = beSanitised.Select(f => f.ToArray()).ToArray();
 
-        if (toBeSanitised.Count() > 1)
+        if (beSanitised.Count() > 1)
         {
-          int maxLength = toBeSanitised.Where(f => f != null).Max(f => f.Count());
+          int maxLength = beSanitised.Where(f => f != null).Max(f => f.Count());
           IEnumerable<string> empty = Enumerable.Range(0, maxLength).Select(f => string.Empty);
-          newAAData = toBeSanitised
+          newAAData = beSanitised
             .Select(f => f.Concat(empty).Take(maxLength))
             .Select(f => f.ToArray())
             .ToArray();
@@ -113,15 +115,9 @@ namespace WebExtras.JQDataTables
     /// <returns>Returns a JSON serialized version of this object</returns>
     public override string ToString()
     {
-      return JsonConvert.SerializeObject(
-        this,
-        new JsonSerializerSettings
-        {
-          Formatting = Formatting.Indented,
-          NullValueHandling = NullValueHandling.Ignore
-        });
+      return JsonConvert.SerializeObject(this, WebExtrasConstants.JsonSerializerSettings);
     }
-       
+
     /// <summary>
     /// Render aaData as table rows
     /// </summary>

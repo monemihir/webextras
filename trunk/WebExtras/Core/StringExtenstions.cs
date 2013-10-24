@@ -16,10 +16,10 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System.Linq;
-using System.Globalization;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
 
 namespace WebExtras.Core
 {
@@ -28,7 +28,7 @@ namespace WebExtras.Core
   /// </summary>
   public static class StringExtenstions
   {
-    /// <summary>
+    /// <summary> 
     /// Converts a given string to title case
     /// </summary>
     /// <param name="str">String to be converted to titlecase</param>

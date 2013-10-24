@@ -28,11 +28,6 @@ namespace WebExtras.JQFlot.SubOptions
   public class SeriesOptions
   {
     /// <summary>
-    /// Default constructor
-    /// </summary>
-    public SeriesOptions() { }
-
-    /// <summary>
     /// Line options
     /// </summary>
     public LineGraph lines;
@@ -46,7 +41,7 @@ namespace WebExtras.JQFlot.SubOptions
     /// Bar options
     /// </summary>
     public BarGraph bars;
-    
+
     /// <summary>
     /// Curved line options
     /// </summary>

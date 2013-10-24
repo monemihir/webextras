@@ -16,8 +16,9 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using Newtonsoft.Json;
 using System;
+using Newtonsoft.Json;
+using WebExtras.Core;
 
 namespace WebExtras.JQFlot
 {
@@ -43,11 +44,7 @@ namespace WebExtras.JQFlot
     /// <returns>JSON serialized object</returns>
     public override string ToString()
     {
-      return JsonConvert.SerializeObject(this,
-        new JsonSerializerSettings
-        {
-          NullValueHandling = NullValueHandling.Ignore
-        });
+      return JsonConvert.SerializeObject(this, WebExtrasConstants.JsonSerializerSettings);
     }
   }
 }

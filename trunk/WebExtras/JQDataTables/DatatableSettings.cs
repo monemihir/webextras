@@ -453,7 +453,7 @@ namespace WebExtras.JQDataTables
     /// <param name="tableHeight">[Optional] Height of the table in pixels. Defaults to 200px. Note. Pass in a null if to do not
     /// want any table height set</param>
     public DatatableSettings(int displayLength, AASort sortOption, string ajaxSource, string footerSuffix = "", string tableHeight = "200px")
-      : this(displayLength, (sortOption == null ? null : new AASort[] { sortOption }), ajaxSource, footerSuffix, tableHeight) { }
+      : this(displayLength, (sortOption == null ? null : new[] { sortOption }), ajaxSource, footerSuffix, tableHeight) { }
 
     /// <summary>
     /// Constructor
@@ -497,7 +497,7 @@ namespace WebExtras.JQDataTables
     /// <param name="tableHeight">[Optional] Height of the table in pixels. Defaults to 200px. Note. Pass in a null if to do not
     /// want any table height set</param>
     public DatatableSettings(int displayLength, AOColumn column, AASort sortOption, string ajaxSource, string footerSuffix = "", string tableHeight = "200px")
-      : this(displayLength, new AOColumn[] { column }, (sortOption == null) ? null : new AASort[] { sortOption }, ajaxSource, footerSuffix, tableHeight)
+      : this(displayLength, new[] { column }, (sortOption == null) ? null : new[] { sortOption }, ajaxSource, footerSuffix, tableHeight)
     { }
 
     /// <summary>
@@ -512,7 +512,7 @@ namespace WebExtras.JQDataTables
     /// <param name="tableHeight">[Optional] Height of the table in pixels. Defaults to 200px. Note. Pass in a null if to do not
     /// want any table height set</param>
     public DatatableSettings(int displayLength, IEnumerable<AOColumn> columns, AASort sortOption, string ajaxSource, string footerSuffix = "", string tableHeight = "200px")
-      : this(displayLength, columns, (sortOption == null) ? null : new AASort[] { sortOption }, ajaxSource, footerSuffix, tableHeight)
+      : this(displayLength, columns, (sortOption == null) ? null : new[] { sortOption }, ajaxSource, footerSuffix, tableHeight)
     { }
 
     /// <summary>
@@ -536,7 +536,8 @@ namespace WebExtras.JQDataTables
 
       List<int> emptyHeading = new List<int>();
       int idx = 0;
-      foreach (AOColumn c in columns)
+      IEnumerable<AOColumn> enumerable = columns as AOColumn[] ?? columns.ToArray();
+      foreach (AOColumn c in enumerable)
       {
         if (string.IsNullOrEmpty(c.sTitle)) { emptyHeading.Add(idx); }
         idx++;
@@ -545,7 +546,7 @@ namespace WebExtras.JQDataTables
       if (emptyHeading.Count > 0)
         throw new Exception(string.Format("Column(s) {0} have no title specified.", string.Join(",", emptyHeading)));
 
-      aoColumns = columns.ToArray();
+      aoColumns = enumerable.ToArray();
     }
 
     #endregion Ctors
@@ -611,7 +612,7 @@ namespace WebExtras.JQDataTables
     public void SetupfnCreatedRow()
     {
       string[] fnParamNames = new string[] { "nRow", "aData", "iDataIndex" };
-      string fnBody = "$(nRow).addClass(aData[aData.length - 1]);";
+      const string fnBody = "$(nRow).addClass(aData[aData.length - 1]);";
 
       fnCreatedRow = new JsFunc { Body = fnBody, ParameterNames = fnParamNames };
     }
@@ -623,10 +624,11 @@ namespace WebExtras.JQDataTables
     /// <remarks>Invoked when there are postbacks via the <see cref="WebExtras.JQDataTables.Datatable"/> constructor </remarks>
     public void SetupfnServerData(IEnumerable<PostbackItem> postbacks)
     {
-      string[] aoDataPushes = new string[0];
-      if (postbacks != null && postbacks.Count() > 0)
+      string[] aoDataPushes;
+      IEnumerable<PostbackItem> postbackItems = postbacks as IList<PostbackItem> ?? postbacks.ToList();
+      if (postbacks != null && postbackItems.Any())
       {
-        aoDataPushes = postbacks.Select(f => string.Format("aoData.push({0});", f.ToJson())).ToArray();
+        aoDataPushes = postbackItems.Select(f => string.Format("aoData.push({0});", f.ToJson())).ToArray();
 
         string[] fnParamNames = new string[] { "sSource", "aoData", "fnCallback" };
 
@@ -650,23 +652,16 @@ namespace WebExtras.JQDataTables
     {
       // Handle resetting of pagination if we are using jQueryUI, pagination is
       // enabled but the pagination type is not set. Default to 'full_numbers'
-      if ((bJQueryUI.HasValue && bJQueryUI.Value == true) && bPaginate)
-      {
-        if (sPaginationType == EPagination.Bootstrap.GetStringValue())
-          sPaginationType = EPagination.FullNumbers.GetStringValue();
+      if ((!bJQueryUI.HasValue || bJQueryUI.Value != true) || !bPaginate)
+        return JsonConvert.SerializeObject(this, WebExtrasConstants.JsonSerializerSettings);
 
-        if (sDom.Contains("row-fluid") || sDom.Contains("span") || sDom.Contains("row"))
-          sDom = null;
-      }
+      if (sPaginationType == EPagination.Bootstrap.GetStringValue())
+        sPaginationType = EPagination.FullNumbers.GetStringValue();
 
+      if (sDom.Contains("row-fluid") || sDom.Contains("span") || sDom.Contains("row"))
+        sDom = null;
 
-      return JsonConvert.SerializeObject(
-        this,
-        new JsonSerializerSettings
-        {
-          Formatting = Formatting.Indented,
-          NullValueHandling = NullValueHandling.Ignore
-        });
+      return JsonConvert.SerializeObject(this, WebExtrasConstants.JsonSerializerSettings);
     }
   }
 }

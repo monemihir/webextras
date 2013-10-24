@@ -45,10 +45,5 @@ namespace WebExtras.JQFlot.Graphs
     /// Whether to draw the bars horizontally
     /// </summary>
     public bool? horizontal;
-
-    /// <summary>
-    /// Default constructor
-    /// </summary>
-    public BarGraph() { }
   }
 }

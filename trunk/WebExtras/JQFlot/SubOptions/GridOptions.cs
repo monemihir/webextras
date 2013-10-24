@@ -89,7 +89,7 @@ namespace WebExtras.JQFlot.SubOptions
     /// Whether the grid is clickable
     /// </summary>
     public bool? clickable;
-    
+
     /// <summary>
     /// Whether the grid is hoverable
     /// </summary>
@@ -105,10 +105,5 @@ namespace WebExtras.JQFlot.SubOptions
     /// Mouse action radius
     /// </summary>
     public int? mouseActiveRadius;
-
-    /// <summary>
-    /// Default constructor
-    /// </summary>
-    public GridOptions() { }
   }
 }

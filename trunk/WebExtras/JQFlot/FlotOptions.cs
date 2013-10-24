@@ -16,8 +16,9 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using Newtonsoft.Json;
 using System;
+using Newtonsoft.Json;
+using WebExtras.Core;
 using WebExtras.JQFlot.SubOptions;
 
 namespace WebExtras.JQFlot
@@ -28,11 +29,6 @@ namespace WebExtras.JQFlot
   [Serializable]
   public class FlotOptions
   {
-    /// <summary>
-    /// Default constructor
-    /// </summary>
-    public FlotOptions() { }
-
     /// <summary>
     /// X axis 1
     /// </summary>
@@ -89,13 +85,7 @@ namespace WebExtras.JQFlot
     /// <returns>JSON serialized object</returns>
     public override string ToString()
     {
-      return JsonConvert.SerializeObject(
-        this,
-        new JsonSerializerSettings
-        {
-          Formatting = Formatting.Indented,
-          NullValueHandling = NullValueHandling.Ignore
-        });
+      return JsonConvert.SerializeObject(this, WebExtrasConstants.JsonSerializerSettings);
     }
   }
 }

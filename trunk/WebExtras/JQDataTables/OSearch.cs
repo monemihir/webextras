@@ -46,10 +46,5 @@ namespace WebExtras.JQDataTables
     /// Applied search term
     /// </summary>
     public string sSearch;
-
-    /// <summary>
-    /// Default constructor
-    /// </summary>
-    public OSearch() { }
   }
 }

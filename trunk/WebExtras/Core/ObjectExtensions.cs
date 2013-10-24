@@ -16,11 +16,11 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using Newtonsoft.Json;
 using System;
 using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
+using Newtonsoft.Json;
 
 namespace WebExtras.Core
 {
@@ -48,7 +48,7 @@ namespace WebExtras.Core
       }
 
       // Don't serialize a null object, simply return the default for that object
-      if (Object.ReferenceEquals(source, null))
+      if (ReferenceEquals(source, null))
       {
         return default(T);
       }

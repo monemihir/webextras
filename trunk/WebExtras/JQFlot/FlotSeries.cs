@@ -16,8 +16,9 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using Newtonsoft.Json;
 using System;
+using Newtonsoft.Json;
+using WebExtras.Core;
 using WebExtras.JQFlot.Graphs;
 
 namespace WebExtras.JQFlot
@@ -87,7 +88,7 @@ namespace WebExtras.JQFlot
     /// whether the series responds to a mouse click
     /// </summary>
     public bool? clickable;
-    
+
     /// <summary>
     /// whether the series responds to a mouse hover
     /// </summary>
@@ -97,7 +98,7 @@ namespace WebExtras.JQFlot
     /// shadow size in pixels of the line or points
     /// </summary>
     public int? shadowSize;
-        
+
     /// <summary>
     /// ctor to set defaults
     /// </summary>
@@ -106,7 +107,7 @@ namespace WebExtras.JQFlot
       data = new double[][] { };
       shadowSize = 0;
     }
-    
+
     /// <summary>
     /// Returns the current Flot series object as a JSON
     /// serialized string
@@ -114,12 +115,7 @@ namespace WebExtras.JQFlot
     /// <returns>FlotSeries as a JSON serialized string</returns>
     public override string ToString()
     {
-      return JsonConvert.SerializeObject(
-        this,
-        new JsonSerializerSettings
-        {
-          NullValueHandling = NullValueHandling.Ignore
-        });
+      return JsonConvert.SerializeObject(this, WebExtrasConstants.JsonSerializerSettings);
     }
   }
 }

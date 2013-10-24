@@ -36,10 +36,5 @@ namespace WebExtras.JQFlot.Graphs
     /// step i.e a horizontal line followed by a vertical line
     /// </summary>
     public bool? steps;
-
-    /// <summary>
-    /// Default constructor
-    /// </summary>
-    public LineGraph() { }    
   }
 }

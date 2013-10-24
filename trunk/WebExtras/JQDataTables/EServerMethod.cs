@@ -16,8 +16,8 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using Newtonsoft.Json;
 using System;
+using Newtonsoft.Json;
 using WebExtras.Core;
 
 namespace WebExtras.JQDataTables
@@ -67,10 +67,7 @@ namespace WebExtras.JQDataTables
     /// <returns>The object value</returns>
     public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
     {
-      if (existingValue == null)
-        return null;
-
-      return Enum.Parse(typeof(EServerMethod), existingValue.ToString().ToTitleCase());
+      return existingValue == null ? null : Enum.Parse(typeof(EServerMethod), existingValue.ToString().ToTitleCase());
     }
 
     /// <summary>

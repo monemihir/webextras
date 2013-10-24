@@ -49,7 +49,7 @@ namespace WebExtras.Core
       Type type = value.GetType();
       FieldInfo fi = type.GetField(value.ToString());
       StringValueAttribute[] attrs = fi.GetCustomAttributes(typeof(StringValueAttribute), false) as StringValueAttribute[];
-      if (attrs.Length > 0)
+      if (attrs != null && attrs.Length > 0)
         output = attrs[0].Value;
       return output;
     }

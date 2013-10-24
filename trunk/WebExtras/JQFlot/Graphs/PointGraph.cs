@@ -26,7 +26,7 @@ namespace WebExtras.JQFlot.Graphs
   /// </summary>
   [Serializable]
   public class PointGraph : BaseGraph
-  {       
+  {
     /// <summary>
     /// The radius in pixels of the points
     /// </summary>
@@ -36,10 +36,5 @@ namespace WebExtras.JQFlot.Graphs
     /// Point symbol generator function
     /// </summary>
     public JsFunc symbol;
-
-    /// <summary>
-    /// Default constructor
-    /// </summary>
-    public PointGraph() { }    
   }
 }

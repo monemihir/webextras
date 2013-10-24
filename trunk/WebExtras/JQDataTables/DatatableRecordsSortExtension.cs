@@ -16,11 +16,11 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using MoreLinq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using MoreLinq;
 using WebExtras.Core;
 
 namespace WebExtras.JQDataTables
@@ -43,7 +43,7 @@ namespace WebExtras.JQDataTables
     /// <summary>
     /// All special string to be stripped to sanitize the input string
     /// </summary>
-    public static string[] AllStripStrings { get { return m_currencies.Concat(m_spChars).ToArray(); } }
+    public static IEnumerable<string> AllStripStrings { get { return m_currencies.Concat(m_spChars); } }
 
     /// <summary>
     /// Sort DatatableRecords.aaData based on the given column number and sort direction
@@ -53,17 +53,17 @@ namespace WebExtras.JQDataTables
     /// <param name="customParsers">[Optional] A dictionary containing the column number as an associated data parser function.
     /// Defaults to null.</param>
     /// <param name="type">Sort direction</param>
-    public static string[][] Sort(this IEnumerable<IEnumerable<string>> aaData, int columnNumber, ESort type, IDictionary<int, Func<string, object>> customParsers = null)
+    public static IEnumerable<string[]> Sort(this IEnumerable<IEnumerable<string>> aaData, int columnNumber, ESort type, IDictionary<int, Func<string, object>> customParsers = null)
     {
       string[][] data = new string[0][];
 
-      if (aaData != null)
-      {
-        if (aaData.Count() > 1)
-          data = (type == ESort.Ascending) ? SortAscending(aaData, columnNumber, customParsers) : SortDescending(aaData, columnNumber, customParsers);
-        else
-          data = aaData.Select(f => f.ToArray()).ToArray();
-      }
+      if (aaData == null) return data;
+
+      IEnumerable<IEnumerable<string>> enumerable = aaData as IEnumerable<string>[] ?? aaData.ToArray();
+      if (enumerable.Count() > 1)
+        data = (type == ESort.Ascending) ? SortAscending(enumerable, columnNumber, customParsers) : SortDescending(enumerable, columnNumber, customParsers);
+      else
+        data = enumerable.Select(f => f.ToArray()).ToArray();
 
       return data;
     }
@@ -90,14 +90,14 @@ namespace WebExtras.JQDataTables
       {
         string parseStr = SanitiseString(data[0][columnNumber]);
 
-        DateTime dt = DateTime.MinValue;
+        DateTime dt;
         bool success = DateTime.TryParse(parseStr, out dt);
 
         if (success)
           aaData = data.OrderBy(f => DateTime.Parse(SanitiseString(f[columnNumber])));
         else
         {
-          double dbl = double.NaN;
+          double dbl;
           success = double.TryParse(parseStr, out dbl);
 
           if (success)
@@ -132,14 +132,14 @@ namespace WebExtras.JQDataTables
       {
         string parseStr = SanitiseString(data[0][columnNumber]);
 
-        DateTime dt = DateTime.MinValue;
+        DateTime dt;
         bool success = DateTime.TryParse(parseStr, out dt);
 
         if (success)
           aaData = data.OrderByDescending(f => DateTime.Parse(SanitiseString(f[columnNumber])));
         else
         {
-          double dbl = double.NaN;
+          double dbl;
           success = double.TryParse(parseStr, out dbl);
 
           if (success)

@@ -16,10 +16,11 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
+using Newtonsoft.Json;
 
 namespace WebExtras.JQDataTables
 {
@@ -64,20 +65,14 @@ namespace WebExtras.JQDataTables
     /// <returns>Generated Postback items</returns>
     public static List<PostbackItem> FromObject(object o)
     {
-      List<PostbackItem> postbacks = new List<PostbackItem>();
       PropertyInfo[] props = o
         .GetType()
         .GetProperties(BindingFlags.Public | BindingFlags.Instance);
 
-      foreach(PropertyInfo p in props)
-      {
-        object val = p.GetValue(o, null);
-
-        if (val != null)
-          postbacks.Add(new PostbackItem(p.Name, JsonConvert.SerializeObject(val)));
-      }
-
-      return postbacks;
+      return (from p in props 
+              let val = p.GetValue(o, null) 
+              where val != null 
+              select new PostbackItem(p.Name, JsonConvert.SerializeObject(val))).ToList();
     }
   }
 

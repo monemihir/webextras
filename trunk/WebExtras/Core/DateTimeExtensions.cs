@@ -28,7 +28,7 @@ namespace WebExtras.Core
     /// <summary>
     /// static date of 1970-01-01 to use when converting DateTimes into javascript date objects (total ms since 1970-01-01 00:00:00 UTC)
     /// </summary>
-    private static DateTime DateTime1970Utc = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc); // 1970-01-01 00:00:00 UTC
+    private static readonly DateTime DateTime1970Utc = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc); // 1970-01-01 00:00:00 UTC
 
     /// <summary>    
     /// Converts a .NET date to JavaScript ticks
