@@ -16,7 +16,6 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-
 using System;
 
 namespace WebExtras.Core
@@ -24,6 +23,7 @@ namespace WebExtras.Core
   /// <summary>
   /// Invalid usage exception
   /// </summary>
+  [Serializable]
   public class InvalidUsageException : Exception
   {
     /// <summary>
