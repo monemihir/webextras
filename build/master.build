@@ -117,7 +117,7 @@
     
     <!-- Copy css -->
     <copy todir="${pkg.dir}/css" failonerror="true">
-      <fileset basedir="${build.web-dir}/css" failonempty="true">
+      <fileset basedir="${build.web-dir}/Content" failonempty="true">
         <include name="webextras.bootstrap.css" />
         <include name="webextras.bootstrap3.css" />
         <include name="webextras.gumby.css" />
@@ -128,7 +128,7 @@
     
     <!-- Copy js -->
     <copy todir="${pkg.dir}/js" failonerror="true">
-      <fileset basedir="${build.web-dir}/js" failonempty="true">
+      <fileset basedir="${build.web-dir}/Scripts" failonempty="true">
         <include name="jquery.flot.axislabels.js" />
         <include name="jquery.flot.curvedlines.js" />
         <include name="jquery.flot.dashes.js" />
@@ -140,7 +140,7 @@
     
     <!-- Copy views -->
     <copy todir="${pkg.dir}/views" failonerror="true">
-      <fileset basedir="${build.web-dir}/views" failonempty="true">
+      <fileset basedir="${build.web-dir}/Views/Shared" failonempty="true">
         <include name="_Datatable.cshtml" />
         <include name="_DatatableDeprecated.cshtml" />
         <include name="DatatablePartial.ascx" />
