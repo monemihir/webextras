@@ -104,6 +104,9 @@ table.dataTable thead th .css_right {
 .control-group-large .controls input[type="radio"] {
   vertical-align: middle;
 }
+.text-danger {
+  color: #b94a48;
+}
 /** BOOTSTRAP EXTENSIONS AND OVERRIDES END **/
 /** BOOTSTRAP STYLING FOR JQUERY DATATABLES **/
 .paging_bootstrap,

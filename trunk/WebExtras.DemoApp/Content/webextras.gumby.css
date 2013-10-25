@@ -64,6 +64,16 @@ table.dataTable thead th .css_right {
 table tr td:first-child {
   font-weight: normal;
 }
+.warning {
+  color: #f6b83f;
+}
+.error,
+.danger {
+  color: #ca3838;
+}
+.success {
+  color: #58c026;
+}
 /** GUMBY OVERRIDES AND EXTENSIONS END **/
 /** DATATABLE OVERRIDES AND EXTENSIONS **/
 table.dataTable tbody tr.success td {

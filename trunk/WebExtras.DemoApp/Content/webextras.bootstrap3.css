@@ -86,6 +86,12 @@ table.dataTable thead th .css_right {
   margin-left: 0;
   margin-right: 3px;
 }
+.navbar-brand {
+  font-size: 24px;
+}
+.text-error {
+  color: #b94a48;
+}
 /** BOOTSTRAP 3 EXTENSIONS AND OVERRIDES END **/
 /** DATATABLES EXTENSIONS AND OVERRIDES **/
 table.dataTable tbody tr.success td {

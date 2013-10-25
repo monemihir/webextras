@@ -16,15 +16,15 @@
   <li>Enh: Adding ability to create large and mini styled Bootstrap buttons using the AsButton extension method</li>
   <li>Enh: Use CSS class <strong>.text</strong> to fix display styling of text only fields under a horizontal form with <strong>.control-group</strong> classes</li>
   <li>Enh: We now ship an ASCX view for Datatable as well. It is called DatatablePartial.ascx and is located in the <strong>views</strong> directory of the archive</li>
-  <li class="text-warning">Fix: IsValidFor extension method now allows nested member expressions</li>
-  <li class="text-warning">Fix: The DatatableSettings constructors will now better handle null sorting options instead of throwing exception !!</li>
-  <li class="text-warning">Fix: Object deep cloning is now an extension method on the Object class instead of having to invoke it as a static method</li>
-  <li class="text-warning">Fix: All user facing properties are now either Arrays or Lists instead of IEnumerables which mean that individual items can be readily accessed via their indices</li>
-  <li class="text-error">Brk: The WebExtras.JQDataTables.DatatableColumn class is now obsolete. You should use WebExtras.JQDataTable.AOColumn class
+  <li class="text-warning warning">Fix: IsValidFor extension method now allows nested member expressions</li>
+  <li class="text-warning warning">Fix: The DatatableSettings constructors will now better handle null sorting options instead of throwing exception !!</li>
+  <li class="text-warning warning">Fix: Object deep cloning is now an extension method on the Object class instead of having to invoke it as a static method</li>
+  <li class="text-warning warning">Fix: All user facing properties are now either Arrays or Lists instead of IEnumerables which mean that individual items can be readily accessed via their indices</li>
+  <li class="text-danger error">Brk: The WebExtras.JQDataTables.DatatableColumn class is now obsolete. You should use WebExtras.JQDataTable.AOColumn class
     instead. This may break some existing functionality or introduce some inconsistencies in the table displays. Refer the documentation for more
     information on the correct way to setup your tables.
   </li>
-  <li class="text-error">Brk: All enumerations have now been prefixed with an 'E' and the 'Type' suffix has been dropped. You can just perform a&nbsp; search-replace and you should be fine.</li>
+  <li class="text-error error">Brk: All enumerations have now been prefixed with an 'E' and the 'Type' suffix has been dropped. You can just perform a&nbsp; search-replace and you should be fine.</li>
   <li style="list-style: none">
     <br />
     <table class="table table-bordered rounded striped">
@@ -86,7 +86,7 @@
   <li>Enh: Adds a comprehensive list of Bootstrap icons </li>
   <li>Enh: 2 new Bootstrap extensions added to render navigation bars and progress bars</li>
   <li>Enh: 1 new generic extension added to perform general purpose object cloning</li>
-  <li class="text-warning">Fix: Fixes a bug in the rendering logic of Hyperlinks</li>
+  <li class="text-warning warning">Fix: Fixes a bug in the rendering logic of Hyperlinks</li>
 </ul>
 <hr />
 <strong>v1.0.0 beta</strong>
