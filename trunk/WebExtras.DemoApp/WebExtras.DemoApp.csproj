@@ -230,12 +230,6 @@
     <Content Include="Content\bootstrap-3.0.0.css" />
     <Content Include="Content\bootstrap-theme-3.0.0.css" />
     <Content Include="Content\jquery.datatables.bootstrap3.css" />
-    <Content Include="Content\fluidable.css">
-      <DependentUpon>fluidable.less</DependentUpon>
-    </Content>
-    <Content Include="Content\fluidable.min.css">
-      <DependentUpon>fluidable.less</DependentUpon>
-    </Content>
     <Content Include="Content\font\glyphicons-halflings-regular.svg" />
     <Content Include="Content\gumby-2.5.6.css" />
     <Content Include="Content\jquery.dataTables.jui.css" />
@@ -464,7 +458,6 @@
     <Content Include="Content\font\fontawesome-webfont.woff" />
     <Content Include="Content\font\FontAwesome.otf" />
     <Content Include="Areas\Bootstrap\Views\Web.config" />
-    <Content Include="Content\fluidable.less" />
     <None Include="Properties\PublishProfiles\Default.pubxml" />
     <Content Include="Areas\Bootstrap\Views\Mvc\ActionResults.cshtml" />
     <None Include="Properties\PublishProfiles\Staging.pubxml" />

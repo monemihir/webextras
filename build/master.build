@@ -107,6 +107,8 @@
         <include name="bin/WebExtras.xml" />
         <include name="bin/WebExtras.Mvc.dll" />
         <include name="bin/WebExtras.Mvc.xml" />
+        <include name="bin/MoreLinq.dll" />
+        <include name="bin/MoreLinq.xml" />
         <include name="bin/Newtonsoft.Json.dll" />
         <include name="bin/Newtonsoft.Json.xml" />
         <include name="bin/T4MVCExtensions.dll" />
@@ -115,31 +117,30 @@
     
     <!-- Copy css -->
     <copy todir="${pkg.dir}/css" failonerror="true">
-      <fileset basedir="${build.web-dir}/Content" failonempty="true">
-        <include name="webextras.css" />
+      <fileset basedir="${build.web-dir}/css" failonempty="true">
+        <include name="webextras.bootstrap.css" />
+        <include name="webextras.bootstrap3.css" />
+        <include name="webextras.gumby.css" />
         <include name="jquery.bootstrap.datetimepicker.css" />
-        <include name="jquery.dataTables.css" />
+        <include name="jquery.datatables.bootstrap3.css" />
       </fileset>
     </copy>
     
     <!-- Copy js -->
     <copy todir="${pkg.dir}/js" failonerror="true">
-      <fileset basedir="${build.web-dir}/Scripts" failonempty="true">
-        <include name="jquery.flot.min.js" />
+      <fileset basedir="${build.web-dir}/js" failonempty="true">
         <include name="jquery.flot.axislabels.js" />
         <include name="jquery.flot.curvedlines.js" />
         <include name="jquery.flot.dashes.js" />
-        <include name="jquery.flot.pie.min.js" />
-        <include name="jquery.flot.time.min.js" />
-        <include name="jquery.dataTables.min.js" />
-        <include name="jquery.datatables.pagination.js" />
+        <include name="jquery.datatables.bootstrap.js" />
+        <include name="jquery.datatables.bootstrap3.js" />
         <include name="jquery.bootstrap.datetimepicker.min.js" />
       </fileset>
     </copy>
     
     <!-- Copy views -->
     <copy todir="${pkg.dir}/views" failonerror="true">
-      <fileset basedir="${build.web-dir}/Views/Core" failonempty="true">
+      <fileset basedir="${build.web-dir}/views" failonempty="true">
         <include name="_Datatable.cshtml" />
         <include name="_DatatableDeprecated.cshtml" />
         <include name="DatatablePartial.ascx" />

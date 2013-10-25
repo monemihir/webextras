@@ -1,7 +1,22 @@
-﻿<strong>v1.2.0 (current)</strong>
+﻿<strong>v1.3.0 (under development)</strong>
 <br />
-<strong>Released: 28 May 2013<br />
-</strong>
+<strong>Changelog</strong>
+<ul class="disc">
+  <li>Enh: Adding support for <a href="http://www.getbootstrap.com" target="_blank">Bootstrap 3.x</a></li>
+  <li>Enh: Adding support for <a href="http://www.gumbyframework.com" target="_blank">Gumby 2.5.x</a></li>
+  <li>Enh: Adding a new string extension <strong>Remove()</strong> to remove occurences of given string</li>
+  <li>Enh: Adding a <strong>ToDictionary()</strong> for name value collections</li>
+  <li>Enh: The dataTable sort extension is now a little more intelligent and robust</li>
+  <li>Enh: General under the hood code enhancements </li>
+  <li class="text-warning warning">Fix: Hyperlink extensions now handle MVC Areas</li>
+  <li class="text-warning warning">Fix: Marking <strong>JsFunc</strong> as serializable otherwise when using the ASP.NET State Server, the object does not get serialized</li>
+  <li class="text-error error">Brk: The <strong>AddWhiteIcon()</strong> extension is no longer available when using Font Awesome provided icons. Since these icons are font based the coloring can be controlled by CSS classes</li>
+</ul>
+
+<strong>v1.2.0 (current)</strong>
+<br />
+<strong>Released: 28 May 2013</strong>
+<br />
 <br />
 <strong>Changelog</strong>
 <ul class="disc">
@@ -12,7 +27,7 @@
   <li>Enh: Adding a ToJson extension method on Object to convert any object to it&#39;s JSON notation</li>
   <li>Enh: Adding Double and DateTime methods to convert to/from JavaScript time ticks</li>
   <li>Enh: Adding a new MVC ActionResult called JsonNetResult which basically uses the Newtonsoft Json.NET library for JSON serialization as opposed to the native serialization used by JsonResult</li>
-  <li>Enh: The date time picker extensions now use the date picker provided at <a href="http://www.malot.fr/bootstrap-datetimepicker/">http://www.malot.fr/bootstrap-datetimepicker/</a></li>
+  <li>Enh: The date time picker extensions now use the date picker provided at <a href="http://www.malot.fr/bootstrap-datetimepicker/" target="_blank">http://www.malot.fr/bootstrap-datetimepicker/</a></li>
   <li>Enh: Adding ability to create large and mini styled Bootstrap buttons using the AsButton extension method</li>
   <li>Enh: Use CSS class <strong>.text</strong> to fix display styling of text only fields under a horizontal form with <strong>.control-group</strong> classes</li>
   <li>Enh: We now ship an ASCX view for Datatable as well. It is called DatatablePartial.ascx and is located in the <strong>views</strong> directory of the archive</li>
