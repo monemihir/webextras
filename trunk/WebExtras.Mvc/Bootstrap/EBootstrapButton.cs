@@ -59,6 +59,12 @@ namespace WebExtras.Mvc.Bootstrap
     /// <summary>
     /// Only available in Bootstrap 2.x
     /// </summary>
+    [StringValue("btn-block")]
+    Block,
+
+    /// <summary>
+    /// Only available in Bootstrap 2.x
+    /// </summary>
     [StringValue("btn-mini")]
     Mini,
     
