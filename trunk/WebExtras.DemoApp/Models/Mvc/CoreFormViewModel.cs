@@ -18,12 +18,12 @@
 
 using System;
 
-namespace WebExtras.DemoApp.Areas.Bootstrap.Models.Mvc
+namespace WebExtras.DemoApp.Models.Mvc
 {
   /// <summary>
-  /// Bootstrap form view model
+  /// Basic form view model
   /// </summary>
-  public class BootstrapFormViewModel
+  public class CoreFormViewModel
   {
     /// <summary>
     /// Date to be displayed

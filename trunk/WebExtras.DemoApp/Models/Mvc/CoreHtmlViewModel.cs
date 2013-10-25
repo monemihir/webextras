@@ -21,14 +21,26 @@ using System.ComponentModel.DataAnnotations;
 
 namespace WebExtras.DemoApp.Models.Mvc
 {
+  /// <summary>
+  /// Basic HTML view model
+  /// </summary>
   public class CoreHtmlViewModel
   {
+    /// <summary>
+    /// Some required property
+    /// </summary>
     [Required]
     public string SomeProperty { get; set; }
 
+    /// <summary>
+    /// Some other property which has a description
+    /// </summary>
     [Description("This is the second property")]
     public string SomeProperty2 { get; set; }
 
+    /// <summary>
+    /// Flag indicating whether to show the action message or not
+    /// </summary>
     public bool ShowMessage { get; set; }
   }
 }

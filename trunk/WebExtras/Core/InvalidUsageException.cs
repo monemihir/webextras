@@ -1,10 +1,10 @@
 ﻿/*
-* This file is part of - WebExtras Demo application
+* This file is part of - WebExtras
 * Copyright (C) 2013 Mihir Mone
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Lesser General Public License as published by
-* the Free Software Foundation, either version 2 of the License, or
+* the Free Software Foundation, either version 3 of the License, or
 * (at your option) any later version.
 *
 * This program is distributed in the hope that it will be useful,
@@ -16,28 +16,33 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+
 using System;
 
-namespace WebExtras.DemoApp.Areas.Bootstrap3.Models.Mvc
+namespace WebExtras.Core
 {
   /// <summary>
-  /// Bootstrap form view model
+  /// Invalid usage exception
   /// </summary>
-  public class BootstrapFormViewModel
+  public class InvalidUsageException : Exception
   {
     /// <summary>
-    /// Date to be displayed
+    /// Constructor
     /// </summary>
-    public DateTime DateTextBox { get; set; }
+    /// <param name="message">Exception message</param>
+    public InvalidUsageException(string message)
+      : base(message)
+    {
+    }
 
     /// <summary>
-    /// Date to be displayed
+    /// Constructor
     /// </summary>
-    public DateTime DateTimeTextBox { get; set; }
-
-    /// <summary>
-    /// Date to be displayed
-    /// </summary>
-    public DateTime TimeTextBox { get; set; }
+    /// <param name="message">Exception message</param>
+    /// <param name="innerException">Inner exception</param>
+    public InvalidUsageException(string message, Exception innerException)
+      : base(message, innerException)
+    {
+    }
   }
 }

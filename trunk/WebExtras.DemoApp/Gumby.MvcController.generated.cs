@@ -111,11 +111,13 @@ namespace WebExtras.DemoApp.Areas.Gumby.Controllers
                 public readonly string ActionResults = "ActionResults";
                 public readonly string CoreForm = "CoreForm";
                 public readonly string CoreHtml = "CoreHtml";
+                public readonly string GumbyForm = "GumbyForm";
                 public readonly string GumbyHtml = "GumbyHtml";
             }
             public readonly string ActionResults = "~/Areas/Gumby/Views/Mvc/ActionResults.cshtml";
             public readonly string CoreForm = "~/Areas/Gumby/Views/Mvc/CoreForm.cshtml";
             public readonly string CoreHtml = "~/Areas/Gumby/Views/Mvc/CoreHtml.cshtml";
+            public readonly string GumbyForm = "~/Areas/Gumby/Views/Mvc/GumbyForm.cshtml";
             public readonly string GumbyHtml = "~/Areas/Gumby/Views/Mvc/GumbyHtml.cshtml";
         }
     }

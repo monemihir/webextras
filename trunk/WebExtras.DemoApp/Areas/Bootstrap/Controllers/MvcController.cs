@@ -18,9 +18,7 @@
 
 using System;
 using System.Web.Mvc;
-using WebExtras.DemoApp.Areas.Bootstrap.Models.Mvc;
 using WebExtras.DemoApp.Models.Mvc;
-using WebExtras.Mvc.Bootstrap;
 using WebExtras.Mvc.Core;
 
 namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
@@ -71,7 +69,7 @@ namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
     // GET: /Bootstrap/Mvc/BootstrapForm
     public virtual ActionResult BootstrapForm()
     {
-      BootstrapFormViewModel model = new BootstrapFormViewModel
+      CoreFormViewModel model = new CoreFormViewModel
       {
         DateTextBox = DateTime.Now,
         DateTimeTextBox = DateTime.Now,

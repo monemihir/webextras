@@ -174,7 +174,7 @@ namespace WebExtras.Mvc.Bootstrap
     public static T AsButton<T>(this T html, params EBootstrapButton[] types) where T : IExtendedHtmlString
     {
       if (!HtmlStringUtil.CanDisplayAsButton(html))
-        throw new InvalidOperationException("The AsButton decorator can only be used with Button and Hyperlink extensions");
+        throw new InvalidUsageException("The AsButton decorator can only be used with Button and Hyperlink extensions");
 
       html.AddCssClass(string.Join(" ", types.Select(t => t.GetStringValue())));
 

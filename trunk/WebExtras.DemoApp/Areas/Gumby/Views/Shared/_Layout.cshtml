@@ -51,14 +51,14 @@
         <div class="dropdown">
           <ul>
             <li>@Html.Hyperlink("Html Extensions", MVC.Gumby.Mvc.GumbyHtml())</li>
-            <li><a href="#">Form Extensions</a></li>
+            <li>@Html.Hyperlink("Form Extensions", MVC.Gumby.Mvc.GumbyForm())</li>
           </ul>
         </div>
       </li>
       <li>
         @(Html.Hyperlink("Get WebExtras", MVC.Gumby.Home.Download())
         .AddIcon(EGumbyIcon.Download)
-        .AsButton(EGumbyButton.Primary, EGumbyButtonStyle.Rounded, EGumbyButtonStyle.Medium))
+        .AsButton(EGumbyButton.Primary))
       </li>
     </ul>
   </div>

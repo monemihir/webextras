@@ -16,8 +16,9 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System;
+using System.Collections.Generic;
 using System.Linq;
+using WebExtras.Core;
 using WebExtras.Mvc.Core;
 using WebExtras.Mvc.Html;
 
@@ -55,26 +56,55 @@ namespace WebExtras.Mvc.Gumby
     /// <typeparam name="T">Generic type to be used. This type must implement IExtendedHtmlString</typeparam>
     /// <param name="html">Current HTML element</param>
     /// <param name="type">Gumby button type</param>
-    /// <param name="style">Gumby button styles</param>
+    /// <param name="sizeOrstyle">Gumby button size/style</param>
     /// <returns>A Gumby button styled hyperlink</returns>
-    public static IExtendedHtmlString AsButton<T>(this T html, EGumbyButton type, params EGumbyButtonStyle[] style) where T : IExtendedHtmlString
+    public static IExtendedHtmlString AsButton<T>(this T html, EGumbyButton type, params EGumbyButtonStyle[] sizeOrstyle) where T : IExtendedHtmlString
     {
       if (WebExtrasMvcConstants.GumbyTheme == EGumbyTheme.None)
         throw new GumbyThemeException();
 
       if (!HtmlStringUtil.CanDisplayAsButton(html))
-        throw new InvalidOperationException("The AsButton decorator can only be used with Button and Hyperlink extensions");
+        throw new InvalidUsageException("The AsButton decorator can only be used with Button and Hyperlink extensions");
 
-      string[] classes =
+      List<string> classes = new List<string>
       { 
         "btn",
-        type.ToString().ToLowerInvariant(),
-        WebExtrasMvcConstants.GumbyTheme.ToString().ToLowerInvariant()
+        type.ToString().ToLowerInvariant()
       };
+
+      // if a style was specified then don't add the theme class
+      EGumbyButtonStyle[] styles = 
+      {
+        EGumbyButtonStyle.Oval,
+        EGumbyButtonStyle.Rounded,
+        EGumbyButtonStyle.Squared,
+        EGumbyButtonStyle.Pill_Left,
+        EGumbyButtonStyle.Pill_Right
+      };
+
+      int styleCnt = sizeOrstyle.Where(styles.Contains).Count();
+
+      if (styleCnt == 0)
+        classes.Add(WebExtrasMvcConstants.GumbyTheme.ToString().ToLowerInvariant());
+
+      // if no size was specified set as medium
+      EGumbyButtonStyle[] sizes = 
+      {
+        EGumbyButtonStyle.XLarge,
+        EGumbyButtonStyle.Large,
+        EGumbyButtonStyle.Medium,
+        EGumbyButtonStyle.Small
+      };
+
+      int sizeCnt = sizeOrstyle.Where(sizes.Contains).Count();
+
+      if (sizeCnt == 0)
+        classes.Add("medium");
 
       Div div = new Div();
 
-      div["class"] = string.Join(" ", classes.Concat(style.Select(s => s.ToString().ToLowerInvariant())));
+      div["class"] = string.Join(" ", classes
+        .Concat(sizeOrstyle.Select(s => s.ToString().ToLowerInvariant().Replace('_', '-'))));
 
       div.Append(html);
 
