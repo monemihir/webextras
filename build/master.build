@@ -101,17 +101,17 @@
     </delete>
 
     <!-- Copy binaries -->
-    <copy todir="${pkg.dir}" failonerror="true">
-      <fileset basedir="${build.web-dir}" failonempty="true">
-        <include name="bin/WebExtras.dll" />
-        <include name="bin/WebExtras.xml" />
-        <include name="bin/WebExtras.Mvc.dll" />
-        <include name="bin/WebExtras.Mvc.xml" />
-        <include name="bin/MoreLinq.dll" />
-        <include name="bin/MoreLinq.xml" />
-        <include name="bin/Newtonsoft.Json.dll" />
-        <include name="bin/Newtonsoft.Json.xml" />
-        <include name="bin/T4MVCExtensions.dll" />
+    <copy todir="${pkg.dir}/bin" failonerror="true">
+      <fileset basedir="${build.bin-dir}" failonempty="true">
+        <include name="WebExtras.dll" />
+        <include name="WebExtras.xml" />
+        <include name="WebExtras.Mvc.dll" />
+        <include name="WebExtras.Mvc.xml" />
+        <include name="MoreLinq.dll" />
+        <include name="MoreLinq.xml" />
+        <include name="Newtonsoft.Json.dll" />
+        <include name="Newtonsoft.Json.xml" />
+        <include name="T4MVCExtensions.dll" />
       </fileset>
     </copy>
     
