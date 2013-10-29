@@ -16,23 +16,21 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+#pragma warning disable 1591
+
 using System.Web.Mvc;
 using WebExtras.Mvc.Core;
 
 namespace WebExtras.DemoApp.Areas.Bootstrap3.Controllers
 {
   public abstract partial class BaseController : Controller
+  {
+    protected override void OnActionExecuting(ActionExecutingContext filterContext)
     {
-      protected override void OnActionExecuting(ActionExecutingContext filterContext)
-      {
-        base.OnActionExecuting(filterContext);
+      base.OnActionExecuting(filterContext);
 
-        ViewData["layout_path"] = MVC.Bootstrap3.Shared.Views._Layout;
-        WebExtrasMvcConstants.BootstrapVersion = EBootstrapVersion.V3;
-      }
+      ViewData["layout_path"] = MVC.Bootstrap3.Shared.Views._Layout;
+      WebExtrasMvcConstants.BootstrapVersion = EBootstrapVersion.V3;
     }
+  }
 }

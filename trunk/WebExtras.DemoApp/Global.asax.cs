@@ -16,10 +16,11 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+#pragma warning disable 1591
+
 using System.Web.Mvc;
 using System.Web.Routing;
 using WebExtras.DemoApp.App_Start;
-using WebExtras.Mvc.Core;
 
 namespace WebExtras.DemoApp
 {

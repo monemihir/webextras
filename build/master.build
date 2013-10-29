@@ -3,7 +3,6 @@
   <description>WebExtras project</description>
   
   <!-- Includes -->
-  <loadtasks assembly="C:/Program Files (x86)/NAnt/nantcontrib-0.92/bin/NAnt.Contrib.Tasks.dll" />
   <include buildfile="../build/generic.build.include" />
 
   <!-- Global Properties -->

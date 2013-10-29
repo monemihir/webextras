@@ -16,6 +16,8 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+#pragma warning disable 1591
+
 using System;
 using System.Web.Mvc;
 using SquishIt.Framework;

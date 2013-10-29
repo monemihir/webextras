@@ -16,7 +16,8 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System;
+#pragma warning disable 1591
+
 using System.Web.Mvc;
 using WebExtras.DemoApp.Models.Mvc;
 using WebExtras.Mvc.Core;

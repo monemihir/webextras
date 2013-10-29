@@ -16,6 +16,8 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+#pragma warning disable 1591
+
 using System.ComponentModel;
 
 namespace WebExtras.DemoApp.Models.Core

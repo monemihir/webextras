@@ -16,6 +16,8 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+#pragma warning disable 1591
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -448,7 +450,7 @@ namespace WebExtras.DemoApp.Areas.Bootstrap3.Controllers
           series.Add(serie);
           break;
 
-        case 0:        
+        case 0:
         default:
           serie = new FlotSeries
           {

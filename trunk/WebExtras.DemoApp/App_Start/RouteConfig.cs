@@ -16,6 +16,8 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+#pragma warning disable 1591
+
 using System.Web.Mvc;
 using System.Web.Routing;
 
@@ -33,7 +35,7 @@ namespace WebExtras.DemoApp
       routes.MapRoute(
           name: "Default",
           url: "{controller}/{action}/{id}",
-          defaults: new { controller = "Flavour", action = "Index", id = UrlParameter.Optional }          
+          defaults: new { controller = "Flavour", action = "Index", id = UrlParameter.Optional }
       );
     }
   }
