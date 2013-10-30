@@ -82,7 +82,7 @@ namespace WebExtras.Mvc.Bootstrap
 
       Append(inner);
 
-      this.Tag.MergeAttributes(HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes));
+      //this.m_tag.MergeAttributes(HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes));
     }
 
     /// <summary>
@@ -93,7 +93,7 @@ namespace WebExtras.Mvc.Bootstrap
     /// <returns>MVC HTML string representation of the current element</returns>
     public override string ToHtmlString(TagRenderMode renderMode)
     {
-      AppendTags[0].Tag.Attributes["style"] = string.Format("width: {0}%", Percent);
+      AppendTags[0].Attributes["style"] = string.Format("width: {0}%", Percent);
 
       return base.ToHtmlString(renderMode);
     }

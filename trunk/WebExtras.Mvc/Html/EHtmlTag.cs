@@ -17,6 +17,7 @@
 */
 
 using System;
+using WebExtras.Core;
 
 namespace WebExtras.Mvc.Html
 {
@@ -57,13 +58,21 @@ namespace WebExtras.Mvc.Html
     Input,
 
     /// <summary>
-    /// HTML LIST tag
+    /// HTML UL tag
     /// </summary>
-    List,
+    [StringValue("ul")]
+    UnorderedList,
+
+    /// <summary>
+    /// HTML OL tag
+    /// </summary>
+    [StringValue("ol")]
+    OrderedList,
 
     /// <summary>
     /// HTML LIST ITEM tag
     /// </summary>
+    [StringValue("li")]
     ListItem,
 
     /// <summary>

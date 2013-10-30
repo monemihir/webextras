@@ -30,48 +30,85 @@ namespace WebExtras.Mvc.Bootstrap
   public class BootstrapNavBar : HtmlElement
   {
     /// <summary>
+    /// Navbar type
+    /// </summary>
+    public EBootstrapNavbar Type { get; set; }
+
+    /// <summary>
+    /// The brand hyperlink
+    /// </summary>
+    public Hyperlink Brand { get; set; }
+
+    /// <summary>
+    /// Default constructor
+    /// </summary>
+    /// <param name="type">Navigation bar type</param>
+    private BootstrapNavBar(EBootstrapNavbar type)
+      : base(EHtmlTag.Div)
+    {
+      Type = type;
+    }
+
+    /// <summary>
     /// Constructor
     /// </summary>
     /// <param name="type">Navigation bar type</param>
     /// <param name="items">Navigation bar items</param>
-    public BootstrapNavBar(EBootstrapNavbar type, params IExtendedHtmlString[] items)
-      : base(EHtmlTag.Div)
+    public BootstrapNavBar(EBootstrapNavbar type, HtmlList items)
+      : this(type)
+    {
+      CreateNavBar(items);
+    }
+
+    /// <summary>
+    /// Constructor
+    /// </summary>
+    /// <param name="type">Navigation bar type</param>
+    /// <param name="brandLink">Navigation bar brand link</param>
+    /// <param name="items">Navigation bar items</param>
+    public BootstrapNavBar(EBootstrapNavbar type, Hyperlink brandLink, HtmlList items)
+      : this(type)
+    {
+      Brand = brandLink;
+      CreateNavBar(items);
+    }
+
+    /// <summary>
+    /// Constructor
+    /// </summary>
+    /// <param name="type">Navigation bar type</param>
+    /// <param name="items">Navigation bar items</param>
+    public BootstrapNavBar(EBootstrapNavbar type, params Hyperlink[] items)
+      : this(type)
     {
       HtmlList list = new HtmlList(EList.Unordered);
-      list["class"] = "nav navbar-nav";
-
-      IExtendedHtmlString brand = null;
-
-      if (items != null && items.Length > 0)
+      foreach (Hyperlink item in items)
       {
-        foreach (var item in items)
+        if (item.Attributes.ContainsKey("class") && item.Attributes["class"].ContainsIgnoreCase("brand"))
         {
-          Type t = item.GetType();
-
-          if (t == typeof(HtmlList))
-          {
-            list.Prepend(item.PrependTags);
-            list.Append(item.AppendTags);
-          }
-          else if (t == typeof(HtmlListItem))
-          {
-            list.Append(item);
-          }
-          else if (item.Tag.Attributes.ContainsKey("class") && item.Tag.Attributes["class"].ContainsIgnoreCase("brand"))
-          {
-            brand = item;
-          }
-          else if (t == typeof(Hyperlink))
-          {
-            // check if this is the "brand"
-            HtmlListItem li = new HtmlListItem(string.Empty);
-            li.Append(item);
-            list.Append(li);
-          }
+          Brand = item;
+        }
+        else
+        {
+          HtmlListItem li = new HtmlListItem(string.Empty);
+          li.Append(item);
+          list.Append(li);
         }
       }
 
-      this["class"] = type.GetStringValue();
+      CreateNavBar(list);
+    }
+
+    /// <summary>
+    /// Creates a Bootstrap navigation bar from the given
+    /// list of items
+    /// </summary>
+    /// <param name="list">Navigation bar items</param>
+    private void CreateNavBar(HtmlList list)
+    {
+      list["class"] = "nav navbar-nav";
+
+      this["class"] = Type.GetStringValue();
 
       switch (WebExtrasMvcConstants.BootstrapVersion)
       {
@@ -79,17 +116,17 @@ namespace WebExtras.Mvc.Bootstrap
           Div innerNav = new Div();
           innerNav["class"] = "navbar-inner";
 
-          if (brand != null)
-            innerNav.Prepend(brand);
+          if (Brand != null)
+            innerNav.Prepend(Brand);
           innerNav.Append(list);
 
           Append(innerNav);
           break;
         case EBootstrapVersion.V3:
-          if (brand != null)
+          if (Brand != null)
           {
-            brand.Tag.Attributes["class"] = "navbar-brand";
-            Prepend(brand);
+            Brand.Attributes["class"] = "navbar-brand";
+            Prepend(Brand);
           }
           Append(list);
           break;

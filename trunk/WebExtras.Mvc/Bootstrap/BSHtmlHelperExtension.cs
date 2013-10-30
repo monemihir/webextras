@@ -19,11 +19,11 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Web.Mvc;
 using System.Web.Routing;
+using MoreLinq;
 using WebExtras.Core;
 using WebExtras.Mvc.Core;
 using WebExtras.Mvc.Html;
@@ -91,13 +91,13 @@ namespace WebExtras.Mvc.Bootstrap
     /// <returns>A Bootstrap icon</returns>
     public static IExtendedHtmlString Icon(this HtmlHelper html, EFontAwesomeIcon icon, EFontAwesomeIconSize size = EFontAwesomeIconSize.Normal, object htmlAttributes = null)
     {
-      RouteValueDictionary rvd = new RouteValueDictionary(htmlAttributes);
+      IDictionary<string, object> attrsDictionary = HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes);
 
       List<string> cssClasses = new List<string>();
-      if (rvd.ContainsKey("class"))
+      if (attrsDictionary.ContainsKey("class"))
       {
-        cssClasses.AddRange(rvd["class"].ToString().Split(' '));
-        rvd.Remove("class");
+        cssClasses.AddRange(attrsDictionary["class"].ToString().Split(' '));
+        attrsDictionary.Remove("class");
       }
 
       cssClasses.Add("icon-" + icon.ToString().ToLowerInvariant().Replace("_", "-"));
@@ -108,7 +108,7 @@ namespace WebExtras.Mvc.Bootstrap
       Italic i = new Italic();
       i["class"] = string.Join(" ", cssClasses);
 
-      i.Tag.MergeAttributes(HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes));
+      attrsDictionary.ForEach(f => i.Attributes[f.Key] = f.Value.ToString());
 
       return i;
     }
@@ -124,7 +124,32 @@ namespace WebExtras.Mvc.Bootstrap
     /// <param name="type">Navigation bar type</param>
     /// <param name="items">Navigation bar items</param>
     /// <returns>A navigation bar</returns>
-    public static BootstrapNavBar Navbar(this HtmlHelper html, EBootstrapNavbar type, params IExtendedHtmlString[] items)
+    public static BootstrapNavBar Navbar(this HtmlHelper html, EBootstrapNavbar type, params Hyperlink[] items)
+    {
+      return new BootstrapNavBar(type, items);
+    }
+
+    /// <summary>
+    /// Create a navigation bar
+    /// </summary>
+    /// <param name="html">Current HTML helper object</param>
+    /// <param name="type">Navigation bar type</param>
+    /// <param name="brandLink">Navigation bar brand link</param>
+    /// <param name="items">Navigation bar items</param>
+    /// <returns>A navigation bar</returns>
+    public static BootstrapNavBar Navbar(this HtmlHelper html, EBootstrapNavbar type, Hyperlink brandLink, HtmlList items)
+    {
+      return new BootstrapNavBar(type, brandLink, items);
+    }
+
+    /// <summary>
+    /// Create a navigation bar
+    /// </summary>
+    /// <param name="html">Current HTML helper object</param>
+    /// <param name="type">Navigation bar type</param>
+    /// <param name="items">Navigation bar items</param>
+    /// <returns>A navigation bar</returns>
+    public static BootstrapNavBar Navbar(this HtmlHelper html, EBootstrapNavbar type, HtmlList items)
     {
       return new BootstrapNavBar(type, items);
     }

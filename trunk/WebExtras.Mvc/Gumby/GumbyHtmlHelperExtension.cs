@@ -141,7 +141,30 @@ namespace WebExtras.Mvc.Gumby
     /// <param name="html">Current Html helper object</param>
     /// <param name="items">Navigation bar items</param>
     /// <returns>A navigation bar</returns>
-    public static GumbyNavbar Navbar(this HtmlHelper html, params IExtendedHtmlString[] items)
+    public static GumbyNavbar Navbar(this HtmlHelper html, HtmlList items)
+    {
+      return new GumbyNavbar(items);
+    }
+
+    /// <summary>
+    /// Create a navigation bar
+    /// </summary>
+    /// <param name="html">Current Html helper object</param>
+    /// <param name="logoLink">Navigation bar logo link</param>
+    /// <param name="items">Navigation bar items</param>
+    /// <returns>A navigation bar</returns>
+    public static GumbyNavbar Navbar(this HtmlHelper html, Hyperlink logoLink, HtmlList items)
+    {
+      return new GumbyNavbar(logoLink, items);
+    }
+
+    /// <summary>
+    /// Create a navigation bar
+    /// </summary>
+    /// <param name="html">Current Html helper object</param>
+    /// <param name="items">Navigation bar items</param>
+    /// <returns>A navigation bar</returns>
+    public static GumbyNavbar Navbar(this HtmlHelper html, params Hyperlink[] items)
     {
       return new GumbyNavbar(items);
     }

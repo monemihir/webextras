@@ -27,10 +27,25 @@ namespace WebExtras.Mvc.Html
   /// </summary>
   public interface IExtendedHtmlString : IHtmlString
   {
+    ///// <summary>
+    ///// An MVC tag builder
+    ///// </summary>
+    //TagBuilder Tag { get; set; }
+
     /// <summary>
-    /// An MVC tag builder
+    /// CSS classes of this element
     /// </summary>
-    TagBuilder Tag { get; set; }
+    List<string> CSSClasses { get; }
+
+    /// <summary>
+    /// HTML attribute list for this element
+    /// </summary>
+    IDictionary<string, string> Attributes { get; }
+
+    /// <summary>
+    /// Inner HTML of the element
+    /// </summary>
+    string InnerHtml { get; set; }
 
     /// <summary>
     /// Inner tags
@@ -55,7 +70,7 @@ namespace WebExtras.Mvc.Html
     /// </summary>
     /// <param name="elements">HTML elements to be added</param>
     void Append(IEnumerable<IExtendedHtmlString> elements);
-    
+
     /// <summary>
     /// Prepends the given HTML element at the beginning of
     /// the current element

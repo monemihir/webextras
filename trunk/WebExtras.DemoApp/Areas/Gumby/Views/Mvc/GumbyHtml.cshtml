@@ -127,6 +127,7 @@
       }).AddCssClass("ten columns");
     }
   @@Html.Navbar(logo, list)
+  @@Html.Navbar(logo, link, link, link)
   </code></pre>
   <p>
     Output
@@ -139,9 +140,8 @@
         
         Hyperlink link = new Hyperlink("Link", "#");
         
-        IExtendedHtmlString list = new HtmlList(EList.Unordered, new HtmlListItem[]
+        HtmlList list = new HtmlList(EList.Unordered, new HtmlListItem[]
         {
-          HtmlListItem.From(link),
           HtmlListItem.From(link),
           HtmlListItem.From(link),
           HtmlListItem.From(link),
@@ -153,7 +153,7 @@
 
       @Html.Navbar(logo1, list)
       
-      @Html.Navbar(logo2, list).AsPretty()
+      @Html.Navbar(logo2, link, link, link).AsPretty()
     </div>
   </div>
   <p>

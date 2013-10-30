@@ -31,7 +31,7 @@ namespace WebExtras.Mvc.Bootstrap
     /// <returns>An inverse bootstrap navigation bar</returns>
     public static BootstrapNavBar AsInverse(this BootstrapNavBar navbar)
     {
-      navbar.Tag.AddCssClass("navbar-inverse");
+      navbar.CSSClasses.Add("navbar-inverse");
 
       return navbar;
     }

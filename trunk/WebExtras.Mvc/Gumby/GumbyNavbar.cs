@@ -30,59 +30,77 @@ namespace WebExtras.Mvc.Gumby
   public class GumbyNavbar : HtmlElement
   {
     /// <summary>
+    /// The logo hyperlink
+    /// </summary>
+    public Hyperlink Logo { get; set; }
+
+    /// <summary>
     /// Constructor
     /// </summary>
-    /// <param name="items">A collection of navbar items</param>
-    public GumbyNavbar(ICollection<IExtendedHtmlString> items)
+    /// <param name="logoLink">Navigation bar logo link</param>
+    /// <param name="items">Navigation bar items</param>
+    public GumbyNavbar(Hyperlink logoLink, HtmlList items)
+      : base(EHtmlTag.Div)
+    {
+      Logo = logoLink;
+      CreateNavBar(items);
+    }
+
+    /// <summary>
+    /// Constructor
+    /// </summary>
+    /// <param name="items">Navigation bar items</param>
+    public GumbyNavbar(HtmlList items)
+      : base(EHtmlTag.Div)
+    {
+      CreateNavBar(items);
+    }
+
+    /// <summary>
+    /// Constructor
+    /// </summary>
+    /// <param name="items">Navigation bar items</param>
+    public GumbyNavbar(IEnumerable<Hyperlink> items)
       : base(EHtmlTag.Div)
     {
       HtmlList list = new HtmlList(EList.Unordered);
 
-      IExtendedHtmlString logo = null;
-
-      if (items != null && items.Count > 0)
+      foreach (Hyperlink item in items)
       {
-        foreach (IExtendedHtmlString item in items)
+        if (item.Attributes.ContainsKey("class") && item.Attributes["class"].ContainsIgnoreCase("logo"))
         {
-          Type t = item.GetType();
-
-          if (t == typeof(HtmlList))
-          {
-            list.Prepend(item.PrependTags);
-            list.Append(item.AppendTags);
-            list["class"] = item.Tag.Attributes["class"];
-          }
-          else if (item.Tag.Attributes.ContainsKey("class") && item.Tag.Attributes["class"].ContainsIgnoreCase("logo"))
-          {
-            logo = item;
-          }
-          else if (t == typeof(Hyperlink))
-          {
-            // check if this is the "brand"
-            HtmlListItem li = new HtmlListItem(string.Empty);
-            li.Append(item);
-            list.Append(li);
-          }
-          else
-          {
-            throw new ArgumentException("A navbar item can only be of type WebExtras.Mvc.Html.HtmlList or WebExtras.Mvc.Html.Hyperlink.\n\n" +
-              "You passed in a " + t.FullName + ".");
-          }
+          Logo = item;
+        }
+        else
+        {
+          // check if this is the "brand"
+          HtmlListItem li = new HtmlListItem(string.Empty);
+          li.Append(item);
+          list.Append(li);
         }
       }
 
+      CreateNavBar(list);
+    }
+
+    /// <summary>
+    /// Create the Gumby navigation bar
+    /// </summary>
+    /// <param name="list">Navigation bar items</param>
+    private void CreateNavBar(HtmlList list)
+    {
       this["class"] = "row navbar metro";
       Append(list);
 
       // append the logo/brand is it was supplied
-      if (logo == null)
+      if (Logo == null)
         return;
 
       Div logoDiv = new Div();
-      logoDiv["class"] = logo.Tag.Attributes["class"];
+      logoDiv["class"] = Logo.Attributes["class"];
 
-      logo.Tag.Attributes.Remove("class");
-      logoDiv.Append(logo);
+      Logo.Attributes.Remove("class");
+      logoDiv.Append(Logo);
 
       Prepend(logoDiv);
     }

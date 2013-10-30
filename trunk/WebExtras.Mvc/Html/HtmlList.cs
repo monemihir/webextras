@@ -18,8 +18,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Web.Mvc;
-using WebExtras.Core;
 
 namespace WebExtras.Mvc.Html
 {
@@ -35,15 +33,22 @@ namespace WebExtras.Mvc.Html
     public EList Type { get; set; }
 
     /// <summary>
+    /// Number of items in this list
+    /// </summary>
+    public int Length
+    {
+      get { return PrependTags.Count + AppendTags.Count; }
+    }
+
+    /// <summary>
     /// Constructor
     /// </summary>
     /// <param name="type">Type of list</param>
     /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
     public HtmlList(EList type, object htmlAttributes = null)
-      : base(EHtmlTag.List, htmlAttributes)
+      : base(type == EList.Ordered ? EHtmlTag.OrderedList : EHtmlTag.UnorderedList, htmlAttributes)
     {
       Type = type;
-      Tag = new TagBuilder(type.GetStringValue());
     }
 
     /// <summary>
@@ -53,10 +58,9 @@ namespace WebExtras.Mvc.Html
     /// <param name="listItems">A collection of items</param>
     /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
     public HtmlList(EList type, IEnumerable<HtmlListItem> listItems, object htmlAttributes = null)
-      : base(EHtmlTag.List, htmlAttributes)
+      : base(type == EList.Ordered ? EHtmlTag.OrderedList : EHtmlTag.UnorderedList, htmlAttributes)
     {
       Type = type;
-      Tag = new TagBuilder(type.GetStringValue());
       AppendTags.AddRange(listItems);
     }
   }

@@ -30,9 +30,9 @@ namespace WebExtras.Mvc.Html
     /// <param name="html">HTML element to add class to</param>
     /// <param name="css">CSS class(es) to be added</param>
     /// <returns>Current HTML element with classes added</returns>
-    public static IExtendedHtmlString AddCssClass(this IExtendedHtmlString html, string css)
+    public static T AddCssClass<T>(this T html, string css) where T : IExtendedHtmlString
     {
-      html.Tag.AddCssClass(css);
+      html.CSSClasses.Add(css);
 
       return html;
     }

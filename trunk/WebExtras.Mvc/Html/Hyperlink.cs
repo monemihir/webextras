@@ -27,11 +27,6 @@ namespace WebExtras.Mvc.Html
   public class Hyperlink : HtmlElement
   {
     /// <summary>
-    /// Link text
-    /// </summary>
-    public string Text { get { return Tag.InnerHtml; } set { Tag.InnerHtml = value; } }
-
-    /// <summary>
     /// Link URL
     /// </summary>
     public string Url { get { return this["href"]; } set { this["href"] = value; } }
@@ -45,7 +40,7 @@ namespace WebExtras.Mvc.Html
     public Hyperlink(string linkText, string url, object htmlAttributes = null)
       : base(EHtmlTag.A, htmlAttributes)
     {
-      Text = linkText;
+      InnerHtml = linkText;
       Url = url;
     }
   }

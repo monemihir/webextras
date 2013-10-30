@@ -19,7 +19,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web.Routing;
+using System.Web.Mvc;
+using MoreLinq;
 using WebExtras.Core;
 using WebExtras.Mvc.Core;
 using WebExtras.Mvc.Html;
@@ -124,7 +125,7 @@ namespace WebExtras.Mvc.Bootstrap
     /// <returns>Html element with icon added</returns>
     private static T AddIcon<T>(T html, IEnumerable<string> cssClasses, object htmlAttributes = null) where T : IExtendedHtmlString
     {
-      RouteValueDictionary rvd = new RouteValueDictionary(htmlAttributes);
+      IDictionary<string, object> rvd = HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes);
 
       List<string> finalClasses = new List<string>(cssClasses);
 
@@ -137,14 +138,14 @@ namespace WebExtras.Mvc.Bootstrap
       Italic i = new Italic();
       i["class"] = string.Join(" ", finalClasses);
 
-      i.Tag.MergeAttributes(rvd);
+      rvd.ForEach(f => i.Attributes[f.Key] = f.Value.ToString());
 
       html.Prepend(i);
 
-      if (html.Tag.Attributes.ContainsKey("style"))
-        html.Tag.Attributes["style"] += ";text-decoration:none";
+      if (html.Attributes.ContainsKey("style"))
+        html.Attributes["style"] += ";text-decoration:none";
       else
-        html.Tag.Attributes["style"] = "text-decoration:none";
+        html.Attributes["style"] = "text-decoration:none";
 
       return html;
     }

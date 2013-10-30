@@ -141,7 +141,7 @@
   <p>Markup</p>
   <pre><code>
 @@{
-  <span class="comment">// You can use hyperlink elements or HtmlListItem elements or even a HtmlList element to render a navbar</span>
+  <span class="comment">// You can use Hyperlink elements or a HtmlList element to render a navbar</span>
   Hyperlink link1 = new Hyperlink("Link 1", "#");
   Hyperlink link2 = new Hyperlink("Link 2", "#");
   Hyperlink link3 = new Hyperlink("Link 3", "#");
@@ -156,7 +156,7 @@
 @@Html.Navbar(EBootstrapNavbar.Normal, list)
 
 <span class="comment">// Use appropriate navbar type to get all bootstrap effects</span>
-@@Html.Navbar(EBootstrapNavbar.Normal, link1, link2, item3, link4)<span class="highlight">.AsInverse()</span>  <span class="comment">// Creates an inverse styled navbar</span>
+@@Html.Navbar(EBootstrapNavbar.Normal, link1, link2, link3, link4)<span class="highlight">.AsInverse()</span>  <span class="comment">// Creates an inverse styled navbar</span>
   </code></pre>
   <p>
     Output
@@ -177,7 +177,7 @@
 
       @Html.Navbar(EBootstrapNavbar.Normal, list)
 
-      @Html.Navbar(EBootstrapNavbar.Normal, link1, link2, item3, link4).AsInverse()
+      @Html.Navbar(EBootstrapNavbar.Normal, link1, link2, link3, link4).AsInverse()
     </div>
   </div>
 </div>

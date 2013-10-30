@@ -17,7 +17,6 @@
 */
 
 using System;
-using System.Web.Mvc;
 
 namespace WebExtras.Mvc.Html
 {
@@ -28,20 +27,14 @@ namespace WebExtras.Mvc.Html
   public class HtmlListItem : HtmlElement
   {
     /// <summary>
-    /// List item text
-    /// </summary>
-    public string Text { get { return Tag.InnerHtml; } set { Tag.InnerHtml = value; } }
-
-    /// <summary>
     /// Constructor
     /// </summary>
-    /// <param name="text">List item text</param>
+    /// <param name="innerHtml">List item text</param>
     /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
-    public HtmlListItem(string text, object htmlAttributes = null)
+    public HtmlListItem(string innerHtml, object htmlAttributes = null)
       : base(EHtmlTag.ListItem, htmlAttributes)
     {
-      Tag = new TagBuilder("li");
-      Text = text;
+      InnerHtml = innerHtml;
     }
 
     /// <summary>

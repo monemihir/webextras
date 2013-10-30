@@ -20,6 +20,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using WebExtras.Core;
 using WebExtras.Mvc.Core;
 
 namespace WebExtras.Mvc.Html
@@ -38,7 +39,22 @@ namespace WebExtras.Mvc.Html
     /// <summary>
     /// MVC HTML tag builder object
     /// </summary>
-    public TagBuilder Tag { get; set; }
+    private TagBuilder m_tag;
+
+    /// <summary>
+    /// CSS classes of this element
+    /// </summary>
+    public List<string> CSSClasses { get; private set; }
+
+    /// <summary>
+    /// HTML attribute list for this element
+    /// </summary>
+    public IDictionary<string, string> Attributes { get { return m_tag.Attributes; } }
+
+    /// <summary>
+    /// Inner HTML of the element
+    /// </summary>
+    public string InnerHtml { get { return m_tag.InnerHtml; } set { m_tag.InnerHtml = value; } }
 
     /// <summary>
     /// Inner HTML tags to be appended
@@ -56,9 +72,12 @@ namespace WebExtras.Mvc.Html
     /// <param name="tag">An HTML tag to initialise this element with</param>
     public HtmlElement(EHtmlTag tag)
     {
-      Tag = new TagBuilder(tag.ToString().ToLowerInvariant());
+      string tagName = tag.GetStringValue();
+
+      m_tag = new TagBuilder(string.IsNullOrEmpty(tagName) ? tag.ToString().ToLowerInvariant() : tagName);
       m_rand = new Random(DateTime.Now.Millisecond);
 
+      CSSClasses = new List<string>();
       AppendTags = new List<IExtendedHtmlString>();
       PrependTags = new List<IExtendedHtmlString>();
     }
@@ -72,7 +91,7 @@ namespace WebExtras.Mvc.Html
       : this(tag)
     {
       if (htmlAttributes != null)
-        Tag.MergeAttributes(htmlAttributes);
+        m_tag.MergeAttributes(htmlAttributes);
     }
 
     /// <summary>
@@ -84,7 +103,7 @@ namespace WebExtras.Mvc.Html
       : this(tag)
     {
       if (htmlAttributes != null)
-        Tag.MergeAttributes(HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes));
+        m_tag.MergeAttributes(HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes));
     }
 
     /// <summary>
@@ -94,14 +113,8 @@ namespace WebExtras.Mvc.Html
     /// <returns>Value of attribute if available, else null</returns>
     public string this[string attribute]
     {
-      get
-      {
-        return Tag.Attributes.ContainsKey(attribute) ? Tag.Attributes[attribute] : string.Empty;
-      }
-      set
-      {
-        Tag.Attributes[attribute] = value;
-      }
+      get { return Attributes.ContainsKey(attribute) ? Attributes[attribute] : string.Empty; }
+      set { Attributes[attribute] = value; }
     }
 
     /// <summary>
@@ -161,18 +174,18 @@ namespace WebExtras.Mvc.Html
     /// <returns>MVC HTML string representation of the current element</returns>
     public virtual string ToHtmlString(TagRenderMode renderMode)
     {
-      if (!Tag.Attributes.ContainsKey("id") && WebExtrasMvcConstants.EnableAutoIdGeneration)
+      if (!Attributes.ContainsKey("id") && WebExtrasMvcConstants.EnableAutoIdGeneration)
         this["id"] = string.Format("auto_{0}", m_rand.Next(1, 9999));
 
-      string innerHtml = Tag.InnerHtml;
+      if (CSSClasses.Count > 0)
+        this["class"] += " " + string.Join(" ", CSSClasses);
 
-      Tag.InnerHtml =
+      m_tag.InnerHtml =
         string.Join("", PrependTags.Select(f => f.ToHtmlString())) +
-        Tag.InnerHtml +
+        m_tag.InnerHtml +
         string.Join("", AppendTags.Select(f => f.ToHtmlString()));
 
-      string result = Tag.ToString(renderMode);
-      Tag.InnerHtml = innerHtml;
+      string result = m_tag.ToString(renderMode);
 
       return result;
     }

@@ -28,15 +28,6 @@ namespace WebExtras.Mvc.Html
   public class Button : HtmlElement
   {
     /// <summary>
-    /// Button text
-    /// </summary>
-    public string Text
-    {
-      get { return Tag.InnerHtml; }
-      set { Tag.InnerHtml = value; }
-    }
-
-    /// <summary>
     /// Button onclick event
     /// </summary>
     public string OnClick
@@ -55,12 +46,12 @@ namespace WebExtras.Mvc.Html
     public Button(EButton type, string text, string onclick, object htmlAttributes = null)
       : base(EHtmlTag.Button, htmlAttributes)
     {
-      Text = text;
+      InnerHtml = text;
 
       if (!string.IsNullOrEmpty(onclick))
         OnClick = onclick;
 
-      this["type"] = type.GetStringValue();      
+      this["type"] = type.GetStringValue();
     }
   }
 }
