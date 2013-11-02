@@ -18,6 +18,9 @@
 
 #pragma warning disable 1591
 
+using System.IO;
+using System.Reflection;
+using System.Web.Http;
 using System.Web.Mvc;
 
 namespace WebExtras.DemoApp.Controllers
@@ -31,5 +34,22 @@ namespace WebExtras.DemoApp.Controllers
       return View();
     }
 
+    //
+    // GET: /Flavour/BuildDetails
+    public virtual ContentResult BuildDetails()
+    {
+      string result = System.IO.File.ReadAllText(Server.MapPath(Links.Content.inline.build_txt));
+
+      string url = Request.Url.AbsoluteUri;
+
+      if (url.Contains("apphb.com"))
+      {
+        FileInfo fInfo = new FileInfo(Assembly.GetExecutingAssembly().Location);
+        result = "Built by <a href='http://www.appharbor.com'>AppHarbor</a> on " +
+          fInfo.CreationTime.ToString("dd MMM yyyy HH:mm:ss zz");
+      }
+
+      return Content(result);
+    }
   }
 }

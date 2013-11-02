@@ -61,6 +61,7 @@ namespace WebExtras.DemoApp.Controllers
         public class ActionNamesClass
         {
             public readonly string Index = ("Index").ToLowerInvariant();
+            public readonly string BuildDetails = ("BuildDetails").ToLowerInvariant();
         }
 
 
@@ -88,6 +89,12 @@ namespace WebExtras.DemoApp.Controllers
         public override System.Web.Mvc.ActionResult Index()
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Index);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ContentResult BuildDetails()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ContentResult(Area, Name, ActionNames.BuildDetails);
             return callInfo;
         }
 

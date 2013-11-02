@@ -5,7 +5,6 @@
 @using WebExtras.Mvc.Core
 @using WebExtras.Mvc.Html
 @using WebExtras.Mvc.Gumby
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +14,6 @@
   <meta name="author" content="Mihir Mone" />
   <meta name="application-name" content="WebExtras" />
   <meta name="description" content=".net mvc, .net mvc 4, .net mvc helpers, bootstrap, flot, datatables" />
-
   <link rel="icon" type="image/ico" href="@Links.Content.favicon_ico" />
   @Bundle.Css().MvcRenderCachedAssetTag(ContentBundle.CSSGumby.GetStringValue())
   @Bundle.JavaScript().MvcRenderCachedAssetTag(ContentBundle.JSBase.GetStringValue())
@@ -24,7 +22,6 @@
     function goToGoogle() { window.location = "http://www.google.com.au"; }
     function goToYoutube() { window.location = "http://www.youtube.com"; }
     function gotoCodeplex() { window.open('http://webextras.codeplex.com/releases', '_blank'); }
-
   </script>
 </head>
 <body>
@@ -47,7 +44,7 @@
           </ul>
         </div>
       </li>
-      <li class="@Html.SelectedTab("Mvc", new string[] { "GumbyHtml", "GumbyForm"})">@Html.Hyperlink("Mvc Gumby", "#")
+      <li class="@Html.SelectedTab("Mvc", new string[] { "GumbyHtml", "GumbyForm" })">@Html.Hyperlink("Mvc Gumby", "#")
         <div class="dropdown">
           <ul>
             <li>@Html.Hyperlink("Html Extensions", MVC.Gumby.Mvc.GumbyHtml())</li>
@@ -67,12 +64,11 @@
       @Html.Hyperlink("Stable Docs", "http://mihirmone.dyndns.org/appdocs/webextras/gumby") | @Html.Hyperlink("Nightly Docs", "http://mihirmone.dyndns.org/nightly/webextras/gumby")
     </div>
   </div>*@
-
   <div class="container main">
     @RenderBody()
   </div>
   <footer>
-    <small class="pull-left" id="build-date">@Html.Inline(Links.Content.inline.build_txt)</small>
+    <small style="float: left" id="build-date">@{ Html.RenderAction(MVC.Flavour.BuildDetails()); }</small>
     <small>Copyright &copy; @DateTime.Now.Year Mihir Mone. All Rights Reserved. @*@Html.Icon(EFontAwesomeIcon.Css3, new { title = "Valid CSS3" }) @Html.Icon(EFontAwesomeIcon.Html5, new { title = "Valid HTML5" })*@</small>
   </footer>
   @RenderSection("scripts", required: false)

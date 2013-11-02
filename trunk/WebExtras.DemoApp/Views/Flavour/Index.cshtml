@@ -4,9 +4,7 @@
 @{
   Layout = null;
 }
-
 <!DOCTYPE html>
-
 <html>
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -14,12 +12,9 @@
   <meta name="author" content="Mihir Mone" />
   <meta name="application-name" content="WebExtras" />
   <meta name="description" content=".net mvc, .net mvc 4, .net mvc helpers, bootstrap, flot, datatables" />
-
   <link rel="icon" type="image/ico" href="@Links.Content.favicon_ico" />
   <title>Home - WebExtras</title>
-
   @Bundle.Css().MvcRenderCachedAssetTag(ContentBundle.CSSMinimal.GetStringValue())
-
   <style>
     body
     {
@@ -123,20 +118,22 @@
       box-shadow: 0 0 3px #F0F6FC inset;
       color: #FFFFFF;
     }
-    
-    #build-date a {
-	padding: 0;
-	font-size: 13px;
-	border-radius: 0;
-	vertical-align: bottom;	
+
+    #build-date a
+    {
+      padding: 0;
+      font-size: 13px;
+      border-radius: 0;
+      vertical-align: bottom;
     }
   </style>
 </head>
 <body>
-  <h2>WebExtras Demo and Documentation
+  <h2>
+    WebExtras Demo and Documentation
     <br />
     <br />
-    SELECT YOUR FLAVOUR    
+    SELECT YOUR FLAVOUR
   </h2>
   <br />
   <br />
@@ -155,10 +152,13 @@
       </td>
     </tr>
   </table>
-  <br/><br/><br/><br/>
-  <hr/>
+  <br />
+  <br />
+  <br />
+  <br />
+  <hr />
   <footer>
-    <small style="float: left" id="build-date">@Html.Inline(Links.Content.inline.build_txt)</small>
+    <small style="float: left" id="build-date">@{ Html.RenderAction(MVC.Flavour.BuildDetails()); }</small>
     <small style="float: right">Copyright &copy; @DateTime.Now.Year Mihir Mone. All Rights Reserved.</small>
   </footer>
 </body>

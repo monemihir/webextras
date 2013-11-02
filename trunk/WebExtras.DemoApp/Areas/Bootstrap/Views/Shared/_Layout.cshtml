@@ -7,14 +7,13 @@
 @using WebExtras.Mvc.Bootstrap
 <!DOCTYPE html>
 <html>
-<head>  
+<head>
   <title>@ViewBag.Title - Bootstrap 2 - WebExtras</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width" />
   <meta name="author" content="Mihir Mone" />
   <meta name="application-name" content="WebExtras" />
   <meta name="description" content=".net mvc, .net mvc 4, .net mvc helpers, bootstrap, flot, datatables" />
-
   <link rel="icon" type="image/ico" href="@Links.Content.favicon_ico" />
   @Bundle.Css().MvcRenderCachedAssetTag(ContentBundle.CSSBootstrap.GetStringValue())
   @Bundle.JavaScript().MvcRenderCachedAssetTag(ContentBundle.JSBase.GetStringValue())
@@ -66,7 +65,7 @@
     @RenderBody()
   </div>
   <footer>
-    <small class="pull-left" id="build-date">@Html.Inline(Links.Content.inline.build_txt)</small>
+    <small style="float: left" id="build-date">@{ Html.RenderAction(MVC.Flavour.BuildDetails()); }</small>
     <small>Copyright &copy; @DateTime.Now.Year Mihir Mone. All Rights Reserved. @Html.Icon(EFontAwesomeIcon.Css3, new { title = "Valid CSS3" }) @Html.Icon(EFontAwesomeIcon.Html5, new { title = "Valid HTML5" })</small>
   </footer>
   @RenderSection("scripts", required: false)

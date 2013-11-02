@@ -95,6 +95,19 @@ public class T4MVC_System_Web_Mvc_ActionResult : System.Web.Mvc.ActionResult, IT
     public RouteValueDictionary RouteValueDictionary { get; set; }
 }
 [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+public class T4MVC_System_Web_Mvc_ContentResult : System.Web.Mvc.ContentResult, IT4MVCActionResult
+{
+    public T4MVC_System_Web_Mvc_ContentResult(string area, string controller, string action, string protocol = null): base()
+    {
+        this.InitMVCT4Result(area, controller, action, protocol);
+    }
+    
+    public string Controller { get; set; }
+    public string Action { get; set; }
+    public string Protocol { get; set; }
+    public RouteValueDictionary RouteValueDictionary { get; set; }
+}
+[GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
 public class T4MVC_System_Web_Mvc_JsonResult : System.Web.Mvc.JsonResult, IT4MVCActionResult
 {
     public T4MVC_System_Web_Mvc_JsonResult(string area, string controller, string action, string protocol = null): base()
@@ -160,10 +173,6 @@ namespace Links
              
         public static readonly string favicon_ico = Url("favicon.ico");
         public static readonly string favicon_png = Url("favicon.png");
-        public static readonly string fluidable_less = Url("fluidable.less");
-        public static readonly string fluidable_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/fluidable.min.css") ? Url("fluidable.min.css") : Url("fluidable.css");
-             
-        public static readonly string fluidable_min_css = Url("fluidable.min.css");
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public static class font {
             private const string URLPATH = "~/Content/font";
