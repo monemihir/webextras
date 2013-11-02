@@ -16,11 +16,11 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using WebExtras.Mvc.Html;
-using System;
 
 namespace WebExtras.Mvc.Core
 {
@@ -121,7 +121,7 @@ namespace WebExtras.Mvc.Core
       TagBuilder table = new TagBuilder("table");
       table.AddCssClass("checkbox-group");
       table.InnerHtml = string.Join("", rows);
-      table.MergeAttributes<string, object>(HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes));
+      table.MergeAttributes(HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes));
 
       return MvcHtmlString.Create(table.ToString(TagRenderMode.Normal));
     }
