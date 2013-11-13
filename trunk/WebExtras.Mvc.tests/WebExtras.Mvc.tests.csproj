@@ -76,9 +76,12 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Core\HtmlStringUtilTest.cs" />
+    <Compile Include="Html\ExtendedHtmlStringExtensionTest.cs" />
     <Compile Include="MockHtmlHelperUtil.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="FormHelperExtensionTest.cs" />
+    <Compile Include="JavascriptHelperTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WebExtras.Mvc\WebExtras.Mvc.csproj">
@@ -86,6 +89,7 @@
       <Name>WebExtras.Mvc</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
