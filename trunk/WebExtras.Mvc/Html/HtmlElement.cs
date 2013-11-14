@@ -83,18 +83,6 @@ namespace WebExtras.Mvc.Html
     }
 
     /// <summary>
-    /// Constructor to specify a dictionary of extra HTML attributes
-    /// </summary>
-    /// <param name="tag">An HTML tag to initialise this element with</param>
-    /// <param name="htmlAttributes">Extra HTML attributes</param>
-    public HtmlElement(EHtmlTag tag, IDictionary<string, object> htmlAttributes)
-      : this(tag)
-    {
-      if (htmlAttributes != null)
-        m_tag.MergeAttributes(htmlAttributes);
-    }
-
-    /// <summary>
     /// Constructor to specify extra HTML attributes as an anonymous type
     /// </summary>
     /// <param name="tag">An HTML tag to initialise this element with</param>
@@ -102,8 +90,20 @@ namespace WebExtras.Mvc.Html
     public HtmlElement(EHtmlTag tag, object htmlAttributes)
       : this(tag)
     {
+      IDictionary<string, object> attribs = null;
+
       if (htmlAttributes != null)
-        m_tag.MergeAttributes(HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes));
+      {
+        try
+        {
+          attribs = (IDictionary<string, object>)htmlAttributes;
+          m_tag.MergeAttributes(attribs);
+        }
+        catch (Exception)
+        {
+          m_tag.MergeAttributes(HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes));
+        }
+      }
     }
 
     /// <summary>
