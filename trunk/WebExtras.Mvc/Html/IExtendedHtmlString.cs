@@ -35,7 +35,7 @@ namespace WebExtras.Mvc.Html
     /// <summary>
     /// CSS classes of this element
     /// </summary>
-    List<string> CSSClasses { get; }
+    CssClassesCollection CSSClasses { get; }
 
     /// <summary>
     /// HTML attribute list for this element

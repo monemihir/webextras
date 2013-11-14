@@ -44,7 +44,7 @@ namespace WebExtras.Mvc.Html
     /// <summary>
     /// CSS classes of this element
     /// </summary>
-    public List<string> CSSClasses { get; private set; }
+    public CssClassesCollection CSSClasses { get; private set; }
 
     /// <summary>
     /// HTML attribute list for this element
@@ -77,7 +77,7 @@ namespace WebExtras.Mvc.Html
       m_tag = new TagBuilder(string.IsNullOrEmpty(tagName) ? tag.ToString().ToLowerInvariant() : tagName);
       m_rand = new Random(DateTime.Now.Millisecond);
 
-      CSSClasses = new List<string>();
+      CSSClasses = new CssClassesCollection();
       AppendTags = new List<IExtendedHtmlString>();
       PrependTags = new List<IExtendedHtmlString>();
     }

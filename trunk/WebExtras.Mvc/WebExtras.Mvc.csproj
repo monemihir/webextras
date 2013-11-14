@@ -110,6 +110,7 @@
     <Compile Include="Gumby\GumbyNavbarExtension.cs" />
     <Compile Include="Html\Button.cs" />
     <Compile Include="Bootstrap\EBootstrapButton.cs" />
+    <Compile Include="Html\CssClassesCollection.cs" />
     <Compile Include="Html\Div.cs" />
     <Compile Include="Html\Empty.cs" />
     <Compile Include="Html\ExtendedHtmlStringExtension.cs" />
