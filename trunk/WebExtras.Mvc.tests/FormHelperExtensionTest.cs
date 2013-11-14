@@ -16,7 +16,6 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
@@ -34,6 +33,7 @@ namespace WebExtras.Mvc.tests
   {
     private HtmlHelper m_html;
     private IEnumerable<CheckBox> m_checkBoxes;
+    private IEnumerable<RadioButton> m_radioBtns;
 
     #region Button tests
 
@@ -129,6 +129,53 @@ namespace WebExtras.Mvc.tests
 
     #endregion CheckBoxGroup tests
 
+    #region RadioButtonGroup tests
+
+    /// <summary>
+    /// Test that the RadioButtonGroup method with no. of buttons
+    /// not specified returns expected results
+    /// </summary>
+    [TestMethod]
+    public void RadioButtonGroup_Without_NumButtonsPerLine_Test()
+    {
+      // arrange
+      string expected = "<table class=\"radiobutton-group\" title=\"radio button group\"><tr><td><input name=\"test-radio-group\" type=\"radio\" value=\"val 1\" /> rbtn 1</td>\n<td><input name=\"test-radio-group\" type=\"radio\" value=\"val 2\" /> rbtn 2</td>\n<td><input name=\"test-radio-group\" type=\"radio\" value=\"val 3\" /> rbtn 3</td>\n<td><input name=\"test-radio-group\" type=\"radio\" value=\"val 4\" /> rbtn 4</td>\n<td><input name=\"test-radio-group\" type=\"radio\" value=\"val 5\" /> rbtn 5</td>\n</tr>\n<tr><td><input name=\"test-radio-group\" type=\"radio\" value=\"val 6\" /> rbtn 6</td>\n<td><input name=\"test-radio-group\" type=\"radio\" value=\"val 7\" /> rbtn 7</td>\n<td><input name=\"test-radio-group\" type=\"radio\" value=\"val 8\" /> rbtn 8</td>\n<td><input name=\"test-radio-group\" type=\"radio\" value=\"val 9\" /> rbtn 9</td>\n<td><input name=\"test-radio-group\" type=\"radio\" value=\"val 10\" /> rbtn 10</td>\n</tr>\n</table>";
+
+      // act
+      string result = FormHelperExtension.RadioButtonGroup(
+        m_html,
+        "test-radio-group",
+        m_radioBtns,
+        new { title = "radio button group" }).ToHtmlString();
+
+      // assert
+      Assert.AreEqual(expected, result);
+    }
+
+    /// <summary>
+    /// Test that the RadioButtonGroup method with a no. of buttons
+    /// specified returns expected results
+    /// </summary>
+    [TestMethod]
+    public void RadioButtonGroup_With_NumButtonsPerLine_Test()
+    {
+      // arrange
+      string expected = "<table class=\"radiobutton-group\" title=\"radio button group\"><tr><td><input name=\"test-radio-group\" type=\"radio\" value=\"val 1\" /> rbtn 1</td>\n<td><input name=\"test-radio-group\" type=\"radio\" value=\"val 2\" /> rbtn 2</td>\n<td><input name=\"test-radio-group\" type=\"radio\" value=\"val 3\" /> rbtn 3</td>\n</tr>\n<tr><td><input name=\"test-radio-group\" type=\"radio\" value=\"val 4\" /> rbtn 4</td>\n<td><input name=\"test-radio-group\" type=\"radio\" value=\"val 5\" /> rbtn 5</td>\n<td><input name=\"test-radio-group\" type=\"radio\" value=\"val 6\" /> rbtn 6</td>\n</tr>\n<tr><td><input name=\"test-radio-group\" type=\"radio\" value=\"val 7\" /> rbtn 7</td>\n<td><input name=\"test-radio-group\" type=\"radio\" value=\"val 8\" /> rbtn 8</td>\n<td><input name=\"test-radio-group\" type=\"radio\" value=\"val 9\" /> rbtn 9</td>\n</tr>\n<tr><td><input name=\"test-radio-group\" type=\"radio\" value=\"val 10\" /> rbtn 10</td>\n</tr>\n</table>";
+
+      // act
+      string result = FormHelperExtension.RadioButtonGroup(
+        m_html,
+        "test-radio-group",
+        m_radioBtns,
+        3,
+        new { title = "radio button group" }).ToHtmlString();
+
+      // assert
+      Assert.AreEqual(expected, result);
+    }
+
+    #endregion RadioButtonGroup tests
+
     /// <summary>
     /// Test initialise
     /// </summary>
@@ -138,6 +185,7 @@ namespace WebExtras.Mvc.tests
       m_html = MockHtmlHelperUtil.CreateHtmlHelper();
 
       m_checkBoxes = Enumerable.Range(1, 10).Select(f => new CheckBox("box " + f, "val " + f));
+      m_radioBtns = Enumerable.Range(1, 10).Select(f => new RadioButton("rbtn " + f, "val " + f));
     }
   }
 }

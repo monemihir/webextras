@@ -83,6 +83,11 @@ namespace WebExtras.Mvc.Html
     /// <summary>
     /// HTML SPAN tag
     /// </summary>
-    Span
+    Span,
+
+    /// <summary>
+    /// HTML LABEL tag
+    /// </summary>
+    Label
   }
 }

@@ -16,25 +16,35 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 namespace WebExtras.Mvc.Html
 {
   /// <summary>
-  /// Generic extension for an extended html string
+  /// Represents a HTML LABEL tag
   /// </summary>
-  public static class ExtendedHtmlStringExtension
+  public class HtmlLabel : HtmlElement
   {
     /// <summary>
-    /// Adds given CSS class(es) to the current HTML element
+    /// Constructor
     /// </summary>
-    /// <param name="html">HTML element to add class to</param>
-    /// <param name="css">CSS class(es) to be added</param>
-    /// <returns>Current HTML element with classes added</returns>
-    public static T AddCssClass<T>(this T html, string css) where T : IExtendedHtmlString
-    {
-      html.CSSClasses.AddRange(css.Split(' '));
+    /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
+    public HtmlLabel(object htmlAttributes = null)
+      : this(string.Empty, htmlAttributes)
+    { }
 
-      return html;
+    /// <summary>
+    /// Constructor
+    /// </summary>
+    /// <param name="innerHtml">Text to be displayed</param>
+    /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
+    public HtmlLabel(string innerHtml, object htmlAttributes = null)
+      : base(EHtmlTag.Label, htmlAttributes)
+    {
+      InnerHtml = innerHtml;
     }
   }
 }

@@ -178,7 +178,7 @@ namespace WebExtras.Mvc.Html
         this["id"] = string.Format("auto_{0}", m_rand.Next(1, 9999));
 
       if (CSSClasses.Count > 0)
-        this["class"] += " " + string.Join(" ", CSSClasses);
+        this["class"] += " " + string.Join(" ", CSSClasses.Distinct());
 
       m_tag.InnerHtml =
         string.Join("", PrependTags.Select(f => f.ToHtmlString())) +

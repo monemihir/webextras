@@ -115,6 +115,7 @@
     <Compile Include="Html\ExtendedHtmlStringExtension.cs" />
     <Compile Include="Bootstrap\BSFormHtmlHelperExtension.cs" />
     <Compile Include="Bootstrap\BSHtmlHelperExtension.cs" />
+    <Compile Include="Html\HtmlLabel.cs" />
     <Compile Include="Html\HtmlListItem.cs" />
     <Compile Include="Html\EHtmlTag.cs" />
     <Compile Include="Html\HtmlElement.cs" />
