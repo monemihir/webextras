@@ -17,6 +17,7 @@
 */
 
 using System;
+using MoreLinq;
 
 namespace WebExtras.Mvc.Html
 {
@@ -42,6 +43,24 @@ namespace WebExtras.Mvc.Html
     {
       InnerHtml = linkText;
       Url = url;
+    }
+
+    /// <summary>
+    /// Convert the current hyperlink to a label
+    /// </summary>
+    /// <returns>The converted label</returns>
+    public HtmlLabel ToLabel()
+    {
+      HtmlLabel label = new HtmlLabel(InnerHtml);
+      label.Append(AppendTags);
+      label.Prepend(PrependTags);
+      
+      Attributes.ForEach(f => label.Attributes.Add(f));
+      label.Attributes.Remove("href");
+
+      CSSClasses.ForEach(f => label.AddCssClass(f));
+
+      return label;
     }
   }
 }
