@@ -92,6 +92,7 @@
     <Compile Include="Core\WebExtrasConstants.cs" />
     <Compile Include="JQDataTables\AASort.cs" />
     <Compile Include="JQDataTables\AOColumn.cs" />
+    <Compile Include="JQDataTables\OAria.cs" />
     <Compile Include="JQDataTables\DatatableFilters.cs" />
     <Compile Include="JQDataTables\DatatableRecordsSortExtension.cs" />
     <Compile Include="JQDataTables\EAOColumn.cs" />
@@ -103,6 +104,7 @@
     <Compile Include="JQDataTables\DatatableColumn.cs" />
     <Compile Include="JQDataTables\DatatableRecords.cs" />
     <Compile Include="JQDataTables\DatatableSettings.cs" />
+    <Compile Include="JQDataTables\OPaginate.cs" />
     <Compile Include="JQDataTables\OSearch.cs" />
     <Compile Include="JQDataTables\PostbackItem.cs" />
     <Compile Include="JQFlot\FlotChart.cs" />
@@ -147,7 +149,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties BuildVersion_UseGlobalSettings="False" BuildVersion_ConfigurationName="Release" />
+      <UserProperties BuildVersion_ConfigurationName="Release" BuildVersion_UseGlobalSettings="False" />
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup>
