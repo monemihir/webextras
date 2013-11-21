@@ -302,6 +302,15 @@ namespace WebExtras.JQDataTables
     [JsonConverter(typeof(EServerMethodJsonConverter))]
     public EServerMethod? sServerMethod;
 
+    /// <summary>
+    /// This parameter allows you to readily specify the entries in the length dropdown menu that 
+    /// DataTables shows when pagination is enabled. It can be either a 1D array of options which 
+    /// will be used for both the displayed option and the value, or a 2D array which will use the 
+    /// array in the first position as the value, and the array in the second position as the 
+    /// displayed options (useful for language strings such as 'All')
+    /// </summary>
+    public object aLengthMenu;
+
     #endregion Some extra settings
 
     #region Properties
@@ -471,8 +480,7 @@ namespace WebExtras.JQDataTables
       iDisplayLength = displayLength;
       sScrollY = tableHeight;
 
-      if (sortOptions != null)
-        aaSorting = sortOptions.Select(f => f.ToArray()).ToArray();
+      SetupAASort(sortOptions);
 
       oLanguage = new OLanguage
       {
@@ -552,6 +560,27 @@ namespace WebExtras.JQDataTables
     #endregion Ctors
 
     #region Setups
+
+    /// <summary>
+    /// Setup the jQuery dataTables aaSort variable from given set
+    /// of sort option
+    /// </summary>
+    /// <param name="sortOption">Sort option</param>
+    public void SetupAASort(AASort sortOption)
+    {
+      SetupAASort(new AASort[] { sortOption });
+    }
+
+    /// <summary>
+    /// Setup the jQuery dataTables aaSort variable from given set
+    /// of sort options
+    /// </summary>
+    /// <param name="sortOptions">Sort options</param>
+    public void SetupAASort(IEnumerable<AASort> sortOptions)
+    {
+      if (sortOptions != null)
+        aaSorting = sortOptions.Select(f => f.ToArray()).ToArray();  
+    }
 
     /// <summary>
     /// Setup the jQuery dataTables aoColumns variable from the given
