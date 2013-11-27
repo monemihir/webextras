@@ -9,3 +9,5 @@ obj/*
 packages/*
 **/_ReSharper*/*
 **/TestResults
+build/binaries/*
+build/web/*
