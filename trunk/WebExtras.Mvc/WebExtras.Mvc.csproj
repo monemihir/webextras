@@ -77,11 +77,15 @@
       <HintPath>..\External\Microsoft\MVC4\System.Web.WebPages.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xml.Linq">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="T4MVCExtensions">
       <HintPath>..\External\T4MVC\v3.2.0\T4MVCExtensions.dll</HintPath>
     </Reference>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <project name="WebExtras" default="build" basedir="../trunk">
   <description>WebExtras project</description>
-  
+
   <!-- Includes -->
   <include buildfile="../build/generic.build.include" />
 
@@ -10,19 +10,19 @@
   <property name="nightly.dir" value="C:/inetpub/wwwroot/nightly/webextras" />
   <property name="msbuild.configuration" value="Release" />
   <property name="msbuild.platform" value="Any CPU" />
-  
+
   <!-- Target: Build Debug -->
   <target name="build-debug" description="Compiles the project in Debug mode">
     <property name="msbuild.configuration" value="Debug" />
 
     <call target="build" />
   </target>
-  
+
   <!-- Target: Build Release -->
   <target name="build" description="Compiles the project in Release mode">
 
     <call target="clean-build-dist" />
-    
+
     <!-- Build WebExtras.DemoApp -->
     <msbuild project="WebExtras.DemoApp/WebExtras.DemoApp.csproj">
       <arg value="/p:OutputPath=../${build.bin-dir}" />
@@ -43,7 +43,7 @@
       <arg value="/p:DocumentationFile=WebExtras.Mvc.xml" />
       <arg value="/t:Rebuild" />
     </msbuild>
-    
+
     <!-- Build WebExtras -->
     <msbuild project="WebExtras/WebExtras.csproj">
       <arg value="/p:OutputPath=bin" />
@@ -62,7 +62,7 @@
 
     <call target="deploy" />
   </target>
-  
+
   <!-- Target: Deploy -->
   <target name="deploy" description="Copies published Web system to deploy location" depends="build">
     <echo message="Stopping IIS Web Server" />
@@ -81,14 +81,14 @@
     <property name="build.date" value="" />
     <tstamp property="build.date" pattern="dd MMM yyyy HH:mm:ss zz" verbose="true" />
     <echo file="${deploy.dir}/Content/inline/build.txt">Built with &lt;a href='http://nant.sourceforge.net/'&gt;NAnt 0.9.2&lt;/a&gt; on ${build.date}</echo>
-    
+
     <echo message="Starting IIS Web Server" />
     <exec program="net.exe">
       <arg value="start" />
       <arg value="W3SVC" />
     </exec>
   </target>
-  
+
   <!-- Target: Package -->
   <target name="package" description="Creates a distribution package" depends="build">
 
@@ -111,9 +111,11 @@
         <include name="Newtonsoft.Json.dll" />
         <include name="Newtonsoft.Json.xml" />
         <include name="T4MVCExtensions.dll" />
+        <include name="System.Xml.dll" />
+        <include name="System.Xml.Linq.dll" />
       </fileset>
     </copy>
-    
+
     <!-- Copy css -->
     <copy todir="${pkg.dir}/css" failonerror="true">
       <fileset basedir="${build.web-dir}/Content" failonempty="true">
@@ -124,7 +126,7 @@
         <include name="jquery.datatables.bootstrap3.css" />
       </fileset>
     </copy>
-    
+
     <!-- Copy js -->
     <copy todir="${pkg.dir}/js" failonerror="true">
       <fileset basedir="${build.web-dir}/Scripts" failonempty="true">
@@ -136,7 +138,7 @@
         <include name="jquery.bootstrap.datetimepicker.min.js" />
       </fileset>
     </copy>
-    
+
     <!-- Copy views -->
     <copy todir="${pkg.dir}/views" failonerror="true">
       <fileset basedir="${build.web-dir}/Views/Shared" failonempty="true">
@@ -145,18 +147,18 @@
         <include name="DatatablePartial.ascx" />
       </fileset>
     </copy>
-    
+
     <!-- Copy license -->
     <copy file="${build.web-dir}/lgpl-3.0.htm" todir="${pkg.dir}" failonerror="true" />
   </target>
-  
+
   <!-- Target: Archive nightly -->
   <target name="archive-nightly" description="Create a nightly publish archive">
     <property name="archive.file" value="${pkg.dir}/../webextras-nightly.zip" />
 
     <call target="archive" />
   </target>
-  
+
   <!-- Target: Archive -->
   <target name="archive" description="Creates a publish archive" depends="package">
     <!-- We already have all files in correct location -->
@@ -164,7 +166,7 @@
       <fileset basedir="${pkg.dir}">
         <include name="**/*" />
         <include name="*.*" />
-      </fileset>      
+      </fileset>
     </zip>
   </target>
 </project>
