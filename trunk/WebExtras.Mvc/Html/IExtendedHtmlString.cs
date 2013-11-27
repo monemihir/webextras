@@ -27,10 +27,10 @@ namespace WebExtras.Mvc.Html
   /// </summary>
   public interface IExtendedHtmlString : IHtmlString
   {
-    ///// <summary>
-    ///// An MVC tag builder
-    ///// </summary>
-    //TagBuilder Tag { get; set; }
+    /// <summary>
+    /// The HTML tag representing this element
+    /// </summary>
+    EHtmlTag Tag { get; }
 
     /// <summary>
     /// CSS classes of this element

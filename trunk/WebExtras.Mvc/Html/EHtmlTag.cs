@@ -43,6 +43,11 @@ namespace WebExtras.Mvc.Html
     I,
 
     /// <summary>
+    /// HTML B tag
+    /// </summary>
+    B,
+
+    /// <summary>
     /// HTML IMG tag
     /// </summary>
     Img,
@@ -60,20 +65,17 @@ namespace WebExtras.Mvc.Html
     /// <summary>
     /// HTML UL tag
     /// </summary>
-    [StringValue("ul")]
-    UnorderedList,
+    Ul,
 
     /// <summary>
     /// HTML OL tag
     /// </summary>
-    [StringValue("ol")]
-    OrderedList,
+    Ol,
 
     /// <summary>
     /// HTML LIST ITEM tag
     /// </summary>
-    [StringValue("li")]
-    ListItem,
+    Li,
 
     /// <summary>
     /// HTML DIV tag

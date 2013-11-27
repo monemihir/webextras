@@ -21,33 +21,28 @@ using System;
 namespace WebExtras.Mvc.Html
 {
   /// <summary>
-  /// Represents a HTML LIST ITEM element
+  /// Represents an HTML B element
   /// </summary>
   [Serializable]
-  public class HtmlListItem : HtmlElement
+  public class Bold : HtmlElement
   {
     /// <summary>
     /// Constructor
     /// </summary>
-    /// <param name="innerHtml">List item text</param>
     /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
-    public HtmlListItem(string innerHtml, object htmlAttributes = null)
-      : base(EHtmlTag.Li, htmlAttributes)
-    {
-      InnerHtml = innerHtml;
-    }
+    public Bold(object htmlAttributes = null)
+      : base(EHtmlTag.B, htmlAttributes)
+    { }
 
     /// <summary>
-    /// Create an HtmlListItem from the given item
+    /// Constructor
     /// </summary>
-    /// <param name="item">Item to convert to a list item</param>
-    /// <returns>An HtmlListItem</returns>
-    public static HtmlListItem From(IExtendedHtmlString item)
+    /// <param name="innerHtml">Text to be displayed</param>
+    /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
+    public Bold(string innerHtml, object htmlAttributes = null)
+      : base(EHtmlTag.B, htmlAttributes)
     {
-      HtmlListItem li = new HtmlListItem(string.Empty);
-      li.Append(item);
-
-      return li;
+      InnerHtml = innerHtml;
     }
   }
 }

@@ -79,6 +79,7 @@
     <Compile Include="Core\HtmlStringUtilTest.cs" />
     <Compile Include="Html\CssClassesCollectionTest.cs" />
     <Compile Include="Html\ExtendedHtmlStringExtensionTest.cs" />
+    <Compile Include="Html\HtmlElementTest.cs" />
     <Compile Include="MockHtmlHelperUtil.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="FormHelperExtensionTest.cs" />
