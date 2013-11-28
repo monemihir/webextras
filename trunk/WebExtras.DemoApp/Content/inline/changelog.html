@@ -1,6 +1,6 @@
-﻿<strong>v1.3.0 Beta (current)</strong>
+﻿<strong>v1.3.0 Beta 4 (current)</strong>
 <br />
-<strong>Released: 29 October 2013<br />
+<strong>Released: 28 November 2013<br />
 </strong>
 <br />
 <strong>Changelog</strong>
@@ -10,10 +10,23 @@
   <li>Enh: Adding a new string extension <strong>Remove()</strong> to remove occurences of given string</li>
   <li>Enh: Adding a <strong>ToDictionary()</strong> for name value collections</li>
   <li>Enh: The dataTable sort extension is now a little more intelligent and robust</li>
-  <li>Enh: General under the hood code enhancements </li>
+  <li>Enh: Adding ability to parse HTML content into WebExtras&#39; HtmlElement 
+    (Experimental)</li>
+  <li>Enh: Adding support for two more HTML tags viz., LABEL and B</li>
+  <li>Enh: A new utility method added to the Hyperlink to facilitate conversion to 
+    Label</li>
+  <li>Enh: General under the hood code enhancements and a lot more testing done</li>
   <li class="text-warning warning">Fix: Hyperlink extensions now handle MVC Areas</li>
+  <li class="text-warning warning">Fix: Updating jQuery dataTables oLanguage 
+    property support to now include all options</li>
   <li class="text-warning warning">Fix: Marking <strong>JsFunc</strong> as serializable otherwise when using the ASP.NET State Server, the object does not get serialized</li>
   <li class="text-error error">Brk: The <strong>AddWhiteIcon()</strong> extension is no longer available when using Font Awesome provided icons. Since these icons are font based the coloring can be controlled by CSS classes</li>
+  <li class="text-error error">Brk: An overhaul to the element creation logic and 
+    the <strong>IExtendedHtmlString</strong> interface. We no longer expose the
+    <strong>TagBuilder</strong> 
+    directly. Instead we provide properties the user can interact with. This is to 
+    deter users from directly making use of the underlying TagBuilder object which 
+    can lead to erroneous/inconsistent HTML being generated</li>
 </ul>
 <hr />
 <strong>v1.2.0</strong>

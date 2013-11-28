@@ -84,7 +84,7 @@ namespace WebExtras.Mvc.Bootstrap
       HtmlList list = new HtmlList(EList.Unordered);
       foreach (Hyperlink item in items)
       {
-        if (item.Attributes.ContainsKey("class") && item.Attributes["class"].ContainsIgnoreCase("brand"))
+        if (item.CSSClasses.Contains("brand") || item.CSSClasses.Contains("navbar-brand"))
         {
           Brand = item;
         }

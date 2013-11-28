@@ -30,6 +30,9 @@ namespace WebExtras.Mvc.Gumby
     /// <returns>A 'Metro' Gumby navbar</returns>
     public static GumbyNavbar AsMetro(this GumbyNavbar navbar)
     {
+      navbar.CSSClasses.Add(navbar["class"]);
+      navbar.Attributes.Remove("class");
+
       navbar.CSSClasses.Remove("pretty");
       navbar.CSSClasses.Add("metro");
 
@@ -43,6 +46,9 @@ namespace WebExtras.Mvc.Gumby
     /// <returns>A 'Pretty' Gumby navbar</returns>
     public static GumbyNavbar AsPretty(this GumbyNavbar navbar)
     {
+      navbar.CSSClasses.Add(navbar["class"]);
+      navbar.Attributes.Remove("class");
+
       navbar.CSSClasses.Remove("metro");
       navbar.CSSClasses.Add("pretty");
 

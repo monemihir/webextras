@@ -67,7 +67,7 @@ namespace WebExtras.Mvc.Gumby
 
       foreach (Hyperlink item in items)
       {
-        if (item.Attributes.ContainsKey("class") && item.Attributes["class"].ContainsIgnoreCase("logo"))
+        if (item.CSSClasses.Contains("logo"))
         {
           Logo = item;
         }
@@ -97,9 +97,9 @@ namespace WebExtras.Mvc.Gumby
         return;
 
       Div logoDiv = new Div();
-      logoDiv["class"] = Logo.Attributes["class"];
+      logoDiv.CSSClasses.AddRange(Logo.CSSClasses);
+      Logo.CSSClasses.Clear();
 
-      Logo.Attributes.Remove("class");
       logoDiv.Append(Logo);
 
       Prepend(logoDiv);
