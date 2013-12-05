@@ -33,6 +33,8 @@ namespace WebExtras.Mvc.Html
   [Serializable]
   public class HtmlElement : IExtendedHtmlString
   {
+    #region Attributes
+
     /// <summary>
     /// A collection of all supported HTML tags
     /// </summary>
@@ -82,6 +84,10 @@ namespace WebExtras.Mvc.Html
     /// Inner HTML tags to be prepended
     /// </summary>
     public List<IExtendedHtmlString> PrependTags { get; private set; }
+
+    #endregion Attributes
+
+    #region Ctors
 
     /// <summary>
     /// Static constructor to initialise static/readonly fields
@@ -146,6 +152,8 @@ namespace WebExtras.Mvc.Html
       m_tag.MergeAttributes(attribs);
     }
 
+    #endregion Ctors
+
     /// <summary>
     /// Gets or sets the value for the attribute specified
     /// </summary>
@@ -156,6 +164,8 @@ namespace WebExtras.Mvc.Html
       get { return Attributes.ContainsKey(attribute) ? Attributes[attribute] : string.Empty; }
       set { Attributes[attribute] = value; }
     }
+
+    #region Append/Prepend
 
     /// <summary>
     /// Appends the given HTML element at the end of the current 
@@ -197,6 +207,10 @@ namespace WebExtras.Mvc.Html
       PrependTags.AddRange(elements);
     }
 
+    #endregion Append/Prepend
+
+    #region ToHtmlString
+
     /// <summary>
     /// Converts current element to a MVC HTML string
     /// </summary>
@@ -213,7 +227,7 @@ namespace WebExtras.Mvc.Html
     /// <param name="renderMode">Tag render mode</param>
     /// <returns>MVC HTML string representation of the current element</returns>
     public virtual string ToHtmlString(TagRenderMode renderMode)
-    {
+    { 
       if (!Attributes.ContainsKey("id") && WebExtrasMvcConstants.EnableAutoIdGeneration)
         this["id"] = string.Format("auto_{0}", m_rand.Next(1, 9999));
 
@@ -233,6 +247,8 @@ namespace WebExtras.Mvc.Html
       return result;
     }
 
+    #endregion ToHtmlString
+
     /// <summary>
     /// Empty string
     /// </summary>
@@ -240,6 +256,8 @@ namespace WebExtras.Mvc.Html
     {
       get { return new Empty(); }
     }
+
+    #region Parse
 
     /// <summary>
     /// Parse the given HTML to a HtmlElement. Note the HTML given
@@ -305,5 +323,7 @@ namespace WebExtras.Mvc.Html
 
       return html;
     }
+
+    #endregion Parse
   }
 }

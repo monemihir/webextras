@@ -29,6 +29,55 @@ namespace WebExtras.Mvc.tests.Html
   [TestClass]
   public class HtmlElementTest
   {
+    #region Ctor tests
+
+    /// <summary>
+    /// Test that the constructor initialises all public properties
+    /// </summary>
+    [TestMethod]
+    public void Ctor_Initialises_Properties()
+    {
+      // act
+      HtmlElement element = new HtmlElement(EHtmlTag.A);
+
+      // assert
+      Assert.AreEqual(12, HtmlElement.SupportedTags.Count);
+      Assert.IsTrue(string.IsNullOrEmpty(element.InnerHtml));
+      Assert.AreEqual(EHtmlTag.A, element.Tag);
+      Assert.AreEqual(0, element.PrependTags.Count);
+      Assert.AreEqual(0, element.AppendTags.Count);
+      Assert.AreEqual(0, element.CSSClasses.Count);
+
+      Assert.IsNotNull(element.Attributes);
+    }
+
+    /// <summary>
+    /// Test that the constructor with HTML attributes initialises
+    /// all public properties, adds the HTML attributes to the element
+    /// and handles the special condition for 'class' attribute
+    /// </summary>
+    [TestMethod]
+    public void Ctor_With_HTMLAttributes_Works_Properly()
+    {
+      // act
+      HtmlElement element = new HtmlElement(EHtmlTag.A, new { @class = "test-css-class", title = "test title" });
+
+      // assert
+      Assert.IsTrue(string.IsNullOrEmpty(element.InnerHtml));
+      Assert.AreEqual(EHtmlTag.A, element.Tag);      
+      Assert.AreEqual(0, element.PrependTags.Count);
+      Assert.AreEqual(0, element.AppendTags.Count);
+
+      Assert.AreEqual(1, element.Attributes.Count);
+      Assert.AreEqual("test title", element.Attributes["title"]);
+      Assert.AreEqual(1, element.CSSClasses.Count);
+      Assert.AreEqual("test-css-class", element.CSSClasses[0]);
+    }
+
+    #endregion Ctor tests
+
+    #region Parse tests
+
     /// <summary>
     /// Test that the Parse method works properly
     /// </summary>
@@ -70,7 +119,7 @@ namespace WebExtras.Mvc.tests.Html
       Assert.AreEqual(2, result.CSSClasses.Count);
       Assert.AreEqual("t1", result.CSSClasses[0]);
       Assert.AreEqual("t2", result.CSSClasses[1]);
-      
+
       Assert.AreEqual(2, result.PrependTags.Count);
       Assert.AreEqual(1, result.PrependTags[0].CSSClasses.Count);
       Assert.AreEqual("icon-temp", result.PrependTags[0].CSSClasses[0]);
@@ -135,5 +184,6 @@ namespace WebExtras.Mvc.tests.Html
       Assert.AreEqual(expected.Message, actual.Message);
     }
 
+    #endregion Parse tests
   }
 }
