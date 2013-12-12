@@ -58,6 +58,8 @@ namespace WebExtras.Mvc.Gumby
     /// <param name="type">Gumby button type</param>
     /// <param name="sizeOrstyle">Gumby button size/style</param>
     /// <returns>A Gumby button styled hyperlink</returns>
+    /// <exception cref="WebExtras.Mvc.Core.GumbyThemeException">Thrown when a valid Gumby framework
+    /// theme is not selected</exception>
     public static IExtendedHtmlString AsButton<T>(this T html, EGumbyButton type, params EGumbyButtonStyle[] sizeOrstyle) where T : IExtendedHtmlString
     {
       if (WebExtrasMvcConstants.GumbyTheme == EGumbyTheme.None)

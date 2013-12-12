@@ -16,32 +16,18 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#pragma warning disable 1591
-
-using System;
-using WebExtras.Core;
-using WebExtras.Mvc.Core;
-
-namespace WebExtras.Mvc.Bootstrap
+namespace WebExtras.Core
 {
   /// <summary>
-  /// Available icon sizes for the Font-Awesome icon library
+  /// A generic interface used to decide the StringValue of an enum value
+  /// at run time
   /// </summary>
-  public enum EFontAwesomeIconSize
+  public interface IStringValueDecider
   {
-    [StringValue("")]
-    Normal,
-
-    [StringValue(typeof(FontAwesomeLargeIconStringValue))]
-    Large,
-
-    [StringValue("2x")]
-    TwoX,
-
-    [StringValue("3x")]
-    ThreeX,
-
-    [StringValue("4x")]
-    FourX
+    /// <summary>
+    /// The string value decider function
+    /// </summary>
+    /// <returns>The string value to be used for the enum value</returns>
+    string Decide();
   }
 }

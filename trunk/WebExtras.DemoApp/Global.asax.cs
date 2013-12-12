@@ -21,6 +21,7 @@
 using System.Web.Mvc;
 using System.Web.Routing;
 using WebExtras.DemoApp.App_Start;
+using WebExtras.Mvc.Core;
 
 namespace WebExtras.DemoApp
 {
@@ -38,6 +39,7 @@ namespace WebExtras.DemoApp
       BundleConfig.RegisterBundles();
 
       //WebExtrasMvcConstants.EnableAutoIdGeneration = true;
+      WebExtrasMvcConstants.FontAwesomeVersion = EFontAwesomeVersion.V3;
     }
   }
 }

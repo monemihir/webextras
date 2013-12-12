@@ -91,6 +91,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bootstrap\BootstrapStringValueDeciders.cs" />
     <Compile Include="Core\ActionMessageControllerExtension.cs" />
     <Compile Include="Bootstrap\BootstrapNavbarExtension.cs" />
     <Compile Include="Bootstrap\BootstrapNavBar.cs" />
@@ -100,6 +101,8 @@
     <Compile Include="Bootstrap\EFontAwesomeIconSize.cs" />
     <Compile Include="Core\BootstrapVersionException.cs" />
     <Compile Include="Core\EBootstrapVersion.cs" />
+    <Compile Include="Core\EFontAwesomeVersion.cs" />
+    <Compile Include="Core\FontAwesomeVersionException.cs" />
     <Compile Include="Core\GumbyThemeException.cs" />
     <Compile Include="Core\HtmlStringUtil.cs" />
     <Compile Include="Core\JsonNetResult.cs" />

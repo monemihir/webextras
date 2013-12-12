@@ -18,30 +18,15 @@
 
 #pragma warning disable 1591
 
-using System;
-using WebExtras.Core;
-using WebExtras.Mvc.Core;
-
-namespace WebExtras.Mvc.Bootstrap
+namespace WebExtras.Mvc.Core
 {
   /// <summary>
-  /// Available icon sizes for the Font-Awesome icon library
+  /// Font Awesome version selector
   /// </summary>
-  public enum EFontAwesomeIconSize
+  public enum EFontAwesomeVersion
   {
-    [StringValue("")]
-    Normal,
-
-    [StringValue(typeof(FontAwesomeLargeIconStringValue))]
-    Large,
-
-    [StringValue("2x")]
-    TwoX,
-
-    [StringValue("3x")]
-    ThreeX,
-
-    [StringValue("4x")]
-    FourX
+    None,
+    V3,
+    V4
   }
 }

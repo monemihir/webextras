@@ -44,6 +44,8 @@ namespace WebExtras.Mvc.Bootstrap
     /// <param name="icon">Icon to be rendered</param>
     /// <param name="htmlAttributes">Extra HTML attributes</param>
     /// <returns>A Bootstrap icon</returns>
+    /// <exception cref="WebExtras.Mvc.Core.BootstrapVersionException">Thrown when a valid Bootstrap version
+    /// is not selected</exception>
     public static IExtendedHtmlString Icon(this HtmlHelper html, EBootstrapIcon icon, object htmlAttributes = null)
     {
 
@@ -89,6 +91,8 @@ namespace WebExtras.Mvc.Bootstrap
     /// <param name="size">Icon size</param>
     /// <param name="htmlAttributes">Extra HTML attributes</param>
     /// <returns>A Bootstrap icon</returns>
+    /// <exception cref="WebExtras.Mvc.Core.FontAwesomeVersionException">Thrown when a valid FontAwesome
+    /// icon library version is not selected</exception>
     public static IExtendedHtmlString Icon(this HtmlHelper html, EFontAwesomeIcon icon, EFontAwesomeIconSize size = EFontAwesomeIconSize.Normal, object htmlAttributes = null)
     {
       IDictionary<string, object> attrsDictionary = HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes);
@@ -100,10 +104,19 @@ namespace WebExtras.Mvc.Bootstrap
         attrsDictionary.Remove("class");
       }
 
-      cssClasses.Add("icon-" + icon.ToString().ToLowerInvariant().Replace("_", "-"));
+      string prefix = string.Empty;
+
+      if (WebExtrasMvcConstants.FontAwesomeVersion == EFontAwesomeVersion.V3)
+        prefix = "icon-";
+      else if (WebExtrasMvcConstants.FontAwesomeVersion == EFontAwesomeVersion.V4)
+        prefix = "fa fa-";
+      else
+        throw new FontAwesomeVersionException();
+
+      cssClasses.Add(prefix + icon.ToString().ToLowerInvariant().Replace("_", "-"));
 
       if (size != EFontAwesomeIconSize.Normal)
-        cssClasses.Add("icon-" + size.GetStringValue());
+        cssClasses.Add(prefix + size.GetStringValue());
 
       Italic i = new Italic();
       i["class"] = string.Join(" ", cssClasses);

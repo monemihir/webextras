@@ -40,8 +40,10 @@ namespace WebExtras.Mvc.Bootstrap
     /// <typeparam name="T">Generic type to be used. This type must implement IExtendedHtmlString</typeparam>
     /// <param name="html">Current html element</param>
     /// <param name="icon">Icon to be rendered</param>
-    /// <param name="htmlAttributes">[Optional] Extra html attributes</param>
+    /// <param name="htmlAttributes">[Optional] Extra html attributes</param>    
     /// <returns>Html element with icon added</returns>
+    /// <exception cref="WebExtras.Mvc.Core.BootstrapVersionException">Thrown when a valid Bootstrap version
+    /// is not selected</exception>
     public static T AddIcon<T>(this T html, EBootstrapIcon icon, object htmlAttributes = null) where T : IExtendedHtmlString
     {
       List<string> cssClasses = new List<string>();
@@ -71,6 +73,8 @@ namespace WebExtras.Mvc.Bootstrap
     /// <param name="icon">Icon to be rendered</param>
     /// <param name="htmlAttributes">[Optional] Extra html attributes</param>
     /// <returns>Html element with a white icon added</returns>
+    /// <exception cref="WebExtras.Mvc.Core.BootstrapVersionException">Thrown when a valid Bootstrap version
+    /// is not selected</exception>
     public static T AddWhiteIcon<T>(this T html, EBootstrapIcon icon, object htmlAttributes = null) where T : IExtendedHtmlString
     {
       List<string> cssClasses = new List<string>();
@@ -100,15 +104,26 @@ namespace WebExtras.Mvc.Bootstrap
     /// <param name="size">[Optional] Icon size</param>
     /// <param name="htmlAttributes">[Optional] Extra html attributes</param>
     /// <returns>Html element with icon added</returns>
+    /// <exception cref="WebExtras.Mvc.Core.FontAwesomeVersionException">Thrown when a valid FontAwesome
+    /// icon library version is not selected</exception>
     public static T AddIcon<T>(this T html, EFontAwesomeIcon icon, EFontAwesomeIconSize size = EFontAwesomeIconSize.Normal, object htmlAttributes = null) where T : IExtendedHtmlString
     {
+      string prefix = string.Empty;
+
+      if (WebExtrasMvcConstants.FontAwesomeVersion == EFontAwesomeVersion.V3)
+        prefix = "icon-";
+      else if (WebExtrasMvcConstants.FontAwesomeVersion == EFontAwesomeVersion.V4)
+        prefix = "fa fa-";
+      else
+        throw new FontAwesomeVersionException();
+
       List<string> cssClasses = new List<string>
       {
-        "icon-" + icon.ToString().ToLowerInvariant().Replace("_", "-")
+        prefix + icon.ToString().ToLowerInvariant().Replace("_", "-")
       };
 
       if (size != EFontAwesomeIconSize.Normal)
-        cssClasses.Add("icon-" + size.GetStringValue());
+        cssClasses.Add(prefix + size.GetStringValue());
 
       html = AddIcon(html, cssClasses, htmlAttributes);
 

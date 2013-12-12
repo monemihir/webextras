@@ -17,6 +17,7 @@
 */
 
 using System;
+using System.Reflection;
 
 namespace WebExtras.Core
 {
@@ -38,12 +39,32 @@ namespace WebExtras.Core
     public string Value { get { return m_value; } }
 
     /// <summary>
-    /// Default constructor
+    /// Constructor
     /// </summary>
     /// <param name="value">Value to be associated with the enum attribute</param>
     public StringValueAttribute(string value)
     {
       m_value = value;
+    }
+
+    /// <summary>
+    /// Constructor
+    /// </summary>
+    /// <param name="t">Decide the string value based on the given type. The given type MUST
+    /// implement the <see cref="WebExtras.Core.IStringValueDecider"/> interface and have a 
+    /// default parameterless constructor</param>
+    /// <exception cref="System.InvalidOperationException">Thrown when the given type does not
+    /// implement WebExtras.Core.IStringValueDecider interface</exception>
+    public StringValueAttribute(Type t)
+    {
+      if (!typeof(IStringValueDecider).IsAssignableFrom(t))
+        throw new InvalidOperationException("The type " + t.FullName + " does not implement WebExtras.Core.IStringValueDecider");
+
+      var obj = Activator.CreateInstance(t);
+
+      MethodInfo decideMethod = obj.GetType().GetMethod("Decide");
+
+      m_value = (string)decideMethod.Invoke(obj, null);
     }
   }
 }

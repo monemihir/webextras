@@ -42,5 +42,10 @@ namespace WebExtras.Mvc.Core
     /// Gumby theme to use
     /// </summary>
     public static EGumbyTheme GumbyTheme = EGumbyTheme.None;
+
+    /// <summary>
+    /// The version of the FontAwesome icon library you want to use
+    /// </summary>
+    public static EFontAwesomeVersion FontAwesomeVersion = EFontAwesomeVersion.None;
   }
 }
