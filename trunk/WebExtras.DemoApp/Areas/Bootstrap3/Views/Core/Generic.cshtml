@@ -43,29 +43,27 @@
   <h4>Enum Extensions</h4>
   <p>WebExtras provides two enum extension methods viz., ToTitleCase() and GetStringValue()</p>
   <div class="row">
-    <div class="col-md-4">Consider the following C# enumeration</div>
-    <div class="col-md-4">
+    <div class="col-md-6">Consider the following C# enumeration</div>
+    <div class="col-md-6">
       ToTitleCase() as the method name suggests will convert the enum 
       value to it's titlecase representation based on the current system culture
-    </div>
-    <div class="col-md-4">
-      GetStringValue() simply retrieves the string value decorated using the 
-      StringValue attribute. This is especially useful if you want an enum value to have an
-      integer representation as well as a string representation
     </div>    
   </div>
   <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-6">
       <pre><code>
   <span class="comment">// Enum definition</span>
   public enum TestEnum
   {
     [StringValue("My great Enum")]
-    enumvalue = 0
+    enumvalue = 0,
+
+    [StringValue(typeof(MyCustomStringValueDecider))]
+    customEnumValue = 1
   }
     </code></pre>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-6">
       <pre><code>
   <span class="comment">// Invocation of ToTitleCase</span>
   TestEnum.enumvalue.ToTitleCase()
@@ -73,8 +71,18 @@
   <span class="comment">// Output</span>
   Enumvalue
     </code></pre>
+    </div>    
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      GetStringValue() simply retrieves the string value decorated either using a static
+      text or by using a <span class="highlight">IStringValueDecider</span> implementation of the StringValue attribute. 
+      This is especially useful if you want an enum value to have an integer representation 
+      as well as a string representation.
     </div>
-    <div class="col-md-4">
+  </div>
+  <div class="row">
+    <div class="col-md-6">
       <pre><code>
   <span class="comment">// Invocation of GetStringValue</span>
   TestEnum.enumvalue.GetStringValue()
@@ -83,6 +91,26 @@
   My great Enum
     </code></pre>
     </div>
+    <div class="col-md-6">
+      <pre><code>
+  <span class="comment">// This is how MyCustomStringValueDecider class looks</span>
+  class MyCustomStringValueDecider : IStringValueDecider
+  {
+    public string Decide()
+    {
+      <span class="comment">// Let us say we evaluated some condition here<br />      // and our result was "my decided value"</span>
+      return "my decided value";
+    }
+  }
+
+  <span class="comment">// Invocation of GetStringValue on a value that has a <br />  // custom string value decider</span>
+  TestEnum.customEnumValue.GetStringValue()
+
+  <span class="comment">// Output</span>
+  my decided value
+    </code></pre>
+    </div>
+
   </div>
 </div>
 
