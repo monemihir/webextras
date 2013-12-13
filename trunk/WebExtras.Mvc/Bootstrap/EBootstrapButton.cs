@@ -53,7 +53,7 @@ namespace WebExtras.Mvc.Bootstrap
     [StringValue("btn btn-danger")]
     Danger,
 
-    [StringValue("btn-large btn-lg")]
+    [StringValue(typeof(BootstrapLargeButtonStringValue))]
     Large,
 
     /// <summary>
@@ -68,7 +68,7 @@ namespace WebExtras.Mvc.Bootstrap
     [StringValue("btn-mini")]
     Mini,
     
-    [StringValue("btn-small btn-sm")]
+    [StringValue(typeof(BootstrapSmallButtonStringValue))]
     Small,
 
     /// <summary>

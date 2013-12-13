@@ -25,7 +25,7 @@ namespace WebExtras.Mvc.Bootstrap
   /// FontAwesome large icon CSS class value decider based on 
   /// the FontAwesome library version
   /// </summary>
-  public sealed class FontAwesomeLargeIconStringValue : IStringValueDecider
+  internal class FontAwesomeLargeIconStringValue : IStringValueDecider
   {
     /// <summary>
     /// The string value decider function
@@ -35,19 +35,62 @@ namespace WebExtras.Mvc.Bootstrap
     {
       string css = string.Empty;
 
-      switch (WebExtrasMvcConstants.FontAwesomeVersion)
-      {
-        case EFontAwesomeVersion.None:
-          throw new FontAwesomeVersionException();
+      if (WebExtrasMvcConstants.FontAwesomeVersion == EFontAwesomeVersion.None)
+        throw new FontAwesomeVersionException();       
+      else if (WebExtrasMvcConstants.FontAwesomeVersion == EFontAwesomeVersion.V3)
+        css = "large";
+      else
+        css = "lg";
 
-        case EFontAwesomeVersion.V3:
-          css = "large";
-          break;
+      return css;
+    }
+  }
 
-        case EFontAwesomeVersion.V4:
-          css = "lg";
-          break;
-      }
+  /// <summary>
+  /// Bootstrap large button CSS class value decider based on
+  /// the Bootstrap version decider
+  /// </summary>
+  internal class BootstrapLargeButtonStringValue : IStringValueDecider
+  {
+    /// <summary>
+    /// The string value decider function
+    /// </summary>
+    /// <returns>The string value to be used for the enum value</returns>
+    public string Decide()
+    {
+      string css = string.Empty;
+
+      if (WebExtrasMvcConstants.BootstrapVersion == EBootstrapVersion.None)
+        throw new BootstrapVersionException();
+      else if (WebExtrasMvcConstants.BootstrapVersion == EBootstrapVersion.V2)
+        css = "btn-large";
+      else
+        css = "btn-lg";
+
+      return css;
+    }
+  }
+
+  /// <summary>
+  /// Bootstrap small button CSS class value decider based on
+  /// the Bootstrap version decider
+  /// </summary>
+  internal class BootstrapSmallButtonStringValue : IStringValueDecider
+  {
+    /// <summary>
+    /// The string value decider function
+    /// </summary>
+    /// <returns>The string value to be used for the enum value</returns>
+    public string Decide()
+    {
+      string css = string.Empty;
+
+      if (WebExtrasMvcConstants.BootstrapVersion == EBootstrapVersion.None)
+        throw new BootstrapVersionException();
+      else if (WebExtrasMvcConstants.BootstrapVersion == EBootstrapVersion.V2)
+        css = "btn-small";
+      else
+        css = "btn-sm";
 
       return css;
     }

@@ -36,7 +36,7 @@ namespace WebExtras.Core
     public static IDictionary<string, string> ToDictionary(this NameValueCollection collection)
     {
       if (collection == null)
-        throw new ArgumentException("WebExtras.Core.NameValueCollectionExtensions.ToDictionary: Collection cannot be null");
+        throw new ArgumentException("Collection cannot be null");
 
       return collection.Cast<string>().ToDictionary(k => k, v => collection[v]);
     }

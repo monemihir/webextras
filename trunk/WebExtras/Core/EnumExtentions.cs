@@ -34,7 +34,7 @@ namespace WebExtras.Core
     /// <returns>Titlecase converted value</returns>
     public static string ToTitleCase(this Enum val)
     {
-      return CultureInfo.CurrentCulture.TextInfo.ToTitleCase(val.ToString());
+      return CultureInfo.CurrentCulture.TextInfo.ToTitleCase(val.ToString().ToLowerInvariant());
     }
 
     /// <summary>

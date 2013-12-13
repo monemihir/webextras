@@ -44,7 +44,7 @@ namespace WebExtras.Core
         return string.Join(" ", parsed);
       }
 
-      return CultureInfo.CurrentCulture.TextInfo.ToTitleCase(str);
+      return CultureInfo.CurrentCulture.TextInfo.ToTitleCase(str.ToLowerInvariant());
     }
 
     /// <summary>

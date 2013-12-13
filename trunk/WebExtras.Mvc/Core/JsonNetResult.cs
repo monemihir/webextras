@@ -54,6 +54,8 @@ namespace WebExtras.Mvc.Core
       Data = data;
       SerialiserSettings = settings ?? new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore };
       JsonRequestBehavior = behavior;
+      ContentEncoding = Encoding.UTF8;
+      ContentType = "application/json";
     }
 
     /// <summary>
@@ -70,8 +72,8 @@ namespace WebExtras.Mvc.Core
 
       HttpResponseBase response = context.HttpContext.Response;
 
-      response.ContentType = "application/json";
-      response.ContentEncoding = Encoding.UTF8;
+      response.ContentType = ContentType;
+      response.ContentEncoding = ContentEncoding;
 
       if (Data == null) 
         return;
