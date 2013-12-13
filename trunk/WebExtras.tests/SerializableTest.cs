@@ -22,7 +22,7 @@ namespace WebExtras.tests
       // Assert
       foreach (Type type in a.GetTypes())
       {
-        if (!type.IsSealed)
+        if (!type.IsSealed && !type.IsInterface)
           Assert.IsTrue(type.IsSerializable, type.FullName + " is not marked as serializable");
 
       }
