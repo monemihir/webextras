@@ -34,6 +34,17 @@ namespace WebExtras.Core
     private readonly string m_value;
 
     /// <summary>
+    /// Custom string value decider
+    /// </summary>
+    public Type ValueDeciderType { get; private set; }
+
+    /// <summary>
+    /// Flag indicating whether this attribute has a custom string value
+    /// decider associated with it
+    /// </summary>
+    public bool HasCustomDecider { get; private set; }
+
+    /// <summary>
     /// String value
     /// </summary>
     public string Value { get { return m_value; } }
@@ -56,15 +67,12 @@ namespace WebExtras.Core
     /// <exception cref="System.InvalidOperationException">Thrown when the given type does not
     /// implement WebExtras.Core.IStringValueDecider interface</exception>
     public StringValueAttribute(Type t)
-    {
+    { 
       if (!typeof(IStringValueDecider).IsAssignableFrom(t))
         throw new InvalidOperationException("The type " + t.FullName + " does not implement WebExtras.Core.IStringValueDecider");
 
-      var obj = Activator.CreateInstance(t);
-
-      MethodInfo decideMethod = obj.GetType().GetMethod("Decide");
-
-      m_value = (string)decideMethod.Invoke(obj, null);
+      ValueDeciderType = t;
+      HasCustomDecider = true;
     }
   }
 }

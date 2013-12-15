@@ -27,7 +27,9 @@ namespace WebExtras.Core
     /// <summary>
     /// The string value decider function
     /// </summary>
+    /// <param name="sender">[Optional] Sender object that can contain extra data
+    /// which can then be used to decide the value</param>
     /// <returns>The string value to be used for the enum value</returns>
-    string Decide();
+    string Decide(object sender = null);
   }
 }

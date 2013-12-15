@@ -30,8 +30,10 @@ namespace WebExtras.Mvc.Bootstrap
     /// <summary>
     /// The string value decider function
     /// </summary>
+    /// <param name="sender">[Optional] Sender object that can contain extra data
+    /// which can then be used to decide the value</param>
     /// <returns>The string value to be used for the enum value</returns>
-    public string Decide()
+    public string Decide(object sender = null)
     {
       string css = string.Empty;
 
@@ -55,8 +57,10 @@ namespace WebExtras.Mvc.Bootstrap
     /// <summary>
     /// The string value decider function
     /// </summary>
+    /// <param name="sender">[Optional] Sender object that can contain extra data
+    /// which can then be used to decide the value</param>
     /// <returns>The string value to be used for the enum value</returns>
-    public string Decide()
+    public string Decide(object sender = null)
     {
       string css = string.Empty;
 
@@ -80,8 +84,10 @@ namespace WebExtras.Mvc.Bootstrap
     /// <summary>
     /// The string value decider function
     /// </summary>
+    /// <param name="sender">[Optional] Sender object that can contain extra data
+    /// which can then be used to decide the value</param>
     /// <returns>The string value to be used for the enum value</returns>
-    public string Decide()
+    public string Decide(object sender = null)
     {
       string css = string.Empty;
 

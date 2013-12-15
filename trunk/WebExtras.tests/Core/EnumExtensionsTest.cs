@@ -27,7 +27,36 @@ namespace WebExtras.tests.Core
   public enum TestEnum
   {
     [StringValue("test me")]
-    testvalue
+    testvalue,
+
+    [StringValue(typeof(TestStringValueDecider))]
+    customdecider
+  }
+
+  /// <summary>
+  /// Test string value decider
+  /// </summary>
+  public class TestStringValueDecider : IStringValueDecider
+  {
+    /// <summary>
+    /// The string value decider function
+    /// </summary>
+    /// <param name="sender">[Optional] Sender object that can contain extra data
+    /// which can then be used to decide the value</param>
+    /// <returns>The string value to be used for the enum value</returns>
+    public string Decide(object sender = null)
+    {
+      if (sender != null)
+      {
+        string prefix = sender.ToString();
+
+        return prefix + " custom decider value";
+      }
+      else
+      {
+        return "custom decider value";
+      }
+    }
   }
 
   /// <summary>
@@ -60,6 +89,26 @@ namespace WebExtras.tests.Core
 
       // Assert
       Assert.AreEqual("test me", result);
+    }
+
+    /// <summary>
+    /// Test that the GetStringValue method for an enum value
+    /// with a custom string value decider works as expected 
+    /// </summary>
+    [TestMethod]
+    public void GetStringValue_With_CustomDecider_Works_Properly()
+    { 
+       // act
+      string result = TestEnum.customdecider.GetStringValue();
+
+      // assert
+      Assert.AreEqual("custom decider value", result);
+
+      // act
+      result = TestEnum.customdecider.GetStringValue("blah blah");
+
+      // assert
+      Assert.AreEqual("blah blah custom decider value", result);
     }
   }
 }

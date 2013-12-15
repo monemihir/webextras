@@ -42,15 +42,39 @@ namespace WebExtras.Core
     /// StringValue attribute
     /// </summary>
     /// <param name="value">Enum value to be checked</param>
+    /// <param name="sender">[Optional] The sender object to be sent to the 
+    /// WebExtras.Core.IStringValueDecider.Decide() in order to assist in deciding the value</param>
     /// <returns>Associated string value, else null</returns>
-    public static string GetStringValue(this Enum value)
+    public static string GetStringValue(this Enum value, object sender = null)
     {
       string output = null;
       Type type = value.GetType();
       FieldInfo fi = type.GetField(value.ToString());
       StringValueAttribute[] attrs = fi.GetCustomAttributes(typeof(StringValueAttribute), false) as StringValueAttribute[];
       if (attrs != null && attrs.Length > 0)
-        output = attrs[0].Value;
+      {
+        if (attrs[0].HasCustomDecider)
+        {
+          var obj = Activator.CreateInstance(attrs[0].ValueDeciderType);
+
+          MethodInfo decideMethod = obj.GetType().GetMethod("Decide");
+
+          output = (string)decideMethod.Invoke(obj, new object[] { sender });
+        }
+        else
+        {
+          output = attrs[0].Value;
+        }
+      }
+
+
+
+      
+
+
+
+
+
       return output;
     }
   }
