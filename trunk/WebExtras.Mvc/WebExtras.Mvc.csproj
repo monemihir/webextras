@@ -99,6 +99,7 @@
     <Compile Include="Bootstrap\EBootstrapProgressBar.cs" />
     <Compile Include="Bootstrap\EFontAwesomeIcon.cs" />
     <Compile Include="Bootstrap\EFontAwesomeIconSize.cs" />
+    <Compile Include="Core\ActionMessageStringValueDeciders.cs" />
     <Compile Include="Core\BootstrapVersionException.cs" />
     <Compile Include="Core\EBootstrapVersion.cs" />
     <Compile Include="Core\EFontAwesomeVersion.cs" />
@@ -106,6 +107,7 @@
     <Compile Include="Core\GumbyThemeException.cs" />
     <Compile Include="Core\HtmlStringUtil.cs" />
     <Compile Include="Core\JsonNetResult.cs" />
+    <Compile Include="Core\NoCssThemeException.cs" />
     <Compile Include="Core\WebExtrasMvcConstants.cs" />
     <Compile Include="Gumby\EGumbyButton.cs" />
     <Compile Include="Gumby\EGumbyButtonStyle.cs" />
