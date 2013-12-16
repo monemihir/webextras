@@ -20,7 +20,6 @@
 
 using System.IO;
 using System.Reflection;
-using System.Web.Http;
 using System.Web.Mvc;
 
 namespace WebExtras.DemoApp.Controllers
@@ -41,11 +40,16 @@ namespace WebExtras.DemoApp.Controllers
       string result = System.IO.File.ReadAllText(Server.MapPath(Links.Content.inline.build_txt));
 
       string url = Request.Url.AbsoluteUri;
+      FileInfo fInfo = new FileInfo(Assembly.GetExecutingAssembly().Location);
 
       if (url.Contains("apphb.com"))
       {
-        FileInfo fInfo = new FileInfo(Assembly.GetExecutingAssembly().Location);
         result = "Built by <a href='http://www.appharbor.com'>AppHarbor</a> on " +
+          fInfo.CreationTime.ToString("dd MMM yyyy HH:mm:ss zz");
+      }
+      else if (url.Contains("azurewebsites.net"))
+      {
+        result = "Built by <a href='http://www.windowsazure.com'>Azure</a> on " +
           fInfo.CreationTime.ToString("dd MMM yyyy HH:mm:ss zz");
       }
 
