@@ -25,6 +25,9 @@ namespace WebExtras.DemoApp.Controllers
     public partial class AssetsController
     {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public AssetsController() { }
+
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         protected AssetsController(Dummy d) { }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -41,18 +44,6 @@ namespace WebExtras.DemoApp.Controllers
             return RedirectToRoutePermanent(callInfo.RouteValueDictionary);
         }
 
-        [NonAction]
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.ActionResult Js()
-        {
-            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Js);
-        }
-        [NonAction]
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.ActionResult Css()
-        {
-            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Css);
-        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public AssetsController Actions { get { return MVC.Assets; } }
@@ -69,27 +60,9 @@ namespace WebExtras.DemoApp.Controllers
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNamesClass
         {
-            public readonly string Js = ("Js").ToLowerInvariant();
-            public readonly string Css = ("Css").ToLowerInvariant();
         }
 
 
-        static readonly ActionParamsClass_Js s_params_Js = new ActionParamsClass_Js();
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public ActionParamsClass_Js JsParams { get { return s_params_Js; } }
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public class ActionParamsClass_Js
-        {
-            public readonly string id = ("id").ToLowerInvariant();
-        }
-        static readonly ActionParamsClass_Css s_params_Css = new ActionParamsClass_Css();
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public ActionParamsClass_Css CssParams { get { return s_params_Css; } }
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public class ActionParamsClass_Css
-        {
-            public readonly string id = ("id").ToLowerInvariant();
-        }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ViewsClass Views { get { return s_views; } }
@@ -108,20 +81,6 @@ namespace WebExtras.DemoApp.Controllers
     public class T4MVC_AssetsController : WebExtras.DemoApp.Controllers.AssetsController
     {
         public T4MVC_AssetsController() : base(Dummy.Instance) { }
-
-        public override System.Web.Mvc.ActionResult Js(string id)
-        {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Js);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
-            return callInfo;
-        }
-
-        public override System.Web.Mvc.ActionResult Css(string id)
-        {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Css);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
-            return callInfo;
-        }
 
     }
 }
