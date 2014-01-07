@@ -13,7 +13,7 @@
     <property name="env.pf32" value="${environment::get-variable('ProgramFiles')}" />
   </if>
 
-  <loadtasks assembly="${env.pf32}/NAnt/nantcontrib-0.92/bin/NAnt.Contrib.Tasks.dll" />
+  <loadtasks assembly="${build.bin-dir}/../nant-contrib/bin/NAnt.Contrib.Tasks.dll" />
 
   <!-- Target: Copy documentation files -->
   <target name="copy-doc-files" description="Copies documentation files from individual 'bin' folder to appropriate location">
