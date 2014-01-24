@@ -21,6 +21,7 @@
 using System;
 using System.Web.Mvc;
 using SquishIt.Framework;
+using SquishIt.Mvc;
 
 namespace WebExtras.DemoApp.Controllers
 {
@@ -28,36 +29,7 @@ namespace WebExtras.DemoApp.Controllers
   /// Controller to handle static content (e.g. CSS and JS) bundles
   /// via SquishIt
   /// </summary>
-  public partial class AssetsController : Controller
+  public partial class AssetsController : SquishItController
   {
-    /// <summary>
-    /// Default constructor
-    /// </summary>
-    public AssetsController()
-    { }
-
-    /// <summary>
-    /// Get JS content for website
-    /// </summary>
-    /// <param name="id">JS Bundle Id</param>
-    /// <returns>Minified JS if in production, else individual JS files</returns>
-    public virtual ActionResult Js(string id)
-    {
-      // Set max-age to a year from now
-      Response.Cache.SetMaxAge(TimeSpan.FromDays(365));
-      return Content(Bundle.JavaScript().RenderCached(id), "text/javascript");
-    }
-
-    /// <summary>
-    /// Get CSS content
-    /// </summary>
-    /// <param name="id">CSS Bundle Id</param>
-    /// <returns>Minified CSS if in production, else individual CSS files</returns>
-    public virtual ActionResult Css(string id)
-    {
-      // Set max-age to a year from now
-      Response.Cache.SetMaxAge(TimeSpan.FromDays(365));
-      return Content(Bundle.Css().RenderCached(id), "text/css");
-    }
   }
 }
