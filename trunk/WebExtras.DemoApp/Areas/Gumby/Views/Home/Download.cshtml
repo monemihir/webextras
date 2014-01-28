@@ -16,6 +16,12 @@
       .AddIcon(EGumbyIcon.Download)
       .AsButton(EGumbyButton.Info, EGumbyButtonStyle.Large))
 
+    &nbsp;&nbsp;&nbsp;
+
+    @(Html.Hyperlink(" NuGet Gallery", "https://www.nuget.org/packages?q=webextras")
+      .AddIcon(EGumbyIcon.Download)
+      .AsButton(EGumbyButton.Info, EGumbyButtonStyle.Large))
+
     <br />
     @Html.Hyperlink("Older versions", "javascript:gotoCodeplex()")
   </div>

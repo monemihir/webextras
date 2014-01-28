@@ -15,6 +15,12 @@
       .AsButton(EBootstrapButton.Default, EBootstrapButton.Large)
       .AddIcon(EFontAwesomeIcon.Download_Alt, EFontAwesomeIconSize.Large))
 
+    &nbsp;&nbsp;&nbsp;
+
+    @(Html.Hyperlink(" NuGet Gallery", "https://www.nuget.org/packages?q=webextras")
+      .AsButton(EBootstrapButton.Default, EBootstrapButton.Large)
+      .AddIcon(EFontAwesomeIcon.Download_Alt, EFontAwesomeIconSize.Large))
+    
     <br />
     @Html.Hyperlink("Older versions", "javascript:gotoCodeplex()")
   </div>
