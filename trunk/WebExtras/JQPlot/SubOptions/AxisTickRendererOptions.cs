@@ -23,6 +23,7 @@ namespace WebExtras.JQPlot.SubOptions
   /// <summary>
   /// Axis tick renderer options
   /// </summary>
+  [Serializable]
   public class AxisTickRendererOptions
   {
     /// <summary>

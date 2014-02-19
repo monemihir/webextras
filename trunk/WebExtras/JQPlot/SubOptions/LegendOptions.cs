@@ -23,6 +23,7 @@ namespace WebExtras.JQPlot.SubOptions
   /// <summary>
   /// Legend options
   /// </summary>
+  [Serializable]
   public class LegendOptions
   {
     /// <summary>

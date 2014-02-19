@@ -16,6 +16,8 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+using System;
+
 #pragma warning disable 1591
 
 namespace WebExtras.JQPlot.SubOptions
@@ -23,6 +25,7 @@ namespace WebExtras.JQPlot.SubOptions
   /// <summary>
   /// Legend location
   /// </summary>
+  [Serializable]
   public enum ELegendLocation
   {
     NorthWest,

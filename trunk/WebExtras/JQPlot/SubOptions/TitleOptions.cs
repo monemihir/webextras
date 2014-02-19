@@ -16,12 +16,14 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+using System;
 
 namespace WebExtras.JQPlot.SubOptions
 {
   /// <summary>
   /// Title options
   /// </summary>
+  [Serializable]
   public class TitleOptions
   {
     /// <summary>

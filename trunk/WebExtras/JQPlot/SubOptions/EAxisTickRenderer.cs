@@ -17,11 +17,14 @@
 */
 
 
+using System;
+
 namespace WebExtras.JQPlot.SubOptions
 {
   /// <summary>
   /// Axis tick renderer
   /// </summary>
+  [Serializable]
   public enum EAxisTickRenderer
   {
   }

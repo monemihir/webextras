@@ -16,11 +16,14 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+using System;
+
 namespace WebExtras.JQPlot.SubOptions
 {
   /// <summary>
   /// jqPlot axis options
   /// </summary>
+  [Serializable]
   public class AxisOptions
   {
     /// <summary>
