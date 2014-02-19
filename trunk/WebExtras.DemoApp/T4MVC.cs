@@ -132,6 +132,7 @@ namespace Links
         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
         public static readonly string bootstrap_2_3_1_min_js = Url("bootstrap-2.3.1.min.js");
         public static readonly string bootstrap_3_0_0_min_js = Url("bootstrap-3.0.0.min.js");
+        public static readonly string excanvas_min_js = Url("excanvas.min.js");
         public static readonly string gumby_2_5_6_min_js = Url("gumby-2.5.6.min.js");
         public static readonly string jquery_1_9_1_min_js = Url("jquery-1.9.1.min.js");
         public static readonly string jquery_bootstrap_datetimepicker_min_js = Url("jquery.bootstrap.datetimepicker.min.js");
@@ -150,6 +151,7 @@ namespace Links
         public static readonly string jquery_flot_min_js = Url("jquery.flot.min.js");
         public static readonly string jquery_flot_pie_min_js = Url("jquery.flot.pie.min.js");
         public static readonly string jquery_flot_time_min_js = Url("jquery.flot.time.min.js");
+        public static readonly string jquery_jqplot_min_js = Url("jquery.jqplot.min.js");
         public static readonly string jquery_jScrollPane_2_0_0beta12_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.jScrollPane-2.0.0beta12.min.js") ? Url("jquery.jScrollPane-2.0.0beta12.min.js") : Url("jquery.jScrollPane-2.0.0beta12.js");
                       
         public static readonly string jquery_migrate_1_1_1_min_js = Url("jquery.migrate-1.1.1.min.js");
@@ -279,6 +281,7 @@ namespace Links
              
         public static readonly string jquery_dataTables_jui_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.dataTables.jui.min.css") ? Url("jquery.dataTables.jui.min.css") : Url("jquery.dataTables.jui.css");
              
+        public static readonly string jquery_jqplot_min_css = Url("jquery.jqplot.min.css");
         public static readonly string jquery_jScrollPane_2_0_0beta12_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.jScrollPane-2.0.0beta12.min.css") ? Url("jquery.jScrollPane-2.0.0beta12.min.css") : Url("jquery.jScrollPane-2.0.0beta12.css");
              
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
