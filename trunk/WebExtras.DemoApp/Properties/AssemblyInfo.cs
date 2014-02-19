@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("WebExtras")]
-[assembly: AssemblyCopyright("Copyright ©  2013 Mihir Mone")]
+[assembly: AssemblyCopyright("Copyright ©  2014 Mihir Mone")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
