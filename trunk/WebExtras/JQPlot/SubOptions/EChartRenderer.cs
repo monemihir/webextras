@@ -16,16 +16,21 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+#pragma warning disable 1591
 
 namespace WebExtras.JQPlot.SubOptions
 {
   /// <summary>
-  /// Axis tick renderer
+  /// Chart renderer type
   /// </summary>
   [Serializable]
-  public enum EAxisTickRenderer
+  public enum EChartRenderer
   {
+    LineRenderer
   }
 }

@@ -17,17 +17,37 @@
 */
 
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Newtonsoft.Json;
+using WebExtras.Core;
 
-#pragma warning disable 1591
-
-namespace WebExtras.JQPlot.SubOptions
+namespace WebExtras.JQPlot
 {
   /// <summary>
-  /// Title renderer
+  /// jqPlot chart
   /// </summary>
   [Serializable]
-  public enum ETitleRenderer
+  public class JQPlotChart
   {
-    DivTitleRenderer
+    /// <summary>
+    /// Chart data
+    /// </summary>
+    public double[][] chartData { get; set; }
+
+    /// <summary>
+    /// Chart options
+    /// </summary>
+    public JQPlotOptions chartOptions { get; set; }
+
+    /// <summary>
+    /// Converts the flot chart to a JSON serialized object
+    /// </summary>
+    /// <returns>JSON serialized object</returns>
+    public override string ToString()
+    {
+      return JsonConvert.SerializeObject(this, WebExtrasConstants.JsonSerializerSettings);
+    }
   }
 }

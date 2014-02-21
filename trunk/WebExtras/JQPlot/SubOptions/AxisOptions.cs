@@ -34,7 +34,7 @@ namespace WebExtras.JQPlot.SubOptions
     /// <summary>
     /// A class of a rendering engine for creating the ticks labels displayed on the plot, See $.jqplot.AxisTickRenderer.
     /// </summary>
-    public object tickRenderer;
+    public ERenderer tickRenderer;
 
     /// <summary>
     /// Options that will be passed to the tickRenderer, see $.jqplot.AxisTickRenderer options.
@@ -44,7 +44,7 @@ namespace WebExtras.JQPlot.SubOptions
     /// <summary>
     /// A class of a rendering engine for creating an axis label.
     /// </summary>
-    public object labelRenderer;
+    public ERenderer labelRenderer;
 
     /// <summary>
     /// Options passed to the label renderer.

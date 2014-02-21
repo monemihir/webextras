@@ -59,11 +59,20 @@ namespace WebExtras.JQPlot.SubOptions
     /// <summary>
     /// A class for creating a DOM element for the title, see $.jqplot.DivTitleRenderer.
     /// </summary>
-    public ETitleRenderer renderer;
+    public ERenderer renderer;
 
     /// <summary>
     /// renderer specific options passed to the renderer.
     /// </summary>
     public object rendererOptions;
+
+    /// <summary>
+    /// Default constructor
+    /// </summary>
+    /// <param name="text">Chart title text</param>
+    public TitleOptions(string text)
+    {
+      this.text = text;
+    }
   }
 }
