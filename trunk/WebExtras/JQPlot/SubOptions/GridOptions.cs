@@ -97,7 +97,7 @@ namespace WebExtras.JQPlot.SubOptions
     /// <summary>
     /// Instance of a renderer which will actually render the grid, see $.jqplot.CanvasGridRenderer.
     /// </summary>
-    public ERenderer renderer;
+    public EJQPlotRenderer renderer;
 
     /// <summary>
     /// Options to pass on to the renderer, see $.jqplot.CanvasGridRenderer.

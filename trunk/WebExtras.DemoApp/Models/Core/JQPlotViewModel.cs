@@ -1,10 +1,10 @@
 ﻿/*
-* This file is part of - WebExtras
+* This file is part of - WebExtras Demo application
 * Copyright (C) 2014 Mihir Mone
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Lesser General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
+* the Free Software Foundation, either version 2 of the License, or
 * (at your option) any later version.
 *
 * This program is distributed in the hope that it will be useful,
@@ -16,20 +16,21 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+#pragma warning disable 1591
+
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using WebExtras.JQPlot;
 
-namespace WebExtras.JQPlot
+namespace WebExtras.DemoApp.Models.Core
 {
   /// <summary>
-  /// jqPlot chart
+  /// jqPlot view model
   /// </summary>
-  [Serializable]
-  public class JQPlotChart : JQPlotChartBase
+  public class JQPlotViewModel
   {
-    /// <summary>
-    /// Chart data
-    /// </summary>
-    public new List<double[][]> chartData { get; set; }
+    public JQPlotChart Chart { get; set; }
   }
 }

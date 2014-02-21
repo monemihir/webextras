@@ -47,7 +47,7 @@ namespace WebExtras.JQPlot.SubOptions
     /// <summary>
     /// A class of a renderer which will draw the series, see $.jqplot.LineRenderer.
     /// </summary>
-    public EChartRenderer renderer;
+    public EChartRenderer? renderer;
 
     /// <summary>
     /// Options to pass on to the renderer.
@@ -112,7 +112,7 @@ namespace WebExtras.JQPlot.SubOptions
     /// <summary>
     /// A class of a renderer which will draw marker (e.g. circle, square, ...) at the data points, see $.jqplot.MarkerRenderer.
     /// </summary>
-    public ERenderer markerRenderer;
+    public EJQPlotRenderer? markerRenderer;
 
     /// <summary>
     /// renderer specific options to pass to the markerRenderer, see $.jqplot.MarkerRenderer.

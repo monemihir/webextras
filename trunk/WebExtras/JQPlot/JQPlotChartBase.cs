@@ -16,8 +16,9 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
+using WebExtras.Core;
 
 namespace WebExtras.JQPlot
 {
@@ -25,11 +26,25 @@ namespace WebExtras.JQPlot
   /// jqPlot chart
   /// </summary>
   [Serializable]
-  public class JQPlotChart : JQPlotChartBase
+  public class JQPlotChartBase
   {
     /// <summary>
     /// Chart data
     /// </summary>
-    public new List<double[][]> chartData { get; set; }
+    public object chartData { get; set; }
+
+    /// <summary>
+    /// Chart options
+    /// </summary>
+    public JQPlotOptions chartOptions { get; set; }
+
+    /// <summary>
+    /// Converts the flot chart to a JSON serialized object
+    /// </summary>
+    /// <returns>JSON serialized object</returns>
+    public override string ToString()
+    {
+      return JsonConvert.SerializeObject(this, WebExtrasConstants.JsonSerializerSettings);
+    }
   }
 }

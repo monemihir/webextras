@@ -20,6 +20,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Newtonsoft.Json;
+using WebExtras.Core;
 using WebExtras.JQPlot.SubOptions;
 
 namespace WebExtras.JQPlot
@@ -48,7 +50,7 @@ namespace WebExtras.JQPlot
     /// <summary>
     /// up to 4 axes are supported, each with it’s own options, See Axis for axis specific options.
     /// </summary>
-    public IDictionary<string, AxisOptions> axes;
+    public JQPlotAxes axes;
 
     /// <summary>
     /// See Grid for grid specific options.
@@ -94,5 +96,14 @@ namespace WebExtras.JQPlot
     /// increasing series (e.g.  [1, 2, 3, ...]) starting at this value.
     /// </summary>
     public int? defaultAxisStart;
+
+    /// <summary>
+    /// Converts the flot chart to a JSON serialized object
+    /// </summary>
+    /// <returns>JSON serialized object</returns>
+    public override string ToString()
+    {
+      return JsonConvert.SerializeObject(this, WebExtrasConstants.JsonSerializerSettings);
+    }
   }
 }

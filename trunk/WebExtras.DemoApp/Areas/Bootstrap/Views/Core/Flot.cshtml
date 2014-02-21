@@ -1,7 +1,16 @@
-﻿@model WebExtras.DemoApp.Models.Core.FlotViewModel
+﻿@using SquishIt.Framework
+@using SquishIt.Mvc
+@using WebExtras.DemoApp.App_Start
+
+@model WebExtras.DemoApp.Models.Core.FlotViewModel
 
 @{
   ViewBag.Title = "jQuery Flot";
+}
+
+@section scripts
+{
+  @Bundle.JavaScript().MvcRenderCachedAssetTag(ContentBundle.JSFlot.GetStringValue())
 }
 
 <h3 class="keep-center">jQuery Flot Bindings</h3>
@@ -41,7 +50,7 @@
   <div class="span9">
     Steps involved in creating a Flot graph
     <ul>
-      <li>Creating the graph options</li>
+      <li>Creating graph options</li>
       <li>Creating graph data</li>
       <li>Creating the graph series</li>
       <li>Rendering the graph</li>

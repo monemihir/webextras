@@ -114,6 +114,7 @@
     <Compile Include="Gumby.MvcController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Core\JQPlotViewModel.cs" />
     <Compile Include="Models\Mvc\CoreFormViewModel.cs" />
     <Compile Include="Models\Mvc\CoreHtmlViewModel.cs" />
     <Compile Include="Areas\Bootstrap\BootstrapAreaRegistration.cs" />
@@ -219,7 +220,10 @@
       <DependentUpon>webextras.gumby.less</DependentUpon>
     </Content>
     <Content Include="Scripts\excanvas.min.js" />
-    <Content Include="Scripts\jquery.jqplot.min.js" />
+    <Content Include="Scripts\JQPlot\jqplot.canvasAxisLabelRenderer.min.js" />
+    <Content Include="Scripts\JQPlot\jqplot.canvasAxisTickRenderer.min.js" />
+    <Content Include="Scripts\JQPlot\jqplot.canvasTextRenderer.min.js" />
+    <Content Include="Scripts\JQPlot\jqplot.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.min.js" />
     <Content Include="Views\Shared\DatatablePartial.ascx" />
     <Content Include="Content\bootstrap-2.3.1.css" />
@@ -332,6 +336,7 @@
     <Content Include="Areas\Gumby\Views\Mvc\ActionResults.cshtml" />
     <Content Include="Areas\Gumby\Views\Mvc\GumbyHtml.cshtml" />
     <Content Include="Areas\Gumby\Views\Mvc\GumbyForm.cshtml" />
+    <Content Include="Areas\Bootstrap\Views\Core\JQPlot.cshtml" />
     <None Include="Content\style.less" />
     <Content Include="Content\style-bootstrap3.min.css">
       <DependentUpon>style-bootstrap3.less</DependentUpon>
@@ -395,6 +400,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Areas\Gumby\Views\Core\Generic.cshtml" />
     <Content Include="Views\Mvc\_JsonNetResult.cshtml" />
+    <Content Include="Views\Core\_JQPlotLineGraph.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

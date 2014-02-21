@@ -135,7 +135,9 @@
     <Compile Include="JQFlot\SubOptions\PieShadowOptions.cs" />
     <Compile Include="JQFlot\SubOptions\PieStrokeOptions.cs" />
     <Compile Include="JQFlot\SubOptions\SeriesOptions.cs" />
+    <Compile Include="JQPlot\JQPlotAxes.cs" />
     <Compile Include="JQPlot\JQPlotChart.cs" />
+    <Compile Include="JQPlot\JQPlotChartBase.cs" />
     <Compile Include="JQPlot\JQPlotOptions.cs" />
     <Compile Include="JQPlot\SubOptions\AxisOptions.cs" />
     <Compile Include="JQPlot\SubOptions\AxisTickRendererOptions.cs" />
@@ -143,7 +145,7 @@
     <Compile Include="JQPlot\SubOptions\ELegendLocation.cs" />
     <Compile Include="JQPlot\SubOptions\ELegendPlacement.cs" />
     <Compile Include="JQPlot\SubOptions\EMarkerStyle.cs" />
-    <Compile Include="JQPlot\SubOptions\ERenderer.cs" />
+    <Compile Include="JQPlot\SubOptions\EJQPlotRenderer.cs" />
     <Compile Include="JQPlot\SubOptions\ETickFormatter.cs" />
     <Compile Include="JQPlot\SubOptions\ETickMarkLocation.cs" />
     <Compile Include="JQPlot\SubOptions\GridOptions.cs" />

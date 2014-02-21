@@ -77,6 +77,12 @@ namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
         {
             return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Flot);
         }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult JQPlot()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.JQPlot);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public CoreController Actions { get { return MVC.Bootstrap.Core; } }
@@ -101,6 +107,7 @@ namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
             public readonly string GetSortedData = ("GetSortedData").ToLowerInvariant();
             public readonly string GetPostbackData = ("GetPostbackData").ToLowerInvariant();
             public readonly string Flot = ("Flot").ToLowerInvariant();
+            public readonly string JQPlot = ("JQPlot").ToLowerInvariant();
         }
 
 
@@ -154,6 +161,14 @@ namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
         {
             public readonly string mode = ("mode").ToLowerInvariant();
         }
+        static readonly ActionParamsClass_JQPlot s_params_JQPlot = new ActionParamsClass_JQPlot();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_JQPlot JQPlotParams { get { return s_params_JQPlot; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_JQPlot
+        {
+            public readonly string mode = ("mode").ToLowerInvariant();
+        }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ViewsClass Views { get { return s_views; } }
@@ -169,12 +184,14 @@ namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
                 public readonly string Datatables = "Datatables";
                 public readonly string Flot = "Flot";
                 public readonly string Generic = "Generic";
+                public readonly string JQPlot = "JQPlot";
             }
             public readonly string _AxisLabels = "~/Areas/Bootstrap/Views/Core/_AxisLabels.cshtml";
             public readonly string _PostbackSetup = "~/Areas/Bootstrap/Views/Core/_PostbackSetup.cshtml";
             public readonly string Datatables = "~/Areas/Bootstrap/Views/Core/Datatables.cshtml";
             public readonly string Flot = "~/Areas/Bootstrap/Views/Core/Flot.cshtml";
             public readonly string Generic = "~/Areas/Bootstrap/Views/Core/Generic.cshtml";
+            public readonly string JQPlot = "~/Areas/Bootstrap/Views/Core/JQPlot.cshtml";
         }
     }
 
@@ -241,6 +258,13 @@ namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
         public override System.Web.Mvc.ActionResult Flot(int? mode)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Flot);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "mode", mode);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult JQPlot(int? mode)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.JQPlot);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "mode", mode);
             return callInfo;
         }

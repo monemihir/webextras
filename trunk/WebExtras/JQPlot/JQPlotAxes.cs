@@ -20,24 +20,23 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using WebExtras.JQPlot.SubOptions;
 
-#pragma warning disable 1591
-
-namespace WebExtras.JQPlot.SubOptions
+namespace WebExtras.JQPlot
 {
   /// <summary>
-  /// All renderers available in jqPlot
+  /// jqPlot axes
   /// </summary>
-  public enum ERenderer
+  public class JQPlotAxes
   {
-    AxisLabelRenderer,
-    AxisTickRenderer,
-    CanvasGridRenderer,
-    DivTitleRenderer,
-    LinearAxisRenderer,
-    MarkerRenderer,
-    ShapeRenderer,
-    ShadowRenderer,
-    LineRenderer
+    /// <summary>
+    /// X1 axis
+    /// </summary>
+    public AxisOptions xaxis;
+
+    /// <summary>
+    /// Y1 axis
+    /// </summary>
+    public AxisOptions yaxis;
   }
 }

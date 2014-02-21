@@ -17,6 +17,8 @@
 */
 
 using System;
+using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace WebExtras.JQPlot.SubOptions
 {
@@ -34,7 +36,7 @@ namespace WebExtras.JQPlot.SubOptions
     /// <summary>
     /// A class of a rendering engine for creating the ticks labels displayed on the plot, See $.jqplot.AxisTickRenderer.
     /// </summary>
-    public ERenderer tickRenderer;
+    public EJQPlotRenderer? tickRenderer;
 
     /// <summary>
     /// Options that will be passed to the tickRenderer, see $.jqplot.AxisTickRenderer options.
@@ -44,12 +46,13 @@ namespace WebExtras.JQPlot.SubOptions
     /// <summary>
     /// A class of a rendering engine for creating an axis label.
     /// </summary>
-    public ERenderer labelRenderer;
+    [JsonConverter(typeof(ERendererJsonConverter))]
+    public EJQPlotRenderer? labelRenderer;
 
     /// <summary>
     /// Options passed to the label renderer.
     /// </summary>
-    public object labelOptions;
+    public IDictionary<string, object> labelOptions;
 
     /// <summary>
     /// Label for the axis
@@ -115,7 +118,7 @@ namespace WebExtras.JQPlot.SubOptions
     /// <summary>
     /// Number of units between ticks.  Mutually exclusive with numberTicks.
     /// </summary>
-    public double tickInterval;
+    public double? tickInterval;
 
     /// <summary>
     /// A class of a rendering engine that handles tick generation, scaling input 

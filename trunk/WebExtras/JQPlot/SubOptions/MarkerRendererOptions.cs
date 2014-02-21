@@ -37,7 +37,7 @@ namespace WebExtras.JQPlot.SubOptions
     /// <summary>
     /// Marker style
     /// </summary>
-    public EMarkerStyle style;
+    public EMarkerStyle? style;
 
     /// <summary>
     /// size of the line for non-filled markers.
@@ -82,12 +82,12 @@ namespace WebExtras.JQPlot.SubOptions
     /// <summary>
     /// Renderer that will draws the shadows on the marker.
     /// </summary>
-    public ERenderer shadowRenderer;
+    public EJQPlotRenderer? shadowRenderer;
 
     /// <summary>
     /// Renderer that will draw the marker.
     /// </summary>
-    public ERenderer shapeRenderer;
+    public EJQPlotRenderer? shapeRenderer;
 
   }
 }

@@ -58,6 +58,18 @@ namespace WebExtras.DemoApp.App_Start
     JSBase,
 
     /// <summary>
+    /// jQuery Flot bundle
+    /// </summary>
+    [StringValue("js-flot")]
+    JSFlot,
+
+    /// <summary>
+    /// jqPlot bundle
+    /// </summary>
+    [StringValue("js-jqplot")]
+    JSjqPlot,
+
+    /// <summary>
     /// Bootstrap javascript bundle
     /// </summary>
     [StringValue("js-bootstrap")]

@@ -66,6 +66,7 @@ namespace WebExtras.DemoApp.App_Start
         .Add(Links.Content.jquery_bootstrap_datetimepicker_css)
         .Add(Links.Content.jquery_dataTables_css)
         .Add(Links.Content.jquery_jScrollPane_2_0_0beta12_css)
+        .Add(Links.Content.jquery_jqplot_min_css)
         .Add(Links.Content.webextras_bootstrap_css)
         .Add(Links.Content.style_bootstrap_css)
         .Add(Links.Content.style_css)
@@ -101,16 +102,28 @@ namespace WebExtras.DemoApp.App_Start
         .Add(Links.Scripts.jquery_1_9_1_min_js)
         .Add(Links.Scripts.jquery_migrate_1_1_1_min_js)
         .Add(Links.Scripts.jquery_datatables_min_js)
+        .Add(Links.Scripts.jquery_jScrollPane_2_0_0beta12_js)
+        .Add(Links.Scripts.jquery_mousewheel_3_0_6_js)
+        .Add(Links.Scripts.jquery_mwheelIntent_1_2_js)
+        .AsCached(ContentBundle.JSBase.GetStringValue(), ResolveJsPath(ContentBundle.JSBase));
+
+      // jQuery Flot bundle
+      Bundle.JavaScript()
         .Add(Links.Scripts.jquery_flot_min_js)
         .Add(Links.Scripts.jquery_flot_curvedlines_js)
         .Add(Links.Scripts.jquery_flot_dashes_js)
         .Add(Links.Scripts.jquery_flot_axislabels_js)
         .Add(Links.Scripts.jquery_flot_pie_min_js)
         .Add(Links.Scripts.jquery_flot_time_min_js)
-        .Add(Links.Scripts.jquery_jScrollPane_2_0_0beta12_js)
-        .Add(Links.Scripts.jquery_mousewheel_3_0_6_js)
-        .Add(Links.Scripts.jquery_mwheelIntent_1_2_js)
-        .AsCached(ContentBundle.JSBase.GetStringValue(), ResolveJsPath(ContentBundle.JSBase));
+        .AsCached(ContentBundle.JSFlot.GetStringValue(), ResolveJsPath(ContentBundle.JSFlot));
+
+      // jqPlot bundle
+      Bundle.JavaScript()
+        .Add(Links.Scripts.JQPlot.jqplot_min_js)
+        .Add(Links.Scripts.JQPlot.jqplot_canvasAxisTickRenderer_min_js)
+        .Add(Links.Scripts.JQPlot.jqplot_canvasAxisLabelRenderer_min_js)
+        .Add(Links.Scripts.JQPlot.jqplot_canvasTextRenderer_min_js)
+        .AsCached(ContentBundle.JSjqPlot.GetStringValue(), ResolveJsPath(ContentBundle.JSjqPlot));
 
       // Bootstrap javascript bundle
       Bundle.JavaScript()

@@ -1,0 +1,80 @@
+﻿@model WebExtras.JQPlot.JQPlotChart
+
+<div class="well">
+  <h4>Creating the Flot options</h4>
+  Flot graph options are created by instantiating the <strong>WebExtras.JQFlot.FlotOptions</strong> class.
+  <pre><code>
+  <span class="comment">// Some basic options are shown below</span>
+  JQPlotOptions options = new JQPlotOptions
+  {
+    title = new TitleOptions("Line Graph"),
+    axesDefaults = new AxisOptions
+    {
+      labelRenderer = EJQPlotRenderer.CanvasAxisLabelRenderer,
+      labelOptions = new Dictionary&lt;string, object&gt; { 
+        { "fontSize", "12px" },
+        { "fontFamily", "Arial" }
+      }
+    },
+    axes = new JQPlotAxes
+    {
+      xaxis = new AxisOptions { label = "X Axis" },
+      yaxis = new AxisOptions { label = "Y Axis" }
+    },
+    <span class="comment">// Note that this is an array, so you must specify options for inidividual series separately</span>
+    series = new SeriesOptions[]                                    
+    {
+      new SeriesOptions {
+        markerOptions = new MarkerRendererOptions {
+          show = false
+        }
+      }
+    }
+  };
+  </code></pre>
+</div>
+
+<div class="well">
+  <h4>Creating the graph data</h4>
+  jqPlot uses a 2 dimensional numeric array for data. This can be of any numeric type <strong>int, decimal, float or
+  double</strong>. In order to compensate for numerals WebExtras uses the biggest of the numeral types provided by .NET - 
+  <strong>double</strong>
+  <pre><code>
+  List&lt;double[]&gt; graphData = new List&lt;double[]&gt;();
+  
+  <span class="comment">// Notice that each individual array added to the 'graphData' variable has 2 columns</span>
+  <span class="comment">// The first column is your X co-ordinate and the second is your Y co-ordinate</span>
+
+  graphData.Add(new double[] { 1, 5 });                            
+  graphData.Add(new double[] { 2, 10 });
+
+  <span class="comment">// ... and so on</span>
+  </code></pre>
+</div>
+
+<div class="well">
+  <h4>Creating the jqPlot Chart</h4>
+  All the things we have done so far now get bundled into a jqPlot chart by instantiating the <strong>WebExtras.JQPlot.JQPlotChart</strong> object.
+  <pre><code>
+  <span class="comment">// Notice that the 'chartData' property is a list, giving the flexibility of rendering multiple data series in the same graph</span>
+  JQPlotChart chart = new JQPlotChart
+  {
+    chartData = new List&lt;double[][]&gt; { graphData },
+    chartOptions = options
+  };
+  </code></pre>
+</div>
+
+<div class="well">
+  <h4>And finally the output...</h4>
+  <div class="content">
+    <div id="line-graph" class="graph">
+    </div>
+  </div>
+  <script type="text/javascript">
+    $(document).ready(function () {
+
+      $.jqplot('line-graph', @Html.Raw(Model.chartData.ToJson()), @Html.Raw(Model.chartOptions.ToString()));
+    });
+  </script>
+</div>

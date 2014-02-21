@@ -28,6 +28,11 @@ using WebExtras.JQDataTables;
 using WebExtras.JQFlot;
 using WebExtras.JQFlot.Graphs;
 using WebExtras.JQFlot.SubOptions;
+using WebExtras.JQPlot;
+using WebExtras.JQPlot.SubOptions;
+using AxisOptions = WebExtras.JQFlot.SubOptions.AxisOptions;
+using GridOptions = WebExtras.JQFlot.SubOptions.GridOptions;
+using SeriesOptions = WebExtras.JQFlot.SubOptions.SeriesOptions;
 
 namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
 {
@@ -35,8 +40,8 @@ namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
   {
     #region Ctor and attributes
 
-    private double[][] m_flotSampleData;
-    private Random m_rand;
+    private readonly double[][] m_graphSampleData;
+    private readonly Random m_rand;
 
     /// <summary>
     /// Constructor
@@ -44,7 +49,7 @@ namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
     public CoreController()
     {
       m_rand = new Random(DateTime.Now.Millisecond);
-      m_flotSampleData = Enumerable.Range(1, 10).Select(f => new double[] { f, m_rand.NextDouble() * 100 }).ToArray();
+      m_graphSampleData = Enumerable.Range(1, 10).Select(f => new double[] { f, m_rand.NextDouble() * 100 }).ToArray();
     }
 
     #endregion Ctor and attributes
@@ -360,7 +365,7 @@ namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
           serie = new FlotSeries
           {
             label = "Sample Line Graph",
-            data = m_flotSampleData,
+            data = m_graphSampleData,
             lines = new LineGraph { show = true }
           };
           series.Add(serie);
@@ -412,7 +417,7 @@ namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
           serie = new FlotSeries
           {
             label = "Sample Bar Graph",
-            data = m_flotSampleData,
+            data = m_graphSampleData,
             bars = new BarGraph { show = true }
           };
           series.Add(serie);
@@ -422,7 +427,7 @@ namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
           serie = new FlotSeries
           {
             label = "Sample Curved Line Graph",
-            data = m_flotSampleData,
+            data = m_graphSampleData,
             curvedLines = new CurvedLineGraph { show = true }
           };
 
@@ -440,7 +445,7 @@ namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
           serie = new FlotSeries
           {
             label = "Sample Dashed Line Graph",
-            data = m_flotSampleData,
+            data = m_graphSampleData,
             dashes = new DashedLineGraph { show = true }
           };
           series.Add(serie);
@@ -451,7 +456,7 @@ namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
           serie = new FlotSeries
           {
             label = "Sample Line Graph",
-            data = m_flotSampleData,
+            data = m_graphSampleData,
             lines = new LineGraph { show = true }
           };
           series.Add(serie);
@@ -475,5 +480,49 @@ namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
     }
 
     #endregion Flot actions
+
+    //
+    // GET: /Bootstrap/Core/JQPlot
+    public virtual ActionResult JQPlot(int? mode)
+    {
+      JQPlotOptions options = new JQPlotOptions
+      {
+        title = new TitleOptions("Line Graph"),
+        axesDefaults = new WebExtras.JQPlot.SubOptions.AxisOptions
+        {
+          labelRenderer = EJQPlotRenderer.CanvasAxisLabelRenderer,
+          labelOptions = new Dictionary<string, object> { 
+            { "fontSize", "12px" },
+            { "fontFamily", "Arial" }
+          }
+        },
+        axes = new JQPlotAxes
+        {
+          xaxis = new JQPlot.SubOptions.AxisOptions { label = "X Axis" },
+          yaxis = new JQPlot.SubOptions.AxisOptions { label = "Y Axis" }
+        },
+        series = new JQPlot.SubOptions.SeriesOptions[]
+        {
+          new JQPlot.SubOptions.SeriesOptions {
+            markerOptions = new MarkerRendererOptions {
+              show = false
+            }
+          }
+        }
+      };
+
+      JQPlotChart chart = new JQPlotChart
+      {
+        chartData = new List<double[][]> { m_graphSampleData },
+        chartOptions = options
+      };
+
+      JQPlotViewModel model = new JQPlotViewModel
+      {
+        Chart = chart
+      };
+
+      return View(model);
+    }
   }
 }

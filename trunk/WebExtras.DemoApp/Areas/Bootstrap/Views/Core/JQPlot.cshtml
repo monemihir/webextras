@@ -1,0 +1,61 @@
+﻿@using SquishIt.Framework
+@using SquishIt.Mvc
+@using WebExtras.DemoApp.App_Start
+@model WebExtras.DemoApp.Models.Core.JQPlotViewModel
+
+@{
+    ViewBag.Title = "jqPlot";
+}
+
+@section scripts
+{
+  @Bundle.JavaScript().MvcRenderCachedAssetTag(ContentBundle.JSjqPlot.GetStringValue())
+}
+
+
+<h3 class="keep-center">jqPlot Bindings</h3>
+
+<div class="row-fluid">
+  <div class="span6">
+    <div class="row-fluid">
+      <div class="span3">
+        <strong>Assembly</strong>
+      </div>
+      <div class="span4">
+        WebExtras.dll
+      </div>
+    </div>
+    <div class="row-fluid">
+      <div class="span3">
+        <strong>Namespace</strong>
+      </div>
+      <div class="span4">
+        WebExtras.JQPlot
+      </div>
+    </div>
+  </div>
+  <div class="span6">
+    <div class="span3">
+      <strong>Dependancies</strong>
+    </div>
+    <div class="span6">
+      <ul class="dependancies">
+        <li>Appropriate third party libraries</li>
+        <li>webextras.bootstrap.css</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="row-fluid">
+  <div class="span9">
+    Steps involved in creating a jqPlot graph
+    <ul>
+      <li>Creating graph options</li>
+      <li>Creating graph data</li>
+      <li>Rendering the graph</li>
+    </ul>
+  </div>
+</div>
+
+@Html.Partial(MVC.Core.Views._JQPlotLineGraph, Model.Chart)
