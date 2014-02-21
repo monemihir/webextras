@@ -17,9 +17,6 @@
 */
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using WebExtras.JQPlot.SubOptions;
 
 namespace WebExtras.JQPlot
@@ -27,6 +24,7 @@ namespace WebExtras.JQPlot
   /// <summary>
   /// jqPlot axes
   /// </summary>
+  [Serializable]
   public class JQPlotAxes
   {
     /// <summary>
