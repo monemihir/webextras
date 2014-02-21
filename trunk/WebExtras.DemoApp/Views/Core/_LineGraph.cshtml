@@ -15,7 +15,7 @@
 
 <div class="well">
   <h4>Creating the graph data</h4>
-  Flot rendering data is a 2 dimensional numeric array. This can be of any numeric type <strong>int, decimal, float or
+  Flot uses a 2 dimensional numeric array for data. This can be of any numeric type <strong>int, decimal, float or
   double</strong>. In order to compensate for numerals WebExtras uses the biggest of the numeral types provided by .NET - 
   <strong>double</strong>
   <pre><code>
@@ -33,7 +33,7 @@
 
 <div class="well">
   <h4>Creating the Flot series to be plotted</h4>
-  A Flot series is creating by instantiating the <strong>WebExtras.JQFlot.FlotSeries</strong> class
+  A Flot series is created by instantiating the <strong>WebExtras.JQFlot.FlotSeries</strong> class
   <pre><code>
   FlotSeries linegraph = new FlotSeries
   {
