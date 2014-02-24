@@ -123,6 +123,8 @@ namespace WebExtras.DemoApp.App_Start
         .Add(Links.Scripts.JQPlot.jqplot_canvasAxisTickRenderer_min_js)
         .Add(Links.Scripts.JQPlot.jqplot_canvasAxisLabelRenderer_min_js)
         .Add(Links.Scripts.JQPlot.jqplot_canvasTextRenderer_min_js)
+        .Add(Links.Scripts.JQPlot.jqplot_categoryAxisRenderer_min_js)
+        .Add(Links.Scripts.JQPlot.jqplot_barRenderer_min_js)
         .AsCached(ContentBundle.JSjqPlot.GetStringValue(), ResolveJsPath(ContentBundle.JSjqPlot));
 
       // Bootstrap javascript bundle

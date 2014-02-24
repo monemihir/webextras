@@ -36,17 +36,18 @@ namespace WebExtras.JQPlot.SubOptions
     /// <summary>
     /// A class of a rendering engine for creating the ticks labels displayed on the plot, See $.jqplot.AxisTickRenderer.
     /// </summary>
+    [JsonConverter(typeof(EJQPlotRendererJsonConverter))]
     public EJQPlotRenderer? tickRenderer;
 
     /// <summary>
     /// Options that will be passed to the tickRenderer, see $.jqplot.AxisTickRenderer options.
     /// </summary>
-    public object tickOptions;
+    public IDictionary<string, object> tickOptions;
 
     /// <summary>
     /// A class of a rendering engine for creating an axis label.
     /// </summary>
-    [JsonConverter(typeof(ERendererJsonConverter))]
+    [JsonConverter(typeof(EJQPlotRendererJsonConverter))]
     public EJQPlotRenderer? labelRenderer;
 
     /// <summary>
@@ -124,7 +125,8 @@ namespace WebExtras.JQPlot.SubOptions
     /// A class of a rendering engine that handles tick generation, scaling input 
     /// data to pixel grid units and drawing the axis element.
     /// </summary>
-    public object renderer;
+    [JsonConverter(typeof(EJQPlotRendererJsonConverter))]
+    public EJQPlotRenderer? renderer;
 
     /// <summary>
     /// Renderer specific options.  See $.jqplot.LinearAxisRenderer for options.

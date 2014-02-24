@@ -85,6 +85,9 @@ pre {
   width: 90%;
   height: 200px;
 }
+.graph-large {
+  height: 300px;
+}
 .pie-graph {
   display: block;
   margin: 0 auto;

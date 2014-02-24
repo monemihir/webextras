@@ -139,9 +139,12 @@ namespace Links
             private const string URLPATH = "~/Scripts/JQPlot";
             public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+            public static readonly string jqplot_barRenderer_min_js = Url("jqplot.barRenderer.min.js");
             public static readonly string jqplot_canvasAxisLabelRenderer_min_js = Url("jqplot.canvasAxisLabelRenderer.min.js");
             public static readonly string jqplot_canvasAxisTickRenderer_min_js = Url("jqplot.canvasAxisTickRenderer.min.js");
             public static readonly string jqplot_canvasTextRenderer_min_js = Url("jqplot.canvasTextRenderer.min.js");
+            public static readonly string jqplot_categoryAxisRenderer_min_js = Url("jqplot.categoryAxisRenderer.min.js");
+            public static readonly string jqplot_dateAxisRenderer_min_js = Url("jqplot.dateAxisRenderer.min.js");
             public static readonly string jqplot_min_js = Url("jqplot.min.js");
         }
     

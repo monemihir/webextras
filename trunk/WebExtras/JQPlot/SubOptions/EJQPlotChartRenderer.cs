@@ -26,35 +26,23 @@ using WebExtras.Core;
 namespace WebExtras.JQPlot.SubOptions
 {
   /// <summary>
-  /// All renderers available in jqPlot
+  /// Chart renderer type
   /// </summary>
   [Serializable]
-  public enum EJQPlotRenderer
+  public enum EJQPlotChartRenderer
   {
     /// <summary>
-    /// Requires: jqplot.canvasTextRenderer.min.js, jqplot.canvasAxisLabelRenderer.min.js plugins
+    /// Requires: jqplot.barRenderer.min.js
     /// </summary>
-    [StringValue("$.jqplot.CanvasAxisLabelRenderer")]
-    CanvasAxisLabelRenderer,
-
-    /// <summary>
-    /// Requires: jqplot.canvasTextRenderer.min.js, jqplot.canvasAxisTickRenderer.min.js plugins
-    /// </summary>
-    [StringValue("$.jqplot.CanvasAxisTickRenderer")]
-    CanvasAxisTickRenderer,
-
-    /// <summary>
-    /// Requires: jqplot.categoryAxisRenderer.min.js
-    /// </summary>
-    [StringValue("$.jqplot.CategoryAxisRenderer")]
-    CategoryAxisRenderer,
+    [StringValue("$.jqplot.BarRenderer")]
+    BarRenderer
   }
 
   /// <summary>
-  /// EJQPlotRenderer enum's custom Json Converter
+  /// EJQPlotChartRenderer enum's custom Json Converter
   /// </summary>
   [Serializable]
-  public class EJQPlotRendererJsonConverter : JsonConverter
+  public class EJQPlotChartRendererJsonConverter : JsonConverter
   {
     /// <summary>
     /// Determines whether this instance can convert the specified object type
@@ -63,7 +51,7 @@ namespace WebExtras.JQPlot.SubOptions
     /// <returns>true if this instance can convert the specified object type; otherwise, false</returns>
     public override bool CanConvert(Type objectType)
     {
-      return typeof(EJQPlotRenderer).IsAssignableFrom(objectType);
+      return typeof(EJQPlotChartRenderer).IsAssignableFrom(objectType);
     }
 
     /// <summary>
@@ -76,7 +64,7 @@ namespace WebExtras.JQPlot.SubOptions
     /// <returns>The object value</returns>
     public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
     {
-      return existingValue == null ? null : Enum.Parse(typeof(EJQPlotRenderer), existingValue.ToString().Split('.').Last());
+      return existingValue == null ? null : Enum.Parse(typeof(EJQPlotChartRenderer), existingValue.ToString().Split('.').Last());
     }
 
     /// <summary>
@@ -87,10 +75,9 @@ namespace WebExtras.JQPlot.SubOptions
     /// <param name="serializer">The Newtonsoft.Json.JsonWriter to write to</param>
     public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
     {
-      EJQPlotRenderer val = (EJQPlotRenderer)value;
+      EJQPlotChartRenderer val = (EJQPlotChartRenderer)value;
 
       writer.WriteRawValue(val.GetStringValue());
     }
   }
-
 }

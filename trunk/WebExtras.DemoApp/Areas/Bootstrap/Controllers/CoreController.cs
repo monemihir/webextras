@@ -41,6 +41,7 @@ namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
     #region Ctor and attributes
 
     private readonly double[][] m_graphSampleData;
+    private readonly object[][] m_graphSampleTextData;
     private readonly Random m_rand;
 
     /// <summary>
@@ -50,6 +51,18 @@ namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
     {
       m_rand = new Random(DateTime.Now.Millisecond);
       m_graphSampleData = Enumerable.Range(1, 10).Select(f => new double[] { f, m_rand.NextDouble() * 100 }).ToArray();
+
+      m_graphSampleTextData = new object[][] { 
+        new object[] { "Cup Holder Pinion Bob", m_rand.NextDouble() * 100 },
+        new object[] { "Generic Fog Lamp", m_rand.NextDouble() * 100 },
+        new object[] { "HDTV Receiver", m_rand.NextDouble() * 100 },
+        new object[] { "8 Track Control Module", m_rand.NextDouble() * 100 },
+        new object[] { "Sludge Pump Fourier Modulator", m_rand.NextDouble() * 100 },
+        new object[] { "Transcender/Spice Rack", m_rand.NextDouble() * 100 },
+        new object[] { "Hair Spray Danger Indicator", m_rand.NextDouble() * 100 }
+      };
+
+
     }
 
     #endregion Ctor and attributes
@@ -485,41 +498,74 @@ namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
     // GET: /Bootstrap/Core/JQPlot
     public virtual ActionResult JQPlot(int? mode)
     {
-      JQPlotOptions options = new JQPlotOptions
-      {
-        title = new TitleOptions("Line Graph"),
-        axesDefaults = new WebExtras.JQPlot.SubOptions.AxisOptions
-        {
-          labelRenderer = EJQPlotRenderer.CanvasAxisLabelRenderer,
-          labelOptions = new Dictionary<string, object> { 
-            { "fontSize", "12px" },
-            { "fontFamily", "Arial" }
-          }
-        },
-        axes = new JQPlotAxes
-        {
-          xaxis = new JQPlot.SubOptions.AxisOptions { label = "X Axis" },
-          yaxis = new JQPlot.SubOptions.AxisOptions { label = "Y Axis" }
-        },
-        series = new JQPlot.SubOptions.SeriesOptions[]
-        {
-          new JQPlot.SubOptions.SeriesOptions {
-            markerOptions = new MarkerRendererOptions {
-              show = false
-            }
-          }
-        }
-      };
+      int dmode = mode.HasValue ? mode.Value : 0;
+      object data = null;
+      JQPlotOptions options = null;
 
-      JQPlotChart chart = new JQPlotChart
+      switch (dmode)
       {
-        chartData = new List<double[][]> { m_graphSampleData },
+        case 1:
+          data = new List<object[][]> { m_graphSampleTextData };
+          options = new JQPlotOptions
+          {
+            title = new TitleOptions("Concern vs Occurance"),
+            axesDefaults = new JQPlot.SubOptions.AxisOptions
+            {
+              tickRenderer = EJQPlotRenderer.CanvasAxisTickRenderer,
+              tickOptions = new Dictionary<string, object> { 
+                { "angle", -30 }
+              }
+            },
+            axes = new JQPlotAxes
+            {
+              xaxis = new JQPlot.SubOptions.AxisOptions { renderer = EJQPlotRenderer.CategoryAxisRenderer },
+              yaxis = new JQPlot.SubOptions.AxisOptions
+              {
+                tickOptions = new Dictionary<string, object> { 
+                  { "angle", 0 }
+                }
+              }
+            },
+            series = new JQPlot.SubOptions.SeriesOptions[]
+            {
+              new JQPlot.SubOptions.SeriesOptions {
+                renderer = EJQPlotChartRenderer.BarRenderer
+              }
+            }
+          };
+          break;
+
+        default:
+          data = new List<double[][]> { m_graphSampleData };
+          options = new JQPlotOptions {
+            title = new TitleOptions("Basic Line Graph"),
+            axesDefaults = new JQPlot.SubOptions.AxisOptions
+            {
+              labelRenderer = EJQPlotRenderer.CanvasAxisLabelRenderer,
+              labelOptions = new Dictionary<string, object> { 
+                { "fontSize", "12px" },
+                { "fontFamily", "Arial" }
+              }
+            },
+            axes = new JQPlotAxes
+            {
+              xaxis = new JQPlot.SubOptions.AxisOptions { label = "X Axis" },
+              yaxis = new JQPlot.SubOptions.AxisOptions { label = "Y Axis" }
+            }
+          };
+          break;
+      }
+
+      JQPlotChartBase chart = new JQPlotChartBase
+      {
+        chartData = data,
         chartOptions = options
       };
 
       JQPlotViewModel model = new JQPlotViewModel
       {
-        Chart = chart
+        Chart = chart,
+        DisplayMode = dmode
       };
 
       return View(model);

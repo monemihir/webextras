@@ -141,7 +141,7 @@
     <Compile Include="JQPlot\JQPlotOptions.cs" />
     <Compile Include="JQPlot\SubOptions\AxisOptions.cs" />
     <Compile Include="JQPlot\SubOptions\AxisTickRendererOptions.cs" />
-    <Compile Include="JQPlot\SubOptions\EChartRenderer.cs" />
+    <Compile Include="JQPlot\SubOptions\EJQPlotChartRenderer.cs" />
     <Compile Include="JQPlot\SubOptions\ELegendLocation.cs" />
     <Compile Include="JQPlot\SubOptions\ELegendPlacement.cs" />
     <Compile Include="JQPlot\SubOptions\EMarkerStyle.cs" />

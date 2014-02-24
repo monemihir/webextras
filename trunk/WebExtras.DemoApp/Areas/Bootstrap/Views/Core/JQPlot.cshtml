@@ -4,7 +4,7 @@
 @model WebExtras.DemoApp.Models.Core.JQPlotViewModel
 
 @{
-    ViewBag.Title = "jqPlot";
+  ViewBag.Title = "jqPlot";
 }
 
 @section scripts
@@ -58,4 +58,25 @@
   </div>
 </div>
 
-@Html.Partial(MVC.Core.Views._JQPlotLineGraph, Model.Chart)
+<ul id="jqPlot-nav" class="nav nav-pills">
+  <li>@Html.Hyperlink("Basic Line Graph", MVC.Bootstrap.Core.JQPlot(0))</li>
+  <li>@Html.Hyperlink("Non-numeric Axis Values", MVC.Bootstrap.Core.JQPlot(1))</li>
+  <li>@Html.Hyperlink("Multiple Axes", MVC.Bootstrap.Core.JQPlot(2))</li>
+</ul>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $('#jqPlot-nav li:eq(' + @Model.DisplayMode + ')').addClass('active');
+  });
+</script>
+
+@switch (Model.DisplayMode)
+{
+  case 1:
+  @Html.Partial(MVC.Core.Views._JQPlotNonNumericAxisValues, Model.Chart)
+    break;
+
+  default:
+  @Html.Partial(MVC.Core.Views._JQPlotLineGraph, Model.Chart)
+    break;
+}

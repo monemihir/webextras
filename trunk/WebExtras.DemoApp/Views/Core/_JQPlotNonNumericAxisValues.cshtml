@@ -1,0 +1,85 @@
+﻿@model WebExtras.JQPlot.JQPlotChartBase
+
+<div class="well">
+  <h4>Modified plot options</h4>
+  <pre><code>
+  JQPlotOptions options = new JQPlotOptions
+  {
+    title = new TitleOptions("Concern vs Occurance"),
+    axesDefaults = new JQPlot.SubOptions.AxisOptions
+    {
+      tickRenderer = EJQPlotRenderer.CanvasAxisTickRenderer,
+      tickOptions = new Dictionary&lt;string, object&gt; {
+        <span class="comment">// Specifies the tilt angle for axis ticks at -30&deg;</span> 
+        { "angle", -30 }                                  
+      }
+    },
+    axes = new JQPlotAxes
+    {
+      xaxis = new JQPlot.SubOptions.AxisOptions { renderer = EJQPlotRenderer.CategoryAxisRenderer },
+      yaxis = new JQPlot.SubOptions.AxisOptions
+      {
+        tickOptions = new Dictionary&lt;string, object&gt; { 
+          <span class="comment">// Explicitly overrides and resets the tilt angle for Y axis ticks to 0&deg;</span>
+          { "angle", 0 }                                  
+        }
+      }
+    },
+    series = new JQPlot.SubOptions.SeriesOptions[]
+    {
+      new JQPlot.SubOptions.SeriesOptions {
+        renderer = EJQPlotChartRenderer.BarRenderer       <span class="comment">// Denotes we want to render a bar graph</span>
+      }
+    }
+  };
+  </code></pre>
+</div>
+
+<div class="well">
+  <h4>Creating non-numeric graph data</h4>
+  <pre><code>
+    object[][] data = new object[][] { 
+      new object[] { "Cup Holder Pinion Bob", 7 },
+      new object[] { "Generic Fog Lamp", 9 },
+      new object[] { "HDTV Receiver", 15 },
+      new object[] { "8 Track Control Module", 12 },
+      new object[] { "Sludge Pump Fourier Modulator", 3 },
+      new object[] { "Transcender/Spice Rack", 6 },
+      new object[] { "Hair Spray Danger Indicator", 18 }
+    };
+  </code></pre>
+</div>
+
+<div class="well">
+  <h4>Setting up the plot object</h4>
+  <pre><code>
+  <span class="comment">// Note that we are instantiating a <span class="highlight">JQPlotChartBase</span> object and NOT a <span class="highlight">JQPlotChart</span> object</span>
+  <span class="comment">// This allows us to create a multi datatype data array</span>
+  JQPlotChartBase chart = new JQPlotChartBase
+  {
+    chartData = new List&lt;object[][]&gt; { data },
+    chartOptions = options
+  };
+  </code></pre>
+</div>
+
+<div class="well">
+  <h4>Once again the output...</h4>
+  <div class="content">
+    <div id="non-numeric-axis-values-graph" class="graph graph-large">
+    </div>
+    Required Plugins:<br />
+    <ul>
+      <li>jqplot.canvasTextRenderer.min.js</li>
+      <li>jqplot.canvasAxisTickRenderer.min.js</li>
+      <li>jqplot.categoryAxisRenderer.min.js</li>
+      <li>jqplot.barRenderer.min.js</li>
+    </ul>
+  </div>
+  <script type="text/javascript">
+    $(document).ready(function () {
+
+      $.jqplot('non-numeric-axis-values-graph', @Html.Raw(Model.chartData.ToJson()), @Html.Raw(Model.chartOptions.ToString()));
+    });
+  </script>
+</div>

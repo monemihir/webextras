@@ -20,6 +20,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Newtonsoft.Json;
 
 namespace WebExtras.JQPlot.SubOptions
 {
@@ -47,7 +48,8 @@ namespace WebExtras.JQPlot.SubOptions
     /// <summary>
     /// A class of a renderer which will draw the series, see $.jqplot.LineRenderer.
     /// </summary>
-    public EChartRenderer? renderer;
+    [JsonConverter(typeof(EJQPlotChartRendererJsonConverter))]
+    public EJQPlotChartRenderer? renderer;
 
     /// <summary>
     /// Options to pass on to the renderer.

@@ -1,4 +1,4 @@
-﻿@model WebExtras.JQPlot.JQPlotChart
+﻿@model WebExtras.JQPlot.JQPlotChartBase
 
 <div class="well">
   <h4>Creating the jqPlot options</h4>
@@ -56,12 +56,25 @@
   <h4>Creating the jqPlot Chart</h4>
   All the things we have done so far now get bundled into a jqPlot chart by instantiating the <strong>WebExtras.JQPlot.JQPlotChart</strong> object.
   <pre><code>
-  <span class="comment">// Notice that the 'chartData' property is a list, giving the flexibility of rendering multiple data series in the same graph</span>
+  <span class="comment">// Notice that the <span class="highlight">chartData</span> property is a list, giving the flexibility of rendering multiple data series in the same graph</span>
   JQPlotChart chart = new JQPlotChart
   {
-    chartData = new List&lt;double[][]&gt; { graphData },
+    chartData = new List&lt;double[][]&gt; { graphData.ToArray() },
     chartOptions = options
   };
+  </code></pre>
+</div>
+
+<div class="well">
+  <h4>Now in your HTML</h4>
+  Now that all C# bindings are done, it is time to render our graph. This can be done with a little bit of Javascript.
+  <pre><code>
+  @@model WebExtras.JQPlot.JQPlotChartBase
+  ....
+    ....
+    ....
+  <span class="comment">// Note that unlike Flot where we specify the jQuery DIV element, here we specify only the HTML ID of the DIV tag</span>
+  $.jqplot('line-graph', @@Html.Raw(Model.chartData.ToJson()), @@Html.Raw(Model.chartOptions.ToString()));
   </code></pre>
 </div>
 
@@ -70,6 +83,11 @@
   <div class="content">
     <div id="line-graph" class="graph">
     </div>
+    Required Plugins:<br />
+    <ul>
+      <li>jqplot.canvasTextRenderer.min.js</li>
+      <li>jqplot.canvasAxisLabelRenderer.min.js</li>
+    </ul>
   </div>
   <script type="text/javascript">
     $(document).ready(function () {
