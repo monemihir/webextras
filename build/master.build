@@ -25,11 +25,11 @@
 
     <!-- Build WebExtras.DemoApp -->
     <msbuild project="WebExtras.DemoApp/WebExtras.DemoApp.csproj">
-      <arg value="/p:OutputPath=../${build.bin-dir}" />
-      <arg value="/p:WebProjectOutputDir=../${build.web-dir}" />
+      <arg value="/p:OutputPath=${build.bin-dir}" />
+      <arg value="/p:WebProjectOutputDir=${build.web-dir}" />
       <arg value="/p:Configuration=${msbuild.configuration}" />
       <arg value="/p:Platform=${msbuild.platform}" />
-      <arg value="/p:DocumentationFile=WebExtras.DemoApp.xml" />
+      <arg value="/p:DocumentationFile=${env.temp}/WebExtras/WebExtras.DemoApp.xml" />
       <arg value="/t:Rebuild" />
       <arg value="/t:TransformWebConfig" />
       <arg value="/t:_WPPCopyWebApplication" />
@@ -40,7 +40,7 @@
       <arg value="/p:OutputPath=bin" />
       <arg value="/p:Configuration=${msbuild.configuration}" />
       <arg value="/p:Platform=${msbuild.platform}" />
-      <arg value="/p:DocumentationFile=WebExtras.Mvc.xml" />
+      <arg value="/p:DocumentationFile=${env.temp}/WebExtras/WebExtras.Mvc.xml" />
       <arg value="/t:Rebuild" />
     </msbuild>
 
@@ -49,7 +49,7 @@
       <arg value="/p:OutputPath=bin" />
       <arg value="/p:Configuration=${msbuild.configuration}" />
       <arg value="/p:Platform=${msbuild.platform}" />
-      <arg value="/p:DocumentationFile=WebExtras.xml" />
+      <arg value="/p:DocumentationFile=${env.temp}/WebExtras/WebExtras.xml" />
       <arg value="/t:Rebuild" />
     </msbuild>
 

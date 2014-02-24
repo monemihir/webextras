@@ -1,26 +1,30 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <project name="WebExtras">
+
+  <!-- Environment Variables -->
+  <property name="env.pf32" value="${environment::get-variable('ProgramFiles')}" />
+  <property name="env.temp" value="${environment::get-variable('TEMP')}" />
+
   <!-- Global Properties -->
-  <property name="build.bin-dir" value="../build/binaries" readonly="true" />
-  <property name="build.web-dir" value="../build/web" readonly="true" />
+  <property name="build.bin-dir" value="${env.temp}/WebExtras/binaries" readonly="true" />
+  <property name="build.web-dir" value="${env.temp}/WebExtras/web" readonly="true" />
   <property name="pkg.dir" value="../dist/files" readonly="true" />
   <property name="archive.file" value="${pkg.dir}/../webextras.zip" />
 
-  <property name="env.pf32" value="${environment::get-variable('ProgramFiles')}" />
-
+  
   <if test="${environment::variable-exists('ProgramFiles(x86)')}">
     <echo message="Compiling on x64 platform" />
     <property name="env.pf32" value="${environment::get-variable('ProgramFiles')}" />
   </if>
 
-  <loadtasks assembly="${build.bin-dir}/../nant-contrib/bin/NAnt.Contrib.Tasks.dll" />
+  <loadtasks assembly="../build/nant-contrib/bin/NAnt.Contrib.Tasks.dll" />
 
   <!-- Target: Copy documentation files -->
   <target name="copy-doc-files" description="Copies documentation files from individual 'bin' folder to appropriate location">
-    <copy file="WebExtras.Mvc/bin/WebExtras.Mvc.xml" tofile="${build.bin-dir}/WebExtras.Mvc.xml" failonerror="true" />
-    <copy file="WebExtras.Mvc/bin/WebExtras.Mvc.xml" tofile="${build.web-dir}/bin/WebExtras.Mvc.xml" failonerror="true" />
-    <copy file="WebExtras/bin/WebExtras.xml" tofile="${build.bin-dir}/WebExtras.xml" failonerror="true" />
-    <copy file="WebExtras/bin/WebExtras.xml" tofile="${build.web-dir}/bin/WebExtras.xml" failonerror="true" />
+    <copy file="${env.temp}/WebExtras/WebExtras.Mvc.xml" tofile="${build.bin-dir}/WebExtras.Mvc.xml" failonerror="true" />
+    <copy file="${env.temp}/WebExtras/WebExtras.Mvc.xml" tofile="${build.web-dir}/bin/WebExtras.Mvc.xml" failonerror="true" />
+    <copy file="${env.temp}/WebExtras/WebExtras.xml" tofile="${build.bin-dir}/WebExtras.xml" failonerror="true" />
+    <copy file="${env.temp}/WebExtras/WebExtras.xml" tofile="${build.web-dir}/bin/WebExtras.xml" failonerror="true" />
   </target>
 
   <!-- Target: Clean build and dist folders -->
