@@ -16,6 +16,8 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Web.Mvc;
 using WebExtras.Core;
@@ -39,6 +41,17 @@ namespace WebExtras.Mvc.Core
     private const string TempDataMessageTypeKey = "<WebExtras_LastActionMessageType>";
 
     /// <summary>
+    /// Action message store key lookup
+    /// </summary>
+    private static IDictionary<EActionMessage, string> NotificationKeyLookup = new Dictionary<EActionMessage, string>
+    {
+      { EActionMessage.Error,           "<WebExtras_ErrorActionMessages>"   }, 
+      { EActionMessage.Information,     "<WebExtras_InfoActionMessages>"    },
+      { EActionMessage.Success,         "<WebExtras_SuccessActionMessages>" },
+      { EActionMessage.Warning,         "<WebExtras_WarningActionMessages>" }
+    };
+
+    /// <summary>
     /// Overload of the RedirectToAction method, which allows the saving of an action message
     /// before the redirect is executed
     /// </summary>
@@ -50,7 +63,7 @@ namespace WebExtras.Mvc.Core
     /// <returns>A RedirectToRouteResult result</returns>
     public static RedirectToRouteResult RedirectToAction(this ControllerBase c, ActionResult result, string message, EActionMessage type = EActionMessage.Success, params object[] args)
     {
-      SaveActionMessage(c, message, type, args);
+      SaveLastActionMessage(c, message, type, args);
 
       var callInfo = result.GetT4MVCResult();
       return new RedirectToRouteResult(null, callInfo.RouteValueDictionary);
@@ -69,7 +82,7 @@ namespace WebExtras.Mvc.Core
     /// <returns>a ViewResult result</returns>
     public static ViewResult View(this ControllerBase c, string viewName, object model, string message, EActionMessage type = EActionMessage.Success, params object[] args)
     {
-      SaveActionMessage(c, message, type, args);
+      SaveLastActionMessage(c, message, type, args);
 
       c.ViewData.Model = model;
       return new ViewResult
@@ -81,14 +94,48 @@ namespace WebExtras.Mvc.Core
     }
 
     /// <summary>
-    /// ControllerBase extension method to save a message to the Controller.TempData session store using the key denoted by
+    /// ControllerBase extension method to save an action message to Controller.TempData session store
+    /// </summary>
+    /// <param name="c">The controller</param>
+    /// <param name="message">The action message to be saved</param>
+    /// <param name="type">Action message type</param>
+    /// <param name="args">Any message formatting arguments</param>
+    public static void SaveNotification(this ControllerBase c, string message, EActionMessage type, params object[] args)
+    {
+      string key = NotificationKeyLookup[type];
+
+      ICollection<string> store = c.TempData[key] as ICollection<string>;
+
+      if (store == null)
+        c.TempData[key] = (store = new List<string>());
+
+      store.Add(string.Format(message, args));
+    }
+
+    /// <summary>
+    /// Get the stored notifications
+    /// </summary>
+    /// <param name="html">Current HtmlHelper object</param>
+    /// <param name="type">Type of notification</param>
+    /// <returns>A collection of notifications</returns>
+    public static string[] GetNotifications(this HtmlHelper html, EActionMessage type)
+    {
+      string key = NotificationKeyLookup[type];
+
+      ICollection<string> store = html.ViewContext.Controller.TempData[key] as ICollection<string> ?? new string[0];
+
+      return store.ToArray();
+    }
+
+    /// <summary>
+    /// ControllerBase extension method to save the last action message to the Controller.TempData session store using the key denoted by
     /// 'TempDataMessageKey' variable.
     /// </summary>
     /// <param name="c">The controller</param>
     /// <param name="message">The action message to display</param>
     /// <param name="type">Action message type</param>
     /// <param name="args">Any message formatting arguments</param>
-    private static void SaveActionMessage(this ControllerBase c, string message, EActionMessage type, params object[] args)
+    private static void SaveLastActionMessage(this ControllerBase c, string message, EActionMessage type, params object[] args)
     {
       // store data in temp key, will be alive for one request only
       c.TempData[TempDataMessageKey] = string.Format(message, args);
