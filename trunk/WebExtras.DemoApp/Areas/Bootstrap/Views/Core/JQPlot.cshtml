@@ -62,6 +62,7 @@
   <li>@Html.Hyperlink("Basic Line Graph", MVC.Bootstrap.Core.JQPlot(0))</li>
   <li>@Html.Hyperlink("Non-numeric Axis Values", MVC.Bootstrap.Core.JQPlot(1))</li>
   <li>@Html.Hyperlink("Multiple Axes", MVC.Bootstrap.Core.JQPlot(2))</li>
+  <li>@Html.Hyperlink("Ajax Data", MVC.Bootstrap.Core.JQPlot(3))</li>
 </ul>
 
 <script type="text/javascript">
@@ -78,6 +79,10 @@
 
   case 2:
   @Html.Partial(MVC.Core.Views._JQPlotMultipleAxes, Model.Chart)
+    break;
+
+  case 3:
+  @Html.Partial(MVC.Core.Views._JQPlotAjaxData, Model.Chart)
     break;
 
   default:

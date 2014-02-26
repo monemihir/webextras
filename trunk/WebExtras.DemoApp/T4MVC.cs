@@ -145,6 +145,7 @@ namespace Links
             public static readonly string jqplot_canvasTextRenderer_min_js = Url("jqplot.canvasTextRenderer.min.js");
             public static readonly string jqplot_categoryAxisRenderer_min_js = Url("jqplot.categoryAxisRenderer.min.js");
             public static readonly string jqplot_dateAxisRenderer_min_js = Url("jqplot.dateAxisRenderer.min.js");
+            public static readonly string jqplot_json2_min_js = Url("jqplot.json2.min.js");
             public static readonly string jqplot_min_js = Url("jqplot.min.js");
         }
     

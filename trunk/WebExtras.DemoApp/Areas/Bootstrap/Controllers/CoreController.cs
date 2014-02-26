@@ -16,8 +16,8 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+using WebExtras.Mvc.Core;
 #pragma warning disable 1591
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -588,6 +588,22 @@ namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
           };
           break;
 
+        case 3:
+          data = Url.Action(MVC.Bootstrap.Core.GetJQPlotData());
+          options = new JQPlotOptions
+          {
+            title = new TitleOptions("AJAX JSON Data Renderer"),
+            axesDefaults = new JQPlot.SubOptions.AxisOptions
+            {
+              labelRenderer = EJQPlotRenderer.CanvasAxisLabelRenderer,
+              labelOptions = new Dictionary<string, object> { 
+                { "fontSize", "12px" },
+                { "fontFamily", "Arial" }
+              }
+            }
+          };
+          break;
+
         default:
           data = new List<double[][]> { m_graphSampleData };
           options = new JQPlotOptions {
@@ -622,6 +638,17 @@ namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
       };
 
       return View(model);
+    }
+
+    /// <summary>
+    /// Returns the graph data to be plotted as JSON
+    /// </summary>
+    /// <returns>JSON data result</returns>
+    public virtual ActionResult GetJQPlotData()
+    {
+      List<double[][]> data = new List<double[][]> { m_graphSampleData };
+
+      return new JsonNetResult(data, JsonRequestBehavior.AllowGet);
     }
   }
 }

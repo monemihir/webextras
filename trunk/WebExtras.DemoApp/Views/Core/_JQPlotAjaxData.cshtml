@@ -1,0 +1,102 @@
+﻿@model WebExtras.JQPlot.JQPlotChartBase
+
+<div class="well">
+  <h4>Specifying the URL</h4>
+  <p>JQPlot provides you a shorthand to specify the URL to fetch data from by simply setting the chart data to the URL</p>
+  <pre><code>
+    JQPlotChartBase chart = new JQPlotChartBase
+    {
+      chartData = "/url_to_fetch_from",
+      chartOptions = options
+    };
+  </code></pre>
+</div>
+
+<div class="well">
+  <h4>Your AJAX data returning controller action</h4>
+  <pre><code>
+    public virtual ActionResult GetJQPlotData()
+    {
+      List&lt;double[][]&gt; data = new List&lt;double[][]&gt; { m_graphSampleData };
+
+      return new JsonNetResult(data, JsonRequestBehavior.AllowGet);
+    }
+  </code></pre>
+</div>
+
+<div class="well">
+  <h4>Then in your HTML...</h4>
+  <p>Unfortunately, since AJAX rendering is normally done via a JavaScript function, WebExtras can not provide a simple
+    way of creating this in C# since you may not know the function name beforehand.
+  </p>
+  <p>Therefore, you must configure it in your HTML page. The graph below uses the following JavaScript snippet to render</p>
+  <pre><code>
+    $(document).ready(function () {
+
+      var ajaxDataRenderer = function(url, plot, rendererOptions)
+      {
+        var retVal = null;
+
+        $.ajax({
+          <span class="comment">// have to use synchronous here, else the function </span>
+          <span class="comment">// will return before the data is fetched</span>
+          async: false,
+          url: url,
+          dataType:"json",
+          success: function(data) {
+            retVal = data;
+          }
+        });
+        return retVal;
+      };
+
+      var options = @@Html.Raw(Model.chartOptions.ToString());
+      options.dataRenderer = ajaxDataRenderer;
+
+      $.jqplot('ajax-graph', '@@Model.chartData.ToString()', options);    <span class="comment">// Notice how chart data is rendered as a string</span>
+    });
+  </code></pre>
+</div>
+
+<div class="well">
+  <h4>AJAX powered output...</h4>
+  <div class="content">
+    <div id="ajax-graph" class="graph graph-large">
+    </div>
+    <br />
+    Required Plugins:<br />
+    <ul>
+      <li>jqplot.json2.min.js</li>
+      <li>jqplot.canvasTextRenderer.min.js</li>
+      <li>jqplot.canvasAxisTickRenderer.min.js</li>
+      <li>jqplot.categoryAxisRenderer.min.js</li>
+      <li>jqplot.barRenderer.min.js</li>
+    </ul>
+  </div>
+  <script type="text/javascript">
+    $(document).ready(function () {
+
+      var ajaxDataRenderer = function(url, plot, rendererOptions)
+      {
+        var retVal = null;
+
+        $.ajax({
+          // have to use synchronous here, else the function 
+          // will return before the data is fetched
+          async: false,
+          url: url,
+          dataType:"json",
+          success: function(data) {
+            retVal = data;
+          }
+        });
+        return retVal;
+      };
+
+      var options = @Html.Raw(Model.chartOptions.ToString());
+      options.dataRenderer = ajaxDataRenderer;
+
+      $.jqplot('ajax-graph', '@Model.chartData.ToString()', options);
+    });
+  </script>
+</div>

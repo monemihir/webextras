@@ -120,6 +120,7 @@ namespace WebExtras.DemoApp.App_Start
       // jqPlot bundle
       Bundle.JavaScript()
         .Add(Links.Scripts.JQPlot.jqplot_min_js)
+        .Add(Links.Scripts.JQPlot.jqplot_json2_min_js)
         .Add(Links.Scripts.JQPlot.jqplot_canvasAxisTickRenderer_min_js)
         .Add(Links.Scripts.JQPlot.jqplot_canvasAxisLabelRenderer_min_js)
         .Add(Links.Scripts.JQPlot.jqplot_canvasTextRenderer_min_js)
