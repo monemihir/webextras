@@ -41,7 +41,7 @@ namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
     #region Ctor and attributes
 
     private readonly double[][] m_graphSampleData;
-    private readonly object[][] m_graphSampleTextData;
+    private readonly object[][] m_graphSampleTextData1, m_graphSampleTextData2;
     private readonly Random m_rand;
 
     /// <summary>
@@ -52,7 +52,7 @@ namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
       m_rand = new Random(DateTime.Now.Millisecond);
       m_graphSampleData = Enumerable.Range(1, 10).Select(f => new double[] { f, m_rand.NextDouble() * 100 }).ToArray();
 
-      m_graphSampleTextData = new object[][] { 
+      m_graphSampleTextData1 = new object[][] { 
         new object[] { "Cup Holder Pinion Bob", m_rand.NextDouble() * 100 },
         new object[] { "Generic Fog Lamp", m_rand.NextDouble() * 100 },
         new object[] { "HDTV Receiver", m_rand.NextDouble() * 100 },
@@ -62,6 +62,15 @@ namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
         new object[] { "Hair Spray Danger Indicator", m_rand.NextDouble() * 100 }
       };
 
+      m_graphSampleTextData2 = new object[][] { 
+        new object[] { "Nickel", m_rand.NextDouble() * 100 },
+        new object[] { "Aluminium", m_rand.NextDouble() * 100 },
+        new object[] { "Xenon", m_rand.NextDouble() * 100 },
+        new object[] { "Silver", m_rand.NextDouble() * 100 },
+        new object[] { "Sulphur", m_rand.NextDouble() * 100 },
+        new object[] { "Vanadium", m_rand.NextDouble() * 100 },
+        new object[] { "Uranium", m_rand.NextDouble() * 100 }
+      };
 
     }
 
@@ -505,7 +514,7 @@ namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
       switch (dmode)
       {
         case 1:
-          data = new List<object[][]> { m_graphSampleTextData };
+          data = new List<object[][]> { m_graphSampleTextData1 };
           options = new JQPlotOptions
           {
             title = new TitleOptions("Concern vs Occurance"),
@@ -530,6 +539,50 @@ namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
             {
               new JQPlot.SubOptions.SeriesOptions {
                 renderer = EJQPlotChartRenderer.BarRenderer
+              }
+            }
+          };
+          break;
+
+        case 2:
+          data = new List<object[][]> { m_graphSampleTextData1, m_graphSampleTextData2 };
+          options = new JQPlotOptions
+          {
+            title = new TitleOptions("Concern vs Occurance"),
+            axesDefaults = new JQPlot.SubOptions.AxisOptions
+            {
+              tickRenderer = EJQPlotRenderer.CanvasAxisTickRenderer,
+              tickOptions = new Dictionary<string, object> { 
+                { "angle", 30 }
+              }
+            },
+            axes = new JQPlotAxes
+            {
+              xaxis = new JQPlot.SubOptions.AxisOptions { renderer = EJQPlotRenderer.CategoryAxisRenderer },
+              x2axis = new JQPlot.SubOptions.AxisOptions { renderer = EJQPlotRenderer.CategoryAxisRenderer },
+              yaxis = new JQPlot.SubOptions.AxisOptions
+              {
+                tickOptions = new Dictionary<string, object> { 
+                  { "angle", 0 }
+                },
+                autoscale = true
+              },
+              y2axis = new JQPlot.SubOptions.AxisOptions
+              {
+                tickOptions = new Dictionary<string, object> { 
+                  { "angle", 0 }
+                },
+                autoscale = true
+              }
+            },
+            series = new JQPlot.SubOptions.SeriesOptions[]
+            {
+              new JQPlot.SubOptions.SeriesOptions {
+                renderer = EJQPlotChartRenderer.BarRenderer
+              },
+              new JQPlot.SubOptions.SeriesOptions {
+                xaxis = "x2axis",
+                yaxis = "y2axis"
               }
             }
           };

@@ -33,8 +33,18 @@ namespace WebExtras.JQPlot
     public AxisOptions xaxis;
 
     /// <summary>
+    /// X2 axis
+    /// </summary>
+    public AxisOptions x2axis;
+
+    /// <summary>
     /// Y1 axis
     /// </summary>
     public AxisOptions yaxis;
+
+    /// <summary>
+    /// Y2 axis
+    /// </summary>
+    public AxisOptions y2axis;
   }
 }

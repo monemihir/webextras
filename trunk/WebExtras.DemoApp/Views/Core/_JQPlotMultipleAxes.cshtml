@@ -1,0 +1,103 @@
+﻿@model WebExtras.JQPlot.JQPlotChartBase
+
+<div class="well">
+  <h4>Modified plot options</h4>
+  <p>Most of the options are the same as specified in the previous example of non-numeric axis values. However, since
+    we now want multiple axes we must specify options for the second X & Y axes.
+  </p>
+  <pre><code>
+  JQPlotOptions options = new JQPlotOptions
+  {
+    <span class="comment">// Copy other options from the previous example</span>
+    axes = new JQPlotAxes
+    {
+      xaxis = new JQPlot.SubOptions.AxisOptions { renderer = EJQPlotRenderer.CategoryAxisRenderer },
+      <span class="highlight">x2axis</span> = new JQPlot.SubOptions.AxisOptions { renderer = EJQPlotRenderer.CategoryAxisRenderer },
+      yaxis = new JQPlot.SubOptions.AxisOptions
+      {
+        tickOptions = new Dictionary&lt;string, object&gt; { 
+          <span class="comment">// Explicitly overrides and resets the tilt angle for Y axis ticks to 0&deg;</span>
+          { "angle", 0 }                                  
+        }
+      },
+      <span class="highlight">y2axis</span> = new JQPlot.SubOptions.AxisOptions
+      {
+        tickOptions = new Dictionary&lt;string, object&gt; { 
+          <span class="comment">// Explicitly overrides and resets the tilt angle for Y axis ticks to 0&deg;</span>
+          { "angle", 0 }                                  
+        }
+      }
+    },
+    series = new JQPlot.SubOptions.SeriesOptions[]
+    {
+      new JQPlot.SubOptions.SeriesOptions {
+        renderer = EJQPlotChartRenderer.BarRenderer       <span class="comment">// Denotes we want to render a bar graph</span>
+      },
+      <span class="comment">// We need to specify that second series should be plotted on the second X & Y axes</span>
+      new JQPlot.SubOptions.SeriesOptions {
+        xaxis = "x2axis",                           
+        yaxis = "y2axis"
+      }
+    }
+  };
+  </code></pre>
+</div>
+
+<div class="well">
+  <h4>Creating non-numeric graph data</h4>
+  <pre><code>
+    object[][] data1 = new object[][] { 
+      new object[] { "Cup Holder Pinion Bob", 7 },
+      new object[] { "Generic Fog Lamp", 9 },
+      new object[] { "HDTV Receiver", 15 },
+      new object[] { "8 Track Control Module", 12 },
+      new object[] { "Sludge Pump Fourier Modulator", 3 },
+      new object[] { "Transcender/Spice Rack", 6 },
+      new object[] { "Hair Spray Danger Indicator", 18 }
+    };
+    
+    object[][] data2 = new object[][] { 
+      new object[] { "Nickel", 12 },
+      new object[] { "Aluminium", 1 },
+      new object[] { "Xenon", 15 },
+      new object[] { "Silver", 8 },
+      new object[] { "Sulphur", 6 },
+      new object[] { "Vanadium", 12 },
+      new object[] { "Uranium", 1 }
+    };
+  </code></pre>
+</div>
+
+<div class="well">
+  <h4>Setting up the plot object</h4>
+  <pre><code>
+  <span class="comment">// Note that we are instantiating a <span class="highlight">JQPlotChartBase</span> object and NOT a <span class="highlight">JQPlotChart</span> object</span>
+  <span class="comment">// This allows us to create a multi datatype data array</span>
+  JQPlotChartBase chart = new JQPlotChartBase
+  {
+    chartData = new List&lt;object[][]&gt; { data1, <span class="highlight">data2</span> },
+    chartOptions = options
+  };
+  </code></pre>
+</div>
+
+<div class="well">
+  <h4>And finally the output...</h4>
+  <div class="content">
+    <div id="multi-axes-graph" class="graph graph-large">
+    </div>
+    Required Plugins:<br />
+    <ul>
+      <li>jqplot.canvasTextRenderer.min.js</li>
+      <li>jqplot.canvasAxisTickRenderer.min.js</li>
+      <li>jqplot.categoryAxisRenderer.min.js</li>
+      <li>jqplot.barRenderer.min.js</li>
+    </ul>
+  </div>
+  <script type="text/javascript">
+    $(document).ready(function () {
+
+      $.jqplot('multi-axes-graph', @Html.Raw(Model.chartData.ToJson()), @Html.Raw(Model.chartOptions.ToString()));
+    });
+  </script>
+</div>

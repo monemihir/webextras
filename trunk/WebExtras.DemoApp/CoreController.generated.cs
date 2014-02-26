@@ -42,6 +42,7 @@ namespace T4MVC
                 public readonly string _CustomFlotFormatters = "_CustomFlotFormatters";
                 public readonly string _DashedGraph = "_DashedGraph";
                 public readonly string _JQPlotLineGraph = "_JQPlotLineGraph";
+                public readonly string _JQPlotMultipleAxes = "_JQPlotMultipleAxes";
                 public readonly string _JQPlotNonNumericAxisValues = "_JQPlotNonNumericAxisValues";
                 public readonly string _LineGraph = "_LineGraph";
                 public readonly string _PagedSetup = "_PagedSetup";
@@ -57,6 +58,7 @@ namespace T4MVC
             public readonly string _CustomFlotFormatters = "~/Views/Core/_CustomFlotFormatters.cshtml";
             public readonly string _DashedGraph = "~/Views/Core/_DashedGraph.cshtml";
             public readonly string _JQPlotLineGraph = "~/Views/Core/_JQPlotLineGraph.cshtml";
+            public readonly string _JQPlotMultipleAxes = "~/Views/Core/_JQPlotMultipleAxes.cshtml";
             public readonly string _JQPlotNonNumericAxisValues = "~/Views/Core/_JQPlotNonNumericAxisValues.cshtml";
             public readonly string _LineGraph = "~/Views/Core/_LineGraph.cshtml";
             public readonly string _PagedSetup = "~/Views/Core/_PagedSetup.cshtml";

@@ -76,6 +76,10 @@
   @Html.Partial(MVC.Core.Views._JQPlotNonNumericAxisValues, Model.Chart)
     break;
 
+  case 2:
+  @Html.Partial(MVC.Core.Views._JQPlotMultipleAxes, Model.Chart)
+    break;
+
   default:
   @Html.Partial(MVC.Core.Views._JQPlotLineGraph, Model.Chart)
     break;
