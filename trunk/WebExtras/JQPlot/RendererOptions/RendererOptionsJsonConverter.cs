@@ -16,51 +16,18 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+using MoreLinq;
 using Newtonsoft.Json;
 using System;
 using System.Linq;
-using WebExtras.Core;
 
-#pragma warning disable 1591
-
-namespace WebExtras.JQPlot.SubOptions
+namespace WebExtras.JQPlot.RendererOptions
 {
   /// <summary>
-  /// All renderers available in jqPlot
+  /// Renderer options JsonConverter
   /// </summary>
   [Serializable]
-  public enum EJQPlotRenderer
-  {
-    /// <summary>
-    /// Requires: jqplot.canvasTextRenderer.min.js, jqplot.canvasAxisLabelRenderer.min.js plugins
-    /// </summary>
-    [StringValue("$.jqplot.CanvasAxisLabelRenderer")]
-    CanvasAxisLabelRenderer,
-
-    /// <summary>
-    /// Requires: jqplot.canvasTextRenderer.min.js, jqplot.canvasAxisTickRenderer.min.js plugins
-    /// </summary>
-    [StringValue("$.jqplot.CanvasAxisTickRenderer")]
-    CanvasAxisTickRenderer,
-
-    /// <summary>
-    /// Requires: jqplot.categoryAxisRenderer.min.js
-    /// </summary>
-    [StringValue("$.jqplot.CategoryAxisRenderer")]
-    CategoryAxisRenderer,
-
-    /// <summary>
-    /// Requires: jqplot.DateAxisRenderer.min.js
-    /// </summary>
-    [StringValue("$.jqplot.DateAxisRenderer")]
-    DateAxisRenderer
-  }
-
-  /// <summary>
-  /// EJQPlotRenderer enum's custom Json Converter
-  /// </summary>
-  [Serializable]
-  public class EJQPlotRendererJsonConverter : JsonConverter
+  public class RendererOptionsJsonConverter : JsonConverter
   {
     /// <summary>
     /// Determines whether this instance can convert the specified object type
@@ -69,7 +36,7 @@ namespace WebExtras.JQPlot.SubOptions
     /// <returns>true if this instance can convert the specified object type; otherwise, false</returns>
     public override bool CanConvert(Type objectType)
     {
-      return typeof(EJQPlotRenderer).IsAssignableFrom(objectType);
+      return typeof(IRendererOptions) == objectType;
     }
 
     /// <summary>
@@ -82,7 +49,7 @@ namespace WebExtras.JQPlot.SubOptions
     /// <returns>The object value</returns>
     public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
     {
-      return existingValue == null ? null : Enum.Parse(typeof(EJQPlotRenderer), existingValue.ToString().Split('.').Last());
+      throw new NotImplementedException("Deserializing of this object is not allowed");
     }
 
     /// <summary>
@@ -93,10 +60,16 @@ namespace WebExtras.JQPlot.SubOptions
     /// <param name="serializer">The Newtonsoft.Json.JsonWriter to write to</param>
     public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
     {
-      EJQPlotRenderer val = (EJQPlotRenderer)value;
 
-      writer.WriteRawValue(val.GetStringValue());
+      value.GetType().GetProperties()
+        .Where(f => f.GetValue(value, null) != null)
+        .ForEach(f => {
+          writer.WriteStartObject();
+          writer.WritePropertyName(f.Name);
+          writer.WriteValue(f.GetValue(value, null));
+          writer.WriteEndObject();
+        });
+
     }
   }
-
 }

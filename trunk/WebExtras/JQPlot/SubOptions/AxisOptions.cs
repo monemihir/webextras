@@ -19,6 +19,7 @@
 using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using WebExtras.JQPlot.RendererOptions;
 
 namespace WebExtras.JQPlot.SubOptions
 {
@@ -42,7 +43,7 @@ namespace WebExtras.JQPlot.SubOptions
     /// <summary>
     /// Options that will be passed to the tickRenderer, see $.jqplot.AxisTickRenderer options.
     /// </summary>
-    public IDictionary<string, object> tickOptions;
+    public IRendererOptions tickOptions;
 
     /// <summary>
     /// A class of a rendering engine for creating an axis label.

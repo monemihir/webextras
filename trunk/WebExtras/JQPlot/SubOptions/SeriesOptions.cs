@@ -21,6 +21,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Newtonsoft.Json;
+using WebExtras.JQPlot.RendererOptions;
 
 namespace WebExtras.JQPlot.SubOptions
 {
@@ -54,7 +55,7 @@ namespace WebExtras.JQPlot.SubOptions
     /// <summary>
     /// Options to pass on to the renderer.
     /// </summary>
-    public object rendererOptions;
+    public IRendererOptions rendererOptions;
 
     /// <summary>
     /// Line label to use in the legend.

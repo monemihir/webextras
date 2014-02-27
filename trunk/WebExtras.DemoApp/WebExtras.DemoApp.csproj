@@ -220,6 +220,8 @@
       <DependentUpon>webextras.gumby.less</DependentUpon>
     </Content>
     <Content Include="Scripts\excanvas.min.js" />
+    <Content Include="Scripts\JQPlot\jqplot.cursor.min.js" />
+    <Content Include="Scripts\JQPlot\jqplot.highlighter.min.js" />
     <Content Include="Scripts\JQPlot\jqplot.json2.min.js" />
     <Content Include="Scripts\JQPlot\jqplot.barRenderer.min.js" />
     <Content Include="Scripts\JQPlot\jqplot.canvasAxisLabelRenderer.min.js" />
@@ -408,6 +410,7 @@
     <Content Include="Views\Core\_JQPlotNonNumericAxisValues.cshtml" />
     <Content Include="Views\Core\_JQPlotMultipleAxes.cshtml" />
     <Content Include="Views\Core\_JQPlotAjaxData.cshtml" />
+    <Content Include="Views\Core\_JQPlotDateGraph.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

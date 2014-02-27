@@ -1,0 +1,20 @@
+﻿@model WebExtras.JQPlot.JQPlotChartBase
+
+<div class="well">
+  <h4>And finally the output...</h4>
+  <div class="content">
+    <div id="line-graph" class="graph">
+    </div>
+    Required Plugins:<br />
+    <ul>
+      <li>jqplot.canvasTextRenderer.min.js</li>
+      <li>jqplot.canvasAxisLabelRenderer.min.js</li>
+    </ul>
+  </div>
+  <script type="text/javascript">
+    $(document).ready(function () {
+
+      $.jqplot('line-graph', @Html.Raw(Model.chartData.ToJson()), @Html.Raw(Model.chartOptions.ToString()));
+    });
+  </script>
+</div>

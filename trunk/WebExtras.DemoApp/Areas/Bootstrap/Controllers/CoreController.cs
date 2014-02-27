@@ -16,6 +16,7 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+using WebExtras.JQPlot.RendererOptions;
 using WebExtras.Mvc.Core;
 #pragma warning disable 1591
 using System;
@@ -41,7 +42,7 @@ namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
     #region Ctor and attributes
 
     private readonly double[][] m_graphSampleData;
-    private readonly object[][] m_graphSampleTextData1, m_graphSampleTextData2;
+    private readonly object[][] m_graphSampleTextData1, m_graphSampleTextData2, m_graphSampleDateData;
     private readonly Random m_rand;
 
     /// <summary>
@@ -72,6 +73,15 @@ namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
         new object[] { "Uranium", m_rand.NextDouble() * 100 }
       };
 
+      m_graphSampleDateData = new object[][]{
+        new object[] { DateTime.Now.AddDays(m_rand.Next(150)).ToString("dd-MMM-yyyy"), m_rand.NextDouble() * 100 },
+        new object[] { DateTime.Now.AddDays(m_rand.Next(150)).ToString("dd-MMM-yyyy"), m_rand.NextDouble() * 100 },
+        new object[] { DateTime.Now.AddDays(m_rand.Next(150)).ToString("dd-MMM-yyyy"), m_rand.NextDouble() * 100 },
+        new object[] { DateTime.Now.AddDays(m_rand.Next(150)).ToString("dd-MMM-yyyy"), m_rand.NextDouble() * 100 },
+        new object[] { DateTime.Now.AddDays(m_rand.Next(150)).ToString("dd-MMM-yyyy"), m_rand.NextDouble() * 100 },
+        new object[] { DateTime.Now.AddDays(m_rand.Next(150)).ToString("dd-MMM-yyyy"), m_rand.NextDouble() * 100 },
+        new object[] { DateTime.Now.AddDays(m_rand.Next(150)).ToString("dd-MMM-yyyy"), m_rand.NextDouble() * 100 }
+      };
     }
 
     #endregion Ctor and attributes
@@ -521,8 +531,9 @@ namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
             axesDefaults = new JQPlot.SubOptions.AxisOptions
             {
               tickRenderer = EJQPlotRenderer.CanvasAxisTickRenderer,
-              tickOptions = new Dictionary<string, object> { 
-                { "angle", -30 }
+              tickOptions = new CanvasAxisTickRendererOptions
+              {
+                angle = -30
               }
             },
             axes = new JQPlotAxes
@@ -530,8 +541,9 @@ namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
               xaxis = new JQPlot.SubOptions.AxisOptions { renderer = EJQPlotRenderer.CategoryAxisRenderer },
               yaxis = new JQPlot.SubOptions.AxisOptions
               {
-                tickOptions = new Dictionary<string, object> { 
-                  { "angle", 0 }
+                tickOptions = new CanvasAxisTickRendererOptions
+                {
+                  angle = 0
                 }
               }
             },
@@ -545,6 +557,35 @@ namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
           break;
 
         case 2:
+          data = new List<object[][]> { m_graphSampleDateData };
+          options = new JQPlotOptions
+          {
+            title = new TitleOptions("Date Data Rendering"),
+            axes = new JQPlotAxes
+            {
+              xaxis = new JQPlot.SubOptions.AxisOptions
+              {
+                renderer = EJQPlotRenderer.DateAxisRenderer,
+                tickOptions = new AxisTickRendererOptions
+                {
+                  formatString = "%b&nbsp;%#d"
+                }
+              },
+            },
+            series = new JQPlot.SubOptions.SeriesOptions[] 
+            {
+              new JQPlot.SubOptions.SeriesOptions 
+              {
+                renderer = EJQPlotChartRenderer.BarRenderer,
+                rendererOptions = new BarRendererOptions {
+                  barWidth = 25
+                }
+              }
+            }
+          };
+          break;
+
+        case 3:
           data = new List<object[][]> { m_graphSampleTextData1, m_graphSampleTextData2 };
           options = new JQPlotOptions
           {
@@ -552,8 +593,9 @@ namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
             axesDefaults = new JQPlot.SubOptions.AxisOptions
             {
               tickRenderer = EJQPlotRenderer.CanvasAxisTickRenderer,
-              tickOptions = new Dictionary<string, object> { 
-                { "angle", 30 }
+              tickOptions = new CanvasAxisTickRendererOptions
+              {
+                angle = 30
               }
             },
             axes = new JQPlotAxes
@@ -562,15 +604,17 @@ namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
               x2axis = new JQPlot.SubOptions.AxisOptions { renderer = EJQPlotRenderer.CategoryAxisRenderer },
               yaxis = new JQPlot.SubOptions.AxisOptions
               {
-                tickOptions = new Dictionary<string, object> { 
-                  { "angle", 0 }
+                tickOptions = new CanvasAxisTickRendererOptions
+                {
+                  angle = 0
                 },
                 autoscale = true
               },
               y2axis = new JQPlot.SubOptions.AxisOptions
               {
-                tickOptions = new Dictionary<string, object> { 
-                  { "angle", 0 }
+                tickOptions = new CanvasAxisTickRendererOptions
+                {
+                  angle = 0
                 },
                 autoscale = true
               }
@@ -588,7 +632,7 @@ namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
           };
           break;
 
-        case 3:
+        case 4:
           data = Url.Action(MVC.Bootstrap.Core.GetJQPlotData());
           options = new JQPlotOptions
           {
@@ -606,7 +650,8 @@ namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
 
         default:
           data = new List<double[][]> { m_graphSampleData };
-          options = new JQPlotOptions {
+          options = new JQPlotOptions
+          {
             title = new TitleOptions("Basic Line Graph"),
             axesDefaults = new JQPlot.SubOptions.AxisOptions
             {

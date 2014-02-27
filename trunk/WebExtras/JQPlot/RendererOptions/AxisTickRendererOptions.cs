@@ -16,21 +16,27 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+using Newtonsoft.Json;
 using System;
 
-#pragma warning disable 1591
-
-namespace WebExtras.JQPlot.SubOptions
+namespace WebExtras.JQPlot.RendererOptions
 {
   /// <summary>
-  /// Tick mark locations
+  /// Axis tick renderer options
   /// </summary>
   [Serializable]
-  public enum ETickMarkLocation
+  [JsonConverter(typeof(RendererOptionsJsonConverter))]
+  public class AxisTickRendererOptions : AxisTickRendererOptionsBase, IRendererOptions
   {
-    Inside,
-    Outside,
-    Cross,
-    Auto
+    /// <summary>
+    /// Length of the tick beyond the grid in pixels.
+    /// </summary>
+    [Obsolete("Use 'markSize' instead")]
+    public int? size { get; set; }
+    
+    /// <summary>
+    /// Whether to escape HTML entities in the label.
+    /// </summary>
+    public string escapeHTML { get; set; }
   }
 }
