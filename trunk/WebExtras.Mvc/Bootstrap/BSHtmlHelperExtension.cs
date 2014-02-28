@@ -48,27 +48,7 @@ namespace WebExtras.Mvc.Bootstrap
     /// is not selected</exception>
     public static IExtendedHtmlString Icon(this HtmlHelper html, EBootstrapIcon icon, object htmlAttributes = null)
     {
-
-      RouteValueDictionary rvd = new RouteValueDictionary(htmlAttributes);
-
-      List<string> cssClasses = new List<string>();
-      if (rvd.ContainsKey("class"))
-      {
-        cssClasses.AddRange(rvd["class"].ToString().Split(' '));
-        rvd.Remove("class");
-      }
-
-      if (WebExtrasMvcConstants.BootstrapVersion == EBootstrapVersion.V2)
-        cssClasses.Add("icon-" + icon.ToString().ToLowerInvariant().Replace("_", "-"));
-      else if (WebExtrasMvcConstants.BootstrapVersion == EBootstrapVersion.V3)
-        cssClasses.Add("glyphicon glyphicon-" + icon.ToString().ToLowerInvariant().Replace("_", "-"));
-      else
-        throw new BootstrapVersionException();
-
-      Italic i = new Italic();
-      i["class"] = string.Join(" ", cssClasses);
-
-      return i;
+      return BootstrapIconUtil.Create(icon, htmlAttributes);
     }
 
     /// <summary>
@@ -95,35 +75,7 @@ namespace WebExtras.Mvc.Bootstrap
     /// icon library version is not selected</exception>
     public static IExtendedHtmlString Icon(this HtmlHelper html, EFontAwesomeIcon icon, EFontAwesomeIconSize size = EFontAwesomeIconSize.Normal, object htmlAttributes = null)
     {
-      IDictionary<string, object> attrsDictionary = HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes);
-
-      List<string> cssClasses = new List<string>();
-      if (attrsDictionary.ContainsKey("class"))
-      {
-        cssClasses.AddRange(attrsDictionary["class"].ToString().Split(' '));
-        attrsDictionary.Remove("class");
-      }
-
-      string prefix = string.Empty;
-
-      if (WebExtrasMvcConstants.FontAwesomeVersion == EFontAwesomeVersion.V3)
-        prefix = "icon-";
-      else if (WebExtrasMvcConstants.FontAwesomeVersion == EFontAwesomeVersion.V4)
-        prefix = "fa fa-";
-      else
-        throw new FontAwesomeVersionException();
-
-      cssClasses.Add(prefix + icon.ToString().ToLowerInvariant().Replace("_", "-"));
-
-      if (size != EFontAwesomeIconSize.Normal)
-        cssClasses.Add(prefix + size.GetStringValue());
-
-      Italic i = new Italic();
-      i["class"] = string.Join(" ", cssClasses);
-
-      attrsDictionary.ForEach(f => i.Attributes[f.Key] = f.Value.ToString());
-
-      return i;
+      return BootstrapIconUtil.Create(icon, size, htmlAttributes);
     }
 
     #endregion Icon extensions
@@ -324,5 +276,70 @@ namespace WebExtras.Mvc.Bootstrap
     }
 
     #endregion TooltipFor extensions
+
+    #region Alert extensions
+
+    /// <summary>
+    /// Renders a Bootstrap alert
+    /// </summary>
+    /// <param name="html">HtmlHelper extension</param>
+    /// <param name="type">Type of alert</param>
+    /// <param name="message">Alert message</param>
+    /// <param name="htmlAttributes">[Optional] Any extras HTML attributes to be applied. 
+    /// Note. These attributes are only applied to the top level div</param>
+    /// <returns>A Bootstrap styled alert</returns>
+    public static Alert Alert(this HtmlHelper html, EMessage type, string message, object htmlAttributes = null)
+    {
+      return Alert(html, type, message, string.Empty, null as EBootstrapIcon?, htmlAttributes);
+    }
+
+    /// <summary>
+    /// Renders a Bootstrap alert
+    /// </summary>
+    /// <param name="html">HtmlHelper extension</param>
+    /// <param name="type">Type of alert</param>
+    /// <param name="message">Alert message</param>
+    /// <param name="title">Title/Heading of the alert</param>
+    /// <param name="htmlAttributes">[Optional] Any extras HTML attributes to be applied. 
+    /// Note. These attributes are only applied to the top level div</param>
+    /// <returns>A Bootstrap styled alert</returns>
+    public static Alert Alert(this HtmlHelper html, EMessage type, string message, string title, object htmlAttributes = null)
+    {
+      return Alert(html, type, message, title, null as EBootstrapIcon?, htmlAttributes);
+    }
+
+    /// <summary>
+    /// Renders a Bootstrap alert
+    /// </summary>
+    /// <param name="html">HtmlHelper extension</param>
+    /// <param name="type">Type of alert</param>
+    /// <param name="message">Alert message</param>
+    /// <param name="title">Title/Heading of the alert</param>
+    /// <param name="icon">Icon to be rendered with title/heading</param>
+    /// <param name="htmlAttributes">[Optional] Any extras HTML attributes to be applied. 
+    /// Note. These attributes are only applied to the top level div</param>
+    /// <returns>A Bootstrap styled alert</returns>
+    public static Alert Alert(this HtmlHelper html, EMessage type, string message, string title, EFontAwesomeIcon? icon, object htmlAttributes = null)
+    {
+      return new Alert(type, message, title, icon, htmlAttributes);
+    }
+
+    /// <summary>
+    /// Renders a Bootstrap alert
+    /// </summary>
+    /// <param name="html">HtmlHelper extension</param>
+    /// <param name="type">Type of alert</param>
+    /// <param name="message">Alert message</param>
+    /// <param name="title">Title/Heading of the alert</param>
+    /// <param name="icon">Icon to be rendered with title/heading</param>
+    /// <param name="htmlAttributes">[Optional] Any extras HTML attributes to be applied. 
+    /// Note. These attributes are only applied to the top level div</param>
+    /// <returns>A Bootstrap styled alert</returns>
+    public static Alert Alert(this HtmlHelper html, EMessage type, string message, string title, EBootstrapIcon? icon, object htmlAttributes = null)
+    {
+      return new Alert(type, message, title, icon, htmlAttributes);
+    }
+
+    #endregion Alert extensions
   }
 }

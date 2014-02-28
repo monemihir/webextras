@@ -40,7 +40,7 @@ namespace WebExtras.Mvc.Core
                            "      protected void Application_Start()\n" +
                            "      {\n" +
                            "          WebExtrasMvcConstants.GumbyTheme = EGumbyTheme.Metro;\n" +
-                           "                                    OR" +
+                           "                                    OR\n" +
                            "          WebExtrasMvcConstants.BootstrapVersion = EBootstrapVersion.V2;\n" +
                            "      }\n" +
                            "  }\n";

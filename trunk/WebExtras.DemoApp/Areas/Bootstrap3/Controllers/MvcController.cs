@@ -86,7 +86,7 @@ namespace WebExtras.DemoApp.Areas.Bootstrap3.Controllers
     public virtual ActionResult ActionMessageDemo(bool success)
     {
       if (!success)
-        return this.RedirectToAction(Actions.BootstrapHtml(true), "Your action failed", EActionMessage.Error);
+        return this.RedirectToAction(Actions.BootstrapHtml(true), "Your action failed", EMessage.Error);
       return this.RedirectToAction(Actions.BootstrapHtml(true), "Your action was successful");
     }
 

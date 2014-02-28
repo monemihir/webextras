@@ -91,6 +91,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bootstrap\BootstrapIconUtil.cs" />
     <Compile Include="Bootstrap\BootstrapStringValueDeciders.cs" />
     <Compile Include="Core\ActionMessageControllerExtension.cs" />
     <Compile Include="Bootstrap\BootstrapNavbarExtension.cs" />
@@ -99,7 +100,7 @@
     <Compile Include="Bootstrap\EBootstrapProgressBar.cs" />
     <Compile Include="Bootstrap\EFontAwesomeIcon.cs" />
     <Compile Include="Bootstrap\EFontAwesomeIconSize.cs" />
-    <Compile Include="Core\ActionMessageStringValueDeciders.cs" />
+    <Compile Include="Core\MessageStringValueDeciders.cs" />
     <Compile Include="Core\BootstrapVersionException.cs" />
     <Compile Include="Core\EBootstrapVersion.cs" />
     <Compile Include="Core\EFontAwesomeVersion.cs" />
@@ -117,6 +118,7 @@
     <Compile Include="Gumby\GumbyHtmlStringExtension.cs" />
     <Compile Include="Gumby\GumbyNavbar.cs" />
     <Compile Include="Gumby\GumbyNavbarExtension.cs" />
+    <Compile Include="Html\Alert.cs" />
     <Compile Include="Html\Bold.cs" />
     <Compile Include="Html\Button.cs" />
     <Compile Include="Bootstrap\EBootstrapButton.cs" />
@@ -145,7 +147,7 @@
     <Compile Include="Html\RadioButton.cs" />
     <Compile Include="Html\Span.cs" />
     <Compile Include="JavascriptHelper.cs" />
-    <Compile Include="Core\EActionMessage.cs" />
+    <Compile Include="Core\EMessage.cs" />
     <Compile Include="Core\FormHelperExtension.cs" />
     <Compile Include="Core\HtmlHelperExtension.cs" />
     <Compile Include="Core\ModelStateErrorExtension.cs" />

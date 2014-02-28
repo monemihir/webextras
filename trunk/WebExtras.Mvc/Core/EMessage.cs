@@ -22,33 +22,33 @@ using WebExtras.Core;
 namespace WebExtras.Mvc.Core
 {
   /// <summary>
-  /// Type of action message
+  /// Type of message
   /// </summary>
   [Serializable]
-  public enum EActionMessage
+  public enum EMessage
   {
     /// <summary>
     /// Success message
     /// </summary>
-    [StringValue(typeof(ActionMessageSuccessStringValue))]
+    [StringValue(typeof(MessageSuccessStringValue))]
     Success,
 
     /// <summary>
     /// Error message
     /// </summary>
-    [StringValue(typeof(ActionMessageErrorStringValue))]
+    [StringValue(typeof(MessageErrorStringValue))]
     Error,
 
     /// <summary>
     /// Warning message
     /// </summary>
-    [StringValue(typeof(ActionMessageWarningStringValue))]
+    [StringValue(typeof(MessageWarningStringValue))]
     Warning,
 
     /// <summary>
     /// Information message
     /// </summary>
-    [StringValue(typeof(ActionMessageInfoStringValue))]
+    [StringValue(typeof(MessageInfoStringValue))]
     Information
   }
 }

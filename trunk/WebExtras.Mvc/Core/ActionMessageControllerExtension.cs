@@ -21,6 +21,7 @@ using System.Linq;
 using System.Text;
 using System.Web.Mvc;
 using WebExtras.Core;
+using WebExtras.Mvc.Html;
 
 namespace WebExtras.Mvc.Core
 {
@@ -41,15 +42,9 @@ namespace WebExtras.Mvc.Core
     private const string TempDataMessageTypeKey = "<WebExtras_LastActionMessageType>";
 
     /// <summary>
-    /// Action message store key lookup
+    /// The key used to store user alerts in the TempData object
     /// </summary>
-    private static IDictionary<EActionMessage, string> NotificationKeyLookup = new Dictionary<EActionMessage, string>
-    {
-      { EActionMessage.Error,           "<WebExtras_ErrorActionMessages>"   }, 
-      { EActionMessage.Information,     "<WebExtras_InfoActionMessages>"    },
-      { EActionMessage.Success,         "<WebExtras_SuccessActionMessages>" },
-      { EActionMessage.Warning,         "<WebExtras_WarningActionMessages>" }
-    };
+    private const string UserAlertsKey = "<WebExtras_UserAlerts>";
 
     /// <summary>
     /// Overload of the RedirectToAction method, which allows the saving of an action message
@@ -61,7 +56,7 @@ namespace WebExtras.Mvc.Core
     /// <param name="type">Action message type</param>
     /// <param name="args">Any message formatting arguments</param>
     /// <returns>A RedirectToRouteResult result</returns>
-    public static RedirectToRouteResult RedirectToAction(this ControllerBase c, ActionResult result, string message, EActionMessage type = EActionMessage.Success, params object[] args)
+    public static RedirectToRouteResult RedirectToAction(this ControllerBase c, ActionResult result, string message, EMessage type = EMessage.Success, params object[] args)
     {
       SaveLastActionMessage(c, message, type, args);
 
@@ -80,7 +75,7 @@ namespace WebExtras.Mvc.Core
     /// <param name="type">Action message type</param>
     /// <param name="args">Any message formatting arguments</param>
     /// <returns>a ViewResult result</returns>
-    public static ViewResult View(this ControllerBase c, string viewName, object model, string message, EActionMessage type = EActionMessage.Success, params object[] args)
+    public static ViewResult View(this ControllerBase c, string viewName, object model, string message, EMessage type = EMessage.Success, params object[] args)
     {
       SaveLastActionMessage(c, message, type, args);
 
@@ -94,35 +89,28 @@ namespace WebExtras.Mvc.Core
     }
 
     /// <summary>
-    /// ControllerBase extension method to save an action message to Controller.TempData session store
+    /// ControllerBase extension method to save a user alert to Controller.TempData session store
     /// </summary>
     /// <param name="c">The controller</param>
-    /// <param name="message">The action message to be saved</param>
-    /// <param name="type">Action message type</param>
-    /// <param name="args">Any message formatting arguments</param>
-    public static void SaveNotification(this ControllerBase c, string message, EActionMessage type, params object[] args)
+    /// <param name="alert">The user alert to be saved</param>
+    public static void SaveUserAlert(this ControllerBase c, Alert alert)
     {
-      string key = NotificationKeyLookup[type];
-
-      ICollection<string> store = c.TempData[key] as ICollection<string>;
+      ICollection<Alert> store = c.TempData[UserAlertsKey] as ICollection<Alert>;
 
       if (store == null)
-        c.TempData[key] = (store = new List<string>());
+        c.TempData[UserAlertsKey] = (store = new List<Alert>());
 
-      store.Add(string.Format(message, args));
+      store.Add(alert);
     }
 
     /// <summary>
-    /// Get the stored notifications
+    /// Get the stored user alerts
     /// </summary>
     /// <param name="html">Current HtmlHelper object</param>
-    /// <param name="type">Type of notification</param>
     /// <returns>A collection of notifications</returns>
-    public static string[] GetNotifications(this HtmlHelper html, EActionMessage type)
+    public static Alert[] GetUserAlerts(this HtmlHelper html)
     {
-      string key = NotificationKeyLookup[type];
-
-      ICollection<string> store = html.ViewContext.Controller.TempData[key] as ICollection<string> ?? new string[0];
+      ICollection<Alert> store = html.ViewContext.Controller.TempData[UserAlertsKey] as ICollection<Alert> ?? new Alert[0];
 
       return store.ToArray();
     }
@@ -135,7 +123,7 @@ namespace WebExtras.Mvc.Core
     /// <param name="message">The action message to display</param>
     /// <param name="type">Action message type</param>
     /// <param name="args">Any message formatting arguments</param>
-    private static void SaveLastActionMessage(this ControllerBase c, string message, EActionMessage type, params object[] args)
+    private static void SaveLastActionMessage(this ControllerBase c, string message, EMessage type, params object[] args)
     {
       // store data in temp key, will be alive for one request only
       c.TempData[TempDataMessageKey] = string.Format(message, args);
@@ -155,7 +143,7 @@ namespace WebExtras.Mvc.Core
 
       // get message
       string message = helper.ViewContext.TempData[TempDataMessageKey].ToString();
-      EActionMessage type = (EActionMessage)helper.ViewContext.TempData[TempDataMessageTypeKey];
+      EMessage type = (EMessage)helper.ViewContext.TempData[TempDataMessageTypeKey];
       const string controlId = "actionmessage";
 
       // create the dismiss button
@@ -185,7 +173,7 @@ namespace WebExtras.Mvc.Core
 
       switch (type)
       {
-        case EActionMessage.Success:
+        case EMessage.Success:
           sb.Append("control.delay(3000).fadeOut('500');");
           break;
 

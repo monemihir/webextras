@@ -43,6 +43,23 @@
   </div>
 </div>
 
+@{
+  Alert[] alerts = Html.GetUserAlerts();
+  if (alerts.Length > 0)
+  {
+  
+  <div class="row-fluid">
+    <div class="span12">
+      @foreach (Alert alert in alerts)
+      {
+        @alert
+      }
+    </div>
+  </div>
+  
+  }
+}
+
 <div class="well">
   <h4>Icon</h4>
   <p>
@@ -108,7 +125,7 @@
 </div>
 
 <div class="well">
-  <h4>Button styled hyperlinks</h4>
+  <h4>Hyperlinks styled as buttons</h4>
   <p>
     Markup
   </p>
@@ -223,6 +240,25 @@
 </div>
 
 <div class="well">
+  <h4>Alerts</h4>
+  <p>You can create alert messages using WebExtras extension method</p>
+  <p>Usage</p>
+  <pre><code>
+  @@Html.Alert(EMessage.Success, "Hooray...I am a resounding success")
+  @@Html.Alert(EMessage.Warning, "Oops...something went wrong. But no worries, I can still continue", "Note:")
+  @@Html.Alert(EMessage.Error, "No dice...something is seriously wrong. I quit", "Error:", EBootstrapIcon.Exclamation_Sign)
+  @@Html.Alert(EMessage.Information, "Just so you know, I am gonna try it again", "Note:", EFontAwesomeIcon.Flag)
+  </code></pre>
+  <p>Output</p>
+  <div class="content">
+    @Html.Alert(EMessage.Success, "Hooray...I am a resounding success")
+    @Html.Alert(EMessage.Warning, "Oops...something went wrong. But no worries, I can still continue", "Note:")
+    @Html.Alert(EMessage.Error, "No dice...something is seriously wrong. I quit", "Error:", EBootstrapIcon.Exclamation_Sign)
+    @Html.Alert(EMessage.Information, "Just so you know, I am gonna try it again", "Note:", EFontAwesomeIcon.Flag)
+  </div>
+</div>
+
+<div class="well">
   <h4>Action messages</h4>
   <p>
     WebExtras provides a way to add action messages to denote status of action to notify a user. For e.g. you may want to add a message to the user when he is moved to a different
@@ -268,3 +304,46 @@ public class HomeController : ControllerBase
     @Html.Hyperlink("Action Error Message Demo", MVC.Bootstrap.Mvc.ActionMessageDemo(false))
   </div>
 </div>
+
+<div class="well">
+  <h4>User Alerts</h4>
+  <p>
+    While there can only be one action message per controller action, WebExtras also allows you to add multiple
+    user alerts which can then be retrieved and displayed from the view.
+  </p>
+  <p>Usage</p>
+  <pre><code>
+  <span class="comment">// in your controller</span>
+  public ActionResult SomeAction()
+  {
+    ....
+    Alert alert = new Alert(...);
+    ....
+    this.SaveUserAlert(alert);
+    ....
+    return View()
+  }
+    
+  <span class="comment">// and then in your view</span>
+  @@{
+    Alert[] alerts = Html.GetUserAlerts();
+  
+    foreach(Alert alert in alerts)
+    {
+      @@alert
+    }
+  }
+  </code></pre>
+  <p>Output</p>
+  <div class="content">
+    <span class="comment">// Click the link below to see an user alerts demo.
+      <br />
+    </span>
+    <span class="comment">// User alerts will be shown at the top of the page.
+      <br />
+    </span>
+    <br />
+    @Html.Hyperlink("User Alerts Demo", MVC.Bootstrap.Mvc.UserAlertsDemo())
+  </div>
+</div>
+

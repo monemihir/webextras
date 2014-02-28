@@ -47,5 +47,10 @@ namespace WebExtras.Mvc.Core
     /// The version of the FontAwesome icon library you want to use
     /// </summary>
     public static EFontAwesomeVersion FontAwesomeVersion = EFontAwesomeVersion.None;
+
+    /// <summary>
+    /// Represents an HTML SPACE as unicode
+    /// </summary>
+    public static string HTMLSpace = "&nbsp;";
   }
 }

@@ -21,9 +21,9 @@ using WebExtras.Core;
 namespace WebExtras.Mvc.Core
 {
   /// <summary>
-  /// Success action message string value decider
+  /// Success message string value decider
   /// </summary>
-  internal class ActionMessageSuccessStringValue : IStringValueDecider
+  internal class MessageSuccessStringValue : IStringValueDecider
   {
     /// <summary>
     /// The string value decider function
@@ -49,9 +49,9 @@ namespace WebExtras.Mvc.Core
   }
 
   /// <summary>
-  /// Error action message string value decider
+  /// Error message string value decider
   /// </summary>
-  internal class ActionMessageErrorStringValue : IStringValueDecider
+  internal class MessageErrorStringValue : IStringValueDecider
   {
     /// <summary>
     /// The string value decider function
@@ -80,9 +80,9 @@ namespace WebExtras.Mvc.Core
   }
 
   /// <summary>
-  /// Warning action message string value decider
+  /// Warning message string value decider
   /// </summary>
-  internal class ActionMessageWarningStringValue : IStringValueDecider
+  internal class MessageWarningStringValue : IStringValueDecider
   {
     /// <summary>
     /// The string value decider function
@@ -108,9 +108,9 @@ namespace WebExtras.Mvc.Core
   }
 
   /// <summary>
-  /// Warning action message string value decider
+  /// Warning message string value decider
   /// </summary>
-  internal class ActionMessageInfoStringValue : IStringValueDecider
+  internal class MessageInfoStringValue : IStringValueDecider
   {
     /// <summary>
     /// The string value decider function
