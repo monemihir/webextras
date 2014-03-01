@@ -16,8 +16,11 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+using System;
+using WebExtras.Mvc.Bootstrap;
+using WebExtras.Mvc.Gumby;
+using WebExtras.Mvc.Html;
 #pragma warning disable 1591
-
 using System.Web.Mvc;
 using WebExtras.DemoApp.Models.Mvc;
 using WebExtras.Mvc.Core;
@@ -87,6 +90,23 @@ namespace WebExtras.DemoApp.Areas.Gumby.Controllers
       if (!success)
         return this.RedirectToAction(Actions.GumbyHtml(true), "Your action failed", EMessage.Error);
       return this.RedirectToAction(Actions.GumbyHtml(true), "Your action was successful");
+    }
+
+    //
+    // GET: /Gumby/Mvc/UserAlertsDemo
+    public virtual ActionResult UserAlertsDemo()
+    {
+      Random rand = new Random(DateTime.UtcNow.Millisecond);
+      Alert[] defaultAlerts = {
+        new Alert(EMessage.Success, "Hooray...I am a resounding success"),
+        new Alert(EMessage.Warning, "Oops...something went wrong. But no worries, I can still continue", "Note:"),
+        new Alert(EMessage.Error, "No dice...something is seriously wrong. I quit", "Error:", EGumbyIcon.Docs),
+        new Alert(EMessage.Information, "Just so you know, I am gonna try it again", "Note:", EGumbyIcon.Flag)
+      };
+
+      this.SaveUserAlert(defaultAlerts[rand.Next(4)]);
+
+      return RedirectToAction(Actions.GumbyHtml());
     }
 
     //

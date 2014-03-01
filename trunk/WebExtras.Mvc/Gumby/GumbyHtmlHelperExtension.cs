@@ -21,6 +21,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Web.Mvc;
+using WebExtras.Mvc.Core;
 using WebExtras.Mvc.Html;
 
 namespace WebExtras.Mvc.Gumby
@@ -41,10 +42,7 @@ namespace WebExtras.Mvc.Gumby
     /// <returns>A Gumby icon</returns>
     public static IExtendedHtmlString Icon(this HtmlHelper html, EGumbyIcon icon, object htmlAttributes = null)
     {
-      Italic i = new Italic(htmlAttributes);
-      i["class"] = "icon-" + icon.ToString().ToLowerInvariant().Replace('_', '-');
-
-      return i;
+      return GumbyUtil.CreateIcon(icon, htmlAttributes);
     }
 
     #endregion Icon extensions
@@ -170,6 +168,55 @@ namespace WebExtras.Mvc.Gumby
     }
 
     #endregion Navbar extensions
+
+    #region Alert extensions
+
+    /// <summary>
+    /// Renders a Gumby alert
+    /// </summary>
+    /// <param name="html">HtmlHelper extension</param>
+    /// <param name="type">Type of alert</param>
+    /// <param name="message">Alert message</param>
+    /// <param name="htmlAttributes">[Optional] Any extras HTML attributes to be applied. 
+    /// Note. These attributes are only applied to the top level div</param>
+    /// <returns>A Bootstrap styled alert</returns>
+    public static Alert Alert(this HtmlHelper html, EMessage type, string message, object htmlAttributes = null)
+    {
+      return Alert(html, type, message, string.Empty, null as EGumbyIcon?, htmlAttributes);
+    }
+
+    /// <summary>
+    /// Renders a Gumby alert
+    /// </summary>
+    /// <param name="html">HtmlHelper extension</param>
+    /// <param name="type">Type of alert</param>
+    /// <param name="message">Alert message</param>
+    /// <param name="title">Title/Heading of the alert</param>
+    /// <param name="htmlAttributes">[Optional] Any extras HTML attributes to be applied. 
+    /// Note. These attributes are only applied to the top level div</param>
+    /// <returns>A Bootstrap styled alert</returns>
+    public static Alert Alert(this HtmlHelper html, EMessage type, string message, string title, object htmlAttributes = null)
+    {
+      return Alert(html, type, message, title, null as EGumbyIcon?, htmlAttributes);
+    }
+
+   /// <summary>
+    /// Renders a Gumby alert
+    /// </summary>
+    /// <param name="html">HtmlHelper extension</param>
+    /// <param name="type">Type of alert</param>
+    /// <param name="message">Alert message</param>
+    /// <param name="title">Title/Heading of the alert</param>
+    /// <param name="icon">Icon to be rendered with title/heading</param>
+    /// <param name="htmlAttributes">[Optional] Any extras HTML attributes to be applied. 
+    /// Note. These attributes are only applied to the top level div</param>
+    /// <returns>A Bootstrap styled alert</returns>
+    public static Alert Alert(this HtmlHelper html, EMessage type, string message, string title, EGumbyIcon? icon, object htmlAttributes = null)
+    {
+      return new Alert(type, message, title, icon, htmlAttributes);
+    }
+
+    #endregion Alert extensions
   }
 }
 

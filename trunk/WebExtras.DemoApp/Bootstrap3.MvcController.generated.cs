@@ -78,6 +78,7 @@ namespace WebExtras.DemoApp.Areas.Bootstrap3.Controllers
             public readonly string BootstrapHtml = ("BootstrapHtml").ToLowerInvariant();
             public readonly string BootstrapForm = ("BootstrapForm").ToLowerInvariant();
             public readonly string ActionMessageDemo = ("ActionMessageDemo").ToLowerInvariant();
+            public readonly string UserAlertsDemo = ("UserAlertsDemo").ToLowerInvariant();
             public readonly string ActionResults = ("ActionResults").ToLowerInvariant();
         }
 
@@ -162,6 +163,12 @@ namespace WebExtras.DemoApp.Areas.Bootstrap3.Controllers
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ActionMessageDemo);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "success", success);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult UserAlertsDemo()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.UserAlertsDemo);
             return callInfo;
         }
 

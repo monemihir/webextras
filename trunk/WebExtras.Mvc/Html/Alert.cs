@@ -19,6 +19,7 @@
 using WebExtras.Core;
 using WebExtras.Mvc.Bootstrap;
 using WebExtras.Mvc.Core;
+using WebExtras.Mvc.Gumby;
 
 namespace WebExtras.Mvc.Html
 {
@@ -86,6 +87,23 @@ namespace WebExtras.Mvc.Html
       : base(EHtmlTag.Div, htmlAttributes)
     {
       IExtendedHtmlString i = (icon != null) ? BootstrapUtil.CreateIcon(icon.Value) : null;
+
+      CreateAlert(type, message, title, i);
+    }
+
+    /// <summary>
+    /// Constructor
+    /// </summary>
+    /// <param name="type">Type of alert</param>
+    /// <param name="message">Alert message</param>
+    /// <param name="title">Title/Heading of the alert</param>
+    /// <param name="icon">Icon to be rendered with title/heading</param>
+    /// <param name="htmlAttributes">[Optional] Any extras HTML attributes to be applied. 
+    /// Note. These attributes are only applied to the top level div</param>
+    public Alert(EMessage type, string message, string title, EGumbyIcon? icon, object htmlAttributes = null)
+      : base(EHtmlTag.Div, htmlAttributes)
+    {
+      IExtendedHtmlString i = (icon != null) ? GumbyUtil.CreateIcon(icon.Value) : null;
 
       CreateAlert(type, message, title, i);
     }

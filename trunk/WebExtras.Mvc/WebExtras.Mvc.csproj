@@ -118,6 +118,7 @@
     <Compile Include="Gumby\GumbyHtmlStringExtension.cs" />
     <Compile Include="Gumby\GumbyNavbar.cs" />
     <Compile Include="Gumby\GumbyNavbarExtension.cs" />
+    <Compile Include="Gumby\GumbyUtil.cs" />
     <Compile Include="Html\Alert.cs" />
     <Compile Include="Html\Bold.cs" />
     <Compile Include="Html\Button.cs" />

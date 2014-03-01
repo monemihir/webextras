@@ -16,8 +16,9 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+using WebExtras.Mvc.Bootstrap;
+using WebExtras.Mvc.Html;
 #pragma warning disable 1591
-
 using System;
 using System.Web.Mvc;
 using WebExtras.DemoApp.Models.Mvc;
@@ -88,6 +89,23 @@ namespace WebExtras.DemoApp.Areas.Bootstrap3.Controllers
       if (!success)
         return this.RedirectToAction(Actions.BootstrapHtml(true), "Your action failed", EMessage.Error);
       return this.RedirectToAction(Actions.BootstrapHtml(true), "Your action was successful");
+    }
+
+    //
+    // GET: /Bootstrap3/Mvc/UserAlertsDemo
+    public virtual ActionResult UserAlertsDemo()
+    {
+      Random rand = new Random(DateTime.UtcNow.Millisecond);
+      Alert[] defaultAlerts = {
+        new Alert(EMessage.Success, "Hooray...I am a resounding success"),
+        new Alert(EMessage.Warning, "Oops...something went wrong. But no worries, I can still continue", "Note:"),
+        new Alert(EMessage.Error, "No dice...something is seriously wrong. I quit", "Error:", EBootstrapIcon.Exclamation_Sign),
+        new Alert(EMessage.Information, "Just so you know, I am gonna try it again", "Note:", EFontAwesomeIcon.Flag)
+      };
+
+      this.SaveUserAlert(defaultAlerts[rand.Next(4)]);
+
+      return RedirectToAction(Actions.BootstrapHtml());
     }
 
     //

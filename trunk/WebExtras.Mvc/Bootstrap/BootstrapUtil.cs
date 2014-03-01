@@ -27,7 +27,7 @@ using WebExtras.Mvc.Html;
 namespace WebExtras.Mvc.Bootstrap
 {
   /// <summary>
-  /// Utility class to create WebExtras Bootstrap icons
+  /// Bootstrap utility methods
   /// </summary>
   public static class BootstrapUtil
   {

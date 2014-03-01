@@ -1,4 +1,4 @@
-﻿/** GENERIC STYLING **/
+/** GENERIC STYLING **/
 input[type="checkbox"],
 input[type="radio"] {
   vertical-align: top;
@@ -60,7 +60,8 @@ table.dataTable thead th .css_right {
   border-left: 1px solid;
   border-right: 1px solid;
 }
-/** GENERIC DATATABLES EXTENSIONS AND OVERRIDES END **//** GUMBY OVERRIDES AND EXTENSIONS **/
+/** GENERIC DATATABLES EXTENSIONS AND OVERRIDES END **/
+/** GUMBY OVERRIDES AND EXTENSIONS **/
 table tr td:first-child {
   font-weight: normal;
 }
@@ -108,7 +109,6 @@ table.dataTable tbody tr.info td {
   line-height: 20px;
   position: relative;
   right: -5px;
-  top: 2px;
 }
 button.close {
   background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
