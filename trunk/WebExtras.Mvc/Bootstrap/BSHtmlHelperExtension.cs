@@ -17,14 +17,10 @@
 */
 
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Web.Mvc;
-using System.Web.Routing;
-using MoreLinq;
-using WebExtras.Core;
 using WebExtras.Mvc.Core;
 using WebExtras.Mvc.Html;
 
@@ -48,7 +44,7 @@ namespace WebExtras.Mvc.Bootstrap
     /// is not selected</exception>
     public static IExtendedHtmlString Icon(this HtmlHelper html, EBootstrapIcon icon, object htmlAttributes = null)
     {
-      return BootstrapIconUtil.Create(icon, htmlAttributes);
+      return BootstrapUtil.CreateIcon(icon, htmlAttributes);
     }
 
     /// <summary>
@@ -75,7 +71,7 @@ namespace WebExtras.Mvc.Bootstrap
     /// icon library version is not selected</exception>
     public static IExtendedHtmlString Icon(this HtmlHelper html, EFontAwesomeIcon icon, EFontAwesomeIconSize size = EFontAwesomeIconSize.Normal, object htmlAttributes = null)
     {
-      return BootstrapIconUtil.Create(icon, size, htmlAttributes);
+      return BootstrapUtil.CreateIcon(icon, size, htmlAttributes);
     }
 
     #endregion Icon extensions

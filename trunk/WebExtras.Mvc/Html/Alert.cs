@@ -68,27 +68,9 @@ namespace WebExtras.Mvc.Html
     public Alert(EMessage type, string message, string title, EFontAwesomeIcon? icon, object htmlAttributes = null)
       : base(EHtmlTag.Div, htmlAttributes)
     {
-      this.AddCssClass("alert");
-      this.AddCssClass(type.GetStringValue());
+      IExtendedHtmlString i = (icon != null) ? BootstrapUtil.CreateIcon(icon.Value) : null;
 
-      Button closeBtn = new Button(EButton.Regular, "&times;", string.Empty);
-      closeBtn.AddCssClass("close");
-      closeBtn["data-dismiss"] = "alert";
-
-      Bold b = new Bold();
-      if (icon.HasValue)
-      {
-        IExtendedHtmlString i = BootstrapIconUtil.Create(icon.Value);
-        b.Prepend(i);
-      }
-
-      b.InnerHtml = title ?? string.Empty;
-
-      Prepend(closeBtn);
-      Prepend(b);
-      InnerHtml = (!string.IsNullOrWhiteSpace(title) || icon.HasValue) ? WebExtrasMvcConstants.HTMLSpace + message : message;
-
-      Type = type;
+      CreateAlert(type, message, title, i);
     }
 
     /// <summary>
@@ -103,6 +85,20 @@ namespace WebExtras.Mvc.Html
     public Alert(EMessage type, string message, string title, EBootstrapIcon? icon, object htmlAttributes = null)
       : base(EHtmlTag.Div, htmlAttributes)
     {
+      IExtendedHtmlString i = (icon != null) ? BootstrapUtil.CreateIcon(icon.Value) : null;
+
+      CreateAlert(type, message, title, i);
+    }
+
+    /// <summary>
+    /// Creates an alert
+    /// </summary>
+    /// <param name="type">Type of alert</param>
+    /// <param name="message">Alert message</param>
+    /// <param name="title">Title/Heading of the alert</param>
+    /// <param name="icon">Icon to be rendered with title/heading</param>
+    private void CreateAlert(EMessage type, string message, string title, IExtendedHtmlString icon)
+    {
       this.AddCssClass("alert");
       this.AddCssClass(type.GetStringValue());
 
@@ -111,17 +107,14 @@ namespace WebExtras.Mvc.Html
       closeBtn["data-dismiss"] = "alert";
 
       Bold b = new Bold();
-      if (icon.HasValue)
-      {
-        IExtendedHtmlString i = BootstrapIconUtil.Create(icon.Value);
-        b.Prepend(i);
-      }
+      if (icon != null)
+        b.Prepend(icon);
 
       b.InnerHtml = title ?? string.Empty;
 
       Prepend(closeBtn);
       Prepend(b);
-      InnerHtml = (!string.IsNullOrWhiteSpace(title) || icon.HasValue) ? WebExtrasMvcConstants.HTMLSpace + message : message;
+      InnerHtml = (!string.IsNullOrWhiteSpace(title) || icon != null) ? WebExtrasMvcConstants.HTMLSpace + message : message;
 
       Type = type;
     }

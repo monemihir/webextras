@@ -29,7 +29,7 @@ namespace WebExtras.Mvc.Bootstrap
   /// <summary>
   /// Utility class to create WebExtras Bootstrap icons
   /// </summary>
-  public static class BootstrapIconUtil
+  public static class BootstrapUtil
   {
     /// <summary>
     /// Creates a Bootstrap icon
@@ -37,7 +37,7 @@ namespace WebExtras.Mvc.Bootstrap
     /// <param name="icon">Icon to be created</param>
     /// <param name="htmlAttributes">[Optional] Any extra HTML attributes</param>
     /// <returns>A Bootstrap icon</returns>
-    public static IExtendedHtmlString Create(EBootstrapIcon icon, object htmlAttributes = null)
+    public static IExtendedHtmlString CreateIcon(EBootstrapIcon icon, object htmlAttributes = null)
     {
       RouteValueDictionary rvd = new RouteValueDictionary(htmlAttributes);
 
@@ -75,7 +75,7 @@ namespace WebExtras.Mvc.Bootstrap
     /// <returns>A Bootstrap icon</returns>
     /// <exception cref="WebExtras.Mvc.Core.FontAwesomeVersionException">Thrown when a valid FontAwesome
     /// icon library version is not selected</exception>
-    public static IExtendedHtmlString Create(EFontAwesomeIcon icon, EFontAwesomeIconSize size = EFontAwesomeIconSize.Normal, object htmlAttributes = null)
+    public static IExtendedHtmlString CreateIcon(EFontAwesomeIcon icon, EFontAwesomeIconSize size = EFontAwesomeIconSize.Normal, object htmlAttributes = null)
     {
       IDictionary<string, object> attrsDictionary = HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes);
 
