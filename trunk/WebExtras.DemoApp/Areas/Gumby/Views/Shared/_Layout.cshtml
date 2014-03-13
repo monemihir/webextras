@@ -16,8 +16,12 @@
   <meta name="description" content=".net mvc, .net mvc 4, .net mvc helpers, bootstrap, flot, datatables, gumby" />
   <link rel="icon" type="image/ico" href="@Links.Content.favicon_ico" />
   @Bundle.Css().MvcRenderCachedAssetTag(ContentBundle.CSSGumby.GetStringValue())
+
+  <!--[if lt IE 9]><script language="javascript" type="text/javascript" src="@Links.Scripts.excanvas_min_js"></script><![endif]-->
+
   @Bundle.JavaScript().MvcRenderCachedAssetTag(ContentBundle.JSBase.GetStringValue())
   @Bundle.JavaScript().MvcRenderCachedAssetTag(ContentBundle.JSGumby.GetStringValue())
+  @RenderSection("scripts", required: false)
   <script type="text/javascript">
     function goToGoogle() { window.location = "http://www.google.com.au"; }
     function goToYoutube() { window.location = "http://www.youtube.com"; }
@@ -34,7 +38,14 @@
       <li class="@Html.SelectedTab("Home", "Index")">@Html.Hyperlink("Home", MVC.Gumby.Home.Index())</li>
       <li class="@Html.SelectedTab("Core", "Generic")">@Html.Hyperlink("Core", MVC.Gumby.Core.Index())</li>
       <li class="@Html.SelectedTab("Core", "Datatables")">@Html.Hyperlink("jQuery Datatables", MVC.Gumby.Core.Datatables())</li>
-      <li class="@Html.SelectedTab("Core", "Flot")">@Html.Hyperlink("jQuery Flot", MVC.Gumby.Core.Flot())</li>
+      <li class="@Html.SelectedTab("Core", new string[] { "Flot", "JQPlot" }) dropdown">@Html.Hyperlink("Graphs", "#")
+        <div class="dropdown">
+          <ul>
+            <li>@Html.Hyperlink("jQuery Flot", MVC.Gumby.Core.Flot())</li>
+            <li>@Html.Hyperlink("jqPlot", MVC.Gumby.Core.JQPlot())</li>
+          </ul>
+        </div>
+      </li>
       <li class="@Html.SelectedTab("Mvc", new string[] { "ActionResults", "CoreHtml", "CoreForm" })">@Html.Hyperlink("Mvc Core", "#")
         <div class="dropdown">
           <ul>
@@ -59,11 +70,6 @@
       </li>
     </ul>
   </div>
-  @*<div class="row">
-    <div class="three columns">
-      @Html.Hyperlink("Stable Docs", "http://mihirmone.dyndns.org/appdocs/webextras/gumby") | @Html.Hyperlink("Nightly Docs", "http://mihirmone.dyndns.org/nightly/webextras/gumby")
-    </div>
-  </div>*@
   <div class="container main">
     @RenderBody()
   </div>
@@ -71,6 +77,5 @@
     <small style="float: left" id="build-date">@{ Html.RenderAction(MVC.Flavour.BuildDetails()); }</small>
     <small>Copyright &copy; @DateTime.Now.Year Mihir Mone. All Rights Reserved. @*@Html.Icon(EFontAwesomeIcon.Css3, new { title = "Valid CSS3" }) @Html.Icon(EFontAwesomeIcon.Html5, new { title = "Valid HTML5" })*@</small>
   </footer>
-  @RenderSection("scripts", required: false)
 </body>
 </html>

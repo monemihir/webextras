@@ -344,6 +344,7 @@
     <Content Include="Areas\Gumby\Views\Mvc\GumbyForm.cshtml" />
     <Content Include="Areas\Bootstrap\Views\Core\JQPlot.cshtml" />
     <Content Include="Areas\Bootstrap3\Views\Core\JQPlot.cshtml" />
+    <Content Include="Areas\Gumby\Views\Core\JQPlot.cshtml" />
     <None Include="Content\style.less" />
     <Content Include="Content\style-bootstrap3.min.css">
       <DependentUpon>style-bootstrap3.less</DependentUpon>

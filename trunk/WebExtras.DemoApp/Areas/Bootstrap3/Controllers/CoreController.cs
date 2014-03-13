@@ -521,7 +521,7 @@ namespace WebExtras.DemoApp.Areas.Bootstrap3.Controllers
     #region JQPlot actions
 
     //
-    // GET: /Bootstrap/Core/JQPlot
+    // GET: /Bootstrap3/Core/JQPlot
     public virtual ActionResult JQPlot(int? mode)
     {
       int dmode = mode.HasValue ? mode.Value : 0;
