@@ -17,7 +17,13 @@
   <link rel="icon" type="image/ico" href="@Links.Content.favicon_ico" />
   @Bundle.Css().MvcRenderCachedAssetTag(ContentBundle.CSSBootstrap3.GetStringValue())
   @Bundle.JavaScript().MvcRenderCachedAssetTag(ContentBundle.JSBase.GetStringValue())
+
+  <!--[if lt IE 9]><script language="javascript" type="text/javascript" src="@Links.Scripts.excanvas_min_js"></script><![endif]-->
+  
   @Bundle.JavaScript().MvcRenderCachedAssetTag(ContentBundle.JSBootstrap3.GetStringValue())
+  
+  @RenderSection("scripts", required: false)
+
   <script type="text/javascript">
     function goToGoogle() { window.location = "http://www.google.com.au"; }
     function goToYoutube() { window.location = "http://www.youtube.com"; }
@@ -38,7 +44,13 @@
         <li class="@Html.SelectedTab("Home", "Index")">@Html.ActionLink("Home", MVC.Bootstrap3.Home.Index())</li>
         <li class="@Html.SelectedTab("Core", "Generic")">@Html.ActionLink("Core", MVC.Bootstrap3.Core.Generic())</li>
         <li class="@Html.SelectedTab("Core", "Datatables")">@Html.ActionLink("jQuery Datatables", MVC.Bootstrap3.Core.Datatables())</li>
-        <li class="@Html.SelectedTab("Core", "Flot")">@Html.ActionLink("jQuery Flot", MVC.Bootstrap3.Core.Flot())</li>
+        <li class="@Html.SelectedTab("Core", new string[] { "Flot", "JQPlot" }) dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Graphs<i class="caret"></i></a>
+          <ul class="dropdown-menu">
+            <li>@Html.Hyperlink("jQuery Flot", MVC.Bootstrap3.Core.Flot())</li>
+            <li>@Html.Hyperlink("jqPlot", MVC.Bootstrap3.Core.JQPlot())</li>
+          </ul>
+        </li>
         <li class="@Html.SelectedTab("Mvc", new string[] { "CoreHtml", "CoreForm" }) dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Mvc Core<i class="caret"></i></a>
           <ul class="dropdown-menu">
@@ -64,13 +76,11 @@
     </div>
   </div>
   <div class="container main">
-    @*<small class="well affix documentation-affix">@Html.Hyperlink("Stable Docs", "http://mihirmone.dyndns.org/appdocs/webextras/bootstrap3") | @Html.Hyperlink("Nightly Docs", "http://mihirmone.dyndns.org/nightly/webextras/bootstrap3")</small>*@
     @RenderBody()
   </div>
   <footer>
     <small style="float: left" id="build-date">@{ Html.RenderAction(MVC.Flavour.BuildDetails()); }</small>
     <small>Copyright &copy; @DateTime.Now.Year Mihir Mone. All Rights Reserved. @Html.Icon(EFontAwesomeIcon.Css3, new { title = "Valid CSS3" }) @Html.Icon(EFontAwesomeIcon.Html5, new { title = "Valid HTML5" })</small>
   </footer>
-  @RenderSection("scripts", required: false)
 </body>
 </html>

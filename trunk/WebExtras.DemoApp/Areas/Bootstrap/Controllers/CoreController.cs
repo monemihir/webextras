@@ -16,6 +16,7 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+using System.Globalization;
 using WebExtras.JQPlot.RendererOptions;
 using WebExtras.Mvc.Core;
 #pragma warning disable 1591
@@ -82,6 +83,7 @@ namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
         new object[] { DateTime.Now.AddDays(m_rand.Next(150)).ToString("dd-MMM-yyyy"), m_rand.NextDouble() * 100 },
         new object[] { DateTime.Now.AddDays(m_rand.Next(150)).ToString("dd-MMM-yyyy"), m_rand.NextDouble() * 100 }
       };
+
     }
 
     #endregion Ctor and attributes
@@ -513,6 +515,8 @@ namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
 
     #endregion Flot actions
 
+    #region JQPlot actions
+
     //
     // GET: /Bootstrap/Core/JQPlot
     public virtual ActionResult JQPlot(int? mode)
@@ -695,5 +699,7 @@ namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
 
       return new JsonNetResult(data, JsonRequestBehavior.AllowGet);
     }
+
+    #endregion JQPlot actions
   }
 }
