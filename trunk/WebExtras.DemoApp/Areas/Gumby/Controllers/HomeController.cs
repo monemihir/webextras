@@ -38,7 +38,7 @@ namespace WebExtras.DemoApp.Areas.Gumby.Controllers
     // GET: /Gumby/Home/Download
     public virtual ActionResult Download()
     {
-      return View();
+      return View(model: m_versionString);
     }
   }
 }

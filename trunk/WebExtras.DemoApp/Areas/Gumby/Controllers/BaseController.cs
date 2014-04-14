@@ -18,6 +18,8 @@
 
 #pragma warning disable 1591
 
+using System;
+using System.Reflection;
 using System.Web.Mvc;
 using WebExtras.Mvc.Core;
 
@@ -25,12 +27,18 @@ namespace WebExtras.DemoApp.Areas.Gumby.Controllers
 {
   public abstract partial class BaseController : Controller
   {
+    protected string m_versionString;
+
     protected override void OnActionExecuting(ActionExecutingContext filterContext)
     {
       base.OnActionExecuting(filterContext);
 
       ViewData["layout_path"] = MVC.Gumby.Shared.Views._Layout;
       WebExtrasMvcConstants.GumbyTheme = EGumbyTheme.Metro;
+
+      Version v = Assembly.GetExecutingAssembly().GetName().Version;
+
+      m_versionString = string.Format("v{0}.{1}.{2}", v.Major, v.Minor, v.Revision);
     }
   }
 }

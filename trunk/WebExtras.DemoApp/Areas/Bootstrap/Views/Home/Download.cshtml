@@ -1,11 +1,13 @@
-﻿@{
+﻿@model string
+
+@{
   ViewBag.Title = "Download";
 }
 <h3 class="keep-center">Downloads
 </h3>
 <div class="row-fluid">
   <div class="keep-center">
-    @(Html.Hyperlink(" Stable<small> (v1.3.0)</small>", "http://webextras.codeplex.com/releases")
+    @(Html.Hyperlink(" Stable<small> (" + Model + ")</small>", "http://webextras.codeplex.com/releases")
       .AsButton(EBootstrapButton.Success, EBootstrapButton.Large)
       .AddIcon(EFontAwesomeIcon.Download_Alt, EFontAwesomeIconSize.Large))
 
@@ -20,7 +22,7 @@
     @(Html.Hyperlink(" NuGet Gallery", "https://www.nuget.org/packages?q=webextras")
       .AsButton(EBootstrapButton.Default, EBootstrapButton.Large)
       .AddIcon(EFontAwesomeIcon.Download_Alt, EFontAwesomeIconSize.Large))
-    
+
     <br />
     @Html.Hyperlink("Older versions", "javascript:gotoCodeplex()")
   </div>

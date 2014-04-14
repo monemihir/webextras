@@ -18,6 +18,8 @@
 
 #pragma warning disable 1591
 
+using System;
+using System.Reflection;
 using System.Web.Mvc;
 using WebExtras.Mvc.Core;
 
@@ -25,12 +27,18 @@ namespace WebExtras.DemoApp.Areas.Bootstrap3.Controllers
 {
   public abstract partial class BaseController : Controller
   {
+    protected string m_versionString;
+
     protected override void OnActionExecuting(ActionExecutingContext filterContext)
     {
       base.OnActionExecuting(filterContext);
 
       ViewData["layout_path"] = MVC.Bootstrap3.Shared.Views._Layout;
       WebExtrasMvcConstants.BootstrapVersion = EBootstrapVersion.V3;
+
+      Version v = Assembly.GetExecutingAssembly().GetName().Version;
+
+      m_versionString = string.Format("v{0}.{1}.{2}", v.Major, v.Minor, v.Revision);
     }
   }
 }
