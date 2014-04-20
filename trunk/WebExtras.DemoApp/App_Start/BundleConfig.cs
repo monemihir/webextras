@@ -136,7 +136,6 @@ namespace WebExtras.DemoApp.App_Start
         .Add(Links.Scripts.bootstrap_2_3_1_min_js)
         .Add(Links.Scripts.jquery_datatables_bootstrap_js)
         .Add(Links.Scripts.jquery_bootstrap_datetimepicker_min_js)
-        .Add(Links.Scripts.jquery_bootstrap_hover_dropdown_min_js)
         .AsCached(ContentBundle.JSBootstrap.GetStringValue(), ResolveJsPath(ContentBundle.JSBootstrap));
 
       // Bootstrap3 javascript bundle
@@ -144,7 +143,6 @@ namespace WebExtras.DemoApp.App_Start
         .Add(Links.Scripts.bootstrap_3_0_0_min_js)
         .Add(Links.Scripts.jquery_datatables_bootstrap3_js)
         .Add(Links.Scripts.jquery_bootstrap_datetimepicker_min_js)
-        .Add(Links.Scripts.jquery_bootstrap_hover_dropdown_min_js)
         .AsCached(ContentBundle.JSBootstrap3.GetStringValue(), ResolveJsPath(ContentBundle.JSBootstrap3));
 
       // Gumby javascript bundle
