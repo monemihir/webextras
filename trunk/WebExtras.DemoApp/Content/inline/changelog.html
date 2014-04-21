@@ -1,4 +1,30 @@
-﻿<strong>v1.3.0 (current)</strong>
+﻿<strong>v1.4.0 <span class="text-error error">(under development)</span></strong>
+<br />
+<strong>Released: xx xxx xxxx</strong>
+<br />
+<br />
+<strong>Changelog</strong>
+<ul class="disc">
+  <li>Enh: Adding support for <a href="http://jqueryui.com/" target="_blank">JQuery UI</a> theming framework</li>
+  <li>Enh: Adding support for <a href="http://www.jqplot.com/" target="_blank">jqPlot</a> graph plotting library</li>
+  <li class="text-warning warning"><strong>Note:</strong> Html.LabelForV2(...) extension method has now been deprecated. 
+    You should use Html.RequiredFieldLabelFor(...) extension method instead. This extension method will be removed in 
+    future versions.</li>
+</ul>
+<hr />
+<strong>v1.3.1 (current)</strong>
+<br />
+<strong>Released: 14 April 2014</strong>
+<br />
+<br />
+<strong>Changelog</strong>
+<ul class="disc">
+  <li>Enh: Adding ability to create Bootstrap alerts on the fly</li>
+  <li>Enh: Adding ability to create and save Bootstrap alerts and then render all of them together</li>
+  <li>Enh: Minor update to the Datatable partial views</li>
+</ul>
+<hr />
+<strong>v1.3.0</strong>
 <br />
 <strong>Released: 16 December 2013<br />
 </strong>
@@ -25,7 +51,7 @@
   <li class="text-error error">Brk: The <strong>AddWhiteIcon()</strong> extension is no longer available when using Font Awesome provided icons. Since these icons are font based the coloring can be controlled by CSS classes</li>
   <li class="text-error error">Brk: An overhaul to the element creation logic and 
     the <strong>IExtendedHtmlString</strong> interface. We no longer expose the
-    <strong>TagBuilder</strong> 
+    <strong>TagBuilder</strong>
     directly. Instead we provide properties the user can interact with. This is to 
     deter users from directly making use of the underlying TagBuilder object which 
     can lead to erroneous/inconsistent HTML being generated</li>
