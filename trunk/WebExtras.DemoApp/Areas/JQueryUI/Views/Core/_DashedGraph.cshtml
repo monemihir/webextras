@@ -1,0 +1,31 @@
+﻿@model WebExtras.JQFlot.FlotChart
+
+<p>
+  In order to draw <strong>dashed line graphs</strong> you need <strong>jquery.flot.dashed.js</strong> i.e the
+  dashed graph plugin.
+</p>
+
+<div class="ui-well">
+  <h4>Slightly modifying our series we get...</h4>
+  <pre><code>
+  FlotSeries serie = new FlotSeries
+  {
+    label = "Sample Dashed Line Graph",
+    data = graphData,
+    dashes = new DashedLineGraph { show = true }                 <span class="comment">// This will denote that you want a Dashed Line graph</span>
+  };
+  </code></pre>
+</div>
+
+<div class="ui-well">
+  <h4>And we have a dashed graph...</h4>
+  <div class="content">    
+    <div id="dashed-graph" class="graph">
+    </div>
+  </div>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $.plot($('#dashed-graph'), [@Html.Raw(Model.chartSeries[0].ToString())], @Html.Raw(Model.chartOptions.ToString()));    
+    });
+  </script>
+</div>

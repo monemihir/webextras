@@ -52,6 +52,12 @@ namespace WebExtras.DemoApp.App_Start
     CSSGumby,
 
     /// <summary>
+    /// CSS jQuery UI bundle
+    /// </summary>
+    [StringValue("css-jqueryui")]
+    CSSJQueryUI,
+
+    /// <summary>
     /// Core javascript libraries' bundle
     /// </summary>
     [StringValue("js-base")]
@@ -85,6 +91,12 @@ namespace WebExtras.DemoApp.App_Start
     /// Gumby javascript bundle
     /// </summary>
     [StringValue("js-gumby")]
-    JSGumby
+    JSGumby,
+
+    /// <summary>
+    /// jQuery UI javascript bundle
+    /// </summary>
+    [StringValue("js-jqueryui")]
+    JSJQueryUI
   }
 }

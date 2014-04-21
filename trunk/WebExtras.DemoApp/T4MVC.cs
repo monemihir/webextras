@@ -30,6 +30,8 @@ public static class MVC
     public static Bootstrap3Class Bootstrap3 { get { return s_Bootstrap3; } }
     static readonly GumbyClass s_Gumby = new GumbyClass();
     public static GumbyClass Gumby { get { return s_Gumby; } }
+    static readonly JQueryUIClass s_JQueryUI = new JQueryUIClass();
+    public static JQueryUIClass JQueryUI { get { return s_JQueryUI; } }
     public static WebExtras.DemoApp.Controllers.AssetsController Assets = new WebExtras.DemoApp.Controllers.T4MVC_AssetsController();
     public static WebExtras.DemoApp.Controllers.FlavourController Flavour = new WebExtras.DemoApp.Controllers.T4MVC_FlavourController();
     public static T4MVC.CoreController Core = new T4MVC.CoreController();
@@ -66,6 +68,15 @@ namespace T4MVC
         public WebExtras.DemoApp.Areas.Gumby.Controllers.HomeController Home = new WebExtras.DemoApp.Areas.Gumby.Controllers.T4MVC_HomeController();
         public WebExtras.DemoApp.Areas.Gumby.Controllers.MvcController Mvc = new WebExtras.DemoApp.Areas.Gumby.Controllers.T4MVC_MvcController();
         public T4MVC.Gumby.SharedController Shared = new T4MVC.Gumby.SharedController();
+    }
+    [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+    public class JQueryUIClass
+    {
+        public readonly string Name = "jqueryui";
+        public WebExtras.DemoApp.Areas.JQueryUI.Controllers.CoreController Core = new WebExtras.DemoApp.Areas.JQueryUI.Controllers.T4MVC_CoreController();
+        public WebExtras.DemoApp.Areas.JQueryUI.Controllers.HomeController Home = new WebExtras.DemoApp.Areas.JQueryUI.Controllers.T4MVC_HomeController();
+        public WebExtras.DemoApp.Areas.JQueryUI.Controllers.MvcController Mvc = new WebExtras.DemoApp.Areas.JQueryUI.Controllers.T4MVC_MvcController();
+        public T4MVC.JQueryUI.SharedController Shared = new T4MVC.JQueryUI.SharedController();
     }
 }
 
@@ -152,6 +163,7 @@ namespace Links
         }
     
         public static readonly string jquery_1_9_1_min_js = Url("jquery-1.9.1.min.js");
+        public static readonly string jquery_ui_1_10_3_custom_min_js = Url("jquery-ui-1.10.3.custom.min.js");
         public static readonly string jquery_bootstrap_datetimepicker_min_js = Url("jquery.bootstrap.datetimepicker.min.js");
         public static readonly string jquery_bootstrap_hover_dropdown_min_js = Url("jquery.bootstrap.hover.dropdown.min.js");
         public static readonly string jquery_datatables_bootstrap_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.datatables.bootstrap.min.js") ? Url("jquery.datatables.bootstrap.min.js") : Url("jquery.datatables.bootstrap.js");
@@ -175,6 +187,8 @@ namespace Links
                       
         public static readonly string jquery_mwheelIntent_1_2_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.mwheelIntent-1.2.min.js") ? Url("jquery.mwheelIntent-1.2.min.js") : Url("jquery.mwheelIntent-1.2.js");
                       
+        public static readonly string jquery_ui_menubar_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.ui.menubar.min.js") ? Url("jquery.ui.menubar.min.js") : Url("jquery.ui.menubar.js");
+                      
         public static readonly string modernizr_2_6_2_min_js = Url("modernizr-2.6.2.min.js");
     }
 
@@ -191,6 +205,7 @@ namespace Links
              
         public static readonly string favicon_ico = Url("favicon.ico");
         public static readonly string favicon_png = Url("favicon.png");
+        public static readonly string fluidable_min_css = Url("fluidable.min.css");
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public static class font {
             private const string URLPATH = "~/Content/font";
@@ -289,6 +304,8 @@ namespace Links
             public static readonly string wallpaper1_jpg = Url("wallpaper1.jpg");
         }
     
+        public static readonly string jquery_ui_1_10_3_custom_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery-ui-1.10.3.custom.min.css") ? Url("jquery-ui-1.10.3.custom.min.css") : Url("jquery-ui-1.10.3.custom.css");
+             
         public static readonly string jquery_bootstrap_datetimepicker_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.bootstrap.datetimepicker.min.css") ? Url("jquery.bootstrap.datetimepicker.min.css") : Url("jquery.bootstrap.datetimepicker.css");
              
         public static readonly string jquery_datatables_bootstrap3_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.datatables.bootstrap3.min.css") ? Url("jquery.datatables.bootstrap3.min.css") : Url("jquery.datatables.bootstrap3.css");
@@ -299,6 +316,8 @@ namespace Links
              
         public static readonly string jquery_jqplot_min_css = Url("jquery.jqplot.min.css");
         public static readonly string jquery_jScrollPane_2_0_0beta12_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.jScrollPane-2.0.0beta12.min.css") ? Url("jquery.jScrollPane-2.0.0beta12.min.css") : Url("jquery.jScrollPane-2.0.0beta12.css");
+             
+        public static readonly string jquery_ui_menubar_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.ui.menubar.min.css") ? Url("jquery.ui.menubar.min.css") : Url("jquery.ui.menubar.css");
              
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public static class png {
@@ -321,6 +340,10 @@ namespace Links
         public static readonly string style_gumby_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/style-gumby.min.css") ? Url("style-gumby.min.css") : Url("style-gumby.css");
              
         public static readonly string style_gumby_min_css = Url("style-gumby.min.css");
+        public static readonly string style_jqueryui_less = Url("style-jqueryui.less");
+        public static readonly string style_jqueryui_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/style-jqueryui.min.css") ? Url("style-jqueryui.min.css") : Url("style-jqueryui.css");
+             
+        public static readonly string style_jqueryui_min_css = Url("style-jqueryui.min.css");
         public static readonly string style_less = Url("style.less");
         public static readonly string style_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/style.min.css") ? Url("style.min.css") : Url("style.css");
              
@@ -341,6 +364,10 @@ namespace Links
         public static readonly string webextras_gumby_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/webextras.gumby.min.css") ? Url("webextras.gumby.min.css") : Url("webextras.gumby.css");
              
         public static readonly string webextras_gumby_min_css = Url("webextras.gumby.min.css");
+        public static readonly string webextras_jqueryui_less = Url("webextras.jqueryui.less");
+        public static readonly string webextras_jqueryui_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/webextras.jqueryui.min.css") ? Url("webextras.jqueryui.min.css") : Url("webextras.jqueryui.css");
+             
+        public static readonly string webextras_jqueryui_min_css = Url("webextras.jqueryui.min.css");
         public static readonly string webextras_less = Url("webextras.less");
         public static readonly string webextras_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/webextras.min.css") ? Url("webextras.min.css") : Url("webextras.css");
              

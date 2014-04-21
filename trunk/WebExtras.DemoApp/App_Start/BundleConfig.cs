@@ -97,6 +97,19 @@ namespace WebExtras.DemoApp.App_Start
         .Add(Links.Content.style_css)
         .AsCached(ContentBundle.CSSGumby.GetStringValue(), ResolveCssPath(ContentBundle.CSSGumby));
 
+      // CSS JQuery UI bundle
+      Bundle.Css()
+        .Add(Links.Content.fluidable_min_css)
+        .Add(Links.Content.jquery_ui_1_10_3_custom_css)
+        .Add(Links.Content.jquery_ui_menubar_css)
+        .Add(Links.Content.jquery_dataTables_css)
+        .Add(Links.Content.jquery_dataTables_jui_css)
+        .Add(Links.Content.jquery_jScrollPane_2_0_0beta12_css)
+        .Add(Links.Content.webextras_jqueryui_css)
+        .Add(Links.Content.style_jqueryui_css)
+        .Add(Links.Content.style_css)
+        .AsCached(ContentBundle.CSSJQueryUI.GetStringValue(), ResolveCssPath(ContentBundle.CSSJQueryUI));
+
       // Core javascript libraries' bundle
       Bundle.JavaScript()
         .Add(Links.Scripts.jquery_1_9_1_min_js)
@@ -150,6 +163,12 @@ namespace WebExtras.DemoApp.App_Start
         .Add(Links.Scripts.modernizr_2_6_2_min_js)
         .Add(Links.Scripts.gumby_2_5_6_min_js)
         .AsCached(ContentBundle.JSGumby.GetStringValue(), ResolveJsPath(ContentBundle.JSGumby));
+
+      // jQuery UI javascript bundle
+      Bundle.JavaScript()
+        .Add(Links.Scripts.jquery_ui_1_10_3_custom_min_js)
+        .Add(Links.Scripts.jquery_ui_menubar_js)
+        .AsCached(ContentBundle.JSJQueryUI.GetStringValue(), ResolveJsPath(ContentBundle.JSJQueryUI));
     }
   }
 }

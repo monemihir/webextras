@@ -16,14 +16,12 @@
   <title>Home - WebExtras</title>
   @Bundle.Css().MvcRenderCachedAssetTag(ContentBundle.CSSMinimal.GetStringValue())
   <style>
-    body
-    {
+    body {
       line-height: 20px;
       text-align: center;
     }
 
-    h2
-    {
+    h2 {
       text-align: center;
       padding-top: 50px;
       margin: 10px 0;
@@ -36,8 +34,7 @@
       display: inline-block;
     }
 
-    a
-    {
+    a {
       text-decoration: none;
       padding: 11px 19px;
       font-size: 17.5px;
@@ -47,15 +44,13 @@
       vertical-align: middle;
     }
 
-    table
-    {
+    table {
       text-align: center;
       width: 600px;
       margin: 0 auto;
     }
 
-    .bs-button
-    {
+    .bs-button {
       -moz-border-bottom-colors: none;
       -moz-border-left-colors: none;
       -moz-border-right-colors: none;
@@ -78,8 +73,7 @@
       text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
     }
 
-    .bs3-button
-    {
+    .bs3-button {
       background-image: linear-gradient(to bottom, #428BCA 0%, #3071A9 100%);
       background-repeat: repeat-x;
       border-color: #2D6CA2;
@@ -107,18 +101,26 @@
       user-select: none;
     }
 
-    .gumby-button
-    {
+    .gumby-button {
       background-color: #2A85DC;
       background-image: linear-gradient(#85B7E7, #2A85DC);
-      
       -webkit-box-shadow: 0 0 3px #F0F6FC inset;
       box-shadow: 0 0 3px #F0F6FC inset;
       color: #FFFFFF;
     }
 
-    #build-date a
-    {
+    .ui-button {
+      border: 1px solid #ffb73d;
+      background: #ffc73d url('/content/img/jqueryui/ui-bg_glass_40_ffc73d_1x400.png') 50% 50% repeat-x;
+      color: #111111;
+      cursor: pointer;
+      line-height: normal;
+      margin-right: 0.1em;
+      overflow: visible;
+      position: relative;
+    }
+
+    #build-date a {
       padding: 0;
       font-size: 13px;
       border-radius: 0;
@@ -127,8 +129,7 @@
   </style>
 </head>
 <body>
-  <h2>
-    WebExtras Demo and Documentation
+  <h2>WebExtras Demo and Documentation
     <br />
     <br />
     SELECT YOUR FLAVOUR
@@ -147,6 +148,9 @@
       </td>
       <td>
         @Html.Hyperlink("Gumby 2.5.x", Url.Content("~/gumby")).AddCssClass("gumby-button")
+      </td>
+      <td>
+        @Html.Hyperlink("jQuery UI", Url.Content("~/jqueryui")).AddCssClass("ui-button")
       </td>
     </tr>
   </table>

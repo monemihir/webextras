@@ -118,7 +118,24 @@
     <Compile Include="Areas\Bootstrap3\Controllers\HomeController.cs" />
     <Compile Include="Areas\Bootstrap3\Controllers\MvcController.cs" />
     <Compile Include="Areas\Gumby\Controllers\MvcController.cs" />
+    <Compile Include="Areas\JQueryUI\Controllers\BaseController.cs" />
+    <Compile Include="Areas\JQueryUI\Controllers\CoreController.cs" />
+    <Compile Include="Areas\JQueryUI\Controllers\HomeController.cs" />
+    <Compile Include="Areas\JQueryUI\Controllers\MvcController.cs" />
+    <Compile Include="Areas\JQueryUI\JQueryUIAreaRegistration.cs" />
     <Compile Include="Gumby.MvcController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="JQueryUI.CoreController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="JQueryUI.HomeController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="JQueryUI.MvcController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="JQueryUI.SharedController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Core\JQPlotViewModel.cs" />
@@ -201,7 +218,16 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\fluidable.min.css" />
+    <Content Include="Content\jquery-ui-1.10.3.custom.css" />
     <Content Include="Content\jquery.jqplot.min.css" />
+    <Content Include="Content\jquery.ui.menubar.css" />
+    <Content Include="Content\style-jqueryui.css">
+      <DependentUpon>style-jqueryui.less</DependentUpon>
+    </Content>
+    <Content Include="Content\style-jqueryui.min.css">
+      <DependentUpon>style-jqueryui.less</DependentUpon>
+    </Content>
     <Content Include="Content\webextras.bootstrap.css">
       <DependentUpon>webextras.bootstrap.less</DependentUpon>
     </Content>
@@ -226,6 +252,12 @@
     <Content Include="Content\webextras.gumby.min.css">
       <DependentUpon>webextras.gumby.less</DependentUpon>
     </Content>
+    <Content Include="Content\webextras.jqueryui.css">
+      <DependentUpon>webextras.jqueryui.less</DependentUpon>
+    </Content>
+    <Content Include="Content\webextras.jqueryui.min.css">
+      <DependentUpon>webextras.jqueryui.less</DependentUpon>
+    </Content>
     <Content Include="Scripts\excanvas.min.js" />
     <Content Include="Scripts\JQPlot\jqplot.cursor.min.js" />
     <Content Include="Scripts\JQPlot\jqplot.highlighter.min.js" />
@@ -237,6 +269,8 @@
     <Content Include="Scripts\JQPlot\jqplot.categoryAxisRenderer.min.js" />
     <Content Include="Scripts\JQPlot\jqplot.dateAxisRenderer.min.js" />
     <Content Include="Scripts\JQPlot\jqplot.min.js" />
+    <Content Include="Scripts\jquery-ui-1.10.3.custom.min.js" />
+    <Content Include="Scripts\jquery.ui.menubar.js" />
     <Content Include="Scripts\modernizr-2.6.2.min.js" />
     <Content Include="Views\Shared\DatatablePartial.ascx" />
     <Content Include="Content\bootstrap-2.3.1.css" />
@@ -352,6 +386,25 @@
     <Content Include="Areas\Bootstrap\Views\Core\JQPlot.cshtml" />
     <Content Include="Areas\Bootstrap3\Views\Core\JQPlot.cshtml" />
     <Content Include="Areas\Gumby\Views\Core\JQPlot.cshtml" />
+    <Content Include="Areas\JQueryUI\Views\Core\Datatables.cshtml" />
+    <Content Include="Areas\JQueryUI\Views\Core\Flot.cshtml" />
+    <Content Include="Areas\JQueryUI\Views\Core\Generic.cshtml" />
+    <Content Include="Areas\JQueryUI\Views\Core\_AxisLabels.cshtml" />
+    <Content Include="Areas\JQueryUI\Views\Core\_BarGraph.cshtml" />
+    <Content Include="Areas\JQueryUI\Views\Core\_CurvedLineGraph.cshtml" />
+    <Content Include="Areas\JQueryUI\Views\Core\_CustomFlotFormatters.cshtml" />
+    <Content Include="Areas\JQueryUI\Views\Core\_DashedGraph.cshtml" />
+    <Content Include="Areas\JQueryUI\Views\Core\_LineGraph.cshtml" />
+    <Content Include="Areas\JQueryUI\Views\Core\_PieGraph.cshtml" />
+    <Content Include="Areas\JQueryUI\Views\Core\_PostbackSetup.cshtml" />
+    <Content Include="Areas\JQueryUI\Views\Mvc\ActionResults.cshtml" />
+    <Content Include="Areas\JQueryUI\Views\Mvc\CoreForm.cshtml" />
+    <Content Include="Areas\JQueryUI\Views\Mvc\CoreHtml.cshtml" />
+    <Content Include="Areas\JQueryUI\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\JQueryUI\Views\Web.config" />
+    <Content Include="Areas\JQueryUI\Views\_ViewStart.cshtml" />
+    <Content Include="Content\style-jqueryui.less" />
+    <Content Include="Areas\JQueryUI\Views\Home\Download.cshtml" />
     <None Include="Content\style.less" />
     <Content Include="Content\style-bootstrap3.min.css">
       <DependentUpon>style-bootstrap3.less</DependentUpon>
@@ -369,6 +422,7 @@
     <Content Include="Content\webextras.bootstrap.less" />
     <Content Include="Content\webextras.bootstrap3.less" />
     <Content Include="Content\webextras.gumby.less" />
+    <Content Include="Content\webextras.jqueryui.less" />
     <None Include="Content\webextras.less" />
     <Content Include="Content\webextras.css">
       <DependentUpon>webextras.less</DependentUpon>

@@ -4,7 +4,7 @@
   When populating via AJAX source, all you need to do is set the AJAX source parameter on the Datatable settings
       contructor
 </p>
-<div class="well">
+<div class="well ui-well">
   <h4>Creating table settings</h4>
   Table settings are created by instantiating the <i>WebExtras.JQDataTables.DatatableSettings</i> class 
   <pre><code>  
@@ -20,7 +20,7 @@
   </code></pre>
 </div>
 
-<div class="well">
+<div class="well ui-well">
   <h4>Creating the AJAX callback handler action</h4>
   In order to populate data with an AJAX callback, you will obviously need a call back action/page/request handler which returns JSON formatted data.
   This example uses a .NET MVC controller action, however you are not limited to that. All you need is for the server to accept some parameters
@@ -63,7 +63,7 @@
   </code></pre>
 </div>
 
-<div class="well">
+<div class="well ui-well">
   <h4>And the output is</h4>
   <div class="output">
     @Html.Partial(MVC.Shared.Views.DatatablePartial, Model)
