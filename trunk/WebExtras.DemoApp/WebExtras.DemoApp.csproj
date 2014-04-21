@@ -390,12 +390,6 @@
     <Content Include="Areas\JQueryUI\Views\Core\Flot.cshtml" />
     <Content Include="Areas\JQueryUI\Views\Core\Generic.cshtml" />
     <Content Include="Areas\JQueryUI\Views\Core\_AxisLabels.cshtml" />
-    <Content Include="Areas\JQueryUI\Views\Core\_BarGraph.cshtml" />
-    <Content Include="Areas\JQueryUI\Views\Core\_CurvedLineGraph.cshtml" />
-    <Content Include="Areas\JQueryUI\Views\Core\_CustomFlotFormatters.cshtml" />
-    <Content Include="Areas\JQueryUI\Views\Core\_DashedGraph.cshtml" />
-    <Content Include="Areas\JQueryUI\Views\Core\_LineGraph.cshtml" />
-    <Content Include="Areas\JQueryUI\Views\Core\_PieGraph.cshtml" />
     <Content Include="Areas\JQueryUI\Views\Core\_PostbackSetup.cshtml" />
     <Content Include="Areas\JQueryUI\Views\Mvc\ActionResults.cshtml" />
     <Content Include="Areas\JQueryUI\Views\Mvc\CoreForm.cshtml" />

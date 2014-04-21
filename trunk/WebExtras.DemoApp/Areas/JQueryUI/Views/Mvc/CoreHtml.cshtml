@@ -1,8 +1,8 @@
-﻿@{
+﻿@model WebExtras.DemoApp.Models.Mvc.CoreHtmlViewModel
+
+@{
   ViewBag.Title = "Mvc Html Helper Extensions";
 }
-
-
 
 <h3 class="keep-center">Mvc Html Helper Extensions</h3>
 
@@ -60,24 +60,6 @@
   @@Html.Image(src, altText, htmlAttributes)
   @@Html.Image(src, altText, title, htmlAttributes)
   </code></pre>
-  <h4>Styled images</h4>
-  <div class="content">
-    <p>Bootstrap supports styling of images via the following CSS classes:</p>
-    <table class="ui-table">
-      <tr>
-        <td class="keep-middle">.img-circle</td>
-        <td>@Html.Image(Links.Content.png.youtube_logo_png, "YouTube", "Take me to YouTube", new { style = "width: 50%; height: 50%" }).AddCssClass("img-circle")</td>
-      </tr>
-      <tr>
-        <td class="keep-middle">.img-rounded</td>
-        <td>@Html.Image(Links.Content.png.youtube_logo_png, "YouTube", "Take me to YouTube", new { style = "width: 50%; height: 50%" }).AddCssClass("img-rounded")</td>
-      </tr>
-      <tr>
-        <td class="keep-middle">.img-polaroid</td>
-        <td>@Html.Image(Links.Content.png.youtube_logo_png, "YouTube", "Take me to YouTube", new { style = "width: 50%; height: 50%" }).AddCssClass("img-polaroid")</td>
-      </tr>
-    </table>
-  </div>
 </div>
 
 
@@ -200,5 +182,33 @@
   <p>Usage</p>
   <pre><code>
   @@Html.Inline("relative path to the static content file")
+  </code></pre>
+</div>
+
+<div class="ui-well">
+  <h4>Label with required field asterix</h4>
+  <p>Markup</p>
+  <pre><code>
+@@Html.LabelForV2(f => f.SomeProperty)
+@@Html.LabelForV2(f => f.SomeProperty, "My random label")
+  </code></pre>
+  <p>Output</p>
+  <div class="content">
+    <div class="col-group">
+      <div class="col-2">
+        @Html.LabelForV2(f => f.SomeProperty)
+      </div>
+      <div class="col-2">
+        @Html.LabelForV2(f => f.SomeProperty, "My random label")
+      </div>
+    </div>
+  </div>
+  <p>All available extensions</p>
+  <pre><code>
+<span class="comment">// The displaying of the asterix is decided by inspecting the <br />// System.ComponentModel.RequiredAttribute added to the view model property</span>
+@@Html.LabelForV2(propertySelector)
+@@Html.LabelForV2(propertySelector, htmlAttributes)
+@@Html.LabelForV2(propertySelector, labelText)
+@@Html.LabelForV2(propertySelector, labelText, htmlAttributes)
   </code></pre>
 </div>

@@ -23,7 +23,7 @@ using WebExtras.Mvc.Core;
 
 namespace WebExtras.DemoApp.Areas.JQueryUI.Controllers
 {
-  public partial class MvcController : Controller
+  public partial class MvcController : BaseController
   {
     //
     // GET: /JQueryUI/Mvc
@@ -36,7 +36,13 @@ namespace WebExtras.DemoApp.Areas.JQueryUI.Controllers
     // GET: /JQueryUI/Mvc/CoreHtml
     public virtual ActionResult CoreHtml()
     {
-      return View();
+      CoreHtmlViewModel model = new CoreHtmlViewModel
+      {
+        SomeProperty = "Blah blah",
+        ShowMessage = false
+      };
+
+      return View(model);
     }
 
     //
