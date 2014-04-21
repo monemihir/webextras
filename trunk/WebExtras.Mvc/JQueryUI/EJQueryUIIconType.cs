@@ -16,26 +16,34 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using WebExtras.Core;
 
-namespace WebExtras.Mvc.Html
+namespace WebExtras.Mvc.JQueryUI
 {
   /// <summary>
-  /// Generic extension for an extended html string
+  /// All available JQuery UI icon types
   /// </summary>
-  public static class ExtendedHtmlStringExtension
+  public enum EJQueryUIIconType
   {
     /// <summary>
-    /// Adds given CSS class(es) to the current HTML element
+    /// Default icon
     /// </summary>
-    /// <param name="html">HTML element to add class to</param>
-    /// <param name="css">CSS class(es) to be added</param>
-    /// <returns>Current HTML element with classes added</returns>
-    public static T AddCssClass<T>(this T html, string css) where T : IExtendedHtmlString
-    {
-      if (!string.IsNullOrWhiteSpace(css))
-        html.CSSClasses.AddRange(css.Split(' '));
+    Default,
 
-      return html;
-    }
+    /// <summary>
+    /// Highlighted icon
+    /// </summary>
+    [StringValue("ui-highlight")]
+    Highlight,
+
+    /// <summary>
+    /// Error icon
+    /// </summary>
+    [StringValue("ui-error")]
+    Error
   }
 }

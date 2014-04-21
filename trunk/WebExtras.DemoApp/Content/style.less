@@ -5,137 +5,142 @@
 
 // LESS definitions
 .rounded-corners(@radius: 5px) {
-  -moz-border-radius: @radius;
-  -webkit-border-radius: @radius;
-  border-radius: @radius;
+    -moz-border-radius: @radius;
+    -webkit-border-radius: @radius;
+    border-radius: @radius;
 }
 
 // CSS definitions
 
 html {
-  background: url('png/bk.png') repeat center center fixed;
+    background: url('png/bk.png') repeat center center fixed;
 }
 
 body {
-  margin: 0 auto;
-  font-size: 14px;
-  width: 980px;
-  background-color: transparent;
-  color: #232323;
-  font-family: Arial,sans-serif;
+    margin: 0 auto;
+    font-size: 14px;
+    width: 980px;
+    background-color: transparent;
+    color: #232323;
+    font-family: Arial,sans-serif;
 }
 
 header, footer, nav, section {
-  display: block;
+    display: block;
 }
 
 .dependancies {
-  list-style: none;
+    list-style: none;
 }
 
 .comment {
-  color: green;
+    color: green;
 }
 
 .highlight {
-  padding: 3px;
-  background-color: #fafafa;
-  background-image: -moz-linear-gradient(top, #ddd, #ccc);
-  color: #d14;
-  .rounded-corners(2px);
+    padding: 3px;
+    background-color: #fafafa;
+    background-image: -moz-linear-gradient(top, #ddd, #ccc);
+    color: #d14;
+    .rounded-corners(2px);
 }
 
 .output {
-  padding: 5px;
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  background-color: @white;
-  .rounded-corners(4px);
+    padding: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    background-color: @white;
+    .rounded-corners(4px);
 }
 
 footer {
-  padding-right: 3%;
-  padding-bottom: 1%;
-  text-align: right;
+    padding-right: 3%;
+    padding-bottom: 1%;
+    text-align: right;
 }
 
 .documentation-affix {
-  z-index: 2000;
-  margin-top: 3px;
-  border: 0;
-  -moz-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
-  -webkit-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
-  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
-  color: @white;
-  -webkit-text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-
-  a {
+    z-index: 2000;
+    margin-top: 3px;
+    border: 0;
+    -moz-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
     color: @white;
-    text-decoration: underline;
-  }
+    -webkit-text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+
+    a {
+        color: @white;
+        text-decoration: underline;
+    }
 }
 
 pre {
-  margin-top: 5px;
-  background-color: @white;
+    margin-top: 5px;
+    background-color: @white;
 }
 
 #actionMessage {
-  top: 45px;
+    top: 45px;
 }
 
 /* Generic styles */
 .content {
-  display: block;
-  margin-top: 5px;
-  margin-bottom: 10px;
-  padding: 25px;
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  .rounded-corners(4px);
-  background-color: @white;
-  font-size: 13px;
-  line-height: 20px;
+    display: block;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    padding: 25px;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    .rounded-corners(4px);
+    background-color: @white;
+    font-size: 13px;
+    line-height: 20px;
+
+    .ui-icon {
+        display: inline;
+        float: left;
+    }
 }
 
 .graph {
-  display: block;
-  margin: 0 auto;
-  width: 90%;
-  height: 200px;
+    display: block;
+    margin: 0 auto;
+    width: 90%;
+    height: 200px;
 }
 
 .graph-large {
-  height: 300px;
+    height: 300px;
 }
 
 .pie-graph {
-  display: block;
-  margin: 0 auto;
-  width: 50%;
-  height: 300px;
+    display: block;
+    margin: 0 auto;
+    width: 50%;
+    height: 300px;
 }
 
 .changelog {
-  overflow-y: scroll;
-  padding: 5px;
-  height: 500px;
-  border: 1px solid #DDDDDD;
-  .rounded-corners(4px);
-  background-color: @white;
+    overflow-y: scroll;
+    padding: 5px;
+    height: 500px;
+    border: 1px solid #DDDDDD;
+    .rounded-corners(4px);
+    background-color: @white;
 }
 
 #build-date {
-  padding-left: 4%;
+    padding-left: 4%;
 }
 
 hr {
-  clear: both;
-  height: 0;
-  border: 0 solid #DDDDDD;
-  border-top-width: 1px;
+    clear: both;
+    height: 0;
+    border: 0 solid #DDDDDD;
+    border-top-width: 1px;
 }
 
 /* jqPlot overrides */
 .jqplot-target {
-  font: 12px Arial;
+    font: 12px Arial;
 }

@@ -155,6 +155,9 @@
     <Compile Include="Core\SelectedTabHelperExtension.cs" />
     <Compile Include="Core\ValidationHtmlHelperExtension.cs" />
     <Compile Include="Core\ViewRendererControllerExtension.cs" />
+    <Compile Include="JQueryUI\EJQueryUIIcon.cs" />
+    <Compile Include="JQueryUI\EJQueryUIIconType.cs" />
+    <Compile Include="JQueryUI\JUIHtmlHelperExtension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

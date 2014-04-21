@@ -80,6 +80,10 @@ pre {
   font-size: 13px;
   line-height: 20px;
 }
+.content .ui-icon {
+  display: inline;
+  float: left;
+}
 .graph {
   display: block;
   margin: 0 auto;

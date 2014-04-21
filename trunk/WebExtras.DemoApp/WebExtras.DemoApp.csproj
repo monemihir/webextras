@@ -399,6 +399,7 @@
     <Content Include="Areas\JQueryUI\Views\_ViewStart.cshtml" />
     <Content Include="Content\style-jqueryui.less" />
     <Content Include="Areas\JQueryUI\Views\Home\Download.cshtml" />
+    <Content Include="Areas\JQueryUI\Views\Mvc\JQueryUIHtml.cshtml" />
     <None Include="Content\style.less" />
     <Content Include="Content\style-bootstrap3.min.css">
       <DependentUpon>style-bootstrap3.less</DependentUpon>

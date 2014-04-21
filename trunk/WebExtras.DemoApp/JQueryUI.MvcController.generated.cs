@@ -97,10 +97,12 @@ namespace WebExtras.DemoApp.Areas.JQueryUI.Controllers
                 public readonly string ActionResults = "ActionResults";
                 public readonly string CoreForm = "CoreForm";
                 public readonly string CoreHtml = "CoreHtml";
+                public readonly string JQueryUIHtml = "JQueryUIHtml";
             }
             public readonly string ActionResults = "~/Areas/JQueryUI/Views/Mvc/ActionResults.cshtml";
             public readonly string CoreForm = "~/Areas/JQueryUI/Views/Mvc/CoreForm.cshtml";
             public readonly string CoreHtml = "~/Areas/JQueryUI/Views/Mvc/CoreHtml.cshtml";
+            public readonly string JQueryUIHtml = "~/Areas/JQueryUI/Views/Mvc/JQueryUIHtml.cshtml";
         }
     }
 

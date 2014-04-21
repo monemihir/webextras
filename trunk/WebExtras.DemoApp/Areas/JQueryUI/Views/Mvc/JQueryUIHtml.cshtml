@@ -1,0 +1,74 @@
+﻿@model WebExtras.DemoApp.Models.Mvc.CoreHtmlViewModel
+@{
+  ViewBag.Title = "Mvc JQuery UI Html Helper Extensions";
+}
+
+<h3 class="keep-center">Mvc Html Helper Extensions</h3>
+
+<div class="col-group">
+  <div class="col-6">
+    <div class="col-12">
+      <div class="col-3">
+        <strong>Assembly</strong>
+      </div>
+      <div class="col-4">
+        WebExtras.Mvc.dll
+      </div>
+    </div>
+    <div class="col-12">
+      <div class="col-3">
+        <strong>Namespace</strong>
+      </div>
+      <div class="col-4">
+        WebExtras.Mvc.Core
+      </div>
+    </div>
+  </div>  
+  <div class="col-offset-6">
+    <div class="col-4">
+      <strong>Dependancies</strong>
+    </div>
+    <div class="col-6">
+      <ul class="dependancies">
+        <li>Appropriate third party libraries</li>
+        <li>webextras.jqueryui.css</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="ui-well">
+  <h4>Icon</h4>
+  <p>
+    Markup
+  </p>
+  <pre><code>
+@@Html.Icon(EJQueryUIIcon.Trash)
+@@Html.Icon(EJQueryUIIcon.Trash, EJQueryUIIconType.Error)
+  </code></pre>
+  <p>
+    Output
+  </p>
+  <div class="content">
+    <div class="col-group">
+      <div class="col-4">Default JQuery UI Icons</div>
+      <div class="col-4">Highlighted JQuery UI Icons</div>
+      <div class="col-4">Error JQuery UI Icons</div>
+    </div>
+    <div class="col-group">
+      <div class="col-4">
+        @Html.Icon(EJQueryUIIcon.Trash) @Html.Icon(EJQueryUIIcon.Circle_Triangle_E) @Html.Icon(EJQueryUIIcon.Suitcase)
+        @Html.Icon(EJQueryUIIcon.Plusthick) @Html.Icon(EJQueryUIIcon.Triangle_1_N)
+      </div>
+      <div class="col-4">
+        @Html.Icon(EJQueryUIIcon.Trash, EJQueryUIIconType.Highlight) @Html.Icon(EJQueryUIIcon.Circle_Triangle_E, EJQueryUIIconType.Highlight) @Html.Icon(EJQueryUIIcon.Suitcase, EJQueryUIIconType.Highlight)
+        @Html.Icon(EJQueryUIIcon.Plusthick, EJQueryUIIconType.Highlight) @Html.Icon(EJQueryUIIcon.Triangle_1_N, EJQueryUIIconType.Highlight)
+      </div>
+      <div class="col-4">
+        @Html.Icon(EJQueryUIIcon.Trash, EJQueryUIIconType.Error) @Html.Icon(EJQueryUIIcon.Circle_Triangle_E, EJQueryUIIconType.Error) @Html.Icon(EJQueryUIIcon.Suitcase, EJQueryUIIconType.Error)
+        @Html.Icon(EJQueryUIIcon.Plusthick, EJQueryUIIconType.Error) @Html.Icon(EJQueryUIIcon.Triangle_1_N, EJQueryUIIconType.Error)
+      </div>
+    </div>
+  </div>
+  <p><strong>Note: </strong>The colors you get for the icons will be decided based on the JQuery UI theme you are using.</p>
+</div>

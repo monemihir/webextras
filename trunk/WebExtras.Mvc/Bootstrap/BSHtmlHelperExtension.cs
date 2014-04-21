@@ -38,7 +38,7 @@ namespace WebExtras.Mvc.Bootstrap
     /// </summary>
     /// <param name="html">Current Html helper object</param>
     /// <param name="icon">Icon to be rendered</param>
-    /// <param name="htmlAttributes">Extra HTML attributes</param>
+    /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
     /// <returns>A Bootstrap icon</returns>
     /// <exception cref="WebExtras.Mvc.Core.BootstrapVersionException">Thrown when a valid Bootstrap version
     /// is not selected</exception>
