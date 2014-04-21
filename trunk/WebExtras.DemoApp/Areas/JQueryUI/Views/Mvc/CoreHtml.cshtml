@@ -189,26 +189,26 @@
   <h4>Label with required field asterix</h4>
   <p>Markup</p>
   <pre><code>
-@@Html.LabelForV2(f => f.SomeProperty)
-@@Html.LabelForV2(f => f.SomeProperty, "My random label")
+@@Html.RequiredFieldLabelFor(f => f.SomeProperty)
+@@Html.RequiredFieldLabelFor(f => f.SomeProperty, "My random label")
   </code></pre>
   <p>Output</p>
   <div class="content">
     <div class="col-group">
       <div class="col-2">
-        @Html.LabelForV2(f => f.SomeProperty)
+        @Html.RequiredFieldLabelFor(f => f.SomeProperty)
       </div>
       <div class="col-2">
-        @Html.LabelForV2(f => f.SomeProperty, "My random label")
+        @Html.RequiredFieldLabelFor(f => f.SomeProperty, "My random label")
       </div>
     </div>
   </div>
   <p>All available extensions</p>
   <pre><code>
 <span class="comment">// The displaying of the asterix is decided by inspecting the <br />// System.ComponentModel.RequiredAttribute added to the view model property</span>
-@@Html.LabelForV2(propertySelector)
-@@Html.LabelForV2(propertySelector, htmlAttributes)
-@@Html.LabelForV2(propertySelector, labelText)
-@@Html.LabelForV2(propertySelector, labelText, htmlAttributes)
+@@Html.RequiredFieldLabelFor(propertySelector)
+@@Html.RequiredFieldLabelFor(propertySelector, htmlAttributes)
+@@Html.RequiredFieldLabelFor(propertySelector, labelText)
+@@Html.RequiredFieldLabelFor(propertySelector, labelText, htmlAttributes)
   </code></pre>
 </div>

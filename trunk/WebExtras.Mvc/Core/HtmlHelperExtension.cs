@@ -586,9 +586,10 @@ namespace WebExtras.Mvc.Core
     /// <param name="expression">The property lamba expression</param>
     /// <param name="htmlAttributes">[Optional] Extra html attributes</param>
     /// <returns>A label with the required field asterix</returns>
+    [Obsolete("Use Html.RequiredFieldLabelFor(...)")]
     public static MvcHtmlString LabelForV2<TModel, TValue>(this HtmlHelper<TModel> html, Expression<Func<TModel, TValue>> expression, object htmlAttributes = null)
     {
-      return LabelForV2(html, expression, string.Empty, htmlAttributes);
+      return RequiredFieldLabelFor(html, expression, string.Empty, htmlAttributes);
     }
 
     /// <summary>
@@ -601,7 +602,37 @@ namespace WebExtras.Mvc.Core
     /// <param name="labelText">Label text to be shown</param>
     /// <param name="htmlAttributes">[Optional] Extra html attributes</param>
     /// <returns>A label with the required field asterix</returns>
+    [Obsolete("Use Html.RequiredFieldLabelFor(...)")]
     public static MvcHtmlString LabelForV2<TModel, TValue>(this HtmlHelper<TModel> html, Expression<Func<TModel, TValue>> expression, string labelText, object htmlAttributes = null)
+    {
+      return RequiredFieldLabelFor(html, expression, labelText, htmlAttributes);
+    }
+
+    /// <summary>
+    /// Create a label with the required field asterix
+    /// </summary>
+    /// <typeparam name="TModel">Type to be scanned</typeparam>
+    /// <typeparam name="TValue">Property to be scanned</typeparam>
+    /// <param name="html">Htmlhelper extension</param>
+    /// <param name="expression">The property lamba expression</param>
+    /// <param name="htmlAttributes">[Optional] Extra html attributes</param>
+    /// <returns>A label with the required field asterix</returns>
+    public static MvcHtmlString RequiredFieldLabelFor<TModel, TValue>(this HtmlHelper<TModel> html, Expression<Func<TModel, TValue>> expression, object htmlAttributes = null)
+    {
+      return RequiredFieldLabelFor(html, expression, string.Empty, htmlAttributes);
+    }
+
+    /// <summary>
+    /// Create a label with the required field asterix
+    /// </summary>
+    /// <typeparam name="TModel">Type to be scanned</typeparam>
+    /// <typeparam name="TValue">Property to be scanned</typeparam>
+    /// <param name="html">Htmlhelper extension</param>
+    /// <param name="expression">The property lamba expression</param>
+    /// <param name="labelText">Label text to be shown</param>
+    /// <param name="htmlAttributes">[Optional] Extra html attributes</param>
+    /// <returns>A label with the required field asterix</returns>
+    public static MvcHtmlString RequiredFieldLabelFor<TModel, TValue>(this HtmlHelper<TModel> html, Expression<Func<TModel, TValue>> expression, string labelText, object htmlAttributes = null)
     {
       if (expression == null)
         throw new ArgumentNullException("expression");
