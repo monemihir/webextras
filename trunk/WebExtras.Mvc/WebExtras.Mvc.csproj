@@ -157,6 +157,8 @@
     <Compile Include="Core\ViewRendererControllerExtension.cs" />
     <Compile Include="JQueryUI\EJQueryUIIcon.cs" />
     <Compile Include="JQueryUI\EJQueryUIIconType.cs" />
+    <Compile Include="JQueryUI\DatePickerOptions.cs" />
+    <Compile Include="JQueryUI\JUIFormHelperExtension.cs" />
     <Compile Include="JQueryUI\JUIHtmlHelperExtension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

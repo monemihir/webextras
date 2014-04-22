@@ -187,6 +187,8 @@ namespace Links
                       
         public static readonly string jquery_mwheelIntent_1_2_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.mwheelIntent-1.2.min.js") ? Url("jquery.mwheelIntent-1.2.min.js") : Url("jquery.mwheelIntent-1.2.js");
                       
+        public static readonly string jquery_ui_datetimepicker_1_4_4_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.ui.datetimepicker-1.4.4.min.js") ? Url("jquery.ui.datetimepicker-1.4.4.min.js") : Url("jquery.ui.datetimepicker-1.4.4.js");
+                      
         public static readonly string jquery_ui_menubar_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.ui.menubar.min.js") ? Url("jquery.ui.menubar.min.js") : Url("jquery.ui.menubar.js");
                       
         public static readonly string modernizr_2_6_2_min_js = Url("modernizr-2.6.2.min.js");
@@ -243,6 +245,7 @@ namespace Links
                 public static readonly string glyphicons_halflings_png = Url("glyphicons-halflings.png");
             }
         
+            public static readonly string calendar_gif = Url("calendar.gif");
             [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
             public static class datatables {
                 private const string URLPATH = "~/Content/img/datatables";
@@ -316,6 +319,8 @@ namespace Links
              
         public static readonly string jquery_jqplot_min_css = Url("jquery.jqplot.min.css");
         public static readonly string jquery_jScrollPane_2_0_0beta12_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.jScrollPane-2.0.0beta12.min.css") ? Url("jquery.jScrollPane-2.0.0beta12.min.css") : Url("jquery.jScrollPane-2.0.0beta12.css");
+             
+        public static readonly string jquery_ui_datetimepicker_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.ui.datetimepicker.min.css") ? Url("jquery.ui.datetimepicker.min.css") : Url("jquery.ui.datetimepicker.css");
              
         public static readonly string jquery_ui_menubar_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.ui.menubar.min.css") ? Url("jquery.ui.menubar.min.css") : Url("jquery.ui.menubar.css");
              

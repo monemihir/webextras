@@ -102,6 +102,7 @@ namespace WebExtras.DemoApp.App_Start
         .Add(Links.Content.fluidable_min_css)
         .Add(Links.Content.jquery_ui_1_10_3_custom_css)
         .Add(Links.Content.jquery_ui_menubar_css)
+        .Add(Links.Content.jquery_ui_datetimepicker_css)
         .Add(Links.Content.jquery_dataTables_css)
         .Add(Links.Content.jquery_dataTables_jui_css)
         .Add(Links.Content.jquery_jScrollPane_2_0_0beta12_css)
@@ -168,6 +169,7 @@ namespace WebExtras.DemoApp.App_Start
       Bundle.JavaScript()
         .Add(Links.Scripts.jquery_ui_1_10_3_custom_min_js)
         .Add(Links.Scripts.jquery_ui_menubar_js)
+        .Add(Links.Scripts.jquery_ui_datetimepicker_1_4_4_js)
         .AsCached(ContentBundle.JSJQueryUI.GetStringValue(), ResolveJsPath(ContentBundle.JSJQueryUI));
     }
   }

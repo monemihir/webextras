@@ -219,8 +219,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\fluidable.min.css" />
+    <Content Include="Content\img\calendar.gif" />
     <Content Include="Content\jquery-ui-1.10.3.custom.css" />
     <Content Include="Content\jquery.jqplot.min.css" />
+    <Content Include="Content\jquery.ui.datetimepicker.css" />
     <Content Include="Content\jquery.ui.menubar.css" />
     <Content Include="Content\style-jqueryui.css">
       <DependentUpon>style-jqueryui.less</DependentUpon>
@@ -270,6 +272,7 @@
     <Content Include="Scripts\JQPlot\jqplot.dateAxisRenderer.min.js" />
     <Content Include="Scripts\JQPlot\jqplot.min.js" />
     <Content Include="Scripts\jquery-ui-1.10.3.custom.min.js" />
+    <Content Include="Scripts\jquery.ui.datetimepicker-1.4.4.js" />
     <Content Include="Scripts\jquery.ui.menubar.js" />
     <Content Include="Scripts\modernizr-2.6.2.min.js" />
     <Content Include="Views\Shared\DatatablePartial.ascx" />
@@ -400,6 +403,7 @@
     <Content Include="Content\style-jqueryui.less" />
     <Content Include="Areas\JQueryUI\Views\Home\Download.cshtml" />
     <Content Include="Areas\JQueryUI\Views\Mvc\JQueryUIHtml.cshtml" />
+    <Content Include="Areas\JQueryUI\Views\Mvc\JQueryUIForm.cshtml" />
     <None Include="Content\style.less" />
     <Content Include="Content\style-bootstrap3.min.css">
       <DependentUpon>style-bootstrap3.less</DependentUpon>

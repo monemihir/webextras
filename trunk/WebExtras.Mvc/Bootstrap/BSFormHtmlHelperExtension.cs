@@ -130,7 +130,7 @@ namespace WebExtras.Mvc.Bootstrap
 
       string fieldId = string.Join("_", GetComponents(exp));
       string fieldName = string.Join(".", GetComponents(exp));
-      string datetimeformat = ConvertToCSDateFormat(pickerOptions["format"].ToString());
+      string datetimeformat = ConvertToCsDateFormat(pickerOptions["format"].ToString());
 
       // create the text box
       TagBuilder input = new TagBuilder("input");
@@ -195,7 +195,7 @@ namespace WebExtras.Mvc.Bootstrap
     /// </summary>
     /// <param name="options">Picker options to be merged</param>
     /// <returns>Merged options</returns>
-    private static IDictionary<string, object> MergeOptions(IDictionary<string, object> options)
+    private static IDictionary<string, object> MergeOptions(ICollection<KeyValuePair<string, object>> options)
     {
       IDictionary<string, object> result = new Dictionary<string, object>(DefaultPickerOptions);
 
@@ -210,7 +210,7 @@ namespace WebExtras.Mvc.Bootstrap
     /// </summary>
     /// <param name="jsformat">JavaScript date format</param>
     /// <returns>Equivalent CSharp date format</returns>
-    private static string ConvertToCSDateFormat(string jsformat)
+    private static string ConvertToCsDateFormat(string jsformat)
     {
       char[] parts = jsformat.ToCharArray();
       string csFormat = new string(parts);

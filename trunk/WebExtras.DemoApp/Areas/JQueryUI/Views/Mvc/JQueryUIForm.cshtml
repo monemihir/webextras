@@ -1,0 +1,66 @@
+﻿@model WebExtras.DemoApp.Models.Mvc.CoreFormViewModel
+
+@{
+  ViewBag.Title = "Mvc JQuery UI Form Helper Extensions";
+}
+
+<h3 class="keep-center">Mvc Form Helper Extensions</h3>
+
+<div class="col-group">
+  <div class="col-6">
+    <div class="col-12">
+      <div class="col-3">
+        <strong>Assembly</strong>
+      </div>
+      <div class="col-4">
+        WebExtras.Mvc.dll
+      </div>
+    </div>
+    <div class="col-12">
+      <div class="col-3">
+        <strong>Namespace</strong>
+      </div>
+      <div class="col-4">
+        WebExtras.Mvc.Core
+      </div>
+    </div>
+  </div>
+  <div class="col-offset-6">
+    <div class="col-4">
+      <strong>Dependancies</strong>
+    </div>
+    <div class="col-6">
+      <ul class="dependancies">
+        <li>Appropriate third party libraries</li>
+        <li>webextras.jqueryui.css</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="ui-well">
+  <h4>Date time pickers</h4>
+  <p>
+    WebExtras provides helper methods for rendering a date time picker attached to a textbox by using a 
+    great little date time picker provided by Trent Richarson. You can get a copy of the date time picker from 
+    @Html.Hyperlink("here", "http://trentrichardson.com/examples/timepicker/", new { target = "_blank" }).
+  </p>
+  <p>Markup</p>
+  <pre><code>
+@@Html.DateTextBoxFor(f => f.DateTextBox, new DatePickerOptions
+{
+  showOn = "button",
+  buttonImage = "/content/img/calendar.gif",
+  buttonImageOnly = true
+})
+  </code></pre>
+  <p>Output</p>
+  <div class="content">
+    @Html.DateTextBoxFor(f => f.DateTextBox, new DatePickerOptions
+    {
+      showOn = "button",
+      buttonImage = "/content/img/calendar.gif",
+      buttonImageOnly = true
+    })
+  </div>
+</div>
