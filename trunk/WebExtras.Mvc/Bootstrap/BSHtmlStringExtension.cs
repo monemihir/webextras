@@ -20,7 +20,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
-using MoreLinq;
 using WebExtras.Core;
 using WebExtras.Mvc.Core;
 using WebExtras.Mvc.Html;
@@ -153,7 +152,8 @@ namespace WebExtras.Mvc.Bootstrap
       Italic i = new Italic();
       i["class"] = string.Join(" ", finalClasses);
 
-      rvd.ForEach(f => i.Attributes[f.Key] = f.Value.ToString());
+      foreach (string key in rvd.Keys)
+        i.Attributes[key] = rvd[key].ToString();
 
       html.Prepend(i);
 

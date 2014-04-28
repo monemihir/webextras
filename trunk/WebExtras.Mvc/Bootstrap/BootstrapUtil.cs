@@ -16,7 +16,6 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using MoreLinq;
 using System.Collections.Generic;
 using System.Web.Mvc;
 using System.Web.Routing;
@@ -108,7 +107,8 @@ namespace WebExtras.Mvc.Bootstrap
       Italic i = new Italic();
       i["class"] = string.Join(" ", cssClasses);
 
-      attrsDictionary.ForEach(f => i.Attributes[f.Key] = f.Value.ToString());
+      foreach(string key in attrsDictionary.Keys)
+        i.Attributes[key] = attrsDictionary[key].ToString();
 
       return i;
     }

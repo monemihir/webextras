@@ -16,7 +16,6 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using MoreLinq;
 using Newtonsoft.Json;
 using System;
 using System.Linq;
@@ -63,6 +62,7 @@ namespace WebExtras.JQPlot.RendererOptions
 
       value.GetType().GetProperties()
         .Where(f => f.GetValue(value, null) != null)
+        .ToList()
         .ForEach(f => {
           writer.WriteStartObject();
           writer.WritePropertyName(f.Name);

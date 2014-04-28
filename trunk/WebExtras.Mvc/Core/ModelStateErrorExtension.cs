@@ -18,7 +18,6 @@
 
 using System.Collections.Specialized;
 using System.Web.Mvc;
-using MoreLinq;
 using WebExtras.Core;
 
 namespace WebExtras.Mvc.Core
@@ -44,7 +43,8 @@ namespace WebExtras.Mvc.Core
 
       keyPrefix = string.IsNullOrEmpty(keyPrefix) ? "" : keyPrefix + ".";
 
-      errors.ToDictionary().ForEach(f => modelState.AddModelError(keyPrefix + f.Key, f.Value));
+      foreach(string key in errors.Keys)
+        modelState.AddModelError(keyPrefix + key, errors[key]);
     }
   }
 }

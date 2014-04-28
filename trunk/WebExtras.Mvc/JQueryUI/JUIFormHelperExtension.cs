@@ -16,7 +16,6 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using MoreLinq;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -94,7 +93,8 @@ namespace WebExtras.Mvc.JQueryUI
       IDictionary<string, object> result = new Dictionary<string, object>(DefaultPickerOptions);
 
       if (options != null && options.Count > 0)
-        options.ForEach(f => { result[f.Key] = f.Value; });
+        foreach (var kv in options)
+          result[kv.Key] = kv.Value;
 
       return result;
     }

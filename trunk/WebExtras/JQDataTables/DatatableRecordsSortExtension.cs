@@ -20,7 +20,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using MoreLinq;
 using WebExtras.Core;
 
 namespace WebExtras.JQDataTables
@@ -33,17 +32,17 @@ namespace WebExtras.JQDataTables
     /// <summary>
     /// A list of predefined HTML currency syntax
     /// </summary>
-    private static readonly string[] m_currencies = new string[] { "&euro;", "&yen;", "$", "&pound;" };
+    private static readonly string[] Currencies = { "&euro;", "&yen;", "$", "&pound;" };
 
     /// <summary>
     /// An array of predefined special characters
     /// </summary>
-    private static readonly string[] m_spChars = new string[] { "%" };
+    private static readonly List<string> SpChars = new List<string>(Currencies) { "%" };
 
     /// <summary>
     /// All special string to be stripped to sanitize the input string
     /// </summary>
-    public static IEnumerable<string> AllStripStrings { get { return m_currencies.Concat(m_spChars); } }
+    public static List<string> AllStripStrings { get { return SpChars; } }
 
     /// <summary>
     /// Sort DatatableRecords.aaData based on the given column number and sort direction

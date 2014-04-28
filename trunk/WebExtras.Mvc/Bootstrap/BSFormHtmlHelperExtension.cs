@@ -22,7 +22,6 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Web.Mvc;
 using System.Web.Routing;
-using MoreLinq;
 using Newtonsoft.Json;
 
 namespace WebExtras.Mvc.Bootstrap
@@ -200,7 +199,8 @@ namespace WebExtras.Mvc.Bootstrap
       IDictionary<string, object> result = new Dictionary<string, object>(DefaultPickerOptions);
 
       if (options != null && options.Count > 0)
-        options.ForEach(f => { result[f.Key] = f.Value; });
+        foreach (var kv in options)
+          result[kv.Key] = kv.Value;
 
       return result;
     }
