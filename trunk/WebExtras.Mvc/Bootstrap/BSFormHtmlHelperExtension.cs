@@ -23,6 +23,7 @@ using System.Linq.Expressions;
 using System.Web.Mvc;
 using System.Web.Routing;
 using Newtonsoft.Json;
+using WebExtras.Core;
 
 namespace WebExtras.Mvc.Bootstrap
 {
@@ -34,7 +35,8 @@ namespace WebExtras.Mvc.Bootstrap
     /// <summary>
     /// Default date time picker options
     /// </summary>
-    private static readonly IDictionary<string, object> DefaultPickerOptions = new Dictionary<string, object>() { 
+    private static readonly IDictionary<string, object> DefaultPickerOptions = new Dictionary<string, object>
+    { 
       { "format", "dd M yyyy" },
       { "autoclose" , true },
       { "todayBtn", true },
@@ -57,7 +59,7 @@ namespace WebExtras.Mvc.Bootstrap
     public static MvcHtmlString DateTextBoxFor<TModel, TValue>(this HtmlHelper<TModel> html, Expression<Func<TModel, TValue>> expression, object options = (IDictionary<string,object>)null, object htmlAttributes = (IDictionary<string,object>)null)
     {
       // parse the picker options
-      IDictionary<string, object> pickerOptions = MergeOptions(new RouteValueDictionary(options));
+      IDictionary<string, object> pickerOptions = DefaultPickerOptions.Merge(new RouteValueDictionary(options), true);
       pickerOptions["minView"] = 2;      // this is a date only picker to set the min view to month
 
       return GetDateTimePickerFor(html, expression, pickerOptions, htmlAttributes);
@@ -80,7 +82,7 @@ namespace WebExtras.Mvc.Bootstrap
     public static MvcHtmlString TimeTextBoxFor<TModel, TValue>(this HtmlHelper<TModel> html, Expression<Func<TModel, TValue>> expression, object options = (IDictionary<string,object>)null, object htmlAttributes = (IDictionary<string,object>)null)
     {
       // parse the picker options
-      IDictionary<string, object> pickerOptions = MergeOptions(new RouteValueDictionary(options));
+      IDictionary<string, object> pickerOptions = DefaultPickerOptions.Merge(new RouteValueDictionary(options), true);
       pickerOptions["maxView"] = 0;     // this is a time only picker so set the max view to day
       pickerOptions["startView"] = 1;   // this is a time only picker so start with the hour view
 
@@ -104,7 +106,7 @@ namespace WebExtras.Mvc.Bootstrap
     public static MvcHtmlString DateTimeTextBoxFor<TModel, TValue>(this HtmlHelper<TModel> html, Expression<Func<TModel, TValue>> expression, object options = (IDictionary<string,object>)null, object htmlAttributes = (IDictionary<string,object>)null)
     {
       // parse the picker options
-      IDictionary<string, object> pickerOptions = MergeOptions(new RouteValueDictionary(options));
+      IDictionary<string, object> pickerOptions = DefaultPickerOptions.Merge(new RouteValueDictionary(options), true);
 
       return GetDateTimePickerFor(html, expression, pickerOptions, htmlAttributes);
     }
@@ -187,22 +189,6 @@ namespace WebExtras.Mvc.Bootstrap
 
       components.Add(expression.Member.Name);
       return components;
-    }
-
-    /// <summary>
-    /// Merge picker options
-    /// </summary>
-    /// <param name="options">Picker options to be merged</param>
-    /// <returns>Merged options</returns>
-    private static IDictionary<string, object> MergeOptions(ICollection<KeyValuePair<string, object>> options)
-    {
-      IDictionary<string, object> result = new Dictionary<string, object>(DefaultPickerOptions);
-
-      if (options != null && options.Count > 0)
-        foreach (var kv in options)
-          result[kv.Key] = kv.Value;
-
-      return result;
     }
 
     /// <summary>

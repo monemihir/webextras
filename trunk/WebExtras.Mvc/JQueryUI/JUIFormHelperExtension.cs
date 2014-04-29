@@ -16,12 +16,14 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+using System.Web.Routing;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Web.Mvc;
+using WebExtras.Core;
 
 namespace WebExtras.Mvc.JQueryUI
 {
@@ -33,7 +35,8 @@ namespace WebExtras.Mvc.JQueryUI
     /// <summary>
     /// Default date time picker options
     /// </summary>
-    private static readonly IDictionary<string, object> DefaultPickerOptions = new Dictionary<string, object>() { 
+    private static readonly IDictionary<string, object> DefaultPickerOptions = new Dictionary<string, object>
+    { 
       { "dateFormat", "yy-mm-dd" }
     };
 
@@ -49,10 +52,8 @@ namespace WebExtras.Mvc.JQueryUI
     /// <returns>A Bootstrap date picker control</returns>
     public static MvcHtmlString DateTextBoxFor<TModel, TValue>(this HtmlHelper<TModel> html, Expression<Func<TModel, TValue>> expression, DatePickerOptions options = null, object htmlAttributes = (IDictionary<string,object>)null)
     {
-      IDictionary<string, object> mOptions = (options != null) ? options.ToDictionary() : new Dictionary<string, object>();
-      
       // parse the picker options
-      IDictionary<string, object> pickerOptions = MergeOptions(mOptions);
+      IDictionary<string, object> pickerOptions = DefaultPickerOptions.Merge(new RouteValueDictionary(options), true);
 
       MemberExpression exp = expression.Body as MemberExpression;
 
@@ -81,22 +82,6 @@ namespace WebExtras.Mvc.JQueryUI
       script.InnerHtml = "$(function(){ $('#" + fieldId + "').datepicker(" + op + "); });";
 
       return MvcHtmlString.Create(control.ToString(TagRenderMode.Normal) + script.ToString(TagRenderMode.Normal));
-    }
-
-    /// <summary>
-    /// Merge picker options
-    /// </summary>
-    /// <param name="options">Picker options to be merged</param>
-    /// <returns>Merged options</returns>
-    private static IDictionary<string, object> MergeOptions(ICollection<KeyValuePair<string, object>> options)
-    {
-      IDictionary<string, object> result = new Dictionary<string, object>(DefaultPickerOptions);
-
-      if (options != null && options.Count > 0)
-        foreach (var kv in options)
-          result[kv.Key] = kv.Value;
-
-      return result;
     }
 
     /// <summary>

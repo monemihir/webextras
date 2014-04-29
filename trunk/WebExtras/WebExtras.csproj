@@ -79,6 +79,7 @@
     <Compile Include="Core\DateTimeExtensions.cs" />
     <Compile Include="Core\DoubleExtensions.cs" />
     <Compile Include="Core\EnumExtentions.cs" />
+    <Compile Include="Core\DictionaryExtensions.cs" />
     <Compile Include="Core\InvalidUsageException.cs" />
     <Compile Include="Core\IStringValueDecider.cs" />
     <Compile Include="Core\JsFunc.cs" />
