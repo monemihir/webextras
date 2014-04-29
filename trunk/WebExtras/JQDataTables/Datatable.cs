@@ -19,7 +19,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using MoreLinq;
 
 namespace WebExtras.JQDataTables
 {
@@ -95,7 +94,7 @@ namespace WebExtras.JQDataTables
       int widthAssigned = datatableColumns.Select(f => f.Width != null ? f.Width.Value : 0).Sum();
       int widthLeft = 100 - widthAssigned;
 
-      datatableColumns.Where(f => !f.Width.HasValue).ForEach(f => { f.Width = widthLeft / nullWidthColumns; });
+      datatableColumns.Where(f => !f.Width.HasValue).ToList().ForEach(f => { f.Width = widthLeft / nullWidthColumns; });
 
       // setup the status column if the flag is set
       if (enableStatusColumn)

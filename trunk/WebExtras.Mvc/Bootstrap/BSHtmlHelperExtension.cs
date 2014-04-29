@@ -23,7 +23,6 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Web.Mvc;
 using System.Web.Routing;
-using MoreLinq;
 using WebExtras.Core;
 using WebExtras.Mvc.Core;
 using WebExtras.Mvc.Html;
@@ -121,7 +120,8 @@ namespace WebExtras.Mvc.Bootstrap
       Italic i = new Italic();
       i["class"] = string.Join(" ", cssClasses);
 
-      attrsDictionary.ForEach(f => i.Attributes[f.Key] = f.Value.ToString());
+      foreach (string key in attrsDictionary.Keys)
+        i.Attributes[key] = attrsDictionary[key].ToString();
 
       return i;
     }

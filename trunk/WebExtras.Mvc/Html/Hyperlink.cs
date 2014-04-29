@@ -17,7 +17,6 @@
 */
 
 using System;
-using MoreLinq;
 
 namespace WebExtras.Mvc.Html
 {
@@ -54,8 +53,10 @@ namespace WebExtras.Mvc.Html
       HtmlLabel label = new HtmlLabel(InnerHtml);
       label.Append(AppendTags);
       label.Prepend(PrependTags);
-      
-      Attributes.ForEach(f => label.Attributes.Add(f));
+
+      foreach (string key in Attributes.Keys)
+        label.Attributes.Add(key, Attributes[key]);
+
       label.Attributes.Remove("href");
 
       CSSClasses.ForEach(f => label.AddCssClass(f));
