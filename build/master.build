@@ -105,9 +105,7 @@
         <include name="WebExtras.dll" />
         <include name="WebExtras.xml" />
         <include name="WebExtras.Mvc.dll" />
-        <include name="WebExtras.Mvc.xml" />
-        <include name="MoreLinq.dll" />
-        <include name="MoreLinq.xml" />
+        <include name="WebExtras.Mvc.xml" />        
         <include name="Newtonsoft.Json.dll" />
         <include name="Newtonsoft.Json.xml" />
         <include name="T4MVCExtensions.dll" />
