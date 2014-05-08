@@ -1,6 +1,6 @@
 ﻿@model WebExtras.JQPlot.JQPlotChartBase
 
-<div class="well">
+<div class="well ui-well">
   <h4>Specifying the URL</h4>
   <p>JQPlot provides you a shorthand to specify the URL to fetch data from by simply setting the chart data to the URL</p>
   <pre><code>
@@ -12,7 +12,7 @@
   </code></pre>
 </div>
 
-<div class="well">
+<div class="well ui-well">
   <h4>Your AJAX data returning controller action</h4>
   <pre><code>
     public virtual ActionResult GetJQPlotData()
@@ -24,7 +24,7 @@
   </code></pre>
 </div>
 
-<div class="well">
+<div class="well ui-well">
   <h4>Then in your HTML...</h4>
   <p>Unfortunately, since AJAX rendering is normally done via a JavaScript function, WebExtras can not provide a simple
     way of creating this in C# since you may not know the function name beforehand.
@@ -58,7 +58,7 @@
   </code></pre>
 </div>
 
-<div class="well">
+<div class="well ui-well">
   <h4>AJAX powered output...</h4>
   <div class="content">
     <div id="ajax-graph" class="graph graph-large">

@@ -26,6 +26,13 @@ using WebExtras.JQDataTables;
 using WebExtras.JQFlot;
 using WebExtras.JQFlot.Graphs;
 using WebExtras.JQFlot.SubOptions;
+using WebExtras.JQPlot;
+using WebExtras.JQPlot.RendererOptions;
+using WebExtras.JQPlot.SubOptions;
+using WebExtras.Mvc.Core;
+using AxisOptions = WebExtras.JQFlot.SubOptions.AxisOptions;
+using GridOptions = WebExtras.JQFlot.SubOptions.GridOptions;
+using SeriesOptions = WebExtras.JQFlot.SubOptions.SeriesOptions;
 
 namespace WebExtras.DemoApp.Areas.JQueryUI.Controllers
 {
@@ -33,7 +40,8 @@ namespace WebExtras.DemoApp.Areas.JQueryUI.Controllers
   {
     #region Ctor and attributes
 
-    private double[][] m_flotSampleData;
+    private double[][] m_graphSampleData;
+    private readonly object[][] m_graphSampleTextData1, m_graphSampleTextData2, m_graphSampleDateData;
     private Random m_rand;
 
     /// <summary>
@@ -42,7 +50,37 @@ namespace WebExtras.DemoApp.Areas.JQueryUI.Controllers
     public CoreController()
     {
       m_rand = new Random(DateTime.Now.Millisecond);
-      m_flotSampleData = Enumerable.Range(1, 10).Select(f => new double[] { f, m_rand.NextDouble() * 100 }).ToArray();
+      m_graphSampleData = Enumerable.Range(1, 10).Select(f => new double[] { f, m_rand.NextDouble() * 100 }).ToArray();
+
+      m_graphSampleTextData1 = new object[][] { 
+        new object[] { "Cup Holder Pinion Bob", m_rand.NextDouble() * 100 },
+        new object[] { "Generic Fog Lamp", m_rand.NextDouble() * 100 },
+        new object[] { "HDTV Receiver", m_rand.NextDouble() * 100 },
+        new object[] { "8 Track Control Module", m_rand.NextDouble() * 100 },
+        new object[] { "Sludge Pump Fourier Modulator", m_rand.NextDouble() * 100 },
+        new object[] { "Transcender/Spice Rack", m_rand.NextDouble() * 100 },
+        new object[] { "Hair Spray Danger Indicator", m_rand.NextDouble() * 100 }
+      };
+
+      m_graphSampleTextData2 = new object[][] { 
+        new object[] { "Nickel", m_rand.NextDouble() * 100 },
+        new object[] { "Aluminium", m_rand.NextDouble() * 100 },
+        new object[] { "Xenon", m_rand.NextDouble() * 100 },
+        new object[] { "Silver", m_rand.NextDouble() * 100 },
+        new object[] { "Sulphur", m_rand.NextDouble() * 100 },
+        new object[] { "Vanadium", m_rand.NextDouble() * 100 },
+        new object[] { "Uranium", m_rand.NextDouble() * 100 }
+      };
+
+      m_graphSampleDateData = new object[][]{
+        new object[] { DateTime.Now.AddDays(m_rand.Next(150)).ToString("dd-MMM-yyyy"), m_rand.NextDouble() * 100 },
+        new object[] { DateTime.Now.AddDays(m_rand.Next(150)).ToString("dd-MMM-yyyy"), m_rand.NextDouble() * 100 },
+        new object[] { DateTime.Now.AddDays(m_rand.Next(150)).ToString("dd-MMM-yyyy"), m_rand.NextDouble() * 100 },
+        new object[] { DateTime.Now.AddDays(m_rand.Next(150)).ToString("dd-MMM-yyyy"), m_rand.NextDouble() * 100 },
+        new object[] { DateTime.Now.AddDays(m_rand.Next(150)).ToString("dd-MMM-yyyy"), m_rand.NextDouble() * 100 },
+        new object[] { DateTime.Now.AddDays(m_rand.Next(150)).ToString("dd-MMM-yyyy"), m_rand.NextDouble() * 100 },
+        new object[] { DateTime.Now.AddDays(m_rand.Next(150)).ToString("dd-MMM-yyyy"), m_rand.NextDouble() * 100 }
+      };
     }
 
     #endregion Ctor and attributes
@@ -361,7 +399,7 @@ namespace WebExtras.DemoApp.Areas.JQueryUI.Controllers
           serie = new FlotSeries
           {
             label = "Sample Line Graph",
-            data = m_flotSampleData,
+            data = m_graphSampleData,
             lines = new LineGraph { show = true }
           };
           series.Add(serie);
@@ -413,7 +451,7 @@ namespace WebExtras.DemoApp.Areas.JQueryUI.Controllers
           serie = new FlotSeries
           {
             label = "Sample Bar Graph",
-            data = m_flotSampleData,
+            data = m_graphSampleData,
             bars = new BarGraph { show = true }
           };
           series.Add(serie);
@@ -423,7 +461,7 @@ namespace WebExtras.DemoApp.Areas.JQueryUI.Controllers
           serie = new FlotSeries
           {
             label = "Sample Curved Line Graph",
-            data = m_flotSampleData,
+            data = m_graphSampleData,
             curvedLines = new CurvedLineGraph { show = true }
           };
 
@@ -441,7 +479,7 @@ namespace WebExtras.DemoApp.Areas.JQueryUI.Controllers
           serie = new FlotSeries
           {
             label = "Sample Dashed Line Graph",
-            data = m_flotSampleData,
+            data = m_graphSampleData,
             dashes = new DashedLineGraph { show = true }
           };
           series.Add(serie);
@@ -452,7 +490,7 @@ namespace WebExtras.DemoApp.Areas.JQueryUI.Controllers
           serie = new FlotSeries
           {
             label = "Sample Line Graph",
-            data = m_flotSampleData,
+            data = m_graphSampleData,
             lines = new LineGraph { show = true }
           };
           series.Add(serie);
@@ -476,5 +514,192 @@ namespace WebExtras.DemoApp.Areas.JQueryUI.Controllers
     }
 
     #endregion Flot actions
+
+    #region JQPlot actions
+
+    //
+    // GET: /Bootstrap3/Core/JQPlot
+    public virtual ActionResult JQPlot(int? mode)
+    {
+      int dmode = mode.HasValue ? mode.Value : 0;
+      object data = null;
+      JQPlotOptions options = null;
+
+      switch (dmode)
+      {
+        case 1:
+          data = new List<object[][]> { m_graphSampleTextData1 };
+          options = new JQPlotOptions
+          {
+            title = new TitleOptions("Concern vs Occurance"),
+            axesDefaults = new JQPlot.SubOptions.AxisOptions
+            {
+              tickRenderer = EJQPlotRenderer.CanvasAxisTickRenderer,
+              tickOptions = new CanvasAxisTickRendererOptions
+              {
+                angle = -30
+              }
+            },
+            axes = new JQPlotAxes
+            {
+              xaxis = new JQPlot.SubOptions.AxisOptions { renderer = EJQPlotRenderer.CategoryAxisRenderer },
+              yaxis = new JQPlot.SubOptions.AxisOptions
+              {
+                tickOptions = new CanvasAxisTickRendererOptions
+                {
+                  angle = 0
+                }
+              }
+            },
+            series = new JQPlot.SubOptions.SeriesOptions[]
+            {
+              new JQPlot.SubOptions.SeriesOptions {
+                renderer = EJQPlotChartRenderer.BarRenderer
+              }
+            }
+          };
+          break;
+
+        case 2:
+          data = new List<object[][]> { m_graphSampleDateData };
+          options = new JQPlotOptions
+          {
+            title = new TitleOptions("Date Data Rendering"),
+            axes = new JQPlotAxes
+            {
+              xaxis = new JQPlot.SubOptions.AxisOptions
+              {
+                renderer = EJQPlotRenderer.DateAxisRenderer,
+                tickOptions = new AxisTickRendererOptions
+                {
+                  formatString = "%b&nbsp;%#d"
+                }
+              },
+            },
+            series = new JQPlot.SubOptions.SeriesOptions[] 
+            {
+              new JQPlot.SubOptions.SeriesOptions 
+              {
+                renderer = EJQPlotChartRenderer.BarRenderer,
+                rendererOptions = new BarRendererOptions {
+                  barWidth = 25
+                }
+              }
+            }
+          };
+          break;
+
+        case 3:
+          data = new List<object[][]> { m_graphSampleTextData1, m_graphSampleTextData2 };
+          options = new JQPlotOptions
+          {
+            title = new TitleOptions("Concern vs Occurance"),
+            axesDefaults = new JQPlot.SubOptions.AxisOptions
+            {
+              tickRenderer = EJQPlotRenderer.CanvasAxisTickRenderer,
+              tickOptions = new CanvasAxisTickRendererOptions
+              {
+                angle = 30
+              }
+            },
+            axes = new JQPlotAxes
+            {
+              xaxis = new JQPlot.SubOptions.AxisOptions { renderer = EJQPlotRenderer.CategoryAxisRenderer },
+              x2axis = new JQPlot.SubOptions.AxisOptions { renderer = EJQPlotRenderer.CategoryAxisRenderer },
+              yaxis = new JQPlot.SubOptions.AxisOptions
+              {
+                tickOptions = new CanvasAxisTickRendererOptions
+                {
+                  angle = 0
+                },
+                autoscale = true
+              },
+              y2axis = new JQPlot.SubOptions.AxisOptions
+              {
+                tickOptions = new CanvasAxisTickRendererOptions
+                {
+                  angle = 0
+                },
+                autoscale = true
+              }
+            },
+            series = new JQPlot.SubOptions.SeriesOptions[]
+            {
+              new JQPlot.SubOptions.SeriesOptions {
+                renderer = EJQPlotChartRenderer.BarRenderer
+              },
+              new JQPlot.SubOptions.SeriesOptions {
+                xaxis = "x2axis",
+                yaxis = "y2axis"
+              }
+            }
+          };
+          break;
+
+        case 4:
+          data = Url.Action(MVC.Bootstrap.Core.GetJQPlotData());
+          options = new JQPlotOptions
+          {
+            title = new TitleOptions("AJAX JSON Data Renderer"),
+            axesDefaults = new JQPlot.SubOptions.AxisOptions
+            {
+              labelRenderer = EJQPlotRenderer.CanvasAxisLabelRenderer,
+              labelOptions = new Dictionary<string, object> { 
+                { "fontSize", "12px" },
+                { "fontFamily", "Arial" }
+              }
+            }
+          };
+          break;
+
+        default:
+          data = new List<double[][]> { m_graphSampleData };
+          options = new JQPlotOptions
+          {
+            title = new TitleOptions("Basic Line Graph"),
+            axesDefaults = new JQPlot.SubOptions.AxisOptions
+            {
+              labelRenderer = EJQPlotRenderer.CanvasAxisLabelRenderer,
+              labelOptions = new Dictionary<string, object> { 
+                { "fontSize", "12px" },
+                { "fontFamily", "Arial" }
+              }
+            },
+            axes = new JQPlotAxes
+            {
+              xaxis = new JQPlot.SubOptions.AxisOptions { label = "X Axis" },
+              yaxis = new JQPlot.SubOptions.AxisOptions { label = "Y Axis" }
+            }
+          };
+          break;
+      }
+
+      JQPlotChartBase chart = new JQPlotChartBase
+      {
+        chartData = data,
+        chartOptions = options
+      };
+
+      JQPlotViewModel model = new JQPlotViewModel
+      {
+        Chart = chart,
+        DisplayMode = dmode
+      };
+
+      return View(model);
+    }
+
+    /// <summary>
+    /// Returns the graph data to be plotted as JSON
+    /// </summary>
+    /// <returns>JSON data result</returns>
+    public virtual ActionResult GetJQPlotData()
+    {
+      List<double[][]> data = new List<double[][]> { m_graphSampleData };
+
+      return new JsonNetResult(data, JsonRequestBehavior.AllowGet);
+    }
+
+    #endregion JQPlot actions
   }
 }

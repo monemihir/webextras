@@ -77,6 +77,12 @@ namespace WebExtras.DemoApp.Areas.JQueryUI.Controllers
         {
             return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Flot);
         }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult JQPlot()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.JQPlot);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public CoreController Actions { get { return MVC.JQueryUI.Core; } }
@@ -101,6 +107,8 @@ namespace WebExtras.DemoApp.Areas.JQueryUI.Controllers
             public readonly string GetSortedData = ("GetSortedData").ToLowerInvariant();
             public readonly string GetPostbackData = ("GetPostbackData").ToLowerInvariant();
             public readonly string Flot = ("Flot").ToLowerInvariant();
+            public readonly string JQPlot = ("JQPlot").ToLowerInvariant();
+            public readonly string GetJQPlotData = ("GetJQPlotData").ToLowerInvariant();
         }
 
 
@@ -154,6 +162,14 @@ namespace WebExtras.DemoApp.Areas.JQueryUI.Controllers
         {
             public readonly string mode = ("mode").ToLowerInvariant();
         }
+        static readonly ActionParamsClass_JQPlot s_params_JQPlot = new ActionParamsClass_JQPlot();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_JQPlot JQPlotParams { get { return s_params_JQPlot; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_JQPlot
+        {
+            public readonly string mode = ("mode").ToLowerInvariant();
+        }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ViewsClass Views { get { return s_views; } }
@@ -169,12 +185,14 @@ namespace WebExtras.DemoApp.Areas.JQueryUI.Controllers
                 public readonly string Datatables = "Datatables";
                 public readonly string Flot = "Flot";
                 public readonly string Generic = "Generic";
+                public readonly string JQPlot = "JQPlot";
             }
             public readonly string _AxisLabels = "~/Areas/JQueryUI/Views/Core/_AxisLabels.cshtml";
             public readonly string _PostbackSetup = "~/Areas/JQueryUI/Views/Core/_PostbackSetup.cshtml";
             public readonly string Datatables = "~/Areas/JQueryUI/Views/Core/Datatables.cshtml";
             public readonly string Flot = "~/Areas/JQueryUI/Views/Core/Flot.cshtml";
             public readonly string Generic = "~/Areas/JQueryUI/Views/Core/Generic.cshtml";
+            public readonly string JQPlot = "~/Areas/JQueryUI/Views/Core/JQPlot.cshtml";
         }
     }
 
@@ -242,6 +260,19 @@ namespace WebExtras.DemoApp.Areas.JQueryUI.Controllers
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Flot);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "mode", mode);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult JQPlot(int? mode)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.JQPlot);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "mode", mode);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult GetJQPlotData()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.GetJQPlotData);
             return callInfo;
         }
 

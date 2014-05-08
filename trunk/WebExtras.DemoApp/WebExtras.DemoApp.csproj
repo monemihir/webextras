@@ -404,6 +404,7 @@
     <Content Include="Areas\JQueryUI\Views\Home\Download.cshtml" />
     <Content Include="Areas\JQueryUI\Views\Mvc\JQueryUIHtml.cshtml" />
     <Content Include="Areas\JQueryUI\Views\Mvc\JQueryUIForm.cshtml" />
+    <Content Include="Areas\JQueryUI\Views\Core\JQPlot.cshtml" />
     <None Include="Content\style.less" />
     <Content Include="Content\style-bootstrap3.min.css">
       <DependentUpon>style-bootstrap3.less</DependentUpon>

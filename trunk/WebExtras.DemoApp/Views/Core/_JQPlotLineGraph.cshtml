@@ -1,6 +1,6 @@
 ﻿@model WebExtras.JQPlot.JQPlotChartBase
 
-<div class="well">
+<div class="well ui-well">
   <h4>Creating the jqPlot options</h4>
   jqPlot graph options are created by instantiating the <strong>WebExtras.JQPlot.JQPlotOptions</strong> class.
   <pre><code>
@@ -34,7 +34,7 @@
   </code></pre>
 </div>
 
-<div class="well">
+<div class="well ui-well">
   <h4>Creating the graph data</h4>
   jqPlot uses a 2 dimensional numeric array for data. This can be of any numeric type <strong>int, decimal, float or
   double</strong>. In order to compensate for numerals WebExtras uses the biggest of the numeral types provided by .NET - 
@@ -52,7 +52,7 @@
   </code></pre>
 </div>
 
-<div class="well">
+<div class="well ui-well">
   <h4>Creating the jqPlot Chart</h4>
   All the things we have done so far now get bundled into a jqPlot chart by instantiating the <strong>WebExtras.JQPlot.JQPlotChart</strong> object.
   <pre><code>
@@ -65,7 +65,7 @@
   </code></pre>
 </div>
 
-<div class="well">
+<div class="well ui-well">
   <h4>Now in your HTML</h4>
   Now that all C# bindings are done, it is time to render our graph. This can be done with a little bit of Javascript.
   <pre><code>
@@ -78,7 +78,7 @@
   </code></pre>
 </div>
 
-<div class="well">
+<div class="well ui-well">
   <h4>And finally the output...</h4>
   <div class="content">
     <div id="line-graph" class="graph">

@@ -19,7 +19,7 @@
   @Bundle.Css().MvcRenderCachedAssetTag(ContentBundle.CSSJQueryUI.GetStringValue())
   @Bundle.JavaScript().MvcRenderCachedAssetTag(ContentBundle.JSBase.GetStringValue())
   @Bundle.JavaScript().MvcRenderCachedAssetTag(ContentBundle.JSJQueryUI.GetStringValue())
-  
+
   <!--[if lt IE 9]><script language="javascript" type="text/javascript" src="@Links.Scripts.excanvas_min_js"></script><![endif]-->
 
   @RenderSection("scripts", required: false)
@@ -39,13 +39,20 @@
     });
   </script>
 </head>
-<body>  
+<body>
   <ul id="menu" class="ui-menubar-fixed-top">
     <li>@Html.Hyperlink("WebExtras", Url.Content("~/")).AddCssClass("brand")</li>
     <li class="@Html.SelectedTab("Home", "Index")">@Html.ActionLink("Home", MVC.JQueryUI.Home.Index())</li>
     <li class="@Html.SelectedTab("Core", "Generic")">@Html.ActionLink("Core", MVC.JQueryUI.Core.Generic())</li>
     <li class="@Html.SelectedTab("Core", "Datatables")">@Html.ActionLink("jQuery Datatables", MVC.JQueryUI.Core.Datatables())</li>
-    <li class="@Html.SelectedTab("Core", "Flot")">@Html.ActionLink("jQuery Flot", MVC.JQueryUI.Core.Flot())</li>
+    <li class="@Html.SelectedTab("Core", new string[] { "Flot", "JQPlot" }) dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Graphs<i class="caret"></i></a>
+      <ul class="dropdown-menu">
+        <li>@Html.Hyperlink("jQuery Flot", MVC.JQueryUI.Core.Flot())</li>
+        <li>@Html.Hyperlink("jqPlot", MVC.JQueryUI.Core.JQPlot())</li>
+      </ul>
+    </li>
+
     <li class="@Html.SelectedTab("Mvc", new string[] { "CoreHtml", "CoreForm" })">
       <a href="#">Mvc Core</a>
       <ul>

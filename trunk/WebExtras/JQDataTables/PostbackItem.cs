@@ -62,17 +62,23 @@ namespace WebExtras.JQDataTables
     /// pairs of the given object
     /// </summary>
     /// <param name="o">Object to generate Postback items from</param>
+    /// <param name="nullValueIgnore">[Optional] Whether to include properties 
+    /// with NULL values</param>
     /// <returns>Generated Postback items</returns>
-    public static List<PostbackItem> FromObject(object o)
+    public static List<PostbackItem> FromObject(object o, bool nullValueIgnore = true)
     {
       PropertyInfo[] props = o
         .GetType()
         .GetProperties(BindingFlags.Public | BindingFlags.Instance);
 
-      return (from p in props 
-              let val = p.GetValue(o, null) 
-              where val != null 
-              select new PostbackItem(p.Name, JsonConvert.SerializeObject(val))).ToList();
+      List<PostbackItem> postbacks = (from p in props
+                                      let val = p.GetValue(o, null)
+                                      select new PostbackItem(p.Name, JsonConvert.SerializeObject(val))).ToList();
+
+      if (nullValueIgnore)
+        postbacks = postbacks.Where(p => p.value != null).ToList();
+
+      return postbacks;
     }
   }
 

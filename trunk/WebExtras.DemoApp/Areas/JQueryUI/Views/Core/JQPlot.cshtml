@@ -1,0 +1,96 @@
+﻿@using SquishIt.Framework
+@using SquishIt.Mvc
+@using WebExtras.DemoApp.App_Start
+@model WebExtras.DemoApp.Models.Core.JQPlotViewModel
+
+@{
+  ViewBag.Title = "jqPlot";
+}
+
+@section scripts
+{
+  @Bundle.JavaScript().MvcRenderCachedAssetTag(ContentBundle.JSjqPlot.GetStringValue())
+}
+
+
+<h3 class="keep-center">jqPlot Bindings</h3>
+
+<div class="col-group">
+  <div class="col-6">
+    <div class="col-group">
+      <div class="col-3">
+        <strong>Assembly</strong>
+      </div>
+      <div class="col-4">
+        WebExtras.dll
+      </div>
+    </div>
+    <div class="col-group">
+      <div class="col-3">
+        <strong>Namespace</strong>
+      </div>
+      <div class="col-4">
+        WebExtras.JQPlot
+      </div>
+    </div>
+  </div>
+  <div class="col-6">
+    <div class="col-3">
+      <strong>Dependancies</strong>
+    </div>
+    <div class="col-7">
+      <ul class="dependancies">
+        <li>Appropriate third party libraries</li>
+        <li>webextras.jqueryui.css</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="col-group">
+  <div class="col-9">
+    Steps involved in creating a jqPlot graph
+    <ul>
+      <li>Creating graph options</li>
+      <li>Creating graph data</li>
+      <li>Rendering the graph</li>
+    </ul>
+  </div>
+</div>
+
+<ul id="jqPlot-nav" class="ui-nav">
+  <li>@Html.Hyperlink("Basic Line Graph", MVC.JQueryUI.Core.JQPlot(0))</li>
+  <li>@Html.Hyperlink("Non-numeric Axis Values", MVC.JQueryUI.Core.JQPlot(1))</li>
+  <li>@Html.Hyperlink("Date Axis Values", MVC.JQueryUI.Core.JQPlot(2))</li>
+  <li>@Html.Hyperlink("Multiple Axes", MVC.JQueryUI.Core.JQPlot(3))</li>
+  <li>@Html.Hyperlink("Ajax Data", MVC.JQueryUI.Core.JQPlot(4))</li>
+</ul>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $('#jqPlot-nav li:eq(' + @Model.DisplayMode + ')').addClass('active');
+  });
+</script>
+
+@switch (Model.DisplayMode)
+{
+  case 1:
+  @Html.Partial(MVC.Core.Views._JQPlotNonNumericAxisValues, Model.Chart)
+    break;
+
+  case 2:
+  @Html.Partial(MVC.Core.Views._JQPlotDateGraph, Model.Chart)
+    break;
+
+  case 3:
+  @Html.Partial(MVC.Core.Views._JQPlotMultipleAxes, Model.Chart)
+    break;
+
+  case 4:
+  @Html.Partial(MVC.Core.Views._JQPlotAjaxData, Model.Chart)
+    break;
+
+  default:
+  @Html.Partial(MVC.Core.Views._JQPlotLineGraph, Model.Chart)
+    break;
+}
