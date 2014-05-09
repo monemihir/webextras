@@ -174,7 +174,8 @@ namespace WebExtras.Mvc.Html
     /// <param name="element">HTML element to be added</param>
     public void Append(IExtendedHtmlString element)
     {
-      AppendTags.Add(element);
+      if (element != null)
+        AppendTags.Add(element);
     }
 
     /// <summary>
@@ -194,7 +195,8 @@ namespace WebExtras.Mvc.Html
     /// <param name="element">HTML element to be added</param>
     public void Prepend(IExtendedHtmlString element)
     {
-      PrependTags.Add(element);
+      if (element != null)
+        PrependTags.Add(element);
     }
 
     /// <summary>
@@ -227,7 +229,7 @@ namespace WebExtras.Mvc.Html
     /// <param name="renderMode">Tag render mode</param>
     /// <returns>MVC HTML string representation of the current element</returns>
     public virtual string ToHtmlString(TagRenderMode renderMode)
-    { 
+    {
       if (!Attributes.ContainsKey("id") && WebExtrasMvcConstants.EnableAutoIdGeneration)
         this["id"] = string.Format("auto_{0}", m_rand.Next(1, 9999));
 

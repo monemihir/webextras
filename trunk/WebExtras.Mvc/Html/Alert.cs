@@ -20,6 +20,7 @@ using WebExtras.Core;
 using WebExtras.Mvc.Bootstrap;
 using WebExtras.Mvc.Core;
 using WebExtras.Mvc.Gumby;
+using WebExtras.Mvc.JQueryUI;
 
 namespace WebExtras.Mvc.Html
 {
@@ -100,11 +101,28 @@ namespace WebExtras.Mvc.Html
     /// <param name="icon">Icon to be rendered with title/heading</param>
     /// <param name="htmlAttributes">[Optional] Any extras HTML attributes to be applied. 
     /// Note. These attributes are only applied to the top level div</param>
+    public Alert(EMessage type, string message, string title, EJQueryUIIcon? icon, object htmlAttributes = null)
+      : base(EHtmlTag.Div, htmlAttributes)
+    {
+      IExtendedHtmlString i = (icon != null) ? JQueryUIUtil.CreateIcon(icon.Value) : null;
+
+      CreateAlert(type, message, title, i);
+    }
+
+    /// <summary>
+    /// Constructor
+    /// </summary>
+    /// <param name="type">Type of alert</param>
+    /// <param name="message">Alert message</param>
+    /// <param name="title">Title/Heading of the alert</param>
+    /// <param name="icon">Icon to be rendered with title/heading</param>
+    /// <param name="htmlAttributes">[Optional] Any extras HTML attributes to be applied. 
+    /// Note. These attributes are only applied to the top level div</param>
     public Alert(EMessage type, string message, string title, EGumbyIcon? icon, object htmlAttributes = null)
       : base(EHtmlTag.Div, htmlAttributes)
     {
       IExtendedHtmlString i = (icon != null) ? GumbyUtil.CreateIcon(icon.Value) : null;
-
+      
       CreateAlert(type, message, title, i);
     }
 
@@ -117,22 +135,50 @@ namespace WebExtras.Mvc.Html
     /// <param name="icon">Icon to be rendered with title/heading</param>
     private void CreateAlert(EMessage type, string message, string title, IExtendedHtmlString icon)
     {
-      this.AddCssClass("alert");
       this.AddCssClass(type.GetStringValue());
 
-      Button closeBtn = new Button(EButton.Regular, "&times;", string.Empty);
-      closeBtn.AddCssClass("close");
-      closeBtn["data-dismiss"] = "alert";
-
       Bold b = new Bold();
-      if (icon != null)
-        b.Prepend(icon);
-
+      b.Prepend(icon);
       b.InnerHtml = title ?? string.Empty;
 
-      Prepend(closeBtn);
-      Prepend(b);
-      InnerHtml = (!string.IsNullOrWhiteSpace(title) || icon != null) ? WebExtrasMvcConstants.HTMLSpace + message : message;
+      if (WebExtrasMvcConstants.CssFramework != ECssFramework.JQueryUI)
+      {
+        this.AddCssClass("alert");
+
+        Button closeBtn = new Button(EButton.Regular, "&times;", string.Empty);
+        closeBtn.AddCssClass("close");
+        closeBtn["data-dismiss"] = "alert";
+
+        Prepend(closeBtn);
+        Prepend(b);
+        InnerHtml = (!string.IsNullOrWhiteSpace(title) || icon != null) ? WebExtrasMvcConstants.HTMLSpace + message : message;
+      }
+      else
+      {
+        Div div = new Div();
+
+        switch (type)
+        {
+          case EMessage.Error:
+            div.AddCssClass("ui-state-error");
+            break;
+
+          case EMessage.Information:
+          case EMessage.Warning:
+            div.AddCssClass("ui-state-highlight");
+            break;
+
+          case EMessage.Success:
+            div.AddCssClass("ui-state-success");
+            break;
+        }
+
+        div.AddCssClass("ui-corner-all");
+        div.Prepend(b);
+        div.InnerHtml = (!string.IsNullOrWhiteSpace(title) || icon != null) ? WebExtrasMvcConstants.HTMLSpace + message : message;
+
+        Prepend(div);
+      }
 
       Type = type;
     }

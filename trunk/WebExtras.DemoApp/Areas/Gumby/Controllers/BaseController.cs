@@ -34,6 +34,7 @@ namespace WebExtras.DemoApp.Areas.Gumby.Controllers
       base.OnActionExecuting(filterContext);
 
       ViewData["layout_path"] = MVC.Gumby.Shared.Views._Layout;
+      WebExtrasMvcConstants.CssFramework = ECssFramework.Gumby;
       WebExtrasMvcConstants.GumbyTheme = EGumbyTheme.Metro;
 
       Version v = Assembly.GetExecutingAssembly().GetName().Version;

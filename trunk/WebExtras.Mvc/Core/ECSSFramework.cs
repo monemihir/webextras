@@ -17,25 +17,31 @@
 */
 
 
-namespace WebExtras.Mvc.Html
+namespace WebExtras.Mvc.Core
 {
   /// <summary>
-  /// Generic extension for an extended html string
+  /// Represents the CSS framework being used
   /// </summary>
-  public static class ExtendedHtmlStringExtension
+  public enum ECssFramework
   {
     /// <summary>
-    /// Adds given CSS class(es) to the current HTML element
+    /// No CSS framework
     /// </summary>
-    /// <param name="html">HTML element to add class to</param>
-    /// <param name="css">CSS class(es) to be added</param>
-    /// <returns>Current HTML element with classes added</returns>
-    public static T AddCssClass<T>(this T html, string css) where T : IExtendedHtmlString
-    {
-      if (!string.IsNullOrWhiteSpace(css))
-        html.CSSClasses.AddRange(css.Trim().Split(' '));
+    None,
 
-      return html;
-    }
+    /// <summary>
+    /// Bootstrap CSS framework
+    /// </summary>
+    Bootstrap,
+
+    /// <summary>
+    /// Gumby CSS framework
+    /// </summary>
+    Gumby,
+
+    /// <summary>
+    /// JQuery UI CSS framework
+    /// </summary>
+    JQueryUI
   }
 }

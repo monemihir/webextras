@@ -23,7 +23,7 @@
         WebExtras.Mvc.Core
       </div>
     </div>
-  </div>  
+  </div>
   <div class="col-offset-6">
     <div class="col-4">
       <strong>Dependancies</strong>
@@ -71,4 +71,23 @@
     </div>
   </div>
   <p><strong>Note: </strong>The colors you get for the icons will be decided based on the JQuery UI theme you are using.</p>
+</div>
+
+<div class="ui-well">
+  <h4>Alerts</h4>
+  <p>You can create alert messages using WebExtras extension method</p>
+  <p>Usage</p>
+  <pre><code>
+  @@Html.Alert(EMessage.Success, "Hooray...I am a resounding success")
+  @@Html.Alert(EMessage.Warning, "Oops...something went wrong. But no worries, I can still continue", "Note:")
+  @@Html.Alert(EMessage.Error, "No dice...something is seriously wrong. I quit", "Error:", EJQueryUIIcon.Alert)
+  @@Html.Alert(EMessage.Information, "Just so you know, I am gonna try it again", "Note:", EJQueryUIIcon.Flag)
+  </code></pre>
+  <p>Output</p>
+  <div class="content">
+    @Html.Alert(EMessage.Success, "Hooray...I am a resounding success")
+    @Html.Alert(EMessage.Warning, "Oops...something went wrong. But no worries, I can still continue", "Note:")
+    @Html.Alert(EMessage.Error, "No dice...something is seriously wrong. I quit", "Error:", EJQueryUIIcon.Alert)
+    @Html.Alert(EMessage.Information, "Just so you know, I am gonna try it again", "Note:", EJQueryUIIcon.Flag)
+  </div>
 </div>

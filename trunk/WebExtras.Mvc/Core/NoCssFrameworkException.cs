@@ -21,37 +21,10 @@ using System;
 namespace WebExtras.Mvc.Core
 {
   /// <summary>
-  /// No CSS framework theme selected exception thrown when neither Bootstrap nor Gumby 
-  /// CSS framework is selected and an extension for these framework is used
+  /// No CSS framework selected 
   /// </summary>
-  public class NoCssThemeException : Exception
+  public class NoCssFrameworkException : Exception
   {
-    /// <summary>
-    /// The code line that can resolve this exception
-    /// </summary>
-    readonly string m_codeLine;
-
-    /// <summary>
-    /// Constructor
-    /// </summary>
-    public NoCssThemeException()
-    {
-      switch (WebExtrasMvcConstants.CssFramework)
-      {
-        case ECssFramework.None:
-          throw new NoCssFrameworkException();
-        case ECssFramework.Gumby:
-          m_codeLine = "          WebExtrasMvcConstants.GumbyTheme = EGumbyTheme.Metro;\n";
-          break;
-        case ECssFramework.Bootstrap:
-          m_codeLine = "          WebExtrasMvcConstants.BootstrapVersion = EBootstrapVersion.V2;\n";
-          break;
-        default:
-          m_codeLine = string.Empty;
-          break;
-      }
-    }
-
     /// <summary>
     /// The error message that explains the reason for the exception
     /// </summary>
@@ -59,17 +32,17 @@ namespace WebExtras.Mvc.Core
     {
       get
       {
-        const string prefix = "Please select the appropriate CSS framework theme/version.\n" +
+        const string msg = "Please select a CSS framework.\n" +
                            "The simplest way of doing this is to set the value in your Global.asax.cs as shown below:\n\n" +
                            "  public class MvcApplication : System.Web.HttpApplication\n" +
                            "  {\n" +
                            "      protected void Application_Start()\n" +
-                           "      {\n";
-
-        const string suffix = "      }\n" +
+                           "      {\n" +
+                           "          WebExtrasMvcConstants.CssFramework = ECssFramework.Bootstrap;\n" +
+                           "      }\n" +
                            "  }\n";
 
-        return prefix + m_codeLine + suffix;
+        return msg;
       }
     }
   }

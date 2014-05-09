@@ -33,16 +33,29 @@ namespace WebExtras.Mvc.Core
     /// <returns>The string value to be used for the enum value</returns>
     public string Decide(object sender = null)
     {
-      if (WebExtrasMvcConstants.BootstrapVersion == EBootstrapVersion.None && WebExtrasMvcConstants.GumbyTheme == EGumbyTheme.None)
-        throw new NoCssThemeException();
-
       string css = string.Empty;
 
-      if (WebExtrasMvcConstants.GumbyTheme != EGumbyTheme.None)
-        css += "success";
+      switch (WebExtrasMvcConstants.CssFramework)
+      {
+        case ECssFramework.Bootstrap:
+          if (WebExtrasMvcConstants.BootstrapVersion == EBootstrapVersion.None)
+            throw new NoCssThemeException();
+          css += " alert-success";
+          break;
 
-      if (WebExtrasMvcConstants.BootstrapVersion != EBootstrapVersion.None)
-        css += " alert-success";
+        case ECssFramework.Gumby:
+          if (WebExtrasMvcConstants.GumbyTheme == EGumbyTheme.None)
+            throw new NoCssThemeException();
+          css += " success";
+          break;
+
+        case ECssFramework.JQueryUI:
+          css += " ui-alert-success";
+          break;
+
+        default:
+          throw new NoCssFrameworkException();
+      }
 
       return css;
     }
@@ -61,19 +74,33 @@ namespace WebExtras.Mvc.Core
     /// <returns>The string value to be used for the enum value</returns>
     public string Decide(object sender = null)
     {
-      if (WebExtrasMvcConstants.BootstrapVersion == EBootstrapVersion.None && WebExtrasMvcConstants.GumbyTheme == EGumbyTheme.None)
-        throw new NoCssThemeException();
-
       string css = string.Empty;
 
-      if (WebExtrasMvcConstants.GumbyTheme != EGumbyTheme.None)
-        css += " danger";
+      switch (WebExtrasMvcConstants.CssFramework)
+      {
+        case ECssFramework.Bootstrap:
+          if (WebExtrasMvcConstants.BootstrapVersion == EBootstrapVersion.None)
+            throw new NoCssThemeException();
 
-      if (WebExtrasMvcConstants.BootstrapVersion == EBootstrapVersion.V2)
-        css += " alert-error";
+          if (WebExtrasMvcConstants.BootstrapVersion == EBootstrapVersion.V2)
+            css += " alert-error";
+          else
+            css += " alert-danger";
+          break;
 
-      if (WebExtrasMvcConstants.BootstrapVersion == EBootstrapVersion.V3)
-        css += " alert-danger";
+        case ECssFramework.Gumby:
+          if (WebExtrasMvcConstants.GumbyTheme == EGumbyTheme.None)
+            throw new NoCssThemeException();
+          css += " danger";
+          break;
+
+        case ECssFramework.JQueryUI:
+          css += " ui-alert-error";
+          break;
+
+        default:
+          throw new NoCssFrameworkException();
+      }
 
       return css;
     }
@@ -92,16 +119,29 @@ namespace WebExtras.Mvc.Core
     /// <returns>The string value to be used for the enum value</returns>
     public string Decide(object sender = null)
     {
-      if (WebExtrasMvcConstants.BootstrapVersion == EBootstrapVersion.None && WebExtrasMvcConstants.GumbyTheme == EGumbyTheme.None)
-        throw new NoCssThemeException();
-
       string css = string.Empty;
 
-      if (WebExtrasMvcConstants.GumbyTheme != EGumbyTheme.None)
-        css += " warning";
+      switch (WebExtrasMvcConstants.CssFramework)
+      {
+        case ECssFramework.Bootstrap:
+          if (WebExtrasMvcConstants.BootstrapVersion == EBootstrapVersion.None)
+            throw new NoCssThemeException();
+          css += " alert-warning";
+          break;
 
-      if (WebExtrasMvcConstants.BootstrapVersion != EBootstrapVersion.None)
-        css += " alert-warning";
+        case ECssFramework.Gumby:
+          if (WebExtrasMvcConstants.GumbyTheme == EGumbyTheme.None)
+            throw new NoCssThemeException();
+          css += " warning";
+          break;
+
+        case ECssFramework.JQueryUI:
+          css += " ui-alert-highlight";
+          break;
+
+        default:
+          throw new NoCssFrameworkException();
+      }
 
       return css;
     }
@@ -120,16 +160,29 @@ namespace WebExtras.Mvc.Core
     /// <returns>The string value to be used for the enum value</returns>
     public string Decide(object sender = null)
     {
-      if (WebExtrasMvcConstants.BootstrapVersion == EBootstrapVersion.None && WebExtrasMvcConstants.GumbyTheme == EGumbyTheme.None)
-        throw new NoCssThemeException();
-
       string css = string.Empty;
 
-      if (WebExtrasMvcConstants.GumbyTheme != EGumbyTheme.None)
-        css += " info";
+      switch (WebExtrasMvcConstants.CssFramework)
+      {
+        case ECssFramework.Bootstrap:
+          if (WebExtrasMvcConstants.BootstrapVersion == EBootstrapVersion.None)
+            throw new NoCssThemeException();
+          css += " alert-info";
+          break;
 
-      if (WebExtrasMvcConstants.BootstrapVersion != EBootstrapVersion.None)
-        css += " alert-info";
+        case ECssFramework.Gumby:
+          if (WebExtrasMvcConstants.GumbyTheme == EGumbyTheme.None)
+            throw new NoCssThemeException();
+          css += " info";
+          break;
+
+        case ECssFramework.JQueryUI:
+          css += " ui-alert-info";
+          break;
+
+        default:
+          throw new NoCssFrameworkException();
+      }
 
       return css;
     }

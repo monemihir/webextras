@@ -100,7 +100,7 @@ namespace WebExtras.DemoApp.App_Start
       // CSS JQuery UI bundle
       Bundle.Css()
         .Add(Links.Content.fluidable_min_css)
-        .Add(Links.Content.jquery_ui_1_10_3_custom_css)
+        .Add(Links.Content.jquery_ui_darkness_1_10_3_css)
         .Add(Links.Content.jquery_ui_menubar_css)
         .Add(Links.Content.jquery_ui_datetimepicker_css)
         .Add(Links.Content.jquery_dataTables_css)

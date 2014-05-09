@@ -220,7 +220,8 @@
   <ItemGroup>
     <Content Include="Content\fluidable.min.css" />
     <Content Include="Content\img\calendar.gif" />
-    <Content Include="Content\jquery-ui-1.10.3.custom.css" />
+    <Content Include="Content\img\jqueryui\ui-bg_highlight-soft_60_4ca20b_1x100.png" />
+    <Content Include="Content\jquery-ui-darkness-1.10.3.css" />
     <Content Include="Content\jquery.jqplot.min.css" />
     <Content Include="Content\jquery.ui.datetimepicker.css" />
     <Content Include="Content\jquery.ui.menubar.css" />

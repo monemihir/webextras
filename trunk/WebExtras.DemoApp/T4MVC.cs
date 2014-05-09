@@ -278,6 +278,7 @@ namespace Links
                 public static readonly string ui_bg_glass_40_0078a3_1x400_png = Url("ui-bg_glass_40_0078a3_1x400.png");
                 public static readonly string ui_bg_glass_40_ffc73d_1x400_png = Url("ui-bg_glass_40_ffc73d_1x400.png");
                 public static readonly string ui_bg_gloss_wave_25_333333_500x100_png = Url("ui-bg_gloss-wave_25_333333_500x100.png");
+                public static readonly string ui_bg_highlight_soft_60_4ca20b_1x100_png = Url("ui-bg_highlight-soft_60_4ca20b_1x100.png");
                 public static readonly string ui_bg_highlight_soft_80_eeeeee_1x100_png = Url("ui-bg_highlight-soft_80_eeeeee_1x100.png");
                 public static readonly string ui_bg_inset_soft_25_000000_1x100_png = Url("ui-bg_inset-soft_25_000000_1x100.png");
                 public static readonly string ui_bg_inset_soft_30_f58400_1x100_png = Url("ui-bg_inset-soft_30_f58400_1x100.png");
@@ -307,7 +308,7 @@ namespace Links
             public static readonly string wallpaper1_jpg = Url("wallpaper1.jpg");
         }
     
-        public static readonly string jquery_ui_1_10_3_custom_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery-ui-1.10.3.custom.min.css") ? Url("jquery-ui-1.10.3.custom.min.css") : Url("jquery-ui-1.10.3.custom.css");
+        public static readonly string jquery_ui_darkness_1_10_3_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery-ui-darkness-1.10.3.min.css") ? Url("jquery-ui-darkness-1.10.3.min.css") : Url("jquery-ui-darkness-1.10.3.css");
              
         public static readonly string jquery_bootstrap_datetimepicker_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.bootstrap.datetimepicker.min.css") ? Url("jquery.bootstrap.datetimepicker.min.css") : Url("jquery.bootstrap.datetimepicker.css");
              

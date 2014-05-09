@@ -84,6 +84,28 @@ textarea,
 select {
   min-height: 20px;
 }
+.ui-state-success {
+  background: url(img/jqueryui/ui-bg_highlight-soft_60_4ca20b_1x100.png) repeat-x scroll 50% 50% #4ca20b;
+  border: 1px solid #45930B;
+  color: #FFFFFF;
+  font-weight: normal;
+}
+.ui-state-success .ui-icon {
+  background-image: url(img/jqueryui/ui-icons_ffffff_256x240.png);
+}
+*[class*=ui-alert] {
+  padding: 5px 0;
+  margin: 0 0 2px 0;
+}
+*[class*=ui-alert] .ui-state-success,
+*[class*=ui-alert] .ui-state-highlight,
+*[class*=ui-alert] .ui-state-error {
+  padding: 2px;
+}
+*[class*=ui-alert] .ui-icon {
+  margin-top: 2px;
+  margin-right: 2px;
+}
 /* JQUERY UI EXTENSIONS */
 .ui-table {
   border: 1px solid #aaaaaa;
@@ -107,14 +129,14 @@ select {
   border-top-right-radius: 4px;
 }
 .ui-icon.ui-error {
-  background-image: url("img/jqueryui/ui-icons_a83300_256x240.png");
+  background-image: url(img/jqueryui/ui-icons_a83300_256x240.png);
 }
 .ui-icon.ui-highlight {
-  background-image: url("img/jqueryui/ui-icons_4b8e0b_256x240.png");
+  background-image: url(img/jqueryui/ui-icons_4b8e0b_256x240.png);
   border: 0;
 }
 .ui-datepicker-container {
-  background: url("img/jqueryui/ui-bg_gloss-wave_25_333333_500x100.png") repeat scroll 0 0 #eeeeee;
+  background: url(img/jqueryui/ui-bg_gloss-wave_25_333333_500x100.png) repeat scroll 50% 50% #eeeeee;
   border: 1px solid #666666;
   padding: 4px 5px 4px 0;
   margin-top: 1px;

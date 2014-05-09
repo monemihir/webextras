@@ -22,6 +22,8 @@ using System.Linq;
 using System.Text;
 using System.Web.Mvc;
 using WebExtras.Core;
+using WebExtras.Mvc.Bootstrap;
+using WebExtras.Mvc.Core;
 using WebExtras.Mvc.Html;
 
 namespace WebExtras.Mvc.JQueryUI
@@ -31,7 +33,6 @@ namespace WebExtras.Mvc.JQueryUI
   /// </summary>
   public static class JUIHtmlHelperExtension
   {
-
     #region Icon extensions
 
     /// <summary>
@@ -65,5 +66,54 @@ namespace WebExtras.Mvc.JQueryUI
     }
 
     #endregion Icon extensions
+
+    #region Alert extensions
+
+    /// <summary>
+    /// Renders a jQuery UI alert
+    /// </summary>
+    /// <param name="html">HtmlHelper extension</param>
+    /// <param name="type">Type of alert</param>
+    /// <param name="message">Alert message</param>
+    /// <param name="htmlAttributes">[Optional] Any extras HTML attributes to be applied. 
+    /// Note. These attributes are only applied to the top level div</param>
+    /// <returns>A jQuery UI styled alert</returns>
+    public static Alert Alert(this HtmlHelper html, EMessage type, string message, object htmlAttributes = null)
+    {
+      return Alert(html, type, message, string.Empty, null as EJQueryUIIcon?, htmlAttributes);
+    }
+
+    /// <summary>
+    /// Renders a jQuery UI alert
+    /// </summary>
+    /// <param name="html">HtmlHelper extension</param>
+    /// <param name="type">Type of alert</param>
+    /// <param name="message">Alert message</param>
+    /// <param name="title">Title/Heading of the alert</param>
+    /// <param name="htmlAttributes">[Optional] Any extras HTML attributes to be applied. 
+    /// Note. These attributes are only applied to the top level div</param>
+    /// <returns>A jQuery UI styled alert</returns>
+    public static Alert Alert(this HtmlHelper html, EMessage type, string message, string title, object htmlAttributes = null)
+    {
+      return Alert(html, type, message, title, null as EJQueryUIIcon?, htmlAttributes);
+    }
+
+    /// <summary>
+    /// Renders a jQuery UI alert
+    /// </summary>
+    /// <param name="html">HtmlHelper extension</param>
+    /// <param name="type">Type of alert</param>
+    /// <param name="message">Alert message</param>
+    /// <param name="title">Title/Heading of the alert</param>
+    /// <param name="icon">Icon to be rendered with title/heading</param>
+    /// <param name="htmlAttributes">[Optional] Any extras HTML attributes to be applied. 
+    /// Note. These attributes are only applied to the top level div</param>
+    /// <returns>A jQuery UI styled alert</returns>
+    public static Alert Alert(this HtmlHelper html, EMessage type, string message, string title, EJQueryUIIcon? icon, object htmlAttributes = null)
+    {
+      return new Alert(type, message, title, icon, htmlAttributes);
+    }
+
+    #endregion Alert extensions
   }
 }
