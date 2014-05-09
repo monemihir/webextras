@@ -84,6 +84,9 @@ pre {
   display: inline;
   float: left;
 }
+.content p:first-child {
+  margin-top: 0;
+}
 .graph {
   display: block;
   margin: 0 auto;

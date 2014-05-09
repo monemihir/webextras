@@ -33,12 +33,22 @@ namespace WebExtras.Mvc.JQueryUI
   public static class JUIFormHelperExtension
   {
     /// <summary>
-    /// Default date time picker options
+    /// Default date picker options
     /// </summary>
-    private static readonly IDictionary<string, object> DefaultPickerOptions = new Dictionary<string, object>
+    private static readonly IDictionary<string, object> DefaultDatePickerOptions = new Dictionary<string, object>
     { 
       { "dateFormat", "yy-mm-dd" }
     };
+
+    /// <summary>
+    /// Default time picker options
+    /// </summary>
+    private static readonly IDictionary<string, object> DefaultTimePickerOptions = new Dictionary<string, object>
+    { 
+      { "timeFormat", "hh:mm" }
+    };
+
+    #region Date/Time picker extensions
 
     /// <summary>
     /// Creates a JQuery UI date picker control
@@ -47,32 +57,25 @@ namespace WebExtras.Mvc.JQueryUI
     /// <typeparam name="TValue">Property to be scanned</typeparam>
     /// <param name="html">HtmlHelper extension</param>
     /// <param name="expression">The property lamba expression</param>
-    /// <param name="options">Date time picker options</param>
-    /// <param name="htmlAttributes">Extra HTML attributes to be applied to the text box</param>
-    /// <returns>A Bootstrap date picker control</returns>
-    public static MvcHtmlString DateTextBoxFor<TModel, TValue>(this HtmlHelper<TModel> html, Expression<Func<TModel, TValue>> expression, DatePickerOptions options = null, object htmlAttributes = (IDictionary<string,object>)null)
+    /// <param name="options">[Optional] Date picker options</param>
+    /// <param name="htmlAttributes">[Optional] Extra HTML attributes to be applied to the text box</param>
+    /// <returns>A jQuery UI date picker control</returns>
+    public static MvcHtmlString DateTextBoxFor<TModel, TValue>(this HtmlHelper<TModel> html, Expression<Func<TModel, TValue>> expression, object options = null, object htmlAttributes = null)
     {
       // parse the picker options
-      IDictionary<string, object> pickerOptions = DefaultPickerOptions.Merge(new RouteValueDictionary(options), true);
+      IDictionary<string, object> pickerOptions = DefaultDatePickerOptions.Merge(new RouteValueDictionary(options), true);
 
       MemberExpression exp = expression.Body as MemberExpression;
 
       string fieldId = string.Join("_", GetComponents(exp));
       string fieldName = string.Join(".", GetComponents(exp));
-      string dateFormat = ConvertToCsDateFormat(pickerOptions["dateFormat"].ToString());
+      string dateFormat = GetCSharpDateFormat(pickerOptions["dateFormat"].ToString());
 
       // create the text box
-      TagBuilder input = new TagBuilder("input");
-      input.MergeAttributes(HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes));
-      input.Attributes["type"] = "text";
-      input.Attributes["value"] = ((DateTime)ModelMetadata.FromLambdaExpression(expression, html.ViewData).Model).ToString(dateFormat);
-      input.Attributes["name"] = fieldName;
-      input.Attributes["id"] = fieldId;
+      TagBuilder input = GetInputFieldTag(html, expression, dateFormat, fieldName, fieldId, htmlAttributes);
 
-      TagBuilder control = new TagBuilder("span");
-      control.Attributes["class"] = "ui-datepicker-container";
-      control.Attributes["id"] = fieldId + "-container";
-      control.InnerHtml = input.ToString(TagRenderMode.SelfClosing);
+      // create the enclosing SPAN
+      TagBuilder container = GetContainerTag(fieldId, "ui-datepicker-container", input);
 
       // create JSON dictionary of the picker options
       string op = JsonConvert.SerializeObject(pickerOptions);
@@ -81,7 +84,127 @@ namespace WebExtras.Mvc.JQueryUI
       script.Attributes["type"] = "text/javascript";
       script.InnerHtml = "$(function(){ $('#" + fieldId + "').datepicker(" + op + "); });";
 
-      return MvcHtmlString.Create(control.ToString(TagRenderMode.Normal) + script.ToString(TagRenderMode.Normal));
+      return MvcHtmlString.Create(container.ToString(TagRenderMode.Normal) + script.ToString(TagRenderMode.Normal));
+    }
+
+    /// <summary>
+    /// Creates a JQuery UI date time picker control
+    /// </summary>
+    /// <typeparam name="TModel">Type to be scanned</typeparam>
+    /// <typeparam name="TValue">Property to be scanned</typeparam>
+    /// <param name="html">HtmlHelper extension</param>
+    /// <param name="expression">The property lamba expression</param>
+    /// <param name="options">[Optional] Time picker options</param>
+    /// <param name="htmlAttributes">[Optional] Extra HTML attributes to be applied to the text box</param>
+    /// <returns>A jQuery UI date time picker control</returns>
+    public static MvcHtmlString TimeTextBoxFor<TModel, TValue>(this HtmlHelper<TModel> html, Expression<Func<TModel, TValue>> expression, object options = null, object htmlAttributes = null)
+    {
+      // parse the picker options
+      IDictionary<string, object> pickerOptions = DefaultTimePickerOptions.Merge(new RouteValueDictionary(options), true);
+
+      MemberExpression exp = expression.Body as MemberExpression;
+
+      string fieldId = string.Join("_", GetComponents(exp));
+      string fieldName = string.Join(".", GetComponents(exp));
+      string timeFormat = pickerOptions["timeFormat"].ToString();
+
+      // create the text box
+      TagBuilder input = GetInputFieldTag(html, expression, timeFormat, fieldName, fieldId, htmlAttributes);
+
+      // create the enclosing SPAN
+      TagBuilder container = GetContainerTag(fieldId, "ui-timepicker-container", input);
+
+      // create JSON dictionary of the picker options
+      string op = JsonConvert.SerializeObject(pickerOptions);
+
+      TagBuilder script = new TagBuilder("script");
+      script.Attributes["type"] = "text/javascript";
+      script.InnerHtml = "$(function(){ $('#" + fieldId + "').timepicker(" + op + "); });";
+
+      return MvcHtmlString.Create(container.ToString(TagRenderMode.Normal) + script.ToString(TagRenderMode.Normal));
+    }
+
+    /// <summary>
+    /// Creates a JQuery UI time picker control
+    /// </summary>
+    /// <typeparam name="TModel">Type to be scanned</typeparam>
+    /// <typeparam name="TValue">Property to be scanned</typeparam>
+    /// <param name="html">HtmlHelper extension</param>
+    /// <param name="expression">The property lamba expression</param>
+    /// <param name="options">[Optional] Date and time picker options</param>
+    /// <param name="htmlAttributes">[Optional] Extra HTML attributes to be applied to the text box</param>
+    /// <returns>A jQuery UI time picker control</returns>
+    public static MvcHtmlString DateTimeTextBoxFor<TModel, TValue>(this HtmlHelper<TModel> html, Expression<Func<TModel, TValue>> expression, object options = null, object htmlAttributes = null)
+    {
+      // parse the picker options
+      IDictionary<string, object> pickerOptions = DefaultDatePickerOptions
+        .Merge(DefaultTimePickerOptions)
+        .Merge(new RouteValueDictionary(options), true);
+
+      MemberExpression exp = expression.Body as MemberExpression;
+
+      string fieldId = string.Join("_", GetComponents(exp));
+      string fieldName = string.Join(".", GetComponents(exp));
+      string dateFormat = GetCSharpDateFormat(pickerOptions["dateFormat"].ToString());
+      string timeFormat = pickerOptions["timeFormat"].ToString();
+      
+      // create the text box
+      TagBuilder input = GetInputFieldTag(html, expression, dateFormat + " " + timeFormat, fieldName, fieldId, htmlAttributes);
+
+      // create the enclosing SPAN
+      TagBuilder container = GetContainerTag(fieldId, "ui-datepicker-container ui-timepicker-container", input);
+
+      // create JSON dictionary of the picker options
+      string op = JsonConvert.SerializeObject(pickerOptions);
+
+      TagBuilder script = new TagBuilder("script");
+      script.Attributes["type"] = "text/javascript";
+      script.InnerHtml = "$(function(){ $('#" + fieldId + "').datetimepicker(" + op + "); });";
+
+      return MvcHtmlString.Create(container.ToString(TagRenderMode.Normal) + script.ToString(TagRenderMode.Normal));
+    }
+
+    #endregion Date/Time picker extensions
+
+    #region Helper methods
+
+    /// <summary>
+    /// Get the container tag enclosing the INPUT datetime textbox
+    /// </summary>
+    /// <param name="fieldId">Field ID</param>
+    /// <param name="fieldCssClass">Field CSS class</param>
+    /// <param name="input">The datetime INPUT tag</param>
+    /// <returns>A SPAN enclosing the INPUT tag</returns>
+    private static TagBuilder GetContainerTag(string fieldId, string fieldCssClass, TagBuilder input)
+    {
+      TagBuilder control = new TagBuilder("span");
+      control.Attributes["class"] = fieldCssClass;
+      control.Attributes["id"] = fieldId + "-container";
+      control.InnerHtml = input.ToString(TagRenderMode.SelfClosing);
+      return control;
+    }
+
+    /// <summary>
+    /// Get the INPUT tag for the textbox
+    /// </summary>
+    /// <typeparam name="TModel">Type to be scanned</typeparam>
+    /// <typeparam name="TValue">Property to be scanned</typeparam>
+    /// <param name="html">HtmlHelper extension</param>
+    /// <param name="expression">The property lamba expression</param>
+    /// <param name="dateTimeFormat">The date and/or time format to be used to convert datetime property value</param>
+    /// <param name="fieldName">Field name</param>
+    /// <param name="fieldId">Field ID</param>
+    /// <param name="htmlAttributes">Extra HTML attributes to be applied to the text box</param>
+    /// <returns>An INPUT tag for the date/time text box</returns>
+    private static TagBuilder GetInputFieldTag<TModel, TValue>(HtmlHelper<TModel> html, Expression<Func<TModel, TValue>> expression, string dateTimeFormat, string fieldName, string fieldId, object htmlAttributes)
+    {
+      TagBuilder input = new TagBuilder("input");
+      input.MergeAttributes(HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes));
+      input.Attributes["type"] = "text";
+      input.Attributes["value"] = ((DateTime) ModelMetadata.FromLambdaExpression(expression, html.ViewData).Model).ToString(dateTimeFormat);
+      input.Attributes["name"] = fieldName;
+      input.Attributes["id"] = fieldId;
+      return input;
     }
 
     /// <summary>
@@ -111,7 +234,7 @@ namespace WebExtras.Mvc.JQueryUI
     /// </summary>
     /// <param name="jsformat">JavaScript date format</param>
     /// <returns>Equivalent CSharp date format</returns>
-    private static string ConvertToCsDateFormat(string jsformat)
+    private static string GetCSharpDateFormat(string jsformat)
     {
       char[] parts = jsformat.ToCharArray();
       string csFormat = new string(parts);
@@ -153,5 +276,7 @@ namespace WebExtras.Mvc.JQueryUI
 
       return csFormat;
     }
+
+    #endregion Helper methods
   }
 }

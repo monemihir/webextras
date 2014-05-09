@@ -47,20 +47,52 @@
   </p>
   <p>Markup</p>
   <pre><code>
-@@Html.DateTextBoxFor(f => f.DateTextBox, new DatePickerOptions
-{
-  showOn = "button",
-  buttonImage = "/content/img/calendar.gif",
-  buttonImageOnly = true
-})
+<span class="comment">// By default date format is 'yy-mm-dd' (in JS) == 'yyyy-MM-dd' (in C#)</span>
+@@Html.DateTextBoxFor(f => f.DateTextBox, 
+    new { showOn = "button", buttonImage = "/content/calendar.gif", buttonImageOnly = true })
+    
+<span class="comment">// By default time format is 'hh:mm' (in JS) == 'hh:mm' (in C#)</span>
+@@Html.TimeTextBoxFor(f => f.TimeTextBox)
+    
+<span class="comment">// By default date time format is 'yy-mm-dd hh:mm' (in JS) == 'yyyy-MM-dd hh:mm' (in C#)</span>
+@@Html.DateTimeTextBoxFor(f => f.DateTimeTextBox, 
+    new { showOn = "button", buttonImage = "/content/calendar.gif", buttonImageOnly = true })
   </code></pre>
   <p>Output</p>
-  <div class="content">
-    @Html.DateTextBoxFor(f => f.DateTextBox, new DatePickerOptions
-    {
-      showOn = "button",
-      buttonImage = "/content/img/calendar.gif",
-      buttonImageOnly = true
-    })
+  <div class="col-group keep-center">
+    <div class="col-3">
+      <div class="content">
+        <p>Date only picker</p>
+        
+        @Html.DateTextBoxFor(f => f.DateTextBox, new
+        {
+          showOn = "button",
+          buttonImage = "/content/img/calendar.gif",
+          buttonImageOnly = true
+        })
+      </div>
+    </div>
+    <div class="col-3 col-offset-1">
+      <div class="content">
+        <p>Time only picker</p>
+        
+        @Html.TimeTextBoxFor(f => f.TimeTextBox)
+      </div>
+    </div>
+    <div class="col-3 col-offset-1">
+      <div class="content">
+        <p>Date time picker</p>
+        
+        @Html.DateTimeTextBoxFor(f => f.DateTimeTextBox, new
+        {
+          showOn = "button",
+          buttonImage = "/content/img/calendar.gif",
+          buttonImageOnly = true
+        })
+      </div>
+    </div>
   </div>
+
 </div>
+
+

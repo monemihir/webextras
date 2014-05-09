@@ -1,4 +1,4 @@
-﻿/*
+﻿/*!
 * This file is part of - WebExtras
 * Copyright (C) 2014 Mihir Mone
 *
@@ -19,7 +19,13 @@
 @import "webextras.common.less";
 
 @borderColor: #AAAAAA;
+@borderColorDark: #666666;
 @radius: 4px;
+
+/* JQUERY UI OVERRIDES */
+input, textarea, select {
+  min-height: 20px;
+}
 
 /* JQUERY UI EXTENSIONS */
 .ui-table
@@ -59,19 +65,19 @@
 }
 
 .ui-datepicker-container {
-    background: none repeat scroll 0 0 #EEEEEE;
-    border: 1px solid #DDDDDD;
-    border-top-right-radius: @radius;
-    border-bottom-right-radius: @radius;
-    padding: 3px 5px 2px 0;
+    background: url("img/jqueryui/ui-bg_gloss-wave_25_333333_500x100.png") repeat scroll 0 0 #EEEEEE;
+    border: 1px solid @borderColorDark;    
+    padding: 4px 5px 4px 0;
+    margin-top: 1px;
 
     .hasDatepicker {
         margin-left: -1px;
-    }
+    }    
 }
 
 .ui-datepicker-trigger {
-    margin-left: 2px;
+    margin-left: 3px;
+    margin-right: -2px;
     margin-bottom: -3px;
     cursor: pointer;
 }
