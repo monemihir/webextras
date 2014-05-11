@@ -41,7 +41,7 @@
   padding-bottom: 7px;
   padding-top: 6px;
 }
-/* jQuery UI additions */
+/* jQuery UI Extensions */
 .ui-well {
   background: url(img/jqueryui/ui-bg_glass_40_ffc73d_1x400.png) repeat-x scroll 50% 50% #ffc73d;
   border: 1px solid #FFB73D;
@@ -180,7 +180,12 @@ li {
   list-style: none outside none;
   display: inline-block;
 }
-/* jQuery DataTables extensions */
+/* FORM STYLES */
+input,
+select {
+  width: 150px;
+}
+/* jQuery DataTables Extensions */
 .dataTables_scroll {
   border-color: #333333;
 }
