@@ -17,9 +17,6 @@
 */
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Newtonsoft.Json;
 
 namespace WebExtras.JQPlot.SubOptions
@@ -27,6 +24,7 @@ namespace WebExtras.JQPlot.SubOptions
   /// <summary>
   /// Highlighter plugin options
   /// </summary>
+  [Serializable]
   public class HighlighterOptions
   {
     /// <summary>
