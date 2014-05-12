@@ -18,13 +18,21 @@
 
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
+using WebExtras.Core;
+using WebExtras.JQFlot;
+using WebExtras.JQFlot.Graphs;
+using WebExtras.JQFlot.SubOptions;
 using WebExtras.JQPlot;
 using WebExtras.JQPlot.RendererOptions;
 using WebExtras.JQPlot.SubOptions;
+using AxisOptions = WebExtras.JQFlot.SubOptions.AxisOptions;
+using GridOptions = WebExtras.JQFlot.SubOptions.GridOptions;
+using SeriesOptions = WebExtras.JQFlot.SubOptions.SeriesOptions;
 
 namespace WebExtras.DemoApp.Models.Core
 {
@@ -306,6 +314,132 @@ namespace WebExtras.DemoApp.Models.Core
       {
         chartData = data,
         chartOptions = options
+      };
+
+      return chart;
+    }
+
+    public FlotChart GetFlotChart(int mode)
+    {
+      FlotOptions options = new FlotOptions
+      {
+        xaxis = new JQFlot.SubOptions.AxisOptions { axisLabel = "X axis label", axisLabelColor = "#222222" },
+        yaxis = new JQFlot.SubOptions.AxisOptions { axisLabel = "Y axis label", axisLabelColor = "#222222" },
+        grid = new JQFlot.SubOptions.GridOptions { borderWidth = 1 }
+      };
+
+      List<FlotSeries> series = new List<FlotSeries>();
+      FlotSeries serie = null;
+
+      switch (mode)
+      {
+        case 6:
+          serie = new FlotSeries
+          {
+            label = "Sample Line Graph",
+            data = GraphSampleData,
+            lines = new LineGraph { show = true }
+          };
+          series.Add(serie);
+          options = new FlotOptions
+          {
+            grid = new JQFlot.SubOptions.GridOptions
+            {
+              borderWidth = 1
+            },
+            xaxis = new JQFlot.SubOptions.AxisOptions
+            {
+              tickDecimals = 2,
+              tickFormatter = new JsFunc
+              {
+                ParameterNames = new string[] { "val", "axis" },
+                Body = "return val.toFixed(axis.tickDecimals);"
+              },
+              axisLabel = "X Axis - Ticks to two decimals",
+              axisLabelColor = "#222222"
+            },
+            yaxis = new JQFlot.SubOptions.AxisOptions
+            {
+              axisLabel = "Y Axis Label",
+              axisLabelColor = "#222222"
+            }
+          };
+          break;
+
+        case 5:
+          goto default;
+
+        case 4:
+          series = Enumerable.Range(1, 5).Select(f => new FlotSeries
+          {
+            label = "Serie" + f.ToString(CultureInfo.InvariantCulture),
+            data = m_rand.NextDouble() * 100
+          }).ToList();
+
+          options = new FlotOptions
+          {
+            series = new JQFlot.SubOptions.SeriesOptions
+            {
+              pie = new PieGraph { show = true }
+            }
+          };
+          break;
+
+        case 3:
+          serie = new FlotSeries
+          {
+            label = "Sample Bar Graph",
+            data = GraphSampleData,
+            bars = new BarGraph { show = true }
+          };
+          series.Add(serie);
+          break;
+
+        case 2:
+          serie = new FlotSeries
+          {
+            label = "Sample Curved Line Graph",
+            data = GraphSampleData,
+            curvedLines = new CurvedLineGraph { show = true }
+          };
+
+          options = new FlotOptions
+          {
+            xaxis = new JQFlot.SubOptions.AxisOptions { axisLabel = "X axis label", axisLabelColor = "#222222" },
+            yaxis = new AxisOptions { axisLabel = "Y axis label", axisLabelColor = "#222222" },
+            grid = new GridOptions { borderWidth = 1 },
+            series = new SeriesOptions { curvedLines = new CurvedLineOptions { active = true } }
+          };
+          series.Add(serie);
+          break;
+
+        case 1:
+          serie = new FlotSeries
+          {
+            label = "Sample Dashed Line Graph",
+            data = GraphSampleData,
+            dashes = new DashedLineGraph { show = true }
+          };
+          series.Add(serie);
+          break;
+
+        case 0:
+        default:
+          serie = new FlotSeries
+          {
+            label = "Sample Line Graph",
+            data = GraphSampleData,
+            lines = new LineGraph { show = true }
+          };
+          series.Add(serie);
+          break;
+
+      }
+
+      FlotChart chart = new FlotChart
+      {
+        chartOptions = options,
+        chartSeries = series.ToArray()
       };
 
       return chart;

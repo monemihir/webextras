@@ -18,11 +18,6 @@
 
 #pragma warning disable 1591
 
-using WebExtras.JQPlot;
-using AxisOptions = WebExtras.JQFlot.SubOptions.AxisOptions;
-using GridOptions = WebExtras.JQFlot.SubOptions.GridOptions;
-using SeriesOptions = WebExtras.JQFlot.SubOptions.SeriesOptions;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
@@ -30,8 +25,7 @@ using WebExtras.Core;
 using WebExtras.DemoApp.Models.Core;
 using WebExtras.JQDataTables;
 using WebExtras.JQFlot;
-using WebExtras.JQFlot.Graphs;
-using WebExtras.JQFlot.SubOptions;
+using WebExtras.JQPlot;
 
 namespace WebExtras.DemoApp.Areas.Gumby.Controllers
 {
@@ -40,17 +34,12 @@ namespace WebExtras.DemoApp.Areas.Gumby.Controllers
     #region Ctor and attributes
     private readonly GraphDataGenerator m_graphDataGenerator;
 
-    private double[][] m_graphSampleData;
-    private Random m_rand;
-
     /// <summary>
     /// Constructor
     /// </summary>
     public CoreController()
     {
       m_graphDataGenerator = new GraphDataGenerator();
-      m_rand = new Random(DateTime.Now.Millisecond);
-      m_graphSampleData = Enumerable.Range(1, 10).Select(f => new double[] { f, m_rand.NextDouble() * 100 }).ToArray();
     }
 
     #endregion Ctor and attributes
@@ -348,139 +337,17 @@ namespace WebExtras.DemoApp.Areas.Gumby.Controllers
     #region Flot actions
 
     //
-    // GET: /Bootstrap/Core/Flot
+    // GET: /Gumby/Core/Flot
     public virtual ActionResult Flot(int? mode)
     {
-      if (!mode.HasValue)
-      {
-        return RedirectToAction(Actions.Flot(0));
-      }
+      int dmode = mode.HasValue ? mode.Value : 0;
 
-      FlotOptions options = new FlotOptions
-      {
-        xaxis = new AxisOptions { axisLabel = "X axis label", axisLabelColor = "#222222" },
-        yaxis = new AxisOptions { axisLabel = "Y axis label", axisLabelColor = "#222222" },
-        grid = new GridOptions { borderWidth = 1 }
-      };
-
-      List<FlotSeries> series = new List<FlotSeries>();
-      FlotSeries serie = null;
-
-      switch (mode)
-      {
-        case 6:
-          serie = new FlotSeries
-          {
-            label = "Sample Line Graph",
-            data = m_graphSampleData,
-            lines = new LineGraph { show = true }
-          };
-          series.Add(serie);
-          options = new FlotOptions
-          {
-            grid = new GridOptions
-            {
-              borderWidth = 1
-            },
-            xaxis = new AxisOptions
-            {
-              tickDecimals = 2,
-              tickFormatter = new JsFunc
-              {
-                ParameterNames = new string[] { "val", "axis" },
-                Body = "return val.toFixed(axis.tickDecimals);"
-              },
-              axisLabel = "X Axis - Ticks to two decimals",
-              axisLabelColor = "#222222"
-            },
-            yaxis = new AxisOptions
-            {
-              axisLabel = "Y Axis Label",
-              axisLabelColor = "#222222"
-            }
-          };
-          break;
-
-        case 5:
-          goto default;
-
-        case 4:
-          series = Enumerable.Range(1, 5).Select(f => new FlotSeries
-          {
-            label = "Serie" + f.ToString(),
-            data = m_rand.NextDouble() * 100
-          }).ToList();
-
-          options = new FlotOptions
-          {
-            series = new SeriesOptions
-            {
-              pie = new PieGraph { show = true }
-            }
-          };
-          break;
-
-        case 3:
-          serie = new FlotSeries
-          {
-            label = "Sample Bar Graph",
-            data = m_graphSampleData,
-            bars = new BarGraph { show = true }
-          };
-          series.Add(serie);
-          break;
-
-        case 2:
-          serie = new FlotSeries
-          {
-            label = "Sample Curved Line Graph",
-            data = m_graphSampleData,
-            curvedLines = new CurvedLineGraph { show = true }
-          };
-
-          options = new FlotOptions
-          {
-            xaxis = new AxisOptions { axisLabel = "X axis label", axisLabelColor = "#222222" },
-            yaxis = new AxisOptions { axisLabel = "Y axis label", axisLabelColor = "#222222" },
-            grid = new GridOptions { borderWidth = 1 },
-            series = new SeriesOptions { curvedLines = new CurvedLineOptions { active = true } }
-          };
-          series.Add(serie);
-          break;
-
-        case 1:
-          serie = new FlotSeries
-          {
-            label = "Sample Dashed Line Graph",
-            data = m_graphSampleData,
-            dashes = new DashedLineGraph { show = true }
-          };
-          series.Add(serie);
-          break;
-
-        case 0:
-        default:
-          serie = new FlotSeries
-          {
-            label = "Sample Line Graph",
-            data = m_graphSampleData,
-            lines = new LineGraph { show = true }
-          };
-          series.Add(serie);
-          break;
-
-      }
-
-      FlotChart chart = new FlotChart
-      {
-        chartOptions = options,
-        chartSeries = series.ToArray()
-      };
+      FlotChart chart = m_graphDataGenerator.GetFlotChart(dmode);
 
       FlotViewModel model = new FlotViewModel
       {
         Chart = chart,
-        DisplayMode = mode.Value
+        DisplayMode = dmode
       };
 
       return View(model);
