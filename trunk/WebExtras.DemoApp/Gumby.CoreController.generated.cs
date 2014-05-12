@@ -108,7 +108,6 @@ namespace WebExtras.DemoApp.Areas.Gumby.Controllers
             public readonly string GetPostbackData = ("GetPostbackData").ToLowerInvariant();
             public readonly string Flot = ("Flot").ToLowerInvariant();
             public readonly string JQPlot = ("JQPlot").ToLowerInvariant();
-            public readonly string GetJQPlotData = ("GetJQPlotData").ToLowerInvariant();
         }
 
 
@@ -267,12 +266,6 @@ namespace WebExtras.DemoApp.Areas.Gumby.Controllers
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.JQPlot);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "mode", mode);
-            return callInfo;
-        }
-
-        public override System.Web.Mvc.ActionResult GetJQPlotData()
-        {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.GetJQPlotData);
             return callInfo;
         }
 

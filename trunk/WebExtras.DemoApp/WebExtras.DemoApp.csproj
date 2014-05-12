@@ -123,6 +123,10 @@
     <Compile Include="Areas\JQueryUI\Controllers\HomeController.cs" />
     <Compile Include="Areas\JQueryUI\Controllers\MvcController.cs" />
     <Compile Include="Areas\JQueryUI\JQueryUIAreaRegistration.cs" />
+    <Compile Include="Controllers\GraphDataController.cs" />
+    <Compile Include="GraphDataController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
     <Compile Include="Gumby.MvcController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
@@ -138,6 +142,7 @@
     <Compile Include="JQueryUI.SharedController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Core\GraphDataGenerator.cs" />
     <Compile Include="Models\Core\JQPlotViewModel.cs" />
     <Compile Include="Models\Mvc\CoreFormViewModel.cs" />
     <Compile Include="Models\Mvc\CoreHtmlViewModel.cs" />

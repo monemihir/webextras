@@ -34,6 +34,7 @@ public static class MVC
     public static JQueryUIClass JQueryUI { get { return s_JQueryUI; } }
     public static WebExtras.DemoApp.Controllers.AssetsController Assets = new WebExtras.DemoApp.Controllers.T4MVC_AssetsController();
     public static WebExtras.DemoApp.Controllers.FlavourController Flavour = new WebExtras.DemoApp.Controllers.T4MVC_FlavourController();
+    public static WebExtras.DemoApp.Controllers.GraphDataController GraphData = new WebExtras.DemoApp.Controllers.T4MVC_GraphDataController();
     public static T4MVC.CoreController Core = new T4MVC.CoreController();
     public static T4MVC.HomeController Home = new T4MVC.HomeController();
     public static T4MVC.MvcController Mvc = new T4MVC.MvcController();
