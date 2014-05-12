@@ -1,4 +1,4 @@
-﻿<strong>v1.4.0 <span class="text-error error">(under development)</span></strong>
+﻿<strong>v1.4.0 <span class="text-error error ui-error">(under development)</span></strong>
 <br />
 <strong>Released: xx xxx xxxx</strong>
 <br />
@@ -7,7 +7,7 @@
 <ul class="disc">
   <li>Enh: Adding support for <a href="http://jqueryui.com/" target="_blank">JQuery UI</a> theming framework</li>
   <li>Enh: Adding support for <a href="http://www.jqplot.com/" target="_blank">jqPlot</a> graph plotting library</li>
-  <li class="text-warning warning"><strong>Note:</strong> Html.LabelForV2(...) extension method has now been deprecated. 
+  <li class="text-warning warning ui-warning"><strong>Note:</strong> Html.LabelForV2(...) extension method has now been deprecated. 
     You should use Html.RequiredFieldLabelFor(...) extension method instead. This extension method will be removed in 
     future versions.</li>
 </ul>
@@ -54,12 +54,12 @@
   <li>Enh: A new utility method added to the Hyperlink to facilitate conversion to 
     Label</li>
   <li>Enh: General under the hood code enhancements and a lot more testing done</li>
-  <li class="text-warning warning">Fix: Hyperlink extensions now handle MVC Areas</li>
-  <li class="text-warning warning">Fix: Updating jQuery dataTables oLanguage 
+  <li class="text-warning warning ui-warning">Fix: Hyperlink extensions now handle MVC Areas</li>
+  <li class="text-warning warning ui-warning">Fix: Updating jQuery dataTables oLanguage 
     property support to now include all options</li>
-  <li class="text-warning warning">Fix: Marking <strong>JsFunc</strong> as serializable otherwise when using the ASP.NET State Server, the object does not get serialized</li>
-  <li class="text-error error">Brk: The <strong>AddWhiteIcon()</strong> extension is no longer available when using Font Awesome provided icons. Since these icons are font based the coloring can be controlled by CSS classes</li>
-  <li class="text-error error">Brk: An overhaul to the element creation logic and 
+  <li class="text-warning warning ui-warning">Fix: Marking <strong>JsFunc</strong> as serializable otherwise when using the ASP.NET State Server, the object does not get serialized</li>
+  <li class="text-error error ui-error">Brk: The <strong>AddWhiteIcon()</strong> extension is no longer available when using Font Awesome provided icons. Since these icons are font based the coloring can be controlled by CSS classes</li>
+  <li class="text-error error ui-error">Brk: An overhaul to the element creation logic and 
     the <strong>IExtendedHtmlString</strong> interface. We no longer expose the
     <strong>TagBuilder</strong>
     directly. Instead we provide properties the user can interact with. This is to 
@@ -85,18 +85,18 @@
   <li>Enh: Adding ability to create large and mini styled Bootstrap buttons using the AsButton extension method</li>
   <li>Enh: Use CSS class <strong>.text</strong> to fix display styling of text only fields under a horizontal form with <strong>.control-group</strong> classes</li>
   <li>Enh: We now ship an ASCX view for Datatable as well. It is called DatatablePartial.ascx and is located in the <strong>views</strong> directory of the archive</li>
-  <li class="text-warning warning">Fix: IsValidFor extension method now allows nested member expressions</li>
-  <li class="text-warning warning">Fix: The DatatableSettings constructors will now better handle null sorting options instead of throwing exception !!</li>
-  <li class="text-warning warning">Fix: Object deep cloning is now an extension method on the Object class instead of having to invoke it as a static method</li>
-  <li class="text-warning warning">Fix: All user facing properties are now either Arrays or Lists instead of IEnumerables which mean that individual items can be readily accessed via their indices</li>
-  <li class="text-danger error">Brk: The WebExtras.JQDataTables.DatatableColumn class is now obsolete. You should use WebExtras.JQDataTable.AOColumn class
+  <li class="text-warning warning ui-warning">Fix: IsValidFor extension method now allows nested member expressions</li>
+  <li class="text-warning warning ui-warning">Fix: The DatatableSettings constructors will now better handle null sorting options instead of throwing exception !!</li>
+  <li class="text-warning warning ui-warning">Fix: Object deep cloning is now an extension method on the Object class instead of having to invoke it as a static method</li>
+  <li class="text-warning warning ui-warning">Fix: All user facing properties are now either Arrays or Lists instead of IEnumerables which mean that individual items can be readily accessed via their indices</li>
+  <li class="text-danger error ui-error">Brk: The WebExtras.JQDataTables.DatatableColumn class is now obsolete. You should use WebExtras.JQDataTable.AOColumn class
     instead. This may break some existing functionality or introduce some inconsistencies in the table displays. Refer the documentation for more
     information on the correct way to setup your tables.
   </li>
-  <li class="text-error error">Brk: All enumerations have now been prefixed with an 'E' and the 'Type' suffix has been dropped. You can just perform a&nbsp; search-replace and you should be fine.</li>
+  <li class="text-error error ui-error">Brk: All enumerations have now been prefixed with an 'E' and the 'Type' suffix has been dropped. You can just perform a&nbsp; search-replace and you should be fine.</li>
   <li style="list-style: none">
     <br />
-    <table class="table table-bordered rounded striped">
+    <table class="table table-bordered rounded striped ui-table">
       <thead>
         <tr>
           <th>Old name</th>
@@ -155,7 +155,7 @@
   <li>Enh: Adds a comprehensive list of Bootstrap icons </li>
   <li>Enh: 2 new Bootstrap extensions added to render navigation bars and progress bars</li>
   <li>Enh: 1 new generic extension added to perform general purpose object cloning</li>
-  <li class="text-warning warning">Fix: Fixes a bug in the rendering logic of Hyperlinks</li>
+  <li class="text-warning warning ui-warning">Fix: Fixes a bug in the rendering logic of Hyperlinks</li>
 </ul>
 <hr />
 <strong>v1.0.0 beta</strong>

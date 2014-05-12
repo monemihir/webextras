@@ -27,15 +27,21 @@ input, textarea, select {
   min-height: 20px;
 }
 
-.ui-state-success {
-   background: url(img/jqueryui/ui-bg_highlight-soft_60_4ca20b_1x100.png) repeat-x scroll 50% 50% #4CA20B;
-    border: 1px solid #45930B;
-    color: #FFFFFF;
-    font-weight: normal;
+.ui-icon {
+  display: inline-block;
+  margin-right: 2px;
+  margin-bottom: -2px;
+}
 
-    .ui-icon {
-      background-image: url(img/jqueryui/ui-icons_ffffff_256x240.png);
-    }
+.ui-state-success {
+  background: url(img/jqueryui/ui-bg_highlight-soft_60_4ca20b_1x100.png) repeat-x scroll 50% 50% #4CA20B;
+  border: 1px solid #45930B;
+  color: #FFFFFF;
+  font-weight: normal;
+
+  .ui-icon {
+    background-image: url(img/jqueryui/ui-icons_ffffff_256x240.png);
+  }
 }
 
 *[class*=ui-alert] {
@@ -46,7 +52,7 @@ input, textarea, select {
   .ui-state-highlight,
   .ui-state-error {
     padding: 2px;
-  }  
+  }
 
   .ui-icon {
     margin-top: 2px;
@@ -55,26 +61,22 @@ input, textarea, select {
 }
 
 /* JQUERY UI EXTENSIONS */
-.ui-table
-{
+.ui-table {
   border: 1px solid @borderColor;
   border-spacing: 0;
   border-collapse: collapse;
   width: 100%;
 
-  tr
-  {
+  tr {
     border: 1px solid @borderColor;
 
-    td, th
-    {
+    td, th {
       padding: 0.5em;
       line-height: 20px;
       vertical-align: top;
       border-left: 1px solid @borderColor;
 
-      &:first-child
-      {
+      &:first-child {
         border-top-left-radius: @radius;
         border-top-right-radius: @radius;
       }
@@ -83,55 +85,49 @@ input, textarea, select {
 }
 
 .ui-icon.ui-error {
-    background-image: url(img/jqueryui/ui-icons_a83300_256x240.png);
+  background-image: url(img/jqueryui/ui-icons_a83300_256x240.png);
 }
 
 .ui-icon.ui-highlight {
-    background-image: url(img/jqueryui/ui-icons_4b8e0b_256x240.png);
-    border: 0;
+  background-image: url(img/jqueryui/ui-icons_4b8e0b_256x240.png);
+  border: 0;
 }
 
 .ui-datepicker-container {
-    padding: 4px 5px 4px 0;
-    margin-top: 1px;
+  padding: 4px 5px 4px 0;
+  margin-top: 1px;
 
-    .hasDatepicker {
-        margin-left: -1px;
-    }    
+  .hasDatepicker {
+    margin-left: -1px;
+  }
 }
 
 .ui-datepicker-trigger {
-    margin-left: 3px;
-    margin-right: -2px;
-    margin-bottom: -3px;
-    cursor: pointer;
+  margin-left: 3px;
+  margin-right: -2px;
+  margin-bottom: -3px;
+  cursor: pointer;
 }
 
 /* JQUERY DATATABLE EXTENSIONS */
 
-table.display
-{
-  tbody
-  {
-    tr.success td
-    {
+table.display {
+  tbody {
+    tr.success td {
       background-color: #dff0d8;
     }
 
     tr.error td,
-    tr.danger td
-    {
+    tr.danger td {
       background-color: #f2dede;
     }
 
-    tr.warning td
-    {
+    tr.warning td {
       background-color: #fcf8e3;
     }
 
-    tr.info td
-    {
+    tr.info td {
       background-color: #d9edf7;
     }
-  } 
+  }
 }

@@ -41,6 +41,9 @@
   padding-bottom: 7px;
   padding-top: 6px;
 }
+.ui-icon {
+  background-image: url(img/jqueryui/ui-icons_222222_256x240.png);
+}
 /* jQuery UI Extensions */
 .ui-well {
   background: url(img/jqueryui/ui-bg_glass_40_ffc73d_1x400.png) repeat-x scroll 50% 50% #ffc73d;
@@ -66,6 +69,12 @@
   position: fixed;
   z-index: 1030;
   width: 980px;
+}
+.ui-warning {
+  color: #C09853;
+}
+.ui-error {
+  color: #B94A48;
 }
 /* Generic Styles */
 h1,
@@ -154,7 +163,6 @@ small {
 }
 .download-btn .ui-button {
   padding: 0;
-  background: #eeeeee url(img/jqueryui/ui-bg_highlight-soft_80_eeeeee_1x100.png) 50% top repeat-x;
   color: #333333;
   margin-left: 80px;
   margin-top: 6px;
@@ -164,6 +172,13 @@ small {
 .download-btn .ui-state-hover {
   background: #0078a3 url(img/jqueryui/ui-bg_glass_40_0078a3_1x400.png) 50% 50% repeat-x;
   color: #ffffff;
+}
+.download-btn .ui-state-active .ui-icon,
+.download-btn .ui-state-hover .ui-icon {
+  background-image: url(img/jqueryui/ui-icons_ffffff_256x240.png);
+}
+.download-btn .ui-icon {
+  background-image: url(img/jqueryui/ui-icons_222222_256x240.png);
 }
 ul,
 ol {

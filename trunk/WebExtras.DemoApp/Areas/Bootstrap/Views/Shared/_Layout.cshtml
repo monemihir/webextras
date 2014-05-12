@@ -71,12 +71,11 @@
     </div>
   </div>
   <div class="container-fluid main">
-    @*<small class="well affix documentation-affix">@Html.Hyperlink("Stable Docs", "http://mihirmone.dyndns.org/appdocs/webextras/bootstrap") | @Html.Hyperlink("Nightly Docs", "http://mihirmone.dyndns.org/nightly/webextras/bootstrap")</small>*@
     @RenderBody()
   </div>
   <footer>
     <small style="float: left" id="build-date">@{ Html.RenderAction(MVC.Flavour.BuildDetails()); }</small>
-    <small>Copyright &copy; @DateTime.Now.Year Mihir Mone. All Rights Reserved. @Html.Icon(EFontAwesomeIcon.Css3, new { title = "Valid CSS3" }) @Html.Icon(EFontAwesomeIcon.Html5, new { title = "Valid HTML5" })</small>
+    <small>Copyright &copy; @DateTime.Now.Year Mihir Mone. All Rights Reserved. </small>
   </footer>
 </body>
 </html>

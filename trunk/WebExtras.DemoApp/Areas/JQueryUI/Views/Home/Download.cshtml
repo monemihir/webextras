@@ -1,5 +1,33 @@
-﻿@{
+﻿@model string
+
+@{
     ViewBag.Title = "Download";
 }
 
-<h2>Download</h2>
+<h3 class="keep-center">Download</h3>
+
+<div id="download-links" class="col-group keep-center">
+  @Html.Button(EButton.Regular, "Stable<small> (" + Model + ")</small>", "http://webextras.codeplex.com/releases").AddIcon(EJQueryUIIcon.Circle_Arrow_S)
+  
+  &nbsp;&nbsp;&nbsp;
+  
+  @Html.Button(EButton.Regular, "Nightly", "http://mihirmone.entrydns.org/app-downloads/webextras/webextras-nightly.zip").AddIcon(EJQueryUIIcon.Circle_Arrow_S).AddCssClass("ui-state-highlight")
+  
+  &nbsp;&nbsp;&nbsp;
+  
+  @Html.Button(EButton.Regular, "NuGet Gallery", "https://www.nuget.org/packages?q=webextras").AddIcon(EJQueryUIIcon.Circle_Arrow_S).AddCssClass("ui-state-highlight")
+
+</div>
+<br />
+<div class="col-group">
+  <div class="col-12 changelog">
+    @Html.Inline(Links.Content.inline.changelog_html)
+  </div>
+</div>
+<br />
+<script type="text/javascript">
+  $(function () {
+    $('.changelog').jScrollPane();
+    $('#download-links button').button();
+  });
+</script>

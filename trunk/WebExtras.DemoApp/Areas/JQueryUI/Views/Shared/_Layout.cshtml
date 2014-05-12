@@ -4,7 +4,8 @@
 @using SquishIt.Mvc
 @using WebExtras.Mvc.Core
 @using WebExtras.Mvc.Html
-@using WebExtras.Mvc.Bootstrap
+@using WebExtras.Mvc.JQueryUI
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -68,7 +69,7 @@
         <li>@Html.ActionLink("Form extensions", MVC.JQueryUI.Mvc.JQueryUIForm())</li>
       </ul>
     </li>
-    <li class="download-btn">@(Html.Button(EButton.Regular, "Get WebExtras", "gotoDownload()"))</li>
+    <li class="download-btn">@(Html.Button(EButton.Regular, "Get WebExtras", "gotoDownload()").AddIcon(EJQueryUIIcon.Circle_Arrow_S))</li>
   </ul>
 
   <div class="col-12 main">
@@ -76,7 +77,7 @@
   </div>
   <footer>
     <small class="pull-left" id="build-date">@{ Html.RenderAction(MVC.Flavour.BuildDetails()); }</small>
-    <small>Copyright &copy; @DateTime.Now.Year Mihir Mone. All Rights Reserved. @Html.Icon(EFontAwesomeIcon.Css3, new { title = "Valid CSS3" }) @Html.Icon(EFontAwesomeIcon.Html5, new { title = "Valid HTML5" })</small>
+    <small>Copyright &copy; @DateTime.Now.Year Mihir Mone. All Rights Reserved. </small>
   </footer>
 </body>
 </html>

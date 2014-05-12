@@ -84,6 +84,11 @@ textarea,
 select {
   min-height: 20px;
 }
+.ui-icon {
+  display: inline-block;
+  margin-right: 2px;
+  margin-bottom: -2px;
+}
 .ui-state-success {
   background: url(img/jqueryui/ui-bg_highlight-soft_60_4ca20b_1x100.png) repeat-x scroll 50% 50% #4ca20b;
   border: 1px solid #45930B;
