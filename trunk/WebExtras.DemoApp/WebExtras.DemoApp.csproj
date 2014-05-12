@@ -272,6 +272,7 @@
     <Content Include="Scripts\JQPlot\jqplot.categoryAxisRenderer.min.js" />
     <Content Include="Scripts\JQPlot\jqplot.dateAxisRenderer.min.js" />
     <Content Include="Scripts\JQPlot\jqplot.min.js" />
+    <Content Include="Scripts\JQPlot\jqplot.ohlcRenderer.min.js" />
     <Content Include="Scripts\jquery-ui-1.10.3.custom.min.js" />
     <Content Include="Scripts\jquery.ui.datetimepicker-1.4.4.js" />
     <Content Include="Scripts\jquery.ui.menubar.js" />
@@ -475,6 +476,7 @@
     <Content Include="Views\Core\_JQPlotMultipleAxes.cshtml" />
     <Content Include="Views\Core\_JQPlotAjaxData.cshtml" />
     <Content Include="Views\Core\_JQPlotDateGraph.cshtml" />
+    <Content Include="Views\Core\_JQPlotOHLCGraph.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

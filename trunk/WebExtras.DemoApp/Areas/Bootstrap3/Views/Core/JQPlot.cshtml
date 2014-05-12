@@ -64,6 +64,7 @@
   <li>@Html.Hyperlink("Date Axis Values", MVC.Bootstrap3.Core.JQPlot(2))</li>
   <li>@Html.Hyperlink("Multiple Axes", MVC.Bootstrap3.Core.JQPlot(3))</li>
   <li>@Html.Hyperlink("Ajax Data", MVC.Bootstrap3.Core.JQPlot(4))</li>
+  <li>@Html.Hyperlink("OHLC Graph", MVC.Bootstrap3.Core.JQPlot(5))</li>
 </ul>
 
 <script type="text/javascript">
@@ -90,6 +91,10 @@
   @Html.Partial(MVC.Core.Views._JQPlotAjaxData, Model.Chart)
     break;
 
+  case 5:
+  @Html.Partial(MVC.Core.Views._JQPlotOHLCGraph, Model.Chart)
+    break;
+    
   default:
   @Html.Partial(MVC.Core.Views._JQPlotLineGraph, Model.Chart)
     break;

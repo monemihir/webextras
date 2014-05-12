@@ -67,14 +67,16 @@ namespace WebExtras.JQPlot.SubOptions
     public bool? showLabel;
 
     /// <summary>
-    /// minimum value of the axis (in data units, not pixels).
+    /// minimum value of the axis (in data units, not pixels). For date axes
+    /// can be a string i.e 01-01-2014
     /// </summary>
-    public double? min;
+    public object min;
 
     /// <summary>
-    /// maximum value of the axis (in data units, not pixels).
+    /// maximum value of the axis (in data units, not pixels). For date axes
+    /// can be a string i.e 01-01-2014
     /// </summary>
-    public double? max;
+    public object max;
 
     /// <summary>
     /// Autoscale the axis min and max values to provide sensible tick spacing.  
@@ -119,8 +121,9 @@ namespace WebExtras.JQPlot.SubOptions
 
     /// <summary>
     /// Number of units between ticks.  Mutually exclusive with numberTicks.
+    /// A number by default, can be string when rendering as date axis
     /// </summary>
-    public double? tickInterval;
+    public object tickInterval;
 
     /// <summary>
     /// A class of a rendering engine that handles tick generation, scaling input 

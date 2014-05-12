@@ -17,9 +17,6 @@
 */
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Newtonsoft.Json;
 using WebExtras.JQPlot.RendererOptions;
 
@@ -34,128 +31,129 @@ namespace WebExtras.JQPlot.SubOptions
     /// <summary>
     /// Whether to draw series
     /// </summary>
-    public bool? show;
+    public bool? show { get; set; }
 
     /// <summary>
     /// which x axis to use with this series, either ‘xaxis’ or ‘x2axis’.
     /// </summary>
-    public string xaxis;
+    public string xaxis { get; set; }
 
     /// <summary>
     /// which y axis to use with this series, either ‘yaxis’ or ‘y2axis’.
     /// </summary>
-    public string yaxis;
+    public string yaxis { get; set; }
 
     /// <summary>
     /// A class of a renderer which will draw the series, see $.jqplot.LineRenderer.
     /// </summary>
     [JsonConverter(typeof(EJQPlotChartRendererJsonConverter))]
-    public EJQPlotChartRenderer? renderer;
+    public EJQPlotChartRenderer? renderer { get; set; }
 
     /// <summary>
     /// Options to pass on to the renderer.
     /// </summary>
-    public IRendererOptions rendererOptions;
+    public IRendererOptions rendererOptions { get; set; }
 
     /// <summary>
     /// Line label to use in the legend.
     /// </summary>
-    public string lineLabel;
+    public string lineLabel { get; set; }
 
     /// <summary>
     /// css color spec for the series
     /// </summary>
-    public string color;
+    public string color { get; set; }
 
     /// <summary>
     /// width of the line in pixels.  May have different meanings depending on renderer.
     /// </summary>
-    public double? lineWidth;
+    public double? lineWidth { get; set; }
 
     /// <summary>
     /// Canvas lineJoin style between segments of series.
     /// </summary>
-    public string lineJoin;
+    public string lineJoin { get; set; }
 
     /// <summary>
     /// Canvas lineCap style at ends of line.
     /// </summary>
-    public string lineCap;
+    public string lineCap { get; set; }
 
     /// <summary>
     /// whether or not to draw a shadow on the line
     /// </summary>
-    public bool? shadow;
+    public bool? shadow { get; set; }
 
     /// <summary>
     /// Shadow angle in degrees
     /// </summary>
-    public int? shadowAngle;
+    public int? shadowAngle { get; set; }
 
     /// <summary>
     /// Shadow offset from line in pixels
     /// </summary>
-    public double? shadowOffset;
+    public double? shadowOffset { get; set; }
 
     /// <summary>
     /// Number of times shadow is stroked, each stroke offset shadowOffset from the last.
     /// </summary>
-    public int? shadowDepth;
+    public int? shadowDepth { get; set; }
 
     /// <summary>
     /// Alpha channel transparency of shadow.  0 = transparent.
     /// </summary>
-    public string shadowAlpha;
+    public string shadowAlpha { get; set; }
 
     /// <summary>
     /// Whether line segments should be be broken at null value.  False will join point on either side of line.
     /// </summary>
-    public bool? breakOnNull;
+    public bool? breakOnNull { get; set; }
 
     /// <summary>
     /// A class of a renderer which will draw marker (e.g. circle, square, ...) at the data points, see $.jqplot.MarkerRenderer.
     /// </summary>
-    public EJQPlotRenderer? markerRenderer;
+    [JsonConverter(typeof(EJQPlotRendererJsonConverter))]
+    public EJQPlotRenderer? markerRenderer { get; set; }
 
     /// <summary>
     /// renderer specific options to pass to the markerRenderer, see $.jqplot.MarkerRenderer.
     /// </summary>
-    public MarkerRendererOptions markerOptions;
+    public MarkerRendererOptions markerOptions { get; set; }
 
     /// <summary>
     /// whether to actually draw the line or not.  Series will still be renderered, even if no line is drawn.
     /// </summary>
-    public bool? showLine;
+    public bool? showLine { get; set; }
 
     /// <summary>
     /// whether or not to show the markers at the data points.
     /// </summary>
-    public bool? showMarker;
+    public bool? showMarker { get; set; }
 
     /// <summary>
     /// 0 based index of this series in the plot series array.
     /// </summary>
-    public int? index;
+    public int? index { get; set; }
 
     /// <summary>
     /// whether to fill under lines or in bars.  May not be implemented in all renderers.
     /// </summary>
-    public bool? fill;
+    public bool? fill { get; set; }
 
     /// <summary>
     /// CSS color spec to use for fill under line.  Defaults to line color.
     /// </summary>
-    public string fillColor;
+    public string fillColor { get; set; }
 
     /// <summary>
     /// Alpha transparency to apply to the fill under the line.  Use this to adjust alpha separate from fill color.
     /// </summary>
-    public string fillAlpha;
+    public string fillAlpha { get; set; }
 
     /// <summary>
     /// If true will stroke the line (with color this.color) as well as fill under it.  Applies only when fill is true.
     /// </summary>
-    public bool? fillAndStroke;
+    public bool? fillAndStroke { get; set; }
 
     /// <summary>
     /// true to not stack this series with other series in the plot.  To render properly, non-stacked series must 
@@ -165,31 +163,31 @@ namespace WebExtras.JQPlot.SubOptions
     /// disableStack will put a gap in the stacking order of series, and subsequent stacked series will not fill down 
     /// through the non-stacked series and will most likely not stack properly on top of the non-stacked series.
     /// </summary>
-    public bool? disableStack;
+    public bool? disableStack { get; set; }
 
     /// <summary>
     /// how close or far (in pixels) the cursor must be from a point marker to detect the point.
     /// </summary>
-    public int? neighborThreshold;
+    public int? neighborThreshold { get; set; }
 
     /// <summary>
     /// true will force bar and filled series to fill toward zero on the fill Axis.
     /// </summary>
-    public bool? fillToZero;
+    public bool? fillToZero { get; set; }
 
     /// <summary>
     /// fill a filled series to this value on the fill axis.  Works in conjunction with fillToZero, so that must be true.
     /// </summary>
-    public int? fillToValue;
+    public int? fillToValue { get; set; }
 
     /// <summary>
     /// Either ‘x’ or ‘y’.  Which axis to fill the line toward if fillToZero is true.  ‘y’ means fill up/down to 0 on the y axis for this series.
     /// </summary>
-    public char? fillAxis;
+    public char? fillAxis { get; set; }
 
     /// <summary>
     /// true to color negative values differently in filled and bar charts.
     /// </summary>
-    public bool? useNegativeColors;
+    public bool? useNegativeColors { get; set; }
   }
 }

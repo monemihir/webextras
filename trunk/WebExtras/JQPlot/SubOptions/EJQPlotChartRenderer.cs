@@ -35,7 +35,13 @@ namespace WebExtras.JQPlot.SubOptions
     /// Requires: jqplot.barRenderer.min.js
     /// </summary>
     [StringValue("$.jqplot.BarRenderer")]
-    BarRenderer
+    BarRenderer,
+
+    /// <summary>
+    /// Requires: jqplot.ohlcRenderer.min.js
+    /// </summary>
+    [StringValue("$.jqplot.OHLCRenderer")]
+    OHLCRenderer
   }
 
   /// <summary>

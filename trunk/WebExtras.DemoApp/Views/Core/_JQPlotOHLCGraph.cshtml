@@ -1,0 +1,99 @@
+﻿@model WebExtras.JQPlot.JQPlotChartBase
+
+<p>
+  OHLC, HLC and Candlestick charts are all created using jqPlot's OHLC renderer plugin. 
+  The plots on this page make use of the highlighter plugin which shows a customized tooltip 
+  as the mouse moves over a data point.
+</p>
+
+<div class="well ui-well">
+  <h4>How your data will look</h4>
+  <pre><code>
+  <span class="comment">// Your data will look something like this</span>
+  object[][] data = new object[][] {
+    new object[] { "01-Jan-2014 13:23:11", 100.7, 123.4, 134.1, 123.4  }
+    ...
+    ...
+    ...
+  }
+  </code></pre>
+</div>
+
+<div class="well ui-well">
+  <h4>Your plot options</h4>
+  <pre><code>
+  <span class="comment">// This is just for ease of specifying the format string</span>
+  StringBuilder formatStringBuilder = new StringBuilder();
+  formatStringBuilder.Append("&lt;table class='jqplot-highlighter'&gt;");
+  formatStringBuilder.Append("&lt;tr&gt;&lt;td&gt;date:&lt;/td&gt;&lt;td&gt;%s&lt;/td&gt;&lt;/tr&gt;");
+  formatStringBuilder.Append("&lt;tr&gt;&lt;td&gt;open:&lt;/td&gt;&lt;td&gt;%s&lt;/td&gt;&lt;/tr&gt;");
+  formatStringBuilder.Append("&lt;tr&gt;&lt;td&gt;hi:&lt;/td&gt;&lt;td&gt;%s&lt;/td&gt;&lt;/tr&gt;");
+  formatStringBuilder.Append("&lt;tr&gt;&lt;td&gt;low:&lt;/td&gt;&lt;td&gt;%s&lt;/td&gt;&lt;/tr&gt;");
+  formatStringBuilder.Append("&lt;tr&gt;&lt;td&gt;close:&lt;/td&gt;&lt;td&gt;%s&lt;/td&gt;&lt;/tr&gt;");
+  formatStringBuilder.Append("&lt;/table&gt;");
+
+  options = new JQPlotOptions
+  {
+    seriesDefaults = new JQPlot.SubOptions.SeriesOptions
+    {
+      yaxis = "y2axis"
+    },
+    axes = new JQPlotAxes
+    {
+      xaxis = new JQPlot.SubOptions.AxisOptions
+      {
+        renderer = EJQPlotRenderer.DateAxisRenderer,
+        tickOptions = new AxisTickRendererOptions
+        {
+          formatString = "%b %e"
+        },
+        tickInterval = "6 weeks"
+      },
+      y2axis = new JQPlot.SubOptions.AxisOptions
+      {
+        tickOptions = new AxisTickRendererOptions
+        {
+          formatString = "$%d"
+        }
+      }
+    },
+    series = new JQPlot.SubOptions.SeriesOptions[] {
+      new JQPlot.SubOptions.SeriesOptions {
+        renderer = <span class="highlight">EJQPlotChartRenderer.OHLCRenderer</span>,  <span class="comment">// Notice that we are specifying we want OHLC renderer</span>
+        rendererOptions = new OHLCRendererOptions {
+          candleStick = true
+        }
+      }
+    },
+    highlighter = new HighlighterOptions
+    {
+      show = true,
+      showMarker = false,
+      tooltipAxes = "xy",
+      yvalues = 4,
+      formatString = formatStringBuilder.ToString()       <span class="comment">// We are using the format string we created above</span>
+    }
+  };
+</code></pre>
+</div>
+
+<div class="well ui-well">
+  <h4>And finally your OHLC chart</h4>
+  <div class="content">
+    <div id="ohlc-graph" class="graph graph-large">
+    </div>
+    <br />
+    Required Plugins:<br />
+    <ul>
+      <li>jqplot.dateAxisRenderer.min.js</li>
+      <li>jqplot.ohlcRenderer.min.js</li>
+      <li>jqplot.highlighter.min.js</li>
+    </ul>
+  </div>
+  <script type="text/javascript">
+    $(document).ready(function () {
+
+      $.jqplot('ohlc-graph', @Html.Raw(Model.chartData.ToJson()), @Html.Raw(Model.chartOptions.ToString()));
+    });
+  </script>
+</div>

@@ -143,6 +143,7 @@
     <Compile Include="JQPlot\RendererOptions\ELabelPosition.cs" />
     <Compile Include="JQPlot\RendererOptions\ETickMarkLocation.cs" />
     <Compile Include="JQPlot\RendererOptions\IRendererOptions.cs" />
+    <Compile Include="JQPlot\RendererOptions\OHLCRendererOptions.cs" />
     <Compile Include="JQPlot\RendererOptions\RendererOptionsJsonConverter.cs" />
     <Compile Include="JQPlot\SubOptions\AxisOptions.cs" />
     <Compile Include="JQPlot\RendererOptions\AxisTickRendererOptions.cs" />
@@ -153,6 +154,7 @@
     <Compile Include="JQPlot\SubOptions\EJQPlotRenderer.cs" />
     <Compile Include="JQPlot\SubOptions\ETickFormatter.cs" />
     <Compile Include="JQPlot\SubOptions\GridOptions.cs" />
+    <Compile Include="JQPlot\SubOptions\HighlighterOptions.cs" />
     <Compile Include="JQPlot\SubOptions\LegendOptions.cs" />
     <Compile Include="JQPlot\SubOptions\MarkerRendererOptions.cs" />
     <Compile Include="JQPlot\SubOptions\SeriesOptions.cs" />

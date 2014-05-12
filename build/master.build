@@ -167,4 +167,18 @@
       </fileset>
     </zip>
   </target>
+
+  <!-- Target: Show Targets-->
+  <target name="show-targets" description="Lists all available targets">
+    <echo>copy-doc-files: Copies documentation files from individual 'bin' folder to appropriate location</echo>
+    <echo>clean-build-dist: Cleans the 'build' and 'dist' folders</echo>
+    <echo>build: Compiles the project in Release mode</echo>
+    <echo>build-debug: Compiles the project in Debug mode</echo>
+    <echo>deploy: Copies published Web system to deploy location</echo>
+    <echo>deploy-nightly: Copies published web system to nightly deploy location</echo>
+    <echo>package: Creates a distribution package</echo>
+    <echo>archive: Creates a publish archive</echo>
+    <echo>archive-nightly: Create a nightly publish archive</echo>
+  </target>
+
 </project>

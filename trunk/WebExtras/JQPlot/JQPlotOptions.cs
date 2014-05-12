@@ -97,6 +97,15 @@ namespace WebExtras.JQPlot
     /// </summary>
     public int? defaultAxisStart;
 
+    #region Plugin options
+
+    /// <summary>
+    /// Highlight plugin options. Requires: jqplot.highlighter.min.js
+    /// </summary>
+    public HighlighterOptions highlighter;
+
+    #endregion Plugin options
+
     /// <summary>
     /// Converts the flot chart to a JSON serialized object
     /// </summary>

@@ -143,6 +143,7 @@ namespace WebExtras.DemoApp.App_Start
         .Add(Links.Scripts.JQPlot.jqplot_dateAxisRenderer_min_js)
         .Add(Links.Scripts.JQPlot.jqplot_cursor_min_js)
         .Add(Links.Scripts.JQPlot.jqplot_highlighter_min_js)
+        .Add(Links.Scripts.JQPlot.jqplot_ohlcRenderer_min_js)
         .AsCached(ContentBundle.JSjqPlot.GetStringValue(), ResolveJsPath(ContentBundle.JSjqPlot));
 
       // Bootstrap javascript bundle

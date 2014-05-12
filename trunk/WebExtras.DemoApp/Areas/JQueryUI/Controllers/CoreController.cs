@@ -19,6 +19,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Web.Mvc;
 using WebExtras.Core;
 using WebExtras.DemoApp.Models.Core;
@@ -41,7 +42,7 @@ namespace WebExtras.DemoApp.Areas.JQueryUI.Controllers
     #region Ctor and attributes
 
     private double[][] m_graphSampleData;
-    private readonly object[][] m_graphSampleTextData1, m_graphSampleTextData2, m_graphSampleDateData;
+    private readonly object[][] m_graphSampleTextData1, m_graphSampleTextData2, m_graphSampleDateData, m_graphSampleOHLCData;
     private Random m_rand;
 
     /// <summary>
@@ -81,6 +82,16 @@ namespace WebExtras.DemoApp.Areas.JQueryUI.Controllers
         new object[] { DateTime.Now.AddDays(m_rand.Next(150)).ToString("dd-MMM-yyyy"), m_rand.NextDouble() * 100 },
         new object[] { DateTime.Now.AddDays(m_rand.Next(150)).ToString("dd-MMM-yyyy"), m_rand.NextDouble() * 100 }
       };
+
+      m_graphSampleOHLCData = Enumerable.Range(1, 25)
+        .Select(i => new object[] {
+          DateTime.Now.AddDays(3 * i).ToString("dd-MMM-yyyy hh:mm:ss"),
+          m_rand.NextDouble() * 100,
+          m_rand.NextDouble() * 100,
+          m_rand.NextDouble() * 100,
+          m_rand.NextDouble() * 100
+        })
+        .ToArray();
     }
 
     #endregion Ctor and attributes
@@ -485,7 +496,7 @@ namespace WebExtras.DemoApp.Areas.JQueryUI.Controllers
           series.Add(serie);
           break;
 
-        case 0:        
+        case 0:
         default:
           serie = new FlotSeries
           {
@@ -648,6 +659,61 @@ namespace WebExtras.DemoApp.Areas.JQueryUI.Controllers
                 { "fontSize", "12px" },
                 { "fontFamily", "Arial" }
               }
+            }
+          };
+          break;
+
+        case 5:
+          StringBuilder formatStringBuilder = new StringBuilder();
+          formatStringBuilder.Append("<table class='jqplot-highlighter'>");
+          formatStringBuilder.Append("<tr><td>date:</td><td>%s</td></tr>");
+          formatStringBuilder.Append("<tr><td>open:</td><td>%s</td></tr>");
+          formatStringBuilder.Append("<tr><td>hi:</td><td>%s</td></tr>");
+          formatStringBuilder.Append("<tr><td>low:</td><td>%s</td></tr>");
+          formatStringBuilder.Append("<tr><td>close:</td><td>%s</td></tr>");
+          formatStringBuilder.Append("</table>");
+
+          data = new List<object[][]> { m_graphSampleOHLCData };
+          options = new JQPlotOptions
+          {
+            seriesDefaults = new JQPlot.SubOptions.SeriesOptions
+            {
+              yaxis = "y2axis"
+            },
+            axes = new JQPlotAxes
+            {
+              xaxis = new JQPlot.SubOptions.AxisOptions
+              {
+                renderer = EJQPlotRenderer.DateAxisRenderer,
+                tickOptions = new AxisTickRendererOptions
+                {
+                  formatString = "%b %e"
+                },
+                tickInterval = "6 weeks"
+              },
+              y2axis = new JQPlot.SubOptions.AxisOptions
+              {
+                tickOptions = new AxisTickRendererOptions
+                {
+                  formatString = "$%d"
+                }
+              }
+            },
+            series = new JQPlot.SubOptions.SeriesOptions[] {
+              new JQPlot.SubOptions.SeriesOptions {
+                renderer = EJQPlotChartRenderer.OHLCRenderer,
+                rendererOptions = new OHLCRendererOptions {
+                  candleStick = true
+                }
+              }
+            },
+            highlighter = new HighlighterOptions
+            {
+              show = true,
+              showMarker = false,
+              tooltipAxes = "xy",
+              yvalues = 4,
+              formatString = formatStringBuilder.ToString()
             }
           };
           break;
