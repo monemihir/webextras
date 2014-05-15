@@ -7,29 +7,7 @@
   <span class="comment">// Some basic options are shown below</span>
   JQPlotOptions options = new JQPlotOptions
   {
-    title = new TitleOptions("Line Graph"),
-    axesDefaults = new AxisOptions
-    {
-      labelRenderer = EJQPlotRenderer.CanvasAxisLabelRenderer,
-      labelOptions = new Dictionary&lt;string, object&gt; { 
-        { "fontSize", "12px" },
-        { "fontFamily", "Arial" }
-      }
-    },
-    axes = new JQPlotAxes
-    {
-      xaxis = new AxisOptions { label = "X Axis" },
-      yaxis = new AxisOptions { label = "Y Axis" }
-    },
-    <span class="comment">// Note that this is an array, so you must specify options for inidividual series separately</span>
-    series = new SeriesOptions[]                                    
-    {
-      new SeriesOptions {
-        markerOptions = new MarkerRendererOptions {
-          show = false
-        }
-      }
-    }
+    title = new TitleOptions("Line Graph")
   };
   </code></pre>
 </div>
@@ -83,11 +61,6 @@
   <div class="content">
     <div id="line-graph" class="graph">
     </div>
-    Required Plugins:<br />
-    <ul>
-      <li>jqplot.canvasTextRenderer.min.js</li>
-      <li>jqplot.canvasAxisLabelRenderer.min.js</li>
-    </ul>
   </div>
   <script type="text/javascript">
     $(document).ready(function () {

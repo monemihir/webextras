@@ -310,20 +310,8 @@ namespace WebExtras.DemoApp.Models.Core
           data = new List<double[][]> { GraphSampleData };
           options = new JQPlotOptions
           {
-            title = new TitleOptions("Basic Line Graph"),
-            axesDefaults = new JQPlot.SubOptions.AxisOptions
-            {
-              labelRenderer = EJQPlotRenderer.CanvasAxisLabelRenderer,
-              labelOptions = new Dictionary<string, object> { 
-                { "fontSize", "12px" },
-                { "fontFamily", "Arial" }
-              }
-            },
-            axes = new JQPlotAxes
-            {
-              xaxis = new JQPlot.SubOptions.AxisOptions { label = "X Axis" },
-              yaxis = new JQPlot.SubOptions.AxisOptions { label = "Y Axis" }
-            }
+            title = new TitleOptions("Basic Line Graph")
+            
           };
 
           charts.Add(new JQPlotChartBase
