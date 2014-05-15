@@ -63,7 +63,7 @@
     <ul id="jqPlot-nav" class="nav nav-pills">
       <li>@Html.Hyperlink("Basic Line Graph", MVC.Gumby.Core.JQPlot(0))</li>
       <li>@Html.Hyperlink("Non-numeric Axis Values", MVC.Gumby.Core.JQPlot(1))</li>
-      <li>@Html.Hyperlink("Date Axis Values", MVC.Gumby.Core.JQPlot(2))</li>
+      <li>@Html.Hyperlink("Bar Graphs", MVC.Gumby.Core.JQPlot(2))</li>
       <li>@Html.Hyperlink("Multiple Axes", MVC.Gumby.Core.JQPlot(3))</li>
       <li>@Html.Hyperlink("Ajax Data", MVC.Gumby.Core.JQPlot(4))</li>
       <li>@Html.Hyperlink("OHLC Graph", MVC.Gumby.Core.JQPlot(5))</li>
@@ -80,26 +80,26 @@
 @switch (Model.DisplayMode)
 {
   case 1:
-  @Html.Partial(MVC.Core.Views._JQPlotNonNumericAxisValues, Model.Chart)
+  @Html.Partial(MVC.Core.Views._JQPlotNonNumericAxisValues, Model.Charts)
     break;
 
   case 2:
-  @Html.Partial(MVC.Core.Views._JQPlotDateGraph, Model.Chart)
+  @Html.Partial(MVC.Core.Views._JQPlotBarGraph, Model.Charts)
     break;
 
   case 3:
-  @Html.Partial(MVC.Core.Views._JQPlotMultipleAxes, Model.Chart)
+  @Html.Partial(MVC.Core.Views._JQPlotMultipleAxes, Model.Charts[0])
     break;
 
   case 4:
-  @Html.Partial(MVC.Core.Views._JQPlotAjaxData, Model.Chart)
+  @Html.Partial(MVC.Core.Views._JQPlotAjaxData, Model.Charts[0])
     break;
 
   case 5:
-  @Html.Partial(MVC.Core.Views._JQPlotOHLCGraph, Model.Chart)
+  @Html.Partial(MVC.Core.Views._JQPlotOHLCGraph, Model.Charts[0])
     break;
     
   default:
-  @Html.Partial(MVC.Core.Views._JQPlotLineGraph, Model.Chart)
+  @Html.Partial(MVC.Core.Views._JQPlotLineGraph, Model.Charts[0])
     break;
 }

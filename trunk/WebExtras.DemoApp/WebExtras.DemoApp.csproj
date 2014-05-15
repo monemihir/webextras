@@ -480,8 +480,8 @@
     <Content Include="Views\Core\_JQPlotNonNumericAxisValues.cshtml" />
     <Content Include="Views\Core\_JQPlotMultipleAxes.cshtml" />
     <Content Include="Views\Core\_JQPlotAjaxData.cshtml" />
-    <Content Include="Views\Core\_JQPlotDateGraph.cshtml" />
     <Content Include="Views\Core\_JQPlotOHLCGraph.cshtml" />
+    <Content Include="Views\Core\_JQPlotBarGraph.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -75,13 +75,13 @@ namespace WebExtras.DemoApp.Models.Core
       };
 
       m_graphSampleDateData = new object[][]{
-        new object[] { DateTime.Now.AddDays(m_rand.Next(150)).ToString("dd-MMM-yyyy"), m_rand.NextDouble() * 100 },
-        new object[] { DateTime.Now.AddDays(m_rand.Next(150)).ToString("dd-MMM-yyyy"), m_rand.NextDouble() * 100 },
-        new object[] { DateTime.Now.AddDays(m_rand.Next(150)).ToString("dd-MMM-yyyy"), m_rand.NextDouble() * 100 },
-        new object[] { DateTime.Now.AddDays(m_rand.Next(150)).ToString("dd-MMM-yyyy"), m_rand.NextDouble() * 100 },
-        new object[] { DateTime.Now.AddDays(m_rand.Next(150)).ToString("dd-MMM-yyyy"), m_rand.NextDouble() * 100 },
-        new object[] { DateTime.Now.AddDays(m_rand.Next(150)).ToString("dd-MMM-yyyy"), m_rand.NextDouble() * 100 },
-        new object[] { DateTime.Now.AddDays(m_rand.Next(150)).ToString("dd-MMM-yyyy"), m_rand.NextDouble() * 100 }
+        new object[] { "01-Jan-2014", 75 },
+        new object[] { "01-Feb-2014", 91 },
+        new object[] { "27-Jun-2014", 150 },
+        new object[] { "17-July-2014", 112 },
+        new object[] { "22-Sep-2014", 37 },
+        new object[] { "08-Nov-2014", 66 },
+        new object[] { "11-Dec-2014", 18 }
       };
 
       m_graphSampleOHLCData = Enumerable.Range(1, 25)
@@ -96,18 +96,20 @@ namespace WebExtras.DemoApp.Models.Core
     }
     
     /// <summary>
-    /// Get canned/dummy jqPlot
+    /// Get canned/dummy jqPlot charts
     /// </summary>
     /// <param name="mode">Mode for which to get the chart</param>
     /// <param name="url">Current UrlHelper to generate any AJAX call urls</param>
-    /// <returns>A jqPlot chart</returns>
-    public JQPlotChartBase GetJQPlotChart(int mode, UrlHelper url)
+    /// <returns>jqPlot charts</returns>
+    public JQPlotChartBase[] GetJQPlotCharts(int mode, UrlHelper url)
     {
       object data;
       JQPlotOptions options;
+      List<JQPlotChartBase> charts = new List<JQPlotChartBase>();
 
       switch (mode)
       {
+        // non numeric data graphs - text data, date data
         case 1:
           data = new List<object[][]> { m_graphSampleTextData1 };
           options = new JQPlotOptions
@@ -131,17 +133,15 @@ namespace WebExtras.DemoApp.Models.Core
                   angle = 0
                 }
               }
-            },
-            series = new JQPlot.SubOptions.SeriesOptions[]
-            {
-              new JQPlot.SubOptions.SeriesOptions {
-                renderer = EJQPlotChartRenderer.BarRenderer
-              }
             }
           };
-          break;
 
-        case 2:
+          charts.Add(new JQPlotChartBase
+          {
+            chartData = data,
+            chartOptions = options
+          });
+
           data = new List<object[][]> { m_graphSampleDateData };
           options = new JQPlotOptions
           {
@@ -154,22 +154,20 @@ namespace WebExtras.DemoApp.Models.Core
                 tickOptions = new AxisTickRendererOptions
                 {
                   formatString = "%b&nbsp;%#d"
-                }
-              },
-            },
-            series = new JQPlot.SubOptions.SeriesOptions[] 
-            {
-              new JQPlot.SubOptions.SeriesOptions 
-              {
-                renderer = EJQPlotChartRenderer.BarRenderer,
-                rendererOptions = new BarRendererOptions {
-                  barWidth = 25
-                }
+                },
+                min = "25-Dec-2013"
               }
             }
           };
+
+          charts.Add(new JQPlotChartBase
+          {
+            chartData = data,
+            chartOptions = options
+          });
           break;
 
+        // Multiple axes chart
         case 3:
           data = new List<object[][]> { m_graphSampleTextData1, m_graphSampleTextData2 };
           options = new JQPlotOptions
@@ -215,8 +213,15 @@ namespace WebExtras.DemoApp.Models.Core
               }
             }
           };
+
+          charts.Add(new JQPlotChartBase
+          {
+            chartData = data,
+            chartOptions = options
+          });
           break;
 
+        // AJAX data chart
         case 4:
           data = url.Action(MVC.GraphData.GetJQPlotData());
           options = new JQPlotOptions
@@ -231,8 +236,15 @@ namespace WebExtras.DemoApp.Models.Core
               }
             }
           };
+
+          charts.Add(new JQPlotChartBase
+          {
+            chartData = data,
+            chartOptions = options
+          });
           break;
 
+        // OHLC charts
         case 5:
           StringBuilder formatStringBuilder = new StringBuilder();
           formatStringBuilder.Append("<table class='jqplot-highlighter'>");
@@ -286,8 +298,14 @@ namespace WebExtras.DemoApp.Models.Core
               formatString = formatStringBuilder.ToString()
             }
           };
+          charts.Add(new JQPlotChartBase
+          {
+            chartData = data,
+            chartOptions = options
+          });
           break;
 
+        // default line graphs
         default:
           data = new List<double[][]> { GraphSampleData };
           options = new JQPlotOptions
@@ -307,18 +325,23 @@ namespace WebExtras.DemoApp.Models.Core
               yaxis = new JQPlot.SubOptions.AxisOptions { label = "Y Axis" }
             }
           };
+
+          charts.Add(new JQPlotChartBase
+          {
+            chartData = data,
+            chartOptions = options
+          });
           break;
       }
-
-      JQPlotChartBase chart = new JQPlotChartBase
-      {
-        chartData = data,
-        chartOptions = options
-      };
-
-      return chart;
+      
+      return charts.ToArray();
     }
 
+    /// <summary>
+    /// Get canned/dummy flot chart
+    /// </summary>
+    /// <param name="mode">Mode for which to get the chart</param>
+    /// <returns>Flot chart</returns>
     public FlotChart GetFlotChart(int mode)
     {
       FlotOptions options = new FlotOptions

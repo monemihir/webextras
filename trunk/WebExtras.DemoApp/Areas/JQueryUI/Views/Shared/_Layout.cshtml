@@ -46,7 +46,7 @@
     <li class="@Html.SelectedTab("Home", "Index")">@Html.ActionLink("Home", MVC.JQueryUI.Home.Index())</li>
     <li class="@Html.SelectedTab("Core", "Generic")">@Html.ActionLink("Core", MVC.JQueryUI.Core.Generic())</li>
     <li class="@Html.SelectedTab("Core", "Datatables")">@Html.ActionLink("jQuery Datatables", MVC.JQueryUI.Core.Datatables())</li>
-    <li class="@Html.SelectedTab("Core", new string[] { "Flot", "JQPlot" }) dropdown">
+    <li class="@Html.SelectedTab("Core", new[] { "Flot", "JQPlot" }) dropdown">
       <a href="#" class="dropdown-toggle" data-toggle="dropdown">Graphs<i class="caret"></i></a>
       <ul class="dropdown-menu">
         <li>@Html.Hyperlink("jQuery Flot", MVC.JQueryUI.Core.Flot())</li>
@@ -54,7 +54,7 @@
       </ul>
     </li>
 
-    <li class="@Html.SelectedTab("Mvc", new string[] { "CoreHtml", "CoreForm" })">
+    <li class="@Html.SelectedTab("Mvc", new[] { "CoreHtml", "CoreForm" })">
       <a href="#">Mvc Core</a>
       <ul>
         <li>@Html.ActionLink("Custom Action Results", MVC.JQueryUI.Mvc.ActionResults())</li>
@@ -62,7 +62,7 @@
         <li>@Html.ActionLink("Form extensions", MVC.JQueryUI.Mvc.CoreForm())</li>
       </ul>
     </li>
-    <li class="@Html.SelectedTab("Mvc", new string[] { "JQueryUIHtml", "JQueryUIForm" })">
+    <li class="@Html.SelectedTab("Mvc", new[] { "JQueryUIHtml", "JQueryUIForm" })">
       <a href="#">Mvc JQuery UI</a>
       <ul>
         <li>@Html.ActionLink("Html extensions", MVC.JQueryUI.Mvc.JQueryUIHtml())</li>

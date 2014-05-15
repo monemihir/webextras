@@ -3,7 +3,6 @@
 @using SquishIt.Framework
 @using SquishIt.Mvc
 @using WebExtras.Mvc.Core
-@using WebExtras.Mvc.Html
 @using WebExtras.Mvc.Gumby
 <!DOCTYPE html>
 <html>
@@ -38,7 +37,7 @@
       <li class="@Html.SelectedTab("Home", "Index")">@Html.Hyperlink("Home", MVC.Gumby.Home.Index())</li>
       <li class="@Html.SelectedTab("Core", "Generic")">@Html.Hyperlink("Core", MVC.Gumby.Core.Index())</li>
       <li class="@Html.SelectedTab("Core", "Datatables")">@Html.Hyperlink("jQuery Datatables", MVC.Gumby.Core.Datatables())</li>
-      <li class="@Html.SelectedTab("Core", new string[] { "Flot", "JQPlot" }) dropdown">@Html.Hyperlink("Graphs", "#")
+      <li class="@Html.SelectedTab("Core", new[] { "Flot", "JQPlot" }) dropdown">@Html.Hyperlink("Graphs", "#")
         <div class="dropdown">
           <ul>
             <li>@Html.Hyperlink("jQuery Flot", MVC.Gumby.Core.Flot())</li>
@@ -46,7 +45,7 @@
           </ul>
         </div>
       </li>
-      <li class="@Html.SelectedTab("Mvc", new string[] { "ActionResults", "CoreHtml", "CoreForm" })">@Html.Hyperlink("Mvc Core", "#")
+      <li class="@Html.SelectedTab("Mvc", new[] { "ActionResults", "CoreHtml", "CoreForm" })">@Html.Hyperlink("Mvc Core", "#")
         <div class="dropdown">
           <ul>
             <li>@Html.Hyperlink("Custom Action Results", MVC.Gumby.Mvc.ActionResults())</li>
@@ -55,7 +54,7 @@
           </ul>
         </div>
       </li>
-      <li class="@Html.SelectedTab("Mvc", new string[] { "GumbyHtml", "GumbyForm" })">@Html.Hyperlink("Mvc Gumby", "#")
+      <li class="@Html.SelectedTab("Mvc", new[] { "GumbyHtml", "GumbyForm" })">@Html.Hyperlink("Mvc Gumby", "#")
         <div class="dropdown">
           <ul>
             <li>@Html.Hyperlink("Html Extensions", MVC.Gumby.Mvc.GumbyHtml())</li>

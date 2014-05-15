@@ -40,14 +40,14 @@
         <li class="@Html.SelectedTab("Home", "Index")">@Html.ActionLink("Home", MVC.Bootstrap3.Home.Index())</li>
         <li class="@Html.SelectedTab("Core", "Generic")">@Html.ActionLink("Core", MVC.Bootstrap3.Core.Generic())</li>
         <li class="@Html.SelectedTab("Core", "Datatables")">@Html.ActionLink("jQuery Datatables", MVC.Bootstrap3.Core.Datatables())</li>
-        <li class="@Html.SelectedTab("Core", new string[] { "Flot", "JQPlot" }) dropdown">
+        <li class="@Html.SelectedTab("Core", new[] { "Flot", "JQPlot" }) dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Graphs<i class="caret"></i></a>
           <ul class="dropdown-menu">
             <li>@Html.Hyperlink("jQuery Flot", MVC.Bootstrap3.Core.Flot())</li>
             <li>@Html.Hyperlink("jqPlot", MVC.Bootstrap3.Core.JQPlot())</li>
           </ul>
         </li>
-        <li class="@Html.SelectedTab("Mvc", new string[] { "CoreHtml", "CoreForm" }) dropdown">
+        <li class="@Html.SelectedTab("Mvc", new[] { "CoreHtml", "CoreForm" }) dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Mvc Core<i class="caret"></i></a>
           <ul class="dropdown-menu">
             <li>@Html.ActionLink("Custom Action Results", MVC.Bootstrap3.Mvc.ActionResults())</li>
@@ -55,7 +55,7 @@
             <li>@Html.ActionLink("Form extensions", MVC.Bootstrap3.Mvc.CoreForm())</li>
           </ul>
         </li>
-        <li class="@Html.SelectedTab("Mvc", new string[] { "BootstrapHtml", "BootstrapForm" }) dropdown">
+        <li class="@Html.SelectedTab("Mvc", new[] { "BootstrapHtml", "BootstrapForm" }) dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Mvc Bootstrap<i class="caret"></i></a>
           <ul class="dropdown-menu">
             <li>@Html.ActionLink("Html extensions", MVC.Bootstrap3.Mvc.BootstrapHtml())</li>

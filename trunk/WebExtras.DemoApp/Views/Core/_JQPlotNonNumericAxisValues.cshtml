@@ -1,4 +1,20 @@
-﻿@model WebExtras.JQPlot.JQPlotChartBase
+﻿@model WebExtras.JQPlot.JQPlotChartBase[]
+
+<div class="well ui-well">
+  <h4>X axis values as text</h4>
+  <pre><code>
+    object[][] data = new object[][] { 
+      new object[] { "Cup Holder Pinion Bob", 7 },
+      new object[] { "Generic Fog Lamp", 9 },
+      new object[] { "HDTV Receiver", 15 },
+      new object[] { "8 Track Control Module", 12 },
+      new object[] { "Sludge Pump Fourier Modulator", 3 },
+      new object[] { "Transcender/Spice Rack", 6 },
+      new object[] { "Hair Spray Danger Indicator", 18 }
+    };
+  </code></pre>
+</div>
+
 
 <div class="well ui-well">
   <h4>Modified plot options</h4>
@@ -24,29 +40,8 @@
           { "angle", 0 }                                  
         }
       }
-    },
-    series = new JQPlot.SubOptions.SeriesOptions[]
-    {
-      new JQPlot.SubOptions.SeriesOptions {
-        renderer = EJQPlotChartRenderer.BarRenderer       <span class="comment">// Denotes we want to render a bar graph</span>
-      }
     }
   };
-  </code></pre>
-</div>
-
-<div class="well ui-well">
-  <h4>Creating non-numeric graph data</h4>
-  <pre><code>
-    object[][] data = new object[][] { 
-      new object[] { "Cup Holder Pinion Bob", 7 },
-      new object[] { "Generic Fog Lamp", 9 },
-      new object[] { "HDTV Receiver", 15 },
-      new object[] { "8 Track Control Module", 12 },
-      new object[] { "Sludge Pump Fourier Modulator", 3 },
-      new object[] { "Transcender/Spice Rack", 6 },
-      new object[] { "Hair Spray Danger Indicator", 18 }
-    };
   </code></pre>
 </div>
 
@@ -64,7 +59,7 @@
 </div>
 
 <div class="well ui-well">
-  <h4>Once again the output...</h4>
+  <h4>And the output is...</h4>
   <div class="content">
     <div id="non-numeric-axis-values-graph" class="graph graph-large">
     </div>
@@ -73,13 +68,68 @@
       <li>jqplot.canvasTextRenderer.min.js</li>
       <li>jqplot.canvasAxisTickRenderer.min.js</li>
       <li>jqplot.categoryAxisRenderer.min.js</li>
-      <li>jqplot.barRenderer.min.js</li>
     </ul>
   </div>
   <script type="text/javascript">
     $(document).ready(function () {
 
-      $.jqplot('non-numeric-axis-values-graph', @Html.Raw(Model.chartData.ToJson()), @Html.Raw(Model.chartOptions.ToString()));
+      $.jqplot('non-numeric-axis-values-graph', @Html.Raw(Model[0].chartData.ToJson()), @Html.Raw(Model[0].chartOptions.ToString()));
+    });
+  </script>
+</div>
+
+<div class="well ui-well">
+  <h4>You could also have data as a date time series...</h4>
+  <pre><code>
+    object[][] data = new object[][] { 
+      new object[] { "01-Jan-2014", 75 },
+      new object[] { "01-Feb-2014", 91 },
+      new object[] { "27-Jun-2014", 150 },
+      new object[] { "17-July-2014", 112 },
+      new object[] { "22-Sep-2014", 37 },
+      new object[] { "08-Nov-2014", 66 },
+      new object[] { "11-Dec-2014", 18 }
+    };
+  </code></pre>
+</div>
+
+<div class="well ui-well">
+  <h4>Then your options would look something like these</h4>
+  <pre><code>
+  JQPlotOptions options = new JQPlotOptions
+  {
+    title = new TitleOptions("Date Data Rendering"),
+    axes = new JQPlotAxes
+    {
+      xaxis = new JQPlot.SubOptions.AxisOptions
+      {
+        renderer = <span class="highlight">EJQPlotRenderer.DateAxisRenderer</span>,     <span class="comment">// Note how we tell jqPlot that our X axis values are actually dates</span>
+        tickOptions = new AxisTickRendererOptions
+        {
+          formatString = "%b&nbsp;%#d"
+        },
+        min = "25-Dec-2013"
+      }
+    }
+  };
+  </code></pre>
+</div>
+
+<div class="well ui-well">
+  <h4>And finally the output...</h4>
+  <div class="content">
+    <div id="date-graph" class="graph">
+    </div>
+    <br />
+    Required Plugins:<br />
+    <ul>
+      <li>jqplot.dateAxisRenderer.min.js</li>
+    </ul>
+  </div>
+  <script type="text/javascript">
+    $(document).ready(function () {
+
+      $.jqplot('date-graph', @Html.Raw(Model[1].chartData.ToJson()), @Html.Raw(Model[1].chartOptions.ToString()));
     });
   </script>
 </div>

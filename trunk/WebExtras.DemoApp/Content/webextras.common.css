@@ -1,4 +1,4 @@
-﻿/** GENERIC STYLING **/
+/** GENERIC STYLING **/
 input[type="checkbox"],
 input[type="radio"] {
   vertical-align: top;
@@ -61,3 +61,20 @@ table.dataTable thead th .css_right {
   border-right: 1px solid;
 }
 /** GENERIC DATATABLES EXTENSIONS AND OVERRIDES END **/
+/* jqPlot OVERRIDES */
+.jqplot-target {
+  font: 12px Arial;
+}
+/* jqPlot EXTENSIONS */
+.jqplot-title {
+  margin: 0.5em;
+}
+.jqplot-xaxis {
+  margin-top: 7px;
+}
+.jqplot-yaxis {
+  margin-right: 7px;
+}
+.jqplot-y2axis {
+  margin-left: 7px;
+}

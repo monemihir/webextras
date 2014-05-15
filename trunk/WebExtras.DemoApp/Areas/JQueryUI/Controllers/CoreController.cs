@@ -359,11 +359,11 @@ namespace WebExtras.DemoApp.Areas.JQueryUI.Controllers
     {
       int dmode = mode.HasValue ? mode.Value : 0;
 
-      JQPlotChartBase chart = m_graphDataGenerator.GetJQPlotChart(dmode, Url);
+      JQPlotChartBase[] charts = m_graphDataGenerator.GetJQPlotCharts(dmode, Url);
 
       JQPlotViewModel model = new JQPlotViewModel
       {
-        Chart = chart,
+        Charts = charts,
         DisplayMode = dmode
       };
 

@@ -31,7 +31,7 @@ namespace WebExtras.DemoApp.Models.Core
   /// </summary>
   public class JQPlotViewModel
   {
-    public JQPlotChartBase Chart { get; set; }
+    public JQPlotChartBase[] Charts { get; set; }
     public int DisplayMode { get; set; }
   }
 }
