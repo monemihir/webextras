@@ -278,6 +278,7 @@
     <Content Include="Scripts\JQPlot\jqplot.dateAxisRenderer.min.js" />
     <Content Include="Scripts\JQPlot\jqplot.min.js" />
     <Content Include="Scripts\JQPlot\jqplot.ohlcRenderer.min.js" />
+    <Content Include="Scripts\JQPlot\jqplot.pointLabels.min.js" />
     <Content Include="Scripts\jquery-ui-1.10.3.custom.min.js" />
     <Content Include="Scripts\jquery.ui.datetimepicker-1.4.4.js" />
     <Content Include="Scripts\jquery.ui.menubar.js" />

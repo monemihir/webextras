@@ -136,6 +136,7 @@
     <Compile Include="JQPlot\JQPlotAxes.cs" />
     <Compile Include="JQPlot\JQPlotChart.cs" />
     <Compile Include="JQPlot\JQPlotChartBase.cs" />
+    <Compile Include="JQPlot\JQPlotEnumStringValueJsonConverter.cs" />
     <Compile Include="JQPlot\JQPlotOptions.cs" />
     <Compile Include="JQPlot\RendererOptions\AxisTickRendererOptionsBase.cs" />
     <Compile Include="JQPlot\RendererOptions\BarRendererOptions.cs" />
@@ -144,11 +145,10 @@
     <Compile Include="JQPlot\RendererOptions\ETickMarkLocation.cs" />
     <Compile Include="JQPlot\RendererOptions\IRendererOptions.cs" />
     <Compile Include="JQPlot\RendererOptions\OHLCRendererOptions.cs" />
-    <Compile Include="JQPlot\RendererOptions\RendererOptionsJsonConverter.cs" />
     <Compile Include="JQPlot\SubOptions\AxisOptions.cs" />
     <Compile Include="JQPlot\RendererOptions\AxisTickRendererOptions.cs" />
     <Compile Include="JQPlot\SubOptions\EJQPlotChartRenderer.cs" />
-    <Compile Include="JQPlot\SubOptions\ELegendLocation.cs" />
+    <Compile Include="JQPlot\SubOptions\ELocation.cs" />
     <Compile Include="JQPlot\SubOptions\ELegendPlacement.cs" />
     <Compile Include="JQPlot\SubOptions\EMarkerStyle.cs" />
     <Compile Include="JQPlot\SubOptions\EJQPlotRenderer.cs" />
@@ -157,6 +157,7 @@
     <Compile Include="JQPlot\SubOptions\HighlighterOptions.cs" />
     <Compile Include="JQPlot\SubOptions\LegendOptions.cs" />
     <Compile Include="JQPlot\SubOptions\MarkerRendererOptions.cs" />
+    <Compile Include="JQPlot\SubOptions\PointLabelOptions.cs" />
     <Compile Include="JQPlot\SubOptions\SeriesOptions.cs" />
     <Compile Include="JQPlot\SubOptions\TitleOptions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

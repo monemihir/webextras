@@ -17,6 +17,7 @@
 */
 
 using System;
+using WebExtras.Core;
 
 #pragma warning disable 1591
 
@@ -26,15 +27,30 @@ namespace WebExtras.JQPlot.SubOptions
   /// Legend location
   /// </summary>
   [Serializable]
-  public enum ELegendLocation
+  public enum ELocation
   {
+    [StringValue("nw")]
     NorthWest,
+
+    [StringValue("n")]
     North,
+
+    [StringValue("ne")]
     NorthEast,
+
+    [StringValue("e")]
     East,
+
+    [StringValue("se")]
     SouthEast,
+
+    [StringValue("s")]
     South,
+
+    [StringValue("sw")]
     SouthWest,
+
+    [StringValue("w")]
     West
   }
 }

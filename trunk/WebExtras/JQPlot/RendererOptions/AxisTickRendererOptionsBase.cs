@@ -17,6 +17,7 @@
 */
 
 using System;
+using Newtonsoft.Json;
 using WebExtras.JQPlot.SubOptions;
 
 namespace WebExtras.JQPlot.RendererOptions
@@ -30,6 +31,7 @@ namespace WebExtras.JQPlot.RendererOptions
     /// <summary>
     /// Tick mark on the axis
     /// </summary>
+    [JsonConverter(typeof(JQPlotEnumStringValueJsonConverter))]
     public ETickMarkLocation? mark { get; set; }
 
     /// <summary>

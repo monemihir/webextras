@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Reflection;
+using Newtonsoft.Json;
 
 namespace WebExtras.tests
 {
@@ -56,6 +57,36 @@ namespace WebExtras.tests
           {
             Assert.IsTrue(pType.IsArray || pType.Name == "List`1", t.FullName + "." + prop.Name + " must be either an array or a list");
           }
+        }
+      }
+    }
+
+    /// <summary>
+    /// Test that all Enum properties of all types have custom
+    /// JsonConverter objects attached
+    /// </summary>
+    [TestMethod, Ignore]
+    public void All_Enums_Have_JsonConverters_Attached()
+    {
+      // Arrange
+      const string namespaceToSearch = "WebExtras.JQPlot";
+      List<Type> knownEnumTypes = Assembly.LoadFrom("WebExtras.dll").GetTypes()
+        .Where(t => !string.IsNullOrEmpty(t.Namespace) && t.Namespace.StartsWith(namespaceToSearch))
+        .ToList();
+
+      // Act & Assert
+      foreach (Type t in knownEnumTypes)
+      {
+        List<PropertyInfo> props = t.GetProperties().ToList();
+
+        foreach (var prop in props)
+        {
+          if (!prop.PropertyType.IsEnum)
+            continue;
+
+          object[] arr = prop.GetCustomAttributes(typeof(JsonConverter), false);
+
+          Assert.IsTrue(arr.Length == 1, "Property: " + prop.Name + " is not decorated with a custom JsonConverter");
         }
       }
     }

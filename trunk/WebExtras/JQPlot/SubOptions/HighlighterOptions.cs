@@ -38,7 +38,7 @@ namespace WebExtras.JQPlot.SubOptions
     /// highlighted, so no attributes need set on the renderer directly.  
     /// Default is to turn off shadow drawing on the highlighted point.
     /// </summary>
-    [JsonConverter(typeof(EJQPlotRendererJsonConverter))]
+    [JsonConverter(typeof(JQPlotEnumStringValueJsonConverter))]
     public EJQPlotRenderer? markerRenderer { get; set; }
 
     /// <summary>

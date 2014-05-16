@@ -44,46 +44,46 @@ namespace WebExtras.JQPlot.SubOptions
     OHLCRenderer
   }
 
-  /// <summary>
-  /// EJQPlotChartRenderer enum's custom Json Converter
-  /// </summary>
-  [Serializable]
-  public class EJQPlotChartRendererJsonConverter : JsonConverter
-  {
-    /// <summary>
-    /// Determines whether this instance can convert the specified object type
-    /// </summary>
-    /// <param name="objectType">Type of the object</param>
-    /// <returns>true if this instance can convert the specified object type; otherwise, false</returns>
-    public override bool CanConvert(Type objectType)
-    {
-      return typeof(EJQPlotChartRenderer).IsAssignableFrom(objectType);
-    }
+  ///// <summary>
+  ///// EJQPlotChartRenderer enum's custom Json Converter
+  ///// </summary>
+  //[Serializable]
+  //public class EJQPlotChartRendererJsonConverter : JsonConverter
+  //{
+  //  /// <summary>
+  //  /// Determines whether this instance can convert the specified object type
+  //  /// </summary>
+  //  /// <param name="objectType">Type of the object</param>
+  //  /// <returns>true if this instance can convert the specified object type; otherwise, false</returns>
+  //  public override bool CanConvert(Type objectType)
+  //  {
+  //    return typeof(EJQPlotChartRenderer).IsAssignableFrom(objectType);
+  //  }
 
-    /// <summary>
-    /// Reads the JSON representation of the object
-    /// </summary>
-    /// <param name="reader">The Newtonsoft.Json.JsonReader to read from</param>
-    /// <param name="objectType">Type of the object</param>
-    /// <param name="existingValue">The existing value of object being read</param>
-    /// <param name="serializer">The calling serializer</param>
-    /// <returns>The object value</returns>
-    public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
-    {
-      return existingValue == null ? null : Enum.Parse(typeof(EJQPlotChartRenderer), existingValue.ToString().Split('.').Last());
-    }
+  //  /// <summary>
+  //  /// Reads the JSON representation of the object
+  //  /// </summary>
+  //  /// <param name="reader">The Newtonsoft.Json.JsonReader to read from</param>
+  //  /// <param name="objectType">Type of the object</param>
+  //  /// <param name="existingValue">The existing value of object being read</param>
+  //  /// <param name="serializer">The calling serializer</param>
+  //  /// <returns>The object value</returns>
+  //  public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+  //  {
+  //    return existingValue == null ? null : Enum.Parse(typeof(EJQPlotChartRenderer), existingValue.ToString().Split('.').Last());
+  //  }
 
-    /// <summary>
-    /// Writes the JSON representation of the object
-    /// </summary>
-    /// <param name="writer">The Newtonsoft.Json.JsonWriter to write to</param>
-    /// <param name="value">The Newtonsoft.Json.JsonWriter to write to</param>
-    /// <param name="serializer">The Newtonsoft.Json.JsonWriter to write to</param>
-    public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
-    {
-      EJQPlotChartRenderer val = (EJQPlotChartRenderer)value;
+  //  /// <summary>
+  //  /// Writes the JSON representation of the object
+  //  /// </summary>
+  //  /// <param name="writer">The Newtonsoft.Json.JsonWriter to write to</param>
+  //  /// <param name="value">The Newtonsoft.Json.JsonWriter to write to</param>
+  //  /// <param name="serializer">The Newtonsoft.Json.JsonWriter to write to</param>
+  //  public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+  //  {
+  //    EJQPlotChartRenderer val = (EJQPlotChartRenderer)value;
 
-      writer.WriteRawValue(val.GetStringValue());
-    }
-  }
+  //    writer.WriteRawValue(val.GetStringValue());
+  //  }
+  //}
 }

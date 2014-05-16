@@ -16,6 +16,7 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
@@ -45,6 +46,39 @@ namespace WebExtras.Core
       }
 
       return CultureInfo.CurrentCulture.TextInfo.ToTitleCase(str.ToLowerInvariant());
+    }
+
+    /// <summary> 
+    /// Converts a given string to camel case
+    /// </summary>
+    /// <param name="str">String to be converted to camel case</param>
+    /// <param name="allWords">[Optional] Flag indicating whether to camel case each 
+    /// individual word. Defaults to false</param>
+    /// <returns>Camelcase converted string</returns>
+    public static string ToCamelCase(this string str, bool allWords = false)
+    {
+      string[] buff = str.Split(' ');
+      List<string> converted = new List<string>();
+
+      foreach (char[] sBuff in buff.Select(s => s.ToCharArray()))
+      {
+        char[] newBuff = new char[sBuff.Length];
+        Array.Copy(sBuff, newBuff, sBuff.Length);
+
+        newBuff[0] = sBuff[0].ToString(CultureInfo.InvariantCulture).ToLowerInvariant()[0];
+
+        string camelCased = new string(newBuff);
+
+        converted.Add(camelCased);
+
+        if (allWords)
+          continue;
+
+        converted.AddRange(buff.Skip(1));
+        break;
+      }
+
+      return string.Join(" ", converted);
     }
 
     /// <summary>

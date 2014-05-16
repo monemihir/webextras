@@ -30,21 +30,21 @@ namespace WebExtras.JQPlot
     /// <summary>
     /// X1 axis
     /// </summary>
-    public AxisOptions xaxis;
+    public AxisOptions xaxis { get; set; }
 
     /// <summary>
     /// X2 axis
     /// </summary>
-    public AxisOptions x2axis;
+    public AxisOptions x2axis { get; set; }
 
     /// <summary>
     /// Y1 axis
     /// </summary>
-    public AxisOptions yaxis;
+    public AxisOptions yaxis { get; set; }
 
     /// <summary>
     /// Y2 axis
     /// </summary>
-    public AxisOptions y2axis;
+    public AxisOptions y2axis { get; set; }
   }
 }

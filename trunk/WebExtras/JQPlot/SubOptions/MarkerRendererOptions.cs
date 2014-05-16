@@ -20,6 +20,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Newtonsoft.Json;
 
 namespace WebExtras.JQPlot.SubOptions
 {
@@ -37,6 +38,7 @@ namespace WebExtras.JQPlot.SubOptions
     /// <summary>
     /// Marker style
     /// </summary>
+    [JsonConverter(typeof(JQPlotEnumStringValueJsonConverter))]
     public EMarkerStyle? style;
 
     /// <summary>
@@ -82,12 +84,13 @@ namespace WebExtras.JQPlot.SubOptions
     /// <summary>
     /// Renderer that will draws the shadows on the marker.
     /// </summary>
+    [JsonConverter(typeof(JQPlotEnumStringValueJsonConverter))]
     public EJQPlotRenderer? shadowRenderer;
 
     /// <summary>
     /// Renderer that will draw the marker.
     /// </summary>
+    [JsonConverter(typeof(JQPlotEnumStringValueJsonConverter))]
     public EJQPlotRenderer? shapeRenderer;
-
   }
 }

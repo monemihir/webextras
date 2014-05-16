@@ -17,6 +17,7 @@
 */
 
 using System;
+using Newtonsoft.Json;
 
 namespace WebExtras.JQPlot.SubOptions
 {
@@ -59,6 +60,7 @@ namespace WebExtras.JQPlot.SubOptions
     /// <summary>
     /// A class for creating a DOM element for the title, see $.jqplot.DivTitleRenderer.
     /// </summary>
+    [JsonConverter(typeof(JQPlotEnumStringValueJsonConverter))]
     public EJQPlotRenderer? renderer;
 
     /// <summary>

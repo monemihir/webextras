@@ -25,7 +25,6 @@ namespace WebExtras.JQPlot.RendererOptions
   /// OHLCRenderer options
   /// </summary>
   [Serializable]
-  [JsonConverter(typeof(RendererOptionsJsonConverter))]
   public class OHLCRendererOptions : IRendererOptions
   {
     /// <summary>

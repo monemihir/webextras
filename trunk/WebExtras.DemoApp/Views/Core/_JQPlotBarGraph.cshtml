@@ -1,21 +1,72 @@
-﻿@model WebExtras.JQPlot.JQPlotChartBase
+﻿@model WebExtras.JQPlot.JQPlotChartBase[]
+
+<p>
+  No points for guessing that Bar graphs are created using jqPlot's bar renderer plugin
+</p>
 
 <div class="well ui-well">
-  <h4>And finally the output...</h4>
+  <h4>Let's look at our data first</h4>
+  <p>
+    Our data will be a two dimensional <span class="highlight">object</span> array to accomodate for textual
+    labels as axis ticks
+  </p>
+  <pre><code>
+  object[][] data = new object[][] { 
+    new object[] { "Nickel", 10 },
+    new object[] { "Aluminium", 34 },
+    new object[] { "Xenon", 65 },
+    new object[] { "Silver", 5 },
+    new object[] { "Sulphur", 23 },
+    new object[] { "Vanadium", 87 },
+    new object[] { "Uranium", 1 }
+  };
+  </code></pre>
+</div>
+
+<div class="well ui-well">
+  <h4>Now the plot options</h4>
+  <pre><code>
+  options = new JQPlotOptions
+  {
+    title = new TitleOptions("Metal Sales"),
+    axes = new JQPlotAxes
+    {
+      xaxis = new JQPlot.SubOptions.AxisOptions
+      {
+        renderer = EJQPlotRenderer.CategoryAxisRenderer
+      }
+    },
+    series = new JQPlot.SubOptions.SeriesOptions[]
+    {
+      new JQPlot.SubOptions.SeriesOptions {
+        <span class="comment">// Note how we tell jqPlot that we want a bar graph</span>
+        renderer = <span class="highlight">EJQPlotChartRenderer.BarRenderer</span>,
+        rendererOptions = new BarRendererOptions {          
+          barMargin = 20,
+          shadowAlpha = 0.6
+        }
+      }
+    }
+  };
+  </code></pre>
+</div>
+
+<div class="well ui-well">
+  <h4>Our simple bar graph...</h4>
   <div class="content">
-    <div id="line-graph" class="graph">
+    <div id="bar-graph" class="graph">
     </div>
     <br />
     Required Plugins:<br />
     <ul>
-      <li>jqplot.canvasTextRenderer.min.js</li>
-      <li>jqplot.canvasAxisLabelRenderer.min.js</li>
+      <li>jqplot.barRenderer.min.js</li>
+      <li>jqplot.categoryAxisRenderer.min.js</li>
     </ul>
   </div>
   <script type="text/javascript">
     $(document).ready(function () {
 
-      $.jqplot('line-graph', @Html.Raw(Model.chartData.ToJson()), @Html.Raw(Model.chartOptions.ToString()));
+      $.jqplot('bar-graph', @Html.Raw(Model[0].chartData.ToJson()), @Html.Raw(Model[0].chartOptions.ToString()));
     });
   </script>
 </div>

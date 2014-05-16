@@ -41,6 +41,31 @@ namespace WebExtras.tests.Core
     }
 
     /// <summary>
+    /// Test that the ToCamelCase extension method works properly
+    /// </summary>
+    [TestMethod]
+    public void ToCamelCase_Works_Properly()
+    { 
+      // Act
+      string result = "FilledCircle".ToCamelCase();
+
+      // Assert
+      Assert.AreEqual("filledCircle", result);
+
+      // Act
+      result = "FilledCircle OneTwoThree".ToCamelCase();
+
+      // Assert
+      Assert.AreEqual("filledCircle OneTwoThree", result);
+
+      // Act
+      result = "FilledCircle OneTwoThree".ToCamelCase(true);
+
+      // Assert
+      Assert.AreEqual("filledCircle oneTwoThree", result);
+    }
+
+    /// <summary>
     /// Test that the ContainsIgnoreCase method works properly
     /// </summary>
     [TestMethod]

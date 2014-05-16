@@ -46,7 +46,7 @@ namespace WebExtras.JQPlot.SubOptions
     /// <summary>
     /// A class of a renderer which will draw the series, see $.jqplot.LineRenderer.
     /// </summary>
-    [JsonConverter(typeof(EJQPlotChartRendererJsonConverter))]
+    [JsonConverter(typeof(JQPlotEnumStringValueJsonConverter))]
     public EJQPlotChartRenderer? renderer { get; set; }
 
     /// <summary>
@@ -112,7 +112,7 @@ namespace WebExtras.JQPlot.SubOptions
     /// <summary>
     /// A class of a renderer which will draw marker (e.g. circle, square, ...) at the data points, see $.jqplot.MarkerRenderer.
     /// </summary>
-    [JsonConverter(typeof(EJQPlotRendererJsonConverter))]
+    [JsonConverter(typeof(JQPlotEnumStringValueJsonConverter))]
     public EJQPlotRenderer? markerRenderer { get; set; }
 
     /// <summary>
@@ -189,5 +189,14 @@ namespace WebExtras.JQPlot.SubOptions
     /// true to color negative values differently in filled and bar charts.
     /// </summary>
     public bool? useNegativeColors { get; set; }
+
+    #region Plugin options
+
+    /// <summary>
+    /// Point label options
+    /// </summary>
+    public PointLabelOptions pointLabels { get; set; }
+
+    #endregion Plugin options
   }
 }

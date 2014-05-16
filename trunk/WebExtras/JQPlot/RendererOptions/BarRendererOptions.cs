@@ -25,7 +25,6 @@ namespace WebExtras.JQPlot.RendererOptions
   /// BarRenderer options
   /// </summary>
   [Serializable]
-  [JsonConverter(typeof(RendererOptionsJsonConverter))]
   public class BarRendererOptions : IRendererOptions
   {
     /// <summary>

@@ -167,6 +167,42 @@ namespace WebExtras.DemoApp.Models.Core
           });
           break;
 
+        // Bar graphs
+        case 2:
+          data = new List<object[][]> { m_graphSampleTextData2 };
+          options = new JQPlotOptions
+          {
+            title = new TitleOptions("Metal Sales"),
+            axes = new JQPlotAxes
+            {
+              xaxis = new JQPlot.SubOptions.AxisOptions
+              {
+                renderer = EJQPlotRenderer.CategoryAxisRenderer
+              },
+              yaxis = new JQPlot.SubOptions.AxisOptions
+              {
+                pad = 2
+              }
+            },
+            series = new JQPlot.SubOptions.SeriesOptions[]
+            {
+              new JQPlot.SubOptions.SeriesOptions {
+                renderer = EJQPlotChartRenderer.BarRenderer,
+                rendererOptions = new BarRendererOptions {
+                  barMargin = 20,
+                  shadowAlpha = 0.6
+                },
+                
+              }
+            }
+          };
+
+          charts.Add(new JQPlotChartBase { 
+            chartData = data,
+            chartOptions = options
+          });
+          break;
+
         // Multiple axes chart
         case 3:
           data = new List<object[][]> { m_graphSampleTextData1, m_graphSampleTextData2 };

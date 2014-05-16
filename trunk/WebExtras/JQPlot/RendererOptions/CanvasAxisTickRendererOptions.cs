@@ -25,7 +25,6 @@ namespace WebExtras.JQPlot.RendererOptions
   /// CanvasAxisTickRenderer options
   /// </summary>
   [Serializable]
-  [JsonConverter(typeof(RendererOptionsJsonConverter))]
   public class CanvasAxisTickRendererOptions : AxisTickRendererOptionsBase, IRendererOptions
   {
     /// <summary>
@@ -36,6 +35,7 @@ namespace WebExtras.JQPlot.RendererOptions
     /// <summary>
     /// Label position
     /// </summary>
+    [JsonConverter(typeof(JQPlotEnumStringValueJsonConverter))]
     public ELabelPosition? labelPosition { get; set; }
 
     /// <summary>

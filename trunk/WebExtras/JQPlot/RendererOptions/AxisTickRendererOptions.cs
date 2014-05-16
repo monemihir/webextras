@@ -25,7 +25,6 @@ namespace WebExtras.JQPlot.RendererOptions
   /// Axis tick renderer options
   /// </summary>
   [Serializable]
-  [JsonConverter(typeof(RendererOptionsJsonConverter))]
   public class AxisTickRendererOptions : AxisTickRendererOptionsBase, IRendererOptions
   {
     /// <summary>

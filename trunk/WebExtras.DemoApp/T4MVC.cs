@@ -162,6 +162,7 @@ namespace Links
             public static readonly string jqplot_json2_min_js = Url("jqplot.json2.min.js");
             public static readonly string jqplot_min_js = Url("jqplot.min.js");
             public static readonly string jqplot_ohlcRenderer_min_js = Url("jqplot.ohlcRenderer.min.js");
+            public static readonly string jqplot_pointLabels_min_js = Url("jqplot.pointLabels.min.js");
         }
     
         public static readonly string jquery_1_9_1_min_js = Url("jquery-1.9.1.min.js");

@@ -103,7 +103,8 @@
     {
       xaxis = new JQPlot.SubOptions.AxisOptions
       {
-        renderer = <span class="highlight">EJQPlotRenderer.DateAxisRenderer</span>,     <span class="comment">// Note how we tell jqPlot that our X axis values are actually dates</span>
+        <span class="comment">// Note how we tell jqPlot that our X axis values are actually dates</span>
+        renderer = <span class="highlight">EJQPlotRenderer.DateAxisRenderer</span>,     
         tickOptions = new AxisTickRendererOptions
         {
           formatString = "%b&nbsp;%#d"

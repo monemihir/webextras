@@ -17,6 +17,7 @@
 */
 
 using System;
+using Newtonsoft.Json;
 
 namespace WebExtras.JQPlot.SubOptions
 {
@@ -34,7 +35,8 @@ namespace WebExtras.JQPlot.SubOptions
     /// <summary>
     /// Legend location
     /// </summary>
-    public ELegendLocation location;
+    [JsonConverter(typeof(JQPlotEnumStringValueJsonConverter))]
+    public ELocation? location;
 
     /// <summary>
     /// Array of labels to use.  By default the renderer will look 
@@ -61,7 +63,8 @@ namespace WebExtras.JQPlot.SubOptions
     /// ouside the grid area, but does not shrink the grid which can 
     /// cause the legend to overflow the plot container.
     /// </summary>
-    public ELegendPlacement placement;
+    [JsonConverter(typeof(JQPlotEnumStringValueJsonConverter))]
+    public ELegendPlacement? placement;
 
     /// <summary>
     /// Set the margins on the legend using the marginTop, marginLeft, 

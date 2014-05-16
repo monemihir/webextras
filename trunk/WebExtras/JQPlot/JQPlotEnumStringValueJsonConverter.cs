@@ -16,18 +16,43 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
+using Newtonsoft.Json;
+using WebExtras.Core;
 
-namespace WebExtras.JQPlot.RendererOptions
+namespace WebExtras.JQPlot
 {
   /// <summary>
-  /// Renderer options JsonConverter
+  /// A generic enum to string value JSON.Net converter for all
+  /// enums defined for JQPlot
   /// </summary>
   [Serializable]
-  public class RendererOptionsJsonConverter : JsonConverter
+  public class JQPlotEnumStringValueJsonConverter : JsonConverter
   {
+    /// <summary>
+    /// The namespace that contains all JQPlot specific enums
+    /// </summary>
+    private const string JQPlotNamespace = "WebExtras.JQPlot";
+
+    /// <summary>
+    /// A list of all known enum types
+    /// </summary>
+    private static List<Type> m_knownEnumTypes;
+
+    /// <summary>
+    /// Constructor
+    /// </summary>
+    public JQPlotEnumStringValueJsonConverter()
+    {
+      if (m_knownEnumTypes == null)
+        m_knownEnumTypes = Assembly.GetExecutingAssembly().GetTypes()
+         .Where(t => t.IsEnum && !string.IsNullOrEmpty(t.Namespace) && t.Namespace.StartsWith(JQPlotNamespace))
+         .ToList();
+    }
+
     /// <summary>
     /// Determines whether this instance can convert the specified object type
     /// </summary>
@@ -35,7 +60,7 @@ namespace WebExtras.JQPlot.RendererOptions
     /// <returns>true if this instance can convert the specified object type; otherwise, false</returns>
     public override bool CanConvert(Type objectType)
     {
-      return typeof(IRendererOptions) == objectType;
+      return m_knownEnumTypes.Contains(objectType);
     }
 
     /// <summary>
@@ -48,7 +73,16 @@ namespace WebExtras.JQPlot.RendererOptions
     /// <returns>The object value</returns>
     public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
     {
-      throw new NotImplementedException("Deserializing of this object is not allowed");
+      if (m_knownEnumTypes.Contains(objectType))
+      {
+        object parsed = Enum.Parse(objectType, existingValue.ToString().Split('.').Last());
+
+        Enum val = (Enum)parsed;
+
+        return val;
+      }
+
+      throw new NotSupportedException("Enum type: " + objectType.FullName + " is not supported");
     }
 
     /// <summary>
@@ -59,17 +93,13 @@ namespace WebExtras.JQPlot.RendererOptions
     /// <param name="serializer">The Newtonsoft.Json.JsonWriter to write to</param>
     public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
     {
+      Enum val = (Enum)value;
 
-      value.GetType().GetProperties()
-        .Where(f => f.GetValue(value, null) != null)
-        .ToList()
-        .ForEach(f => {
-          writer.WriteStartObject();
-          writer.WritePropertyName(f.Name);
-          writer.WriteValue(f.GetValue(value, null));
-          writer.WriteEndObject();
-        });
+      string result = string.IsNullOrWhiteSpace(val.GetStringValue()) ?
+        val.ToString().ToCamelCase() :
+        val.GetStringValue();
 
+      writer.WriteRawValue(result);
     }
   }
 }
