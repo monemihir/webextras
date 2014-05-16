@@ -27,6 +27,7 @@ namespace WebExtras.JQPlot.SubOptions
   /// <summary>
   /// Point labels plugin options
   /// </summary>
+  [Serializable]
   public class PointLabelOptions
   {
     /// <summary>
