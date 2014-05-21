@@ -33,7 +33,7 @@ namespace WebExtras.Mvc.Html
     public string OnClick
     {
       get { return this["onclick"]; }
-      set { this["onclick"] = "javascript:" + value; }
+      set { this["onclick"] = value; }
     }
 
     /// <summary>
@@ -42,16 +42,35 @@ namespace WebExtras.Mvc.Html
     /// <param name="type">Button type</param>
     /// <param name="text">Button text</param>
     /// <param name="onclick">Javascript onclick event of the button</param>
-    /// <param name="htmlAttributes">Extra HTML attributes</param>
+    /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
     public Button(EButton type, string text, string onclick, object htmlAttributes = null)
+      : this(type, text, onclick, false, htmlAttributes)
+    {
+      // Nothing to do here
+    }
+
+    /// <summary>
+    /// Constructor
+    /// </summary>
+    /// <param name="type">Button type</param>
+    /// <param name="text">Button text</param>
+    /// <param name="onclick">Javascript onclick event of the button</param>
+    /// <param name="isNavigation">Whether the onclick specified is url navigation</param>
+    /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
+    public Button(EButton type, string text, string onclick, bool isNavigation, object htmlAttributes = null)
       : base(EHtmlTag.Button, htmlAttributes)
     {
       InnerHtml = text;
-
-      if (!string.IsNullOrEmpty(onclick))
-        OnClick = onclick;
-
       this["type"] = type.GetStringValue();
+
+      if (string.IsNullOrWhiteSpace(onclick))
+        return;
+
+      if (isNavigation)
+        OnClick = "window.location='" + onclick + "'";
+      else
+        OnClick = "javascript:" + onclick;
+
     }
   }
 }

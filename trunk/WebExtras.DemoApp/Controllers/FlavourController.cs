@@ -18,6 +18,7 @@
 
 #pragma warning disable 1591
 
+using System;
 using System.IO;
 using System.Reflection;
 using System.Web.Mvc;
@@ -52,6 +53,17 @@ namespace WebExtras.DemoApp.Controllers
         result = "Built by <a href='http://www.windowsazure.com'>Azure</a> on " +
           fInfo.CreationTime.ToString("dd MMM yyyy HH:mm:ss zz");
       }
+
+      return Content(result);
+    }
+
+    //
+    // GET: /Flavour/VersionDetails
+    public virtual ContentResult VersionDetails()
+    {
+      Version v = Assembly.GetExecutingAssembly().GetName().Version;
+
+      string result = string.Format("Docs: v{0}.{1}.{2}", v.Major, v.Minor, v.Build);
 
       return Content(result);
     }

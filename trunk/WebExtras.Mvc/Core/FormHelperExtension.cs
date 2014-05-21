@@ -67,6 +67,27 @@ namespace WebExtras.Mvc.Core
       return new Button(type, text, onclick, htmlAttributes);
     }
 
+    /// <summary>
+    /// Create a HTML button
+    /// </summary>
+    /// <param name="html">Current HTML helper object</param>
+    /// <param name="type">Button type</param>
+    /// <param name="text">Button text</param>
+    /// <param name="onclick">Button javascript onclick event</param>
+    /// <param name="isNavigation">Whether the onclick specified is url navigation</param>
+    /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
+    /// <returns>A HTML Button</returns>
+    public static Button Button(
+      this HtmlHelper html,
+      EButton type,
+      string text,
+      string onclick,
+      bool isNavigation,
+      object htmlAttributes = null)
+    {
+      return new Button(type, text, onclick, isNavigation, htmlAttributes);
+    }
+
     #endregion Button extensions
 
     #region CheckBoxGroup extensions

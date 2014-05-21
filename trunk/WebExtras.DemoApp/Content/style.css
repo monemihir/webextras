@@ -16,6 +16,14 @@ nav,
 section {
   display: block;
 }
+footer {
+  bottom: 1%;
+  font-size: 13px;
+  position: static;
+  width: 980px;
+  text-align: center;
+  margin-top: 10px;
+}
 .dependancies {
   list-style: none;
 }
@@ -38,11 +46,6 @@ section {
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
   border-radius: 4px;
-}
-footer {
-  padding-right: 3%;
-  padding-bottom: 1%;
-  text-align: right;
 }
 .documentation-affix {
   z-index: 2000;
@@ -111,9 +114,6 @@ pre {
   -webkit-border-radius: 4px;
   border-radius: 4px;
   background-color: #ffffff;
-}
-#build-date {
-  padding-left: 4%;
 }
 hr {
   clear: both;

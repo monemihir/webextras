@@ -62,6 +62,7 @@ namespace WebExtras.DemoApp.Controllers
         {
             public readonly string Index = ("Index").ToLowerInvariant();
             public readonly string BuildDetails = ("BuildDetails").ToLowerInvariant();
+            public readonly string VersionDetails = ("VersionDetails").ToLowerInvariant();
         }
 
 
@@ -95,6 +96,12 @@ namespace WebExtras.DemoApp.Controllers
         public override System.Web.Mvc.ContentResult BuildDetails()
         {
             var callInfo = new T4MVC_System_Web_Mvc_ContentResult(Area, Name, ActionNames.BuildDetails);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ContentResult VersionDetails()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ContentResult(Area, Name, ActionNames.VersionDetails);
             return callInfo;
         }
 

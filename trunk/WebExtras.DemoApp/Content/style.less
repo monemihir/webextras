@@ -29,6 +29,15 @@ header, footer, nav, section {
     display: block;
 }
 
+footer {
+    bottom: 1%;
+    font-size: 13px;
+    position: static;
+    width: 980px;
+    text-align: center;
+    margin-top: 10px;
+}
+
 .dependancies {
     list-style: none;
 }
@@ -50,12 +59,6 @@ header, footer, nav, section {
     border: 1px solid rgba(0, 0, 0, 0.15);
     background-color: @white;
     .rounded-corners(4px);
-}
-
-footer {
-    padding-right: 3%;
-    padding-bottom: 1%;
-    text-align: right;
 }
 
 .documentation-affix {
@@ -102,7 +105,7 @@ pre {
     }
 
     p:first-child {
-      margin-top: 0;
+        margin-top: 0;
     }
 }
 
@@ -131,10 +134,6 @@ pre {
     border: 1px solid #DDDDDD;
     .rounded-corners(4px);
     background-color: @white;
-}
-
-#build-date {
-    padding-left: 4%;
 }
 
 hr {

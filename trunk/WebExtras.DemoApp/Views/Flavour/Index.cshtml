@@ -121,11 +121,8 @@
       padding: 12px 19px;
     }
 
-    #build-date a {
-      padding: 0;
-      font-size: 13px;
-      border-radius: 0;
-      vertical-align: bottom;
+    footer {
+      position: absolute;
     }
   </style>
 </head>
@@ -159,10 +156,12 @@
   <br />
   <br />
   <br />
-  <hr />
+  <br />
+  <br />
   <footer>
-    <small style="float: left" id="build-date">@{ Html.RenderAction(MVC.Flavour.BuildDetails()); }</small>
-    <small style="float: right">Copyright &copy; @DateTime.Now.Year Mihir Mone. All Rights Reserved.</small>
+    <span style="float: left" id="build-date">@{ Html.RenderAction(MVC.Flavour.BuildDetails()); }</span>
+    <span style="float: right">Copyright &copy; @DateTime.Now.Year Mihir Mone. All Rights Reserved.</span>
+    <div>@{ Html.RenderAction(MVC.Flavour.VersionDetails()); }</div>
   </footer>
 </body>
 </html>

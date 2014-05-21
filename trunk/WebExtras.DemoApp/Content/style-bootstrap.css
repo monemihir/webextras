@@ -1,4 +1,4 @@
-﻿.bk666 {
+.bk666 {
   background-color: #666666;
 }
 .secondary-nav {
@@ -14,11 +14,6 @@ h4 {
 pre {
   padding: 5px;
 }
-footer {
-  text-align: right;
-  padding-right: 3%;
-  padding-bottom: 1%;
-}
 .nav-tabs > li,
 .nav-pills > li {
   padding-left: 3px;
@@ -33,7 +28,7 @@ footer {
   background-color: #dddddd;
 }
 .navbar-inner {
-  filter: none;
+  filter: 0;
 }
 .navbar .brand {
   margin-left: 0;
@@ -53,7 +48,7 @@ footer {
   border-bottom-left-radius: 15px;
 }
 .navbar-inverse .navbar-inner {
-  filter: none;
+  filter: 0;
   border-color: #666666;
 }
 .navbar-inverse .nav .active > a {

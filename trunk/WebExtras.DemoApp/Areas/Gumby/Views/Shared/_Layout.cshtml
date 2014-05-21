@@ -73,8 +73,9 @@
     @RenderBody()
   </div>
   <footer>
-    <small style="float: left" id="build-date">@{ Html.RenderAction(MVC.Flavour.BuildDetails()); }</small>
-    <small>Copyright &copy; @DateTime.Now.Year Mihir Mone. All Rights Reserved. </small>
+    <span style="float: left" id="build-date">@{ Html.RenderAction(MVC.Flavour.BuildDetails()); }</span>
+    <span style="float: right">Copyright &copy; @DateTime.Now.Year Mihir Mone. All Rights Reserved.</span>
+    <div>@{ Html.RenderAction(MVC.Flavour.VersionDetails()); }</div>
   </footer>
 </body>
 </html>

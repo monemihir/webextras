@@ -143,6 +143,9 @@ pre code {
   padding: 0;
   white-space: pre-wrap;
 }
+footer {
+  margin-left: 5px;
+}
 .affix {
   position: fixed;
 }
