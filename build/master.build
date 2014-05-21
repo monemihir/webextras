@@ -120,6 +120,7 @@
         <include name="webextras.bootstrap.css" />
         <include name="webextras.bootstrap3.css" />
         <include name="webextras.gumby.css" />
+	<include name="webextras.jqueryui.css" />
         <include name="jquery.bootstrap.datetimepicker.css" />
         <include name="jquery.datatables.bootstrap3.css" />
       </fileset>
