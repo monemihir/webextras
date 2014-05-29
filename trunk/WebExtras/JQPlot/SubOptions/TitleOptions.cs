@@ -18,6 +18,7 @@
 
 using System;
 using Newtonsoft.Json;
+using WebExtras.JQPlot.RendererOptions;
 
 namespace WebExtras.JQPlot.SubOptions
 {
@@ -66,7 +67,7 @@ namespace WebExtras.JQPlot.SubOptions
     /// <summary>
     /// renderer specific options passed to the renderer.
     /// </summary>
-    public object rendererOptions;
+    public IRendererOptions rendererOptions;
 
     /// <summary>
     /// Default constructor

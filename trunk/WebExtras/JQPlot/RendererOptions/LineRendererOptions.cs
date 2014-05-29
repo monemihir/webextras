@@ -16,11 +16,14 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+using System;
+
 namespace WebExtras.JQPlot.RendererOptions
 {
   /// <summary>
   /// Line renderer options
   /// </summary>
+  [Serializable]
   public class LineRendererOptions : IRendererOptions
   {
     /// <summary>

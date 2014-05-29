@@ -23,6 +23,7 @@ namespace WebExtras.JQPlot.RendererOptions
   /// <summary>
   /// Shadow renderer options
   /// </summary>
+  [Serializable]
   public class ShadowRendererOptions : IRendererOptions
   {
     string m_lineJoin;

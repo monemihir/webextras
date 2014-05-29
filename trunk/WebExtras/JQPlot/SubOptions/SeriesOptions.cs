@@ -118,7 +118,7 @@ namespace WebExtras.JQPlot.SubOptions
     /// <summary>
     /// renderer specific options to pass to the markerRenderer, see $.jqplot.MarkerRenderer.
     /// </summary>
-    public MarkerRendererOptions markerOptions { get; set; }
+    public IRendererOptions markerOptions { get; set; }
 
     /// <summary>
     /// whether to actually draw the line or not.  Series will still be renderered, even if no line is drawn.

@@ -141,6 +141,7 @@
     <Compile Include="JQPlot\RendererOptions\AxisLabelRendererOptions.cs" />
     <Compile Include="JQPlot\RendererOptions\AxisTickRendererOptionsBase.cs" />
     <Compile Include="JQPlot\RendererOptions\BarRendererOptions.cs" />
+    <Compile Include="JQPlot\RendererOptions\CanvasAxisLabelRendererOptions.cs" />
     <Compile Include="JQPlot\RendererOptions\CanvasAxisTickRendererOptions.cs" />
     <Compile Include="JQPlot\RendererOptions\ELabelPosition.cs" />
     <Compile Include="JQPlot\RendererOptions\EMarkerStyle.cs" />

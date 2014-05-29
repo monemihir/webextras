@@ -23,6 +23,7 @@ namespace WebExtras.JQPlot.RendererOptions
   /// <summary>
   /// Shape renderer options
   /// </summary>
+  [Serializable]
   public class ShapeRendererOptions : IRendererOptions
   {
     string m_lineJoin;

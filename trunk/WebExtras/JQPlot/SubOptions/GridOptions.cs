@@ -17,10 +17,8 @@
 */
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Newtonsoft.Json;
+using WebExtras.JQPlot.RendererOptions;
 
 namespace WebExtras.JQPlot.SubOptions
 {
@@ -104,6 +102,6 @@ namespace WebExtras.JQPlot.SubOptions
     /// <summary>
     /// Options to pass on to the renderer, see $.jqplot.CanvasGridRenderer.
     /// </summary>
-    public object rendererOptions;
+    public IRendererOptions rendererOptions;
   }
 }

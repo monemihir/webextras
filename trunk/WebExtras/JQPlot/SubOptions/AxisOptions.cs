@@ -17,7 +17,6 @@
 */
 
 using System;
-using System.Collections.Generic;
 using Newtonsoft.Json;
 using WebExtras.JQPlot.RendererOptions;
 
@@ -54,7 +53,7 @@ namespace WebExtras.JQPlot.SubOptions
     /// <summary>
     /// Options passed to the label renderer.
     /// </summary>
-    public IDictionary<string, object> labelOptions;
+    public IRendererOptions labelOptions;
 
     /// <summary>
     /// Label for the axis
@@ -135,7 +134,7 @@ namespace WebExtras.JQPlot.SubOptions
     /// <summary>
     /// Renderer specific options.  See $.jqplot.LinearAxisRenderer for options.
     /// </summary>
-    public object rendererOptions;
+    public IRendererOptions rendererOptions;
 
     /// <summary>
     /// Whether to show the ticks (both marks and labels) or not.  Will not 

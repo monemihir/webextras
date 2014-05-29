@@ -21,7 +21,6 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
-using System.Web;
 using System.Web.Mvc;
 using WebExtras.Core;
 using WebExtras.JQFlot;
@@ -94,7 +93,7 @@ namespace WebExtras.DemoApp.Models.Core
         })
         .ToArray();
     }
-    
+
     /// <summary>
     /// Get canned/dummy jqPlot charts
     /// </summary>
@@ -197,7 +196,8 @@ namespace WebExtras.DemoApp.Models.Core
             }
           };
 
-          charts.Add(new JQPlotChartBase { 
+          charts.Add(new JQPlotChartBase
+          {
             chartData = data,
             chartOptions = options
           });
@@ -266,9 +266,10 @@ namespace WebExtras.DemoApp.Models.Core
             axesDefaults = new JQPlot.SubOptions.AxisOptions
             {
               labelRenderer = EJQPlotRenderer.CanvasAxisLabelRenderer,
-              labelOptions = new Dictionary<string, object> { 
-                { "fontSize", "12px" },
-                { "fontFamily", "Arial" }
+              labelOptions = new CanvasAxisLabelRendererOptions
+              {
+                fontSize = "12px",
+                fontFamily = "Arial"
               }
             }
           };
@@ -347,7 +348,7 @@ namespace WebExtras.DemoApp.Models.Core
           options = new JQPlotOptions
           {
             title = new TitleOptions("Basic Line Graph")
-            
+
           };
 
           charts.Add(new JQPlotChartBase
@@ -357,7 +358,7 @@ namespace WebExtras.DemoApp.Models.Core
           });
           break;
       }
-      
+
       return charts.ToArray();
     }
 
