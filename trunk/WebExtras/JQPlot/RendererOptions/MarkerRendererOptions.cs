@@ -17,18 +17,16 @@
 */
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Newtonsoft.Json;
+using WebExtras.JQPlot.SubOptions;
 
-namespace WebExtras.JQPlot.SubOptions
+namespace WebExtras.JQPlot.RendererOptions
 {
   /// <summary>
   /// Marker renderer options
   /// </summary>
   [Serializable]
-  public class MarkerRendererOptions
+  public class MarkerRendererOptions : IRendererOptions
   {
     /// <summary>
     /// Whether or not to show the marker.

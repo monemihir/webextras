@@ -16,9 +16,7 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using Newtonsoft.Json;
 using System;
-using System.Linq;
 using WebExtras.Core;
 
 #pragma warning disable 1591
@@ -31,6 +29,59 @@ namespace WebExtras.JQPlot.SubOptions
   [Serializable]
   public enum EJQPlotRenderer
   {
+    /// <summary>
+    /// A "tick" object showing the value of a tick/gridline on the plot.
+    /// </summary>
+    [StringValue("$.jqplot.AxisTickRenderer")]
+    AxisTickRenderer,
+
+    /// <summary>
+    /// The default jqPlot grid renderer, creating a grid on a canvas 
+    /// element.  The renderer has no additional options beyond the Grid class.
+    /// </summary>
+    [StringValue("$.jqplot.CanvasGridRenderer")]
+    CanvasGridRenderer,
+
+    /// <summary>
+    /// The default title renderer for jqPlot.  This class has no options 
+    /// beyond the Title class.
+    /// </summary>
+    [StringValue("$.jqplot.DivTitleRenderer")]
+    DivTitleRenderer,
+
+    /// <summary>
+    /// The default jqPlot axis renderer, creating a numeric axis.  
+    /// The renderer has no additional options beyond the Axis object.
+    /// </summary>
+    [StringValue("$.jqplot.LinearAxisRenderer")]
+    LinearAxisRenderer,
+
+    /// <summary>
+    /// Default marker renderer, rendering the points on the line
+    /// </summary>
+    [StringValue("$.jqplot.MarkerRenderer")]
+    MarkerRenderer,
+
+    /// <summary>
+    /// The default jqPlot shape renderer.  Given a set of points will plot 
+    /// them and either stroke a line (fill = false) or fill them (fill = true).  
+    /// If a filled shape is desired, closePath = true must also be set to close the shape.
+    /// </summary>
+    [StringValue("$.jqplot.shapeRenderer")]
+    ShapeRenderer,
+
+    /// <summary>
+    /// The default jqPlot shadow renderer, rendering shadows behind shapes.
+    /// </summary>
+    [StringValue("$.jqplot.shadowRenderer")]
+    ShadowRenderer,
+
+    /// <summary>
+    /// Renderer to place labels on the axes.
+    /// </summary>
+    [StringValue("$.jqplot.AxisLabelRenderer")]
+    AxisLabelRenderer,
+
     /// <summary>
     /// Requires: jqplot.canvasTextRenderer.min.js, jqplot.canvasAxisLabelRenderer.min.js plugins
     /// </summary>
@@ -53,50 +104,6 @@ namespace WebExtras.JQPlot.SubOptions
     /// Requires: jqplot.DateAxisRenderer.min.js
     /// </summary>
     [StringValue("$.jqplot.DateAxisRenderer")]
-    DateAxisRenderer
+    DateAxisRenderer,
   }
-
-  ///// <summary>
-  ///// EJQPlotRenderer enum's custom Json Converter
-  ///// </summary>
-  //[Serializable]
-  //public class EJQPlotRendererJsonConverter : JsonConverter
-  //{
-  //  /// <summary>
-  //  /// Determines whether this instance can convert the specified object type
-  //  /// </summary>
-  //  /// <param name="objectType">Type of the object</param>
-  //  /// <returns>true if this instance can convert the specified object type; otherwise, false</returns>
-  //  public override bool CanConvert(Type objectType)
-  //  {
-  //    return typeof(EJQPlotRenderer).IsAssignableFrom(objectType);
-  //  }
-
-  //  /// <summary>
-  //  /// Reads the JSON representation of the object
-  //  /// </summary>
-  //  /// <param name="reader">The Newtonsoft.Json.JsonReader to read from</param>
-  //  /// <param name="objectType">Type of the object</param>
-  //  /// <param name="existingValue">The existing value of object being read</param>
-  //  /// <param name="serializer">The calling serializer</param>
-  //  /// <returns>The object value</returns>
-  //  public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
-  //  {
-  //    return existingValue == null ? null : Enum.Parse(typeof(EJQPlotRenderer), existingValue.ToString().Split('.').Last());
-  //  }
-
-  //  /// <summary>
-  //  /// Writes the JSON representation of the object
-  //  /// </summary>
-  //  /// <param name="writer">The Newtonsoft.Json.JsonWriter to write to</param>
-  //  /// <param name="value">The Newtonsoft.Json.JsonWriter to write to</param>
-  //  /// <param name="serializer">The Newtonsoft.Json.JsonWriter to write to</param>
-  //  public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
-  //  {
-  //    Enum val = (EJQPlotRenderer)value;
-
-  //    writer.WriteRawValue(val.GetStringValue());
-  //  }
-  //}
-
 }

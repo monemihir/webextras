@@ -17,35 +17,26 @@
 */
 
 using System;
-using WebExtras.Core;
+
 
 #pragma warning disable 1591
 
-namespace WebExtras.JQPlot.SubOptions
+namespace WebExtras.JQPlot.RendererOptions
 {
   /// <summary>
-  /// Chart renderer type
+  /// Marker style
   /// </summary>
   [Serializable]
-  public enum EJQPlotChartRenderer
+  public enum EMarkerStyle
   {
-    /// <summary>
-    /// The default line renderer for jqPlot, this class has no options beyond the Series class.  
-    /// Draws series as a line.
-    /// </summary>
-    [StringValue("$.jqplot.LineRenderer")]
-    LineRenderer,
-
-    /// <summary>
-    /// Requires: jqplot.barRenderer.min.js
-    /// </summary>
-    [StringValue("$.jqplot.BarRenderer")]
-    BarRenderer,
-
-    /// <summary>
-    /// Requires: jqplot.ohlcRenderer.min.js
-    /// </summary>
-    [StringValue("$.jqplot.OHLCRenderer")]
-    OHLCRenderer
+    Diamond,
+    Circle,
+    Square,
+    X,
+    Plus,
+    Dash,
+    FilledDiamond,
+    FilledCircle,
+    FilledSquare
   }
 }

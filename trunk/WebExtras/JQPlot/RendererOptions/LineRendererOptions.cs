@@ -16,36 +16,29 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System;
-using WebExtras.Core;
-
-#pragma warning disable 1591
-
-namespace WebExtras.JQPlot.SubOptions
+namespace WebExtras.JQPlot.RendererOptions
 {
   /// <summary>
-  /// Chart renderer type
+  /// Line renderer options
   /// </summary>
-  [Serializable]
-  public enum EJQPlotChartRenderer
+  public class LineRendererOptions : IRendererOptions
   {
     /// <summary>
-    /// The default line renderer for jqPlot, this class has no options beyond the Series class.  
-    /// Draws series as a line.
+    /// True to highlight area on a filled plot when moused over.  
+    /// This must be false to enable highlightMouseDown to highlight 
+    /// when clicking on an area on a filled plot.
     /// </summary>
-    [StringValue("$.jqplot.LineRenderer")]
-    LineRenderer,
+    public bool? highlightMouseOver { get; set; }
 
     /// <summary>
-    /// Requires: jqplot.barRenderer.min.js
+    /// True to highlight when a mouse button is pressed over an area 
+    /// on a filled plot.  This will be disabled if highlightMouseOver is true.
     /// </summary>
-    [StringValue("$.jqplot.BarRenderer")]
-    BarRenderer,
+    public bool? highlightMouseDown { get; set; }
 
     /// <summary>
-    /// Requires: jqplot.ohlcRenderer.min.js
+    /// CSS color to use when highlighting an area on a filled plot.
     /// </summary>
-    [StringValue("$.jqplot.OHLCRenderer")]
-    OHLCRenderer
+    public string highlightColor { get; set; }
   }
 }

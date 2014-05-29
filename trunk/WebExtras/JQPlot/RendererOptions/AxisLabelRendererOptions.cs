@@ -16,29 +16,26 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-#pragma warning disable 1591
-
-namespace WebExtras.JQPlot.SubOptions
+namespace WebExtras.JQPlot.RendererOptions
 {
   /// <summary>
-  /// Marker style
+  /// Axis label renderer options
   /// </summary>
-  [Serializable]
-  public enum EMarkerStyle
+  public class AxisLabelRendererOptions : IRendererOptions
   {
-    Diamond,
-    Circle,
-    Square,
-    X,
-    Plus,
-    Dash,
-    FilledDiamond,
-    FilledCircle,
-    FilledSquare
+    /// <summary>
+    /// Whether or not to show the tick (mark and label).
+    /// </summary>
+    public bool? show { get; set; }
+
+    /// <summary>
+    /// The text or html for the label.
+    /// </summary>
+    public string label { get; set; }
+
+    /// <summary>
+    /// true to escape HTML entities in the label.
+    /// </summary>
+    public bool? escapeHTML { get; set; }
   }
 }
