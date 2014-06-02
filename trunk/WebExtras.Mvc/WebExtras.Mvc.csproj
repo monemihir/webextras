@@ -97,6 +97,8 @@
     <Compile Include="Bootstrap\EBootstrapProgressBar.cs" />
     <Compile Include="Bootstrap\EFontAwesomeIcon.cs" />
     <Compile Include="Bootstrap\EFontAwesomeIconSize.cs" />
+    <Compile Include="Core\CookiesNotEnabledException.cs" />
+    <Compile Include="Core\CheckCookiesAttribute.cs" />
     <Compile Include="Core\NoCssFrameworkException.cs" />
     <Compile Include="Core\ECssFramework.cs" />
     <Compile Include="Core\MessageStringValueDeciders.cs" />

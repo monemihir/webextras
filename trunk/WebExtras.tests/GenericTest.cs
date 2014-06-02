@@ -65,14 +65,18 @@ namespace WebExtras.tests
     /// Test that all Enum properties of all types have custom
     /// JsonConverter objects attached
     /// </summary>
-    [TestMethod, Ignore]
+    [TestMethod]
     public void All_Enums_Have_JsonConverters_Attached()
     {
       // Arrange
-      const string namespaceToSearch = "WebExtras.JQPlot";
+      const string namespaceToSearch = "WebExtras";
       List<Type> knownEnumTypes = Assembly.LoadFrom("WebExtras.dll").GetTypes()
         .Where(t => !string.IsNullOrEmpty(t.Namespace) && t.Namespace.StartsWith(namespaceToSearch))
         .ToList();
+      string[] ignoredPropertyTypes = new string[] { 
+        "WebExtras.JQDataTables.ESort",
+        "WebExtras.JQDataTables.EPagination"
+      };
 
       // Act & Assert
       foreach (Type t in knownEnumTypes)
@@ -81,12 +85,17 @@ namespace WebExtras.tests
 
         foreach (var prop in props)
         {
-          if (!prop.PropertyType.IsEnum)
+          Type actualType = prop.PropertyType.Name.StartsWith("Nullable") ? prop.PropertyType.GetGenericArguments()[0] : prop.PropertyType;
+          
+          if (!actualType.IsEnum)
             continue;
 
-          object[] arr = prop.GetCustomAttributes(typeof(JsonConverter), false);
+          if (ignoredPropertyTypes.Contains(actualType.FullName))
+            continue;
 
-          Assert.IsTrue(arr.Length == 1, "Property: " + prop.Name + " is not decorated with a custom JsonConverter");
+          object[] arr = prop.GetCustomAttributes(typeof(JsonConverterAttribute), false);
+
+          Assert.IsTrue(arr.Length == 1, "Property: " + t.FullName + "." + prop.Name + " is not decorated with a custom JsonConverter");
         }
       }
     }
