@@ -26,6 +26,7 @@ namespace WebExtras.Core
   /// to resolve to STRING rather than the default INT
   /// </summary>
   [Serializable]
+  [AttributeUsage(AttributeTargets.Field, AllowMultiple = false, Inherited = false)]
   public class StringValueAttribute : Attribute
   {
     /// <summary>

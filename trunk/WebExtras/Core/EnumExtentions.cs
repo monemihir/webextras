@@ -50,31 +50,24 @@ namespace WebExtras.Core
       string output = null;
       Type type = value.GetType();
       FieldInfo fi = type.GetField(value.ToString());
-      StringValueAttribute[] attrs = fi.GetCustomAttributes(typeof(StringValueAttribute), false) as StringValueAttribute[];
-      if (attrs != null && attrs.Length > 0)
+      StringValueAttribute[] attrs = (StringValueAttribute[]) fi.GetCustomAttributes(typeof(StringValueAttribute), false);
+      
+      if (attrs.Length > 0)
       {
         if (attrs[0].HasCustomDecider)
         {
           var obj = Activator.CreateInstance(attrs[0].ValueDeciderType);
 
-          MethodInfo decideMethod = obj.GetType().GetMethod("Decide");
+          MethodInfo decideMethod = obj.GetType().GetMethod("Decide", new[] { typeof(object) });
 
-          output = (string)decideMethod.Invoke(obj, new object[] { sender });
+          output = (string)decideMethod.Invoke(obj, new[] { sender });
         }
         else
         {
           output = attrs[0].Value;
         }
       }
-
-
-
       
-
-
-
-
-
       return output;
     }
   }
