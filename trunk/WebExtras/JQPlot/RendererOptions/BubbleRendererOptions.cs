@@ -17,6 +17,8 @@
 */
 
 
+using Newtonsoft.Json;
+
 namespace WebExtras.JQPlot.RendererOptions
 {
   /// <summary>
@@ -24,6 +26,12 @@ namespace WebExtras.JQPlot.RendererOptions
   /// </summary>
   public class BubbleRendererOptions : IRendererOptions
   {
+    /// <summary>
+    /// Name of the associated renderer for which these options are
+    /// </summary>
+    [JsonIgnore]
+    public string AssociatedRendererName { get { return "BubbleRenderer"; } }
+
     /// <summary>
     /// True to vary the color of each bubble in this series according to the 
     /// seriesColors array.  False to set each bubble to the color specified 

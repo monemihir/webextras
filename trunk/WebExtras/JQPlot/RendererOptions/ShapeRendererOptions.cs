@@ -17,6 +17,7 @@
 */
 
 using System;
+using Newtonsoft.Json;
 
 namespace WebExtras.JQPlot.RendererOptions
 {
@@ -28,6 +29,12 @@ namespace WebExtras.JQPlot.RendererOptions
   {
     string m_lineJoin;
     string m_lineCap;
+
+    /// <summary>
+    /// Name of the associated renderer for which these options are
+    /// </summary>
+    [JsonIgnore]
+    public string AssociatedRendererName { get { return "ShapeRenderer"; } }
 
     /// <summary>
     /// How line segments of the shadow are joined. Allowed value is 'miter'.

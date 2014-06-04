@@ -28,6 +28,12 @@ namespace WebExtras.JQPlot.RendererOptions
   public class CanvasAxisTickRendererOptions : AxisTickRendererOptionsBase, IRendererOptions
   {
     /// <summary>
+    /// Name of the associated renderer for which these options are
+    /// </summary>
+    [JsonIgnore]
+    public string AssociatedRendererName { get { return "CanvasAxisTickRenderer"; } }
+
+    /// <summary>
     /// angle of text, measured clockwise from x axis.
     /// </summary>
     public int? angle { get; set; }

@@ -17,6 +17,8 @@
 */
 
 
+using Newtonsoft.Json;
+
 namespace WebExtras.JQPlot.RendererOptions
 {
   /// <summary>
@@ -24,6 +26,12 @@ namespace WebExtras.JQPlot.RendererOptions
   /// </summary>
   public class DonutRendererOptions : IRendererOptions
   {
+    /// <summary>
+    /// Name of the associated renderer for which these options are
+    /// </summary>
+    [JsonIgnore]
+    public string AssociatedRendererName { get { return "DonutRenderer"; } }
+
     /// <summary>
     /// Outer diameter of the donut, auto computed by default
     /// </summary>

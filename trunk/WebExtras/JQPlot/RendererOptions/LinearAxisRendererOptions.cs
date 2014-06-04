@@ -17,6 +17,7 @@
 */
 
 using System;
+using Newtonsoft.Json;
 
 namespace WebExtras.JQPlot.RendererOptions
 {
@@ -26,6 +27,12 @@ namespace WebExtras.JQPlot.RendererOptions
   [Serializable]
   public class LinearAxisRendererOptions : IRendererOptions
   {
+    /// <summary>
+    /// Name of the associated renderer for which these options are
+    /// </summary>
+    [JsonIgnore]
+    public string AssociatedRendererName { get { return "LinearAxisRenderer"; } }
+
     /// <summary>
     /// EXPERIMENTAL!!  Use at your own risk!  Works only with linear axes and the default tick renderer.  
     /// Array of [start, stop] points to create a broken axis.  Broken axes have a “jump” in them, which 

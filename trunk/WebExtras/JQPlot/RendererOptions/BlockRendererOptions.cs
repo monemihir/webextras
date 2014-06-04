@@ -17,6 +17,7 @@
 */
 
 using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace WebExtras.JQPlot.RendererOptions
 {
@@ -25,6 +26,12 @@ namespace WebExtras.JQPlot.RendererOptions
   /// </summary>
   public class BlockRendererOptions : IRendererOptions
   {
+    /// <summary>
+    /// Name of the associated renderer for which these options are
+    /// </summary>
+    [JsonIgnore]
+    public string AssociatedRendererName { get { return "BlockRenderer"; } }
+
     /// <summary>
     /// Default css styles that will be applied to all data blocks. These values 
     /// will be overridden by css styles supplied with the individulal data points.

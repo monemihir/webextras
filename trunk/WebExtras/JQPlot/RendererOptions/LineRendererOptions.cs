@@ -17,6 +17,7 @@
 */
 
 using System;
+using Newtonsoft.Json;
 
 namespace WebExtras.JQPlot.RendererOptions
 {
@@ -26,6 +27,12 @@ namespace WebExtras.JQPlot.RendererOptions
   [Serializable]
   public class LineRendererOptions : IRendererOptions
   {
+    /// <summary>
+    /// Name of the associated renderer for which these options are
+    /// </summary>
+    [JsonIgnore]
+    public string AssociatedRendererName { get { return "LineRenderer"; } }
+
     /// <summary>
     /// True to highlight area on a filled plot when moused over.  
     /// This must be false to enable highlightMouseDown to highlight 

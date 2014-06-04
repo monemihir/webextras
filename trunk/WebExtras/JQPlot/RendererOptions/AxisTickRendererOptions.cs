@@ -28,6 +28,12 @@ namespace WebExtras.JQPlot.RendererOptions
   public class AxisTickRendererOptions : AxisTickRendererOptionsBase, IRendererOptions
   {
     /// <summary>
+    /// Name of the associated renderer for which these options are
+    /// </summary>
+    [JsonIgnore]
+    public string AssociatedRendererName { get { return "AxisTickRenderer"; } }
+
+    /// <summary>
     /// Length of the tick beyond the grid in pixels.
     /// </summary>
     [Obsolete("Use 'markSize' instead")]

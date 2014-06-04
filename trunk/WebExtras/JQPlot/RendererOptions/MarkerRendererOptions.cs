@@ -29,6 +29,12 @@ namespace WebExtras.JQPlot.RendererOptions
   public class MarkerRendererOptions : IRendererOptions
   {
     /// <summary>
+    /// Name of the associated renderer for which these options are
+    /// </summary>
+    [JsonIgnore]
+    public string AssociatedRendererName { get { return "MarkerRenderer"; } }
+
+    /// <summary>
     /// Whether or not to show the marker.
     /// </summary>
     public bool? show;

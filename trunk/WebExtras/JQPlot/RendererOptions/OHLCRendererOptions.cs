@@ -28,6 +28,12 @@ namespace WebExtras.JQPlot.RendererOptions
   public class OHLCRendererOptions : IRendererOptions
   {
     /// <summary>
+    /// Name of the associated renderer for which these options are
+    /// </summary>
+    [JsonIgnore]
+    public string AssociatedRendererName { get { return "OHLCRenderer"; } }
+
+    /// <summary>
     /// true to render chart as candleStick.  Must have an open 
     /// price, cannot be a hlc chart.
     /// </summary>

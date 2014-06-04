@@ -28,6 +28,12 @@ namespace WebExtras.JQPlot.RendererOptions
   public class BarRendererOptions : IRendererOptions
   {
     /// <summary>
+    /// Name of the associated renderer for which these options are
+    /// </summary>
+    [JsonIgnore]
+    public string AssociatedRendererName { get { return "BarRenderer"; } }
+
+    /// <summary>
     /// Number of pixels between adjacent bars at the same axis value.
     /// </summary>
     public int? barPadding { get; set; }

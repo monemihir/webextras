@@ -17,6 +17,7 @@
 */
 
 using System;
+using Newtonsoft.Json;
 
 namespace WebExtras.JQPlot.RendererOptions
 {
@@ -28,6 +29,12 @@ namespace WebExtras.JQPlot.RendererOptions
   {
     string m_lineJoin;
     string m_lineCap;
+
+    /// <summary>
+    /// Name of the associated renderer for which these options are
+    /// </summary>
+    [JsonIgnore]
+    public string AssociatedRendererName { get { return "ShadowRenderer"; } }
 
     /// <summary>
     /// Angle of the shadow in degrees.  Measured counter-clockwise from the x axis.

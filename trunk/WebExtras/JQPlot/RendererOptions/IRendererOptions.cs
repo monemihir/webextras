@@ -24,6 +24,9 @@ namespace WebExtras.JQPlot.RendererOptions
   /// </summary>
   public interface IRendererOptions
   {
-    // nothing to do here
+    /// <summary>
+    /// Name of the associated renderer for which these options are
+    /// </summary>
+    string AssociatedRendererName { get; }
   }
 }

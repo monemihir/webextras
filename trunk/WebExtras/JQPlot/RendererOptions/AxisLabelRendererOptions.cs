@@ -17,6 +17,7 @@
 */
 
 using System;
+using Newtonsoft.Json;
 
 namespace WebExtras.JQPlot.RendererOptions
 {
@@ -26,6 +27,12 @@ namespace WebExtras.JQPlot.RendererOptions
   [Serializable]
   public class AxisLabelRendererOptions : IRendererOptions
   {
+    /// <summary>
+    /// Name of the associated renderer for which these options are
+    /// </summary>
+    [JsonIgnore]
+    public string AssociatedRendererName { get { return "AxisLabelRenderer"; } }
+
     /// <summary>
     /// Whether or not to show the tick (mark and label).
     /// </summary>
