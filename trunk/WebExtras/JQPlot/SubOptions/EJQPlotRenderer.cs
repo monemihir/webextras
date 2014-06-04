@@ -112,6 +112,12 @@ namespace WebExtras.JQPlot.SubOptions
     /// Requires: jqplot.DonutRenderer.min.js
     /// </summary>
     [StringValue("$.jqplot.DonutLegendRenderer")]
-    DonutLegendRenderer
+    DonutLegendRenderer,
+
+    /// <summary>
+    /// Requires: $.jqplot.enhancedLegendRenderer.min.js
+    /// </summary>
+    [StringValue("$.jqplot.enhancedLegendRenderer")]
+    EnhancedLegendRenderer
   }
 }

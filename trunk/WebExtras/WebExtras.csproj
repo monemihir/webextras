@@ -145,11 +145,14 @@
     <Compile Include="JQPlot\RendererOptions\BubbleRendererOptions.cs" />
     <Compile Include="JQPlot\RendererOptions\CanvasAxisLabelRendererOptions.cs" />
     <Compile Include="JQPlot\RendererOptions\CanvasAxisTickRendererOptions.cs" />
+    <Compile Include="JQPlot\RendererOptions\DonutLegendRendererOptions.cs" />
     <Compile Include="JQPlot\RendererOptions\DonutRendererOptions.cs" />
     <Compile Include="JQPlot\RendererOptions\ELabelPosition.cs" />
     <Compile Include="JQPlot\RendererOptions\EMarkerStyle.cs" />
+    <Compile Include="JQPlot\RendererOptions\EnhancedLegendRendererOptions.cs" />
     <Compile Include="JQPlot\RendererOptions\ETickMarkLocation.cs" />
     <Compile Include="JQPlot\RendererOptions\IRendererOptions.cs" />
+    <Compile Include="JQPlot\RendererOptions\LegendRendererOptionsBase.cs" />
     <Compile Include="JQPlot\RendererOptions\LinearAxisRendererOptions.cs" />
     <Compile Include="JQPlot\RendererOptions\LineRendererOptions.cs" />
     <Compile Include="JQPlot\RendererOptions\MarkerRendererOptions.cs" />
