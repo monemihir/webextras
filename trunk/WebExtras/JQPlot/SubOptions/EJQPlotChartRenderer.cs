@@ -37,6 +37,8 @@ namespace WebExtras.JQPlot.SubOptions
     LineRenderer,
 
     /// <summary>
+    /// A plugin renderer for jqPlot to draw a bar plot.  Draws series as a line.
+    /// 
     /// Requires: jqplot.barRenderer.min.js
     /// </summary>
     [StringValue("$.jqplot.BarRenderer")]
@@ -46,6 +48,72 @@ namespace WebExtras.JQPlot.SubOptions
     /// Requires: jqplot.ohlcRenderer.min.js
     /// </summary>
     [StringValue("$.jqplot.OHLCRenderer")]
-    OHLCRenderer
+    OHLCRenderer,
+
+    /// <summary>
+    /// Renderer which draws lines as stacked bezier curves.  Data for the line will not be 
+    /// specified as an array of [x, y] data point values, but as a an array of [start point, 
+    /// bezier curve] So, the line is specified as: [[xstart, ystart], [cp1x, cp1y, cp2x, 
+    /// cp2y, xend, yend]]. 
+    /// 
+    /// Requires: $.jqplot.BezierCurveRenderer.min.js
+    /// </summary>
+    [StringValue("$.jqplot.BezierCurveRenderer")]
+    BezierCurveRenderer,
+
+    /// <summary>
+    /// Plugin renderer to draw a x-y block chart.  A Block chart has data points displayed 
+    /// as colored squares with a text label inside.  Data must be supplied in the form:
+    /// 
+    /// [[x1, y1, "label 1", {css}], [x2, y2, "label 2", {css}], ...]
+    /// 
+    /// The label and css object are optional.  If the label is ommitted, the box will collapse 
+    /// unless a css height and/or width is specified.
+    /// 
+    /// The css object is an object specifying css properties such as:
+    /// 
+    /// {background:'#4f98a5', border:'3px solid gray', padding:'1px'}
+    /// 
+    /// Note that css properties specified with the data point override defaults specified with 
+    /// the series.
+    /// 
+    /// Requires: $.jqplot.BlockRenderer.min.js
+    /// </summary>
+    [StringValue("$.jqlot.BlockRenderer")]
+    BlockRenderer,
+
+    /// <summary>
+    /// Plugin renderer to draw a bubble chart.  A Bubble chart has data points displayed as 
+    /// colored circles with an optional text label inside.
+    /// 
+    /// Data must be supplied in the form:
+    /// 
+    /// [[x1, y1, r1, <label /> or {label:'text', color:color}], ...]
+    /// 
+    /// where the label or options object is optional.
+    /// 
+    /// Note that all bubble colors will be the same unless the “varyBubbleColors” option is 
+    /// set to true.  Colors can be specified in the data array or in the seriesColors array 
+    /// option on the series.  If no colors are defined, the default jqPlot series of 16 
+    /// colors are used.  Colors are automatically cycled around again if there are more 
+    /// bubbles than colors.
+    /// 
+    /// Bubbles are autoscaled by default to fit within the chart area while maintaining 
+    /// relative sizes.  If the “autoscaleBubbles” option is set to false, the r(adius) values 
+    /// in the data array a treated as literal pixel values for the radii of the bubbles.
+    /// 
+    /// Requires: $.jqplot.BubbleRenderer.min.js
+    /// </summary>
+    [StringValue("$.jqplot.BubbleRenderer")]
+    BubbleRenderer,
+
+    /// <summary>
+    /// Plugin renderer to draw a donut chart. x values, if present, will be used as slice 
+    /// labels. y values give slice size.
+    /// 
+    /// Requires: $.jqplot.DonutRenderer.min.js
+    /// </summary>
+    [StringValue("$.jqplot.DonutRenderer")]
+    DonutRenderer
   }
 }

@@ -105,5 +105,13 @@ namespace WebExtras.JQPlot.SubOptions
     /// </summary>
     [StringValue("$.jqplot.DateAxisRenderer")]
     DateAxisRenderer,
+
+    /// <summary>
+    /// Legend Renderer specific to donut plots.  Set by default when user creates a donut plot.
+    /// 
+    /// Requires: jqplot.DonutRenderer.min.js
+    /// </summary>
+    [StringValue("$.jqplot.DonutLegendRenderer")]
+    DonutLegendRenderer
   }
 }
