@@ -16,7 +16,7 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-
+using System;
 using Newtonsoft.Json;
 
 namespace WebExtras.JQPlot.RendererOptions
@@ -24,6 +24,7 @@ namespace WebExtras.JQPlot.RendererOptions
   /// <summary>
   /// Bubble renderer options
   /// </summary>
+  [Serializable]
   public class BubbleRendererOptions : IRendererOptions
   {
     /// <summary>

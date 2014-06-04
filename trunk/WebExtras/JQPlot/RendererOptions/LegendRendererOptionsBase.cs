@@ -16,12 +16,14 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+using System;
 
 namespace WebExtras.JQPlot.RendererOptions
 {
   /// <summary>
   /// Legend rendere base options
   /// </summary>
+  [Serializable]
   public abstract class LegendRendererOptionsBase
   {
     /// <summary>
