@@ -17,34 +17,45 @@
 */
 
 using System;
-using WebExtras.JQPlot.SubOptions;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Newtonsoft.Json;
 
-namespace WebExtras.JQPlot
+namespace WebExtras.JQPlot.SubOptions
 {
   /// <summary>
-  /// jqPlot axes
+  /// Log axis options
   /// </summary>
   [Serializable]
-  public class JQPlotAxes
+  public class LogAxisOptions : AxisOptions
   {
     /// <summary>
-    /// X1 axis
+    /// Associated axis type
     /// </summary>
-    public IAxisOptions xaxis { get; set; }
+    [JsonIgnore]
+    public new string AxisType
+    {
+      get { return "LogAxis"; }
+    }
 
     /// <summary>
-    /// X2 axis
+    /// A class of a rendering engine that handles tick generation, scaling input 
+    /// data to pixel grid units and drawing the axis element.
     /// </summary>
-    public IAxisOptions x2axis { get; set; }
+    [JsonConverter(typeof(JQPlotEnumStringValueJsonConverter))]
+    public new EJQPlotRenderer? renderer { get { return EJQPlotRenderer.LogAxisRenderer; } }
 
     /// <summary>
-    /// Y1 axis
+    /// The logarithmic base, commonly 2, 10 or Math.E
     /// </summary>
-    public IAxisOptions yaxis { get; set; }
+    [JsonProperty(PropertyName = "base")]
+    public object logBase { get; set; }
 
     /// <summary>
-    /// Y2 axis
+    /// ’even’ or ‘power’.  ‘even’ gives equal pixel spacing of the ticks on the plot.
+    /// ‘power’ gives ticks in powers of 10.
     /// </summary>
-    public IAxisOptions y2axis { get; set; }
+    public string tickDistribution { get; set; }
   }
 }

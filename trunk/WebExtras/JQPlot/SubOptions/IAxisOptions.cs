@@ -4,7 +4,7 @@
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Lesser General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
+* the Free Software Foundation, either version 2 of the License, or
 * (at your option) any later version.
 *
 * This program is distributed in the hope that it will be useful,
@@ -17,34 +17,20 @@
 */
 
 using System;
-using WebExtras.JQPlot.SubOptions;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
-namespace WebExtras.JQPlot
+namespace WebExtras.JQPlot.SubOptions
 {
   /// <summary>
-  /// jqPlot axes
+  /// Generic interface implemented by all axis options
   /// </summary>
-  [Serializable]
-  public class JQPlotAxes
+  public interface IAxisOptions
   {
     /// <summary>
-    /// X1 axis
+    /// Associated axis type
     /// </summary>
-    public IAxisOptions xaxis { get; set; }
-
-    /// <summary>
-    /// X2 axis
-    /// </summary>
-    public IAxisOptions x2axis { get; set; }
-
-    /// <summary>
-    /// Y1 axis
-    /// </summary>
-    public IAxisOptions yaxis { get; set; }
-
-    /// <summary>
-    /// Y2 axis
-    /// </summary>
-    public IAxisOptions y2axis { get; set; }
+    string AxisType { get; }
   }
 }

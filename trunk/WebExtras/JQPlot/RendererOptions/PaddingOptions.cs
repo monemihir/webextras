@@ -17,34 +17,36 @@
 */
 
 using System;
-using WebExtras.JQPlot.SubOptions;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
-namespace WebExtras.JQPlot
+namespace WebExtras.JQPlot.RendererOptions
 {
   /// <summary>
-  /// jqPlot axes
+  /// Padding options
   /// </summary>
   [Serializable]
-  public class JQPlotAxes
+  public class PaddingOptions
   {
     /// <summary>
-    /// X1 axis
+    /// Top padding in pixels
     /// </summary>
-    public IAxisOptions xaxis { get; set; }
+    public int? top { get; set; }
 
     /// <summary>
-    /// X2 axis
+    /// Bottom padding in pixels
     /// </summary>
-    public IAxisOptions x2axis { get; set; }
+    public int? bottom { get; set; }
 
     /// <summary>
-    /// Y1 axis
+    /// Left padding in pixels
     /// </summary>
-    public IAxisOptions yaxis { get; set; }
+    public int? left { get; set; }
 
     /// <summary>
-    /// Y2 axis
+    /// Right padding in pixels
     /// </summary>
-    public IAxisOptions y2axis { get; set; }
+    public int? right { get; set; }
   }
 }

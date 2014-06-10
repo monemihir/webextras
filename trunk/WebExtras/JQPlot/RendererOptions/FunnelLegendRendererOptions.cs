@@ -4,7 +4,7 @@
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Lesser General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
+* the Free Software Foundation, either version 2 of the License, or
 * (at your option) any later version.
 *
 * This program is distributed in the hope that it will be useful,
@@ -17,34 +17,20 @@
 */
 
 using System;
-using WebExtras.JQPlot.SubOptions;
+using Newtonsoft.Json;
 
-namespace WebExtras.JQPlot
+namespace WebExtras.JQPlot.RendererOptions
 {
   /// <summary>
-  /// jqPlot axes
+  /// Donut legend renderer options
   /// </summary>
   [Serializable]
-  public class JQPlotAxes
+  public class FunnelLegendRendererOptions : LegendRendererOptionsBase, IRendererOptions
   {
     /// <summary>
-    /// X1 axis
+    /// Name of the associated renderer for which these options are
     /// </summary>
-    public IAxisOptions xaxis { get; set; }
-
-    /// <summary>
-    /// X2 axis
-    /// </summary>
-    public IAxisOptions x2axis { get; set; }
-
-    /// <summary>
-    /// Y1 axis
-    /// </summary>
-    public IAxisOptions yaxis { get; set; }
-
-    /// <summary>
-    /// Y2 axis
-    /// </summary>
-    public IAxisOptions y2axis { get; set; }
+    [JsonIgnore]
+    public string AssociatedRendererName { get { return "FunnelLegendRenderer"; } }
   }
 }

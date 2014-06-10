@@ -118,6 +118,22 @@ namespace WebExtras.JQPlot.SubOptions
     /// Requires: $.jqplot.enhancedLegendRenderer.min.js
     /// </summary>
     [StringValue("$.jqplot.enhancedLegendRenderer")]
-    EnhancedLegendRenderer
+    EnhancedLegendRenderer,
+
+    /// <summary>
+    /// Legend Renderer specific to funnel plots.  Set by default when user creates a funnel plot.
+    /// 
+    /// Requires: jqplot.DonutRenderer.min.js
+    /// </summary>
+    [StringValue("$.jqplot.FunnelLegendRenderer")]
+    FunnelLegendRenderer,
+
+    /// <summary>
+    /// A plugin for a jqPlot to render a logarithmic axis.
+    /// 
+    /// Requires: $.jqplot.logAxisRenderer.min.js
+    /// </summary>
+    [StringValue("$.jqplot.LogAxisRenderer")]
+    LogAxisRenderer
   }
 }

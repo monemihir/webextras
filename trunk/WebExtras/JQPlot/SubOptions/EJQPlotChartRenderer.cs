@@ -114,6 +114,15 @@ namespace WebExtras.JQPlot.SubOptions
     /// Requires: $.jqplot.DonutRenderer.min.js
     /// </summary>
     [StringValue("$.jqplot.DonutRenderer")]
-    DonutRenderer
+    DonutRenderer,
+
+    /// <summary>
+    /// Plugin renderer to draw a funnel chart. x values, if present, will be used as labels. y values give area size.
+    /// Funnel charts will draw a single series only.
+    /// 
+    /// Requires: $.jqplot.funnelRenderer.min.js
+    /// </summary>
+    [StringValue("$.jqplot.FunnelRenderer")]
+    FunnelRenderer
   }
 }

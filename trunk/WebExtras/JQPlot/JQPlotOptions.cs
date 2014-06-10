@@ -35,7 +35,7 @@ namespace WebExtras.JQPlot
     /// <summary>
     /// default options that will be applied to all axes.
     /// </summary>
-    public AxisOptions axesDefaults;
+    public IAxisOptions axesDefaults;
 
     /// <summary>
     /// default options that will be applied to all series.
