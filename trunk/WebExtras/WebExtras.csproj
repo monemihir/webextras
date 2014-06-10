@@ -164,6 +164,7 @@
     <Compile Include="JQPlot\RendererOptions\ShapeRendererOptions.cs" />
     <Compile Include="JQPlot\SubOptions\AxisOptions.cs" />
     <Compile Include="JQPlot\RendererOptions\AxisTickRendererOptions.cs" />
+    <Compile Include="JQPlot\SubOptions\CategoryAxisOptions.cs" />
     <Compile Include="JQPlot\SubOptions\EJQPlotChartRenderer.cs" />
     <Compile Include="JQPlot\SubOptions\ELocation.cs" />
     <Compile Include="JQPlot\SubOptions\ELegendPlacement.cs" />
