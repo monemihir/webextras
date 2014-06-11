@@ -43,6 +43,12 @@ namespace WebExtras.Mvc.Html
     /// Submit button
     /// </summary>
     [StringValue("submit")]
-    Submit
+    Submit,
+
+    /// <summary>
+    /// Cancel button
+    /// </summary>
+    [StringValue("button")]
+    Cancel
   }
 }

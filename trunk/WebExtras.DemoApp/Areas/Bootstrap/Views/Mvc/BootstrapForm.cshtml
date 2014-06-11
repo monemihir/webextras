@@ -52,12 +52,17 @@
 @@Html.Button(EButton.Regular, "Take me to google", "window.location='http://www.google.com.au'")
     .AsButton(EBootstrapButton.Inverse, EBootstrapButton.Large)
   </code></pre>
+  @{
+    const string msg = "You can create a button of type EButton.Cancel which takes you back to the previous page. When a button of this" +
+                       "type is created, any onclick event specified will be blatantly ignored.";
+  }
+  @Html.Alert(EMessage.Warning, msg, string.Empty, EFontAwesomeIcon.Flag)
   <p>Output</p>
   <div class="content">
     <p>
       @Html.Hyperlink("Take me to google", "http://www.google.com").AsButton(EBootstrapButton.Default)
       @Html.Hyperlink("Take me to google", "http://www.google.com").AsButton(EBootstrapButton.Primary)
-      @Html.Hyperlink("Take me to google", "http://www.google.com").AsButton(EBootstrapButton.Success)
+      @Html.Button(EButton.Cancel, "Take me back").AsButton(EBootstrapButton.Danger)
     </p>
     <p>
       @Html.Hyperlink("Take me to google", "http://www.google.com").AsButton(EBootstrapButton.Info, EBootstrapButton.Small)
@@ -67,9 +72,9 @@
   </div>
   <p>All available extensions</p>
   <pre><code>
-<span class="comment">// Note that this extension can only be used for hyperlinks and button elements</span>
 .AsButton(type)
   </code></pre>
+  @Html.Alert(EMessage.Warning, "Note that this extension can only be used for hyperlinks and button elements", string.Empty, EFontAwesomeIcon.Flag)
 </div>
 
 <div class="well">
@@ -81,11 +86,10 @@
   <p>Markup</p>
   <pre><code>
 @@Html.DateTextBoxFor(f => f.DateTextBox)
-
-<span class="comment">// Note that this date time picker uses 'i' for minutes</span>
 @@Html.TimeTextBoxFor(f => f.TimeTextBox, new { format = "hh:ii" })                     
 @@Html.DateTimeTextBoxFor(f => f.DateTimeTextBox, new { format = "dd M yyyy hh:ii" })   
   </code></pre>
+  @Html.Alert(EMessage.Warning, "Note that this date time picker uses 'i' for minutes", string.Empty, EFontAwesomeIcon.Flag)
   <p>Output</p>
   <div class="content">
     <div class="row-fluid keep-center">

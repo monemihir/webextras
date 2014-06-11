@@ -114,7 +114,6 @@
     All available extensions
   </p>
   <pre><code>
-<span class="comment">// Note that the 'icon' can be a default Bootstrap icon or a Font Awesome icon</span>
 .AddIcon(bootstrap-icon)                
 .AddIcon(fontawesome-icon)
 .AddIcon(fontawesome-icon, fontawesome-icon-size)
@@ -122,6 +121,7 @@
 .AddWhiteIcon(fontawesome-icon) 
 .AddWhiteIcon(fontawesome-icon, fontawesome-icon-size)
   </code></pre>
+@Html.Alert(EMessage.Warning, "Note that the 'icon' can be a default Bootstrap icon or a Font Awesome icon", string.Empty, EFontAwesomeIcon.Flag)
 </div>
 
 <div class="well">
@@ -144,9 +144,9 @@
     All available extensions
   </p>
   <pre><code>
-<span class="comment">// Note that this extension can only be used for hyperlinks and button elements</span> 
 .AsButton(type) 
   </code></pre>
+  @Html.Alert(EMessage.Warning, "Note that this extension can only be used for hyperlinks and button elements", string.Empty, EFontAwesomeIcon.Flag)
 </div>
 
 <div class="well">

@@ -41,6 +41,18 @@ namespace WebExtras.Mvc.Html
     /// </summary>
     /// <param name="type">Button type</param>
     /// <param name="text">Button text</param>
+    /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
+    public Button(EButton type, string text, object htmlAttributes = null)
+      : this(type, text, string.Empty, null)
+    { 
+      // nothing to do here
+    }
+
+    /// <summary>
+    /// Constructor
+    /// </summary>
+    /// <param name="type">Button type</param>
+    /// <param name="text">Button text</param>
     /// <param name="onclick">Javascript onclick event of the button</param>
     /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
     public Button(EButton type, string text, string onclick, object htmlAttributes = null)
@@ -63,9 +75,15 @@ namespace WebExtras.Mvc.Html
       InnerHtml = text;
       this["type"] = type.GetStringValue();
 
+      if (type == EButton.Cancel)
+      {
+        OnClick = "javascript:window.history.back()";
+        return;
+      }
+
       if (string.IsNullOrWhiteSpace(onclick))
         return;
-
+      
       if (isNavigation)
         OnClick = "window.location='" + onclick + "'";
       else
