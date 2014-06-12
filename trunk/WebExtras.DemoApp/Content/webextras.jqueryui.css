@@ -119,10 +119,8 @@ select {
   padding: 5px 0;
   margin: 0 0 2px 0;
 }
-*[class*=ui-alert] .ui-state-success,
-*[class*=ui-alert] .ui-state-highlight,
-*[class*=ui-alert] .ui-state-error {
-  padding: 2px;
+*[class*=ui-alert] *[class*=ui-state] {
+  padding: 3px 5px;
 }
 *[class*=ui-alert] .ui-icon {
   margin-top: 2px;

@@ -50,12 +50,17 @@
   @@Html.Button(EButton.Regular, "Take me to google", "window.location='http://www.google.com.au'")
     .AsButton(EGumbyButton.Info, EGumbyButtonStyle.Large)
   </code></pre>
+   @{
+    const string msg = "You can create a button of type <strong>EButton.Cancel</strong> which takes you back to the previous page. When a button of this" +
+                       "type is created, any onclick event specified will be blatantly ignored.";
+  }
+  @Html.Alert(EMessage.Warning, msg, string.Empty, EGumbyIcon.Flag)
   <p>Output</p>
   <div class="content">
     <p>
       @Html.Hyperlink("Take me to google", "http://www.google.com").AsButton(EGumbyButton.Default)
       @Html.Hyperlink("Take me to google", "http://www.google.com").AsButton(EGumbyButton.Primary)
-      @Html.Hyperlink("Take me to google", "http://www.google.com").AsButton(EGumbyButton.Success)
+      @Html.Button(EButton.Cancel, "Take me back").AsButton(EGumbyButton.Danger)
     </p>
     <p>
       @Html.Hyperlink("Take me to google", "http://www.google.com").AsButton(EGumbyButton.Info, EGumbyButtonStyle.Large)
@@ -65,8 +70,8 @@
   </div>
   <p>All available extensions</p>
   <pre><code>
-  <span class="comment">// Note that this extension can only be used for hyperlinks and button elements</span>
   .AsButton(type)
   .AsButton(type, size/style)
   </code></pre>
+  @Html.Alert(EMessage.Warning, "Note that this extension can only be used for hyperlinks and button elements", string.Empty, EGumbyIcon.Flag)
 </div>

@@ -114,11 +114,11 @@
     All available extensions
   </p>
   <pre><code>
-<span class="comment">// Note that the 'Icon' can be a default Bootstrap Icon or a Font Awesome Icon</span>
 .AddIcon(bootstrap-Icon)                
 .AddIcon(fontawesome-Icon)
 .AddIcon(fontawesome-Icon, fontawesome-Icon-size)
   </code></pre>
+  @Html.Alert(EMessage.Warning, "Note that the 'icon' can be a default Bootstrap icon or a Font Awesome icon", string.Empty, EFontAwesomeIcon.Flag)
   <p>
     As of Bootstrap v3.0 all icons/glyphicons are font based. Therefore, you can control the coloring of the
     icons using basic CSS styling.
@@ -148,9 +148,9 @@
     All available extensions
   </p>
   <pre><code>
-<span class="comment">// Note that this extension can only be used for hyperlinks and button elements</span> 
 .AsButton(type) 
   </code></pre>
+  @Html.Alert(EMessage.Warning, "Note that this extension can only be used for hyperlinks and button elements", string.Empty, EFontAwesomeIcon.Flag)
 </div>
 
 <div class="well">

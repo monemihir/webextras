@@ -1,4 +1,4 @@
-﻿.bk666 {
+.bk666 {
   background-color: #666666;
 }
 .well {
@@ -18,6 +18,10 @@
 .gumby-no-touch .navbar ul li:hover .dropdown,
 .gumby-touch .navbar ul li.active .dropdown {
   width: auto;
+}
+.alert {
+  margin: 10px auto;
+  padding: 5px 10px;
 }
 .navbar {
   min-height: 40px;
