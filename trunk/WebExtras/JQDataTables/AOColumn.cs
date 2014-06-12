@@ -33,35 +33,35 @@ namespace WebExtras.JQDataTables
     /// sort. For example first name / last name columns make sense to do a multi-column 
     /// sort over the two columns.
     /// </summary>
-    public int[] aDataSort;
+    public int[] aDataSort { get; set; }
 
     /// <summary>
     /// You can control the default sorting direction, and even alter the behaviour of 
     /// the sort handler (i.e. only allow ascending sorting etc) using this parameter
     /// </summary>
-    public string[] asSorting;
+    public string[] asSorting { get; set; }
 
     /// <summary>
     /// Enable or disable filtering on the data in this column
     /// </summary>
-    public bool? bSearchable;
+    public bool? bSearchable { get; set; }
 
     /// <summary>
     /// Enable / Disable sorting based on this column
     /// </summary>
-    public bool? bSortable;
+    public bool? bSortable { get; set; }
 
     /// <summary>
     /// Flag indicating whether the column is visible
     /// </summary>
-    public bool? bVisible;
+    public bool? bVisible { get; set; }
 
     /// <summary>
     /// The column index (starting from 0!) that you wish a sort to be performed 
     /// upon when this column is selected for sorting. This can be used for sorting 
     /// on hidden columns for example
     /// </summary>
-    public int? iDataSort;
+    public int? iDataSort { get; set; }
 
     /// <summary>
     /// Change the cell type created for the column - either TD cells or TH cells. 
@@ -69,12 +69,12 @@ namespace WebExtras.JQDataTables
     /// allowing them to act as a header for a row (you may wish to add scope='row' 
     /// to the TH elements)
     /// </summary>
-    public string sCellType;
+    public string sCellType { get; set; }
 
     /// <summary>
     /// CSS Class to give to each cell in this column
     /// </summary>
-    public string sClass;
+    public string sClass { get; set; }
 
     /// <summary>
     /// When DataTables calculates the column widths to assign to each column, it 
@@ -88,14 +88,14 @@ namespace WebExtras.JQDataTables
     /// shouldn't need this, and it is not documented on the general 
     /// DataTables.net documentation
     /// </summary>
-    public string sContentPadding;
+    public string sContentPadding { get; set; }
 
     /// <summary>
     /// Allows a default value to be given for a column's data, and will be used 
     /// whenever a null data source is encountered (this can be because mData 
     /// is set to null, or because the data source itself is null)
     /// </summary>
-    public string sDefaultContent;
+    public string sDefaultContent { get; set; }
 
     /// <summary>
     /// This parameter is only used in DataTables' server-side processing. It can 
@@ -105,7 +105,7 @@ namespace WebExtras.JQDataTables
     /// back in an unexpected order (i.e. if you switch your columns around on 
     /// the client-side, your server-side code does not also need updating)
     /// </summary>
-    public string sName;
+    public string sName { get; set; }
 
     /// <summary>
     /// Defines a data source type for the sorting which can be used to read 
@@ -113,12 +113,12 @@ namespace WebExtras.JQDataTables
     /// prior to sorting. This allows sorting to occur on user editable elements 
     /// such as form inputs
     /// </summary>
-    public string sSortDataType;
+    public string sSortDataType { get; set; }
 
     /// <summary>
     /// The title of the column
     /// </summary>
-    public string sTitle;
+    public string sTitle { get; set; }
 
     /// <summary>
     /// The type allows you to specify how the data for this column will be sorted. 
@@ -128,7 +128,7 @@ namespace WebExtras.JQDataTables
     /// For example: "Mar 26, 2008 5:03 PM"
     /// </summary>
     [JsonConverter(typeof(EAOColumnTypeJsonConverter))]
-    public EAOColumn? sType;
+    public EAOColumn? sType { get; set; }
 
     /// <summary>
     /// Defining the width of the column, this parameter may take any CSS value 
@@ -136,7 +136,7 @@ namespace WebExtras.JQDataTables
     /// not been given a specific width through this interface ensuring that the 
     /// table remains readable
     /// </summary>
-    public string sWidth;
+    public string sWidth { get; set; }
 
     /// <summary>
     /// Developer definable function that is called whenever a cell is created (Ajax 
@@ -144,20 +144,20 @@ namespace WebExtras.JQDataTables
     /// compliment to mRender allowing you to modify the DOM element (add background 
     /// colour for example) when the element is available.
     /// </summary>
-    public JsFunc fnCreatedCell;
+    public JsFunc fnCreatedCell { get; set; }
 
     /// <summary>
     /// Custom display function that will be called for the display of each cell in this column.
     /// </summary>
     [Obsolete("Use mRender/mData properties instead")]
-    public JsFunc fnRender;
+    public JsFunc fnRender { get; set; }
 
     /// <summary>
     /// This property can be used to read data from any JSON data source property, including 
     /// deeply nested objects / properties. mData can be given in a number of different ways 
     /// which effect its behaviour: integer, string, null or a <see cref="WebExtras.Core.JsFunc"/> object
     /// </summary>
-    public object mData;
+    public object mData { get; set; }
 
     /// <summary>
     /// This property is the rendering partner to mData and it is suggested that when you want 
@@ -168,7 +168,7 @@ namespace WebExtras.JQDataTables
     /// with the addition of supporting array syntax for easy outputting of arrays (including 
     /// arrays of objects): integer, string or a <see cref="WebExtras.Core.JsFunc"/> object
     /// </summary>
-    public object mRender;
+    public object mRender { get; set; }
 
     /// <summary>
     /// Default constructor

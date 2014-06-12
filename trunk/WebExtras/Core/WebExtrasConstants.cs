@@ -29,9 +29,9 @@ namespace WebExtras.Core
     /// Json.NET data serialization settings
     /// </summary>
     public static JsonSerializerSettings JsonSerializerSettings = new JsonSerializerSettings
-        {
-          Formatting = Formatting.Indented,
-          NullValueHandling = NullValueHandling.Ignore
-        };
+    {
+      Formatting = Formatting.Indented,
+      NullValueHandling = NullValueHandling.Ignore
+    };
   }
 }

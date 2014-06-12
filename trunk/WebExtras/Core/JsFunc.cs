@@ -117,7 +117,7 @@ namespace WebExtras.Core
 
       StringBuilder docReady = new StringBuilder();
       docReady.Append("$(document).ready(function() { ");
-      docReady.Append(fnText.ToString());
+      docReady.Append(fnText);
       docReady.Append(" });");
 
       writer.WriteRawValue(f.OnDocumentReady ? docReady.ToString() : fnText.ToString());
