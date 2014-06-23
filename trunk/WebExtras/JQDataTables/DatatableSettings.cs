@@ -490,7 +490,7 @@ namespace WebExtras.JQDataTables
       sAjaxSource = ajaxSource;
       bServerSide = !string.IsNullOrEmpty(ajaxSource);
 
-      SetupPaging(EPagination.Bootstrap);
+      SetupPaging(WebExtrasConstants.DatatablesPaginationScheme);
     }
 
     /// <summary>
@@ -599,7 +599,7 @@ namespace WebExtras.JQDataTables
     }
 
     /// <summary>
-    /// Setup the paging mechanism
+    /// Setup the paging mechanism. <see cref="T:WebExtras.Core.WebExtrasConstants"/>
     /// </summary>
     /// <param name="type">Pagination type to use</param>
     public void SetupPaging(EPagination type)
