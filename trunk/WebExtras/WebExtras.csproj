@@ -85,9 +85,11 @@
     <Compile Include="Core\JsFunc.cs" />
     <Compile Include="Core\NameValueCollectionExtensions.cs" />
     <Compile Include="Core\ObjectExtensions.cs" />
+    <Compile Include="Core\DefaultValueFormatter.cs" />
     <Compile Include="Core\WebExtrasConstants.cs" />
     <Compile Include="JQDataTables\AASort.cs" />
     <Compile Include="JQDataTables\AOColumn.cs" />
+    <Compile Include="JQDataTables\AOColumnAttribute.cs" />
     <Compile Include="JQDataTables\OAria.cs" />
     <Compile Include="JQDataTables\DatatableFilters.cs" />
     <Compile Include="JQDataTables\DatatableRecordsSortExtension.cs" />

@@ -19,6 +19,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using Newtonsoft.Json;
 using WebExtras.Core;
 
@@ -107,6 +108,63 @@ namespace WebExtras.JQDataTables
       aaData = new string[0][];
       iTotalDisplayRecords = 0;
       iTotalRecords = 0;
+    }
+
+    /// <summary>
+    /// Create records from a collection
+    /// </summary>
+    /// <typeparam name="TType">Type of the collection</typeparam>
+    /// <param name="values">The collection to create records from</param>
+    /// <returns>Created records</returns>
+    public static DatatableRecords From<TType>(ICollection<TType> values)
+      where TType : class
+    {
+      List<string[]> data = new List<string[]>();
+
+      if (values == null)
+        return new DatatableRecords();
+
+      if (!values.Any())
+        return new DatatableRecords();
+
+      Type t = typeof(TType);
+
+      foreach (TType value in values)
+      {
+        List<KeyValuePair<int, string>> indexedValues = new List<KeyValuePair<int, string>>();
+        PropertyInfo[] props = value.GetType().GetProperties();
+        foreach (PropertyInfo prop in props)
+        {
+          AOColumnAttribute[] attribs = (AOColumnAttribute[])prop.GetCustomAttributes(typeof(AOColumnAttribute), false);
+
+          if (attribs.Length == 0)
+            continue;
+
+          if (attribs.Length > 1)
+            throw new InvalidUsageException(
+              string.Format("The property '{0}' on '{1}' can not have multiple decorations of AOColumn attribute", prop.Name, t.FullName));
+
+          // fact that we got here means that the current property is an AOColumn
+          DefaultValueFormatter formatter = (DefaultValueFormatter)(attribs[0].ValueFormatter == null ?
+            new DefaultValueFormatter() :
+            Activator.CreateInstance(attribs[0].ValueFormatter));
+
+          string val = formatter.Format(prop.GetValue(value, null), value);
+
+          indexedValues.Add(new KeyValuePair<int, string>(attribs[0].Index, val));
+        }
+
+        data.Add(indexedValues.OrderBy(f => f.Key).Select(g => g.Value).ToArray());
+      }
+
+      DatatableRecords records = new DatatableRecords
+      {
+        iTotalDisplayRecords = data.Count,
+        iTotalRecords = data.Count,
+        aaData = data.ToArray()
+      };
+
+      return records;
     }
 
     /// <summary>

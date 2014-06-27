@@ -17,6 +17,9 @@
 */
 
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using Newtonsoft.Json;
 using WebExtras.Core;
 
@@ -187,6 +190,80 @@ namespace WebExtras.JQDataTables
         throw new ArgumentNullException("title");
 
       sTitle = title;
+    }
+
+    /// <summary>
+    /// Create AOColumn definitions from a type
+    /// </summary>
+    /// <typeparam name="TType">Type to create AOColumn definitions from</typeparam>
+    /// <returns>Generated columns</returns>
+    public static AOColumn[] FromType<TType>()
+      where TType : class
+    {
+      Type t = typeof(TType);
+
+      return FromType(t);
+    }
+
+    /// <summary>
+    /// Create AOColumn definitions from a type
+    /// </summary>
+    /// <param name="type">Type to create AOColumn definitions from</param>
+    /// <returns>Generated columns</returns>
+    public static AOColumn[] FromType(Type type)
+    {
+      List<KeyValuePair<int, AOColumn>> indexedColumns = new List<KeyValuePair<int, AOColumn>>();
+
+      // get the type and all public properties of the given object instance
+      PropertyInfo[] props = type.GetProperties();
+
+      foreach (PropertyInfo prop in props)
+      {
+        AOColumnAttribute[] attribs = (AOColumnAttribute[])prop.GetCustomAttributes(typeof(AOColumnAttribute), false);
+
+        if (attribs.Length == 0)
+          continue;
+
+        if (attribs.Length > 1)
+          throw new InvalidUsageException(
+            string.Format("The property '{0}' on '{1}' can not have multiple decorations of AOColumn attribute", prop.Name, type.FullName));
+
+        // fact that we got here means that the attribute decoration was all good
+        PropertyInfo[] attribProps = attribs[0].GetType().GetProperties();
+        AOColumn column = new AOColumn();
+        int idx = -1;
+        foreach (PropertyInfo attribProp in attribProps)
+        {
+          // get the value of the attribute property
+          object val = attribProp.GetValue(attribs[0], null);
+
+          // the 'TypeId' property is inherited from System.Attribute class
+          // and we don't care about it, so just ignore it
+          if (val == null || attribProp.Name == "TypeId")
+            continue;
+
+          // the 'Index' property governs the position of the column in the
+          // rendered table, so just store it for now and continue
+          if (attribProp.Name == "Index")
+          {
+            idx = (int)val;
+            continue;
+          }
+
+          // get the same property from AOColumn class and set it's value to
+          // the value obtained from the attribute's property
+          PropertyInfo propToSet = column.GetType().GetProperty(attribProp.Name);
+          propToSet.SetValue(column, val, null);
+        }
+
+        // store the column with it's index for further processing
+        indexedColumns.Add(new KeyValuePair<int, AOColumn>(idx, column));
+      }
+
+      // order the columns by their key and select
+      List<AOColumn> columns = indexedColumns.OrderBy(f => f.Key).Select(g => g.Value).ToList();
+
+      return columns.ToArray();
     }
   }
 }
