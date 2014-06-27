@@ -73,10 +73,13 @@ namespace WebExtras.tests
       List<Type> knownEnumTypes = Assembly.LoadFrom("WebExtras.dll").GetTypes()
         .Where(t => !string.IsNullOrEmpty(t.Namespace) && t.Namespace.StartsWith(namespaceToSearch))
         .ToList();
-      string[] ignoredPropertyTypes = new string[] { 
+      string[] ignoredPropertyTypes =
+      { 
         "WebExtras.JQDataTables.ESort",
         "WebExtras.JQDataTables.EPagination"
       };
+
+      string[] ignoredPropertyNames = { "WebExtras.JQDataTables.AOColumnAttribute.sType" };
 
       // Act & Assert
       foreach (Type t in knownEnumTypes)
@@ -86,11 +89,12 @@ namespace WebExtras.tests
         foreach (var prop in props)
         {
           Type actualType = prop.PropertyType.Name.StartsWith("Nullable") ? prop.PropertyType.GetGenericArguments()[0] : prop.PropertyType;
-          
+
           if (!actualType.IsEnum)
             continue;
 
-          if (ignoredPropertyTypes.Contains(actualType.FullName))
+          if (ignoredPropertyTypes.Contains(actualType.FullName) ||
+            ignoredPropertyNames.Contains(t.FullName + "." + prop.Name))
             continue;
 
           object[] arr = prop.GetCustomAttributes(typeof(JsonConverterAttribute), false);

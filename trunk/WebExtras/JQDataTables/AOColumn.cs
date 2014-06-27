@@ -212,6 +212,7 @@ namespace WebExtras.JQDataTables
     /// <returns>Generated columns</returns>
     public static AOColumn[] FromType(Type type)
     {
+      string[] ignoredAttributeProperties = { "ValueFormatter", "TypeId" };
       List<KeyValuePair<int, AOColumn>> indexedColumns = new List<KeyValuePair<int, AOColumn>>();
 
       // get the type and all public properties of the given object instance
@@ -239,7 +240,7 @@ namespace WebExtras.JQDataTables
 
           // the 'TypeId' property is inherited from System.Attribute class
           // and we don't care about it, so just ignore it
-          if (val == null || attribProp.Name == "TypeId")
+          if (val == null || ignoredAttributeProperties.Contains(attribProp.Name))
             continue;
 
           // the 'Index' property governs the position of the column in the
