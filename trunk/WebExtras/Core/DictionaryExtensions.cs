@@ -32,20 +32,22 @@ namespace WebExtras.Core
     /// <summary>
     /// Merge two dictionaries
     /// </summary>
+    /// <typeparam name="TKey">Key type</typeparam>
+    /// <typeparam name="TValue">Value type</typeparam>
     /// <param name="current">Current dictionary</param>
     /// <param name="dictionary">Dictionary to be merged in</param>
     /// <param name="overwrite">[Optional] Whether to overwrite existing values. Defaults to false</param>
     /// <param name="mergeNullValues">[Optional] Whether to merge NULL values from new dictionary. Defaults to false</param>
     /// <returns>Merged dictionary</returns>
-    public static IDictionary<string, object> Merge(this IDictionary<string, object> current,
-      IDictionary<string, object> dictionary,
+    public static IDictionary<TKey, TValue> Merge<TKey, TValue>(this IDictionary<TKey, TValue> current,
+      IDictionary<TKey, TValue> dictionary,
       bool overwrite = false,
       bool mergeNullValues = false)
     {
-      IDictionary<string, object> merged = new Dictionary<string, object>(current);
+      IDictionary<TKey, TValue> merged = new Dictionary<TKey, TValue>(current);
 
       if (dictionary != null && dictionary.Count > 0)
-        foreach (string key in dictionary.Keys)
+        foreach (TKey key in dictionary.Keys)
           if ((!current.ContainsKey(key)) || (current.ContainsKey(key) && overwrite))
             if ((dictionary[key] != null && !mergeNullValues) || (dictionary[key] == null && mergeNullValues))
               merged[key] = dictionary[key];
