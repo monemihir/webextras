@@ -41,11 +41,27 @@ namespace WebExtras.JQDataTables
     Bootstrap,
 
     /// <summary>
-    /// This plugin provides the mark-up for using Twitter Bootstrap 3's pagination styling
-    /// with DataTables
+    /// Bootstrap 3 styled normal paging
     /// </summary>
     [StringValue("bs_normal")]
     Bootstrap3,
+
+    /// <summary>
+    /// Bootstrap 3 styled 2 button paging
+    /// </summary>
+    [StringValue("bs_two_button")]
+    Bootstrap3_Two_Button,
+
+    /// <summary>
+    /// Bootstrap 3 styled 4 button paging
+    /// </summary>
+    [StringValue("bs_four_button")]
+    Bootstrap3_Four_Button,
+
+    /// <summary>
+    /// Bootstrap 3 styled full numbers paging
+    /// </summary>
+    Bootstrap3_Full_Numbers,
 
     /// <summary>
     /// The built-in pagination functions provide either two buttons (forward / back) 
