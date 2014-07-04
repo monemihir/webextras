@@ -568,7 +568,7 @@ namespace WebExtras.JQDataTables
     /// <param name="sortOption">Sort option</param>
     public void SetupAASort(AASort sortOption)
     {
-      SetupAASort(new AASort[] { sortOption });
+      SetupAASort(new[] { sortOption });
     }
 
     /// <summary>
@@ -640,7 +640,7 @@ namespace WebExtras.JQDataTables
     /// <see cref="WebExtras.JQDataTables.Datatable"/> constructor</remarks>
     public void SetupfnCreatedRow()
     {
-      string[] fnParamNames = new string[] { "nRow", "aData", "iDataIndex" };
+      string[] fnParamNames = new[] { "nRow", "aData", "iDataIndex" };
       const string fnBody = "$(nRow).addClass(aData[aData.length - 1]);";
 
       fnCreatedRow = new JsFunc { Body = fnBody, ParameterNames = fnParamNames };
@@ -653,22 +653,21 @@ namespace WebExtras.JQDataTables
     /// <remarks>Invoked when there are postbacks via the <see cref="WebExtras.JQDataTables.Datatable"/> constructor </remarks>
     public void SetupfnServerData(IEnumerable<PostbackItem> postbacks)
     {
-      string[] aoDataPushes;
       IEnumerable<PostbackItem> postbackItems = postbacks as IList<PostbackItem> ?? postbacks.ToList();
-      if (postbacks != null && postbackItems.Any())
-      {
-        aoDataPushes = postbackItems.Select(f => string.Format("aoData.push({0});", f.ToJson())).ToArray();
+      if (postbacks == null || !postbackItems.Any()) 
+        return;
 
-        string[] fnParamNames = new string[] { "sSource", "aoData", "fnCallback" };
+      string[] aoDataPushes = postbackItems.Select(f => string.Format("aoData.push({0});", f.ToJson())).ToArray();
 
-        StringBuilder fnBody = new StringBuilder();
-        fnBody.Append("\n\t\t");
-        fnBody.Append(string.Join("\n\t\t", aoDataPushes));
-        fnBody.Append("\n\t\t");
-        fnBody.Append("$.getJSON(sSource, aoData, function(json) { fnCallback(json); });");
+      string[] fnParamNames = new[] { "sSource", "aoData", "fnCallback" };
 
-        fnServerData = new JsFunc { ParameterNames = fnParamNames, Body = fnBody.ToString() };
-      }
+      StringBuilder fnBody = new StringBuilder();
+      fnBody.Append("\n\t\t");
+      fnBody.Append(string.Join("\n\t\t", aoDataPushes));
+      fnBody.Append("\n\t\t");
+      fnBody.Append("$.getJSON(sSource, aoData, function(json) { fnCallback(json); });");
+
+      fnServerData = new JsFunc { ParameterNames = fnParamNames, Body = fnBody.ToString() };
     }
 
     #endregion Setups
@@ -682,7 +681,7 @@ namespace WebExtras.JQDataTables
       // Handle resetting of pagination if we are using jQueryUI, pagination is
       // enabled but the pagination type is not set. Default to 'full_numbers'
       if ((!bJQueryUI.HasValue || bJQueryUI.Value != true) || !bPaginate)
-        return JsonConvert.SerializeObject(this, WebExtrasConstants.JsonSerializerSettings);
+        return this.ToJson();
 
       if (sPaginationType == EPagination.Bootstrap.GetStringValue())
         sPaginationType = EPagination.FullNumbers.GetStringValue();
@@ -690,7 +689,7 @@ namespace WebExtras.JQDataTables
       if (sDom.Contains("row-fluid") || sDom.Contains("span") || sDom.Contains("row"))
         sDom = null;
 
-      return JsonConvert.SerializeObject(this, WebExtrasConstants.JsonSerializerSettings);
+      return this.ToJson();
     }
   }
 }

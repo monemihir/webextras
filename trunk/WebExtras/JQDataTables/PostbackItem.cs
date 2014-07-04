@@ -21,6 +21,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Newtonsoft.Json;
+using WebExtras.Core;
 
 namespace WebExtras.JQDataTables
 {
@@ -73,7 +74,7 @@ namespace WebExtras.JQDataTables
 
       List<PostbackItem> postbacks = (from p in props
                                       let val = p.GetValue(o, null)
-                                      select new PostbackItem(p.Name, JsonConvert.SerializeObject(val))).ToList();
+                                      select new PostbackItem(p.Name, val.ToJson())).ToList();
 
       if (nullValueIgnore)
         postbacks = postbacks.Where(p => p.value != null).ToList();

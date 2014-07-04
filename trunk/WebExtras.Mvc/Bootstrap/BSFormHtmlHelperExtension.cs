@@ -160,7 +160,7 @@ namespace WebExtras.Mvc.Bootstrap
       control.InnerHtml = input.ToString(TagRenderMode.SelfClosing) + addOn.ToString(TagRenderMode.Normal);
 
       // create JSON dictionary of the picker options
-      string op = JsonConvert.SerializeObject(pickerOptions);
+      string op = pickerOptions.ToJson();
 
       TagBuilder script = new TagBuilder("script");
       script.Attributes["type"] = "text/javascript";

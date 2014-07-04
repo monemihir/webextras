@@ -173,7 +173,7 @@ namespace WebExtras.JQDataTables
     /// <returns>Returns a JSON serialized version of this object</returns>
     public override string ToString()
     {
-      return JsonConvert.SerializeObject(this, WebExtrasConstants.JsonSerializerSettings);
+      return this.ToJson();
     }
 
     /// <summary>

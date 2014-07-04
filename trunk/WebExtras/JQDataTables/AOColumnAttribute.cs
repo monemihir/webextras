@@ -56,7 +56,7 @@ namespace WebExtras.JQDataTables
     public bool bSearchable { get; set; }
 
     /// <summary>
-    /// Enable / Disable sorting based on this column
+    /// Enable or Disable sorting based on this column
     /// </summary>
     public bool bSortable { get; set; }
 
@@ -64,9 +64,9 @@ namespace WebExtras.JQDataTables
     /// The title of the column
     /// </summary>
     public string sTitle { get; set; }
-
-    // <summary>
-    /// CSS Class to give to each cell in this column
+    
+    /// <summary>
+    /// CSS class to be applied to each column
     /// </summary>
     public string sClass { get; set; }
 
