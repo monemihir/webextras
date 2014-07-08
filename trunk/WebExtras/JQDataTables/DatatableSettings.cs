@@ -604,6 +604,8 @@ namespace WebExtras.JQDataTables
     /// <param name="type">Pagination type to use</param>
     public void SetupPaging(EPagination type)
     {
+      string sDomDefault = string.Empty;
+
       switch (type)
       {
         case EPagination.None:
@@ -613,19 +615,20 @@ namespace WebExtras.JQDataTables
           break;
 
         case EPagination.Bootstrap:
-          sDom = "t<'row-fluid'<'span6'i><'span6'p>>";
+          sDomDefault = "t<'row-fluid'<'span6'i><'span6'p>>";
           goto default;
 
         case EPagination.Bootstrap3:
-          sDom = "t<'row'<'col-sm-6'i><'col-sm-6'p>>";
+          sDomDefault = "t<'row'<'col-xs-6'i><'col-xs-6'p>>";
           goto default;
 
         case EPagination.Gumby:
-          sDom = "t<'row'<'six columns'i><'six columns'p>>";
+          sDomDefault = "t<'row'<'six columns'i><'six columns'p>>";
           goto default;
 
         default:
           bPaginate = true;
+          sDom = string.IsNullOrWhiteSpace(sDom) ? sDomDefault : sDom;
           sPaginationType = type.GetStringValue();
           break;
       }

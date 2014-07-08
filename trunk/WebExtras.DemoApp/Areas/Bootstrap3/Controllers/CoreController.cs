@@ -156,8 +156,6 @@ namespace WebExtras.DemoApp.Areas.Bootstrap3.Controllers
           break;
       }
 
-      dtSettings.SetupPaging(EPagination.Bootstrap3);
-
       // Let's create the datatable object with an HTML ID, our settings, columns and records
       model.DisplayMode = mode.Value;
       model.Table = new Datatable(tableId, dtSettings, dtRecords, null, enableStatusColumn);
@@ -176,7 +174,6 @@ namespace WebExtras.DemoApp.Areas.Bootstrap3.Controllers
       };
 
       DatatableSettings dtSettings = new DatatableSettings(5, dtAOColumns, new AASort(0, ESort.Ascending), null, "basic records", tableHeight);
-      dtSettings.SetupPaging(EPagination.Bootstrap3);
       IEnumerable<string[]> dtData = new string[][]
       {
         new string[] { "first column row 1", "second column row 1" },    
@@ -196,7 +193,6 @@ namespace WebExtras.DemoApp.Areas.Bootstrap3.Controllers
       // create the postbacks enabled table
       IEnumerable<PostbackItem> dtPostbacks = PostbackItem.FromObject(viewModel.PostbackFormFields);
       dtSettings = new DatatableSettings(5, dtAOColumns, new AASort(0, ESort.Ascending), MVC.Bootstrap.Core.ActionNames.GetPostbackData, "searched/filtered records", tableHeight);
-      dtSettings.SetupPaging(EPagination.Bootstrap3);
       viewModel.PostbackEnabledTable = new Datatable("postbacks-table", dtSettings, null, dtPostbacks);
 
       // update the display mode
