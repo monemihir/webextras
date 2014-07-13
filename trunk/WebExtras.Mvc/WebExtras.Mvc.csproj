@@ -88,6 +88,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bootstrap\BootstrapIconlink.cs" />
     <Compile Include="Bootstrap\BootstrapUtil.cs" />
     <Compile Include="Bootstrap\BootstrapStringValueDeciders.cs" />
     <Compile Include="Core\ActionMessageControllerExtension.cs" />
@@ -111,6 +112,7 @@
     <Compile Include="Core\JsonNetResult.cs" />
     <Compile Include="Core\NoCssThemeException.cs" />
     <Compile Include="Core\WebExtrasMvcConstants.cs" />
+    <Compile Include="Gumby\GumbyIconlink.cs" />
     <Compile Include="Gumby\EGumbyButton.cs" />
     <Compile Include="Gumby\EGumbyButtonStyle.cs" />
     <Compile Include="Gumby\EGumbyIcon.cs" />

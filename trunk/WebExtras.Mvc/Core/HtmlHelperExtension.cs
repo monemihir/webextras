@@ -144,8 +144,7 @@ namespace WebExtras.Mvc.Core
       ActionResult result,
       object htmlAttributes = null)
     {
-      VirtualPathData vpd = RouteTable.Routes.GetVirtualPath(html.ViewContext.RequestContext, result.GetRouteValueDictionary());
-      string url = vpd == null ? string.Empty : vpd.VirtualPath;
+      string url = HtmlStringUtil.GetUrl(html, result);
 
       return Imagelink(html, src, altText, title, url, htmlAttributes);
     }
@@ -378,14 +377,7 @@ namespace WebExtras.Mvc.Core
       ActionResult result,
       object htmlAttributes = null)
     {
-      RouteValueDictionary rvd = result.GetRouteValueDictionary();
-      string link = UrlHelper.GenerateUrl(string.Empty,
-        rvd["Action"].ToString(),
-        rvd["Controller"].ToString(),
-        rvd,
-        html.RouteCollection,
-        html.ViewContext.RequestContext,
-        true);
+      string link = HtmlStringUtil.GetUrl(html, result);
 
       return Hyperlink(html, linkText, link, htmlAttributes);
     }
@@ -434,8 +426,7 @@ namespace WebExtras.Mvc.Core
       if (!user.Identity.IsAuthenticated)
         return HtmlElement.Empty;
 
-      VirtualPathData vpd = RouteTable.Routes.GetVirtualPath(html.ViewContext.RequestContext, result.GetRouteValueDictionary());
-      string url = vpd == null ? string.Empty : vpd.VirtualPath;
+      string url = HtmlStringUtil.GetUrl(html, result);
 
       return Hyperlink(html, linkText, url, htmlAttributes);
     }
@@ -654,5 +645,6 @@ namespace WebExtras.Mvc.Core
     }
 
     #endregion Label extensions
+
   }
 }
