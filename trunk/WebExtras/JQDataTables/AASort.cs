@@ -46,8 +46,8 @@ namespace WebExtras.JQDataTables
     /// Constructor to setup column number and sort type
     /// </summary>
     /// <param name="columnNumber">Column number</param>
-    /// <param name="sort">Sort type. Valid values are 'asc' and 'desc'</param>
-    public AASort(int columnNumber, ESort sort)
+    /// <param name="sort">[Optional] Sort type. Defaults to ascending.</param>
+    public AASort(int columnNumber, ESort sort = ESort.Ascending)
     {
       this.columnNumber = columnNumber;
       sortType = sort.GetStringValue();

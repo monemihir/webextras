@@ -32,19 +32,21 @@ namespace WebExtras.Mvc.Core
     /// <summary>
     /// Default CSS class name for selected tab
     /// </summary>
-    public const string DefaultCssClass = "active";
+    public static string DefaultCssClass = "active";
 
     /// <summary>
     /// Get the CSS class based on whether the provided tab is active or not
     /// </summary>
     /// <param name="helper">Current HTML helper object</param>
     /// <param name="activeController">Controller name to be matched</param>
-    /// <param name="activeActions">[Optional] Action names to be matched. Defaults to null</param>
-    /// <returns>If current tab is active, the default CSS class "selected",
+    /// <param name="actions">[Optional] Action names to be matched. Defaults to null</param>
+    /// <param name="areMatch">[Optional] Whether to set current tab as selected if the current 
+    /// action matches an action specified in the 'actions' parameter. Defaults to true</param>
+    /// <returns>If current tab is active, the default CSS class "active",
     /// else empty string to indicate that current tab is not active</returns>
-    public static string SelectedTab(this HtmlHelper helper, string activeController, IEnumerable<string> activeActions = null)
+    public static string SelectedTab(this HtmlHelper helper, string activeController, IEnumerable<string> actions = null, bool areMatch = true)
     {
-      return SelectedTab(helper, activeController, activeActions, DefaultCssClass);
+      return SelectedTab(helper, activeController, actions, DefaultCssClass, areMatch);
     }
 
     /// <summary>
@@ -52,12 +54,14 @@ namespace WebExtras.Mvc.Core
     /// </summary>
     /// <param name="helper">Current HTML helper object</param>
     /// <param name="activeController">Controller name to be matched</param>
-    /// <param name="activeAction">Action name to be matched</param>
-    /// <returns>If current tab is active, the default CSS class "selected",
+    /// <param name="action">Action name to be matched</param>
+    /// <param name="isMatch">[Optional] Whether to set current tab as selected if the current
+    /// action matches the action specified by the 'action' parameter. Defaults to true.</param>
+    /// <returns>If current tab is active, the default CSS class "active",
     /// else empty string to indicate that current tab is not active</returns>
-    public static string SelectedTab(this HtmlHelper helper, string activeController, string activeAction)
+    public static string SelectedTab(this HtmlHelper helper, string activeController, string action, bool isMatch = true)
     {
-      return SelectedTab(helper, activeController, new[] { activeAction }, DefaultCssClass);
+      return SelectedTab(helper, activeController, new[] { action }, DefaultCssClass, isMatch);
     }
 
     /// <summary>
@@ -65,13 +69,15 @@ namespace WebExtras.Mvc.Core
     /// </summary>
     /// <param name="helper">Current HTML helper object</param>
     /// <param name="activeController">Controller name to be matched</param>
-    /// <param name="activeAction">Action name to be matched</param>
+    /// <param name="action">Action name to be matched</param>
     /// <param name="cssClass">custom CSS class defined with active tab CSS</param>
+    /// <param name="isMatch">[Optional] Whether to set current tab as selected if the current
+    /// action matches the action specified by the 'action' parameter. Defaults to true.</param>
     /// <returns>If current tab is active, the CSS class provided,
     /// else empty string to indicate that current tab is not active</returns>
-    public static string SelectedTab(this HtmlHelper helper, string activeController, string activeAction, string cssClass)
+    public static string SelectedTab(this HtmlHelper helper, string activeController, string action, string cssClass, bool isMatch = true)
     {
-      return SelectedTab(helper, activeController, new[] { activeAction }, cssClass);
+      return SelectedTab(helper, activeController, new[] { action }, cssClass, isMatch);
     }
 
     /// <summary>
@@ -79,24 +85,36 @@ namespace WebExtras.Mvc.Core
     /// </summary>
     /// <param name="helper">Current HTML helper object</param>
     /// <param name="activeController">Controller name to be matched</param>
-    /// <param name="activeActions">Action names to be matched</param>
+    /// <param name="actions">Action names to be matched</param>
     /// <param name="cssClass">custom CSS class defined with active tab CSS</param>
+    /// <param name="areMatch">[Optional] Whether to set current tab as selected if the current 
+    /// action matches an action specified in the 'actions' parameter. Defaults to true</param>
     /// <returns>If current tab is active, the CSS class provided,
     /// else empty string to indicate that current tab is not active</returns>
-    private static string SelectedTab(this HtmlHelper helper, string activeController, IEnumerable<string> activeActions, string cssClass)
+    private static string SelectedTab(this HtmlHelper helper, string activeController, IEnumerable<string> actions, string cssClass, bool areMatch = true)
     {
       string cssClassToUse;
 
       activeController = activeController.ToLowerInvariant();
       string currentController = helper.ViewContext.Controller.ValueProvider.GetValue("controller").RawValue.ToString().ToLowerInvariant();
-      if (activeActions != null)
+      if (actions != null)
       {
-        activeActions = activeActions.Select(f => f.ToLowerInvariant());
+        actions = actions.Select(f => f.ToLowerInvariant());
         string currentAction = helper.ViewContext.Controller.ValueProvider.GetValue("action").RawValue.ToString().ToLowerInvariant();
-        cssClassToUse =
-          (currentController == activeController && activeActions.Contains(currentAction))
-          ? cssClass
-          : string.Empty;
+        if (areMatch)
+        {
+          cssClassToUse =
+            (currentController == activeController && actions.Contains(currentAction))
+              ? cssClass
+              : string.Empty;
+        }
+        else
+        {
+          cssClassToUse =
+            (currentController == activeController && !actions.Contains(currentAction))
+              ? cssClass
+              : string.Empty;
+        }
       }
       else
       {
