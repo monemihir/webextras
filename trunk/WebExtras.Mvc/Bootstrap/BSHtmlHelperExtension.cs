@@ -360,6 +360,19 @@ namespace WebExtras.Mvc.Bootstrap
     /// </summary>
     /// <param name="html">Current HTML helper object</param>
     /// <param name="icon">Icon to display</param>
+    /// <param name="url">Link action</param>
+    /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
+    /// <returns>A icon only link</returns>
+    public static IExtendedHtmlString Hyperlink(this HtmlHelper html, EBootstrapIcon icon, string url, object htmlAttributes = null)
+    {
+      return new BootstrapIconlink(icon, url, htmlAttributes);
+    }
+
+    /// <summary>
+    /// Create a icon only link
+    /// </summary>
+    /// <param name="html">Current HTML helper object</param>
+    /// <param name="icon">Icon to display</param>
     /// <param name="result">Link action</param>
     /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
     /// <returns>A icon only link</returns>
@@ -368,6 +381,19 @@ namespace WebExtras.Mvc.Bootstrap
       string link = HtmlStringUtil.GetUrl(html, result);
 
       return new BootstrapIconlink(icon, link, htmlAttributes);
+    }
+
+    /// <summary>
+    /// Create a icon only link
+    /// </summary>
+    /// <param name="html">Current HTML helper object</param>
+    /// <param name="icon">Icon to display</param>
+    /// <param name="url">Link action</param>
+    /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
+    /// <returns>A icon only link</returns>
+    public static IExtendedHtmlString Hyperlink(this HtmlHelper html, EFontAwesomeIcon icon, string url, object htmlAttributes = null)
+    {
+      return new BootstrapIconlink(icon, url, htmlAttributes);
     }
 
     #endregion Hyperlink extensions

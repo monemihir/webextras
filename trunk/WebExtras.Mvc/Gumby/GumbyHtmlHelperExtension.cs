@@ -235,6 +235,19 @@ namespace WebExtras.Mvc.Gumby
       return new GumbyIconLink(icon, link, htmlAttributes);
     }
 
+    /// <summary>
+    /// Create a icon only link
+    /// </summary>
+    /// <param name="html">Current HTML helper object</param>
+    /// <param name="icon">Icon to display</param>
+    /// <param name="url">Link action</param>
+    /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
+    /// <returns>A icon only link</returns>
+    public static IExtendedHtmlString Hyperlink(this HtmlHelper html, EGumbyIcon icon, string url, object htmlAttributes = null)
+    {
+      return new GumbyIconLink(icon, url, htmlAttributes);
+    }
+
     #endregion Hyperlink extensions
   }
 }

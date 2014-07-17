@@ -123,7 +123,7 @@ namespace WebExtras.Mvc.Core
     /// <param name="message">The action message to display</param>
     /// <param name="type">Action message type</param>
     /// <param name="args">Any message formatting arguments</param>
-    private static void SaveLastActionMessage(this ControllerBase c, string message, EMessage type, params object[] args)
+    public static void SaveLastActionMessage(this ControllerBase c, string message, EMessage type, params object[] args)
     {
       // store data in temp key, will be alive for one request only
       c.TempData[TempDataMessageKey] = string.Format(message, args);
