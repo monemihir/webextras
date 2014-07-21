@@ -21,6 +21,7 @@
 using System;
 using System.Reflection;
 using System.Web.Mvc;
+using WebExtras.Core;
 using WebExtras.Mvc.Core;
 
 namespace WebExtras.DemoApp.Areas.Gumby.Controllers
@@ -34,6 +35,7 @@ namespace WebExtras.DemoApp.Areas.Gumby.Controllers
       base.OnActionExecuting(filterContext);
 
       ViewData["layout_path"] = MVC.Gumby.Shared.Views._Layout;
+      WebExtrasConstants.DatatablesPaginationScheme = JQDataTables.EPagination.Gumby;
       WebExtrasMvcConstants.CssFramework = ECssFramework.Gumby;
       WebExtrasMvcConstants.GumbyTheme = EGumbyTheme.Metro;
 

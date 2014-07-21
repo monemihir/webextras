@@ -70,7 +70,18 @@ namespace WebExtras.Core
     /// <returns>JSON object</returns>
     public static string ToJson(this object source)
     {
-      return JsonConvert.SerializeObject(source);
+      return ToJson(source, WebExtrasConstants.JsonSerializerSettings);
+    }
+
+    /// <summary>
+    /// Convert current object to it's JSON representation
+    /// </summary>
+    /// <param name="source">Current object</param>
+    /// <param name="settings">JSON serialisation settings</param>
+    /// <returns>JSON object</returns>
+    public static string ToJson(this object source, JsonSerializerSettings settings)
+    {
+      return JsonConvert.SerializeObject(source, settings);
     }
   }
 }

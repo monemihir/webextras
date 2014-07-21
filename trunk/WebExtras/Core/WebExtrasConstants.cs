@@ -17,6 +17,7 @@
 */
 
 using Newtonsoft.Json;
+using WebExtras.JQDataTables;
 
 namespace WebExtras.Core
 {
@@ -25,6 +26,11 @@ namespace WebExtras.Core
   /// </summary>
   public static class WebExtrasConstants
   {
+    /// <summary>
+    /// Global jQuery dataTables pagination scheme. Defaults to EPagination.Bootstrap
+    /// </summary>
+    public static EPagination DatatablesPaginationScheme = EPagination.Bootstrap;
+
     /// <summary>
     /// Json.NET data serialization settings
     /// </summary>

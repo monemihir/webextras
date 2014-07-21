@@ -115,7 +115,7 @@ namespace WebExtras.JQFlot
     /// <returns>FlotSeries as a JSON serialized string</returns>
     public override string ToString()
     {
-      return JsonConvert.SerializeObject(this, WebExtrasConstants.JsonSerializerSettings);
+      return this.ToJson();
     }
   }
 }

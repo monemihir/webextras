@@ -17,9 +17,6 @@
 */
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Newtonsoft.Json;
 using WebExtras.Core;
 using WebExtras.JQPlot.SubOptions;
@@ -112,7 +109,7 @@ namespace WebExtras.JQPlot
     /// <returns>JSON serialized object</returns>
     public override string ToString()
     {
-      return JsonConvert.SerializeObject(this, WebExtrasConstants.JsonSerializerSettings);
+      return this.ToJson();
     }
   }
 }

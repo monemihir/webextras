@@ -78,7 +78,7 @@ namespace WebExtras.Mvc.JQueryUI
       TagBuilder container = GetContainerTag(fieldId, "ui-datepicker-container", input);
 
       // create JSON dictionary of the picker options
-      string op = JsonConvert.SerializeObject(pickerOptions);
+      string op = pickerOptions.ToJson();
 
       TagBuilder script = new TagBuilder("script");
       script.Attributes["type"] = "text/javascript";
@@ -115,7 +115,7 @@ namespace WebExtras.Mvc.JQueryUI
       TagBuilder container = GetContainerTag(fieldId, "ui-timepicker-container", input);
 
       // create JSON dictionary of the picker options
-      string op = JsonConvert.SerializeObject(pickerOptions);
+      string op = pickerOptions.ToJson();
 
       TagBuilder script = new TagBuilder("script");
       script.Attributes["type"] = "text/javascript";
@@ -155,7 +155,7 @@ namespace WebExtras.Mvc.JQueryUI
       TagBuilder container = GetContainerTag(fieldId, "ui-datepicker-container ui-timepicker-container", input);
 
       // create JSON dictionary of the picker options
-      string op = JsonConvert.SerializeObject(pickerOptions);
+      string op = pickerOptions.ToJson();
 
       TagBuilder script = new TagBuilder("script");
       script.Attributes["type"] = "text/javascript";

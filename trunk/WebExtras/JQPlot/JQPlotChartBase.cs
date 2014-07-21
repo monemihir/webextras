@@ -44,7 +44,7 @@ namespace WebExtras.JQPlot
     /// <returns>JSON serialized object</returns>
     public override string ToString()
     {
-      return JsonConvert.SerializeObject(this, WebExtrasConstants.JsonSerializerSettings);
+      return this.ToJson();
     }
   }
 }

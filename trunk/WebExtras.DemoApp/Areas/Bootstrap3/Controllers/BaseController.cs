@@ -21,6 +21,7 @@
 using System;
 using System.Reflection;
 using System.Web.Mvc;
+using WebExtras.Core;
 using WebExtras.Mvc.Core;
 
 namespace WebExtras.DemoApp.Areas.Bootstrap3.Controllers
@@ -34,9 +35,10 @@ namespace WebExtras.DemoApp.Areas.Bootstrap3.Controllers
       base.OnActionExecuting(filterContext);
 
       ViewData["layout_path"] = MVC.Bootstrap3.Shared.Views._Layout;
+      WebExtrasConstants.DatatablesPaginationScheme = JQDataTables.EPagination.Bootstrap3;
       WebExtrasMvcConstants.CssFramework = ECssFramework.Bootstrap;
       WebExtrasMvcConstants.BootstrapVersion = EBootstrapVersion.V3;
-
+      
       Version v = Assembly.GetExecutingAssembly().GetName().Version;
 
       m_versionString = string.Format("v{0}.{1}.{2}", v.Major, v.Minor, v.Revision);

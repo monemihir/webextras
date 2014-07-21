@@ -75,7 +75,7 @@ namespace WebExtras.DemoApp.App_Start
       // CSS Bootstrap3 bundle
       Bundle.Css()
         .Add(Links.Content.bootstrap_3_0_0_css)
-        .Add(Links.Content.bootstrap_theme_3_0_0_css)
+        //.Add(Links.Content.bootstrap_theme_3_0_0_css)
         .Add(Links.Content.font_awesome_css)
         .Add(Links.Content.jquery_bootstrap_datetimepicker_css)
         .Add(Links.Content.jquery_dataTables_css)

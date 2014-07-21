@@ -9,19 +9,19 @@
   <div class="keep-center">
     @(Html.Hyperlink(" Stable<small> (" + Model + ")</small>", "http://webextras.codeplex.com/releases")
       .AsButton(EBootstrapButton.Success, EBootstrapButton.Large)
-      .AddIcon(EFontAwesomeIcon.Download_Alt, EFontAwesomeIconSize.Large))
+      .AddIcon(EFontAwesomeIcon.Download, EFontAwesomeIconSize.Large))
 
     &nbsp;&nbsp;&nbsp;
 
     @(Html.Hyperlink(" Nightly", "http://mihirmone.entrydns.org/app-downloads/webextras/webextras-nightly.zip")
       .AsButton(EBootstrapButton.Default, EBootstrapButton.Large)
-      .AddIcon(EFontAwesomeIcon.Download_Alt, EFontAwesomeIconSize.Large))
+      .AddIcon(EFontAwesomeIcon.Download, EFontAwesomeIconSize.Large))
 
     &nbsp;&nbsp;&nbsp;
 
     @(Html.Hyperlink(" NuGet Gallery", "https://www.nuget.org/packages?q=webextras")
       .AsButton(EBootstrapButton.Default, EBootstrapButton.Large)
-      .AddIcon(EFontAwesomeIcon.Download_Alt, EFontAwesomeIconSize.Large))
+      .AddIcon(EFontAwesomeIcon.Download, EFontAwesomeIconSize.Large))
 
     <br />
     @Html.Hyperlink("Older versions", "javascript:gotoCodeplex()")
