@@ -28,6 +28,7 @@ namespace WebExtras
   /// <summary>
   /// A generic RSS 2.0 reader
   /// </summary>
+  [Obsolete("This class is not maintained any more")]
   public sealed class RssReader
   {
     /// <summary>
@@ -113,7 +114,7 @@ namespace WebExtras
               if (field == "pubDate")
               {
                 DateTime dt = DateTime.Parse(text);
-                text = dt.ToLocalTime().ToString("dd MMM yyyy HH:mm");
+                text = dt.ToLocalTime().ToString("yyyy-MM-dd hh:mm:ss");
               }
 
               record[field] = text;
