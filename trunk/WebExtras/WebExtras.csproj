@@ -82,6 +82,7 @@
     <Compile Include="Core\DictionaryExtensions.cs" />
     <Compile Include="Core\InvalidUsageException.cs" />
     <Compile Include="Core\IStringValueDecider.cs" />
+    <Compile Include="Core\IValueFormatter.cs" />
     <Compile Include="Core\JsFunc.cs" />
     <Compile Include="Core\NameValueCollectionExtensions.cs" />
     <Compile Include="Core\ObjectExtensions.cs" />

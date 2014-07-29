@@ -318,6 +318,7 @@ namespace WebExtras.JQDataTables
     /// <summary>
     /// The current paging scheme
     /// </summary>
+    [JsonIgnore]
     public EPagination Paging { get; private set; }
 
     #endregion Properties
@@ -542,17 +543,9 @@ namespace WebExtras.JQDataTables
       if (columns == null)
         throw new ArgumentNullException("columns");
 
-      List<int> emptyHeading = new List<int>();
-      int idx = 0;
       IEnumerable<AOColumn> enumerable = columns as AOColumn[] ?? columns.ToArray();
-      foreach (AOColumn c in enumerable)
-      {
-        if (string.IsNullOrEmpty(c.sTitle)) { emptyHeading.Add(idx); }
-        idx++;
-      }
 
-      if (emptyHeading.Count > 0)
-        throw new Exception(string.Format("Column(s) {0} have no title specified.", string.Join(",", emptyHeading)));
+      CheckAOColumnSetup(enumerable);
 
       aoColumns = enumerable.ToArray();
     }
@@ -579,7 +572,7 @@ namespace WebExtras.JQDataTables
     public void SetupAASort(IEnumerable<AASort> sortOptions)
     {
       if (sortOptions != null)
-        aaSorting = sortOptions.Select(f => f.ToArray()).ToArray();  
+        aaSorting = sortOptions.Select(f => f.ToArray()).ToArray();
     }
 
     /// <summary>
@@ -589,13 +582,18 @@ namespace WebExtras.JQDataTables
     /// <param name="columns">Datatable columns</param>
     public void SetupAOColumns(IEnumerable<DatatableColumn> columns)
     {
-      aoColumns = columns.Select(c => new AOColumn
+      AOColumn[] cols = columns.Select(c => new AOColumn
       {
+        sTitle = c.Name,
         bSortable = c.Sortable,
         sClass = c.CssClass,
         sWidth = c.Width.HasValue ? string.Format("{0}%", c.Width) : null,
         bVisible = c.Visible
       }).ToArray();
+
+      CheckAOColumnSetup(cols);
+
+      aoColumns = cols;
     }
 
     /// <summary>
@@ -657,7 +655,7 @@ namespace WebExtras.JQDataTables
     public void SetupfnServerData(IEnumerable<PostbackItem> postbacks)
     {
       IEnumerable<PostbackItem> postbackItems = postbacks as IList<PostbackItem> ?? postbacks.ToList();
-      if (postbacks == null || !postbackItems.Any()) 
+      if (postbacks == null || !postbackItems.Any())
         return;
 
       string[] aoDataPushes = postbackItems.Select(f => string.Format("aoData.push({0});", f.ToJson())).ToArray();
@@ -674,6 +672,28 @@ namespace WebExtras.JQDataTables
     }
 
     #endregion Setups
+
+    /// <summary>
+    /// Checks whether the aoColumns have been setup properly
+    /// </summary>
+    /// <param name="columns">A collection of columns</param>
+    /// <exception cref="WebExtras.Core.InvalidUsageException"></exception>
+    private static void CheckAOColumnSetup(IEnumerable<AOColumn> columns)
+    {
+      List<int> emptyHeading = new List<int>();
+      int idx = 0;
+      foreach (AOColumn c in columns)
+      {
+        if (string.IsNullOrEmpty(c.sTitle) && ((c.bVisible.HasValue && c.bVisible.Value) || !c.bVisible.HasValue))
+        {
+          emptyHeading.Add(idx);
+        }
+        idx++;
+      }
+
+      if (emptyHeading.Count > 0)
+        throw new InvalidUsageException(string.Format("Column(s) {0} have no title specified.", string.Join(",", emptyHeading)));
+    }
 
     /// <summary>
     /// Returns a JSON serialized version of this object

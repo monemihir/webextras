@@ -32,7 +32,13 @@ namespace WebExtras.JQDataTables
     /// <summary>
     /// A list of predefined HTML currency syntax
     /// </summary>
-    private static readonly string[] Currencies = { "&euro;", "&yen;", "$", "&pound;" };
+    private static readonly string[] Currencies = { 
+      "&euro;",               // Euro
+      "&yen;",                // Yen
+      "$",                    // Dollar
+      "&pound;",              // Pound
+      "&#8377;"               // Rupee
+    };
 
     /// <summary>
     /// An array of predefined special characters

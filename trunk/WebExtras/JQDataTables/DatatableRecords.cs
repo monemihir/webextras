@@ -116,6 +116,7 @@ namespace WebExtras.JQDataTables
     /// <typeparam name="TType">Type of the collection</typeparam>
     /// <param name="values">The collection to create records from</param>
     /// <returns>Created records</returns>
+    /// <exception cref="WebExtras.Core.InvalidUsageException"></exception>
     public static DatatableRecords From<TType>(ICollection<TType> values)
       where TType : class
     {
@@ -145,11 +146,11 @@ namespace WebExtras.JQDataTables
               string.Format("The property '{0}' on '{1}' can not have multiple decorations of AOColumn attribute", prop.Name, t.FullName));
 
           // fact that we got here means that the current property is an AOColumn
-          DefaultValueFormatter formatter = (DefaultValueFormatter)(attribs[0].ValueFormatter == null ?
+          IValueFormatter formatter = (IValueFormatter)(attribs[0].ValueFormatter == null ?
             new DefaultValueFormatter() :
             Activator.CreateInstance(attribs[0].ValueFormatter));
 
-          string val = formatter.Format(prop.GetValue(value, null), value);
+          string val = formatter.Format(prop.GetValue(value, null), attribs[0].FormatString, value);
 
           indexedValues.Add(new KeyValuePair<int, string>(attribs[0].Index, val));
         }

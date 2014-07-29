@@ -36,19 +36,28 @@ namespace WebExtras.JQDataTables
     public int Index { get; set; }
 
     /// <summary>
-    /// Value formatter type
+    /// Value formatter type. This must implement <see cref="T:WebExtras.Core.IValueFormatter"/>. You
+    /// may optionally inherit from <see cref="T:WebExtras.Core.DefaultValueFormatter"/> which provides
+    /// a default implementation. If this property is not set the <see cref="T:WebExtras.Core.DefaultValueFormatter"/>
+    /// will be used to format the data. This type MUST have a parameterless constructor for initialisation.
     /// </summary>
+    /// <exception cref="System.TypeLoadException"></exception>
     public Type ValueFormatter
     {
       get { return m_valueFormatter; }
       set
       {
-        if (value.BaseType != typeof(DefaultValueFormatter))
-          throw new TypeLoadException(string.Format("'{0}' must inherit from WebExtras.Core.ValueFormatter", value.FullName));
+        if (!typeof(IValueFormatter).IsAssignableFrom(value))
+          throw new TypeLoadException(string.Format("'{0}' must implement WebExtras.Core.IValueFormatter", value.FullName));
 
         m_valueFormatter = value;
       }
     }
+
+    /// <summary>
+    /// The format string to be used by the 'ValueFormatter' when formatting the data for this column
+    /// </summary>
+    public string FormatString { get; set; }
 
     /// <summary>
     /// Enable or disable filtering on the data in this column

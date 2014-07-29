@@ -27,6 +27,7 @@ using WebExtras.DemoApp.Models.Core;
 using WebExtras.JQDataTables;
 using WebExtras.JQFlot;
 using WebExtras.JQPlot;
+using WebExtras.Mvc.Html;
 
 namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
 {
@@ -119,13 +120,7 @@ namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
         case 4:
           tableId = "status-table";
           dtSettings = new DatatableSettings(5, dtAOColumns, new AASort(0, ESort.Ascending), null, "status records", tableHeight);
-          IEnumerable<string[]> statusData = new string[][]
-          {
-            new string[] { "first column row 1", "second column row 1", "error danger" },    
-            new string[] { "first column row 2", "second column row 2", "warning" },
-            new string[] { "first column row 3", "second column row 3", "info" },
-            new string[] { "first column row 4", "second column row 4", "success" }
-          };
+          IEnumerable<string[]> statusData = DatatableGenerator.GetDefaultDataWithStatusColumn();
           enableStatusColumn = true;
           dtRecords = new DatatableRecords
           {
@@ -140,13 +135,7 @@ namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
         default:
           tableId = "basic-table";
           dtSettings = new DatatableSettings(5, dtAOColumns, new AASort(0, ESort.Ascending), null, "basic records", tableHeight);
-          IEnumerable<string[]> dtData = new string[][]
-          {
-            new string[] { "first column row 1", "second column row 1" },    
-            new string[] { "first column row 2", "second column row 2" },
-            new string[] { "first column row 3", "second column row 3" },
-            new string[] { "first column row 4", "second column row 4" }
-          };
+          IEnumerable<string[]> dtData = DatatableGenerator.GetDefaultData();
 
           dtRecords = new DatatableRecords
           {
@@ -175,13 +164,7 @@ namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
       };
 
       DatatableSettings dtSettings = new DatatableSettings(5, dtAOColumns, new AASort(0, ESort.Ascending), null, "basic records", tableHeight);
-      IEnumerable<string[]> dtData = new string[][]
-      {
-        new string[] { "first column row 1", "second column row 1" },    
-        new string[] { "first column row 2", "second column row 2" },
-        new string[] { "first column row 3", "second column row 3" },
-        new string[] { "first column row 4", "second column row 4" }
-      };
+      IEnumerable<string[]> dtData = DatatableGenerator.GetDefaultData();
 
       DatatableRecords dtRecords = new DatatableRecords
       {
@@ -246,13 +229,7 @@ namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
     // GET: /Bootstrap/Core/GetPostbackData
     public virtual JsonResult GetPostbackData(DatatableFilters filters, PostbackSetupViewModel postbacks)
     {
-      IEnumerable<string[]> dtData = new string[][]
-      {
-        new string[] { "first column row 1", "second column row 1" },    
-        new string[] { "first column row 2", "second column row 2" },
-        new string[] { "first column row 3", "second column row 3" },
-        new string[] { "first column row 4", "second column row 4" }
-      };
+      IEnumerable<string[]> dtData = DatatableGenerator.GetDefaultData();
 
       if (!string.IsNullOrEmpty(postbacks.FirstColumn))
         dtData = dtData.Where(f => f[0].ContainsIgnoreCase(postbacks.FirstColumn));
@@ -306,13 +283,7 @@ namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
     public DatatableRecords GetSortedRecords(DatatableFilters filters)
     {
       // Let's create the actual data to go into the table
-      List<string[]> dtData = new List<string[]> {
-        new string[] { "<a href='#'>4</a>", "mihir", "02-Jan-13", "2", "&euro; 15.00" },
-        new string[] { "<a href='#'>3</a>", "sneha", "2013-Mar-12", "45", "&pound; 12.00" },
-        new string[] { "<a href='#'>1</a>", "mohan", "20 Mar 13", "32", "$ 151.00" },
-        new string[] { "<a href='#'>2</a>", "swati", "29May13", "10", "$ 201.00" },
-        new string[] { "<a href='#'>2</a>", "sindhu", "Feb 11, 2012", "110", "&yen; 92.00" }
-      };
+      IList<string[]> dtData = DatatableGenerator.GetDataWithSpecialFormat();
 
       DatatableRecords dtRecords = new DatatableRecords
       {

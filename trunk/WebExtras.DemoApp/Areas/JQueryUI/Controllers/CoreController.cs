@@ -307,13 +307,7 @@ namespace WebExtras.DemoApp.Areas.JQueryUI.Controllers
     public DatatableRecords GetSortedRecords(DatatableFilters filters)
     {
       // Let's create the actual data to go into the table
-      List<string[]> dtData = new List<string[]> {
-        new string[] { "<a href='#'>4</a>", "mihir", "02-Jan-13", "2", "&euro; 15.00" },
-        new string[] { "<a href='#'>3</a>", "sneha", "2013-Mar-12", "45", "&pound; 12.00" },
-        new string[] { "<a href='#'>1</a>", "mohan", "20 Mar 13", "32", "rs. 151.00" },
-        new string[] { "<a href='#'>2</a>", "swati", "29May13", "10", "$ 201.00" },
-        new string[] { "<a href='#'>2</a>", "sindhu", "Feb 11, 2012", "110", "&yen; 92.00" }
-      };
+      IList<string[]> dtData = DatatableGenerator.GetDataWithSpecialFormat();
 
       DatatableRecords dtRecords = new DatatableRecords
       {

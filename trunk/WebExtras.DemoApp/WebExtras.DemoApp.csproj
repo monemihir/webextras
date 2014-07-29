@@ -142,6 +142,7 @@
     <Compile Include="JQueryUI.SharedController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Core\DatatableGenerator.cs" />
     <Compile Include="Models\Core\GraphDataGenerator.cs" />
     <Compile Include="Models\Core\JQPlotViewModel.cs" />
     <Compile Include="Models\Mvc\CoreFormViewModel.cs" />
