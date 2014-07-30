@@ -7,7 +7,7 @@
     <ProjectGuid>{4C55BD5B-8EA9-4D52-A491-0EFC89582F1D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>WebExtras.DemoApp</RootNamespace>
-    <AssemblyName>WebExtras.DemoApp-Mono</AssemblyName>
+    <AssemblyName>WebExtras.DemoApp</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>

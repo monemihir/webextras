@@ -6,7 +6,7 @@
     <ProjectGuid>{A0C1C29E-ED4D-447A-A808-3EEEE9C98596}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>WebExtras.Mvc</RootNamespace>
-    <AssemblyName>WebExtras.Mvc-Mono</AssemblyName>
+    <AssemblyName>WebExtras.Mvc</AssemblyName>
     <UseMSBuildEngine>False</UseMSBuildEngine>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -19,14 +19,15 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
     <NoWarn>1701</NoWarn>
+    <DocumentationFile>bin\Debug\WebExtras.Mvc.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>full</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
+    <DocumentationFile>bin\Release\WebExtras.Mvc.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
