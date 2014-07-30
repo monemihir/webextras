@@ -42,7 +42,7 @@ namespace WebExtras.Mvc.Html
     /// <param name="htmlAttributes">[Optional] Any extras HTML attributes to be applied. 
     /// Note. These attributes are only applied to the top level div</param>
     public Alert(EMessage type, string message, object htmlAttributes = null)
-      : this(type, message, string.Empty, null as EFontAwesomeIcon?, htmlAttributes)
+      : this(type, message, string.Empty, (EFontAwesomeIcon?)null, htmlAttributes)
     { }
 
     /// <summary>
@@ -54,7 +54,7 @@ namespace WebExtras.Mvc.Html
     /// <param name="htmlAttributes">[Optional] Any extras HTML attributes to be applied. 
     /// Note. These attributes are only applied to the top level div</param>
     public Alert(EMessage type, string message, string title, object htmlAttributes = null)
-      : this(type, message, title, null as EFontAwesomeIcon?, htmlAttributes)
+      : this(type, message, title, (EFontAwesomeIcon?)null, htmlAttributes)
     {
     }
 

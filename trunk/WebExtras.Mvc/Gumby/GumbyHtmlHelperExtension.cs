@@ -182,7 +182,7 @@ namespace WebExtras.Mvc.Gumby
     /// <returns>A Bootstrap styled alert</returns>
     public static Alert Alert(this HtmlHelper html, EMessage type, string message, object htmlAttributes = null)
     {
-      return Alert(html, type, message, string.Empty, null as EGumbyIcon?, htmlAttributes);
+      return Alert (html, type, message, string.Empty, (EGumbyIcon?)null, htmlAttributes);
     }
 
     /// <summary>
@@ -197,7 +197,7 @@ namespace WebExtras.Mvc.Gumby
     /// <returns>A Bootstrap styled alert</returns>
     public static Alert Alert(this HtmlHelper html, EMessage type, string message, string title, object htmlAttributes = null)
     {
-      return Alert(html, type, message, title, null as EGumbyIcon?, htmlAttributes);
+      return Alert (html, type, message, title, (EGumbyIcon?)null, htmlAttributes);
     }
 
    /// <summary>

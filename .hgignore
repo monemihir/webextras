@@ -11,3 +11,4 @@ packages/*
 **/TestResults
 build/binaries/*
 build/web/*
+**/StyleCop.Cache

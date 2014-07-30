@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebExtras-Mono", "WebExtras\WebExtras-Mono.csproj", "{9ECAF0DF-169B-4661-8D36-DAD11B033ECF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebExtras.Mvc-Mono", "WebExtras.Mvc\WebExtras.Mvc-Mono.csproj", "{A0C1C29E-ED4D-447A-A808-3EEEE9C98596}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebExtras.DemoApp-Mono", "WebExtras.DemoApp\WebExtras.DemoApp-Mono.csproj", "{4C55BD5B-8EA9-4D52-A491-0EFC89582F1D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4C55BD5B-8EA9-4D52-A491-0EFC89582F1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C55BD5B-8EA9-4D52-A491-0EFC89582F1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C55BD5B-8EA9-4D52-A491-0EFC89582F1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C55BD5B-8EA9-4D52-A491-0EFC89582F1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9ECAF0DF-169B-4661-8D36-DAD11B033ECF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9ECAF0DF-169B-4661-8D36-DAD11B033ECF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9ECAF0DF-169B-4661-8D36-DAD11B033ECF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9ECAF0DF-169B-4661-8D36-DAD11B033ECF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0C1C29E-ED4D-447A-A808-3EEEE9C98596}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0C1C29E-ED4D-447A-A808-3EEEE9C98596}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0C1C29E-ED4D-447A-A808-3EEEE9C98596}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0C1C29E-ED4D-447A-A808-3EEEE9C98596}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = WebExtras.DemoApp\WebExtras.DemoApp-Mono.csproj
+	EndGlobalSection
+EndGlobal

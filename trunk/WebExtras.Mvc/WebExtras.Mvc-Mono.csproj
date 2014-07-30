@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A0C1C29E-ED4D-447A-A808-3EEEE9C98596}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>WebExtras.Mvc</RootNamespace>
+    <AssemblyName>WebExtras.Mvc-Mono</AssemblyName>
+    <UseMSBuildEngine>False</UseMSBuildEngine>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <NoWarn>1701</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Web.WebPages">
+      <HintPath>..\External\Microsoft\MVC4\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="T4MVCExtensions">
+      <HintPath>..\External\T4MVC\v3.2.0\T4MVCExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\External\Json.NET\v4.5.6\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\External\Microsoft\MVC4\System.Web.Mvc.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Core\ActionMessageControllerExtension.cs" />
+    <Compile Include="Core\BootstrapVersionException.cs" />
+    <Compile Include="Core\CheckCookiesAttribute.cs" />
+    <Compile Include="Core\CookiesNotEnabledException.cs" />
+    <Compile Include="Core\EBootstrapVersion.cs" />
+    <Compile Include="Core\ECSSFramework.cs" />
+    <Compile Include="Core\EFontAwesomeVersion.cs" />
+    <Compile Include="Core\EGumbyTheme.cs" />
+    <Compile Include="Core\EMessage.cs" />
+    <Compile Include="Core\FontAwesomeVersionException.cs" />
+    <Compile Include="Core\FormHelperExtension.cs" />
+    <Compile Include="Core\GumbyThemeException.cs" />
+    <Compile Include="Core\HtmlHelperExtension.cs" />
+    <Compile Include="Core\HtmlStringUtil.cs" />
+    <Compile Include="Core\JsonNetResult.cs" />
+    <Compile Include="Core\MessageStringValueDeciders.cs" />
+    <Compile Include="Core\ModelStateErrorExtension.cs" />
+    <Compile Include="Core\NoCssFrameworkException.cs" />
+    <Compile Include="Core\NoCssThemeException.cs" />
+    <Compile Include="Core\SelectedTabHelperExtension.cs" />
+    <Compile Include="Core\ValidationHtmlHelperExtension.cs" />
+    <Compile Include="Core\ViewRendererControllerExtension.cs" />
+    <Compile Include="Core\WebExtrasMvcConstants.cs" />
+    <Compile Include="Html\Alert.cs" />
+    <Compile Include="Html\Bold.cs" />
+    <Compile Include="Html\Button.cs" />
+    <Compile Include="Html\CheckBox.cs" />
+    <Compile Include="Html\CssClassesCollection.cs" />
+    <Compile Include="Html\Div.cs" />
+    <Compile Include="Html\EButton.cs" />
+    <Compile Include="Html\EHtmlTag.cs" />
+    <Compile Include="Html\EList.cs" />
+    <Compile Include="Html\Empty.cs" />
+    <Compile Include="Html\ExtendedHtmlStringExtension.cs" />
+    <Compile Include="Html\HtmlElement.cs" />
+    <Compile Include="Html\HtmlLabel.cs" />
+    <Compile Include="Html\HtmlList.cs" />
+    <Compile Include="Html\HtmlListItem.cs" />
+    <Compile Include="Html\Hyperlink.cs" />
+    <Compile Include="Html\IExtendedHtmlString.cs" />
+    <Compile Include="Html\Image.cs" />
+    <Compile Include="Html\Italic.cs" />
+    <Compile Include="Html\RadioButton.cs" />
+    <Compile Include="Html\Span.cs" />
+    <Compile Include="Bootstrap\BootstrapIconlink.cs" />
+    <Compile Include="Bootstrap\BootstrapNavBar.cs" />
+    <Compile Include="Bootstrap\BootstrapNavbarExtension.cs" />
+    <Compile Include="Bootstrap\BootstrapProgressBar.cs" />
+    <Compile Include="Bootstrap\BootstrapProgressBarExtension.cs" />
+    <Compile Include="Bootstrap\BootstrapStringValueDeciders.cs" />
+    <Compile Include="Bootstrap\BootstrapUtil.cs" />
+    <Compile Include="Bootstrap\BSFormHtmlHelperExtension.cs" />
+    <Compile Include="Bootstrap\BSHtmlHelperExtension.cs" />
+    <Compile Include="Bootstrap\BSHtmlStringExtension.cs" />
+    <Compile Include="Bootstrap\EBootstrapButton.cs" />
+    <Compile Include="Bootstrap\EBootstrapIcon.cs" />
+    <Compile Include="Bootstrap\EBootstrapNavbar.cs" />
+    <Compile Include="Bootstrap\EBootstrapProgressBar.cs" />
+    <Compile Include="Bootstrap\EFontAwesomeIcon.cs" />
+    <Compile Include="Bootstrap\EFontAwesomeIconSize.cs" />
+    <Compile Include="Gumby\EGumbyButton.cs" />
+    <Compile Include="Gumby\EGumbyButtonStyle.cs" />
+    <Compile Include="Gumby\EGumbyIcon.cs" />
+    <Compile Include="Gumby\GumbyHtmlHelperExtension.cs" />
+    <Compile Include="Gumby\GumbyHtmlStringExtension.cs" />
+    <Compile Include="Gumby\GumbyIconlink.cs" />
+    <Compile Include="Gumby\GumbyNavbar.cs" />
+    <Compile Include="Gumby\GumbyNavbarExtension.cs" />
+    <Compile Include="Gumby\GumbyUtil.cs" />
+    <Compile Include="JQueryUI\EJQueryUIIcon.cs" />
+    <Compile Include="JQueryUI\EJQueryUIIconType.cs" />
+    <Compile Include="JQueryUI\JQueryUIUtil.cs" />
+    <Compile Include="JQueryUI\JUIFormHelperExtension.cs" />
+    <Compile Include="JQueryUI\JUIHtmlHelperExtension.cs" />
+    <Compile Include="JQueryUI\JUIHtmlStringExtension.cs" />
+    <Compile Include="JavascriptHelper.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="Core\" />
+    <Folder Include="Html\" />
+    <Folder Include="Bootstrap\" />
+    <Folder Include="Gumby\" />
+    <Folder Include="JQueryUI\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="lgpl-3.0.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WebExtras\WebExtras-Mono.csproj">
+      <Project>{9ECAF0DF-169B-4661-8D36-DAD11B033ECF}</Project>
+      <Name>WebExtras-Mono</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

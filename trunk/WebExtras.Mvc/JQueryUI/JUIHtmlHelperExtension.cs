@@ -80,7 +80,7 @@ namespace WebExtras.Mvc.JQueryUI
     /// <returns>A jQuery UI styled alert</returns>
     public static Alert Alert(this HtmlHelper html, EMessage type, string message, object htmlAttributes = null)
     {
-      return Alert(html, type, message, string.Empty, null as EJQueryUIIcon?, htmlAttributes);
+      return Alert (html, type, message, string.Empty, (EJQueryUIIcon?)null, htmlAttributes);
     }
 
     /// <summary>
@@ -95,7 +95,7 @@ namespace WebExtras.Mvc.JQueryUI
     /// <returns>A jQuery UI styled alert</returns>
     public static Alert Alert(this HtmlHelper html, EMessage type, string message, string title, object htmlAttributes = null)
     {
-      return Alert(html, type, message, title, null as EJQueryUIIcon?, htmlAttributes);
+      return Alert (html, type, message, title, (EJQueryUIIcon?)null, htmlAttributes);
     }
 
     /// <summary>

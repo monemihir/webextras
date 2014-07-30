@@ -1,0 +1,474 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectTypeGuids>{E53F8FEA-EAE0-44A6-8774-FFD645390401};{349C5851-65DF-11DA-9384-00065B846F21};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <ProjectGuid>{4C55BD5B-8EA9-4D52-A491-0EFC89582F1D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>WebExtras.DemoApp</RootNamespace>
+    <AssemblyName>WebExtras.DemoApp-Mono</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <NoWarn>1701</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\External\Microsoft\MVC4\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Routing">
+      <HintPath>..\External\Microsoft\MVC4\System.Web.Routing.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages">
+      <HintPath>..\External\Microsoft\MVC4\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Web.WebPages.Razor">
+      <HintPath>..\External\Microsoft\MVC4\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Core" />
+    <Reference Include="SquishIt.Framework">
+      <HintPath>..\External\SquishIt\v0.9.2\SquishIt.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="SquishIt.Mvc">
+      <HintPath>..\External\SquishIt\v0.9.2\SquishIt.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\External\Json.NET\v4.5.6\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="T4MVCExtensions">
+      <HintPath>..\External\T4MVC\v3.2.0\T4MVCExtensions.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\ContentBundle.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Bootstrap3\Controllers\BaseController.cs" />
+    <Compile Include="Areas\Bootstrap3\Controllers\CoreController.cs" />
+    <Compile Include="Areas\Bootstrap3\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Bootstrap3\Controllers\MvcController.cs" />
+    <Compile Include="Areas\Gumby\Controllers\MvcController.cs" />
+    <Compile Include="Areas\JQueryUI\Controllers\BaseController.cs" />
+    <Compile Include="Areas\JQueryUI\Controllers\CoreController.cs" />
+    <Compile Include="Areas\JQueryUI\Controllers\HomeController.cs" />
+    <Compile Include="Areas\JQueryUI\Controllers\MvcController.cs" />
+    <Compile Include="Areas\JQueryUI\JQueryUIAreaRegistration.cs" />
+    <Compile Include="Controllers\GraphDataController.cs" />
+    <Compile Include="GraphDataController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Gumby.MvcController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="JQueryUI.CoreController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="JQueryUI.HomeController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="JQueryUI.MvcController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="JQueryUI.SharedController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Core\DatatableGenerator.cs" />
+    <Compile Include="Models\Core\GraphDataGenerator.cs" />
+    <Compile Include="Models\Core\JQPlotViewModel.cs" />
+    <Compile Include="Models\Mvc\CoreFormViewModel.cs" />
+    <Compile Include="Models\Mvc\CoreHtmlViewModel.cs" />
+    <Compile Include="Areas\Bootstrap\BootstrapAreaRegistration.cs" />
+    <Compile Include="Areas\Bootstrap3\Bootstrap3AreaRegistration.cs" />
+    <Compile Include="Areas\Bootstrap\Controllers\BaseController.cs" />
+    <Compile Include="Areas\Gumby\Controllers\BaseController.cs" />
+    <Compile Include="Areas\Gumby\Controllers\CoreController.cs" />
+    <Compile Include="Areas\Gumby\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Gumby\GumbyAreaRegistration.cs" />
+    <Compile Include="AssetsController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Bootstrap\Controllers\HomeController.cs" />
+    <Compile Include="Bootstrap.CoreController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Bootstrap.HomeController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Bootstrap.MvcController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Bootstrap.SharedController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Bootstrap3.CoreController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Bootstrap3.HomeController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Bootstrap3.MvcController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Bootstrap3.SharedController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\AssetsController.cs" />
+    <Compile Include="Areas\Bootstrap\Controllers\CoreController.cs" />
+    <Compile Include="Areas\Bootstrap\Controllers\MvcController.cs" />
+    <Compile Include="Controllers\FlavourController.cs" />
+    <Compile Include="CoreController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FlavourController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Gumby.CoreController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Gumby.HomeController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Gumby.SharedController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HomeController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Core\DatatablesViewModel.cs" />
+    <Compile Include="Models\Core\FlotViewModel.cs" />
+    <Compile Include="Models\Core\PostbackSetupViewModel.cs" />
+    <Compile Include="MvcController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SharedController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T4MVC.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\fluidable.min.css" />
+    <Content Include="Content\img\calendar.gif" />
+    <Content Include="Content\img\jqueryui\ui-bg_highlight-soft_60_4ca20b_1x100.png" />
+    <Content Include="Content\jquery-ui-darkness-1.10.3.css" />
+    <Content Include="Content\jquery.jqplot.min.css" />
+    <Content Include="Content\jquery.ui.datetimepicker.css" />
+    <Content Include="Content\jquery.ui.menubar.css" />
+    <Content Include="Content\style-jqueryui.css">
+      <DependentUpon>style-jqueryui.less</DependentUpon>
+    </Content>
+    <Content Include="Content\style-jqueryui.min.css">
+      <DependentUpon>style-jqueryui.less</DependentUpon>
+    </Content>
+    <Content Include="Content\webextras.bootstrap.css">
+      <DependentUpon>webextras.bootstrap.less</DependentUpon>
+    </Content>
+    <Content Include="Content\webextras.bootstrap.min.css">
+      <DependentUpon>webextras.bootstrap.less</DependentUpon>
+    </Content>
+    <Content Include="Content\webextras.bootstrap3.css">
+      <DependentUpon>webextras.bootstrap3.less</DependentUpon>
+    </Content>
+    <Content Include="Content\webextras.bootstrap3.min.css">
+      <DependentUpon>webextras.bootstrap3.less</DependentUpon>
+    </Content>
+    <Content Include="Content\webextras.common.css">
+      <DependentUpon>webextras.common.less</DependentUpon>
+    </Content>
+    <Content Include="Content\webextras.common.min.css">
+      <DependentUpon>webextras.common.less</DependentUpon>
+    </Content>
+    <Content Include="Content\webextras.gumby.css">
+      <DependentUpon>webextras.gumby.less</DependentUpon>
+    </Content>
+    <Content Include="Content\webextras.gumby.min.css">
+      <DependentUpon>webextras.gumby.less</DependentUpon>
+    </Content>
+    <Content Include="Content\webextras.jqueryui.css">
+      <DependentUpon>webextras.jqueryui.less</DependentUpon>
+    </Content>
+    <Content Include="Content\webextras.jqueryui.min.css">
+      <DependentUpon>webextras.jqueryui.less</DependentUpon>
+    </Content>
+    <Content Include="Scripts\excanvas.min.js" />
+    <Content Include="Scripts\JQPlot\jqplot.cursor.min.js" />
+    <Content Include="Scripts\JQPlot\jqplot.highlighter.min.js" />
+    <Content Include="Scripts\JQPlot\jqplot.json2.min.js" />
+    <Content Include="Scripts\JQPlot\jqplot.barRenderer.min.js" />
+    <Content Include="Scripts\JQPlot\jqplot.canvasAxisLabelRenderer.min.js" />
+    <Content Include="Scripts\JQPlot\jqplot.canvasAxisTickRenderer.min.js" />
+    <Content Include="Scripts\JQPlot\jqplot.canvasTextRenderer.min.js" />
+    <Content Include="Scripts\JQPlot\jqplot.categoryAxisRenderer.min.js" />
+    <Content Include="Scripts\JQPlot\jqplot.dateAxisRenderer.min.js" />
+    <Content Include="Scripts\JQPlot\jqplot.min.js" />
+    <Content Include="Scripts\JQPlot\jqplot.ohlcRenderer.min.js" />
+    <Content Include="Scripts\JQPlot\jqplot.pointLabels.min.js" />
+    <Content Include="Scripts\jquery-ui-1.10.3.custom.min.js" />
+    <Content Include="Scripts\jquery.ui.datetimepicker-1.4.4.js" />
+    <Content Include="Scripts\jquery.ui.menubar.js" />
+    <Content Include="Scripts\modernizr-2.6.2.min.js" />
+    <Content Include="Views\Shared\DatatablePartial.ascx" />
+    <Content Include="Content\bootstrap-2.3.1.css" />
+    <Content Include="Content\bootstrap-3.0.0.css" />
+    <Content Include="Content\bootstrap-theme-3.0.0.css" />
+    <Content Include="Content\jquery.datatables.bootstrap3.css" />
+    <Content Include="Content\font\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\gumby-2.5.6.css" />
+    <Content Include="Content\jquery.dataTables.jui.css" />
+    <Content Include="Content\img\jqueryui\ui-bg_flat_30_cccccc_40x100.png" />
+    <Content Include="Content\img\jqueryui\ui-bg_flat_50_5c5c5c_40x100.png" />
+    <Content Include="Content\img\jqueryui\ui-bg_glass_20_555555_1x400.png" />
+    <Content Include="Content\img\jqueryui\ui-bg_glass_40_0078a3_1x400.png" />
+    <Content Include="Content\img\jqueryui\ui-bg_glass_40_ffc73d_1x400.png" />
+    <Content Include="Content\img\jqueryui\ui-bg_gloss-wave_25_333333_500x100.png" />
+    <Content Include="Content\img\jqueryui\ui-bg_highlight-soft_80_eeeeee_1x100.png" />
+    <Content Include="Content\img\jqueryui\ui-bg_inset-soft_25_000000_1x100.png" />
+    <Content Include="Content\img\jqueryui\ui-bg_inset-soft_30_f58400_1x100.png" />
+    <Content Include="Content\img\jqueryui\ui-icons_222222_256x240.png" />
+    <Content Include="Content\img\jqueryui\ui-icons_4b8e0b_256x240.png" />
+    <Content Include="Content\img\jqueryui\ui-icons_a83300_256x240.png" />
+    <Content Include="Content\img\jqueryui\ui-icons_cccccc_256x240.png" />
+    <Content Include="Content\img\jqueryui\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\font\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\font\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\font\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\font\entypo.eot" />
+    <Content Include="Content\font\entypo.ttf" />
+    <Content Include="Content\font\entypo.woff" />
+    <Content Include="Content\favicon.ico" />
+    <Content Include="Content\favicon.png" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font\fontawesome-webfont.svg" />
+    <Content Include="Content\img\bootstrap\glyphicons-halflings-white.png" />
+    <Content Include="Content\img\bootstrap\glyphicons-halflings.png" />
+    <Content Include="Content\img\datatables\back_disabled.png" />
+    <Content Include="Content\img\datatables\back_enabled.png" />
+    <Content Include="Content\img\datatables\back_enabled_hover.png" />
+    <Content Include="Content\img\datatables\forward_disabled.png" />
+    <Content Include="Content\img\datatables\forward_enabled.png" />
+    <Content Include="Content\img\datatables\forward_enabled_hover.png" />
+    <Content Include="Content\img\datatables\sort_asc.png" />
+    <Content Include="Content\img\datatables\sort_asc_disabled.png" />
+    <Content Include="Content\img\datatables\sort_both.png" />
+    <Content Include="Content\img\datatables\sort_desc.png" />
+    <Content Include="Content\img\datatables\sort_desc_disabled.png" />
+    <Content Include="Content\img\draft.png" />
+    <Content Include="Content\img\jqueryui\animated-overlay.gif" />
+    <Content Include="Content\inline\build.txt" />
+    <Content Include="Content\inline\changelog.html" />
+    <Content Include="Content\jquery.bootstrap.datetimepicker.css" />
+    <Content Include="Content\jquery.dataTables.css" />
+    <Content Include="Content\jpg\wallpaper1.jpg" />
+    <Content Include="Content\jquery.jScrollPane-2.0.0beta12.css" />
+    <Content Include="Content\png\bk.png" />
+    <Content Include="Content\png\youtube-logo.png" />
+    <Content Include="Content\style-bootstrap.css">
+      <DependentUpon>style-bootstrap.less</DependentUpon>
+    </Content>
+    <Content Include="Content\style-bootstrap.min.css">
+      <DependentUpon>style-bootstrap.less</DependentUpon>
+    </Content>
+    <Content Include="Content\style-bootstrap3.css">
+      <DependentUpon>style-bootstrap3.less</DependentUpon>
+    </Content>
+    <Content Include="Content\style-bootstrap3.less" />
+    <Content Include="Content\style-gumby.css">
+      <DependentUpon>style-gumby.less</DependentUpon>
+    </Content>
+    <Content Include="Content\style-gumby.less" />
+    <Content Include="Areas\Bootstrap3\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Bootstrap3\Views\Core\_AxisLabels.cshtml" />
+    <Content Include="Views\Shared\_Datatable.cshtml" />
+    <Content Include="Areas\Bootstrap3\Views\Core\_PostbackSetup.cshtml" />
+    <Content Include="Areas\Bootstrap3\Views\Core\Datatables.cshtml" />
+    <Content Include="Areas\Bootstrap3\Views\Core\Flot.cshtml" />
+    <Content Include="Areas\Bootstrap3\Views\Core\Generic.cshtml" />
+    <Content Include="Areas\Bootstrap3\Views\Home\Download.cshtml" />
+    <Content Include="Areas\Bootstrap3\Views\Mvc\ActionResults.cshtml" />
+    <Content Include="Areas\Bootstrap3\Views\Mvc\BootstrapForm.cshtml" />
+    <Content Include="Areas\Bootstrap3\Views\Mvc\BootstrapHtml.cshtml" />
+    <Content Include="Areas\Bootstrap3\Views\Mvc\CoreForm.cshtml" />
+    <Content Include="Areas\Bootstrap3\Views\Mvc\CoreHtml.cshtml" />
+    <Content Include="Areas\Bootstrap3\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Bootstrap3\Views\Shared\Error.cshtml" />
+    <Content Include="Areas\Bootstrap3\Views\Web.config" />
+    <Content Include="Areas\Bootstrap\Views\Core\Datatables.cshtml" />
+    <Content Include="Areas\Gumby\Views\Web.config" />
+    <Content Include="Areas\Gumby\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Gumby\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Gumby\Views\Shared\Error.cshtml" />
+    <Content Include="Areas\Gumby\Views\Home\Download.cshtml" />
+    <Content Include="Areas\Gumby\Views\Core\Flot.cshtml" />
+    <Content Include="Areas\Gumby\Views\Core\_AxisLabels.cshtml" />
+    <Content Include="Views\Core\_BarGraph.cshtml" />
+    <Content Include="Views\Core\_BasicSetup.cshtml" />
+    <Content Include="Views\Core\_CurvedLineGraph.cshtml" />
+    <Content Include="Views\Core\_CustomFlotFormatters.cshtml" />
+    <Content Include="Views\Core\_DashedGraph.cshtml" />
+    <Content Include="Views\Core\_LineGraph.cshtml" />
+    <Content Include="Views\Core\_PagedSetup.cshtml" />
+    <Content Include="Views\Core\_PieGraph.cshtml" />
+    <Content Include="Views\Core\_PostbackResult.cshtml" />
+    <Content Include="Areas\Gumby\Views\Core\_PostbackSetup.cshtml" />
+    <Content Include="Views\Core\_SortedSetup.cshtml" />
+    <Content Include="Views\Core\_StatusSetup.cshtml" />
+    <Content Include="Areas\Gumby\Views\Core\Datatables.cshtml" />
+    <Content Include="Areas\Gumby\Views\Mvc\CoreHtml.cshtml" />
+    <Content Include="Areas\Gumby\Views\Mvc\CoreForm.cshtml" />
+    <Content Include="Areas\Gumby\Views\Mvc\ActionResults.cshtml" />
+    <Content Include="Areas\Gumby\Views\Mvc\GumbyHtml.cshtml" />
+    <Content Include="Areas\Gumby\Views\Mvc\GumbyForm.cshtml" />
+    <Content Include="Areas\Bootstrap\Views\Core\JQPlot.cshtml" />
+    <Content Include="Areas\Bootstrap3\Views\Core\JQPlot.cshtml" />
+    <Content Include="Areas\Gumby\Views\Core\JQPlot.cshtml" />
+    <Content Include="Areas\JQueryUI\Views\Core\Datatables.cshtml" />
+    <Content Include="Areas\JQueryUI\Views\Core\Flot.cshtml" />
+    <Content Include="Areas\JQueryUI\Views\Core\Generic.cshtml" />
+    <Content Include="Areas\JQueryUI\Views\Core\_AxisLabels.cshtml" />
+    <Content Include="Areas\JQueryUI\Views\Core\_PostbackSetup.cshtml" />
+    <Content Include="Areas\JQueryUI\Views\Mvc\ActionResults.cshtml" />
+    <Content Include="Areas\JQueryUI\Views\Mvc\CoreForm.cshtml" />
+    <Content Include="Areas\JQueryUI\Views\Mvc\CoreHtml.cshtml" />
+    <Content Include="Areas\JQueryUI\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\JQueryUI\Views\Web.config" />
+    <Content Include="Areas\JQueryUI\Views\_ViewStart.cshtml" />
+    <Content Include="Content\style-jqueryui.less" />
+    <Content Include="Areas\JQueryUI\Views\Home\Download.cshtml" />
+    <Content Include="Areas\JQueryUI\Views\Mvc\JQueryUIHtml.cshtml" />
+    <Content Include="Areas\JQueryUI\Views\Mvc\JQueryUIForm.cshtml" />
+    <Content Include="Areas\JQueryUI\Views\Core\JQPlot.cshtml" />
+    <None Include="Content\style.less" />
+    <Content Include="Content\style-bootstrap3.min.css">
+      <DependentUpon>style-bootstrap3.less</DependentUpon>
+    </Content>
+    <Content Include="Content\style-gumby.min.css">
+      <DependentUpon>style-gumby.less</DependentUpon>
+    </Content>
+    <Content Include="Content\style.css">
+      <DependentUpon>style.less</DependentUpon>
+    </Content>
+    <Content Include="Content\style.min.css">
+      <DependentUpon>style.less</DependentUpon>
+    </Content>
+    <Content Include="Content\webextras.common.less" />
+    <Content Include="Content\webextras.bootstrap.less" />
+    <Content Include="Content\webextras.bootstrap3.less" />
+    <Content Include="Content\webextras.gumby.less" />
+    <Content Include="Content\webextras.jqueryui.less" />
+    <None Include="Content\webextras.less" />
+    <Content Include="Content\webextras.css">
+      <DependentUpon>webextras.less</DependentUpon>
+    </Content>
+    <Content Include="Content\webextras.min.css">
+      <DependentUpon>webextras.less</DependentUpon>
+    </Content>
+    <Content Include="Global.asax" />
+    <None Include="Content\style-bootstrap.less" />
+    <Content Include="lgpl-3.0.htm">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\bootstrap-3.0.0.min.js" />
+    <Content Include="Scripts\jquery.datatables.bootstrap3.js" />
+    <Content Include="Scripts\gumby-2.5.6.min.js" />
+    <Content Include="Scripts\jquery.bootstrap.datetimepicker.min.js" />
+    <Content Include="Scripts\jquery.bootstrap.hover.dropdown.min.js" />
+    <Content Include="Scripts\jquery.flot.min.js" />
+    <Content Include="Scripts\jquery.flot.axislabels.js" />
+    <Content Include="Scripts\jquery.flot.pie.min.js" />
+    <Content Include="Scripts\jquery.flot.time.min.js" />
+    <Content Include="Scripts\jquery.jScrollPane-2.0.0beta12.js" />
+    <Content Include="Scripts\jquery.mwheelIntent-1.2.js" />
+    <Content Include="Scripts\jquery.mousewheel-3.0.6.js" />
+    <Content Include="Scripts\bootstrap-2.3.1.min.js" />
+    <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <Content Include="Scripts\jquery.datatables.min.js" />
+    <Content Include="Scripts\jquery.datatables.bootstrap.js" />
+    <Content Include="Scripts\jquery.flot.curvedlines.js" />
+    <Content Include="Scripts\jquery.flot.dashes.js" />
+    <Content Include="Scripts\jquery.migrate-1.1.1.min.js" />
+    <Content Include="T4MVC.tt.settings.xml" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Areas\Bootstrap\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Bootstrap\Views\Shared\Error.cshtml" />
+    <Content Include="Areas\Bootstrap\Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Areas\Gumby\Views\Core\Generic.cshtml" />
+    <Content Include="Views\Mvc\_JsonNetResult.cshtml" />
+    <Content Include="Views\Core\_JQPlotLineGraph.cshtml" />
+    <Content Include="Views\Core\_JQPlotNonNumericAxisValues.cshtml" />
+    <Content Include="Views\Core\_JQPlotMultipleAxes.cshtml" />
+    <Content Include="Views\Core\_JQPlotAjaxData.cshtml" />
+    <Content Include="Views\Core\_JQPlotOHLCGraph.cshtml" />
+    <Content Include="Views\Core\_JQPlotBarGraph.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="T4MVC.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>T4MVC.cs</LastGenOutput>
+    </Content>
+    <Content Include="T4MVC.tt.hooks.t4" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <ProjectExtensions>
+    <MonoDevelop>
+      <Properties VerifyCodeBehindFields="True" VerifyCodeBehindEvents="True">
+        <XspParameters Port="49000" Address="127.0.0.1" SslMode="None" SslProtocol="Default" KeyType="None" CertFile="" KeyFile="" PasswordOptions="None" Password="" Verbose="True" />
+      </Properties>
+    </MonoDevelop>
+  </ProjectExtensions>
+  <ItemGroup>
+    <ProjectReference Include="..\WebExtras\WebExtras-Mono.csproj">
+      <Project>{9ECAF0DF-169B-4661-8D36-DAD11B033ECF}</Project>
+      <Name>WebExtras-Mono</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebExtras.Mvc\WebExtras.Mvc-Mono.csproj">
+      <Project>{A0C1C29E-ED4D-447A-A808-3EEEE9C98596}</Project>
+      <Name>WebExtras.Mvc-Mono</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

@@ -186,7 +186,6 @@ namespace WebExtras.Mvc.Bootstrap
       string placement,
       string trigger)
     {
-      MemberExpression exp = expression.Body as MemberExpression;
       string tooltip = GetTooltipFor(html, expression);
 
       return TooltipFor(html, expression, tooltip, placement, trigger);
@@ -286,7 +285,7 @@ namespace WebExtras.Mvc.Bootstrap
     /// <returns>A Bootstrap styled alert</returns>
     public static Alert Alert(this HtmlHelper html, EMessage type, string message, object htmlAttributes = null)
     {
-      return Alert(html, type, message, string.Empty, null as EBootstrapIcon?, htmlAttributes);
+      return Alert (html, type, message, string.Empty, (EBootstrapIcon?)null, htmlAttributes);
     }
 
     /// <summary>
@@ -301,7 +300,7 @@ namespace WebExtras.Mvc.Bootstrap
     /// <returns>A Bootstrap styled alert</returns>
     public static Alert Alert(this HtmlHelper html, EMessage type, string message, string title, object htmlAttributes = null)
     {
-      return Alert(html, type, message, title, null as EBootstrapIcon?, htmlAttributes);
+      return Alert (html, type, message, title, (EBootstrapIcon?)null, htmlAttributes);
     }
 
     /// <summary>
