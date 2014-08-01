@@ -60,11 +60,11 @@ namespace WebExtras.DemoApp.Areas.Gumby.Controllers
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public MvcController Actions { get { return MVC.Gumby.Mvc; } }
         [GeneratedCode("T4MVC", "2.0")]
-        public readonly string Area = "gumby";
+        public readonly string Area = "Gumby";
         [GeneratedCode("T4MVC", "2.0")]
-        public readonly string Name = "mvc";
+        public readonly string Name = "Mvc";
         [GeneratedCode("T4MVC", "2.0")]
-        public const string NameConst = "mvc";
+        public const string NameConst = "Mvc";
 
         static readonly ActionNamesClass s_actions = new ActionNamesClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -72,14 +72,27 @@ namespace WebExtras.DemoApp.Areas.Gumby.Controllers
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNamesClass
         {
-            public readonly string Index = ("Index").ToLowerInvariant();
-            public readonly string CoreHtml = ("CoreHtml").ToLowerInvariant();
-            public readonly string CoreForm = ("CoreForm").ToLowerInvariant();
-            public readonly string GumbyHtml = ("GumbyHtml").ToLowerInvariant();
-            public readonly string GumbyForm = ("GumbyForm").ToLowerInvariant();
-            public readonly string ActionMessageDemo = ("ActionMessageDemo").ToLowerInvariant();
-            public readonly string UserAlertsDemo = ("UserAlertsDemo").ToLowerInvariant();
-            public readonly string ActionResults = ("ActionResults").ToLowerInvariant();
+            public readonly string Index = "Index";
+            public readonly string CoreHtml = "CoreHtml";
+            public readonly string CoreForm = "CoreForm";
+            public readonly string GumbyHtml = "GumbyHtml";
+            public readonly string GumbyForm = "GumbyForm";
+            public readonly string ActionMessageDemo = "ActionMessageDemo";
+            public readonly string UserAlertsDemo = "UserAlertsDemo";
+            public readonly string ActionResults = "ActionResults";
+        }
+
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionNameConstants
+        {
+            public const string Index = "Index";
+            public const string CoreHtml = "CoreHtml";
+            public const string CoreForm = "CoreForm";
+            public const string GumbyHtml = "GumbyHtml";
+            public const string GumbyForm = "GumbyForm";
+            public const string ActionMessageDemo = "ActionMessageDemo";
+            public const string UserAlertsDemo = "UserAlertsDemo";
+            public const string ActionResults = "ActionResults";
         }
 
 
@@ -89,7 +102,7 @@ namespace WebExtras.DemoApp.Areas.Gumby.Controllers
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionParamsClass_GumbyHtml
         {
-            public readonly string msg = ("msg").ToLowerInvariant();
+            public readonly string msg = "msg";
         }
         static readonly ActionParamsClass_ActionMessageDemo s_params_ActionMessageDemo = new ActionParamsClass_ActionMessageDemo();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -97,7 +110,7 @@ namespace WebExtras.DemoApp.Areas.Gumby.Controllers
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionParamsClass_ActionMessageDemo
         {
-            public readonly string success = ("success").ToLowerInvariant();
+            public readonly string success = "success";
         }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]

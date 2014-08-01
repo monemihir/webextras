@@ -13,3 +13,4 @@ build/binaries/*
 build/web/*
 **/StyleCop.Cache
 **/*.userprefs
+dist/**

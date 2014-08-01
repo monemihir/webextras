@@ -87,11 +87,11 @@ namespace WebExtras.DemoApp.Areas.Gumby.Controllers
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public CoreController Actions { get { return MVC.Gumby.Core; } }
         [GeneratedCode("T4MVC", "2.0")]
-        public readonly string Area = "gumby";
+        public readonly string Area = "Gumby";
         [GeneratedCode("T4MVC", "2.0")]
-        public readonly string Name = "core";
+        public readonly string Name = "Core";
         [GeneratedCode("T4MVC", "2.0")]
-        public const string NameConst = "core";
+        public const string NameConst = "Core";
 
         static readonly ActionNamesClass s_actions = new ActionNamesClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -99,15 +99,29 @@ namespace WebExtras.DemoApp.Areas.Gumby.Controllers
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNamesClass
         {
-            public readonly string Index = ("Index").ToLowerInvariant();
-            public readonly string Generic = ("Generic").ToLowerInvariant();
-            public readonly string Datatables = ("Datatables").ToLowerInvariant();
-            public readonly string GetAjaxData = ("GetAjaxData").ToLowerInvariant();
-            public readonly string GetPagedData = ("GetPagedData").ToLowerInvariant();
-            public readonly string GetSortedData = ("GetSortedData").ToLowerInvariant();
-            public readonly string GetPostbackData = ("GetPostbackData").ToLowerInvariant();
-            public readonly string Flot = ("Flot").ToLowerInvariant();
-            public readonly string JQPlot = ("JQPlot").ToLowerInvariant();
+            public readonly string Index = "Index";
+            public readonly string Generic = "Generic";
+            public readonly string Datatables = "Datatables";
+            public readonly string GetAjaxData = "GetAjaxData";
+            public readonly string GetPagedData = "GetPagedData";
+            public readonly string GetSortedData = "GetSortedData";
+            public readonly string GetPostbackData = "GetPostbackData";
+            public readonly string Flot = "Flot";
+            public readonly string JQPlot = "JQPlot";
+        }
+
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionNameConstants
+        {
+            public const string Index = "Index";
+            public const string Generic = "Generic";
+            public const string Datatables = "Datatables";
+            public const string GetAjaxData = "GetAjaxData";
+            public const string GetPagedData = "GetPagedData";
+            public const string GetSortedData = "GetSortedData";
+            public const string GetPostbackData = "GetPostbackData";
+            public const string Flot = "Flot";
+            public const string JQPlot = "JQPlot";
         }
 
 
@@ -117,8 +131,8 @@ namespace WebExtras.DemoApp.Areas.Gumby.Controllers
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionParamsClass_Datatables
         {
-            public readonly string mode = ("mode").ToLowerInvariant();
-            public readonly string viewModel = ("viewModel").ToLowerInvariant();
+            public readonly string mode = "mode";
+            public readonly string viewModel = "viewModel";
         }
         static readonly ActionParamsClass_GetAjaxData s_params_GetAjaxData = new ActionParamsClass_GetAjaxData();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -126,7 +140,7 @@ namespace WebExtras.DemoApp.Areas.Gumby.Controllers
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionParamsClass_GetAjaxData
         {
-            public readonly string filters = ("filters").ToLowerInvariant();
+            public readonly string filters = "filters";
         }
         static readonly ActionParamsClass_GetPagedData s_params_GetPagedData = new ActionParamsClass_GetPagedData();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -134,7 +148,7 @@ namespace WebExtras.DemoApp.Areas.Gumby.Controllers
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionParamsClass_GetPagedData
         {
-            public readonly string filters = ("filters").ToLowerInvariant();
+            public readonly string filters = "filters";
         }
         static readonly ActionParamsClass_GetSortedData s_params_GetSortedData = new ActionParamsClass_GetSortedData();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -142,7 +156,7 @@ namespace WebExtras.DemoApp.Areas.Gumby.Controllers
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionParamsClass_GetSortedData
         {
-            public readonly string filters = ("filters").ToLowerInvariant();
+            public readonly string filters = "filters";
         }
         static readonly ActionParamsClass_GetPostbackData s_params_GetPostbackData = new ActionParamsClass_GetPostbackData();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -150,8 +164,8 @@ namespace WebExtras.DemoApp.Areas.Gumby.Controllers
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionParamsClass_GetPostbackData
         {
-            public readonly string filters = ("filters").ToLowerInvariant();
-            public readonly string postbacks = ("postbacks").ToLowerInvariant();
+            public readonly string filters = "filters";
+            public readonly string postbacks = "postbacks";
         }
         static readonly ActionParamsClass_Flot s_params_Flot = new ActionParamsClass_Flot();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -159,7 +173,7 @@ namespace WebExtras.DemoApp.Areas.Gumby.Controllers
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionParamsClass_Flot
         {
-            public readonly string mode = ("mode").ToLowerInvariant();
+            public readonly string mode = "mode";
         }
         static readonly ActionParamsClass_JQPlot s_params_JQPlot = new ActionParamsClass_JQPlot();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -167,7 +181,7 @@ namespace WebExtras.DemoApp.Areas.Gumby.Controllers
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionParamsClass_JQPlot
         {
-            public readonly string mode = ("mode").ToLowerInvariant();
+            public readonly string mode = "mode";
         }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]

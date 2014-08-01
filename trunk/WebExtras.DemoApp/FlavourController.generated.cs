@@ -50,9 +50,9 @@ namespace WebExtras.DemoApp.Controllers
         [GeneratedCode("T4MVC", "2.0")]
         public readonly string Area = "";
         [GeneratedCode("T4MVC", "2.0")]
-        public readonly string Name = "flavour";
+        public readonly string Name = "Flavour";
         [GeneratedCode("T4MVC", "2.0")]
-        public const string NameConst = "flavour";
+        public const string NameConst = "Flavour";
 
         static readonly ActionNamesClass s_actions = new ActionNamesClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -60,9 +60,17 @@ namespace WebExtras.DemoApp.Controllers
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNamesClass
         {
-            public readonly string Index = ("Index").ToLowerInvariant();
-            public readonly string BuildDetails = ("BuildDetails").ToLowerInvariant();
-            public readonly string VersionDetails = ("VersionDetails").ToLowerInvariant();
+            public readonly string Index = "Index";
+            public readonly string BuildDetails = "BuildDetails";
+            public readonly string VersionDetails = "VersionDetails";
+        }
+
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionNameConstants
+        {
+            public const string Index = "Index";
+            public const string BuildDetails = "BuildDetails";
+            public const string VersionDetails = "VersionDetails";
         }
 
 

@@ -46,7 +46,7 @@ namespace T4MVC
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
     public class BootstrapClass
     {
-        public readonly string Name = "bootstrap";
+        public readonly string Name = "Bootstrap";
         public WebExtras.DemoApp.Areas.Bootstrap.Controllers.CoreController Core = new WebExtras.DemoApp.Areas.Bootstrap.Controllers.T4MVC_CoreController();
         public WebExtras.DemoApp.Areas.Bootstrap.Controllers.HomeController Home = new WebExtras.DemoApp.Areas.Bootstrap.Controllers.T4MVC_HomeController();
         public WebExtras.DemoApp.Areas.Bootstrap.Controllers.MvcController Mvc = new WebExtras.DemoApp.Areas.Bootstrap.Controllers.T4MVC_MvcController();
@@ -55,7 +55,7 @@ namespace T4MVC
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
     public class Bootstrap3Class
     {
-        public readonly string Name = "bootstrap3";
+        public readonly string Name = "Bootstrap3";
         public WebExtras.DemoApp.Areas.Bootstrap3.Controllers.CoreController Core = new WebExtras.DemoApp.Areas.Bootstrap3.Controllers.T4MVC_CoreController();
         public WebExtras.DemoApp.Areas.Bootstrap3.Controllers.HomeController Home = new WebExtras.DemoApp.Areas.Bootstrap3.Controllers.T4MVC_HomeController();
         public WebExtras.DemoApp.Areas.Bootstrap3.Controllers.MvcController Mvc = new WebExtras.DemoApp.Areas.Bootstrap3.Controllers.T4MVC_MvcController();
@@ -64,7 +64,7 @@ namespace T4MVC
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
     public class GumbyClass
     {
-        public readonly string Name = "gumby";
+        public readonly string Name = "Gumby";
         public WebExtras.DemoApp.Areas.Gumby.Controllers.CoreController Core = new WebExtras.DemoApp.Areas.Gumby.Controllers.T4MVC_CoreController();
         public WebExtras.DemoApp.Areas.Gumby.Controllers.HomeController Home = new WebExtras.DemoApp.Areas.Gumby.Controllers.T4MVC_HomeController();
         public WebExtras.DemoApp.Areas.Gumby.Controllers.MvcController Mvc = new WebExtras.DemoApp.Areas.Gumby.Controllers.T4MVC_MvcController();
@@ -73,7 +73,7 @@ namespace T4MVC
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
     public class JQueryUIClass
     {
-        public readonly string Name = "jqueryui";
+        public readonly string Name = "JQueryUI";
         public WebExtras.DemoApp.Areas.JQueryUI.Controllers.CoreController Core = new WebExtras.DemoApp.Areas.JQueryUI.Controllers.T4MVC_CoreController();
         public WebExtras.DemoApp.Areas.JQueryUI.Controllers.HomeController Home = new WebExtras.DemoApp.Areas.JQueryUI.Controllers.T4MVC_HomeController();
         public WebExtras.DemoApp.Areas.JQueryUI.Controllers.MvcController Mvc = new WebExtras.DemoApp.Areas.JQueryUI.Controllers.T4MVC_MvcController();

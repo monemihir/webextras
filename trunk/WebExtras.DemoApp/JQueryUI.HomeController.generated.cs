@@ -48,11 +48,11 @@ namespace WebExtras.DemoApp.Areas.JQueryUI.Controllers
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public HomeController Actions { get { return MVC.JQueryUI.Home; } }
         [GeneratedCode("T4MVC", "2.0")]
-        public readonly string Area = "jqueryui";
+        public readonly string Area = "JQueryUI";
         [GeneratedCode("T4MVC", "2.0")]
-        public readonly string Name = "home";
+        public readonly string Name = "Home";
         [GeneratedCode("T4MVC", "2.0")]
-        public const string NameConst = "home";
+        public const string NameConst = "Home";
 
         static readonly ActionNamesClass s_actions = new ActionNamesClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -60,8 +60,15 @@ namespace WebExtras.DemoApp.Areas.JQueryUI.Controllers
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNamesClass
         {
-            public readonly string Index = ("Index").ToLowerInvariant();
-            public readonly string Download = ("Download").ToLowerInvariant();
+            public readonly string Index = "Index";
+            public readonly string Download = "Download";
+        }
+
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionNameConstants
+        {
+            public const string Index = "Index";
+            public const string Download = "Download";
         }
 
 

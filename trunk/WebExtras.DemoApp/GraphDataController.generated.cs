@@ -50,9 +50,9 @@ namespace WebExtras.DemoApp.Controllers
         [GeneratedCode("T4MVC", "2.0")]
         public readonly string Area = "";
         [GeneratedCode("T4MVC", "2.0")]
-        public readonly string Name = "graphdata";
+        public readonly string Name = "GraphData";
         [GeneratedCode("T4MVC", "2.0")]
-        public const string NameConst = "graphdata";
+        public const string NameConst = "GraphData";
 
         static readonly ActionNamesClass s_actions = new ActionNamesClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -60,7 +60,13 @@ namespace WebExtras.DemoApp.Controllers
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNamesClass
         {
-            public readonly string GetJQPlotData = ("GetJQPlotData").ToLowerInvariant();
+            public readonly string GetJQPlotData = "GetJQPlotData";
+        }
+
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionNameConstants
+        {
+            public const string GetJQPlotData = "GetJQPlotData";
         }
 
 
