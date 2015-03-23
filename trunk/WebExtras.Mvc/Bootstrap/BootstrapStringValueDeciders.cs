@@ -35,14 +35,19 @@ namespace WebExtras.Mvc.Bootstrap
     /// <returns>The string value to be used for the enum value</returns>
     public string Decide(object sender = null)
     {
-      string css = string.Empty;
+      string css;
 
-      if (WebExtrasMvcConstants.FontAwesomeVersion == EFontAwesomeVersion.None)
-        throw new FontAwesomeVersionException();       
-      else if (WebExtrasMvcConstants.FontAwesomeVersion == EFontAwesomeVersion.V3)
-        css = "large";
-      else
-        css = "lg";
+      switch (WebExtrasMvcConstants.FontAwesomeVersion)
+      {
+        case EFontAwesomeVersion.None:
+          throw new FontAwesomeVersionException();
+        case EFontAwesomeVersion.V3:
+          css = "large";
+          break;
+        default:
+          css = "lg";
+          break;
+      }
 
       return css;
     }
@@ -62,14 +67,19 @@ namespace WebExtras.Mvc.Bootstrap
     /// <returns>The string value to be used for the enum value</returns>
     public string Decide(object sender = null)
     {
-      string css = string.Empty;
+      string css;
 
-      if (WebExtrasMvcConstants.BootstrapVersion == EBootstrapVersion.None)
-        throw new BootstrapVersionException();
-      else if (WebExtrasMvcConstants.BootstrapVersion == EBootstrapVersion.V2)
-        css = "btn-large";
-      else
-        css = "btn-lg";
+      switch (WebExtrasMvcConstants.BootstrapVersion)
+      {
+        case EBootstrapVersion.None:
+          throw new BootstrapVersionException();
+        case EBootstrapVersion.V2:
+          css = "btn-large";
+          break;
+        default:
+          css = "btn-lg";
+          break;
+      }
 
       return css;
     }
@@ -89,14 +99,19 @@ namespace WebExtras.Mvc.Bootstrap
     /// <returns>The string value to be used for the enum value</returns>
     public string Decide(object sender = null)
     {
-      string css = string.Empty;
+      string css;
 
-      if (WebExtrasMvcConstants.BootstrapVersion == EBootstrapVersion.None)
-        throw new BootstrapVersionException();
-      else if (WebExtrasMvcConstants.BootstrapVersion == EBootstrapVersion.V2)
-        css = "btn-small";
-      else
-        css = "btn-sm";
+      switch (WebExtrasMvcConstants.BootstrapVersion)
+      {
+        case EBootstrapVersion.None:
+          throw new BootstrapVersionException();
+        case EBootstrapVersion.V2:
+          css = "btn-small";
+          break;
+        default:
+          css = "btn-sm";
+          break;
+      }
 
       return css;
     }

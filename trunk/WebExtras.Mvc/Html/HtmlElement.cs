@@ -48,12 +48,12 @@ namespace WebExtras.Mvc.Html
     /// <summary>
     /// MVC HTML tag builder object
     /// </summary>
-    private TagBuilder m_tag;
+    private readonly TagBuilder m_tag;
 
     /// <summary>
     /// The HTML tag representing this element
     /// </summary>
-    private EHtmlTag m_htmlTag;
+    private readonly EHtmlTag m_htmlTag;
 
     /// <summary>
     /// CSS classes of this element
@@ -270,7 +270,7 @@ namespace WebExtras.Mvc.Html
     /// <exception cref="System.NotSupportedException">Thrown if an unsupported HTML tag is encountered</exception>
     public static HtmlElement Parse(string html)
     {
-      return HtmlElement.ParseElement(XElement.Parse(html));
+      return ParseElement(XElement.Parse(html));
     }
 
     /// <summary>
@@ -282,7 +282,7 @@ namespace WebExtras.Mvc.Html
     private static HtmlElement ParseElement(XElement element)
     {
       // check if we support the given parent tag
-      if (!HtmlElement.SupportedTags.Contains(element.Name.LocalName.ToLowerInvariant()))
+      if (!SupportedTags.Contains(element.Name.LocalName.ToLowerInvariant()))
         throw new NotSupportedException(
           string.Format("{0} tag is not supported. Only the following HTML tags are supported: {1}.",
             element.Name.LocalName.ToUpperInvariant(),
@@ -304,23 +304,23 @@ namespace WebExtras.Mvc.Html
         return html;
       }
 
-      if (element.Nodes().Count() > 0)
+      if (!element.Nodes().Any()) 
+        return html;
+
+      foreach (XNode node in element.Nodes())
       {
-        foreach (XNode node in element.Nodes())
-        {
-          string text = node.ToString();
+        string text = node.ToString();
 
-          // if the current node is a text node, enclose it in a SPAN object
-          // in order to preserve the order of elements in the finally parsed
-          // HtmlElement object, otherwise try to parse the node as a full 
-          // fledged element and start recursion
+        // if the current node is a text node, enclose it in a SPAN object
+        // in order to preserve the order of elements in the finally parsed
+        // HtmlElement object, otherwise try to parse the node as a full 
+        // fledged element and start recursion
 
-          // TODO: check whether there are any INFINITE LOOP conditions which
-          // will make the function throw OutOfMemoryException
-          HtmlElement parsed = node.NodeType == XmlNodeType.Text ? new Span(text) : Parse(text);
+        // TODO: check whether there are any INFINITE LOOP conditions which
+        // will make the function throw OutOfMemoryException
+        HtmlElement parsed = node.NodeType == XmlNodeType.Text ? new Span(text) : Parse(text);
 
-          html.Prepend(parsed);
-        }
+        html.Prepend(parsed);
       }
 
       return html;

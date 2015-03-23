@@ -212,7 +212,7 @@ namespace WebExtras.Mvc.Bootstrap
       if (expression == null)
         throw new ArgumentNullException("expression");
 
-      MemberExpression exp = expression.Body as MemberExpression;
+      MemberExpression exp = (MemberExpression) expression.Body;
 
       string fieldId = exp.Member.Name + "_tip";
 

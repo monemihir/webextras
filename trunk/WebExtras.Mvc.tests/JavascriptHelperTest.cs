@@ -17,6 +17,7 @@
 */
 
 using System;
+using System.Globalization;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace WebExtras.Mvc.tests
@@ -34,7 +35,7 @@ namespace WebExtras.Mvc.tests
     public void ToUtcJSDate_Test()
     {
       // arrange
-      double expected = 1357045571000;
+      const double expected = 1357045571000;
       DateTime dt = new DateTime(2013, 01, 01, 13, 06, 11, DateTimeKind.Utc);
 
       // act
@@ -52,13 +53,13 @@ namespace WebExtras.Mvc.tests
     {
       // arrange
       DateTime expected = new DateTime(2013, 01, 01, 13, 06, 11, DateTimeKind.Utc);
-      double dt = 1357045571000;
+      const double dt = 1357045571000;
 
       // act
       DateTime actual = JavascriptHelper.ToUtcCSDate(dt);
 
       // assert
-      Assert.AreEqual(expected.ToString(), actual.ToString());
+      Assert.AreEqual(expected.ToString(CultureInfo.InvariantCulture), actual.ToString(CultureInfo.InvariantCulture));
     }
   }
 }

@@ -34,7 +34,6 @@ namespace WebExtras.Mvc.Html
     /// Constructor
     /// </summary>
     public CssClassesCollection()
-      : base()
     { }
 
     /// <summary>
@@ -42,7 +41,6 @@ namespace WebExtras.Mvc.Html
     /// </summary>
     /// <param name="cssClasses">Existing CSS classes to be added</param>
     public CssClassesCollection(IEnumerable<string> cssClasses)
-      : base()
     {
       AddRange(cssClasses);
     }
