@@ -74,8 +74,9 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Configuration" />
-    <Reference Include="T4MVCExtensions">
-      <HintPath>..\External\T4MVC\v3.2.0\T4MVCExtensions.dll</HintPath>
+    <Reference Include="T4MVCExtensions, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\External\T4MVC\v3.14.1\T4MVCExtensions.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -433,7 +434,7 @@
     <Content Include="Scripts\jquery.flot.curvedlines.js" />
     <Content Include="Scripts\jquery.flot.dashes.js" />
     <Content Include="Scripts\jquery.migrate-1.1.1.min.js" />
-    <Content Include="T4MVC.tt.settings.xml" />
+    <None Include="T4MVC.tt.settings.xml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

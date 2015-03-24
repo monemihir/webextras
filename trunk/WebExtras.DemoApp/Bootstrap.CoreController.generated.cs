@@ -3,8 +3,9 @@
 // Don't change it directly as your change would get overwritten.  Instead, make changes
 // to the .tt file (i.e. the T4 template) and save it to regenerate this file.
 
-// Make sure the compiler doesn't complain about missing Xml comments
-#pragma warning disable 1591
+// Make sure the compiler doesn't complain about missing Xml comments and CLS compliance
+// 0108: suppress "Foo hides inherited member Foo. Use the new keyword if hiding was intended." when a controller and its abstract parent are both processed
+#pragma warning disable 1591, 3008, 3009, 0108
 #region T4MVC
 
 using System;
@@ -13,6 +14,7 @@ using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Hosting;
 using System.Web.Mvc;
@@ -35,51 +37,63 @@ namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        protected RedirectToRouteResult RedirectToAction(Task<ActionResult> taskResult)
+        {
+            return RedirectToAction(taskResult.Result);
+        }
+
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         protected RedirectToRouteResult RedirectToActionPermanent(ActionResult result)
         {
             var callInfo = result.GetT4MVCResult();
             return RedirectToRoutePermanent(callInfo.RouteValueDictionary);
         }
 
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        protected RedirectToRouteResult RedirectToActionPermanent(Task<ActionResult> taskResult)
+        {
+            return RedirectToActionPermanent(taskResult.Result);
+        }
+
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.ActionResult Datatables()
+        public virtual System.Web.Mvc.ActionResult Datatables()
         {
             return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Datatables);
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.JsonResult GetAjaxData()
+        public virtual System.Web.Mvc.JsonResult GetAjaxData()
         {
             return new T4MVC_System_Web_Mvc_JsonResult(Area, Name, ActionNames.GetAjaxData);
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.JsonResult GetPagedData()
+        public virtual System.Web.Mvc.JsonResult GetPagedData()
         {
             return new T4MVC_System_Web_Mvc_JsonResult(Area, Name, ActionNames.GetPagedData);
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.JsonResult GetSortedData()
+        public virtual System.Web.Mvc.JsonResult GetSortedData()
         {
             return new T4MVC_System_Web_Mvc_JsonResult(Area, Name, ActionNames.GetSortedData);
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.JsonResult GetPostbackData()
+        public virtual System.Web.Mvc.JsonResult GetPostbackData()
         {
             return new T4MVC_System_Web_Mvc_JsonResult(Area, Name, ActionNames.GetPostbackData);
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.ActionResult Flot()
+        public virtual System.Web.Mvc.ActionResult Flot()
         {
             return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Flot);
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.ActionResult JQPlot()
+        public virtual System.Web.Mvc.ActionResult JQPlot()
         {
             return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.JQPlot);
         }
@@ -210,76 +224,126 @@ namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-    public class T4MVC_CoreController : WebExtras.DemoApp.Areas.Bootstrap.Controllers.CoreController
+    public partial class T4MVC_CoreController : WebExtras.DemoApp.Areas.Bootstrap.Controllers.CoreController
     {
         public T4MVC_CoreController() : base(Dummy.Instance) { }
 
+        [NonAction]
+        partial void IndexOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+
+        [NonAction]
         public override System.Web.Mvc.ActionResult Index()
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Index);
+            IndexOverride(callInfo);
             return callInfo;
         }
 
+        [NonAction]
+        partial void GenericOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+
+        [NonAction]
         public override System.Web.Mvc.ActionResult Generic()
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Generic);
+            GenericOverride(callInfo);
             return callInfo;
         }
 
+        [NonAction]
+        partial void DatatablesOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int? mode);
+
+        [NonAction]
         public override System.Web.Mvc.ActionResult Datatables(int? mode)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Datatables);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "mode", mode);
+            DatatablesOverride(callInfo, mode);
             return callInfo;
         }
 
+        [NonAction]
+        partial void DatatablesOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, WebExtras.DemoApp.Models.Core.DatatablesViewModel viewModel);
+
+        [NonAction]
         public override System.Web.Mvc.ActionResult Datatables(WebExtras.DemoApp.Models.Core.DatatablesViewModel viewModel)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Datatables);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "viewModel", viewModel);
+            DatatablesOverride(callInfo, viewModel);
             return callInfo;
         }
 
+        [NonAction]
+        partial void GetAjaxDataOverride(T4MVC_System_Web_Mvc_JsonResult callInfo, WebExtras.JQDataTables.DatatableFilters filters);
+
+        [NonAction]
         public override System.Web.Mvc.JsonResult GetAjaxData(WebExtras.JQDataTables.DatatableFilters filters)
         {
             var callInfo = new T4MVC_System_Web_Mvc_JsonResult(Area, Name, ActionNames.GetAjaxData);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "filters", filters);
+            GetAjaxDataOverride(callInfo, filters);
             return callInfo;
         }
 
+        [NonAction]
+        partial void GetPagedDataOverride(T4MVC_System_Web_Mvc_JsonResult callInfo, WebExtras.JQDataTables.DatatableFilters filters);
+
+        [NonAction]
         public override System.Web.Mvc.JsonResult GetPagedData(WebExtras.JQDataTables.DatatableFilters filters)
         {
             var callInfo = new T4MVC_System_Web_Mvc_JsonResult(Area, Name, ActionNames.GetPagedData);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "filters", filters);
+            GetPagedDataOverride(callInfo, filters);
             return callInfo;
         }
 
+        [NonAction]
+        partial void GetSortedDataOverride(T4MVC_System_Web_Mvc_JsonResult callInfo, WebExtras.JQDataTables.DatatableFilters filters);
+
+        [NonAction]
         public override System.Web.Mvc.JsonResult GetSortedData(WebExtras.JQDataTables.DatatableFilters filters)
         {
             var callInfo = new T4MVC_System_Web_Mvc_JsonResult(Area, Name, ActionNames.GetSortedData);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "filters", filters);
+            GetSortedDataOverride(callInfo, filters);
             return callInfo;
         }
 
+        [NonAction]
+        partial void GetPostbackDataOverride(T4MVC_System_Web_Mvc_JsonResult callInfo, WebExtras.JQDataTables.DatatableFilters filters, WebExtras.DemoApp.Models.Core.PostbackSetupViewModel postbacks);
+
+        [NonAction]
         public override System.Web.Mvc.JsonResult GetPostbackData(WebExtras.JQDataTables.DatatableFilters filters, WebExtras.DemoApp.Models.Core.PostbackSetupViewModel postbacks)
         {
             var callInfo = new T4MVC_System_Web_Mvc_JsonResult(Area, Name, ActionNames.GetPostbackData);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "filters", filters);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "postbacks", postbacks);
+            GetPostbackDataOverride(callInfo, filters, postbacks);
             return callInfo;
         }
 
+        [NonAction]
+        partial void FlotOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int? mode);
+
+        [NonAction]
         public override System.Web.Mvc.ActionResult Flot(int? mode)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Flot);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "mode", mode);
+            FlotOverride(callInfo, mode);
             return callInfo;
         }
 
+        [NonAction]
+        partial void JQPlotOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int? mode);
+
+        [NonAction]
         public override System.Web.Mvc.ActionResult JQPlot(int? mode)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.JQPlot);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "mode", mode);
+            JQPlotOverride(callInfo, mode);
             return callInfo;
         }
 
@@ -287,4 +351,4 @@ namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
 }
 
 #endregion T4MVC
-#pragma warning restore 1591
+#pragma warning restore 1591, 3008, 3009, 0108

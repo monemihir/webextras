@@ -3,8 +3,9 @@
 // Don't change it directly as your change would get overwritten.  Instead, make changes
 // to the .tt file (i.e. the T4 template) and save it to regenerate this file.
 
-// Make sure the compiler doesn't complain about missing Xml comments
-#pragma warning disable 1591
+// Make sure the compiler doesn't complain about missing Xml comments and CLS compliance
+// 0108: suppress "Foo hides inherited member Foo. Use the new keyword if hiding was intended." when a controller and its abstract parent are both processed
+#pragma warning disable 1591, 3008, 3009, 0108
 #region T4MVC
 
 using System;
@@ -13,6 +14,7 @@ using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Hosting;
 using System.Web.Mvc;
@@ -22,7 +24,7 @@ using System.Web.Routing;
 using T4MVC;
 
 [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-public static class MVC
+public static partial class MVC
 {
     static readonly BootstrapClass s_Bootstrap = new BootstrapClass();
     public static BootstrapClass Bootstrap { get { return s_Bootstrap; } }
@@ -92,7 +94,7 @@ namespace T4MVC
 }
 
 [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-public class T4MVC_System_Web_Mvc_ActionResult : System.Web.Mvc.ActionResult, IT4MVCActionResult
+internal partial class T4MVC_System_Web_Mvc_ActionResult : System.Web.Mvc.ActionResult, IT4MVCActionResult
 {
     public T4MVC_System_Web_Mvc_ActionResult(string area, string controller, string action, string protocol = null): base()
     {
@@ -107,7 +109,7 @@ public class T4MVC_System_Web_Mvc_ActionResult : System.Web.Mvc.ActionResult, IT
     public RouteValueDictionary RouteValueDictionary { get; set; }
 }
 [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-public class T4MVC_System_Web_Mvc_ContentResult : System.Web.Mvc.ContentResult, IT4MVCActionResult
+internal partial class T4MVC_System_Web_Mvc_ContentResult : System.Web.Mvc.ContentResult, IT4MVCActionResult
 {
     public T4MVC_System_Web_Mvc_ContentResult(string area, string controller, string action, string protocol = null): base()
     {
@@ -120,7 +122,7 @@ public class T4MVC_System_Web_Mvc_ContentResult : System.Web.Mvc.ContentResult, 
     public RouteValueDictionary RouteValueDictionary { get; set; }
 }
 [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-public class T4MVC_System_Web_Mvc_JsonResult : System.Web.Mvc.JsonResult, IT4MVCActionResult
+internal partial class T4MVC_System_Web_Mvc_JsonResult : System.Web.Mvc.JsonResult, IT4MVCActionResult
 {
     public T4MVC_System_Web_Mvc_JsonResult(string area, string controller, string action, string protocol = null): base()
     {
@@ -170,30 +172,20 @@ namespace Links
         public static readonly string jquery_bootstrap_datetimepicker_min_js = Url("jquery.bootstrap.datetimepicker.min.js");
         public static readonly string jquery_bootstrap_hover_dropdown_min_js = Url("jquery.bootstrap.hover.dropdown.min.js");
         public static readonly string jquery_datatables_bootstrap_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.datatables.bootstrap.min.js") ? Url("jquery.datatables.bootstrap.min.js") : Url("jquery.datatables.bootstrap.js");
-                      
         public static readonly string jquery_datatables_bootstrap3_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.datatables.bootstrap3.min.js") ? Url("jquery.datatables.bootstrap3.min.js") : Url("jquery.datatables.bootstrap3.js");
-                      
         public static readonly string jquery_datatables_min_js = Url("jquery.datatables.min.js");
         public static readonly string jquery_flot_axislabels_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.flot.axislabels.min.js") ? Url("jquery.flot.axislabels.min.js") : Url("jquery.flot.axislabels.js");
-                      
         public static readonly string jquery_flot_curvedlines_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.flot.curvedlines.min.js") ? Url("jquery.flot.curvedlines.min.js") : Url("jquery.flot.curvedlines.js");
-                      
         public static readonly string jquery_flot_dashes_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.flot.dashes.min.js") ? Url("jquery.flot.dashes.min.js") : Url("jquery.flot.dashes.js");
-                      
         public static readonly string jquery_flot_min_js = Url("jquery.flot.min.js");
         public static readonly string jquery_flot_pie_min_js = Url("jquery.flot.pie.min.js");
         public static readonly string jquery_flot_time_min_js = Url("jquery.flot.time.min.js");
         public static readonly string jquery_jScrollPane_2_0_0beta12_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.jScrollPane-2.0.0beta12.min.js") ? Url("jquery.jScrollPane-2.0.0beta12.min.js") : Url("jquery.jScrollPane-2.0.0beta12.js");
-                      
         public static readonly string jquery_migrate_1_1_1_min_js = Url("jquery.migrate-1.1.1.min.js");
         public static readonly string jquery_mousewheel_3_0_6_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.mousewheel-3.0.6.min.js") ? Url("jquery.mousewheel-3.0.6.min.js") : Url("jquery.mousewheel-3.0.6.js");
-                      
         public static readonly string jquery_mwheelIntent_1_2_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.mwheelIntent-1.2.min.js") ? Url("jquery.mwheelIntent-1.2.min.js") : Url("jquery.mwheelIntent-1.2.js");
-                      
         public static readonly string jquery_ui_datetimepicker_1_4_4_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.ui.datetimepicker-1.4.4.min.js") ? Url("jquery.ui.datetimepicker-1.4.4.min.js") : Url("jquery.ui.datetimepicker-1.4.4.js");
-                      
         public static readonly string jquery_ui_menubar_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.ui.menubar.min.js") ? Url("jquery.ui.menubar.min.js") : Url("jquery.ui.menubar.js");
-                      
         public static readonly string modernizr_2_6_2_min_js = Url("modernizr-2.6.2.min.js");
     }
 
@@ -383,18 +375,132 @@ namespace Links
         public static readonly string webextras_min_css = Url("webextras.min.css");
     }
 
+    
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
     public static partial class Bundles
     {
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public static partial class Scripts {}
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public static partial class Styles {}
+        public static partial class Scripts 
+        {
+            public static partial class JQPlot 
+            {
+                public static class Assets
+                {
+                    public const string jqplot_barRenderer_min_js = "~/Scripts/JQPlot/jqplot.barRenderer.min.js"; 
+                    public const string jqplot_canvasAxisLabelRenderer_min_js = "~/Scripts/JQPlot/jqplot.canvasAxisLabelRenderer.min.js"; 
+                    public const string jqplot_canvasAxisTickRenderer_min_js = "~/Scripts/JQPlot/jqplot.canvasAxisTickRenderer.min.js"; 
+                    public const string jqplot_canvasTextRenderer_min_js = "~/Scripts/JQPlot/jqplot.canvasTextRenderer.min.js"; 
+                    public const string jqplot_categoryAxisRenderer_min_js = "~/Scripts/JQPlot/jqplot.categoryAxisRenderer.min.js"; 
+                    public const string jqplot_cursor_min_js = "~/Scripts/JQPlot/jqplot.cursor.min.js"; 
+                    public const string jqplot_dateAxisRenderer_min_js = "~/Scripts/JQPlot/jqplot.dateAxisRenderer.min.js"; 
+                    public const string jqplot_highlighter_min_js = "~/Scripts/JQPlot/jqplot.highlighter.min.js"; 
+                    public const string jqplot_json2_min_js = "~/Scripts/JQPlot/jqplot.json2.min.js"; 
+                    public const string jqplot_min_js = "~/Scripts/JQPlot/jqplot.min.js"; 
+                    public const string jqplot_ohlcRenderer_min_js = "~/Scripts/JQPlot/jqplot.ohlcRenderer.min.js"; 
+                    public const string jqplot_pointLabels_min_js = "~/Scripts/JQPlot/jqplot.pointLabels.min.js"; 
+                }
+            }
+            public static class Assets
+            {
+                public const string bootstrap_2_3_1_min_js = "~/Scripts/bootstrap-2.3.1.min.js"; 
+                public const string bootstrap_3_0_0_min_js = "~/Scripts/bootstrap-3.0.0.min.js"; 
+                public const string excanvas_min_js = "~/Scripts/excanvas.min.js"; 
+                public const string gumby_2_5_6_min_js = "~/Scripts/gumby-2.5.6.min.js"; 
+                public const string jquery_1_9_1_min_js = "~/Scripts/jquery-1.9.1.min.js"; 
+                public const string jquery_ui_1_10_3_custom_min_js = "~/Scripts/jquery-ui-1.10.3.custom.min.js"; 
+                public const string jquery_bootstrap_datetimepicker_min_js = "~/Scripts/jquery.bootstrap.datetimepicker.min.js"; 
+                public const string jquery_bootstrap_hover_dropdown_min_js = "~/Scripts/jquery.bootstrap.hover.dropdown.min.js"; 
+                public const string jquery_datatables_bootstrap_js = "~/Scripts/jquery.datatables.bootstrap.js"; 
+                public const string jquery_datatables_bootstrap3_js = "~/Scripts/jquery.datatables.bootstrap3.js"; 
+                public const string jquery_datatables_min_js = "~/Scripts/jquery.datatables.min.js"; 
+                public const string jquery_flot_axislabels_js = "~/Scripts/jquery.flot.axislabels.js"; 
+                public const string jquery_flot_curvedlines_js = "~/Scripts/jquery.flot.curvedlines.js"; 
+                public const string jquery_flot_dashes_js = "~/Scripts/jquery.flot.dashes.js"; 
+                public const string jquery_flot_min_js = "~/Scripts/jquery.flot.min.js"; 
+                public const string jquery_flot_pie_min_js = "~/Scripts/jquery.flot.pie.min.js"; 
+                public const string jquery_flot_time_min_js = "~/Scripts/jquery.flot.time.min.js"; 
+                public const string jquery_jScrollPane_2_0_0beta12_js = "~/Scripts/jquery.jScrollPane-2.0.0beta12.js"; 
+                public const string jquery_migrate_1_1_1_min_js = "~/Scripts/jquery.migrate-1.1.1.min.js"; 
+                public const string jquery_mousewheel_3_0_6_js = "~/Scripts/jquery.mousewheel-3.0.6.js"; 
+                public const string jquery_mwheelIntent_1_2_js = "~/Scripts/jquery.mwheelIntent-1.2.js"; 
+                public const string jquery_ui_datetimepicker_1_4_4_js = "~/Scripts/jquery.ui.datetimepicker-1.4.4.js"; 
+                public const string jquery_ui_menubar_js = "~/Scripts/jquery.ui.menubar.js"; 
+                public const string modernizr_2_6_2_min_js = "~/Scripts/modernizr-2.6.2.min.js"; 
+            }
+        }
+        public static partial class Content 
+        {
+            public static partial class font 
+            {
+                public static class Assets
+                {
+                }
+            }
+            public static partial class img 
+            {
+                public static partial class bootstrap 
+                {
+                    public static class Assets
+                    {
+                    }
+                }
+                public static partial class datatables 
+                {
+                    public static class Assets
+                    {
+                    }
+                }
+                public static partial class jqueryui 
+                {
+                    public static class Assets
+                    {
+                    }
+                }
+                public static class Assets
+                {
+                }
+            }
+            public static partial class inline 
+            {
+                public static class Assets
+                {
+                }
+            }
+            public static partial class jpg 
+            {
+                public static class Assets
+                {
+                }
+            }
+            public static partial class png 
+            {
+                public static class Assets
+                {
+                }
+            }
+            public static class Assets
+            {
+                public const string bootstrap_2_3_1_css = "~/Content/bootstrap-2.3.1.css";
+                public const string bootstrap_3_0_0_css = "~/Content/bootstrap-3.0.0.css";
+                public const string bootstrap_theme_3_0_0_css = "~/Content/bootstrap-theme-3.0.0.css";
+                public const string fluidable_min_css = "~/Content/fluidable.min.css";
+                public const string font_awesome_css = "~/Content/font-awesome.css";
+                public const string gumby_2_5_6_css = "~/Content/gumby-2.5.6.css";
+                public const string jquery_ui_darkness_1_10_3_css = "~/Content/jquery-ui-darkness-1.10.3.css";
+                public const string jquery_bootstrap_datetimepicker_css = "~/Content/jquery.bootstrap.datetimepicker.css";
+                public const string jquery_datatables_bootstrap3_css = "~/Content/jquery.datatables.bootstrap3.css";
+                public const string jquery_dataTables_css = "~/Content/jquery.dataTables.css";
+                public const string jquery_dataTables_jui_css = "~/Content/jquery.dataTables.jui.css";
+                public const string jquery_jqplot_min_css = "~/Content/jquery.jqplot.min.css";
+                public const string jquery_jScrollPane_2_0_0beta12_css = "~/Content/jquery.jScrollPane-2.0.0beta12.css";
+                public const string jquery_ui_datetimepicker_css = "~/Content/jquery.ui.datetimepicker.css";
+                public const string jquery_ui_menubar_css = "~/Content/jquery.ui.menubar.css";
+            }
+        }
     }
 }
 
 [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-public static class T4MVCHelpers {
+internal static class T4MVCHelpers {
     // You can change the ProcessVirtualPath method to modify the path that gets returned to the client.
     // e.g. you can prepend a domain, or append a query string:
     //      return "http://localhost" + path + "?foo=bar";
@@ -409,6 +515,8 @@ public static class T4MVCHelpers {
     // Calling ProcessVirtualPath through delegate to allow it to be replaced for unit testing
     public static Func<string, string> ProcessVirtualPath = ProcessVirtualPathDefault;
 
+    // Calling T4Extension.TimestampString through delegate to allow it to be replaced for unit testing and other purposes
+    public static Func<string, string> TimestampString = System.Web.Mvc.T4Extensions.TimestampString;
 
     // Logic to determine if the app is running in production or dev environment
     public static bool IsProduction() { 
@@ -421,6 +529,6 @@ public static class T4MVCHelpers {
 
 
 #endregion T4MVC
-#pragma warning restore 1591
+#pragma warning restore 1591, 3008, 3009, 0108
 
 
