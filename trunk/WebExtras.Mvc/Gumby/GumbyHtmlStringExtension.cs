@@ -65,7 +65,7 @@ namespace WebExtras.Mvc.Gumby
       if (WebExtrasMvcConstants.GumbyTheme == EGumbyTheme.None)
         throw new GumbyThemeException();
 
-      if (!HtmlStringUtil.CanDisplayAsButton(html))
+      if (!WebExtrasMvcUtil.CanDisplayAsButton(html))
         throw new InvalidUsageException("The AsButton decorator can only be used with Button and Hyperlink extensions");
 
       List<string> classes = new List<string>

@@ -125,7 +125,7 @@
     <Compile Include="Core\EFontAwesomeVersion.cs" />
     <Compile Include="Core\FontAwesomeVersionException.cs" />
     <Compile Include="Core\GumbyThemeException.cs" />
-    <Compile Include="Core\HtmlStringUtil.cs" />
+    <Compile Include="Core\WebExtrasMvcUtil.cs" />
     <Compile Include="Core\JsonNetResult.cs" />
     <Compile Include="Core\NoCssThemeException.cs" />
     <Compile Include="Core\WebExtrasMvcConstants.cs" />
@@ -146,6 +146,7 @@
     <Compile Include="Html\CssClassesCollection.cs" />
     <Compile Include="Html\Div.cs" />
     <Compile Include="Html\Empty.cs" />
+    <Compile Include="Bootstrap\BootstrapFormControl.cs" />
     <Compile Include="Html\ExtendedHtmlStringExtension.cs" />
     <Compile Include="Bootstrap\BSFormHtmlHelperExtension.cs" />
     <Compile Include="Bootstrap\BSHtmlHelperExtension.cs" />
@@ -159,6 +160,7 @@
     <Compile Include="Bootstrap\BSHtmlStringExtension.cs" />
     <Compile Include="Html\IExtendedHtmlString.cs" />
     <Compile Include="Bootstrap\EBootstrapIcon.cs" />
+    <Compile Include="Html\IFormControl.cs" />
     <Compile Include="Html\Image.cs" />
     <Compile Include="Html\Italic.cs" />
     <Compile Include="Html\HtmlList.cs" />
@@ -166,6 +168,7 @@
     <Compile Include="Bootstrap\EBootstrapNavbar.cs" />
     <Compile Include="Bootstrap\BootstrapProgressBar.cs" />
     <Compile Include="Html\RadioButton.cs" />
+    <Compile Include="Html\Select.cs" />
     <Compile Include="Html\Span.cs" />
     <Compile Include="JavascriptHelper.cs" />
     <Compile Include="Core\EMessage.cs" />

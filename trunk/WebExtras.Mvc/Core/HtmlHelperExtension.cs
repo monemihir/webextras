@@ -1,20 +1,19 @@
-﻿/*
-* This file is part of - WebExtras
-* Copyright (C) 2014 Mihir Mone
-*
-* This program is free software: you can redistribute it and/or modify
-* it under the terms of the GNU Lesser General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU Lesser General Public License for more details.
-*
-* You should have received a copy of the GNU Lesser General Public License
-* along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
+﻿// 
+// This file is part of - WebExtras
+// Copyright (C) 2015 Mihir Mone
+// 
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Lesser General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+// 
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Lesser General Public License for more details.
+// 
+// You should have received a copy of the GNU Lesser General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 using System;
 using System.Collections.Generic;
@@ -26,33 +25,35 @@ using System.Reflection;
 using System.Security.Principal;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
-using System.Web.Routing;
 using System.Xml.Linq;
 using WebExtras.Mvc.Html;
 
 namespace WebExtras.Mvc.Core
 {
   /// <summary>
-  /// Generic HTML helper extension methods
+  ///   Generic HTML helper extension methods
   /// </summary>
   public static class HtmlHelperExtension
   {
     /// <summary>
-    /// Default separator used to join stuff
+    ///   Default separator used to join stuff
     /// </summary>
     private const string DefaultSeparator = " | ";
 
     #region Imagelink extensions
 
     /// <summary>
-    /// Create a HTML hyperlink with an image
+    ///   Create a HTML hyperlink with an image
     /// </summary>
     /// <param name="html">Current HTML helper object</param>
     /// <param name="src">Image location</param>
     /// <param name="url">Link URL</param>
-    /// <param name="htmlAttributes">[Optional] Extra html attributes for the image link. By default 
-    /// these attributes will be applied to the A tag only. See documentation for how to apply attributes 
-    /// to the IMG tag here - <see href="http://mihirmone.dyndns.org/appdocs/webextras/mvc/corehtml"/></param>.
+    /// <param name="htmlAttributes">
+    ///   [Optional] Extra html attributes for the image link. By default
+    ///   these attributes will be applied to the A tag only. See documentation for how to apply attributes
+    ///   to the IMG tag here - <see href="http://mihirmone.dyndns.org/appdocs/webextras/mvc/corehtml" />
+    /// </param>
+    /// .
     /// <returns>HTML image hyperlink</returns>
     public static IExtendedHtmlString Imagelink(
       this HtmlHelper html,
@@ -64,15 +65,18 @@ namespace WebExtras.Mvc.Core
     }
 
     /// <summary>
-    /// Create a HTML hyperlink with an image
+    ///   Create a HTML hyperlink with an image
     /// </summary>
     /// <param name="html">Current HTML helper object</param>
     /// <param name="src">Image location</param>
     /// <param name="altText">Image alt text</param>
     /// <param name="url">Link URL</param>
-    /// <param name="htmlAttributes">[Optional] Extra html attributes for the image link. By default 
-    /// these attributes will be applied to the A tag only. See documentation for how to apply attributes 
-    /// to the IMG tag here - <see href="http://mihirmone.dyndns.org/appdocs/webextras/mvc/corehtml"/></param>.
+    /// <param name="htmlAttributes">
+    ///   [Optional] Extra html attributes for the image link. By default
+    ///   these attributes will be applied to the A tag only. See documentation for how to apply attributes
+    ///   to the IMG tag here - <see href="http://mihirmone.dyndns.org/appdocs/webextras/mvc/corehtml" />
+    /// </param>
+    /// .
     /// <returns>HTML image hyperlink</returns>
     public static IExtendedHtmlString Imagelink(
       this HtmlHelper html,
@@ -85,14 +89,17 @@ namespace WebExtras.Mvc.Core
     }
 
     /// <summary>
-    /// Create a HTML hyperlink with an image and given action
+    ///   Create a HTML hyperlink with an image and given action
     /// </summary>
     /// <param name="html">Current HTML helper object</param>
     /// <param name="src">Image location</param>
     /// <param name="result">Action result</param>
-    /// <param name="htmlAttributes">[Optional] Extra html attributes for the image link. By default 
-    /// these attributes will be applied to the A tag only. See documentation for how to apply attributes 
-    /// to the IMG tag here - <see href="http://mihirmone.dyndns.org/appdocs/webextras/mvc/corehtml"/></param>.
+    /// <param name="htmlAttributes">
+    ///   [Optional] Extra html attributes for the image link. By default
+    ///   these attributes will be applied to the A tag only. See documentation for how to apply attributes
+    ///   to the IMG tag here - <see href="http://mihirmone.dyndns.org/appdocs/webextras/mvc/corehtml" />
+    /// </param>
+    /// .
     /// <returns>HTML image hyperlink</returns>
     public static IExtendedHtmlString Imagelink(
       this HtmlHelper html,
@@ -104,15 +111,18 @@ namespace WebExtras.Mvc.Core
     }
 
     /// <summary>
-    /// Create a HTML hyperlink with an image and given action
+    ///   Create a HTML hyperlink with an image and given action
     /// </summary>
     /// <param name="html">Current HTML helper object</param>
     /// <param name="src">Image location</param>
     /// <param name="altText">Image alt text</param>
     /// <param name="result">Action result</param>
-    /// <param name="htmlAttributes">[Optional] Extra html attributes for the image link. By default 
-    /// these attributes will be applied to the A tag only. See documentation for how to apply attributes 
-    /// to the IMG tag here - <see href="http://mihirmone.dyndns.org/appdocs/webextras/mvc/corehtml"/></param>.
+    /// <param name="htmlAttributes">
+    ///   [Optional] Extra html attributes for the image link. By default
+    ///   these attributes will be applied to the A tag only. See documentation for how to apply attributes
+    ///   to the IMG tag here - <see href="http://mihirmone.dyndns.org/appdocs/webextras/mvc/corehtml" />
+    /// </param>
+    /// .
     /// <returns>HTML image hyperlink</returns>
     public static IExtendedHtmlString Imagelink(
       this HtmlHelper html,
@@ -125,16 +135,19 @@ namespace WebExtras.Mvc.Core
     }
 
     /// <summary>
-    /// Create a HTML hyperlink with an image and given action
+    ///   Create a HTML hyperlink with an image and given action
     /// </summary>
     /// <param name="html">Current HTML helper object</param>
     /// <param name="src">Image location</param>
     /// <param name="altText">Image alt text</param>
     /// <param name="title">Image title</param>
     /// <param name="result">Action result</param>
-    /// <param name="htmlAttributes">[Optional] Extra html attributes for the image link. By default 
-    /// these attributes will be applied to the A tag only. See documentation for how to apply attributes 
-    /// to the IMG tag here - <see href="http://mihirmone.dyndns.org/appdocs/webextras/mvc/corehtml"/></param>.
+    /// <param name="htmlAttributes">
+    ///   [Optional] Extra html attributes for the image link. By default
+    ///   these attributes will be applied to the A tag only. See documentation for how to apply attributes
+    ///   to the IMG tag here - <see href="http://mihirmone.dyndns.org/appdocs/webextras/mvc/corehtml" />
+    /// </param>
+    /// .
     /// <returns>HTML image hyperlink</returns>
     public static IExtendedHtmlString Imagelink(
       this HtmlHelper html,
@@ -144,22 +157,25 @@ namespace WebExtras.Mvc.Core
       ActionResult result,
       object htmlAttributes = null)
     {
-      string url = HtmlStringUtil.GetUrl(html, result);
+      string url = WebExtrasMvcUtil.GetUrl(html, result);
 
       return Imagelink(html, src, altText, title, url, htmlAttributes);
     }
 
     /// <summary>
-    /// Create a HTML hyperlink with an image
+    ///   Create a HTML hyperlink with an image
     /// </summary>
     /// <param name="html">Current HTML helper object</param>
     /// <param name="src">Image location</param>
     /// <param name="altText">Image alt text</param>
     /// <param name="title">Image title</param>
     /// <param name="url">Link URL</param>
-    /// <param name="htmlAttributes">[Optional] Extra html attributes for the image link. By default 
-    /// these attributes will be applied to the A tag only. See documentation for how to apply attributes 
-    /// to the IMG tag here - <see href="http://mihirmone.dyndns.org/appdocs/webextras/mvc/corehtml"/></param>.
+    /// <param name="htmlAttributes">
+    ///   [Optional] Extra html attributes for the image link. By default
+    ///   these attributes will be applied to the A tag only. See documentation for how to apply attributes
+    ///   to the IMG tag here - <see href="http://mihirmone.dyndns.org/appdocs/webextras/mvc/corehtml" />
+    /// </param>
+    /// .
     /// <returns>HTML image hyperlink</returns>
     public static IExtendedHtmlString Imagelink(
       this HtmlHelper html,
@@ -189,7 +205,7 @@ namespace WebExtras.Mvc.Core
       Hyperlink link = new Hyperlink(string.Empty, url, linkAttributes);
       Image img = new Image(src, altText, title, imgAttributes);
 
-      link.AppendTags.Add(img);
+      link.Append(img);
 
       return link;
     }
@@ -199,15 +215,18 @@ namespace WebExtras.Mvc.Core
     #region AuthImagelink extensions
 
     /// <summary>
-    /// Create a HTML hyperlink with an image
+    ///   Create a HTML hyperlink with an image
     /// </summary>
     /// <param name="html">Current HTML helper object</param>
     /// <param name="user">User used to authenticate</param>
     /// <param name="src">Image location</param>
     /// <param name="url">Link URL</param>
-    /// <param name="htmlAttributes">[Optional] Extra html attributes for the image link. By default 
-    /// these attributes will be applied to the A tag only. See documentation for how to apply attributes 
-    /// to the IMG tag here - <see href="http://mihirmone.dyndns.org/appdocs/webextras/mvc/corehtml"/></param>.
+    /// <param name="htmlAttributes">
+    ///   [Optional] Extra html attributes for the image link. By default
+    ///   these attributes will be applied to the A tag only. See documentation for how to apply attributes
+    ///   to the IMG tag here - <see href="http://mihirmone.dyndns.org/appdocs/webextras/mvc/corehtml" />
+    /// </param>
+    /// .
     /// <returns>HTML image hyperlink</returns>
     public static IExtendedHtmlString AuthImagelink(
       this HtmlHelper html,
@@ -220,16 +239,19 @@ namespace WebExtras.Mvc.Core
     }
 
     /// <summary>
-    /// Create a HTML hyperlink with an image
+    ///   Create a HTML hyperlink with an image
     /// </summary>
     /// <param name="html">Current HTML helper object</param>
     /// <param name="user">User used to authenticate</param>
     /// <param name="src">Image location</param>
     /// <param name="altText">Image alt text</param>
     /// <param name="url">Link URL</param>
-    /// <param name="htmlAttributes">[Optional] Extra html attributes for the image link. By default 
-    /// these attributes will be applied to the A tag only. See documentation for how to apply attributes 
-    /// to the IMG tag here - <see href="http://mihirmone.dyndns.org/appdocs/webextras/mvc/corehtml"/></param>.
+    /// <param name="htmlAttributes">
+    ///   [Optional] Extra html attributes for the image link. By default
+    ///   these attributes will be applied to the A tag only. See documentation for how to apply attributes
+    ///   to the IMG tag here - <see href="http://mihirmone.dyndns.org/appdocs/webextras/mvc/corehtml" />
+    /// </param>
+    /// .
     /// <returns>HTML image hyperlink</returns>
     public static IExtendedHtmlString AuthImagelink(
       this HtmlHelper html,
@@ -243,15 +265,18 @@ namespace WebExtras.Mvc.Core
     }
 
     /// <summary>
-    /// Create a HTML hyperlink with an image and given action
+    ///   Create a HTML hyperlink with an image and given action
     /// </summary>
     /// <param name="html">Current HTML helper object</param>
     /// <param name="user">User used to authenticate</param>
     /// <param name="src">Image location</param>
     /// <param name="result">Action result</param>
-    /// <param name="htmlAttributes">[Optional] Extra html attributes for the image link. By default 
-    /// these attributes will be applied to the A tag only. See documentation for how to apply attributes 
-    /// to the IMG tag here - <see href="http://mihirmone.dyndns.org/appdocs/webextras/mvc/corehtml"/></param>.
+    /// <param name="htmlAttributes">
+    ///   [Optional] Extra html attributes for the image link. By default
+    ///   these attributes will be applied to the A tag only. See documentation for how to apply attributes
+    ///   to the IMG tag here - <see href="http://mihirmone.dyndns.org/appdocs/webextras/mvc/corehtml" />
+    /// </param>
+    /// .
     /// <returns>HTML image hyperlink</returns>
     public static IExtendedHtmlString AuthImagelink(
       this HtmlHelper html,
@@ -264,16 +289,19 @@ namespace WebExtras.Mvc.Core
     }
 
     /// <summary>
-    /// Create a HTML hyperlink with an image and given action
+    ///   Create a HTML hyperlink with an image and given action
     /// </summary>
     /// <param name="html">Current HTML helper object</param>
     /// <param name="user">User used to authenticate</param>
     /// <param name="src">Image location</param>
     /// <param name="altText">Image alt text</param>
     /// <param name="result">Action result</param>
-    /// <param name="htmlAttributes">[Optional] Extra html attributes for the image link. By default 
-    /// these attributes will be applied to the A tag only. See documentation for how to apply attributes 
-    /// to the IMG tag here - <see href="http://mihirmone.dyndns.org/appdocs/webextras/mvc/corehtml"/></param>.
+    /// <param name="htmlAttributes">
+    ///   [Optional] Extra html attributes for the image link. By default
+    ///   these attributes will be applied to the A tag only. See documentation for how to apply attributes
+    ///   to the IMG tag here - <see href="http://mihirmone.dyndns.org/appdocs/webextras/mvc/corehtml" />
+    /// </param>
+    /// .
     /// <returns>HTML image hyperlink</returns>
     public static IExtendedHtmlString AuthImagelink(
       this HtmlHelper html,
@@ -287,7 +315,7 @@ namespace WebExtras.Mvc.Core
     }
 
     /// <summary>
-    /// Create a HTML hyperlink with an image and given action
+    ///   Create a HTML hyperlink with an image and given action
     /// </summary>
     /// <param name="html">Current HTML helper object</param>
     /// <param name="user">User used to authenticate</param>
@@ -295,9 +323,12 @@ namespace WebExtras.Mvc.Core
     /// <param name="altText">Image alt text</param>
     /// <param name="title">Image title</param>
     /// <param name="result">Action result</param>
-    /// <param name="htmlAttributes">[Optional] Extra html attributes for the image link. By default 
-    /// these attributes will be applied to the A tag only. See documentation for how to apply attributes 
-    /// to the IMG tag here - <see href="http://mihirmone.dyndns.org/appdocs/webextras/mvc/corehtml"/></param>.
+    /// <param name="htmlAttributes">
+    ///   [Optional] Extra html attributes for the image link. By default
+    ///   these attributes will be applied to the A tag only. See documentation for how to apply attributes
+    ///   to the IMG tag here - <see href="http://mihirmone.dyndns.org/appdocs/webextras/mvc/corehtml" />
+    /// </param>
+    /// .
     /// <returns>HTML image hyperlink</returns>
     public static IExtendedHtmlString AuthImagelink(
       this HtmlHelper html,
@@ -314,7 +345,7 @@ namespace WebExtras.Mvc.Core
     }
 
     /// <summary>
-    /// Create a HTML hyperlink with an image
+    ///   Create a HTML hyperlink with an image
     /// </summary>
     /// <param name="html">Current HTML helper object</param>
     /// <param name="user">User used to authenticate</param>
@@ -322,9 +353,12 @@ namespace WebExtras.Mvc.Core
     /// <param name="altText">Image alt text</param>
     /// <param name="title">Image title</param>
     /// <param name="url">Link URL</param>
-    /// <param name="htmlAttributes">[Optional] Extra html attributes for the image link. By default 
-    /// these attributes will be applied to the A tag only. See documentation for how to apply attributes 
-    /// to the IMG tag here - <see href="http://mihirmone.dyndns.org/appdocs/webextras/mvc/corehtml"/></param>.
+    /// <param name="htmlAttributes">
+    ///   [Optional] Extra html attributes for the image link. By default
+    ///   these attributes will be applied to the A tag only. See documentation for how to apply attributes
+    ///   to the IMG tag here - <see href="http://mihirmone.dyndns.org/appdocs/webextras/mvc/corehtml" />
+    /// </param>
+    /// .
     /// <returns>HTML image hyperlink</returns>
     public static IExtendedHtmlString AuthImagelink(
       this HtmlHelper html,
@@ -345,7 +379,7 @@ namespace WebExtras.Mvc.Core
     #region Hyperlink extensions
 
     /// <summary>
-    /// Creates a HTML hyperlink from given text and URL
+    ///   Creates a HTML hyperlink from given text and URL
     /// </summary>
     /// <param name="html">Current html helper object</param>
     /// <param name="linkText">Link text</param>
@@ -364,7 +398,7 @@ namespace WebExtras.Mvc.Core
     }
 
     /// <summary>
-    /// Creates a HTML hyperlink from given text and action
+    ///   Creates a HTML hyperlink from given text and action
     /// </summary>
     /// <param name="html">Current html helper object</param>
     /// <param name="linkText">Link text</param>
@@ -377,7 +411,7 @@ namespace WebExtras.Mvc.Core
       ActionResult result,
       object htmlAttributes = null)
     {
-      string link = HtmlStringUtil.GetUrl(html, result);
+      string link = WebExtrasMvcUtil.GetUrl(html, result);
 
       return Hyperlink(html, linkText, link, htmlAttributes);
     }
@@ -387,7 +421,7 @@ namespace WebExtras.Mvc.Core
     #region AuthHyperlink extensions
 
     /// <summary>
-    /// Creates a HTML hyperlink from given text and URL
+    ///   Creates a HTML hyperlink from given text and URL
     /// </summary>
     /// <param name="html">Current html helper object</param>
     /// <param name="user">User used to authenticate</param>
@@ -408,7 +442,7 @@ namespace WebExtras.Mvc.Core
     }
 
     /// <summary>
-    /// Creates a HTML hyperlink from given text and action
+    ///   Creates a HTML hyperlink from given text and action
     /// </summary>
     /// <param name="html">Current html helper object</param>
     /// <param name="user">User used to authenticate</param>
@@ -426,7 +460,7 @@ namespace WebExtras.Mvc.Core
       if (!user.Identity.IsAuthenticated)
         return HtmlElement.Empty;
 
-      string url = HtmlStringUtil.GetUrl(html, result);
+      string url = WebExtrasMvcUtil.GetUrl(html, result);
 
       return Hyperlink(html, linkText, url, htmlAttributes);
     }
@@ -436,7 +470,7 @@ namespace WebExtras.Mvc.Core
     #region Image extensions
 
     /// <summary>
-    /// Creates an HTML image
+    ///   Creates an HTML image
     /// </summary>
     /// <param name="html">Current HTML helper object</param>
     /// <param name="src">Image location</param>
@@ -451,7 +485,7 @@ namespace WebExtras.Mvc.Core
     }
 
     /// <summary>
-    /// Creates an HTML image
+    ///   Creates an HTML image
     /// </summary>
     /// <param name="html">Current HTML helper object</param>
     /// <param name="src">Image location</param>
@@ -468,7 +502,7 @@ namespace WebExtras.Mvc.Core
     }
 
     /// <summary>
-    /// Creates an HTML image
+    ///   Creates an HTML image
     /// </summary>
     /// <param name="html">Current HTML helper object</param>
     /// <param name="src">Image location</param>
@@ -491,7 +525,7 @@ namespace WebExtras.Mvc.Core
     #region Join extensions
 
     /// <summary>
-    /// Html Helper extension method to join html strings using the Default text seperator (|)
+    ///   Html Helper extension method to join html strings using the Default text seperator (|)
     /// </summary>
     /// <param name="htmlHelper">Html Helper object</param>
     /// <param name="links">an array of html strings</param>
@@ -503,7 +537,7 @@ namespace WebExtras.Mvc.Core
     }
 
     /// <summary>
-    /// Html Helper extension method to join MVC html strings using the Default text seperator (|)
+    ///   Html Helper extension method to join MVC html strings using the Default text seperator (|)
     /// </summary>
     /// <param name="htmlHelper">Html Helper object</param>
     /// <param name="links">an array of html strings</param>
@@ -518,8 +552,8 @@ namespace WebExtras.Mvc.Core
     #region Inline extensions
 
     /// <summary>
-    /// Html helper to return the text contained in an external file
-    /// to enable the text to be inlined.
+    ///   Html helper to return the text contained in an external file
+    ///   to enable the text to be inlined.
     /// </summary>
     /// <param name="htmlHelper">Html helper extension</param>
     /// <param name="relativePath">Relative path to file to be inlined.</param>
@@ -548,7 +582,7 @@ namespace WebExtras.Mvc.Core
     #region List extensions
 
     /// <summary>
-    /// Create an HTML LIST
+    ///   Create an HTML LIST
     /// </summary>
     /// <param name="html">Current HTML helper object</param>
     /// <param name="type">List type</param>
@@ -569,7 +603,7 @@ namespace WebExtras.Mvc.Core
     #region Label extensions
 
     /// <summary>
-    /// Create a label with the required field asterix
+    ///   Create a label with the required field asterix
     /// </summary>
     /// <typeparam name="TModel">Type to be scanned</typeparam>
     /// <typeparam name="TValue">Property to be scanned</typeparam>
@@ -578,13 +612,14 @@ namespace WebExtras.Mvc.Core
     /// <param name="htmlAttributes">[Optional] Extra html attributes</param>
     /// <returns>A label with the required field asterix</returns>
     [Obsolete("Use Html.RequiredFieldLabelFor(...)")]
-    public static MvcHtmlString LabelForV2<TModel, TValue>(this HtmlHelper<TModel> html, Expression<Func<TModel, TValue>> expression, object htmlAttributes = null)
+    public static MvcHtmlString LabelForV2<TModel, TValue>(this HtmlHelper<TModel> html,
+      Expression<Func<TModel, TValue>> expression, object htmlAttributes = null)
     {
       return RequiredFieldLabelFor(html, expression, string.Empty, htmlAttributes);
     }
 
     /// <summary>
-    /// Create a label with the required field asterix
+    ///   Create a label with the required field asterix
     /// </summary>
     /// <typeparam name="TModel">Type to be scanned</typeparam>
     /// <typeparam name="TValue">Property to be scanned</typeparam>
@@ -594,13 +629,14 @@ namespace WebExtras.Mvc.Core
     /// <param name="htmlAttributes">[Optional] Extra html attributes</param>
     /// <returns>A label with the required field asterix</returns>
     [Obsolete("Use Html.RequiredFieldLabelFor(...)")]
-    public static MvcHtmlString LabelForV2<TModel, TValue>(this HtmlHelper<TModel> html, Expression<Func<TModel, TValue>> expression, string labelText, object htmlAttributes = null)
+    public static MvcHtmlString LabelForV2<TModel, TValue>(this HtmlHelper<TModel> html,
+      Expression<Func<TModel, TValue>> expression, string labelText, object htmlAttributes = null)
     {
       return RequiredFieldLabelFor(html, expression, labelText, htmlAttributes);
     }
 
     /// <summary>
-    /// Create a label with the required field asterix
+    ///   Create a label with the required field asterix
     /// </summary>
     /// <typeparam name="TModel">Type to be scanned</typeparam>
     /// <typeparam name="TValue">Property to be scanned</typeparam>
@@ -608,13 +644,14 @@ namespace WebExtras.Mvc.Core
     /// <param name="expression">The property lamba expression</param>
     /// <param name="htmlAttributes">[Optional] Extra html attributes</param>
     /// <returns>A label with the required field asterix</returns>
-    public static MvcHtmlString RequiredFieldLabelFor<TModel, TValue>(this HtmlHelper<TModel> html, Expression<Func<TModel, TValue>> expression, object htmlAttributes = null)
+    public static MvcHtmlString RequiredFieldLabelFor<TModel, TValue>(this HtmlHelper<TModel> html,
+      Expression<Func<TModel, TValue>> expression, object htmlAttributes = null)
     {
       return RequiredFieldLabelFor(html, expression, string.Empty, htmlAttributes);
     }
 
     /// <summary>
-    /// Create a label with the required field asterix
+    ///   Create a label with the required field asterix
     /// </summary>
     /// <typeparam name="TModel">Type to be scanned</typeparam>
     /// <typeparam name="TValue">Property to be scanned</typeparam>
@@ -623,17 +660,20 @@ namespace WebExtras.Mvc.Core
     /// <param name="labelText">Label text to be shown</param>
     /// <param name="htmlAttributes">[Optional] Extra html attributes</param>
     /// <returns>A label with the required field asterix</returns>
-    public static MvcHtmlString RequiredFieldLabelFor<TModel, TValue>(this HtmlHelper<TModel> html, Expression<Func<TModel, TValue>> expression, string labelText, object htmlAttributes = null)
+    public static MvcHtmlString RequiredFieldLabelFor<TModel, TValue>(this HtmlHelper<TModel> html,
+      Expression<Func<TModel, TValue>> expression, string labelText, object htmlAttributes = null)
     {
       if (expression == null)
         throw new ArgumentNullException("expression");
 
       MemberExpression exp = expression.Body as MemberExpression;
 
-      MvcHtmlString str = string.IsNullOrEmpty(labelText) ? html.LabelFor(expression, htmlAttributes) : html.LabelFor(expression, labelText, htmlAttributes);
+      MvcHtmlString str = string.IsNullOrEmpty(labelText)
+        ? html.LabelFor(expression, htmlAttributes)
+        : html.LabelFor(expression, labelText, htmlAttributes);
       XElement xe = XElement.Parse(str.ToHtmlString());
 
-      if (!exp.Member.GetCustomAttributes(typeof(RequiredAttribute), true).Any())
+      if (!exp.Member.GetCustomAttributes(typeof (RequiredAttribute), true).Any())
         return MvcHtmlString.Create(xe.ToString());
 
       TagBuilder span = new TagBuilder("span");
@@ -645,6 +685,5 @@ namespace WebExtras.Mvc.Core
     }
 
     #endregion Label extensions
-
   }
 }

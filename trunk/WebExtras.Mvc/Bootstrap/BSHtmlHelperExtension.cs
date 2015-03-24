@@ -1,20 +1,19 @@
-﻿/*
-* This file is part of - WebExtras
-* Copyright (C) 2014 Mihir Mone
-*
-* This program is free software: you can redistribute it and/or modify
-* it under the terms of the GNU Lesser General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU Lesser General Public License for more details.
-*
-* You should have received a copy of the GNU Lesser General Public License
-* along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
+﻿// 
+// This file is part of - WebExtras
+// Copyright (C) 2015 Mihir Mone
+// 
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Lesser General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+// 
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Lesser General Public License for more details.
+// 
+// You should have received a copy of the GNU Lesser General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 using System;
 using System.ComponentModel;
@@ -27,28 +26,30 @@ using WebExtras.Mvc.Html;
 namespace WebExtras.Mvc.Bootstrap
 {
   /// <summary>
-  /// Bootstrap Html Helper extension methods
+  ///   Bootstrap Html Helper extension methods
   /// </summary>
   public static class BSHtmlHelperExtension
   {
     #region Icon extensions
 
     /// <summary>
-    /// Renders a Bootstrap icon
+    ///   Renders a Bootstrap icon
     /// </summary>
     /// <param name="html">Current Html helper object</param>
     /// <param name="icon">Icon to be rendered</param>
     /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
     /// <returns>A Bootstrap icon</returns>
-    /// <exception cref="WebExtras.Mvc.Core.BootstrapVersionException">Thrown when a valid Bootstrap version
-    /// is not selected</exception>
+    /// <exception cref="WebExtras.Mvc.Core.BootstrapVersionException">
+    ///   Thrown when a valid Bootstrap version
+    ///   is not selected
+    /// </exception>
     public static IExtendedHtmlString Icon(this HtmlHelper html, EBootstrapIcon icon, object htmlAttributes = null)
     {
       return BootstrapUtil.CreateIcon(icon, htmlAttributes);
     }
 
     /// <summary>
-    /// Renders a Bootstrap Font-Awesome icon
+    ///   Renders a Bootstrap Font-Awesome icon
     /// </summary>
     /// <param name="html">Current Html helper object</param>
     /// <param name="icon">Icon to be rendered</param>
@@ -60,16 +61,19 @@ namespace WebExtras.Mvc.Bootstrap
     }
 
     /// <summary>
-    /// Renders a Bootstrap Font-Awesome icon
+    ///   Renders a Bootstrap Font-Awesome icon
     /// </summary>
     /// <param name="html">Current Html helper object</param>
     /// <param name="icon">Icon to be rendered</param>
     /// <param name="size">Icon size</param>
     /// <param name="htmlAttributes">Extra HTML attributes</param>
     /// <returns>A Bootstrap icon</returns>
-    /// <exception cref="WebExtras.Mvc.Core.FontAwesomeVersionException">Thrown when a valid FontAwesome
-    /// icon library version is not selected</exception>
-    public static IExtendedHtmlString Icon(this HtmlHelper html, EFontAwesomeIcon icon, EFontAwesomeIconSize size = EFontAwesomeIconSize.Normal, object htmlAttributes = null)
+    /// <exception cref="WebExtras.Mvc.Core.FontAwesomeVersionException">
+    ///   Thrown when a valid FontAwesome
+    ///   icon library version is not selected
+    /// </exception>
+    public static IExtendedHtmlString Icon(this HtmlHelper html, EFontAwesomeIcon icon,
+      EFontAwesomeIconSize size = EFontAwesomeIconSize.Normal, object htmlAttributes = null)
     {
       return BootstrapUtil.CreateIcon(icon, size, htmlAttributes);
     }
@@ -79,7 +83,7 @@ namespace WebExtras.Mvc.Bootstrap
     #region Navbar extension
 
     /// <summary>
-    /// Create a navigation bar
+    ///   Create a navigation bar
     /// </summary>
     /// <param name="html">Current HTML helper object</param>
     /// <param name="type">Navigation bar type</param>
@@ -91,20 +95,21 @@ namespace WebExtras.Mvc.Bootstrap
     }
 
     /// <summary>
-    /// Create a navigation bar
+    ///   Create a navigation bar
     /// </summary>
     /// <param name="html">Current HTML helper object</param>
     /// <param name="type">Navigation bar type</param>
     /// <param name="brandLink">Navigation bar brand link</param>
     /// <param name="items">Navigation bar items</param>
     /// <returns>A navigation bar</returns>
-    public static BootstrapNavBar Navbar(this HtmlHelper html, EBootstrapNavbar type, Hyperlink brandLink, HtmlList items)
+    public static BootstrapNavBar Navbar(this HtmlHelper html, EBootstrapNavbar type, Hyperlink brandLink,
+      HtmlList items)
     {
       return new BootstrapNavBar(type, brandLink, items);
     }
 
     /// <summary>
-    /// Create a navigation bar
+    ///   Create a navigation bar
     /// </summary>
     /// <param name="html">Current HTML helper object</param>
     /// <param name="type">Navigation bar type</param>
@@ -120,14 +125,15 @@ namespace WebExtras.Mvc.Bootstrap
     #region ProgressBar extension
 
     /// <summary>
-    /// Create a bootstrap progress bar
+    ///   Create a bootstrap progress bar
     /// </summary>
     /// <param name="html">Current HTML helper object</param>
     /// <param name="type">Progress bar type</param>
     /// <param name="percent">Percentage of completion for the progress bar</param>
     /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
     /// <returns>A boostrap progress bar</returns>
-    public static BootstrapProgressBar ProgressBar(this HtmlHelper html, EBootstrapProgressBar type, int percent, object htmlAttributes = null)
+    public static BootstrapProgressBar ProgressBar(this HtmlHelper html, EBootstrapProgressBar type, int percent,
+      object htmlAttributes = null)
     {
       return new BootstrapProgressBar(type, percent, htmlAttributes);
     }
@@ -137,8 +143,8 @@ namespace WebExtras.Mvc.Bootstrap
     #region TooltipFor extensions
 
     /// <summary>
-    /// Create a Bootstrap tooltip. The tooltip text is retrieved from the
-    /// 'Description' attribute for the property
+    ///   Create a Bootstrap tooltip. The tooltip text is retrieved from the
+    ///   'Description' attribute for the property
     /// </summary>
     /// <typeparam name="TModel">Type to be scanned</typeparam>
     /// <typeparam name="TValue">Property to be scanned</typeparam>
@@ -153,7 +159,7 @@ namespace WebExtras.Mvc.Bootstrap
     }
 
     /// <summary>
-    /// Create a Bootstrap tooltip
+    ///   Create a Bootstrap tooltip
     /// </summary>
     /// <typeparam name="TModel">Type to be scanned</typeparam>
     /// <typeparam name="TValue">Property to be scanned</typeparam>
@@ -170,8 +176,8 @@ namespace WebExtras.Mvc.Bootstrap
     }
 
     /// <summary>
-    /// Create a Bootstrap tooltip. The tooltip text is retrieved from the
-    /// 'Description' attribute for the property
+    ///   Create a Bootstrap tooltip. The tooltip text is retrieved from the
+    ///   'Description' attribute for the property
     /// </summary>
     /// <typeparam name="TModel">Type to be scanned</typeparam>
     /// <typeparam name="TValue">Property to be scanned</typeparam>
@@ -192,7 +198,7 @@ namespace WebExtras.Mvc.Bootstrap
     }
 
     /// <summary>
-    /// Creates a Bootstrap tooltip
+    ///   Creates a Bootstrap tooltip
     /// </summary>
     /// <typeparam name="TModel">Type to be scanned</typeparam>
     /// <typeparam name="TValue">Property to be scanned</typeparam>
@@ -245,21 +251,22 @@ namespace WebExtras.Mvc.Bootstrap
     }
 
     /// <summary>
-    /// Get the 'Description' attribute text for the given property
+    ///   Get the 'Description' attribute text for the given property
     /// </summary>
     /// <typeparam name="TModel">Type to be scanned</typeparam>
     /// <typeparam name="TValue">Property to be scanned</typeparam>
     /// <param name="html">Htmlhelper extension</param>
     /// <param name="expression">The property lambda expression</param>
     /// <returns>Tooltip text to be displayed</returns>
-    private static string GetTooltipFor<TModel, TValue>(this HtmlHelper<TModel> html, Expression<Func<TModel, TValue>> expression)
+    private static string GetTooltipFor<TModel, TValue>(this HtmlHelper<TModel> html,
+      Expression<Func<TModel, TValue>> expression)
     {
       string tooltip;
       MemberExpression exp = expression.Body as MemberExpression;
       if (exp != null)
       {
         DescriptionAttribute descAtt = exp.Member
-          .GetCustomAttributes(typeof(DescriptionAttribute), false)
+          .GetCustomAttributes(typeof (DescriptionAttribute), false)
           .Cast<DescriptionAttribute>()
           .FirstOrDefault();
 
@@ -275,62 +282,73 @@ namespace WebExtras.Mvc.Bootstrap
     #region Alert extensions
 
     /// <summary>
-    /// Renders a Bootstrap alert
+    ///   Renders a Bootstrap alert
     /// </summary>
     /// <param name="html">HtmlHelper extension</param>
     /// <param name="type">Type of alert</param>
     /// <param name="message">Alert message</param>
-    /// <param name="htmlAttributes">[Optional] Any extras HTML attributes to be applied. 
-    /// Note. These attributes are only applied to the top level div</param>
+    /// <param name="htmlAttributes">
+    ///   [Optional] Any extras HTML attributes to be applied.
+    ///   Note. These attributes are only applied to the top level div
+    /// </param>
     /// <returns>A Bootstrap styled alert</returns>
     public static Alert Alert(this HtmlHelper html, EMessage type, string message, object htmlAttributes = null)
     {
-      return Alert (html, type, message, string.Empty, (EBootstrapIcon?)null, htmlAttributes);
+      return Alert(html, type, message, string.Empty, (EBootstrapIcon?) null, htmlAttributes);
     }
 
     /// <summary>
-    /// Renders a Bootstrap alert
+    ///   Renders a Bootstrap alert
     /// </summary>
     /// <param name="html">HtmlHelper extension</param>
     /// <param name="type">Type of alert</param>
     /// <param name="message">Alert message</param>
     /// <param name="title">Title/Heading of the alert</param>
-    /// <param name="htmlAttributes">[Optional] Any extras HTML attributes to be applied. 
-    /// Note. These attributes are only applied to the top level div</param>
+    /// <param name="htmlAttributes">
+    ///   [Optional] Any extras HTML attributes to be applied.
+    ///   Note. These attributes are only applied to the top level div
+    /// </param>
     /// <returns>A Bootstrap styled alert</returns>
-    public static Alert Alert(this HtmlHelper html, EMessage type, string message, string title, object htmlAttributes = null)
+    public static Alert Alert(this HtmlHelper html, EMessage type, string message, string title,
+      object htmlAttributes = null)
     {
-      return Alert (html, type, message, title, (EBootstrapIcon?)null, htmlAttributes);
+      return Alert(html, type, message, title, (EBootstrapIcon?) null, htmlAttributes);
     }
 
     /// <summary>
-    /// Renders a Bootstrap alert
+    ///   Renders a Bootstrap alert
     /// </summary>
     /// <param name="html">HtmlHelper extension</param>
     /// <param name="type">Type of alert</param>
     /// <param name="message">Alert message</param>
     /// <param name="title">Title/Heading of the alert</param>
     /// <param name="icon">Icon to be rendered with title/heading</param>
-    /// <param name="htmlAttributes">[Optional] Any extras HTML attributes to be applied. 
-    /// Note. These attributes are only applied to the top level div</param>
+    /// <param name="htmlAttributes">
+    ///   [Optional] Any extras HTML attributes to be applied.
+    ///   Note. These attributes are only applied to the top level div
+    /// </param>
     /// <returns>A Bootstrap styled alert</returns>
-    public static Alert Alert(this HtmlHelper html, EMessage type, string message, string title, EFontAwesomeIcon? icon, object htmlAttributes = null)
+    public static Alert Alert(this HtmlHelper html, EMessage type, string message, string title, EFontAwesomeIcon? icon,
+      object htmlAttributes = null)
     {
       return new Alert(type, message, title, icon, htmlAttributes);
     }
 
     /// <summary>
-    /// Renders a Bootstrap alert
+    ///   Renders a Bootstrap alert
     /// </summary>
     /// <param name="html">HtmlHelper extension</param>
     /// <param name="type">Type of alert</param>
     /// <param name="message">Alert message</param>
     /// <param name="title">Title/Heading of the alert</param>
     /// <param name="icon">Icon to be rendered with title/heading</param>
-    /// <param name="htmlAttributes">[Optional] Any extras HTML attributes to be applied. 
-    /// Note. These attributes are only applied to the top level div</param>
+    /// <param name="htmlAttributes">
+    ///   [Optional] Any extras HTML attributes to be applied.
+    ///   Note. These attributes are only applied to the top level div
+    /// </param>
     /// <returns>A Bootstrap styled alert</returns>
-    public static Alert Alert(this HtmlHelper html, EMessage type, string message, string title, EBootstrapIcon? icon, object htmlAttributes = null)
+    public static Alert Alert(this HtmlHelper html, EMessage type, string message, string title, EBootstrapIcon? icon,
+      object htmlAttributes = null)
     {
       return new Alert(type, message, title, icon, htmlAttributes);
     }
@@ -340,57 +358,61 @@ namespace WebExtras.Mvc.Bootstrap
     #region Hyperlink extensions
 
     /// <summary>
-    /// Create a icon only link
+    ///   Create a icon only link
     /// </summary>
     /// <param name="html">Current HTML helper object</param>
     /// <param name="icon">Icon to display</param>
     /// <param name="result">Link action</param>
     /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
     /// <returns>A icon only link</returns>
-    public static IExtendedHtmlString Hyperlink(this HtmlHelper html, EBootstrapIcon icon, ActionResult result, object htmlAttributes = null)
+    public static IExtendedHtmlString Hyperlink(this HtmlHelper html, EBootstrapIcon icon, ActionResult result,
+      object htmlAttributes = null)
     {
-      string link = HtmlStringUtil.GetUrl(html, result);
+      string link = WebExtrasMvcUtil.GetUrl(html, result);
 
       return new BootstrapIconlink(icon, link, htmlAttributes);
     }
 
     /// <summary>
-    /// Create a icon only link
+    ///   Create a icon only link
     /// </summary>
     /// <param name="html">Current HTML helper object</param>
     /// <param name="icon">Icon to display</param>
     /// <param name="url">Link action</param>
     /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
     /// <returns>A icon only link</returns>
-    public static IExtendedHtmlString Hyperlink(this HtmlHelper html, EBootstrapIcon icon, string url, object htmlAttributes = null)
+    public static IExtendedHtmlString Hyperlink(this HtmlHelper html, EBootstrapIcon icon, string url,
+      object htmlAttributes = null)
     {
       return new BootstrapIconlink(icon, url, htmlAttributes);
     }
 
     /// <summary>
-    /// Create a icon only link
+    ///   Create a icon only link
     /// </summary>
     /// <param name="html">Current HTML helper object</param>
     /// <param name="icon">Icon to display</param>
     /// <param name="result">Link action</param>
     /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
     /// <returns>A icon only link</returns>
-    public static IExtendedHtmlString Hyperlink(this HtmlHelper html, EFontAwesomeIcon icon, ActionResult result, object htmlAttributes = null)
+    public static IExtendedHtmlString Hyperlink(this HtmlHelper html, EFontAwesomeIcon icon, ActionResult result,
+      object htmlAttributes = null)
     {
-      string link = HtmlStringUtil.GetUrl(html, result);
+      string link = WebExtrasMvcUtil.GetUrl(html, result);
 
       return new BootstrapIconlink(icon, link, htmlAttributes);
     }
 
     /// <summary>
-    /// Create a icon only link
+    ///   Create a icon only link
     /// </summary>
     /// <param name="html">Current HTML helper object</param>
     /// <param name="icon">Icon to display</param>
     /// <param name="url">Link action</param>
     /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
     /// <returns>A icon only link</returns>
-    public static IExtendedHtmlString Hyperlink(this HtmlHelper html, EFontAwesomeIcon icon, string url, object htmlAttributes = null)
+    public static IExtendedHtmlString Hyperlink(this HtmlHelper html, EFontAwesomeIcon icon, string url,
+      object htmlAttributes = null)
     {
       return new BootstrapIconlink(icon, url, htmlAttributes);
     }

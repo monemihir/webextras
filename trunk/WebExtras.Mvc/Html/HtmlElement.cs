@@ -1,20 +1,19 @@
-﻿/*
-* This file is part of - WebExtras
-* Copyright (C) 2014 Mihir Mone
-*
-* This program is free software: you can redistribute it and/or modify
-* it under the terms of the GNU Lesser General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU Lesser General Public License for more details.
-*
-* You should have received a copy of the GNU Lesser General Public License
-* along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
+﻿// 
+// This file is part of - WebExtras
+// Copyright (C) 2015 Mihir Mone
+// 
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Lesser General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+// 
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Lesser General Public License for more details.
+// 
+// You should have received a copy of the GNU Lesser General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 using System;
 using System.Collections.Generic;
@@ -28,7 +27,7 @@ using WebExtras.Mvc.Core;
 namespace WebExtras.Mvc.Html
 {
   /// <summary>
-  /// Represents an HTML element
+  ///   Represents an HTML element
   /// </summary>
   [Serializable]
   public class HtmlElement : IExtendedHtmlString
@@ -36,52 +35,52 @@ namespace WebExtras.Mvc.Html
     #region Attributes
 
     /// <summary>
-    /// A collection of all supported HTML tags
+    ///   A collection of all supported HTML tags
     /// </summary>
     public static readonly List<string> SupportedTags;
 
     /// <summary>
-    /// Random number generator
+    ///   Random number generator
     /// </summary>
     private static Random m_rand;
 
     /// <summary>
-    /// MVC HTML tag builder object
+    ///   MVC HTML tag builder object
     /// </summary>
     private readonly TagBuilder m_tag;
 
     /// <summary>
-    /// The HTML tag representing this element
+    ///   The HTML tag representing this element
     /// </summary>
     private readonly EHtmlTag m_htmlTag;
 
     /// <summary>
-    /// CSS classes of this element
+    ///   CSS classes of this element
     /// </summary>
     public CssClassesCollection CSSClasses { get; private set; }
 
     /// <summary>
-    /// HTML attribute list for this element
+    ///   HTML attribute list for this element
     /// </summary>
     public IDictionary<string, string> Attributes { get { return m_tag.Attributes; } }
 
     /// <summary>
-    /// Inner HTML of the element
+    ///   Inner HTML of the element
     /// </summary>
     public string InnerHtml { get { return m_tag.InnerHtml; } set { m_tag.InnerHtml = value; } }
 
     /// <summary>
-    /// The HTML tag representing this element
+    ///   The HTML tag representing this element
     /// </summary>
     public EHtmlTag Tag { get { return m_htmlTag; } }
 
     /// <summary>
-    /// Inner HTML tags to be appended
+    ///   Inner HTML tags to be appended
     /// </summary>
     public List<IExtendedHtmlString> AppendTags { get; private set; }
 
     /// <summary>
-    /// Inner HTML tags to be prepended
+    ///   Inner HTML tags to be prepended
     /// </summary>
     public List<IExtendedHtmlString> PrependTags { get; private set; }
 
@@ -90,12 +89,12 @@ namespace WebExtras.Mvc.Html
     #region Ctors
 
     /// <summary>
-    /// Static constructor to initialise static/readonly fields
+    ///   Static constructor to initialise static/readonly fields
     /// </summary>
     static HtmlElement()
     {
       SupportedTags = new List<string>();
-      Array vals = Enum.GetValues(typeof(EHtmlTag));
+      Array vals = Enum.GetValues(typeof (EHtmlTag));
 
       foreach (object val in vals)
       {
@@ -105,7 +104,7 @@ namespace WebExtras.Mvc.Html
     }
 
     /// <summary>
-    /// Default constructor
+    ///   Default constructor
     /// </summary>
     /// <param name="tag">An HTML tag to initialise this element with</param>
     public HtmlElement(EHtmlTag tag)
@@ -122,7 +121,7 @@ namespace WebExtras.Mvc.Html
     }
 
     /// <summary>
-    /// Constructor to specify extra HTML attributes as an anonymous type
+    ///   Constructor to specify extra HTML attributes as an anonymous type
     /// </summary>
     /// <param name="tag">An HTML tag to initialise this element with</param>
     /// <param name="htmlAttributes">Extra HTML attributes</param>
@@ -136,7 +135,7 @@ namespace WebExtras.Mvc.Html
 
       try
       {
-        attribs = (IDictionary<string, object>)htmlAttributes;
+        attribs = (IDictionary<string, object>) htmlAttributes;
       }
       catch (Exception)
       {
@@ -155,7 +154,7 @@ namespace WebExtras.Mvc.Html
     #endregion Ctors
 
     /// <summary>
-    /// Gets or sets the value for the attribute specified
+    ///   Gets or sets the value for the attribute specified
     /// </summary>
     /// <param name="attribute">Attribute to get or set value</param>
     /// <returns>Value of attribute if available, else null</returns>
@@ -168,43 +167,65 @@ namespace WebExtras.Mvc.Html
     #region Append/Prepend
 
     /// <summary>
-    /// Appends the given HTML element at the end of the current 
-    /// element
+    ///   Appends the given text at end of current element
     /// </summary>
-    /// <param name="element">HTML element to be added</param>
-    public void Append(IExtendedHtmlString element)
+    /// <param name="text">Text to be added</param>
+    public virtual void Append(string text)
     {
-      if (element != null)
-        AppendTags.Add(element);
+      HtmlElement e = new HtmlElement(WebExtrasMvcConstants.DefaultTagForTextEncapsulation);
+      e.InnerHtml = text;
+      Append(e);
     }
 
     /// <summary>
-    /// Appends the given HTML elements at the end of the current 
-    /// element
+    ///   Appends the given HTML element at the end of the current
+    ///   element
+    /// </summary>
+    /// <param name="element">HTML element to be added</param>
+    public virtual void Append(IExtendedHtmlString element)
+    {
+      if (element != null)
+        AppendTags.AddRange(new[] {element});
+    }
+
+    /// <summary>
+    ///   Appends the given HTML elements at the end of the current
+    ///   element
     /// </summary>
     /// <param name="elements">HTML elements to be added</param>
-    public void Append(IEnumerable<IExtendedHtmlString> elements)
+    public virtual void Append(IEnumerable<IExtendedHtmlString> elements)
     {
       AppendTags.AddRange(elements);
     }
 
     /// <summary>
-    /// Prepends the given HTML element at the beginning of
-    /// the current element
+    ///   Prepends the given text at the beginning of current element
     /// </summary>
-    /// <param name="element">HTML element to be added</param>
-    public void Prepend(IExtendedHtmlString element)
+    /// <param name="text">Text to be added</param>
+    public virtual void Prepend(string text)
     {
-      if (element != null)
-        PrependTags.Add(element);
+      HtmlElement e = new HtmlElement(WebExtrasMvcConstants.DefaultTagForTextEncapsulation);
+      e.InnerHtml = text;
+      Prepend(e);
     }
 
     /// <summary>
-    /// Prepends the given HTML elements at the beginning of
-    /// the current element
+    ///   Prepends the given HTML element at the beginning of
+    ///   the current element
+    /// </summary>
+    /// <param name="element">HTML element to be added</param>
+    public virtual void Prepend(IExtendedHtmlString element)
+    {
+      if (element != null)
+        PrependTags.AddRange(new[] {element});
+    }
+
+    /// <summary>
+    ///   Prepends the given HTML elements at the beginning of
+    ///   the current element
     /// </summary>
     /// <param name="elements">HTML elements to be added</param>
-    public void Prepend(IEnumerable<IExtendedHtmlString> elements)
+    public virtual void Prepend(IEnumerable<IExtendedHtmlString> elements)
     {
       PrependTags.AddRange(elements);
     }
@@ -214,7 +235,7 @@ namespace WebExtras.Mvc.Html
     #region ToHtmlString
 
     /// <summary>
-    /// Converts current element to a MVC HTML string
+    ///   Converts current element to a MVC HTML string
     /// </summary>
     /// <returns>MVC HTML string representation of current element</returns>
     public string ToHtmlString()
@@ -223,8 +244,8 @@ namespace WebExtras.Mvc.Html
     }
 
     /// <summary>
-    /// Converts current element to a MVC HTMl string with
-    /// the given tag rendering mode
+    ///   Converts current element to a MVC HTMl string with
+    ///   the given tag rendering mode
     /// </summary>
     /// <param name="renderMode">Tag render mode</param>
     /// <returns>MVC HTML string representation of the current element</returns>
@@ -252,18 +273,15 @@ namespace WebExtras.Mvc.Html
     #endregion ToHtmlString
 
     /// <summary>
-    /// Empty string
+    ///   Empty string
     /// </summary>
-    public static IExtendedHtmlString Empty
-    {
-      get { return new Empty(); }
-    }
+    public static IExtendedHtmlString Empty { get { return new Empty(); } }
 
     #region Parse
 
     /// <summary>
-    /// Parse the given HTML to a HtmlElement. Note the HTML given
-    /// must be valid XML.
+    ///   Parse the given HTML to a HtmlElement. Note the HTML given
+    ///   must be valid XML.
     /// </summary>
     /// <param name="html">HTML to be parsed</param>
     /// <returns>The parsed HtmlElement</returns>
@@ -274,7 +292,7 @@ namespace WebExtras.Mvc.Html
     }
 
     /// <summary>
-    /// Parse an XML valid node to a HtmlElement
+    ///   Parse an XML valid node to a HtmlElement
     /// </summary>
     /// <param name="element">Element to be parsed</param>
     /// <returns>The parsed HtmlElement</returns>
@@ -288,11 +306,11 @@ namespace WebExtras.Mvc.Html
             element.Name.LocalName.ToUpperInvariant(),
             string.Join(", ", SupportedTags.Select(f => f.ToUpperInvariant()))));
 
-      EHtmlTag tag = (EHtmlTag)Enum.Parse(typeof(EHtmlTag), element.Name.LocalName.ToTitleCase());
+      EHtmlTag tag = (EHtmlTag) Enum.Parse(typeof (EHtmlTag), element.Name.LocalName.ToTitleCase());
 
       // get the attributes of the element as HTML attributes dictionary
       IDictionary<string, object> htmlAttributes = element.Attributes()
-        .ToDictionary(f => f.Name.LocalName.ToLowerInvariant(), v => (object)v.Value);
+        .ToDictionary(f => f.Name.LocalName.ToLowerInvariant(), v => (object) v.Value);
 
       HtmlElement html = new HtmlElement(tag, htmlAttributes);
 
@@ -304,7 +322,7 @@ namespace WebExtras.Mvc.Html
         return html;
       }
 
-      if (!element.Nodes().Any()) 
+      if (!element.Nodes().Any())
         return html;
 
       foreach (XNode node in element.Nodes())

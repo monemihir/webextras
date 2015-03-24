@@ -230,7 +230,7 @@ namespace WebExtras.Mvc.Gumby
     /// <returns>A icon only link</returns>
     public static IExtendedHtmlString Hyperlink(this HtmlHelper html, EGumbyIcon icon, ActionResult result, object htmlAttributes = null)
     {
-      string link = HtmlStringUtil.GetUrl(html, result);
+      string link = WebExtrasMvcUtil.GetUrl(html, result);
 
       return new GumbyIconLink(icon, link, htmlAttributes);
     }

@@ -1,20 +1,19 @@
-﻿/*
-* This file is part of - WebExtras
-* Copyright (C) 2014 Mihir Mone
-*
-* This program is free software: you can redistribute it and/or modify
-* it under the terms of the GNU Lesser General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU Lesser General Public License for more details.
-*
-* You should have received a copy of the GNU Lesser General Public License
-* along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
+﻿// 
+// This file is part of - WebExtras
+// Copyright (C) 2015 Mihir Mone
+// 
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Lesser General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+// 
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Lesser General Public License for more details.
+// 
+// You should have received a copy of the GNU Lesser General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 using System;
 using System.Collections.Generic;
@@ -27,23 +26,26 @@ using WebExtras.Mvc.Html;
 namespace WebExtras.Mvc.Bootstrap
 {
   /// <summary>
-  /// Bootstrap hyperlink/button decorators
+  ///   Bootstrap hyperlink/button decorators
   /// </summary>
   public static class BSHtmlStringExtension
   {
     #region Icon extensions
 
     /// <summary>
-    /// Add an icon
+    ///   Add an icon
     /// </summary>
     /// <typeparam name="T">Generic type to be used. This type must implement IExtendedHtmlString</typeparam>
     /// <param name="html">Current html element</param>
     /// <param name="icon">Icon to be rendered</param>
-    /// <param name="htmlAttributes">[Optional] Extra html attributes</param>    
+    /// <param name="htmlAttributes">[Optional] Extra html attributes</param>
     /// <returns>Html element with icon added</returns>
-    /// <exception cref="WebExtras.Mvc.Core.BootstrapVersionException">Thrown when a valid Bootstrap version
-    /// is not selected</exception>
-    public static T AddIcon<T>(this T html, EBootstrapIcon icon, object htmlAttributes = null) where T : IExtendedHtmlString
+    /// <exception cref="WebExtras.Mvc.Core.BootstrapVersionException">
+    ///   Thrown when a valid Bootstrap version
+    ///   is not selected
+    /// </exception>
+    public static T AddIcon<T>(this T html, EBootstrapIcon icon, object htmlAttributes = null)
+      where T : IExtendedHtmlString
     {
       List<string> cssClasses = new List<string>();
 
@@ -65,16 +67,19 @@ namespace WebExtras.Mvc.Bootstrap
     }
 
     /// <summary>
-    /// Add a white icon
+    ///   Add a white icon
     /// </summary>
     /// <typeparam name="T">Generic type to be used. This type must implement IExtendedHtmlString</typeparam>
     /// <param name="html">Current html element</param>
     /// <param name="icon">Icon to be rendered</param>
     /// <param name="htmlAttributes">[Optional] Extra html attributes</param>
     /// <returns>Html element with a white icon added</returns>
-    /// <exception cref="WebExtras.Mvc.Core.BootstrapVersionException">Thrown when a valid Bootstrap version
-    /// is not selected</exception>
-    public static T AddWhiteIcon<T>(this T html, EBootstrapIcon icon, object htmlAttributes = null) where T : IExtendedHtmlString
+    /// <exception cref="WebExtras.Mvc.Core.BootstrapVersionException">
+    ///   Thrown when a valid Bootstrap version
+    ///   is not selected
+    /// </exception>
+    public static T AddWhiteIcon<T>(this T html, EBootstrapIcon icon, object htmlAttributes = null)
+      where T : IExtendedHtmlString
     {
       List<string> cssClasses = new List<string>();
 
@@ -84,7 +89,8 @@ namespace WebExtras.Mvc.Bootstrap
           cssClasses.Add("icon-white icon-" + icon.ToString().ToLowerInvariant().Replace("_", "-"));
           break;
         case EBootstrapVersion.V3:
-          throw new InvalidOperationException("Since Bootstrap v3, all icons are font based. Therefore, you must use CSS styling to control icon color");
+          throw new InvalidOperationException(
+            "Since Bootstrap v3, all icons are font based. Therefore, you must use CSS styling to control icon color");
         default:
           throw new BootstrapVersionException();
       }
@@ -95,7 +101,7 @@ namespace WebExtras.Mvc.Bootstrap
     }
 
     /// <summary>
-    /// Add an icon
+    ///   Add an icon
     /// </summary>
     /// <typeparam name="T">Generic type to be used. This type must implement IExtendedHtmlString</typeparam>
     /// <param name="html">Current html element</param>
@@ -103,9 +109,13 @@ namespace WebExtras.Mvc.Bootstrap
     /// <param name="size">[Optional] Icon size</param>
     /// <param name="htmlAttributes">[Optional] Extra html attributes</param>
     /// <returns>Html element with icon added</returns>
-    /// <exception cref="WebExtras.Mvc.Core.FontAwesomeVersionException">Thrown when a valid FontAwesome
-    /// icon library version is not selected</exception>
-    public static T AddIcon<T>(this T html, EFontAwesomeIcon icon, EFontAwesomeIconSize size = EFontAwesomeIconSize.Normal, object htmlAttributes = null) where T : IExtendedHtmlString
+    /// <exception cref="WebExtras.Mvc.Core.FontAwesomeVersionException">
+    ///   Thrown when a valid FontAwesome
+    ///   icon library version is not selected
+    /// </exception>
+    public static T AddIcon<T>(this T html, EFontAwesomeIcon icon,
+      EFontAwesomeIconSize size = EFontAwesomeIconSize.Normal, object htmlAttributes = null)
+      where T : IExtendedHtmlString
     {
       string prefix = string.Empty;
 
@@ -130,14 +140,15 @@ namespace WebExtras.Mvc.Bootstrap
     }
 
     /// <summary>
-    /// Add an icon
+    ///   Add an icon
     /// </summary>
     /// <typeparam name="T">Generic type to be used. This type must implement IExtendedHtmlString</typeparam>
     /// <param name="html">Current html element</param>
     /// <param name="cssClasses">Css classes to be added</param>
     /// <param name="htmlAttributes">[Optional] Extra html attributes</param>
     /// <returns>Html element with icon added</returns>
-    private static T AddIcon<T>(T html, IEnumerable<string> cssClasses, object htmlAttributes = null) where T : IExtendedHtmlString
+    private static T AddIcon<T>(T html, IEnumerable<string> cssClasses, object htmlAttributes = null)
+      where T : IExtendedHtmlString
     {
       IDictionary<string, object> rvd = HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes);
 
@@ -170,7 +181,7 @@ namespace WebExtras.Mvc.Bootstrap
     #region Button extensions
 
     /// <summary>
-    /// Create special buttons
+    ///   Create special buttons
     /// </summary>
     /// <typeparam name="T">Generic type to be used. Can only be either Hyperlink or Button</typeparam>
     /// <param name="html">Current HTML element</param>
@@ -181,7 +192,7 @@ namespace WebExtras.Mvc.Bootstrap
     }
 
     /// <summary>
-    /// Create special buttons
+    ///   Create special buttons
     /// </summary>
     /// <typeparam name="T">Generic type to be used. Can only be either Hyperlink or Button</typeparam>
     /// <param name="html">Current HTML element</param>
@@ -189,7 +200,7 @@ namespace WebExtras.Mvc.Bootstrap
     /// <returns>A special button</returns>
     public static T AsButton<T>(this T html, params EBootstrapButton[] types) where T : IExtendedHtmlString
     {
-      if (!HtmlStringUtil.CanDisplayAsButton(html))
+      if (!WebExtrasMvcUtil.CanDisplayAsButton(html))
         throw new InvalidUsageException("The AsButton decorator can only be used with Button and Hyperlink extensions");
 
       html.AddCssClass(string.Join(" ", types.Select(t => t.GetStringValue())));
@@ -202,7 +213,7 @@ namespace WebExtras.Mvc.Bootstrap
     #region List extensions
 
     /// <summary>
-    /// Create an unstyled list
+    ///   Create an unstyled list
     /// </summary>
     /// <param name="list">List to be converted</param>
     /// <returns>An unstyled list</returns>
@@ -214,7 +225,7 @@ namespace WebExtras.Mvc.Bootstrap
     }
 
     /// <summary>
-    /// Create an inline list.
+    ///   Create an inline list.
     /// </summary>
     /// <param name="list">List to be converted</param>
     /// <returns>An inline list</returns>
