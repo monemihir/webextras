@@ -27,7 +27,7 @@ namespace WebExtras.Mvc.tests.Core
   /// HtmlStringUtil unit tests
   /// </summary>
   [TestClass]
-  public class HtmlStringUtilTest
+  public class WebExtrasMvcUtilTest
   {
     /// <summary>
     /// CanDisplayAsButton returns True for Hyperlink
@@ -39,7 +39,7 @@ namespace WebExtras.Mvc.tests.Core
       Hyperlink link = new Hyperlink(string.Empty, string.Empty);
 
       // act
-      bool result = HtmlStringUtil.CanDisplayAsButton(link);
+      bool result = WebExtrasMvcUtil.CanDisplayAsButton(link);
 
       // assert
       Assert.IsTrue(result);
@@ -55,7 +55,7 @@ namespace WebExtras.Mvc.tests.Core
       Button btn = new Button(EButton.Regular, string.Empty, string.Empty);
 
       // act
-      bool result = HtmlStringUtil.CanDisplayAsButton(btn);
+      bool result = WebExtrasMvcUtil.CanDisplayAsButton(btn);
 
       // assert
       Assert.IsTrue(result);

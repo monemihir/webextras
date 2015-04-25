@@ -79,7 +79,7 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
-    <Compile Include="Core\HtmlStringUtilTest.cs" />
+    <Compile Include="Core\WebExtrasMvcUtilTest.cs" />
     <Compile Include="GenericTest.cs" />
     <Compile Include="Html\CssClassesCollectionTest.cs" />
     <Compile Include="Html\ExtendedHtmlStringExtensionTest.cs" />
