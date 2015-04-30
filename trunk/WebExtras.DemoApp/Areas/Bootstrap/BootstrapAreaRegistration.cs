@@ -28,7 +28,7 @@ namespace WebExtras.DemoApp.Areas.Bootstrap
     {
       get
       {
-        return "bootstrap";
+        return "Bootstrap";
       }
     }
 
@@ -36,8 +36,8 @@ namespace WebExtras.DemoApp.Areas.Bootstrap
     {
       context.MapRoute(
           "bootstrap_default",
-          "bootstrap/{controller}/{action}/{id}",
-          new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+          "Bootstrap/{controller}/{action}/{id}",
+          new { area = "Bootstrap", controller = "Home", action = "Index", id = UrlParameter.Optional }
       );
     }
   }

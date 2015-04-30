@@ -26,7 +26,7 @@ namespace WebExtras.DemoApp.Areas.JQueryUI
     {
       get
       {
-        return "jqueryui";
+        return "JQueryUI";
       }
     }
 
@@ -34,8 +34,8 @@ namespace WebExtras.DemoApp.Areas.JQueryUI
     {
       context.MapRoute(
           "jqueryui_default",
-          "jqueryui/{controller}/{action}/{id}",
-          new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+          "JQueryUI/{controller}/{action}/{id}",
+          new { area = "JQueryUI",  controller = "Home", action = "Index", id = UrlParameter.Optional }
       );
     }
   }

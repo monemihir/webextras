@@ -28,7 +28,7 @@ namespace WebExtras.DemoApp.Areas.Gumby
     {
       get
       {
-        return "gumby";
+        return "Gumby";
       }
     }
 
@@ -36,8 +36,8 @@ namespace WebExtras.DemoApp.Areas.Gumby
     {
       context.MapRoute(
           "gumby_default",
-          "gumby/{controller}/{action}/{id}",
-          new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+          "Gumby/{controller}/{action}/{id}",
+          new { area = "Gumby", controller = "Home", action = "Index", id = UrlParameter.Optional }
       );
     }
   }
