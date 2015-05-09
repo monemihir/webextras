@@ -1,5 +1,7 @@
 ﻿@model WebExtras.DemoApp.Models.Mvc.CoreFormViewModel
 
+@using WebExtras.Mvc.Bootstrap.DateTimePicker
+
 @{
   ViewBag.Title = "Mvc Bootstrap 3 Form Helper Extensions";
 }
@@ -99,13 +101,13 @@
     </div>
     <div class="row keep-center">
       <div class="col-md-4">
-        @Html.DateTextBoxFor(f => f.DateTextBox)
+        @Html.DateTimeTextBoxFor(f => f.DateTextBox, new PickerOptions { format = "YYYY-MM-DD" })
       </div>
       <div class="col-md-4">
-        @Html.TimeTextBoxFor(f => f.TimeTextBox, new { format = "hh:ii" })
+        @Html.DateTimeTextBoxFor(f => f.TimeTextBox, new PickerOptions { format = "HH:mm:ss" })
       </div>
       <div class="col-md-4">
-        @Html.DateTimeTextBoxFor(f => f.DateTimeTextBox, new { format = "dd M yyyy hh:ii" })
+        @Html.DateTimeTextBoxFor(f => f.DateTimeTextBox)
       </div>
     </div>
   </div>

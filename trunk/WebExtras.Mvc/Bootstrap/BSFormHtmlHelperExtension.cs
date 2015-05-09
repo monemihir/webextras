@@ -20,8 +20,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Newtonsoft.Json;
 using WebExtras.Core;
 using WebExtras.Mvc.Core;
 using WebExtras.Mvc.Html;
@@ -33,70 +35,22 @@ namespace WebExtras.Mvc.Bootstrap
   /// </summary>
   public static class BSFormHtmlHelperExtension
   {
-    /// <summary>
-    ///   Default date time picker options
-    /// </summary>
-    private static readonly IDictionary<string, object> DefaultPickerOptions = new Dictionary<string, object>
-    {
-      {"format", "dd M yyyy"},
-      {"autoclose", true},
-      {"todayBtn", true},
-      {"todayHighlight", true},
-      {"pickerPosition", "bottom-left"}
-    };
-
-    #region DateTextBoxFor extensions
-
-    /// <summary>
-    ///   Creates a Bootstrap date picker control
-    /// </summary>
-    /// <typeparam name="TModel">Type to be scanned</typeparam>
-    /// <typeparam name="TValue">Property to be scanned</typeparam>
-    /// <param name="html">HtmlHelper extension</param>
-    /// <param name="expression">The property lamba expression</param>
-    /// <param name="options">Date time picker options</param>
-    /// <param name="htmlAttributes">Extra HTML attributes to be applied to the text box</param>
-    /// <returns>A Bootstrap date picker control</returns>
-    public static MvcHtmlString DateTextBoxFor<TModel, TValue>(this HtmlHelper<TModel> html,
-      Expression<Func<TModel, TValue>> expression, object options = (IDictionary<string, object>) null,
-      object htmlAttributes = (IDictionary<string, object>) null)
-    {
-      // parse the picker options
-      IDictionary<string, object> pickerOptions = DefaultPickerOptions.Merge(new RouteValueDictionary(options), true);
-      pickerOptions["minView"] = 2; // this is a date only picker to set the min view to month
-
-      return GetDateTimePickerFor(html, expression, pickerOptions, htmlAttributes);
-    }
-
-    #endregion DateTextBoxFor extensions
-
-    #region TimeTextBoxFor extensions
-
-    /// <summary>
-    ///   Creates a Bootstrap time picker control
-    /// </summary>
-    /// <typeparam name="TModel">Type to be scanned</typeparam>
-    /// <typeparam name="TValue">Property to be scanned</typeparam>
-    /// <param name="html">HtmlHelper extension</param>
-    /// <param name="expression">The property lamba expression</param>
-    /// <param name="options">Date time picker options</param>
-    /// <param name="htmlAttributes">Extra HTML attributes to be applied to the text box</param>
-    /// <returns>A Bootstrap date picker control</returns>
-    public static MvcHtmlString TimeTextBoxFor<TModel, TValue>(this HtmlHelper<TModel> html,
-      Expression<Func<TModel, TValue>> expression, object options = (IDictionary<string, object>) null,
-      object htmlAttributes = (IDictionary<string, object>) null)
-    {
-      // parse the picker options
-      IDictionary<string, object> pickerOptions = DefaultPickerOptions.Merge(new RouteValueDictionary(options), true);
-      pickerOptions["maxView"] = 0; // this is a time only picker so set the max view to day
-      pickerOptions["startView"] = 1; // this is a time only picker so start with the hour view
-
-      return GetDateTimePickerFor(html, expression, pickerOptions, htmlAttributes);
-    }
-
-    #endregion TimeTextBoxFor extensions
-
     #region DateTimeTextBoxFor extensions
+
+    /// <summary>
+    ///   Creates a Bootstrap date time picker control
+    /// </summary>
+    /// <typeparam name="TModel">Type to be scanned</typeparam>
+    /// <typeparam name="TValue">Property to be scanned</typeparam>
+    /// <param name="html">HtmlHelper extension</param>
+    /// <param name="expression">The property lamba expression</param>
+    /// <param name="htmlAttributes">Extra HTML attributes to be applied to the text box</param>
+    /// <returns>A Bootstrap date time picker control</returns>
+    public static MvcHtmlString DateTimeTextBoxFor<TModel, TValue>(this HtmlHelper<TModel> html,
+      Expression<Func<TModel, TValue>> expression, object htmlAttributes = (IDictionary<string, object>) null)
+    {
+      return DateTimeTextBoxFor(html, expression, WebExtrasMvcConstants.BootstrapDateTimePickerOptions, htmlAttributes);
+    }
 
     /// <summary>
     ///   Creates a Bootstrap date time picker control
@@ -109,16 +63,65 @@ namespace WebExtras.Mvc.Bootstrap
     /// <param name="htmlAttributes">Extra HTML attributes to be applied to the text box</param>
     /// <returns>A Bootstrap date time picker control</returns>
     public static MvcHtmlString DateTimeTextBoxFor<TModel, TValue>(this HtmlHelper<TModel> html,
-      Expression<Func<TModel, TValue>> expression, object options = (IDictionary<string, object>) null,
+      Expression<Func<TModel, TValue>> expression, DateTimePicker.PickerOptions options,
       object htmlAttributes = (IDictionary<string, object>) null)
     {
-      // parse the picker options
-      IDictionary<string, object> pickerOptions = DefaultPickerOptions.Merge(new RouteValueDictionary(options), true);
+      MemberExpression exp = expression.Body as MemberExpression;
 
-      return GetDateTimePickerFor(html, expression, pickerOptions, htmlAttributes);
+      DateTimePicker.PickerOptions dateTimePickerOptions = options.DeepClone();
+
+      var model = ((DateTime?)ModelMetadata.FromLambdaExpression(expression, html.ViewData).Model);
+      if (model.HasValue && model.Value > DateTime.MinValue)
+        dateTimePickerOptions.defaultDate = model;
+
+      string fieldId = WebExtrasMvcUtil.GetFieldIdFromExpression(exp);
+      string fieldName = WebExtrasMvcUtil.GetFieldNameFromExpression(exp);
+
+      // create the text box
+      TagBuilder input = new TagBuilder("input");
+      input.MergeAttributes(HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes));
+      input.Attributes["type"] = "text";
+
+      //input.Attributes["value"] =
+      //  ((DateTime)ModelMetadata.FromLambdaExpression(expression, html.ViewData).Model).ToString(dateTimeFormat);
+      input.Attributes["name"] = fieldName;
+
+      if (input.Attributes.ContainsKey("class"))
+        input.Attributes["class"] += " form-control";
+      else
+        input.Attributes["class"] = "form-control";
+
+      // create addon
+      TagBuilder addOn = new TagBuilder("span");
+      addOn.AddCssClass("input-group-addon");
+
+      TagBuilder icons = new TagBuilder("i");
+
+      if (WebExtrasMvcConstants.FontAwesomeVersion == EFontAwesomeVersion.V4)
+        icons.AddCssClass("fa fa-calendar");
+      else
+        icons.AddCssClass("icon-calendar glyphicon glyphicon-calendar");
+
+      TagBuilder control = new TagBuilder("div");
+      control.Attributes["id"] = fieldId;
+      control.Attributes["class"] = "input-append input-group date form_datetime";
+
+      addOn.InnerHtml = icons.ToString(TagRenderMode.Normal);
+      control.InnerHtml = input.ToString(TagRenderMode.SelfClosing) + addOn.ToString(TagRenderMode.Normal);
+
+      // create JSON dictionary of the picker options
+      string op = dateTimePickerOptions.ToJson(new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
+
+      TagBuilder script = new TagBuilder("script");
+      script.Attributes["type"] = "text/javascript";
+      script.InnerHtml = "$(function(){ $('#" + fieldId + "').datetimepicker(" + op + "); });";
+
+      return MvcHtmlString.Create(control.ToString(TagRenderMode.Normal) + script.ToString(TagRenderMode.Normal));
     }
 
     #endregion DateTimeTextBoxFor extensions
+
+    #region FormGroupControl extensions
 
     /// <summary>
     ///   Create a bootstrap form group control
@@ -159,113 +162,6 @@ namespace WebExtras.Mvc.Bootstrap
       return bfc;
     }
 
-    #region Misc methods
-
-    /// <summary>
-    ///   Creates a Bootstrap date time picker control
-    /// </summary>
-    /// <typeparam name="TModel">Type to be scanned</typeparam>
-    /// <typeparam name="TValue">Property to be scanned</typeparam>
-    /// <param name="html">HtmlHelper extension</param>
-    /// <param name="expression">The property lamba expression</param>
-    /// <param name="pickerOptions">Date time picker options</param>
-    /// <param name="htmlAttributes">Extra HTML attributes to be applied to the text box</param>
-    /// <returns>A Bootstrap date time picker control</returns>
-    private static MvcHtmlString GetDateTimePickerFor<TModel, TValue>(this HtmlHelper<TModel> html,
-      Expression<Func<TModel, TValue>> expression, IDictionary<string, object> pickerOptions,
-      object htmlAttributes = (IDictionary<string, object>) null)
-    {
-      MemberExpression exp = expression.Body as MemberExpression;
-
-      string fieldId = WebExtrasMvcUtil.GetFieldIdFromExpression(exp);
-      string fieldName = WebExtrasMvcUtil.GetFieldNameFromExpression(exp);
-      string datetimeformat = ConvertToCsDateFormat(pickerOptions["format"].ToString());
-
-      // create the text box
-      TagBuilder input = new TagBuilder("input");
-      input.MergeAttributes(HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes));
-      input.Attributes["type"] = "text";
-      input.Attributes["value"] =
-        ((DateTime) ModelMetadata.FromLambdaExpression(expression, html.ViewData).Model).ToString(datetimeformat);
-      input.Attributes["name"] = fieldName;
-
-      if (input.Attributes.ContainsKey("class"))
-        input.Attributes["class"] += " form-control";
-      else
-        input.Attributes["class"] = "form-control";
-
-      // create addon
-      TagBuilder addOn = new TagBuilder("span");
-      addOn.AddCssClass("add-on input-group-addon");
-
-      TagBuilder icons = new TagBuilder("i");
-      icons.AddCssClass("icon-calendar");
-
-      TagBuilder control = new TagBuilder("div");
-      control.Attributes["id"] = fieldId;
-      control.Attributes["class"] = "input-append input-group date form_datetime";
-
-      addOn.InnerHtml = icons.ToString(TagRenderMode.Normal);
-      control.InnerHtml = input.ToString(TagRenderMode.SelfClosing) + addOn.ToString(TagRenderMode.Normal);
-
-      // create JSON dictionary of the picker options
-      string op = pickerOptions.ToJson();
-
-      TagBuilder script = new TagBuilder("script");
-      script.Attributes["type"] = "text/javascript";
-      script.InnerHtml = "$(function(){ $('#" + fieldId + "').datetimepicker(" + op + "); });";
-
-      return MvcHtmlString.Create(control.ToString(TagRenderMode.Normal) + script.ToString(TagRenderMode.Normal));
-    }
-
-
-    /// <summary>
-    ///   Convert the given JS format to it's equivalent CSharp format
-    /// </summary>
-    /// <param name="jsformat">JavaScript date format</param>
-    /// <returns>Equivalent CSharp date format</returns>
-    private static string ConvertToCsDateFormat(string jsformat)
-    {
-      char[] parts = jsformat.ToCharArray();
-      string csFormat = new string(parts);
-
-      int uMnthCount = parts.Count(f => f == 'M');
-      switch (uMnthCount)
-      {
-        case 1:
-          csFormat = csFormat.Replace("M", "MMM");
-          break;
-        case 2:
-          csFormat = csFormat.Replace("MM", "MMMM");
-          break;
-      }
-
-      int lMnthCount = parts.Count(f => f == 'm');
-      switch (lMnthCount)
-      {
-        case 1:
-          csFormat = csFormat.Replace("m", "M");
-          break;
-
-        case 2:
-          csFormat = csFormat.Replace("mm", "MM");
-          break;
-      }
-
-      csFormat = csFormat.Replace('i', 'm');
-
-      // toggle the 'h' and 'H' from the JS date format
-      csFormat = csFormat.Replace('h', '$');
-      csFormat = csFormat.Replace('H', 'h');
-      csFormat = csFormat.Replace('$', 'H');
-
-      // convert meridian notification from 'p' to 't'
-      csFormat = csFormat.Replace('p', 't');
-      csFormat = csFormat.Replace('P', 't');
-
-      return csFormat;
-    }
-
-    #endregion Misc methods
+    #endregion FormGroupControl extensions
   }
 }

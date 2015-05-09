@@ -204,6 +204,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-datetimepicker-4.7.14.css" />
     <Content Include="Content\fluidable.min.css" />
     <Content Include="Content\img\calendar.gif" />
     <Content Include="Content\img\jqueryui\ui-bg_highlight-soft_60_4ca20b_1x100.png" />
@@ -247,6 +248,7 @@
     <Content Include="Content\webextras.jqueryui.min.css">
       <DependentUpon>webextras.jqueryui.less</DependentUpon>
     </Content>
+    <Content Include="Scripts\bootstrap-datetimepicker-4.0.0.js" />
     <Content Include="Scripts\excanvas.min.js" />
     <Content Include="Scripts\JQPlot\jqplot.cursor.min.js" />
     <Content Include="Scripts\JQPlot\jqplot.highlighter.min.js" />
@@ -264,6 +266,8 @@
     <Content Include="Scripts\jquery.ui.datetimepicker-1.4.4.js" />
     <Content Include="Scripts\jquery.ui.menubar.js" />
     <Content Include="Scripts\modernizr-2.6.2.min.js" />
+    <Content Include="Scripts\moment-with-locales.js" />
+    <Content Include="Scripts\moment.js" />
     <Content Include="Views\Shared\DatatablePartial.ascx" />
     <Content Include="Content\bootstrap-2.3.1.css" />
     <Content Include="Content\bootstrap-3.0.0.css" />
@@ -313,7 +317,6 @@
     <Content Include="Content\img\jqueryui\animated-overlay.gif" />
     <Content Include="Content\inline\build.txt" />
     <Content Include="Content\inline\changelog.html" />
-    <Content Include="Content\jquery.bootstrap.datetimepicker.css" />
     <Content Include="Content\jquery.dataTables.css" />
     <Content Include="Content\jpg\wallpaper1.jpg" />
     <Content Include="Content\jquery.jScrollPane-2.0.0beta12.css" />
@@ -427,7 +430,6 @@
     <Content Include="Scripts\bootstrap-3.0.0.min.js" />
     <Content Include="Scripts\jquery.datatables.bootstrap3.js" />
     <Content Include="Scripts\gumby-2.5.6.min.js" />
-    <Content Include="Scripts\jquery.bootstrap.datetimepicker.min.js" />
     <Content Include="Scripts\jquery.bootstrap.hover.dropdown.min.js" />
     <Content Include="Scripts\jquery.flot.min.js" />
     <Content Include="Scripts\jquery.flot.axislabels.js" />

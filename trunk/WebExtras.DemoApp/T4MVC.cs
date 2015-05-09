@@ -146,6 +146,7 @@ namespace Links
         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
         public static readonly string bootstrap_2_3_1_min_js = Url("bootstrap-2.3.1.min.js");
         public static readonly string bootstrap_3_0_0_min_js = Url("bootstrap-3.0.0.min.js");
+        public static readonly string bootstrap_datetimepicker_4_0_0_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/bootstrap-datetimepicker-4.0.0.min.js") ? Url("bootstrap-datetimepicker-4.0.0.min.js") : Url("bootstrap-datetimepicker-4.0.0.js");
         public static readonly string excanvas_min_js = Url("excanvas.min.js");
         public static readonly string gumby_2_5_6_min_js = Url("gumby-2.5.6.min.js");
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -169,7 +170,6 @@ namespace Links
     
         public static readonly string jquery_1_9_1_min_js = Url("jquery-1.9.1.min.js");
         public static readonly string jquery_ui_1_10_3_custom_min_js = Url("jquery-ui-1.10.3.custom.min.js");
-        public static readonly string jquery_bootstrap_datetimepicker_min_js = Url("jquery.bootstrap.datetimepicker.min.js");
         public static readonly string jquery_bootstrap_hover_dropdown_min_js = Url("jquery.bootstrap.hover.dropdown.min.js");
         public static readonly string jquery_datatables_bootstrap_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.datatables.bootstrap.min.js") ? Url("jquery.datatables.bootstrap.min.js") : Url("jquery.datatables.bootstrap.js");
         public static readonly string jquery_datatables_bootstrap3_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.datatables.bootstrap3.min.js") ? Url("jquery.datatables.bootstrap3.min.js") : Url("jquery.datatables.bootstrap3.js");
@@ -187,6 +187,8 @@ namespace Links
         public static readonly string jquery_ui_datetimepicker_1_4_4_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.ui.datetimepicker-1.4.4.min.js") ? Url("jquery.ui.datetimepicker-1.4.4.min.js") : Url("jquery.ui.datetimepicker-1.4.4.js");
         public static readonly string jquery_ui_menubar_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.ui.menubar.min.js") ? Url("jquery.ui.menubar.min.js") : Url("jquery.ui.menubar.js");
         public static readonly string modernizr_2_6_2_min_js = Url("modernizr-2.6.2.min.js");
+        public static readonly string moment_with_locales_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/moment-with-locales.min.js") ? Url("moment-with-locales.min.js") : Url("moment-with-locales.js");
+        public static readonly string moment_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/moment.min.js") ? Url("moment.min.js") : Url("moment.js");
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -197,6 +199,8 @@ namespace Links
         public static readonly string bootstrap_2_3_1_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/bootstrap-2.3.1.min.css") ? Url("bootstrap-2.3.1.min.css") : Url("bootstrap-2.3.1.css");
              
         public static readonly string bootstrap_3_0_0_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/bootstrap-3.0.0.min.css") ? Url("bootstrap-3.0.0.min.css") : Url("bootstrap-3.0.0.css");
+             
+        public static readonly string bootstrap_datetimepicker_4_7_14_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/bootstrap-datetimepicker-4.7.14.min.css") ? Url("bootstrap-datetimepicker-4.7.14.min.css") : Url("bootstrap-datetimepicker-4.7.14.css");
              
         public static readonly string bootstrap_theme_3_0_0_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/bootstrap-theme-3.0.0.min.css") ? Url("bootstrap-theme-3.0.0.min.css") : Url("bootstrap-theme-3.0.0.css");
              
@@ -305,8 +309,6 @@ namespace Links
     
         public static readonly string jquery_ui_darkness_1_10_3_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery-ui-darkness-1.10.3.min.css") ? Url("jquery-ui-darkness-1.10.3.min.css") : Url("jquery-ui-darkness-1.10.3.css");
              
-        public static readonly string jquery_bootstrap_datetimepicker_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.bootstrap.datetimepicker.min.css") ? Url("jquery.bootstrap.datetimepicker.min.css") : Url("jquery.bootstrap.datetimepicker.css");
-             
         public static readonly string jquery_datatables_bootstrap3_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.datatables.bootstrap3.min.css") ? Url("jquery.datatables.bootstrap3.min.css") : Url("jquery.datatables.bootstrap3.css");
              
         public static readonly string jquery_dataTables_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.dataTables.min.css") ? Url("jquery.dataTables.min.css") : Url("jquery.dataTables.css");
@@ -403,11 +405,11 @@ namespace Links
             {
                 public const string bootstrap_2_3_1_min_js = "~/Scripts/bootstrap-2.3.1.min.js"; 
                 public const string bootstrap_3_0_0_min_js = "~/Scripts/bootstrap-3.0.0.min.js"; 
+                public const string bootstrap_datetimepicker_4_0_0_js = "~/Scripts/bootstrap-datetimepicker-4.0.0.js"; 
                 public const string excanvas_min_js = "~/Scripts/excanvas.min.js"; 
                 public const string gumby_2_5_6_min_js = "~/Scripts/gumby-2.5.6.min.js"; 
                 public const string jquery_1_9_1_min_js = "~/Scripts/jquery-1.9.1.min.js"; 
                 public const string jquery_ui_1_10_3_custom_min_js = "~/Scripts/jquery-ui-1.10.3.custom.min.js"; 
-                public const string jquery_bootstrap_datetimepicker_min_js = "~/Scripts/jquery.bootstrap.datetimepicker.min.js"; 
                 public const string jquery_bootstrap_hover_dropdown_min_js = "~/Scripts/jquery.bootstrap.hover.dropdown.min.js"; 
                 public const string jquery_datatables_bootstrap_js = "~/Scripts/jquery.datatables.bootstrap.js"; 
                 public const string jquery_datatables_bootstrap3_js = "~/Scripts/jquery.datatables.bootstrap3.js"; 
@@ -425,6 +427,8 @@ namespace Links
                 public const string jquery_ui_datetimepicker_1_4_4_js = "~/Scripts/jquery.ui.datetimepicker-1.4.4.js"; 
                 public const string jquery_ui_menubar_js = "~/Scripts/jquery.ui.menubar.js"; 
                 public const string modernizr_2_6_2_min_js = "~/Scripts/modernizr-2.6.2.min.js"; 
+                public const string moment_with_locales_js = "~/Scripts/moment-with-locales.js"; 
+                public const string moment_js = "~/Scripts/moment.js"; 
             }
         }
         public static partial class Content 
@@ -481,12 +485,12 @@ namespace Links
             {
                 public const string bootstrap_2_3_1_css = "~/Content/bootstrap-2.3.1.css";
                 public const string bootstrap_3_0_0_css = "~/Content/bootstrap-3.0.0.css";
+                public const string bootstrap_datetimepicker_4_7_14_css = "~/Content/bootstrap-datetimepicker-4.7.14.css";
                 public const string bootstrap_theme_3_0_0_css = "~/Content/bootstrap-theme-3.0.0.css";
                 public const string fluidable_min_css = "~/Content/fluidable.min.css";
                 public const string font_awesome_css = "~/Content/font-awesome.css";
                 public const string gumby_2_5_6_css = "~/Content/gumby-2.5.6.css";
                 public const string jquery_ui_darkness_1_10_3_css = "~/Content/jquery-ui-darkness-1.10.3.css";
-                public const string jquery_bootstrap_datetimepicker_css = "~/Content/jquery.bootstrap.datetimepicker.css";
                 public const string jquery_datatables_bootstrap3_css = "~/Content/jquery.datatables.bootstrap3.css";
                 public const string jquery_dataTables_css = "~/Content/jquery.dataTables.css";
                 public const string jquery_dataTables_jui_css = "~/Content/jquery.dataTables.jui.css";

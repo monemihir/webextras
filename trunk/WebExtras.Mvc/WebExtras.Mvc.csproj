@@ -104,9 +104,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bootstrap\BootstrapConstants.cs" />
     <Compile Include="Bootstrap\BootstrapIconlink.cs" />
     <Compile Include="Bootstrap\BootstrapUtil.cs" />
     <Compile Include="Bootstrap\BootstrapStringValueDeciders.cs" />
+    <Compile Include="Bootstrap\DateTimePicker\IconOptions.cs" />
+    <Compile Include="Bootstrap\DateTimePicker\PickerOptions.cs" />
+    <Compile Include="Bootstrap\DateTimePicker\PositionOptions.cs" />
     <Compile Include="Core\ActionMessageControllerExtension.cs" />
     <Compile Include="Bootstrap\BootstrapNavbarExtension.cs" />
     <Compile Include="Bootstrap\BootstrapNavBar.cs" />

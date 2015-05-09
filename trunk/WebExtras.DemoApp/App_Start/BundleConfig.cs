@@ -63,7 +63,7 @@ namespace WebExtras.DemoApp.App_Start
       Bundle.Css()
         .Add(Links.Content.bootstrap_2_3_1_css)
         .Add(Links.Content.font_awesome_css)
-        .Add(Links.Content.jquery_bootstrap_datetimepicker_css)
+        .Add(Links.Content.bootstrap_datetimepicker_4_7_14_css)
         .Add(Links.Content.jquery_dataTables_css)
         .Add(Links.Content.jquery_jScrollPane_2_0_0beta12_css)
         .Add(Links.Content.jquery_jqplot_min_css)
@@ -77,7 +77,7 @@ namespace WebExtras.DemoApp.App_Start
         .Add(Links.Content.bootstrap_3_0_0_css)
         //.Add(Links.Content.bootstrap_theme_3_0_0_css)
         .Add(Links.Content.font_awesome_css)
-        .Add(Links.Content.jquery_bootstrap_datetimepicker_css)
+        .Add(Links.Content.bootstrap_datetimepicker_4_7_14_css)
         .Add(Links.Content.jquery_dataTables_css)
         .Add(Links.Content.jquery_datatables_bootstrap3_css)
         .Add(Links.Content.jquery_jScrollPane_2_0_0beta12_css)
@@ -119,6 +119,7 @@ namespace WebExtras.DemoApp.App_Start
         .Add(Links.Scripts.jquery_jScrollPane_2_0_0beta12_js)
         .Add(Links.Scripts.jquery_mousewheel_3_0_6_js)
         .Add(Links.Scripts.jquery_mwheelIntent_1_2_js)
+        .Add(Links.Scripts.moment_js)
         .AsCached(ContentBundle.JSBase.GetStringValue(), ResolveJsPath(ContentBundle.JSBase));
 
       // jQuery Flot bundle
@@ -151,14 +152,14 @@ namespace WebExtras.DemoApp.App_Start
       Bundle.JavaScript()
         .Add(Links.Scripts.bootstrap_2_3_1_min_js)
         .Add(Links.Scripts.jquery_datatables_bootstrap_js)
-        .Add(Links.Scripts.jquery_bootstrap_datetimepicker_min_js)
+        .Add(Links.Scripts.bootstrap_datetimepicker_4_0_0_js)
         .AsCached(ContentBundle.JSBootstrap.GetStringValue(), ResolveJsPath(ContentBundle.JSBootstrap));
 
       // Bootstrap3 javascript bundle
       Bundle.JavaScript()
         .Add(Links.Scripts.bootstrap_3_0_0_min_js)
         .Add(Links.Scripts.jquery_datatables_bootstrap3_js)
-        .Add(Links.Scripts.jquery_bootstrap_datetimepicker_min_js)
+        .Add(Links.Scripts.bootstrap_datetimepicker_4_0_0_js)
         .AsCached(ContentBundle.JSBootstrap3.GetStringValue(), ResolveJsPath(ContentBundle.JSBootstrap3));
 
       // Gumby javascript bundle

@@ -62,5 +62,10 @@ namespace WebExtras.Mvc.Core
     ///   The default tag to use when encapsulating text in an HTML tag
     /// </summary>
     public static EHtmlTag DefaultTagForTextEncapsulation = EHtmlTag.Div;
+
+    /// <summary>
+    /// Default datetime picker options for bootstrap
+    /// </summary>
+    public static Bootstrap.DateTimePicker.PickerOptions BootstrapDateTimePickerOptions = new Bootstrap.DateTimePicker.PickerOptions();
   }
 }
