@@ -146,7 +146,8 @@ namespace Links
         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
         public static readonly string bootstrap_2_3_1_min_js = Url("bootstrap-2.3.1.min.js");
         public static readonly string bootstrap_3_0_0_min_js = Url("bootstrap-3.0.0.min.js");
-        public static readonly string bootstrap_datetimepicker_4_0_0_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/bootstrap-datetimepicker-4.0.0.min.js") ? Url("bootstrap-datetimepicker-4.0.0.min.js") : Url("bootstrap-datetimepicker-4.0.0.js");
+        public static readonly string bootstrap2_datetimepicker_20130514_min_js = Url("bootstrap2-datetimepicker-20130514.min.js");
+        public static readonly string bootstrap3_datetimepicker_4_0_0_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/bootstrap3-datetimepicker-4.0.0.min.js") ? Url("bootstrap3-datetimepicker-4.0.0.min.js") : Url("bootstrap3-datetimepicker-4.0.0.js");
         public static readonly string excanvas_min_js = Url("excanvas.min.js");
         public static readonly string gumby_2_5_6_min_js = Url("gumby-2.5.6.min.js");
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -200,9 +201,11 @@ namespace Links
              
         public static readonly string bootstrap_3_0_0_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/bootstrap-3.0.0.min.css") ? Url("bootstrap-3.0.0.min.css") : Url("bootstrap-3.0.0.css");
              
-        public static readonly string bootstrap_datetimepicker_4_7_14_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/bootstrap-datetimepicker-4.7.14.min.css") ? Url("bootstrap-datetimepicker-4.7.14.min.css") : Url("bootstrap-datetimepicker-4.7.14.css");
-             
         public static readonly string bootstrap_theme_3_0_0_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/bootstrap-theme-3.0.0.min.css") ? Url("bootstrap-theme-3.0.0.min.css") : Url("bootstrap-theme-3.0.0.css");
+             
+        public static readonly string bootstrap2_datetimepicker_20130514_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/bootstrap2-datetimepicker-20130514.min.css") ? Url("bootstrap2-datetimepicker-20130514.min.css") : Url("bootstrap2-datetimepicker-20130514.css");
+             
+        public static readonly string bootstrap3_datetimepicker_4_7_14_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/bootstrap3-datetimepicker-4.7.14.min.css") ? Url("bootstrap3-datetimepicker-4.7.14.min.css") : Url("bootstrap3-datetimepicker-4.7.14.css");
              
         public static readonly string favicon_ico = Url("favicon.ico");
         public static readonly string favicon_png = Url("favicon.png");
@@ -405,7 +408,8 @@ namespace Links
             {
                 public const string bootstrap_2_3_1_min_js = "~/Scripts/bootstrap-2.3.1.min.js"; 
                 public const string bootstrap_3_0_0_min_js = "~/Scripts/bootstrap-3.0.0.min.js"; 
-                public const string bootstrap_datetimepicker_4_0_0_js = "~/Scripts/bootstrap-datetimepicker-4.0.0.js"; 
+                public const string bootstrap2_datetimepicker_20130514_min_js = "~/Scripts/bootstrap2-datetimepicker-20130514.min.js"; 
+                public const string bootstrap3_datetimepicker_4_0_0_js = "~/Scripts/bootstrap3-datetimepicker-4.0.0.js"; 
                 public const string excanvas_min_js = "~/Scripts/excanvas.min.js"; 
                 public const string gumby_2_5_6_min_js = "~/Scripts/gumby-2.5.6.min.js"; 
                 public const string jquery_1_9_1_min_js = "~/Scripts/jquery-1.9.1.min.js"; 
@@ -485,8 +489,9 @@ namespace Links
             {
                 public const string bootstrap_2_3_1_css = "~/Content/bootstrap-2.3.1.css";
                 public const string bootstrap_3_0_0_css = "~/Content/bootstrap-3.0.0.css";
-                public const string bootstrap_datetimepicker_4_7_14_css = "~/Content/bootstrap-datetimepicker-4.7.14.css";
                 public const string bootstrap_theme_3_0_0_css = "~/Content/bootstrap-theme-3.0.0.css";
+                public const string bootstrap2_datetimepicker_20130514_css = "~/Content/bootstrap2-datetimepicker-20130514.css";
+                public const string bootstrap3_datetimepicker_4_7_14_css = "~/Content/bootstrap3-datetimepicker-4.7.14.css";
                 public const string fluidable_min_css = "~/Content/fluidable.min.css";
                 public const string font_awesome_css = "~/Content/font-awesome.css";
                 public const string gumby_2_5_6_css = "~/Content/gumby-2.5.6.css";

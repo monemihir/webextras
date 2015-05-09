@@ -23,7 +23,7 @@ namespace WebExtras.Mvc.JQueryUI
   /// <summary>
   /// jQuery UI hyperlink/button decorators
   /// </summary>
-  public static class JUIHtmlStringExtension
+  public static class HtmlStringExtension
   {
     #region AddIcon extension
 

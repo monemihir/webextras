@@ -23,7 +23,7 @@ using WebExtras.Core;
 
 #pragma warning disable 1584,1658
 
-namespace WebExtras.Mvc.Bootstrap.DateTimePicker
+namespace WebExtras.Mvc.Bootstrap.v3
 {
   /// <summary>
   ///   Date time picker options
@@ -57,14 +57,12 @@ namespace WebExtras.Mvc.Bootstrap.DateTimePicker
     /// <summary>
     ///   Prevents date/time selections before this date
     /// </summary>
-    [JsonConverter(typeof(DateTimeJsonConverter))]
-    public DateTime? minDate;
+    [JsonConverter(typeof (DateTimeJsonConverter))] public DateTime? minDate;
 
     /// <summary>
     ///   Prevents date/time selections after this date
     /// </summary>
-    [JsonConverter(typeof(DateTimeJsonConverter))]
-    public DateTime? maxDate;
+    [JsonConverter(typeof (DateTimeJsonConverter))] public DateTime? maxDate;
 
     /// <summary>
     ///   On show, will set the picker to the current date/time
@@ -85,8 +83,7 @@ namespace WebExtras.Mvc.Bootstrap.DateTimePicker
     /// <summary>
     ///   Sets the picker default date/time. Overrides useCurrent
     /// </summary>
-    [JsonConverter(typeof(DateTimeJsonConverter))]
-    public DateTime? defaultDate;
+    [JsonConverter(typeof (DateTimeJsonConverter))] public DateTime? defaultDate;
 
     /// <summary>
     ///   Disables selection of dates in the array, e.g. holidays
@@ -213,9 +210,9 @@ namespace WebExtras.Mvc.Bootstrap.DateTimePicker
     ///   This will change the viewDate without changing or setting the selected date.
     /// </summary>
     public bool? viewDate;
-    
+
     /// <summary>
-    /// Constructor
+    ///   Constructor
     /// </summary>
     public PickerOptions()
     {

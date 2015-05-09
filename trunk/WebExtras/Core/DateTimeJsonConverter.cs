@@ -14,7 +14,6 @@
 // 
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
-//
 
 using System;
 using Newtonsoft.Json;
@@ -22,45 +21,45 @@ using Newtonsoft.Json;
 namespace WebExtras.Core
 {
   /// <summary>
-  /// Date time json converter
+  ///   Date time json converter
   /// </summary>
   public class DateTimeJsonConverter : JsonConverter
   {
     /// <summary>
-    /// Flag indicating whether the type we are dealing with is nullable
+    ///   Flag indicating whether the type we are dealing with is nullable
     /// </summary>
     private bool m_isNullable;
 
     /// <summary>
-    /// Writes the JSON representation of the object.
+    ///   Writes the JSON representation of the object.
     /// </summary>
-    /// <param name="writer">The <see cref="T:Newtonsoft.Json.JsonWriter"/> to write to.</param>
+    /// <param name="writer">The <see cref="T:Newtonsoft.Json.JsonWriter" /> to write to.</param>
     /// <param name="value">The value.</param>
     /// <param name="serializer">The calling serializer.</param>
     public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
     {
-      var parsed = m_isNullable ? (DateTime?)value : (DateTime)value;
+      var parsed = m_isNullable ? (DateTime?) value : (DateTime) value;
 
       DateTime val = parsed.GetValueOrDefault(DateTime.MinValue);
 
       if (val == DateTime.MinValue)
         return;
 
-      string writeValue = string.Format("new Date('{0}')",
+      string writeValue = string.Format("{0}",
         val.Kind == DateTimeKind.Utc ? val.ToString("yyyy-MM-ddTHH:mm:ss") : val.ToString("yyyy-MM-dd HH:mm:ss"));
 
-      writer.WriteRawValue(writeValue);
+      writer.WriteValue(writeValue);
     }
 
     /// <summary>
-    /// Reads the JSON representation of the object.
+    ///   Reads the JSON representation of the object.
     /// </summary>
-    /// <param name="reader">The <see cref="T:Newtonsoft.Json.JsonReader"/> to read from.</param>
+    /// <param name="reader">The <see cref="T:Newtonsoft.Json.JsonReader" /> to read from.</param>
     /// <param name="objectType">Type of the object.</param>
     /// <param name="existingValue">The existing value of object being read.</param>
     /// <param name="serializer">The calling serializer.</param>
     /// <returns>
-    /// The object value.
+    ///   The object value.
     /// </returns>
     public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
     {
@@ -68,16 +67,16 @@ namespace WebExtras.Core
     }
 
     /// <summary>
-    /// Determines whether this instance can convert the specified object type.
+    ///   Determines whether this instance can convert the specified object type.
     /// </summary>
     /// <param name="objectType">Type of the object.</param>
     /// <returns>
-    /// <c>true</c> if this instance can convert the specified object type; otherwise, <c>false</c>.
+    ///   <c>true</c> if this instance can convert the specified object type; otherwise, <c>false</c>.
     /// </returns>
     public override bool CanConvert(Type objectType)
     {
-      m_isNullable = typeof(DateTime?) == objectType;
-      return typeof(DateTime) == objectType || m_isNullable;
+      m_isNullable = typeof (DateTime?) == objectType;
+      return typeof (DateTime) == objectType || m_isNullable;
     }
   }
 }

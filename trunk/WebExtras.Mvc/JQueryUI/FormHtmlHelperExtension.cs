@@ -30,7 +30,7 @@ namespace WebExtras.Mvc.JQueryUI
   /// <summary>
   /// JQuery UI form helper extensions
   /// </summary>
-  public static class JUIFormHelperExtension
+  public static class FormHtmlHelperExtension
   {
     /// <summary>
     /// Default date picker options

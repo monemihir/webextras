@@ -29,7 +29,7 @@ namespace WebExtras.Mvc.Gumby
   /// <summary>
   /// Gumby HTML extensions
   /// </summary>
-  public static class GumbyHtmlHelperExtension
+  public static class HtmlHelperExtension
   {
     #region Icon extensions
 

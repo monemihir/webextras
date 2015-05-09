@@ -204,11 +204,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap-datetimepicker-4.7.14.css" />
+    <Content Include="Content\bootstrap3-datetimepicker-4.7.14.css" />
     <Content Include="Content\fluidable.min.css" />
     <Content Include="Content\img\calendar.gif" />
     <Content Include="Content\img\jqueryui\ui-bg_highlight-soft_60_4ca20b_1x100.png" />
     <Content Include="Content\jquery-ui-darkness-1.10.3.css" />
+    <Content Include="Content\bootstrap2-datetimepicker-20130514.css" />
     <Content Include="Content\jquery.jqplot.min.css" />
     <Content Include="Content\jquery.ui.datetimepicker.css" />
     <Content Include="Content\jquery.ui.menubar.css" />
@@ -248,7 +249,7 @@
     <Content Include="Content\webextras.jqueryui.min.css">
       <DependentUpon>webextras.jqueryui.less</DependentUpon>
     </Content>
-    <Content Include="Scripts\bootstrap-datetimepicker-4.0.0.js" />
+    <Content Include="Scripts\bootstrap3-datetimepicker-4.0.0.js" />
     <Content Include="Scripts\excanvas.min.js" />
     <Content Include="Scripts\JQPlot\jqplot.cursor.min.js" />
     <Content Include="Scripts\JQPlot\jqplot.highlighter.min.js" />
@@ -263,6 +264,7 @@
     <Content Include="Scripts\JQPlot\jqplot.ohlcRenderer.min.js" />
     <Content Include="Scripts\JQPlot\jqplot.pointLabels.min.js" />
     <Content Include="Scripts\jquery-ui-1.10.3.custom.min.js" />
+    <Content Include="Scripts\bootstrap2-datetimepicker-20130514.min.js" />
     <Content Include="Scripts\jquery.ui.datetimepicker-1.4.4.js" />
     <Content Include="Scripts\jquery.ui.menubar.js" />
     <Content Include="Scripts\modernizr-2.6.2.min.js" />

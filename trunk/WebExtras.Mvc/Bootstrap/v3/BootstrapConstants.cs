@@ -14,28 +14,17 @@
 // 
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
-//
 
-// ReSharper disable InconsistentNaming
-
-using System;
-
-namespace WebExtras.Mvc.Bootstrap.DateTimePicker
+namespace WebExtras.Mvc.Bootstrap.v3
 {
   /// <summary>
-  /// Widget positioning options
+  ///   Bootstrap 3 constants
   /// </summary>
-  [Serializable]
-  public class PositionOptions
+  public static class BootstrapConstants
   {
     /// <summary>
-    /// Allows 'auto', 'left', 'right'
+    ///   Default datetime picker options for bootstrap
     /// </summary>
-    public string horizontal;
-
-    /// <summary>
-    /// 'auto', 'top', 'bottom'
-    /// </summary>
-    public string vertical;
+    public static PickerOptions DateTimePickerOptions = new PickerOptions();
   }
 }

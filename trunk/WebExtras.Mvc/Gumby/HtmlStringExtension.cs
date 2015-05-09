@@ -27,7 +27,7 @@ namespace WebExtras.Mvc.Gumby
   /// <summary>
   /// Gumby hyperlink/button decorator
   /// </summary>
-  public static class GumbyHtmlStringExtension
+  public static class HtmlStringExtension
   {
     /// <summary>
     /// Add an icon

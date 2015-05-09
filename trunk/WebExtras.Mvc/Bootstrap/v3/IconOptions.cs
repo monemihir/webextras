@@ -14,54 +14,55 @@
 // 
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
-//
 
 using System;
-using WebExtras.Mvc.Html;
 
-namespace WebExtras.Mvc.Core
+namespace WebExtras.Mvc.Bootstrap.v3
 {
   /// <summary>
-  ///   A list of WebExtras constants
+  ///   Icon options
   /// </summary>
   [Serializable]
-  public sealed class WebExtrasMvcConstants
+  public class IconOptions
   {
     /// <summary>
-    ///   Flag indicating whether to enable the generation of
-    ///   automatic IDs for all HTML elements rendered by
-    ///   the WebExtras.Mvc library
+    ///   Time icon
     /// </summary>
-    public static bool EnableAutoIdGeneration { get; set; }
+    public string time;
 
     /// <summary>
-    ///   The version of Bootstrap whose extensions you want to use
+    ///   Date icon
     /// </summary>
-    public static EBootstrapVersion BootstrapVersion = EBootstrapVersion.None;
+    public string date;
 
     /// <summary>
-    ///   Gumby theme to use
+    ///   Up icon
     /// </summary>
-    public static EGumbyTheme GumbyTheme = EGumbyTheme.None;
+    public string up;
 
     /// <summary>
-    ///   The version of the FontAwesome icon library you want to use
+    ///   Down icon
     /// </summary>
-    public static EFontAwesomeVersion FontAwesomeVersion = EFontAwesomeVersion.None;
+    public string down;
 
     /// <summary>
-    ///   The CSS framework you want to use
+    ///   Previous icon
     /// </summary>
-    public static ECssFramework CssFramework = ECssFramework.None;
+    public string previous;
 
     /// <summary>
-    ///   Represents an HTML SPACE as unicode
+    ///   Next icon
     /// </summary>
-    public static string HTMLSpace = "&nbsp;";
+    public string next;
 
     /// <summary>
-    ///   The default tag to use when encapsulating text in an HTML tag
+    ///   Today icon
     /// </summary>
-    public static EHtmlTag DefaultTagForTextEncapsulation = EHtmlTag.Div;
+    public string today;
+
+    /// <summary>
+    ///   Clear icon
+    /// </summary>
+    public string clear;
   }
 }

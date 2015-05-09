@@ -31,7 +31,7 @@ namespace WebExtras.Mvc.JQueryUI
   /// <summary>
   /// JQuery UI Html helper extension methods
   /// </summary>
-  public static class JUIHtmlHelperExtension
+  public static class HtmlHelperExtension
   {
     #region Icon extensions
 

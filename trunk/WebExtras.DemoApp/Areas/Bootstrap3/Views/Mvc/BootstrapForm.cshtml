@@ -1,7 +1,5 @@
 ﻿@model WebExtras.DemoApp.Models.Mvc.CoreFormViewModel
 
-@using WebExtras.Mvc.Bootstrap.DateTimePicker
-
 @{
   ViewBag.Title = "Mvc Bootstrap 3 Form Helper Extensions";
 }
@@ -83,15 +81,14 @@
   <h4>Date time pickers</h4>
   <p>
     WebExtras provides helper methods for rendering a date time picker attached to a textbox by using a great little date time picker
-    provided by Sébastien Malot. You can get a copy of the date time picker from @Html.Hyperlink("here.", "http://www.malot.fr/bootstrap-datetimepicker")
+    provided by Jonathan Peterson. You can get a copy of the date time picker from @Html.Hyperlink("here.", "https://github.com/Eonasdan/bootstrap-datetimepicker")
   </p>
   <p>Markup</p>
   <pre><code>
-@@Html.DateTextBoxFor(f => f.DateTextBox)
-@@Html.TimeTextBoxFor(f => f.TimeTextBox, new { format = "hh:ii" })                     
-@@Html.DateTimeTextBoxFor(f => f.DateTimeTextBox, new { format = "dd M yyyy hh:ii" })   
+@@Html.DateTimeTextBoxFor(f => f.DateTextBox, new PickerOptions { format = "YYYY-MM-DD" })
+@@Html.DateTimeTextBoxFor(f => f.TimeTextBox, new PickerOptions { format = "HH:mm:ss" })
+@@Html.DateTimeTextBoxFor(f => f.DateTimeTextBox)
   </code></pre>
-  @Html.Alert(EMessage.Warning, "Note that this date time picker uses 'i' for minutes", string.Empty, EFontAwesomeIcon.Flag)
   <p>Output</p>
   <div class="content">
     <div class="row keep-center">

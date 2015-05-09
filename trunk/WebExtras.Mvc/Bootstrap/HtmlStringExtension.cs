@@ -28,7 +28,7 @@ namespace WebExtras.Mvc.Bootstrap
   /// <summary>
   ///   Bootstrap hyperlink/button decorators
   /// </summary>
-  public static class BSHtmlStringExtension
+  public static class HtmlStringExtension
   {
     #region Icon extensions
 

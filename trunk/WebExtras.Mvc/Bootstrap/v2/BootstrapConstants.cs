@@ -14,58 +14,17 @@
 // 
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
-//
 
-// ReSharper disable InconsistentNaming
-
-using System;
-
-namespace WebExtras.Mvc.Bootstrap.DateTimePicker
+namespace WebExtras.Mvc.Bootstrap.v2
 {
   /// <summary>
-  /// Icon options
+  ///   Bootstrap 3 constants
   /// </summary>
-  [Serializable]
-  public class IconOptions
+  public static class BootstrapConstants
   {
     /// <summary>
-    /// Time icon
+    ///   Default datetime picker options for bootstrap
     /// </summary>
-    public string time;
-
-    /// <summary>
-    /// Date icon
-    /// </summary>
-    public string date;
-
-    /// <summary>
-    /// Up icon
-    /// </summary>
-    public string up;
-
-    /// <summary>
-    /// Down icon
-    /// </summary>
-    public string down;
-
-    /// <summary>
-    /// Previous icon
-    /// </summary>
-    public string previous;
-
-    /// <summary>
-    /// Next icon
-    /// </summary>
-    public string next;
-
-    /// <summary>
-    /// Today icon
-    /// </summary>
-    public string today;
-
-    /// <summary>
-    /// Clear icon
-    /// </summary>
-    public string clear;
+    public static PickerOptions DateTimePickerOptions = new PickerOptions();
   }
 }
