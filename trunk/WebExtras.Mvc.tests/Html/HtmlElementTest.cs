@@ -41,7 +41,7 @@ namespace WebExtras.Mvc.tests.Html
       HtmlElement element = new HtmlElement(EHtmlTag.A);
 
       // assert
-      Assert.AreEqual(12, HtmlElement.SupportedTags.Count);
+      Assert.AreEqual(16, HtmlElement.SupportedTags.Count);
       Assert.IsTrue(string.IsNullOrEmpty(element.InnerHtml));
       Assert.AreEqual(EHtmlTag.A, element.Tag);
       Assert.AreEqual(0, element.PrependTags.Count);
@@ -167,7 +167,7 @@ namespace WebExtras.Mvc.tests.Html
     {
       // arrange
       string html = "<nav title='/test.html'>Test navigation</nav>";
-      NotSupportedException expected = new NotSupportedException("NAV tag is not supported. Only the following HTML tags are supported: A, I, B, IMG, BUTTON, INPUT, UL, OL, LI, DIV, SPAN, LABEL.");
+      NotSupportedException expected = new NotSupportedException("NAV tag is not supported. Only the following HTML tags are supported: A, I, B, IMG, BUTTON, INPUT, TEXTAREA, UL, OL, LI, DIV, SPAN, LABEL, SELECT, OPTION, SCRIPT.");
       NotSupportedException actual = null;
 
       // act

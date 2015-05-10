@@ -23,6 +23,7 @@ namespace WebExtras.Core
   /// <summary>
   ///   Date time json converter
   /// </summary>
+  [Serializable]
   public class DateTimeJsonConverter : JsonConverter
   {
     /// <summary>
