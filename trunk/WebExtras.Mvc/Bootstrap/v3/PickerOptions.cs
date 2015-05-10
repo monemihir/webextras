@@ -218,6 +218,45 @@ namespace WebExtras.Mvc.Bootstrap.v3
     {
       format = "YYYY-MM-DD HH:mm:ss";
     }
+
+    /// <summary>
+    /// Tries to use font awesome icons by inspecting <see cref="M:WebExtrasMvcConstants.FontAwesomeVersion"/>
+    /// </summary>
+    /// <returns>Updated picker options</returns>
+    public PickerOptions TryFontAwesomeIcons()
+    {
+      switch (WebExtrasMvcConstants.FontAwesomeVersion)
+      {
+        case EFontAwesomeVersion.V4:
+          icons = new IconOptions {
+            time = "fa fa-clock-o",
+            date = "fa fa-calendar",
+            up = "fa fa-arrow-up",
+            down = "fa fa-arrow-down",
+            previous = "fa fa-arrow-left",
+            next = "fa fa-arrow-right",
+            clear = "fa fa-trash",
+            today = "fa fa-crosshairs"
+          };
+          break;
+
+        case EFontAwesomeVersion.V3:
+          icons = new IconOptions
+          {
+            time = "icon-time",
+            date = "icon-calendar",
+            up = "icon-arrow-up",
+            down = "icon-arrow-down",
+            previous = "icon-arrow-left",
+            next = "icon-arrow-right",
+            clear = "icon-trash",
+            today = "icon-screenshot"
+          };
+          break;
+      }
+
+      return this;
+    }
   }
 }
 

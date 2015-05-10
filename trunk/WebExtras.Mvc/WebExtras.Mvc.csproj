@@ -104,6 +104,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bootstrap\AbstractFormControl.cs" />
     <Compile Include="Bootstrap\v2\BootstrapConstants.cs" />
     <Compile Include="Bootstrap\v2\EPickerView.cs" />
     <Compile Include="Bootstrap\v2\FormHelperExtension.cs" />
@@ -112,7 +113,7 @@
     <Compile Include="Bootstrap\BootstrapIconlink.cs" />
     <Compile Include="Bootstrap\BootstrapUtil.cs" />
     <Compile Include="Bootstrap\BootstrapStringValueDeciders.cs" />
-    <Compile Include="Bootstrap\v3\FormHelperExtension.cs" />
+    <Compile Include="Bootstrap\v3\FormHtmlHelperExtension.cs" />
     <Compile Include="Bootstrap\v3\IconOptions.cs" />
     <Compile Include="Bootstrap\v3\PickerOptions.cs" />
     <Compile Include="Bootstrap\v3\PositionOptions.cs" />
@@ -154,7 +155,7 @@
     <Compile Include="Html\CssClassesCollection.cs" />
     <Compile Include="Html\Div.cs" />
     <Compile Include="Html\Empty.cs" />
-    <Compile Include="Bootstrap\BootstrapFormControl.cs" />
+    <Compile Include="Bootstrap\FormControl.cs" />
     <Compile Include="Html\ExtendedHtmlStringExtension.cs" />
     <Compile Include="Bootstrap\FormHtmlHelperExtension.cs" />
     <Compile Include="Bootstrap\HtmlHelperExtension.cs" />
