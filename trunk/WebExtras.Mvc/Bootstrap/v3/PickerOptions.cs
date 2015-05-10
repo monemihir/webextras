@@ -1,23 +1,24 @@
 ﻿// 
-// This file is part of - WebExtras
+// This file is part of - ExpenseLogger application
 // Copyright (C) 2015 Mihir Mone
 // 
 // This program is free software: you can redistribute it and/or modify
-// it under the terms of the GNU Lesser General Public License as published by
+// it under the terms of the GNU Affero General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 // 
 // This program is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU Lesser General Public License for more details.
+// GNU Affero General Public License for more details.
 // 
-// You should have received a copy of the GNU Lesser General Public License
+// You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 using System;
 using Newtonsoft.Json;
 using WebExtras.Core;
+using WebExtras.Mvc.Core;
 
 // ReSharper disable InconsistentNaming
 
@@ -32,42 +33,14 @@ namespace WebExtras.Mvc.Bootstrap.v3
   public class PickerOptions
   {
     /// <summary>
-    ///   Date time text format. See momentjs' docs (<see cref="http://momentjs.com/docs/#/displaying/format/" />) for valid
-    ///   formats. Format also
-    ///   dictates what components are show, e.g. MM/dd/YYYY will not diplay the time picker.
+    ///   If true, the picker will show on textbox focus and icon click when used in a button group
     /// </summary>
-    public string format;
+    public bool? allowInputToggle;
 
     /// <summary>
-    ///   Changes the heading of the datepicker when in "days" view.
+    ///   Shows the week of the year to the left of first day of the week.
     /// </summary>
-    public string dayViewHeaderFormat;
-
-    /// <summary>
-    ///   Allows for several input formats to be valid. See this
-    ///   <see cref="http://github.com/Eonasdan/bootstrap-datetimepicker/pull/666" />.
-    /// </summary>
-    public string extraFormats;
-
-    /// <summary>
-    ///   Number of minutes the up/down arrow's will move the minutes value in the time picker
-    /// </summary>
-    public int? stepping;
-
-    /// <summary>
-    ///   Prevents date/time selections before this date
-    /// </summary>
-    [JsonConverter(typeof (DateTimeJsonConverter))] public DateTime? minDate;
-
-    /// <summary>
-    ///   Prevents date/time selections after this date
-    /// </summary>
-    [JsonConverter(typeof (DateTimeJsonConverter))] public DateTime? maxDate;
-
-    /// <summary>
-    ///   On show, will set the picker to the current date/time
-    /// </summary>
-    public bool? useCurrent;
+    public bool? calendarWeeks;
 
     /// <summary>
     ///   Using a Bootstraps collapse to switch between date/time pickers.
@@ -75,10 +48,21 @@ namespace WebExtras.Mvc.Bootstrap.v3
     public bool? collapse;
 
     /// <summary>
-    ///   See momentjs (<see cref="http://github.com/moment/moment/tree/develop/locale" />) for valid locales.
-    ///   You must include moment-with-locales.js or a local js file.
+    ///   Disables the section of days of the week, e.g. weekends.
     /// </summary>
-    public string locale;
+    public int[] daysOfWeekDisabled;
+
+    /// <summary>
+    ///   Changes the heading of the datepicker when in "days" view.
+    /// </summary>
+    public string dayViewHeaderFormat;
+
+    // "keyBinds" option has not been migrated
+
+    /// <summary>
+    ///   Will cause the date picker to stay open after a blur event.
+    /// </summary>
+    public bool? debug;
 
     /// <summary>
     ///   Sets the picker default date/time. Overrides useCurrent
@@ -91,9 +75,42 @@ namespace WebExtras.Mvc.Bootstrap.v3
     public DateTime[] disabledDates;
 
     /// <summary>
+    ///   Will allow or disallow hour selections (much like <see cref="M:disabledTimeIntervals" />) but will affect all days
+    /// </summary>
+    public bool? disabledHours;
+
+    /// <summary>
+    ///   Disables time selection between the given moments
+    /// </summary>
+    public bool? disabledTimeIntervals;
+
+    /// <summary>
     ///   Disables selection of dates NOT in the array, e.g. holidays
     /// </summary>
     public DateTime[] enabledDates;
+
+    /// <summary>
+    ///   Will allow or disallow hour selections (much like <see cref="M:disabledTimeIntervals" />) but will affect all days
+    /// </summary>
+    public bool? enabledHours;
+
+    /// <summary>
+    ///   Allows for several input formats to be valid. See this
+    ///   <see cref="http://github.com/Eonasdan/bootstrap-datetimepicker/pull/666" />.
+    /// </summary>
+    public string extraFormats;
+
+    /// <summary>
+    ///   If false, the textbox will not be given focus when the picker is shown
+    /// </summary>
+    public bool? focusOnShow;
+
+    /// <summary>
+    ///   Date time text format. See momentjs' docs (<see cref="http://momentjs.com/docs/#/displaying/format/" />) for valid
+    ///   formats. Format also
+    ///   dictates what components are show, e.g. MM/dd/YYYY will not diplay the time picker.
+    /// </summary>
+    public string format;
 
     /// <summary>
     ///   Change the default icons for the pickers functions.
@@ -101,41 +118,35 @@ namespace WebExtras.Mvc.Bootstrap.v3
     public IconOptions icons;
 
     /// <summary>
-    ///   Defines if moment should use strict date parsing when considering a date to be valid
+    ///   Will display the picker inline without the need of a input field. This will also hide borders and shadows.
     /// </summary>
-    public bool? useStrict;
+    public bool? inline;
 
     /// <summary>
-    ///   Shows the picker side by side when using the time and date together.
+    ///   Will cause the date picker to not revert or overwrite invalid dates.
     /// </summary>
-    public bool? sideBySide;
+    public bool? keepInvalid;
 
     /// <summary>
-    ///   Disables the section of days of the week, e.g. weekends.
+    ///   Will cause the date picker to stay open after selecting a date if no time components are being used.
     /// </summary>
-    public int[] daysOfWeekDisabled;
+    public bool? keepOpen;
 
     /// <summary>
-    ///   Shows the week of the year to the left of first day of the week.
+    ///   See momentjs (<see cref="http://github.com/moment/moment/tree/develop/locale" />) for valid locales.
+    ///   You must include moment-with-locales.js or a local js file.
     /// </summary>
-    public bool? calendarWeeks;
+    public string locale;
 
     /// <summary>
-    ///   The default view to display when the picker is shown.
-    ///   Note: To limit the picker to selecting, for instance the year and month, use format: MM/YYYY
+    ///   Prevents date/time selections after this date
     /// </summary>
-    public string viewMode;
+    [JsonConverter(typeof (DateTimeJsonConverter))] public DateTime? maxDate;
 
     /// <summary>
-    ///   Changes the placement of the icon toolbar. Accepts: 'default', 'top', 'bottom'
+    ///   Prevents date/time selections before this date
     /// </summary>
-    public string toolbarPlacement;
-
-    /// <summary>
-    ///   Show the "Today" button in the icon toolbar.
-    ///   Clicking the "Today" button will set the calendar view and set the date to now.
-    /// </summary>
-    public bool? showTodayButton;
+    [JsonConverter(typeof (DateTimeJsonConverter))] public DateTime? minDate;
 
     /// <summary>
     ///   Show the "Clear" button in the icon toolbar.
@@ -150,9 +161,46 @@ namespace WebExtras.Mvc.Bootstrap.v3
     public bool? showClose;
 
     /// <summary>
-    ///   Controls where the widget is placed
+    ///   Show the "Today" button in the icon toolbar.
+    ///   Clicking the "Today" button will set the calendar view and set the date to now.
     /// </summary>
-    public PositionOptions widgetPositioning;
+    public bool? showTodayButton;
+
+    /// <summary>
+    ///   Shows the picker side by side when using the time and date together.
+    /// </summary>
+    public bool? sideBySide;
+
+    /// <summary>
+    ///   Number of minutes the up/down arrow's will move the minutes value in the time picker
+    /// </summary>
+    public int? stepping;
+
+    /// <summary>
+    ///   Changes the placement of the icon toolbar. Accepts: 'default', 'top', 'bottom'
+    /// </summary>
+    public string toolbarPlacement;
+
+    /// <summary>
+    ///   On show, will set the picker to the current date/time
+    /// </summary>
+    public bool? useCurrent;
+
+    /// <summary>
+    ///   Defines if moment should use strict date parsing when considering a date to be valid
+    /// </summary>
+    public bool? useStrict;
+
+    /// <summary>
+    ///   This will change the viewDate without changing or setting the selected date.
+    /// </summary>
+    public bool? viewDate;
+
+    /// <summary>
+    ///   The default view to display when the picker is shown.
+    ///   Note: To limit the picker to selecting, for instance the year and month, use format: MM/YYYY
+    /// </summary>
+    public string viewMode;
 
     /// <summary>
     ///   On picker show, places the widget at the identifier (string) if the element has css position: 'relative'
@@ -160,56 +208,9 @@ namespace WebExtras.Mvc.Bootstrap.v3
     public string widgetParent;
 
     /// <summary>
-    ///   Will cause the date picker to stay open after selecting a date if no time components are being used.
+    ///   Controls where the widget is placed
     /// </summary>
-    public bool? keepOpen;
-
-    /// <summary>
-    ///   Will display the picker inline without the need of a input field. This will also hide borders and shadows.
-    /// </summary>
-    public bool? inline;
-
-    /// <summary>
-    ///   Will cause the date picker to not revert or overwrite invalid dates.
-    /// </summary>
-    public bool? keepInvalid;
-
-    // "keyBinds" option has not been migrated
-
-    /// <summary>
-    ///   Will cause the date picker to stay open after a blur event.
-    /// </summary>
-    public bool? debug;
-
-    /// <summary>
-    ///   Disables time selection between the given moments
-    /// </summary>
-    public bool? disabledTimeIntervals;
-
-    /// <summary>
-    ///   If true, the picker will show on textbox focus and icon click when used in a button group
-    /// </summary>
-    public bool? allowInputToggle;
-
-    /// <summary>
-    ///   If false, the textbox will not be given focus when the picker is shown
-    /// </summary>
-    public bool? focusOnShow;
-
-    /// <summary>
-    ///   Will allow or disallow hour selections (much like <see cref="M:disabledTimeIntervals" />) but will affect all days
-    /// </summary>
-    public bool? enabledHours;
-
-    /// <summary>
-    ///   Will allow or disallow hour selections (much like <see cref="M:disabledTimeIntervals" />) but will affect all days
-    /// </summary>
-    public bool? disabledHours;
-
-    /// <summary>
-    ///   This will change the viewDate without changing or setting the selected date.
-    /// </summary>
-    public bool? viewDate;
+    public PositionOptions widgetPositioning;
 
     /// <summary>
     ///   Constructor
@@ -220,7 +221,7 @@ namespace WebExtras.Mvc.Bootstrap.v3
     }
 
     /// <summary>
-    /// Tries to use font awesome icons by inspecting <see cref="M:WebExtrasMvcConstants.FontAwesomeVersion"/>
+    ///   Tries to use font awesome icons by inspecting <see cref="M:WebExtrasMvcConstants.FontAwesomeVersion" />
     /// </summary>
     /// <returns>Updated picker options</returns>
     public PickerOptions TryFontAwesomeIcons()
@@ -228,7 +229,8 @@ namespace WebExtras.Mvc.Bootstrap.v3
       switch (WebExtrasMvcConstants.FontAwesomeVersion)
       {
         case EFontAwesomeVersion.V4:
-          icons = new IconOptions {
+          icons = new IconOptions
+          {
             time = "fa fa-clock-o",
             date = "fa fa-calendar",
             up = "fa fa-arrow-up",
