@@ -40,6 +40,49 @@ namespace WebExtras.Mvc.Core
     /// </summary>
     private const string DefaultSeparator = " | ";
 
+    #region GenerateId extensions
+
+    /// <summary>
+    /// Generate ID for a model property
+    /// </summary>
+    /// <typeparam name="TModel">Type to be scanned</typeparam>
+    /// <typeparam name="TValue">Property to be scanned</typeparam>
+    /// <param name="html">Current HTML helper object</param>
+    /// <param name="expression">Member expression</param>
+    /// <returns>Generated HTML ID</returns>
+    public static string GenerateIdFor<TModel, TValue>(this HtmlHelper html, Expression<Func<TModel, TValue>> expression)
+    {
+      string propertyName = WebExtrasMvcUtil.GetFieldNameFromExpression(expression.Body as MemberExpression);
+      return html.GenerateId(propertyName);
+    }
+
+    /// <summary>
+    /// Generate ID for a given field name
+    /// </summary>
+    /// <param name="html">Current HTML helper object</param>
+    /// <param name="name">[Optional] Field name. Defaults to the current template info retrieved from ViewData</param>
+    /// <returns>Generated HTML ID</returns>
+    public static string GenerateId(this HtmlHelper html, string name = "")
+    {
+      string htmlNamePrefix = html.ViewData.TemplateInfo.HtmlFieldPrefix;
+      if (htmlNamePrefix.Length > 0 && name.Length > 0) htmlNamePrefix += ".";
+      return GenerateId(htmlNamePrefix + name);
+    }
+
+    /// <summary>
+    /// Generate ID for a given field name
+    /// </summary>
+    /// <param name="name">Field name</param>
+    /// <returns>Generated HTML ID</returns>
+    public static string GenerateId(string name)
+    {
+      TagBuilder t = new TagBuilder("a");
+      t.GenerateId(name);
+      return t.Attributes["id"];
+    }
+
+    #endregion GenerateId extensions
+
     #region Imagelink extensions
 
     /// <summary>
@@ -673,7 +716,7 @@ namespace WebExtras.Mvc.Core
         : html.LabelFor(expression, labelText, htmlAttributes);
       XElement xe = XElement.Parse(str.ToHtmlString());
 
-      if (!exp.Member.GetCustomAttributes(typeof (RequiredAttribute), true).Any())
+      if (!exp.Member.GetCustomAttributes(typeof(RequiredAttribute), true).Any())
         return MvcHtmlString.Create(xe.ToString());
 
       TagBuilder span = new TagBuilder("span");

@@ -30,7 +30,7 @@ namespace WebExtras.Mvc.Bootstrap.v3
   /// <summary>
   ///   Bootstrap 3 specific form extenions
   /// </summary>
-  public static class FormHtmlHelperExtension
+  public static class FormHelperExtension
   {
     #region DateTimeTextBoxFor extensions
 
@@ -85,7 +85,8 @@ namespace WebExtras.Mvc.Bootstrap.v3
       HtmlElement input = new HtmlElement(EHtmlTag.Input);
       var attribs = HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes)
         .ToDictionary(k => k.Key, v => v.Value.ToString());
-      input.Attributes.Merge(attribs);
+
+      input.Attributes.Add(attribs);      
       input.Attributes["type"] = "text";
       input.Attributes["name"] = fieldName;
 

@@ -113,7 +113,7 @@
     <Compile Include="Bootstrap\BootstrapIconlink.cs" />
     <Compile Include="Bootstrap\BootstrapUtil.cs" />
     <Compile Include="Bootstrap\BootstrapStringValueDeciders.cs" />
-    <Compile Include="Bootstrap\v3\FormHtmlHelperExtension.cs" />
+    <Compile Include="Bootstrap\v3\FormHelperExtension.cs" />
     <Compile Include="Bootstrap\v3\IconOptions.cs" />
     <Compile Include="Bootstrap\v3\PickerOptions.cs" />
     <Compile Include="Bootstrap\v3\PositionOptions.cs" />
@@ -157,7 +157,7 @@
     <Compile Include="Html\Empty.cs" />
     <Compile Include="Bootstrap\FormControl.cs" />
     <Compile Include="Html\ExtendedHtmlStringExtension.cs" />
-    <Compile Include="Bootstrap\FormHtmlHelperExtension.cs" />
+    <Compile Include="Bootstrap\FormHelperExtension.cs" />
     <Compile Include="Bootstrap\HtmlHelperExtension.cs" />
     <Compile Include="Html\HtmlLabel.cs" />
     <Compile Include="Html\HtmlListItem.cs" />

@@ -154,6 +154,7 @@ namespace WebExtras.Mvc.Bootstrap
 
       input.AddCssClass("form-control");
 
+      Input = input;
       InputGroup = new Div().AddCssClass("input-group");
       InputGroup.Append(input);
     }

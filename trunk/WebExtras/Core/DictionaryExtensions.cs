@@ -54,5 +54,26 @@ namespace WebExtras.Core
 
       return merged;
     }
+
+    /// <summary>
+    /// Add a dictionary to another
+    /// </summary>
+    /// <typeparam name="TKey">Key type</typeparam>
+    /// <typeparam name="TValue">Value type</typeparam>
+    /// <param name="current">Current dictionary</param>
+    /// <param name="dictionary">Dictionary to be added in</param>
+    /// <param name="overwrite">[Optional] Whether to overwrite existing values. Defaults to false</param>
+    /// <param name="addNullValues">[Optional] Whether to add NULL values from new dictionary. Defaults to false</param>
+    public static void Add<TKey, TValue>(this IDictionary<TKey, TValue> current,
+      IDictionary<TKey, TValue> dictionary,
+      bool overwrite = false,
+      bool addNullValues = false)
+    {
+      if (dictionary != null && dictionary.Count > 0)
+        foreach (TKey key in dictionary.Keys)
+          if ((!current.ContainsKey(key)) || (current.ContainsKey(key) && overwrite))
+            if ((dictionary[key] != null && !addNullValues) || (dictionary[key] == null && addNullValues))
+              current[key] = dictionary[key];
+    }
   }
 }
