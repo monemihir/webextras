@@ -40,5 +40,18 @@ namespace WebExtras.Core
 
       return collection.Cast<string>().ToDictionary(k => k, v => collection[v]);
     }
+
+    /// <summary>
+    /// Check whether the current name-value collection contains given key
+    /// </summary>
+    /// <param name="collection">Current name-value collection</param>
+    /// <param name="key">Key to be checked</param>
+    /// <param name="ignoreCase">[Optional] When checking for existence whether to ignore case of keys. Defaults to false</param>
+    /// <returns>True if key found, else False</returns>
+    public static bool ContainsKey(this NameValueCollection collection, string key, bool ignoreCase = false)
+    {
+      return collection.Get(key) != null ||
+        collection.Keys.Cast<string>().Contains(key, ignoreCase ? StringComparer.OrdinalIgnoreCase : StringComparer.Ordinal);
+    }
   }
 }

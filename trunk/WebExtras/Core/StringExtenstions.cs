@@ -57,6 +57,9 @@ namespace WebExtras.Core
     /// <returns>Camelcase converted string</returns>
     public static string ToCamelCase(this string str, bool allWords = false)
     {
+      if (string.IsNullOrEmpty(str))
+        return string.Empty;
+
       string[] buff = str.Split(' ');
       List<string> converted = new List<string>();
 
