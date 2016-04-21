@@ -21,6 +21,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <TargetFrameworkProfile />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -45,9 +46,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\External\Json.NET\v6.0 R4\net-4.0\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="RazorGenerator.Mvc, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\External\RazorGenerator.Mvc\v2.4.2\RazorGenerator.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="SquishIt.Framework">
       <HintPath>..\External\SquishIt\v0.9.2\SquishIt.Framework.dll</HintPath>
@@ -57,6 +62,14 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Net.Http, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\External\Microsoft\MVC4\v4.0.0.0\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\External\Microsoft\MVC4\v4.0.0.0\System.Net.Http.WebRequest.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions">
       <Private>False</Private>
@@ -64,11 +77,17 @@
     <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\External\Microsoft\MVC4\v4.0.0.0\System.Web.Helpers.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.Mvc, Version=4.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\External\Microsoft\MVC4\v4.0.0.0\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\External\Microsoft\MVC4\v4.0.0.0\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\External\Microsoft\MVC4\v4.0.0.0\System.Web.Razor.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Routing">
       <Private>False</Private>
@@ -77,33 +96,335 @@
     <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\External\Microsoft\MVC4\v4.0.0.0\System.Web.WebPages.dll</HintPath>
-      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\External\Microsoft\MVC4\v4.0.0.0\System.Web.WebPages.Deployment.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\External\Microsoft\MVC4\v4.0.0.0\System.Web.WebPages.Razor.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="T4MVCExtensions, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\External\T4MVC\v3.14.1\T4MVCExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\External\WebActivatorEx\v2.0.3\WebActivatorEx.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\ContentBundle.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RazorGeneratorMvcStart.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Bootstrap3\Controllers\BaseController.cs" />
     <Compile Include="Areas\Bootstrap3\Controllers\CoreController.cs" />
     <Compile Include="Areas\Bootstrap3\Controllers\HomeController.cs" />
     <Compile Include="Areas\Bootstrap3\Controllers\MvcController.cs" />
+    <Compile Include="Areas\Bootstrap3\Views\Core\Datatables.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Datatables.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Bootstrap3\Views\Core\Flot.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Flot.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Bootstrap3\Views\Core\Generic.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Generic.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Bootstrap3\Views\Core\JQPlot.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>JQPlot.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Bootstrap3\Views\Core\_AxisLabels.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_AxisLabels.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Bootstrap3\Views\Core\_PostbackSetup.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_PostbackSetup.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Bootstrap3\Views\Home\Download.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Download.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Bootstrap3\Views\Mvc\ActionResults.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ActionResults.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Bootstrap3\Views\Mvc\BootstrapForm.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BootstrapForm.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Bootstrap3\Views\Mvc\BootstrapHtml.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BootstrapHtml.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Bootstrap3\Views\Mvc\CoreForm.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CoreForm.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Bootstrap3\Views\Mvc\CoreHtml.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CoreHtml.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Bootstrap3\Views\Shared\Error.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Error.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Bootstrap3\Views\Shared\_Layout.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_Layout.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Bootstrap3\Views\_ViewStart.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_ViewStart.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Bootstrap\Views\Core\Datatables.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Datatables.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Bootstrap\Views\Core\Flot.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Flot.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Bootstrap\Views\Core\Generic.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Generic.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Bootstrap\Views\Core\JQPlot.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>JQPlot.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Bootstrap\Views\Core\_AxisLabels.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_AxisLabels.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Bootstrap\Views\Core\_PostbackSetup.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_PostbackSetup.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Bootstrap\Views\Home\Download.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Download.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Bootstrap\Views\Mvc\ActionResults.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ActionResults.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Bootstrap\Views\Mvc\BootstrapForm.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BootstrapForm.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Bootstrap\Views\Mvc\BootstrapHtml.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BootstrapHtml.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Bootstrap\Views\Mvc\CoreForm.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CoreForm.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Bootstrap\Views\Mvc\CoreHtml.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CoreHtml.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Bootstrap\Views\Shared\Error.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Error.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Bootstrap\Views\Shared\_Layout.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_Layout.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Bootstrap\Views\_ViewStart.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_ViewStart.cshtml</DependentUpon>
+    </Compile>
     <Compile Include="Areas\Gumby\Controllers\MvcController.cs" />
+    <Compile Include="Areas\Gumby\Views\Core\Datatables.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Datatables.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Gumby\Views\Core\Flot.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Flot.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Gumby\Views\Core\Generic.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Generic.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Gumby\Views\Core\JQPlot.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>JQPlot.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Gumby\Views\Core\_AxisLabels.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_AxisLabels.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Gumby\Views\Core\_PostbackSetup.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_PostbackSetup.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Gumby\Views\Home\Download.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Download.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Gumby\Views\Mvc\ActionResults.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ActionResults.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Gumby\Views\Mvc\CoreForm.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CoreForm.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Gumby\Views\Mvc\CoreHtml.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CoreHtml.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Gumby\Views\Mvc\GumbyForm.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GumbyForm.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Gumby\Views\Mvc\GumbyHtml.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GumbyHtml.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Gumby\Views\Shared\Error.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Error.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Gumby\Views\Shared\_Layout.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_Layout.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Gumby\Views\_ViewStart.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_ViewStart.cshtml</DependentUpon>
+    </Compile>
     <Compile Include="Areas\JQueryUI\Controllers\BaseController.cs" />
     <Compile Include="Areas\JQueryUI\Controllers\CoreController.cs" />
     <Compile Include="Areas\JQueryUI\Controllers\HomeController.cs" />
     <Compile Include="Areas\JQueryUI\Controllers\MvcController.cs" />
     <Compile Include="Areas\JQueryUI\JQueryUIAreaRegistration.cs" />
+    <Compile Include="Areas\JQueryUI\Views\Core\Datatables.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Datatables.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\JQueryUI\Views\Core\Flot.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Flot.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\JQueryUI\Views\Core\Generic.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Generic.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\JQueryUI\Views\Core\JQPlot.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>JQPlot.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\JQueryUI\Views\Core\_AxisLabels.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_AxisLabels.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\JQueryUI\Views\Core\_PostbackSetup.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_PostbackSetup.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\JQueryUI\Views\Home\Download.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Download.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\JQueryUI\Views\Mvc\ActionResults.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ActionResults.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\JQueryUI\Views\Mvc\CoreForm.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CoreForm.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\JQueryUI\Views\Mvc\CoreHtml.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CoreHtml.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\JQueryUI\Views\Mvc\JQueryUIForm.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>JQueryUIForm.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\JQueryUI\Views\Mvc\JQueryUIHtml.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>JQueryUIHtml.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\JQueryUI\Views\Shared\_Layout.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_Layout.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\JQueryUI\Views\_ViewStart.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_ViewStart.cshtml</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\GraphDataController.cs" />
     <Compile Include="GraphDataController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
@@ -202,6 +523,96 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Core\_AjaxSetup.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_AjaxSetup.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Core\_BarGraph.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_BarGraph.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Core\_BasicSetup.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_BasicSetup.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Core\_CurvedLineGraph.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_CurvedLineGraph.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Core\_CustomFlotFormatters.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_CustomFlotFormatters.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Core\_DashedGraph.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_DashedGraph.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Core\_JQPlotAjaxData.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_JQPlotAjaxData.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Core\_JQPlotBarGraph.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_JQPlotBarGraph.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Core\_JQPlotLineGraph.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_JQPlotLineGraph.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Core\_JQPlotMultipleAxes.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_JQPlotMultipleAxes.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Core\_JQPlotNonNumericAxisValues.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_JQPlotNonNumericAxisValues.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Core\_JQPlotOHLCGraph.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_JQPlotOHLCGraph.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Core\_LineGraph.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_LineGraph.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Core\_PagedSetup.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_PagedSetup.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Core\_PieGraph.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_PieGraph.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Core\_PostbackResult.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_PostbackResult.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Core\_SortedSetup.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_SortedSetup.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Core\_StatusSetup.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_StatusSetup.cshtml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -339,67 +750,239 @@
       <DependentUpon>style-gumby.less</DependentUpon>
     </Content>
     <Content Include="Content\style-gumby.less" />
-    <Content Include="Areas\Bootstrap3\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Bootstrap3\Views\Core\_AxisLabels.cshtml" />
+    <Content Include="Areas\Bootstrap3\Views\_ViewStart.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_ViewStart.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Areas\Bootstrap3\Views\Core\_AxisLabels.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_AxisLabels.generated.cs</LastGenOutput>
+    </Content>
     <Content Include="Views\Shared\_Datatable.cshtml" />
-    <Content Include="Areas\Bootstrap3\Views\Core\_PostbackSetup.cshtml" />
-    <Content Include="Areas\Bootstrap3\Views\Core\Datatables.cshtml" />
-    <Content Include="Areas\Bootstrap3\Views\Core\Flot.cshtml" />
-    <Content Include="Areas\Bootstrap3\Views\Core\Generic.cshtml" />
-    <Content Include="Areas\Bootstrap3\Views\Home\Download.cshtml" />
-    <Content Include="Areas\Bootstrap3\Views\Mvc\ActionResults.cshtml" />
-    <Content Include="Areas\Bootstrap3\Views\Mvc\BootstrapForm.cshtml" />
-    <Content Include="Areas\Bootstrap3\Views\Mvc\BootstrapHtml.cshtml" />
-    <Content Include="Areas\Bootstrap3\Views\Mvc\CoreForm.cshtml" />
-    <Content Include="Areas\Bootstrap3\Views\Mvc\CoreHtml.cshtml" />
-    <Content Include="Areas\Bootstrap3\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Bootstrap3\Views\Shared\Error.cshtml" />
+    <Content Include="Areas\Bootstrap3\Views\Core\_PostbackSetup.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_PostbackSetup.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Areas\Bootstrap3\Views\Core\Datatables.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Datatables.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Areas\Bootstrap3\Views\Core\Flot.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Flot.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Areas\Bootstrap3\Views\Core\Generic.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Generic.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Areas\Bootstrap3\Views\Home\Download.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Download.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Areas\Bootstrap3\Views\Mvc\ActionResults.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>ActionResults.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Areas\Bootstrap3\Views\Mvc\BootstrapForm.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>BootstrapForm.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Areas\Bootstrap3\Views\Mvc\BootstrapHtml.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>BootstrapHtml.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Areas\Bootstrap3\Views\Mvc\CoreForm.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>CoreForm.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Areas\Bootstrap3\Views\Mvc\CoreHtml.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>CoreHtml.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Areas\Bootstrap3\Views\Shared\_Layout.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_Layout.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Areas\Bootstrap3\Views\Shared\Error.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Error.generated.cs</LastGenOutput>
+    </Content>
     <Content Include="Areas\Bootstrap3\Views\Web.config" />
-    <Content Include="Areas\Bootstrap\Views\Core\Datatables.cshtml" />
+    <Content Include="Areas\Bootstrap\Views\Core\Datatables.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Datatables.generated.cs</LastGenOutput>
+    </Content>
     <Content Include="Areas\Gumby\Views\Web.config" />
-    <Content Include="Areas\Gumby\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Gumby\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Gumby\Views\Shared\Error.cshtml" />
-    <Content Include="Areas\Gumby\Views\Home\Download.cshtml" />
-    <Content Include="Areas\Gumby\Views\Core\Flot.cshtml" />
-    <Content Include="Areas\Gumby\Views\Core\_AxisLabels.cshtml" />
-    <Content Include="Views\Core\_BarGraph.cshtml" />
-    <Content Include="Views\Core\_BasicSetup.cshtml" />
-    <Content Include="Views\Core\_CurvedLineGraph.cshtml" />
-    <Content Include="Views\Core\_CustomFlotFormatters.cshtml" />
-    <Content Include="Views\Core\_DashedGraph.cshtml" />
-    <Content Include="Views\Core\_LineGraph.cshtml" />
-    <Content Include="Views\Core\_PagedSetup.cshtml" />
-    <Content Include="Views\Core\_PieGraph.cshtml" />
-    <Content Include="Views\Core\_PostbackResult.cshtml" />
-    <Content Include="Areas\Gumby\Views\Core\_PostbackSetup.cshtml" />
-    <Content Include="Views\Core\_SortedSetup.cshtml" />
-    <Content Include="Views\Core\_StatusSetup.cshtml" />
-    <Content Include="Areas\Gumby\Views\Core\Datatables.cshtml" />
-    <Content Include="Areas\Gumby\Views\Mvc\CoreHtml.cshtml" />
-    <Content Include="Areas\Gumby\Views\Mvc\CoreForm.cshtml" />
-    <Content Include="Areas\Gumby\Views\Mvc\ActionResults.cshtml" />
-    <Content Include="Areas\Gumby\Views\Mvc\GumbyHtml.cshtml" />
-    <Content Include="Areas\Gumby\Views\Mvc\GumbyForm.cshtml" />
-    <Content Include="Areas\Bootstrap\Views\Core\JQPlot.cshtml" />
-    <Content Include="Areas\Bootstrap3\Views\Core\JQPlot.cshtml" />
-    <Content Include="Areas\Gumby\Views\Core\JQPlot.cshtml" />
-    <Content Include="Areas\JQueryUI\Views\Core\Datatables.cshtml" />
-    <Content Include="Areas\JQueryUI\Views\Core\Flot.cshtml" />
-    <Content Include="Areas\JQueryUI\Views\Core\Generic.cshtml" />
-    <Content Include="Areas\JQueryUI\Views\Core\_AxisLabels.cshtml" />
-    <Content Include="Areas\JQueryUI\Views\Core\_PostbackSetup.cshtml" />
-    <Content Include="Areas\JQueryUI\Views\Mvc\ActionResults.cshtml" />
-    <Content Include="Areas\JQueryUI\Views\Mvc\CoreForm.cshtml" />
-    <Content Include="Areas\JQueryUI\Views\Mvc\CoreHtml.cshtml" />
-    <Content Include="Areas\JQueryUI\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Gumby\Views\_ViewStart.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_ViewStart.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Areas\Gumby\Views\Shared\_Layout.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_Layout.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Areas\Gumby\Views\Shared\Error.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Error.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Areas\Gumby\Views\Home\Download.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Download.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Areas\Gumby\Views\Core\Flot.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Flot.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Areas\Gumby\Views\Core\_AxisLabels.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_AxisLabels.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Core\_BarGraph.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_BarGraph.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Core\_BasicSetup.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_BasicSetup.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Core\_CurvedLineGraph.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_CurvedLineGraph.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Core\_CustomFlotFormatters.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_CustomFlotFormatters.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Core\_DashedGraph.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_DashedGraph.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Core\_LineGraph.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_LineGraph.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Core\_PagedSetup.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_PagedSetup.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Core\_PieGraph.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_PieGraph.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Core\_PostbackResult.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_PostbackResult.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Areas\Gumby\Views\Core\_PostbackSetup.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_PostbackSetup.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Core\_SortedSetup.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_SortedSetup.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Core\_StatusSetup.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_StatusSetup.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Areas\Gumby\Views\Core\Datatables.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Datatables.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Areas\Gumby\Views\Mvc\CoreHtml.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>CoreHtml.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Areas\Gumby\Views\Mvc\CoreForm.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>CoreForm.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Areas\Gumby\Views\Mvc\ActionResults.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>ActionResults.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Areas\Gumby\Views\Mvc\GumbyHtml.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>GumbyHtml.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Areas\Gumby\Views\Mvc\GumbyForm.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>GumbyForm.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Areas\Bootstrap\Views\Core\JQPlot.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>JQPlot.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Areas\Bootstrap3\Views\Core\JQPlot.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>JQPlot.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Areas\Gumby\Views\Core\JQPlot.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>JQPlot.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Areas\JQueryUI\Views\Core\Datatables.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Datatables.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Areas\JQueryUI\Views\Core\Flot.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Flot.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Areas\JQueryUI\Views\Core\Generic.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Generic.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Areas\JQueryUI\Views\Core\_AxisLabels.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_AxisLabels.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Areas\JQueryUI\Views\Core\_PostbackSetup.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_PostbackSetup.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Areas\JQueryUI\Views\Mvc\ActionResults.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>ActionResults.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Areas\JQueryUI\Views\Mvc\CoreForm.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>CoreForm.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Areas\JQueryUI\Views\Mvc\CoreHtml.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>CoreHtml.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Areas\JQueryUI\Views\Shared\_Layout.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_Layout.generated.cs</LastGenOutput>
+    </Content>
     <Content Include="Areas\JQueryUI\Views\Web.config" />
-    <Content Include="Areas\JQueryUI\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\JQueryUI\Views\_ViewStart.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_ViewStart.generated.cs</LastGenOutput>
+    </Content>
     <Content Include="Content\style-jqueryui.less" />
-    <Content Include="Areas\JQueryUI\Views\Home\Download.cshtml" />
-    <Content Include="Areas\JQueryUI\Views\Mvc\JQueryUIHtml.cshtml" />
-    <Content Include="Areas\JQueryUI\Views\Mvc\JQueryUIForm.cshtml" />
-    <Content Include="Areas\JQueryUI\Views\Core\JQPlot.cshtml" />
+    <Content Include="Areas\JQueryUI\Views\Home\Download.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Download.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Areas\JQueryUI\Views\Mvc\JQueryUIHtml.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>JQueryUIHtml.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Areas\JQueryUI\Views\Mvc\JQueryUIForm.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>JQueryUIForm.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Areas\JQueryUI\Views\Core\JQPlot.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>JQPlot.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Areas\Bootstrap\Views\razorgenerator.directives" />
+    <Content Include="Areas\Bootstrap3\Views\razorgenerator.directives" />
+    <Content Include="Areas\Gumby\Views\razorgenerator.directives" />
+    <Content Include="Areas\JQueryUI\Views\razorgenerator.directives" />
     <None Include="Content\style.less" />
     <Content Include="Content\style-bootstrap3.min.css">
       <DependentUpon>style-bootstrap3.less</DependentUpon>
@@ -459,26 +1042,52 @@
     <Content Include="Views\Web.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Areas\Bootstrap\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Bootstrap\Views\Shared\Error.cshtml" />
-    <Content Include="Areas\Bootstrap\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Bootstrap\Views\_ViewStart.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_ViewStart.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Areas\Bootstrap\Views\Shared\Error.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Error.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Areas\Bootstrap\Views\Shared\_Layout.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_Layout.generated.cs</LastGenOutput>
+    </Content>
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Areas\Gumby\Views\Core\Generic.cshtml" />
+    <Content Include="Areas\Gumby\Views\Core\Generic.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Generic.generated.cs</LastGenOutput>
+    </Content>
     <Content Include="Views\Mvc\_JsonNetResult.cshtml" />
-    <Content Include="Views\Core\_JQPlotLineGraph.cshtml" />
-    <Content Include="Views\Core\_JQPlotNonNumericAxisValues.cshtml" />
-    <Content Include="Views\Core\_JQPlotMultipleAxes.cshtml" />
-    <Content Include="Views\Core\_JQPlotAjaxData.cshtml" />
-    <Content Include="Views\Core\_JQPlotOHLCGraph.cshtml" />
-    <Content Include="Views\Core\_JQPlotBarGraph.cshtml" />
+    <Content Include="Views\Core\_JQPlotLineGraph.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_JQPlotLineGraph.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Core\_JQPlotNonNumericAxisValues.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_JQPlotNonNumericAxisValues.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Core\_JQPlotMultipleAxes.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_JQPlotMultipleAxes.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Core\_JQPlotAjaxData.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_JQPlotAjaxData.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Core\_JQPlotOHLCGraph.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_JQPlotOHLCGraph.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Core\_JQPlotBarGraph.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_JQPlotBarGraph.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\razorgenerator.directives" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="packages.config">
-      <SubType>Designer</SubType>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="T4MVC.tt">
@@ -504,27 +1113,57 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Areas\Bootstrap\Views\Core\Generic.cshtml" />
+    <Content Include="Areas\Bootstrap\Views\Core\Generic.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Generic.generated.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Areas\Bootstrap\Views\Core\Flot.cshtml" />
+    <Content Include="Areas\Bootstrap\Views\Core\Flot.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Flot.generated.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Core\_AjaxSetup.cshtml" />
+    <Content Include="Views\Core\_AjaxSetup.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_AjaxSetup.generated.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Areas\Bootstrap\Views\Core\_PostbackSetup.cshtml" />
-    <Content Include="Areas\Bootstrap\Views\Core\_AxisLabels.cshtml" />
-    <Content Include="Areas\Bootstrap\Views\Mvc\CoreHtml.cshtml" />
-    <Content Include="Areas\Bootstrap\Views\Mvc\CoreForm.cshtml" />
-    <Content Include="Areas\Bootstrap\Views\Mvc\BootstrapHtml.cshtml" />
-    <Content Include="Areas\Bootstrap\Views\Mvc\BootstrapForm.cshtml" />
+    <Content Include="Areas\Bootstrap\Views\Core\_PostbackSetup.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_PostbackSetup.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Areas\Bootstrap\Views\Core\_AxisLabels.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_AxisLabels.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Areas\Bootstrap\Views\Mvc\CoreHtml.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>CoreHtml.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Areas\Bootstrap\Views\Mvc\CoreForm.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>CoreForm.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Areas\Bootstrap\Views\Mvc\BootstrapHtml.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>BootstrapHtml.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Areas\Bootstrap\Views\Mvc\BootstrapForm.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>BootstrapForm.generated.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\_DatatableDeprecated.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Areas\Bootstrap\Views\Home\Download.cshtml" />
+    <Content Include="Areas\Bootstrap\Views\Home\Download.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Download.generated.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\font\fontawesome-webfont.eot" />
@@ -533,7 +1172,10 @@
     <Content Include="Content\font\FontAwesome.otf" />
     <Content Include="Areas\Bootstrap\Views\Web.config" />
     <None Include="Properties\PublishProfiles\Default.pubxml" />
-    <Content Include="Areas\Bootstrap\Views\Mvc\ActionResults.cshtml" />
+    <Content Include="Areas\Bootstrap\Views\Mvc\ActionResults.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>ActionResults.generated.cs</LastGenOutput>
+    </Content>
     <None Include="Properties\PublishProfiles\Staging.pubxml" />
     <Content Include="Views\Flavour\Index.cshtml" />
   </ItemGroup>

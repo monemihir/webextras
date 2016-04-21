@@ -15,3 +15,4 @@ build/web/*
 **/*.userprefs
 dist/**
 trunk/_dotCover**
+**/applicationhost.config

@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{40A2735C-ADCD-4E3E-8337-E50F103CB0E2}"
 	ProjectSection(SolutionItems) = preProject
 		Local.testsettings = Local.testsettings
@@ -18,10 +20,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebExtras.DemoApp", "WebExt
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebExtras.Mvc.tests", "WebExtras.Mvc.tests\WebExtras.Mvc.tests.csproj", "{68FF3356-DB8D-4963-BC92-60FFD20FDDC3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebExtras.Nancy", "WebExtras.Nancy\WebExtras.Nancy.csproj", "{8B23D1C6-6054-435D-ABF7-666E8B640C6F}"
+EndProject
 Global
-	GlobalSection(TestCaseManagementSettings) = postSolution
-		CategoryFile = WebExtras.vsmdi
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|x86 = Debug|x86
@@ -69,8 +70,19 @@ Global
 		{68FF3356-DB8D-4963-BC92-60FFD20FDDC3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{68FF3356-DB8D-4963-BC92-60FFD20FDDC3}.Release|x86.ActiveCfg = Release|x86
 		{68FF3356-DB8D-4963-BC92-60FFD20FDDC3}.Release|x86.Build.0 = Release|x86
+		{8B23D1C6-6054-435D-ABF7-666E8B640C6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B23D1C6-6054-435D-ABF7-666E8B640C6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B23D1C6-6054-435D-ABF7-666E8B640C6F}.Debug|x86.ActiveCfg = Debug|x86
+		{8B23D1C6-6054-435D-ABF7-666E8B640C6F}.Debug|x86.Build.0 = Debug|x86
+		{8B23D1C6-6054-435D-ABF7-666E8B640C6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B23D1C6-6054-435D-ABF7-666E8B640C6F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B23D1C6-6054-435D-ABF7-666E8B640C6F}.Release|x86.ActiveCfg = Release|x86
+		{8B23D1C6-6054-435D-ABF7-666E8B640C6F}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = WebExtras.vsmdi
 	EndGlobalSection
 EndGlobal
