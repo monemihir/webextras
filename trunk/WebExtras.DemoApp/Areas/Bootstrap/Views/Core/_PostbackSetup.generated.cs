@@ -38,6 +38,7 @@ namespace ASP
     
     #line default
     #line hidden
+    using WebExtras.Mvc.Bootstrap.v2;
     using WebExtras.Mvc.Core;
     
     #line 5 "..\..\Areas\Bootstrap\Views\Core\_PostbackSetup.cshtml"

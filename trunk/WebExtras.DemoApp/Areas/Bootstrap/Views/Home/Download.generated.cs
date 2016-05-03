@@ -28,6 +28,7 @@ namespace ASP
     using System.Web.WebPages;
     using WebExtras.Core;
     using WebExtras.Mvc.Bootstrap;
+    using WebExtras.Mvc.Bootstrap.v2;
     using WebExtras.Mvc.Core;
     using WebExtras.Mvc.Html;
     

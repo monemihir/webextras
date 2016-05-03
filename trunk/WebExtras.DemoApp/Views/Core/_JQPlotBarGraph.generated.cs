@@ -26,12 +26,9 @@ namespace ASP
     using System.Web.Security;
     using System.Web.UI;
     using System.Web.WebPages;
-    
-    #line 3 "..\..\Views\Core\_JQPlotBarGraph.cshtml"
     using WebExtras.Core;
-    
-    #line default
-    #line hidden
+    using WebExtras.Mvc.Core;
+    using WebExtras.Mvc.Html;
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
     [System.Web.WebPages.PageVirtualPathAttribute("~/Views/Core/_JQPlotBarGraph.cshtml")]
@@ -42,9 +39,6 @@ namespace ASP
         }
         public override void Execute()
         {
-
-WriteLiteral("\r\n");
-
 
 WriteLiteral("\r\n<p>\r\n  No points for guessing that Bar graphs are created using jqPlot\'s bar re" +
 "nderer plugin\r\n</p>\r\n\r\n<div class=\"well ui-well\">\r\n  <h4>Let\'s look at our data " +
@@ -73,7 +67,7 @@ WriteLiteral("\r\n<p>\r\n  No points for guessing that Bar graphs are created us
 
 
             
-            #line 71 "..\..\Views\Core\_JQPlotBarGraph.cshtml"
+            #line 69 "..\..\Views\Core\_JQPlotBarGraph.cshtml"
                        Write(Html.Raw(Model[0].chartData.ToJson()));
 
             
@@ -83,7 +77,7 @@ WriteLiteral(", ");
 
 
             
-            #line 71 "..\..\Views\Core\_JQPlotBarGraph.cshtml"
+            #line 69 "..\..\Views\Core\_JQPlotBarGraph.cshtml"
                                                                Write(Html.Raw(Model[0].chartOptions.ToString()));
 
             

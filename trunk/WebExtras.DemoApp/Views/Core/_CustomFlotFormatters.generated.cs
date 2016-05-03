@@ -26,12 +26,9 @@ namespace ASP
     using System.Web.Security;
     using System.Web.UI;
     using System.Web.WebPages;
-    
-    #line 3 "..\..\Views\Core\_CustomFlotFormatters.cshtml"
+    using WebExtras.Core;
     using WebExtras.Mvc.Core;
-    
-    #line default
-    #line hidden
+    using WebExtras.Mvc.Html;
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
     [System.Web.WebPages.PageVirtualPathAttribute("~/Views/Core/_CustomFlotFormatters.cshtml")]
@@ -42,9 +39,6 @@ namespace ASP
         }
         public override void Execute()
         {
-
-WriteLiteral("\r\n");
-
 
 WriteLiteral(@"
 <div class=""well ui-well"">
@@ -57,7 +51,7 @@ WriteLiteral(@"
 
 
             
-            #line 11 "..\..\Views\Core\_CustomFlotFormatters.cshtml"
+            #line 9 "..\..\Views\Core\_CustomFlotFormatters.cshtml"
                                                              Write(Html.Hyperlink("here", "https://github.com/flot/flot/blob/master/API.md"));
 
             
@@ -104,7 +98,7 @@ WriteLiteral(@" for our X axis.</p>
 
 
             
-            #line 48 "..\..\Views\Core\_CustomFlotFormatters.cshtml"
+            #line 46 "..\..\Views\Core\_CustomFlotFormatters.cshtml"
                                Write(Html.Raw(Model.chartSeries[0].ToString()));
 
             
@@ -114,7 +108,7 @@ WriteLiteral("], ");
 
 
             
-            #line 48 "..\..\Views\Core\_CustomFlotFormatters.cshtml"
+            #line 46 "..\..\Views\Core\_CustomFlotFormatters.cshtml"
                                                                             Write(Html.Raw(Model.chartOptions.ToString()));
 
             

@@ -45,6 +45,8 @@ namespace ASP
     
     #line default
     #line hidden
+    using WebExtras.Mvc.Bootstrap;
+    using WebExtras.Mvc.Bootstrap.v2;
     using WebExtras.Mvc.Core;
     using WebExtras.Mvc.Html;
     

@@ -56,6 +56,7 @@ namespace ASP
     
     #line default
     #line hidden
+    using WebExtras.Mvc.Bootstrap.v2;
     
     #line 5 "..\..\Areas\Bootstrap\Views\Shared\_Layout.cshtml"
     using WebExtras.Mvc.Core;

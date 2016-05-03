@@ -26,6 +26,9 @@ namespace ASP
     using System.Web.Security;
     using System.Web.UI;
     using System.Web.WebPages;
+    using WebExtras.Core;
+    using WebExtras.Mvc.Core;
+    using WebExtras.Mvc.Html;
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
     [System.Web.WebPages.PageVirtualPathAttribute("~/Views/Core/_CurvedLineGraph.cshtml")]
