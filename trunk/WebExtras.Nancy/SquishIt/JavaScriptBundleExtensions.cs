@@ -33,7 +33,7 @@ namespace WebExtras.Nancy.SquishIt
     /// <returns>Current bundle</returns>
     public static IHtmlString MvcRender(this JavaScriptBundle javaScriptBundle, string renderTo)
     {
-      return new EncodedHtmlString(javaScriptBundle.Render(renderTo));
+      return new NonEncodedHtmlString(javaScriptBundle.Render(renderTo));
     }
 
     /// <summary>
@@ -44,7 +44,7 @@ namespace WebExtras.Nancy.SquishIt
     /// <returns>Current bundle</returns>
     public static IHtmlString MvcRenderNamed(this JavaScriptBundle javaScriptBundle, string name)
     {
-      return new EncodedHtmlString(javaScriptBundle.RenderNamed(name));
+      return new NonEncodedHtmlString(javaScriptBundle.RenderNamed(name));
     }
 
     /// <summary>
@@ -55,7 +55,7 @@ namespace WebExtras.Nancy.SquishIt
     /// <returns>Current bundle as a cached asset tag</returns>
     public static IHtmlString MvcRenderCachedAssetTag(this JavaScriptBundle javaScriptBundle, string name)
     {
-      return new EncodedHtmlString(javaScriptBundle.RenderCachedAssetTag(name));
+      return new NonEncodedHtmlString(javaScriptBundle.RenderCachedAssetTag(name));
     }
   }
 }

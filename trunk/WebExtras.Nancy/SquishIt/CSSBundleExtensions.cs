@@ -33,7 +33,7 @@ namespace WebExtras.Nancy.SquishIt
     /// <returns>Current bundle</returns>
     public static IHtmlString NancyRender(this CSSBundle cssBundle, string renderTo)
     {
-      return new EncodedHtmlString(cssBundle.Render(renderTo));
+      return new NonEncodedHtmlString(cssBundle.Render(renderTo));
     }
 
     /// <summary>
@@ -44,7 +44,7 @@ namespace WebExtras.Nancy.SquishIt
     /// <returns>Current bundle</returns>
     public static IHtmlString NancyRenderNamed(this CSSBundle cssBundle, string name)
     {
-      return new EncodedHtmlString(cssBundle.RenderNamed(name));
+      return new NonEncodedHtmlString(cssBundle.RenderNamed(name));
     }
 
     /// <summary>
@@ -55,7 +55,7 @@ namespace WebExtras.Nancy.SquishIt
     /// <returns>Current bundle as a cached asset tag</returns>
     public static IHtmlString NancyRenderCachedAssetTag(this CSSBundle cssBundle, string name)
     {
-      return new EncodedHtmlString(cssBundle.RenderCachedAssetTag(name));
+      return new NonEncodedHtmlString(cssBundle.RenderCachedAssetTag(name));
     }
   }
 }
