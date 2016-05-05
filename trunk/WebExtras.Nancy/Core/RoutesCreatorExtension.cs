@@ -1,13 +1,13 @@
-﻿using Nancy;
-using Nancy.Responses.Negotiation;
-using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Web.Http;
+using Nancy;
+using Nancy.Responses.Negotiation;
+using Newtonsoft.Json;
 
-namespace WebExtras.Nancy
+namespace WebExtras.Nancy.Core
 {
   /// <summary>
   /// Automatically creates routes using reflection

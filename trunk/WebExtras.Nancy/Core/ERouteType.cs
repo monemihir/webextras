@@ -1,4 +1,4 @@
-﻿namespace WebExtras.Nancy
+﻿namespace WebExtras.Nancy.Core
 {
 #pragma warning disable 1591
 
