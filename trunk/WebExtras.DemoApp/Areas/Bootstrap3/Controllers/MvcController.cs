@@ -16,6 +16,7 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+using WebExtras.Core;
 using WebExtras.Mvc.Bootstrap;
 using WebExtras.Mvc.Html;
 #pragma warning disable 1591

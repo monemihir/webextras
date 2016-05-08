@@ -85,6 +85,7 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\CssClassesListTest.cs" />
     <Compile Include="Core\NameValueCollectionExtensionsTest.cs" />
     <Compile Include="Core\JsFuncTest.cs" />
     <Compile Include="Core\DoubleExtensionsTest.cs" />

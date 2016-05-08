@@ -26,6 +26,7 @@ using System.Security.Principal;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
 using System.Xml.Linq;
+using WebExtras.Core;
 using WebExtras.Mvc.Html;
 
 namespace WebExtras.Mvc.Core
@@ -52,7 +53,7 @@ namespace WebExtras.Mvc.Core
     /// <returns>Generated HTML ID</returns>
     public static string GenerateIdFor<TModel, TValue>(this HtmlHelper html, Expression<Func<TModel, TValue>> expression)
     {
-      string propertyName = WebExtrasMvcUtil.GetFieldNameFromExpression(expression.Body as MemberExpression);
+      string propertyName = WebExtrasUtil.GetFieldNameFromExpression(expression.Body as MemberExpression);
       return html.GenerateId(propertyName);
     }
 

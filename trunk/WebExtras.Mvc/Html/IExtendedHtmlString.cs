@@ -1,6 +1,6 @@
 ﻿// 
 // This file is part of - WebExtras
-// Copyright (C) 2015 Mihir Mone
+// Copyright (C) 2016 Mihir Mone
 // 
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
@@ -18,6 +18,8 @@
 using System.Collections.Generic;
 using System.Web;
 using System.Web.Mvc;
+using WebExtras.Component;
+using WebExtras.Core;
 
 namespace WebExtras.Mvc.Html
 {
@@ -27,6 +29,11 @@ namespace WebExtras.Mvc.Html
   public interface IExtendedHtmlString : IHtmlString
   {
     /// <summary>
+    ///   Underlying HTML component
+    /// </summary>
+    IHtmlComponent Component { get; }
+
+    /// <summary>
     ///   The HTML tag representing this element
     /// </summary>
     EHtmlTag Tag { get; }
@@ -34,7 +41,7 @@ namespace WebExtras.Mvc.Html
     /// <summary>
     ///   CSS classes of this element
     /// </summary>
-    CssClassesCollection CSSClasses { get; }
+    CssClassList CSSClasses { get; }
 
     /// <summary>
     ///   HTML attribute list for this element

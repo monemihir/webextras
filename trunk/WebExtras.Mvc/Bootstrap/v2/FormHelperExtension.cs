@@ -20,6 +20,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Web.Mvc;
+using WebExtras.Bootstrap.v2;
 using WebExtras.Core;
 using WebExtras.Mvc.Core;
 
@@ -121,8 +122,8 @@ namespace WebExtras.Mvc.Bootstrap.v2
 
       pickerOptions = pickerOptions.UpdateOptionsBasedOnView();
 
-      string fieldId = WebExtrasMvcUtil.GetFieldIdFromExpression(exp);
-      string fieldName = WebExtrasMvcUtil.GetFieldNameFromExpression(exp);
+      string fieldId = WebExtrasUtil.GetFieldIdFromExpression(exp);
+      string fieldName = WebExtrasUtil.GetFieldNameFromExpression(exp);
       string datetimeformat = ConvertToCsDateFormat(pickerOptions.format);
 
       // create the text box

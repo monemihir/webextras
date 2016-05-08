@@ -36,8 +36,8 @@ namespace WebExtras.DemoApp.Areas.Gumby.Controllers
 
       ViewData["layout_path"] = MVC.Gumby.Shared.Views._Layout;
       WebExtrasConstants.DatatablesPaginationScheme = JQDataTables.EPagination.Gumby;
-      WebExtrasMvcConstants.CssFramework = ECssFramework.Gumby;
-      WebExtrasMvcConstants.GumbyTheme = EGumbyTheme.Metro;
+      WebExtrasConstants.CssFramework = ECssFramework.Gumby;
+      WebExtrasConstants.GumbyTheme = EGumbyTheme.Metro;
 
       Version v = Assembly.GetExecutingAssembly().GetName().Version;
 

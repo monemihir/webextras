@@ -16,6 +16,9 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+using WebExtras.Bootstrap;
+using WebExtras.Component;
+using WebExtras.Core;
 using WebExtras.Mvc.Html;
 
 namespace WebExtras.Mvc.Bootstrap
@@ -35,9 +38,9 @@ namespace WebExtras.Mvc.Bootstrap
       base(string.Empty, url, htmlAttributes)
     {
       CSSClasses.Add("icon-only-link");
-      IExtendedHtmlString iconElement = BootstrapUtil.CreateIcon(icon);
+      IHtmlComponent iconElement = BootstrapUtil.CreateIcon(icon);
 
-      Prepend(iconElement);
+      Prepend(new HtmlElement(iconElement));
     }
 
     /// <summary>
@@ -50,9 +53,9 @@ namespace WebExtras.Mvc.Bootstrap
       base(string.Empty, url, htmlAttributes)
     {
       CSSClasses.Add("icon-only-link");
-      IExtendedHtmlString iconElement = BootstrapUtil.CreateIcon(icon);
+      IHtmlComponent iconElement = BootstrapUtil.CreateIcon(icon);
 
-      Prepend(iconElement);
+      Prepend(new HtmlElement(iconElement));
     }
   }
 }

@@ -19,6 +19,7 @@
 using System;
 using System.Globalization;
 using System.Web.Mvc;
+using WebExtras.Core;
 using WebExtras.Mvc.Core;
 using WebExtras.Mvc.Html;
 
@@ -57,7 +58,7 @@ namespace WebExtras.Mvc.Bootstrap
 
       Div inner = new Div();
 
-      switch (WebExtrasMvcConstants.BootstrapVersion)
+      switch (WebExtrasConstants.BootstrapVersion)
       {
         case EBootstrapVersion.None:
           throw new BootstrapVersionException();

@@ -94,7 +94,7 @@ namespace WebExtras.Mvc.Bootstrap
     private void CreateTags(Expression<Func<TModel, TValue>> expression, object htmlAttributes)
     {
       MemberExpression exp = expression.Body as MemberExpression;
-      if (WebExtrasMvcConstants.BootstrapVersion == EBootstrapVersion.V2)
+      if (WebExtrasConstants.BootstrapVersion == EBootstrapVersion.V2)
         CreateBootstrap2Tags();
       else
         CreateBootstrap3Tags(exp, htmlAttributes);
@@ -110,8 +110,8 @@ namespace WebExtras.Mvc.Bootstrap
       var defaultAttribs = new Dictionary<string, object>
       {
         {"type", "text"},
-        {"id", WebExtrasMvcUtil.GetFieldIdFromExpression(exp)},
-        {"name", WebExtrasMvcUtil.GetFieldNameFromExpression(exp)}
+        {"id", WebExtrasUtil.GetFieldIdFromExpression(exp)},
+        {"name", WebExtrasUtil.GetFieldNameFromExpression(exp)}
       };
 
       DataTypeAttribute[] customAttribs =

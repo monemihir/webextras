@@ -21,6 +21,8 @@ using System.ComponentModel;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Web.Mvc;
+using WebExtras.Core;
+using WebExtras.Gumby;
 using WebExtras.Mvc.Core;
 using WebExtras.Mvc.Html;
 
@@ -42,7 +44,7 @@ namespace WebExtras.Mvc.Gumby
     /// <returns>A Gumby icon</returns>
     public static IExtendedHtmlString Icon(this HtmlHelper html, EGumbyIcon icon, object htmlAttributes = null)
     {
-      return GumbyUtil.CreateIcon(icon, htmlAttributes);
+      return GumbyUtil.CreateIcon(icon, htmlAttributes).ToHtmlElement();
     }
 
     #endregion Icon extensions

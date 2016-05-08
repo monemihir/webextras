@@ -20,6 +20,8 @@ using System.ComponentModel;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Web.Mvc;
+using WebExtras.Bootstrap;
+using WebExtras.Core;
 using WebExtras.Mvc.Core;
 using WebExtras.Mvc.Html;
 
@@ -39,13 +41,13 @@ namespace WebExtras.Mvc.Bootstrap
     /// <param name="icon">Icon to be rendered</param>
     /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
     /// <returns>A Bootstrap icon</returns>
-    /// <exception cref="WebExtras.Mvc.Core.BootstrapVersionException">
+    /// <exception cref="BootstrapVersionException">
     ///   Thrown when a valid Bootstrap version
     ///   is not selected
     /// </exception>
     public static IExtendedHtmlString Icon(this HtmlHelper html, EBootstrapIcon icon, object htmlAttributes = null)
     {
-      return BootstrapUtil.CreateIcon(icon, htmlAttributes);
+      return BootstrapUtil.CreateIcon(icon, htmlAttributes).ToHtmlElement();
     }
 
     /// <summary>
@@ -68,14 +70,14 @@ namespace WebExtras.Mvc.Bootstrap
     /// <param name="size">Icon size</param>
     /// <param name="htmlAttributes">Extra HTML attributes</param>
     /// <returns>A Bootstrap icon</returns>
-    /// <exception cref="WebExtras.Mvc.Core.FontAwesomeVersionException">
+    /// <exception cref="FontAwesomeVersionException">
     ///   Thrown when a valid FontAwesome
     ///   icon library version is not selected
     /// </exception>
     public static IExtendedHtmlString Icon(this HtmlHelper html, EFontAwesomeIcon icon,
       EFontAwesomeIconSize size = EFontAwesomeIconSize.Normal, object htmlAttributes = null)
     {
-      return BootstrapUtil.CreateIcon(icon, size, htmlAttributes);
+      return BootstrapUtil.CreateIcon(icon, size, htmlAttributes).ToHtmlElement();
     }
 
     #endregion Icon extensions
@@ -224,7 +226,7 @@ namespace WebExtras.Mvc.Bootstrap
 
       TagBuilder i = new TagBuilder("i");
 
-      switch (WebExtrasMvcConstants.BootstrapVersion)
+      switch (WebExtrasConstants.BootstrapVersion)
       {
         case EBootstrapVersion.V2:
           i.AddCssClass("icon-info-sign");

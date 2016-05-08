@@ -40,7 +40,7 @@ namespace WebExtras.Mvc.Core
       // We can only display hyperlinks and button as buttons
       Type t = html.GetType();
 
-      return t == typeof (Hyperlink) || t == typeof (Button);
+      return t == typeof(Hyperlink) || t == typeof(Button);
     }
 
     /// <summary>
@@ -57,50 +57,6 @@ namespace WebExtras.Mvc.Core
       string link = urlHelper.RouteUrl(rvd);
 
       return link;
-    }
-
-    /// <summary>
-    ///   Get a HTML field ID based on a member expression. This supports nested member expressions
-    /// </summary>
-    /// <param name="expression">Member lamba expression</param>
-    /// <returns>HTML field ID for member</returns>
-    public static string GetFieldIdFromExpression(MemberExpression expression)
-    {
-      return string.Join("_", GetComponents(expression));
-    }
-
-    /// <summary>
-    ///   Get a HTML field name based on a member expression. This supports nested member expressions
-    /// </summary>
-    /// <param name="expression">Member lamba expression</param>
-    /// <returns>HTML field name for member</returns>
-    public static string GetFieldNameFromExpression(MemberExpression expression)
-    {
-      return string.Join(".", GetComponents(expression));
-    }
-
-    /// <summary>
-    ///   Gets the usable components from the expression. For eg. f.Model.Member
-    ///   will return Model and Member as usable components.
-    /// </summary>
-    /// <param name="expression">Member expression to process</param>
-    /// <returns>
-    ///   A collection of components that can be used to make
-    ///   a field ID or field Name
-    /// </returns>
-    private static IEnumerable<string> GetComponents(MemberExpression expression)
-    {
-      List<string> components = new List<string>();
-      List<string> split = expression.Expression.ToString().Split('.').ToList();
-
-      if (split.Count > 1)
-      {
-        split.RemoveAt(0);
-        components.AddRange(split);
-      }
-
-      components.Add(expression.Member.Name);
-      return components;
     }
   }
 }

@@ -20,6 +20,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using WebExtras.Core;
 using WebExtras.Mvc.Html;
 
 namespace WebExtras.Mvc.Core

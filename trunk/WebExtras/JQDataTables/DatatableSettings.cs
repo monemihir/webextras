@@ -575,26 +575,26 @@ namespace WebExtras.JQDataTables
         aaSorting = sortOptions.Select(f => f.ToArray()).ToArray();
     }
 
-    /// <summary>
-    /// Setup the jQuery dataTables aoColumns variable from the given
-    /// set of columns
-    /// </summary>
-    /// <param name="columns">Datatable columns</param>
-    public void SetupAOColumns(IEnumerable<DatatableColumn> columns)
-    {
-      AOColumn[] cols = columns.Select(c => new AOColumn
-      {
-        sTitle = c.Name,
-        bSortable = c.Sortable,
-        sClass = c.CssClass,
-        sWidth = c.Width.HasValue ? string.Format("{0}%", c.Width) : null,
-        bVisible = c.Visible
-      }).ToArray();
+    ///// <summary>
+    ///// Setup the jQuery dataTables aoColumns variable from the given
+    ///// set of columns
+    ///// </summary>
+    ///// <param name="columns">Datatable columns</param>
+    //public void SetupAOColumns(IEnumerable<DatatableColumn> columns)
+    //{
+    //  AOColumn[] cols = columns.Select(c => new AOColumn
+    //  {
+    //    sTitle = c.Name,
+    //    bSortable = c.Sortable,
+    //    sClass = c.CssClass,
+    //    sWidth = c.Width.HasValue ? string.Format("{0}%", c.Width) : null,
+    //    bVisible = c.Visible
+    //  }).ToArray();
 
-      CheckAOColumnSetup(cols);
+    //  CheckAOColumnSetup(cols);
 
-      aoColumns = cols;
-    }
+    //  aoColumns = cols;
+    //}
 
     /// <summary>
     /// Setup the paging mechanism. <see cref="T:WebExtras.Core.WebExtrasConstants"/>

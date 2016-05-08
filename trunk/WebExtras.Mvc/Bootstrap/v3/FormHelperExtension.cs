@@ -21,6 +21,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Web.Mvc;
 using Newtonsoft.Json;
+using WebExtras.Bootstrap.v3;
 using WebExtras.Core;
 using WebExtras.Mvc.Core;
 using WebExtras.Mvc.Html;
@@ -78,8 +79,8 @@ namespace WebExtras.Mvc.Bootstrap.v3
       if (model.HasValue && model.Value > DateTime.MinValue)
         pickerOptions.defaultDate = model;
 
-      string fieldId = WebExtrasMvcUtil.GetFieldIdFromExpression(exp);
-      string fieldName = WebExtrasMvcUtil.GetFieldNameFromExpression(exp);
+      string fieldId = WebExtrasUtil.GetFieldIdFromExpression(exp);
+      string fieldName = WebExtrasUtil.GetFieldNameFromExpression(exp);
 
       // create the text box
       HtmlElement input = new HtmlElement(EHtmlTag.Input);
@@ -98,9 +99,9 @@ namespace WebExtras.Mvc.Bootstrap.v3
       // create icon
       Italic icons = new Italic();
 
-      if (WebExtrasMvcConstants.FontAwesomeVersion == EFontAwesomeVersion.V4)
+      if (WebExtrasConstants.FontAwesomeVersion == EFontAwesomeVersion.V4)
         icons.AddCssClass("fa fa-calendar");
-      else if (WebExtrasMvcConstants.FontAwesomeVersion == EFontAwesomeVersion.V3)
+      else if (WebExtrasConstants.FontAwesomeVersion == EFontAwesomeVersion.V3)
         icons.AddCssClass("icon-calendar");
       else
         icons.AddCssClass("glyphicon glyphicon-calendar");

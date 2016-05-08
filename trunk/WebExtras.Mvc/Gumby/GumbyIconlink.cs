@@ -16,6 +16,9 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+using WebExtras.Component;
+using WebExtras.Core;
+using WebExtras.Gumby;
 using WebExtras.Mvc.Html;
 
 namespace WebExtras.Mvc.Gumby
@@ -35,9 +38,9 @@ namespace WebExtras.Mvc.Gumby
       base(string.Empty, url, htmlAttributes)
     {
       CSSClasses.Add("icon-only-link");
-      IExtendedHtmlString iconElement = GumbyUtil.CreateIcon(icon);
+      IHtmlComponent iconElement = GumbyUtil.CreateIcon(icon);
 
-      Prepend(iconElement);
+      Prepend(iconElement.ToHtmlElement());
     }
   }
 }

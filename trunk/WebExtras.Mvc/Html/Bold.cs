@@ -17,6 +17,8 @@
 */
 
 using System;
+using WebExtras.Component;
+using WebExtras.Core;
 
 namespace WebExtras.Mvc.Html
 {

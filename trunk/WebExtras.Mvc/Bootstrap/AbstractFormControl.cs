@@ -16,6 +16,8 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 using System.Web.Mvc;
+using WebExtras.Bootstrap;
+using WebExtras.Core;
 using WebExtras.Mvc.Core;
 using WebExtras.Mvc.Html;
 
@@ -57,7 +59,7 @@ namespace WebExtras.Mvc.Bootstrap
     /// <returns>The updated form control</returns>
     public IFormControl<TModel, TValue> AddIcon(EFontAwesomeIcon icon, bool append = true)
     {
-      return CreateAddOn(BootstrapUtil.CreateIcon(icon).ToHtmlString(), append);
+      return CreateAddOn(BootstrapUtil.CreateIcon(icon).ToHtml(), append);
     }
 
     /// <summary>
@@ -92,7 +94,7 @@ namespace WebExtras.Mvc.Bootstrap
     /// <returns>The updated form control</returns>
     private IFormControl<TModel, TValue> CreateAddOn(string data, bool append = true)
     {
-      var e = new HtmlElement(WebExtrasMvcConstants.DefaultTagForTextEncapsulation).AddCssClass("input-group-addon");
+      var e = new HtmlElement(WebExtrasConstants.DefaultTagForTextEncapsulation).AddCssClass("input-group-addon");
       e.InnerHtml = data;
 
       if (append)

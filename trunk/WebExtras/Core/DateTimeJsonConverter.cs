@@ -1,6 +1,6 @@
 ﻿// 
 // This file is part of - WebExtras
-// Copyright (C) 2015 Mihir Mone
+// Copyright (C) 2016 Mihir Mone
 // 
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
@@ -76,8 +76,8 @@ namespace WebExtras.Core
     /// </returns>
     public override bool CanConvert(Type objectType)
     {
-      m_isNullable = typeof (DateTime?) == objectType;
-      return typeof (DateTime) == objectType || m_isNullable;
+      m_isNullable = typeof(DateTime?) == objectType;
+      return typeof(DateTime) == objectType || m_isNullable;
     }
   }
 }

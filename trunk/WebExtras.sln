@@ -82,15 +82,6 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-	GlobalSection(AutomaticVersions) = postSolution
-		AssemblyInfoFilePath = Properties\AssemblyInfo.cs
-		UpdateAssemblyVersion = True
-		UpdateAssemblyFileVersion = True
-		UpdateAssemblyInfoVersion = True
-		AssemblyVersionSettings = None.None.IncrementOnDemand.None
-		AssemblyFileVersionSettings = None.None.IncrementOnDemand.None
-		AssemblyInfoVersionSettings = None.None.IncrementOnDemand.None
-	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = WebExtras.vsmdi
 	EndGlobalSection

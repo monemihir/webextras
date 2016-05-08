@@ -40,7 +40,7 @@ namespace WebExtras.Mvc.Bootstrap
     /// <param name="icon">Icon to be rendered</param>
     /// <param name="htmlAttributes">[Optional] Extra html attributes</param>
     /// <returns>Html element with icon added</returns>
-    /// <exception cref="WebExtras.Mvc.Core.BootstrapVersionException">
+    /// <exception cref="BootstrapVersionException">
     ///   Thrown when a valid Bootstrap version
     ///   is not selected
     /// </exception>
@@ -49,7 +49,7 @@ namespace WebExtras.Mvc.Bootstrap
     {
       List<string> cssClasses = new List<string>();
 
-      switch (WebExtrasMvcConstants.BootstrapVersion)
+      switch (WebExtrasConstants.BootstrapVersion)
       {
         case EBootstrapVersion.V2:
           cssClasses.Add("icon-" + icon.ToString().ToLowerInvariant().Replace("_", "-"));
@@ -74,7 +74,7 @@ namespace WebExtras.Mvc.Bootstrap
     /// <param name="icon">Icon to be rendered</param>
     /// <param name="htmlAttributes">[Optional] Extra html attributes</param>
     /// <returns>Html element with a white icon added</returns>
-    /// <exception cref="WebExtras.Mvc.Core.BootstrapVersionException">
+    /// <exception cref="BootstrapVersionException">
     ///   Thrown when a valid Bootstrap version
     ///   is not selected
     /// </exception>
@@ -83,7 +83,7 @@ namespace WebExtras.Mvc.Bootstrap
     {
       List<string> cssClasses = new List<string>();
 
-      switch (WebExtrasMvcConstants.BootstrapVersion)
+      switch (WebExtrasConstants.BootstrapVersion)
       {
         case EBootstrapVersion.V2:
           cssClasses.Add("icon-white icon-" + icon.ToString().ToLowerInvariant().Replace("_", "-"));
@@ -109,7 +109,7 @@ namespace WebExtras.Mvc.Bootstrap
     /// <param name="size">[Optional] Icon size</param>
     /// <param name="htmlAttributes">[Optional] Extra html attributes</param>
     /// <returns>Html element with icon added</returns>
-    /// <exception cref="WebExtras.Mvc.Core.FontAwesomeVersionException">
+    /// <exception cref="FontAwesomeVersionException">
     ///   Thrown when a valid FontAwesome
     ///   icon library version is not selected
     /// </exception>
@@ -119,9 +119,9 @@ namespace WebExtras.Mvc.Bootstrap
     {
       string prefix = string.Empty;
 
-      if (WebExtrasMvcConstants.FontAwesomeVersion == EFontAwesomeVersion.V3)
+      if (WebExtrasConstants.FontAwesomeVersion == EFontAwesomeVersion.V3)
         prefix = "icon-";
-      else if (WebExtrasMvcConstants.FontAwesomeVersion == EFontAwesomeVersion.V4)
+      else if (WebExtrasConstants.FontAwesomeVersion == EFontAwesomeVersion.V4)
         prefix = "fa fa-";
       else
         throw new FontAwesomeVersionException();

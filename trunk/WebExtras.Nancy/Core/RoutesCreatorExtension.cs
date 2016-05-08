@@ -1,4 +1,21 @@
-﻿using System;
+﻿// 
+// This file is part of - ExpenseLogger application
+// Copyright (C) 2016 Mihir Mone
+// 
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Affero General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+// 
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Affero General Public License for more details.
+// 
+// You should have received a copy of the GNU Affero General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -10,17 +27,21 @@ using Newtonsoft.Json;
 namespace WebExtras.Nancy.Core
 {
   /// <summary>
-  /// Automatically creates routes using reflection
+  ///   Automatically creates routes using reflection
   /// </summary>
   public static class RoutesCreatorExtension
   {
+    private static readonly Type IHasRouteMethodsInterfaceType = typeof(IHasRouteMethods);
+    private static readonly Type NancyModuleType = typeof(NancyModule);
+
     /// <summary>
-    /// Automatically creates routes based on the defined methods.
+    ///   Automatically creates routes based on the defined methods.
     /// </summary>
     /// <param name="module">Current NancyModule</param>
     public static void CreateRoutesFromMethods(this NancyModule module)
     {
-      Type[] validReturnTypes = new[] {
+      Type[] validReturnTypes =
+      {
         typeof(Negotiator),
         typeof(Response)
       };
@@ -33,8 +54,14 @@ namespace WebExtras.Nancy.Core
       if (methods.Length == 0)
         return;
 
+      Type[] interfaces = type.GetInterfaces();
+
       // get all route methods i.e methods returning a view
-      MethodInfo[] routeMethods = methods.Where(m => validReturnTypes.Contains(m.ReturnType) && m.DeclaringType == type).ToArray();
+      MethodInfo[] routeMethods = methods
+        .Where(m => validReturnTypes.Contains(m.ReturnType) &&
+                    interfaces.Contains(IHasRouteMethodsInterfaceType) &&
+                    m.DeclaringType != NancyModuleType)
+        .ToArray();
 
       Dictionary<string, Action<dynamic>> getRoutes = new Dictionary<string, Action<dynamic>>();
       Dictionary<string, Action<dynamic>> postRoutes = new Dictionary<string, Action<dynamic>>();
@@ -46,8 +73,8 @@ namespace WebExtras.Nancy.Core
 
         if (m.GetCustomAttributes(typeof(HttpPostAttribute), false).Length == 1)
           requestType = ERouteType.Post;
-        else if(m.GetCustomAttributes(typeof(HttpDeleteAttribute),false).Length==1)
-          requestType=ERouteType.Delete;
+        else if (m.GetCustomAttributes(typeof(HttpDeleteAttribute), false).Length == 1)
+          requestType = ERouteType.Delete;
 
         RouteAttribute[] routes = (RouteAttribute[])m.GetCustomAttributes(typeof(RouteAttribute), false);
 
@@ -71,7 +98,7 @@ namespace WebExtras.Nancy.Core
     }
 
     /// <summary>
-    /// Creates a route
+    ///   Creates a route
     /// </summary>
     /// <param name="p">Route parameters</param>
     /// <param name="m">Method to be called</param>

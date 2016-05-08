@@ -87,7 +87,6 @@
   <ItemGroup>
     <Compile Include="Core\WebExtrasMvcUtilTest.cs" />
     <Compile Include="GenericTest.cs" />
-    <Compile Include="Html\CssClassesCollectionTest.cs" />
     <Compile Include="Html\ExtendedHtmlStringExtensionTest.cs" />
     <Compile Include="Html\HtmlElementTest.cs" />
     <Compile Include="MockHtmlHelperUtil.cs" />
@@ -99,6 +98,10 @@
     <ProjectReference Include="..\WebExtras.Mvc\WebExtras.Mvc.csproj">
       <Project>{18e73074-cb8e-4f80-b5e8-e81702ee2e68}</Project>
       <Name>WebExtras.Mvc</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebExtras\WebExtras.csproj">
+      <Project>{79881816-8CC9-458B-99F7-BBE3E35AB665}</Project>
+      <Name>WebExtras</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />
