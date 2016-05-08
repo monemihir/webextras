@@ -1,4 +1,4 @@
-// 
+﻿// 
 // This file is part of - WebExtras
 // Copyright (C) 2016 Mihir Mone
 // 
@@ -15,33 +15,46 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-using System;
-using WebExtras.Core;
-
-namespace WebExtras.Component
+namespace WebExtras.Html
 {
   /// <summary>
-  ///   An empty HTML tag
+  ///   Denotes a HTML select list option
   /// </summary>
-  [Serializable]
-  public class EmptyComponent : HtmlComponent
+  public class SelectListOption
   {
     /// <summary>
-    ///   Default constructor
+    ///   Display text
     /// </summary>
-    public EmptyComponent()
-      : base(EHtmlTag.Empty)
+    public string Text { get; set; }
+
+    /// <summary>
+    ///   Option value
+    /// </summary>
+    public string Value { get; set; }
+
+    /// <summary>
+    ///   Whether this select list option is selected
+    /// </summary>
+    public bool Selected { get; set; }
+
+    /// <summary>
+    ///   Constructor
+    /// </summary>
+    public SelectListOption()
     {
-      // nothing to do here
     }
 
     /// <summary>
-    ///   Converts current HTML component as a string
+    ///   Constructor
     /// </summary>
-    /// <returns>Current HTML component as a string</returns>
-    public override string ToHtml()
+    /// <param name="text">Display text</param>
+    /// <param name="value">Option value</param>
+    /// <param name="selected">[Optional] Whether this option is selected</param>
+    public SelectListOption(string text, string value, bool selected = false)
     {
-      return string.Empty;
+      Text = text;
+      Value = value;
+      Selected = selected;
     }
   }
 }

@@ -16,9 +16,9 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using WebExtras.Component;
 using WebExtras.Core;
 using WebExtras.Gumby;
+using WebExtras.Html;
 using WebExtras.Mvc.Html;
 
 namespace WebExtras.Mvc.Gumby

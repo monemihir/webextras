@@ -87,6 +87,7 @@
     <Reference Include="System">
       <Private>False</Private>
     </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core">
       <Private>False</Private>
     </Reference>
@@ -105,10 +106,6 @@
     <Compile Include="Bootstrap\v3\IconOptions.cs" />
     <Compile Include="Bootstrap\v3\PickerOptions.cs" />
     <Compile Include="Bootstrap\v3\PositionOptions.cs" />
-    <Compile Include="Component\EmptyComponent.cs" />
-    <Compile Include="Component\HtmlComponent.cs" />
-    <Compile Include="Component\HtmlComponentList.cs" />
-    <Compile Include="Component\IHtmlComponent.cs" />
     <Compile Include="Core\AssemblyExtensions.cs" />
     <Compile Include="Core\BootstrapVersionException.cs" />
     <Compile Include="Core\CssClassList.cs" />
@@ -151,6 +148,15 @@
     <Compile Include="Core\WebExtrasConstants.cs" />
     <Compile Include="Core\WebExtrasUtil.cs" />
     <Compile Include="Gumby\GumbyUtil.cs" />
+    <Compile Include="Html\AbstractFormComponent.cs" />
+    <Compile Include="Html\EmptyComponent.cs" />
+    <Compile Include="Html\FormComponent.cs" />
+    <Compile Include="Html\HtmlComponent.cs" />
+    <Compile Include="Html\HtmlComponentList.cs" />
+    <Compile Include="Html\IFormComponent.cs" />
+    <Compile Include="Html\IHtmlComponent.cs" />
+    <Compile Include="Html\SelectComponent.cs" />
+    <Compile Include="Html\SelectListOption.cs" />
     <Compile Include="JQDataTables\AASort.cs" />
     <Compile Include="JQDataTables\AOColumn.cs" />
     <Compile Include="JQDataTables\AOColumnAttribute.cs" />

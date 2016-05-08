@@ -1,20 +1,19 @@
-﻿/*
-* This file is part of - WebExtras
-* Copyright (C) 2014 Mihir Mone
-*
-* This program is free software: you can redistribute it and/or modify
-* it under the terms of the GNU Lesser General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU Lesser General Public License for more details.
-*
-* You should have received a copy of the GNU Lesser General Public License
-* along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
+﻿// 
+// This file is part of - ExpenseLogger application
+// Copyright (C) 2016 Mihir Mone
+// 
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Affero General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+// 
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Affero General Public License for more details.
+// 
+// You should have received a copy of the GNU Affero General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 using System;
 using System.Web.Mvc;
@@ -23,47 +22,61 @@ using WebExtras.Core;
 namespace WebExtras.Mvc.Html
 {
   /// <summary>
-  /// Represents an HTML IMG element
+  ///   Represents an HTML IMG element
   /// </summary>
   [Serializable]
   public class Image : HtmlElement
   {
     /// <summary>
-    /// Image location
+    ///   Image location
     /// </summary>
-    public string Src { get { return this["src"]; } set { this["src"] = value; } }
+    public string Src
+    {
+      get { return this["src"]; }
+      set { this["src"] = value; }
+    }
 
     /// <summary>
-    /// Image Alt text
+    ///   Image Alt text
     /// </summary>
-    public string AltText { get { return this["alt"]; } set { this["alt"] = value; } }
+    public string AltText
+    {
+      get { return this["alt"]; }
+      set { this["alt"] = value; }
+    }
 
     /// <summary>
-    /// Image title text
+    ///   Image title text
     /// </summary>
-    public string Title { get { return this["title"]; } set { this["title"] = value; } }
+    public string Title
+    {
+      get { return this["title"]; }
+      set { this["title"] = value; }
+    }
 
     /// <summary>
-    /// Constructor
+    ///   Constructor
     /// </summary>
     /// <param name="href">Image location</param>
     /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
     public Image(string href, object htmlAttributes = null)
       : this(href, "", "", htmlAttributes)
-    { }
+    {
+    }
 
     /// <summary>
-    /// Constructor
+    ///   Constructor
     /// </summary>
     /// <param name="href">Image location</param>
     /// <param name="altText">Image alt text</param>
     /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
     public Image(string href, string altText, object htmlAttributes = null)
       : this(href, altText, "", htmlAttributes)
-    { }
+    {
+    }
 
     /// <summary>
-    /// Constructor
+    ///   Constructor
     /// </summary>
     /// <param name="href">Image location</param>
     /// <param name="altText">Image alt text</param>
@@ -78,8 +91,8 @@ namespace WebExtras.Mvc.Html
     }
 
     /// <summary>
-    /// Converts current hyperlink element to a MVC HTMl string with
-    /// the given tag rendering mode
+    ///   Converts current hyperlink element to a MVC HTMl string with
+    ///   the given tag rendering mode
     /// </summary>
     /// <param name="renderMode">Tag render mode</param>
     /// <returns>MVC HTML string representation of the current hyperlink element</returns>

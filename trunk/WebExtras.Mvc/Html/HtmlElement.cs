@@ -1,18 +1,18 @@
 ﻿// 
-// This file is part of - WebExtras
+// This file is part of - ExpenseLogger application
 // Copyright (C) 2016 Mihir Mone
 // 
 // This program is free software: you can redistribute it and/or modify
-// it under the terms of the GNU Lesser General Public License as published by
+// it under the terms of the GNU Affero General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 // 
 // This program is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU Lesser General Public License for more details.
+// GNU Affero General Public License for more details.
 // 
-// You should have received a copy of the GNU Lesser General Public License
+// You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 using System;
@@ -21,8 +21,8 @@ using System.Linq;
 using System.Web.Mvc;
 using System.Xml;
 using System.Xml.Linq;
-using WebExtras.Component;
 using WebExtras.Core;
+using WebExtras.Html;
 
 namespace WebExtras.Mvc.Html
 {
@@ -62,12 +62,19 @@ namespace WebExtras.Mvc.Html
     /// <summary>
     ///   HTML attribute list for this element
     /// </summary>
-    public IDictionary<string, string> Attributes { get { return m_tag.Attributes; } }
+    public IDictionary<string, string> Attributes
+    {
+      get { return m_tag.Attributes; }
+    }
 
     /// <summary>
     ///   Inner HTML of the element
     /// </summary>
-    public string InnerHtml { get { return m_tag.InnerHtml; } set { m_tag.InnerHtml = value; } }
+    public string InnerHtml
+    {
+      get { return m_tag.InnerHtml; }
+      set { m_tag.InnerHtml = value; }
+    }
 
     /// <summary>
     ///   Underlying HTML component
@@ -77,7 +84,10 @@ namespace WebExtras.Mvc.Html
     /// <summary>
     ///   The HTML tag representing this element
     /// </summary>
-    public EHtmlTag Tag { get { return m_htmlTag; } }
+    public EHtmlTag Tag
+    {
+      get { return m_htmlTag; }
+    }
 
     /// <summary>
     ///   Inner HTML tags to be appended
@@ -163,7 +173,7 @@ namespace WebExtras.Mvc.Html
 
       try
       {
-        attribs = (IDictionary<string, object>) htmlAttributes;
+        attribs = (IDictionary<string, object>)htmlAttributes;
       }
       catch (Exception)
       {
@@ -303,7 +313,10 @@ namespace WebExtras.Mvc.Html
     /// <summary>
     ///   Empty string
     /// </summary>
-    public static IExtendedHtmlString Empty { get { return null; } }
+    public static IExtendedHtmlString Empty
+    {
+      get { return null; }
+    }
 
     #region Parse
 
@@ -334,11 +347,11 @@ namespace WebExtras.Mvc.Html
             element.Name.LocalName.ToUpperInvariant(),
             string.Join(", ", SupportedTags.Select(f => f.ToUpperInvariant()))));
 
-      EHtmlTag tag = (EHtmlTag) Enum.Parse(typeof(EHtmlTag), element.Name.LocalName.ToTitleCase());
+      EHtmlTag tag = (EHtmlTag)Enum.Parse(typeof(EHtmlTag), element.Name.LocalName.ToTitleCase());
 
       // get the attributes of the element as HTML attributes dictionary
       IDictionary<string, object> htmlAttributes = element.Attributes()
-        .ToDictionary(f => f.Name.LocalName.ToLowerInvariant(), v => (object) v.Value);
+        .ToDictionary(f => f.Name.LocalName.ToLowerInvariant(), v => (object)v.Value);
 
       HtmlElement html = new HtmlElement(tag, htmlAttributes);
 

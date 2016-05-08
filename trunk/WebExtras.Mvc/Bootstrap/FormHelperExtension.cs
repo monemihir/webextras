@@ -20,6 +20,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Web.Mvc;
+using WebExtras.Html;
 using WebExtras.Mvc.Html;
 
 namespace WebExtras.Mvc.Bootstrap
@@ -43,9 +44,9 @@ namespace WebExtras.Mvc.Bootstrap
     public static IFormControl<TModel, TValue> FormGroupControlFor<TModel, TValue>(this HtmlHelper<TModel> html,
       Expression<Func<TModel, TValue>> expression, object htmlAttributes = null)
     {
-      FormControl<TModel, TValue> bfc = new FormControl<TModel, TValue>(expression, htmlAttributes);
+      FormComponent<TModel, TValue> bfc = new FormComponent<TModel, TValue>(expression, htmlAttributes);
 
-      return bfc;
+      return new FormControl<TModel, TValue>(bfc);
     }
 
     /// <summary>
@@ -64,12 +65,12 @@ namespace WebExtras.Mvc.Bootstrap
       if (options == null)
         throw new ArgumentNullException("options", "Select list options cannot be null");
 
-      var newOptions = options.Select(f => new SelectListItem {Text = f, Value = f});
+      var newOptions = options.Select(f => new SelectListOption { Text = f, Value = f });
 
-      FormControl<TModel, TValue> bfc = new FormControl<TModel, TValue>(expression, newOptions,
+      FormComponent<TModel, TValue> bfc = new FormComponent<TModel, TValue>(expression, newOptions,
         htmlAttributes);
 
-      return bfc;
+      return new FormControl<TModel, TValue>(bfc);
     }
 
     /// <summary>
@@ -88,11 +89,10 @@ namespace WebExtras.Mvc.Bootstrap
       if (options == null)
         throw new ArgumentNullException("options", "Select list options cannot be null");
 
+      var newOptions = options.Select(f => new SelectListOption(f.Text, f.Value, f.Selected));
+      FormComponent<TModel, TValue> bfc = new FormComponent<TModel, TValue>(expression, newOptions, htmlAttributes);
 
-      FormControl<TModel, TValue> bfc = new FormControl<TModel, TValue>(expression, options,
-        htmlAttributes);
-
-      return bfc;
+      return new FormControl<TModel, TValue>(bfc);
     }
 
     /// <summary>
@@ -109,9 +109,9 @@ namespace WebExtras.Mvc.Bootstrap
     public static IFormControl<TModel, TValue> FormGroupControlFor<TModel, TValue>(this HtmlHelper<TModel> html,
       Expression<Func<TModel, TValue>> expression, int rows, int columns, object htmlAttributes = null)
     {
-      FormControl<TModel, TValue> bfc = new FormControl<TModel, TValue>(expression, rows, columns, htmlAttributes);
+      FormComponent<TModel, TValue> bfc = new FormComponent<TModel, TValue>(expression, rows, columns, htmlAttributes);
 
-      return bfc;
+      return new FormControl<TModel, TValue>(bfc);
     }
 
     #endregion FormGroupControlFor extensions

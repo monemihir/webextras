@@ -40,11 +40,23 @@ namespace WebExtras.Core
 
       NameValueCollection collection = new NameValueCollection();
 
-      foreach (PropertyDescriptor property in TypeDescriptor.GetProperties(anonObject))
-      {
-        object val = property.GetValue(anonObject) ?? string.Empty;
+      bool isDict = (anonObject as IDictionary<string, string>) != null;
 
-        collection.Add(property.Name.Replace('_', '-'), val.ToString());
+      if (isDict)
+      {
+        IDictionary<string, string> dict = (IDictionary<string, string>)anonObject;
+
+        foreach (string key in dict.Keys)
+          collection[key] = dict[key];
+      }
+      else
+      {
+        foreach (PropertyDescriptor property in TypeDescriptor.GetProperties(anonObject))
+        {
+          object val = property.GetValue(anonObject) ?? string.Empty;
+
+          collection.Add(property.Name.Replace('_', '-'), val.ToString());
+        }
       }
 
       return collection;

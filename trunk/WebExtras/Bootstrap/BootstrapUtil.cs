@@ -18,8 +18,8 @@
 
 using System.Collections.Generic;
 using System.Collections.Specialized;
-using WebExtras.Component;
 using WebExtras.Core;
+using WebExtras.Html;
 
 namespace WebExtras.Bootstrap
 {

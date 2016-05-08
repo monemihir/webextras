@@ -21,7 +21,7 @@ using System.Collections.Specialized;
 using System.Linq;
 using WebExtras.Core;
 
-namespace WebExtras.Component
+namespace WebExtras.Html
 {
   /// <summary>
   ///   An abstract HTML component
@@ -74,6 +74,15 @@ namespace WebExtras.Component
     {
       if (htmlAttributes == null)
         return;
+
+      bool isDict = (htmlAttributes as IDictionary<string, string>) != null;
+
+      if (isDict)
+      {
+        Attributes = (IDictionary<string, string>)htmlAttributes;
+
+        return;
+      }
 
       NameValueCollection attribs = WebExtrasUtil.AnonymousObjectToHtmlAttributes(htmlAttributes);
 

@@ -21,18 +21,29 @@ using WebExtras.Html;
 namespace WebExtras.Nancy.Html
 {
   /// <summary>
-  ///   Default implementation of <see cref="IExtendedHtmlString" />
+  ///   A bootstrap form control which allows appending and prepending of elements
   /// </summary>
-  public class ExtendedHtmlString : IExtendedHtmlString
+  public class FormControl<TModel, TValue> : IFormControl<TModel, TValue>
   {
     /// <summary>
     ///   Constructor
     /// </summary>
-    /// <param name="component">A HTML component to initialise with</param>
-    public ExtendedHtmlString(IHtmlComponent component)
+    /// <param name="component">form component to initalise with</param>
+    public FormControl(IFormComponent<TModel, TValue> component)
     {
       Component = component;
     }
+
+    #region Implementation of IFormControl<TModel,TValue>
+
+    /// <summary>
+    ///   Underlying form component
+    /// </summary>
+    public IFormComponent<TModel, TValue> Component { get; private set; }
+
+    #endregion
+
+    #region Implementation of IHtmlString
 
     /// <summary>Returns an HTML-encoded string.</summary>
     /// <returns>An HTML-encoded string.</returns>
@@ -43,9 +54,6 @@ namespace WebExtras.Nancy.Html
       return new NonEncodedHtmlString(html).ToHtmlString();
     }
 
-    /// <summary>
-    ///   Underlying HTML component
-    /// </summary>
-    public IHtmlComponent Component { get; private set; }
+    #endregion
   }
 }

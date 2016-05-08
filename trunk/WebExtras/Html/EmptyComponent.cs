@@ -1,4 +1,4 @@
-﻿// 
+// 
 // This file is part of - WebExtras
 // Copyright (C) 2016 Mihir Mone
 // 
@@ -15,44 +15,33 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-using System.Collections.Generic;
+using System;
 using WebExtras.Core;
 
-namespace WebExtras.Component
+namespace WebExtras.Html
 {
   /// <summary>
-  ///   Represents an <see cref="IHtmlComponent" /> collection
+  ///   An empty HTML tag
   /// </summary>
-  public class HtmlComponentList : List<IHtmlComponent>
+  [Serializable]
+  public class EmptyComponent : HtmlComponent
   {
     /// <summary>
-    ///   Constructor
+    ///   Default constructor
     /// </summary>
-    public HtmlComponentList()
+    public EmptyComponent()
+      : base(EHtmlTag.Empty)
     {
+      // nothing to do here
     }
 
     /// <summary>
-    ///   Constructor
+    ///   Converts current HTML component as a string
     /// </summary>
-    /// <param name="components">A collection of components to initialise with</param>
-    public HtmlComponentList(IEnumerable<IHtmlComponent> components)
+    /// <returns>Current HTML component as a string</returns>
+    public override string ToHtml()
     {
-      AddRange(components);
-    }
-
-    /// <summary>
-    ///   Add given text as a component
-    /// </summary>
-    /// <param name="text">Text to add</param>
-    public void Add(string text)
-    {
-      HtmlComponent c = new HtmlComponent(WebExtrasConstants.DefaultTagForTextEncapsulation)
-      {
-        InnerHtml = text
-      };
-
-      Add(c);
+      return string.Empty;
     }
   }
 }

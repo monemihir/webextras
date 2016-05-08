@@ -21,31 +21,15 @@ using WebExtras.Html;
 namespace WebExtras.Nancy.Html
 {
   /// <summary>
-  ///   Default implementation of <see cref="IExtendedHtmlString" />
+  ///   Generic interface implemented by form control elements
   /// </summary>
-  public class ExtendedHtmlString : IExtendedHtmlString
+  /// <typeparam name="TModel">Type to be scanned</typeparam>
+  /// <typeparam name="TValue">Property to be scanned</typeparam>
+  public interface IFormControl<TModel, TValue> : IHtmlString
   {
     /// <summary>
-    ///   Constructor
+    ///   Underlying form component
     /// </summary>
-    /// <param name="component">A HTML component to initialise with</param>
-    public ExtendedHtmlString(IHtmlComponent component)
-    {
-      Component = component;
-    }
-
-    /// <summary>Returns an HTML-encoded string.</summary>
-    /// <returns>An HTML-encoded string.</returns>
-    public string ToHtmlString()
-    {
-      string html = Component.ToHtml();
-
-      return new NonEncodedHtmlString(html).ToHtmlString();
-    }
-
-    /// <summary>
-    ///   Underlying HTML component
-    /// </summary>
-    public IHtmlComponent Component { get; private set; }
+    IFormComponent<TModel, TValue> Component { get; }
   }
 }

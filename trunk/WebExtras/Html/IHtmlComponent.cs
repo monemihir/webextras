@@ -18,7 +18,7 @@
 using System.Collections.Generic;
 using WebExtras.Core;
 
-namespace WebExtras.Component
+namespace WebExtras.Html
 {
   /// <summary>
   ///   A generic interface implemented by HTML components

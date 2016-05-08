@@ -17,8 +17,8 @@
 */
 
 using WebExtras.Bootstrap;
-using WebExtras.Component;
 using WebExtras.Core;
+using WebExtras.Html;
 using WebExtras.Mvc.Html;
 
 namespace WebExtras.Mvc.Bootstrap
