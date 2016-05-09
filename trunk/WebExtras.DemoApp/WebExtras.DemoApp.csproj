@@ -62,32 +62,42 @@
     <AssemblyInfoVersionSettings>None.None.IncrementOnDemand.None</AssemblyInfoVersionSettings>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AjaxMin, Version=4.48.4489.28432, Culture=neutral, PublicKeyToken=21ef50ce11b5d80f, processorArchitecture=MSIL">
+      <HintPath>..\packages\AjaxMin.4.48.4489.28432\lib\net20\AjaxMin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EcmaScript.NET, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\YUICompressor.NET.2.0.0.0\lib\NET20\EcmaScript.NET.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Iesi.Collections, Version=1.0.1.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <HintPath>..\packages\YUICompressor.NET.2.0.0.0\lib\NET20\Iesi.Collections.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\External\Json.NET\v6.0 R4\net-4.0\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="RazorGenerator.Mvc, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\External\RazorGenerator.Mvc\v2.4.2\RazorGenerator.Mvc.dll</HintPath>
+      <HintPath>..\packages\RazorGenerator.Mvc.2.4.2\lib\net40\RazorGenerator.Mvc.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="SquishIt.Framework">
-      <HintPath>..\External\SquishIt\v0.9.2\SquishIt.Framework.dll</HintPath>
+    <Reference Include="SquishIt.Framework, Version=0.9.8.2, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SquishIt.0.9.8.2\lib\SquishIt.Framework.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="SquishIt.Mvc">
-      <HintPath>..\External\SquishIt\v0.9.2\SquishIt.Mvc.dll</HintPath>
+    <Reference Include="SquishIt.Mvc, Version=0.9.8.2, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SquishIt.Mvc.0.9.8.2\lib\SquishIt.Mvc.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Net.Http, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\External\Microsoft\MVC4\v4.0.0.0\System.Net.Http.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Net.Http.WebRequest, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\External\Microsoft\MVC4\v4.0.0.0\System.Net.Http.WebRequest.dll</HintPath>
-    </Reference>
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions">
       <Private>False</Private>
@@ -96,45 +106,43 @@
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\External\Microsoft\MVC4\v4.0.0.0\System.Web.Helpers.dll</HintPath>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="System.Web.Mvc, Version=4.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\External\Microsoft\MVC4\v4.0.0.0\System.Web.Mvc.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Optimization">
-      <HintPath>..\External\Microsoft\MVC4\v4.0.0.0\System.Web.Optimization.dll</HintPath>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.20710.0\lib\net40\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\External\Microsoft\MVC4\v4.0.0.0\System.Web.Razor.dll</HintPath>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.20710.0\lib\net40\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="System.Web.Routing">
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\External\Microsoft\MVC4\v4.0.0.0\System.Web.WebPages.dll</HintPath>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\External\Microsoft\MVC4\v4.0.0.0\System.Web.WebPages.Deployment.dll</HintPath>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\External\Microsoft\MVC4\v4.0.0.0\System.Web.WebPages.Razor.dll</HintPath>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.Xml.Linq" />
-    <Reference Include="T4MVCExtensions, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\External\T4MVC\v3.14.1\T4MVCExtensions.dll</HintPath>
+    <Reference Include="T4MVCExtensions, Version=3.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\packages\T4MVCExtensions.3.14.0\lib\net40\T4MVCExtensions.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\External\WebActivatorEx\v2.0.3\WebActivatorEx.dll</HintPath>
+      <HintPath>..\packages\WebActivatorEx.2.0.3\lib\net40\WebActivatorEx.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Yahoo.Yui.Compressor, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\YUICompressor.NET.2.0.0.0\lib\NET20\Yahoo.Yui.Compressor.dll</HintPath>
+      <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -1054,6 +1062,7 @@
     <Content Include="Scripts\jquery.flot.curvedlines.js" />
     <Content Include="Scripts\jquery.flot.dashes.js" />
     <Content Include="Scripts\jquery.migrate-1.1.1.min.js" />
+    <Content Include="packages.config" />
     <None Include="T4MVC.tt.settings.xml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
