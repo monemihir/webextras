@@ -16,6 +16,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 using Nancy.ViewEngines.Razor;
+using WebExtras.Core;
 using WebExtras.Html;
 
 namespace WebExtras.Nancy.Html
@@ -31,5 +32,29 @@ namespace WebExtras.Nancy.Html
     ///   Underlying form component
     /// </summary>
     IFormComponent<TModel, TValue> Component { get; }
+
+    /// <summary>
+    ///   Add text addon to the form control
+    /// </summary>
+    /// <param name="text">Text to be added</param>
+    /// <param name="append">[Optional] Whether to append or prepend the addon</param>
+    /// <returns>The updated form control</returns>
+    IFormControl<TModel, TValue> AddText(string text, bool append = true);
+
+    /// <summary>
+    ///   Add icon addon to the form control
+    /// </summary>
+    /// <param name="icon">Icon to be added</param>
+    /// <param name="append">[Optional] Whether to append or prepend the addon</param>
+    /// <returns>The updated form control</returns>
+    IFormControl<TModel, TValue> AddIcon(EFontAwesomeIcon icon, bool append = true);
+
+    /// <summary>
+    ///   Add html addon to the form control
+    /// </summary>
+    /// <param name="html">HTML to be added</param>
+    /// <param name="append">[Optional] Whether to append or prepend the addon</param>
+    /// <returns>The updated form control</returns>
+    IFormControl<TModel, TValue> AddHtml(IExtendedHtmlString html, bool append = true);
   }
 }
