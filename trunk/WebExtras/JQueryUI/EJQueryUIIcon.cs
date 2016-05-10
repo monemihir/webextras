@@ -19,7 +19,7 @@
 
 using System;
 
-namespace WebExtras.Core
+namespace WebExtras.JQueryUI
 {
   /// <summary>
   ///   A collection of all available icons

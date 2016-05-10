@@ -18,7 +18,7 @@
 
 #pragma warning disable 1591
 
-namespace WebExtras.Core
+namespace WebExtras.Gumby
 {
   /// <summary>
   ///   Gumby Theme

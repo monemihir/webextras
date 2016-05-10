@@ -1,20 +1,19 @@
-﻿/*
-* This file is part of - WebExtras
-* Copyright (C) 2014 Mihir Mone
-*
-* This program is free software: you can redistribute it and/or modify
-* it under the terms of the GNU Lesser General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU Lesser General Public License for more details.
-*
-* You should have received a copy of the GNU Lesser General Public License
-* along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
+﻿// 
+// This file is part of - WebExtras
+// Copyright (C) 2016 Mihir Mone
+// 
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Lesser General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+// 
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Lesser General Public License for more details.
+// 
+// You should have received a copy of the GNU Lesser General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WebExtras.Core;
@@ -22,51 +21,52 @@ using WebExtras.Core;
 namespace WebExtras.tests.Core
 {
   /// <summary>
-  /// Test enum
+  ///   Test enum
   /// </summary>
+  [StringValue(typeof(TestStringValueDecider))]
   public enum TestEnum
   {
-    [StringValue("test me")]
-    testvalue,
+    [StringValue("test me")] testvalue,
 
-    [StringValue(typeof(TestStringValueDecider))]
-    customdecider
+    [StringValue(typeof(TestStringValueDecider))] customdecider,
+
+    typeleveldecider
   }
 
   /// <summary>
-  /// Test string value decider
+  ///   Test string value decider
   /// </summary>
-  public class TestStringValueDecider : IStringValueDecider
+  public class TestStringValueDecider : IStringValueDecider<TestEnum>
   {
     /// <summary>
-    /// The string value decider function
+    ///   The string value decider function
     /// </summary>
-    /// <param name="sender">[Optional] Sender object that can contain extra data
-    /// which can then be used to decide the value</param>
+    /// <param name="args">
+    ///   String value decider args
+    /// </param>
     /// <returns>The string value to be used for the enum value</returns>
-    public string Decide(object sender = null)
+    public string Decide(StringValueDeciderArgs<TestEnum> args)
     {
-      if (sender != null)
+      if (args.Sender != null)
+        return args.Sender.ToString() + " " + args.Value;
+      
+      if (args.Value == TestEnum.typeleveldecider)
       {
-        string prefix = sender.ToString();
+        return args.Value + " from type level attribute";
+      }
 
-        return prefix + " custom decider value";
-      }
-      else
-      {
-        return "custom decider value";
-      }
+      return args.Value.ToString();
     }
   }
 
   /// <summary>
-  /// Enum extensions unit tests
+  ///   Enum extensions unit tests
   /// </summary>
   [TestClass]
   public class EnumExtensionsTest
   {
     /// <summary>
-    /// Test that the ToTitlecase method works properly
+    ///   Test that the ToTitlecase method works properly
     /// </summary>
     [TestMethod]
     public void ToTitlecase_Works_Properly()
@@ -79,7 +79,7 @@ namespace WebExtras.tests.Core
     }
 
     /// <summary>
-    /// Test that the GetStringValue method works properly
+    ///   Test that the GetStringValue method works properly
     /// </summary>
     [TestMethod]
     public void GetStringValue_Works_Properly()
@@ -92,23 +92,39 @@ namespace WebExtras.tests.Core
     }
 
     /// <summary>
-    /// Test that the GetStringValue method for an enum value
-    /// with a custom string value decider works as expected 
+    ///   Test that the GetStringValue method for an enum value
+    ///   with a field level custom string value decider works 
+    /// as expected
     /// </summary>
     [TestMethod]
-    public void GetStringValue_With_CustomDecider_Works_Properly()
-    { 
-       // act
+    public void GetStringValue_With_FieldLevel_CustomDecider_Works_Properly()
+    {
+      // act
       string result = TestEnum.customdecider.GetStringValue();
 
       // assert
-      Assert.AreEqual("custom decider value", result);
+      Assert.AreEqual("customdecider", result);
 
       // act
       result = TestEnum.customdecider.GetStringValue("blah blah");
 
       // assert
-      Assert.AreEqual("blah blah custom decider value", result);
+      Assert.AreEqual("blah blah customdecider", result);
+    }
+
+    /// <summary>
+    ///   Test that the GetStringValue method for an enum value
+    ///   with a type level custom string value decider works 
+    /// as expected
+    /// </summary>
+    [TestMethod]
+    public void GetStringValue_With_TypeLevel_CustomDecider_Works_Properly()
+    {
+      // act
+      string result = TestEnum.typeleveldecider.GetStringValue();
+
+      // assert
+      Assert.AreEqual("typeleveldecider from type level attribute", result);
     }
   }
 }

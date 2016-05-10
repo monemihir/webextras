@@ -22,6 +22,7 @@ using System;
 using System.Reflection;
 using System.Web.Mvc;
 using WebExtras.Core;
+using WebExtras.Gumby;
 using WebExtras.Mvc.Core;
 
 namespace WebExtras.DemoApp.Areas.Gumby.Controllers

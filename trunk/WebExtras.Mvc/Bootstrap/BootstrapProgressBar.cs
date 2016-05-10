@@ -19,6 +19,7 @@
 using System;
 using System.Globalization;
 using System.Web.Mvc;
+using WebExtras.Bootstrap;
 using WebExtras.Core;
 using WebExtras.Mvc.Core;
 using WebExtras.Mvc.Html;

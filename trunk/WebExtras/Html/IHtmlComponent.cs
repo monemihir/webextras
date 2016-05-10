@@ -23,7 +23,7 @@ namespace WebExtras.Html
   /// <summary>
   ///   A generic interface implemented by HTML components
   /// </summary>
-  public interface IHtmlComponent
+  public interface IHtmlComponent : IHtmlRenderer
   {
     /// <summary>
     ///   The HTML tag representing this component
@@ -58,11 +58,5 @@ namespace WebExtras.Html
     ///   gets serialized to a HTML string
     /// </summary>
     HtmlComponentList AppendTags { get; }
-
-    /// <summary>
-    ///   Converts current HTML component as a string
-    /// </summary>
-    /// <returns>Current HTML component as a string</returns>
-    string ToHtml();
   }
 }

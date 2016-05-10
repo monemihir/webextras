@@ -15,26 +15,22 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-namespace WebExtras.Core
+
+#pragma warning disable 1591
+
+namespace WebExtras.Gumby
 {
   /// <summary>
-  ///   All available JQuery UI icon types
+  ///   Gumby buttons
   /// </summary>
-  public enum EJQueryUIIconType
+  public enum EGumbyButton
   {
-    /// <summary>
-    ///   Default icon
-    /// </summary>
     Default,
-
-    /// <summary>
-    ///   Highlighted icon
-    /// </summary>
-    [StringValue("ui-highlight")] Highlight,
-
-    /// <summary>
-    ///   Error icon
-    /// </summary>
-    [StringValue("ui-error")] Error
+    Primary,
+    Secondary,
+    Info,
+    Danger,
+    Warning,
+    Success
   }
 }

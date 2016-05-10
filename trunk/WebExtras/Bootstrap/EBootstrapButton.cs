@@ -18,55 +18,52 @@
 #pragma warning disable 1591
 
 using System;
-using WebExtras.Bootstrap;
+using WebExtras.Core;
 
-namespace WebExtras.Core
+namespace WebExtras.Bootstrap
 {
   /// <summary>
   ///   A collection of button display types
   /// </summary>
   [Serializable]
+  [StringValue(typeof(BootstrapButtonStringValueDecider))]
   public enum EBootstrapButton
   {
-    [StringValue("btn btn-default")] Default,
-
-    [StringValue("btn btn-primary")] Primary,
-
-    [StringValue("btn btn-success")] Success,
-
-    [StringValue("btn btn-info")] Info,
-
-    [StringValue("btn btn-warning")] Warning,
+    Default,
+    Primary,
+    Success,
+    Info,
+    Warning,
 
     /// <summary>
     ///   Only available in Bootstrap 2.x
     /// </summary>
-    [StringValue("btn btn-inverse")] Inverse,
+    Inverse,
 
-    [StringValue("btn btn-danger")] Danger,
-
-    [StringValue(typeof(BootstrapLargeButtonStringValue))] Large,
-
-    /// <summary>
-    ///   Only available in Bootstrap 2.x
-    /// </summary>
-    [StringValue("btn-block")] Block,
+    Danger,
+    Large,
 
     /// <summary>
     ///   Only available in Bootstrap 2.x
     /// </summary>
-    [StringValue("btn-mini")] Mini,
+    Block,
 
-    [StringValue(typeof(BootstrapSmallButtonStringValue))] Small,
+    /// <summary>
+    ///   Only available in Bootstrap 2.x
+    /// </summary>
+    Mini,
+
+    Small,
 
     /// <summary>
     ///   Only available in Bootstrap 3.x
     /// </summary>
-    [StringValue("btn-xs")] XSmall,
+    [StringValue("btn-xs")]
+    XSmall,
 
     /// <summary>
     ///   Only available in Bootstrap 3.x
     /// </summary>
-    [StringValue("btn-link")] Link
+    Link
   }
 }

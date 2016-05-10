@@ -17,8 +17,11 @@
 */
 
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Web.Routing;
 using WebExtras.Core;
+using WebExtras.Html;
+using WebExtras.JQueryUI;
 using WebExtras.Mvc.Html;
 
 namespace WebExtras.Mvc.JQueryUI
@@ -36,22 +39,22 @@ namespace WebExtras.Mvc.JQueryUI
     /// <returns>A jQuery UI icon</returns>
     public static IExtendedHtmlString CreateIcon(EJQueryUIIcon icon, object htmlAttributes = null)
     {
-      RouteValueDictionary rvd = new RouteValueDictionary(htmlAttributes);
+      NameValueCollection rvd = WebExtrasUtil.AnonymousObjectToHtmlAttributes(htmlAttributes);
 
       List<string> cssClasses = new List<string>();
       if (rvd.ContainsKey("class"))
       {
-        cssClasses.AddRange(rvd["class"].ToString().Split(' '));
+        cssClasses.AddRange(rvd["class"].Split(' '));
         rvd.Remove("class");
       }
 
       cssClasses.Add("ui-icon");
       cssClasses.Add("ui-icon-" + icon.ToString().ToLowerInvariant().Replace("_", "-"));
-      
-      Italic i = new Italic();
-      i["class"] = string.Join(" ", cssClasses);
 
-      return i;
+      HtmlComponent i = new HtmlComponent(EHtmlTag.I);
+      i.CssClasses.AddRange(cssClasses);
+
+      return i.ToHtmlElement();
     }
   }
 }

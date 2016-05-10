@@ -17,6 +17,7 @@
 */
 
 using WebExtras.Core;
+using WebExtras.JQueryUI;
 using WebExtras.Mvc.Html;
 
 namespace WebExtras.Mvc.JQueryUI

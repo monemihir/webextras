@@ -1,4 +1,5 @@
-﻿using EButton = WebExtras.Core.EButton;
+﻿using WebExtras.Bootstrap;
+using EButton = WebExtras.Core.EButton;
 using EList = WebExtras.Core.EList;
 
 #pragma warning disable 1591

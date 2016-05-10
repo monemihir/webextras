@@ -22,6 +22,7 @@ using WebExtras.Mvc.Bootstrap;
 using WebExtras.Mvc.Html;
 using System;
 using System.Web.Mvc;
+using WebExtras.Bootstrap;
 using WebExtras.Core;
 using WebExtras.DemoApp.Models.Mvc;
 using WebExtras.Mvc.Core;

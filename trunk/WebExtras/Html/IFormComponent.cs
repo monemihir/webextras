@@ -15,6 +15,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+using WebExtras.Bootstrap;
 using WebExtras.Core;
 
 namespace WebExtras.Html
@@ -24,7 +25,7 @@ namespace WebExtras.Html
   /// </summary>
   /// <typeparam name="TModel">Type to be scanned</typeparam>
   /// <typeparam name="TValue">Property to be scanned</typeparam>
-  public interface IFormComponent<TModel, TValue>
+  public interface IFormComponent<TModel, TValue> : IHtmlRenderer
   {
     /// <summary>
     ///   Add text addon to the form control
@@ -49,11 +50,5 @@ namespace WebExtras.Html
     /// <param name="append">[Optional] Whether to append or prepend the addon</param>
     /// <returns>The updated form control</returns>
     IFormComponent<TModel, TValue> AddHtml(IHtmlComponent html, bool append = true);
-
-    /// <summary>
-    ///   Converts current HTML component as a string
-    /// </summary>
-    /// <returns>Current HTML component as a string</returns>
-    string ToHtml();
   }
 }

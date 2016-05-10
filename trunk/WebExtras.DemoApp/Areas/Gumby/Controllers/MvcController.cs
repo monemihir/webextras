@@ -18,6 +18,7 @@
 
 using System;
 using WebExtras.Core;
+using WebExtras.Gumby;
 using WebExtras.Mvc.Bootstrap;
 using WebExtras.Mvc.Gumby;
 using WebExtras.Mvc.Html;

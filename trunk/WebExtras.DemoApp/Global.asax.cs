@@ -20,6 +20,7 @@
 
 using System.Web.Mvc;
 using System.Web.Routing;
+using WebExtras.Bootstrap;
 using WebExtras.Core;
 using WebExtras.DemoApp.App_Start;
 using WebExtras.Mvc.Core;

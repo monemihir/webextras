@@ -20,6 +20,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Linq.Expressions;
+using WebExtras.Bootstrap;
 using WebExtras.Core;
 
 namespace WebExtras.Html

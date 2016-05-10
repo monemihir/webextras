@@ -1,18 +1,18 @@
 ﻿// 
-// This file is part of - ExpenseLogger application
+// This file is part of - WebExtras
 // Copyright (C) 2016 Mihir Mone
 // 
 // This program is free software: you can redistribute it and/or modify
-// it under the terms of the GNU Affero General Public License as published by
+// it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 // 
 // This program is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU Affero General Public License for more details.
+// GNU Lesser General Public License for more details.
 // 
-// You should have received a copy of the GNU Affero General Public License
+// You should have received a copy of the GNU Lesser General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 using System;
@@ -40,64 +40,45 @@ namespace WebExtras.Mvc.Html
     public static readonly List<string> SupportedTags;
 
     /// <summary>
-    ///   Random number generator
-    /// </summary>
-    private static Random m_rand;
-
-    /// <summary>
-    ///   MVC HTML tag builder object
-    /// </summary>
-    private readonly TagBuilder m_tag;
-
-    /// <summary>
-    ///   The HTML tag representing this element
-    /// </summary>
-    private readonly EHtmlTag m_htmlTag;
-
-    /// <summary>
     ///   CSS classes of this element
     /// </summary>
-    public CssClassList CSSClasses { get; private set; }
+    public CssClassList CSSClasses { get { return Component.CssClasses; } }
 
     /// <summary>
     ///   HTML attribute list for this element
     /// </summary>
-    public IDictionary<string, string> Attributes
-    {
-      get { return m_tag.Attributes; }
-    }
+    public IDictionary<string, string> Attributes { get { return Component.Attributes; } }
 
     /// <summary>
     ///   Inner HTML of the element
     /// </summary>
-    public string InnerHtml
-    {
-      get { return m_tag.InnerHtml; }
-      set { m_tag.InnerHtml = value; }
-    }
+    public string InnerHtml { get { return Component.InnerHtml; } set { Component.InnerHtml = value; } }
 
     /// <summary>
     ///   Underlying HTML component
     /// </summary>
-    public IHtmlComponent Component { get; protected set; }
+    public IHtmlComponent Component { get; private set; }
 
     /// <summary>
     ///   The HTML tag representing this element
     /// </summary>
-    public EHtmlTag Tag
-    {
-      get { return m_htmlTag; }
-    }
+    public EHtmlTag Tag { get { return Component.Tag; } }
 
     /// <summary>
     ///   Inner HTML tags to be appended
     /// </summary>
-    public List<IExtendedHtmlString> AppendTags { get; private set; }
+    public List<IExtendedHtmlString> AppendTags
+    {
+      get { return Component.AppendTags.Select(f => f.ToHtmlElement()).ToList<IExtendedHtmlString>(); }
+    }
 
     /// <summary>
     ///   Inner HTML tags to be prepended
     /// </summary>
-    public List<IExtendedHtmlString> PrependTags { get; private set; }
+    public List<IExtendedHtmlString> PrependTags
+    {
+      get { return Component.PrependTags.Select(f => f.ToHtmlElement()).ToList<IExtendedHtmlString>(); }
+    }
 
     #endregion Attributes
 
@@ -125,21 +106,6 @@ namespace WebExtras.Mvc.Html
     public HtmlElement(IHtmlComponent component)
     {
       Component = component;
-
-      m_htmlTag = component.Tag;
-
-      m_tag = new TagBuilder(m_htmlTag.ToString().ToLowerInvariant());
-      m_tag.MergeAttributes(component.Attributes);
-
-      CSSClasses = component.CssClasses;
-
-      InnerHtml = component.InnerHtml;
-
-      AppendTags = new List<IExtendedHtmlString>();
-      AppendTags.AddRange(component.AppendTags.Select(f => f.ToHtmlElement()));
-
-      PrependTags = new List<IExtendedHtmlString>();
-      PrependTags.AddRange(component.PrependTags.Select(f => f.ToHtmlElement()));
     }
 
     /// <summary>
@@ -148,14 +114,7 @@ namespace WebExtras.Mvc.Html
     /// <param name="tag">An HTML tag to initialise this element with</param>
     public HtmlElement(EHtmlTag tag)
     {
-      m_htmlTag = tag;
-
-      m_tag = new TagBuilder(tag.ToString().ToLowerInvariant());
-      m_rand = new Random(DateTime.Now.Millisecond);
-
-      CSSClasses = new CssClassList();
-      AppendTags = new List<IExtendedHtmlString>();
-      PrependTags = new List<IExtendedHtmlString>();
+      Component = new HtmlComponent(tag);
     }
 
     /// <summary>
@@ -164,29 +123,8 @@ namespace WebExtras.Mvc.Html
     /// <param name="tag">An HTML tag to initialise this element with</param>
     /// <param name="htmlAttributes">Extra HTML attributes</param>
     public HtmlElement(EHtmlTag tag, object htmlAttributes)
-      : this(tag)
     {
-      if (htmlAttributes == null)
-        return;
-
-      IDictionary<string, object> attribs = null;
-
-      try
-      {
-        attribs = (IDictionary<string, object>)htmlAttributes;
-      }
-      catch (Exception)
-      {
-        attribs = HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes);
-      }
-
-      if (attribs.ContainsKey("class"))
-      {
-        CSSClasses.Add(attribs["class"].ToString());
-        attribs.Remove("class");
-      }
-
-      m_tag.MergeAttributes(attribs);
+      Component = new HtmlComponent(tag, htmlAttributes);
     }
 
     #endregion Ctors
@@ -198,8 +136,8 @@ namespace WebExtras.Mvc.Html
     /// <returns>Value of attribute if available, else null</returns>
     public string this[string attribute]
     {
-      get { return Attributes.ContainsKey(attribute) ? Attributes[attribute] : string.Empty; }
-      set { Attributes[attribute] = value; }
+      get { return Component.Attributes.ContainsKey(attribute) ? Component.Attributes[attribute] : string.Empty; }
+      set { Component.Attributes[attribute] = value; }
     }
 
     #region Append/Prepend
@@ -210,9 +148,7 @@ namespace WebExtras.Mvc.Html
     /// <param name="text">Text to be added</param>
     public virtual void Append(string text)
     {
-      HtmlElement e = new HtmlElement(WebExtrasConstants.DefaultTagForTextEncapsulation);
-      e.InnerHtml = text;
-      Append(e);
+      Component.AppendTags.Add(text);
     }
 
     /// <summary>
@@ -222,8 +158,7 @@ namespace WebExtras.Mvc.Html
     /// <param name="element">HTML element to be added</param>
     public virtual void Append(IExtendedHtmlString element)
     {
-      if (element != null)
-        AppendTags.AddRange(new[] {element});
+      Component.AppendTags.Add(element.Component);
     }
 
     /// <summary>
@@ -233,7 +168,7 @@ namespace WebExtras.Mvc.Html
     /// <param name="elements">HTML elements to be added</param>
     public virtual void Append(IEnumerable<IExtendedHtmlString> elements)
     {
-      AppendTags.AddRange(elements);
+      Component.AppendTags.AddRange(elements.Select(e => e.Component));
     }
 
     /// <summary>
@@ -242,9 +177,7 @@ namespace WebExtras.Mvc.Html
     /// <param name="text">Text to be added</param>
     public virtual void Prepend(string text)
     {
-      HtmlElement e = new HtmlElement(WebExtrasConstants.DefaultTagForTextEncapsulation);
-      e.InnerHtml = text;
-      Prepend(e);
+      Component.PrependTags.Add(text);
     }
 
     /// <summary>
@@ -254,8 +187,7 @@ namespace WebExtras.Mvc.Html
     /// <param name="element">HTML element to be added</param>
     public virtual void Prepend(IExtendedHtmlString element)
     {
-      if (element != null)
-        PrependTags.AddRange(new[] {element});
+      Component.PrependTags.Add(element.Component);
     }
 
     /// <summary>
@@ -265,7 +197,7 @@ namespace WebExtras.Mvc.Html
     /// <param name="elements">HTML elements to be added</param>
     public virtual void Prepend(IEnumerable<IExtendedHtmlString> elements)
     {
-      PrependTags.AddRange(elements);
+      Component.PrependTags.AddRange(elements.Select(e => e.Component));
     }
 
     #endregion Append/Prepend
@@ -289,21 +221,7 @@ namespace WebExtras.Mvc.Html
     /// <returns>MVC HTML string representation of the current element</returns>
     public virtual string ToHtmlString(TagRenderMode renderMode)
     {
-      if (!Attributes.ContainsKey("id") && WebExtrasConstants.EnableAutoIdGeneration)
-        this["id"] = string.Format("auto_{0}", m_rand.Next(1, 9999));
-
-      if (m_tag.Attributes.ContainsKey("class"))
-        CSSClasses.Add(m_tag.Attributes["class"]);
-
-      if (CSSClasses.Count > 0)
-        this["class"] = string.Join(" ", CSSClasses.Distinct());
-
-      m_tag.InnerHtml =
-        string.Join("", PrependTags.Select(f => f.ToHtmlString())) +
-        m_tag.InnerHtml +
-        string.Join("", AppendTags.Select(f => f.ToHtmlString()));
-
-      string result = m_tag.ToString(renderMode);
+      string result = MvcHtmlString.Create(Component.ToHtml()).ToHtmlString();
 
       return result;
     }
@@ -313,10 +231,7 @@ namespace WebExtras.Mvc.Html
     /// <summary>
     ///   Empty string
     /// </summary>
-    public static IExtendedHtmlString Empty
-    {
-      get { return null; }
-    }
+    public static IExtendedHtmlString Empty { get { return new HtmlElement(EHtmlTag.Empty); } }
 
     #region Parse
 
@@ -347,11 +262,11 @@ namespace WebExtras.Mvc.Html
             element.Name.LocalName.ToUpperInvariant(),
             string.Join(", ", SupportedTags.Select(f => f.ToUpperInvariant()))));
 
-      EHtmlTag tag = (EHtmlTag)Enum.Parse(typeof(EHtmlTag), element.Name.LocalName.ToTitleCase());
+      EHtmlTag tag = (EHtmlTag) Enum.Parse(typeof(EHtmlTag), element.Name.LocalName.ToTitleCase());
 
       // get the attributes of the element as HTML attributes dictionary
       IDictionary<string, object> htmlAttributes = element.Attributes()
-        .ToDictionary(f => f.Name.LocalName.ToLowerInvariant(), v => (object)v.Value);
+        .ToDictionary(f => f.Name.LocalName.ToLowerInvariant(), v => (object) v.Value);
 
       HtmlElement html = new HtmlElement(tag, htmlAttributes);
 

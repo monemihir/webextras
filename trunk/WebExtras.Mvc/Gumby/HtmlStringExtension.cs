@@ -19,6 +19,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using WebExtras.Core;
+using WebExtras.Gumby;
+using WebExtras.Html;
 using WebExtras.Mvc.Core;
 using WebExtras.Mvc.Html;
 
@@ -39,8 +41,13 @@ namespace WebExtras.Mvc.Gumby
     /// <returns>HTML element with icon added</returns>
     public static T AddIcon<T>(this T html, EGumbyIcon icon, bool iconLeft = true) where T : IExtendedHtmlString
     {
-      Italic i = new Italic();
-      i["class"] = "icon-" + icon.ToString().ToLowerInvariant().Replace('_', '-');
+      HtmlComponent ic = new HtmlComponent(EHtmlTag.I);
+      ic.CssClasses.Add(icon.GetStringValue());
+
+      //i["class"] = "icon-" + icon.ToString().ToLowerInvariant().Replace('_', '-');
+
+      // todo: remove unnecessary conversion
+      HtmlElement i = ic.ToHtmlElement();
 
       if (iconLeft)
         html.Prepend(i);

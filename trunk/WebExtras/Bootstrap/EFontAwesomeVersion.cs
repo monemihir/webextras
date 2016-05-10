@@ -15,34 +15,18 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-using System;
 
-namespace WebExtras.Core
+#pragma warning disable 1591
+
+namespace WebExtras.Bootstrap
 {
   /// <summary>
-  ///   All available bootstrap progress bar types
+  ///   Font Awesome version selector
   /// </summary>
-  [Serializable]
-  public enum EBootstrapProgressBar
+  public enum EFontAwesomeVersion
   {
-    /// <summary>
-    ///   A default progress bar
-    /// </summary>
-    Default,
-
-    /// <summary>
-    ///   A success progress bar
-    /// </summary>
-    Success,
-
-    /// <summary>
-    ///   A warning progress bar
-    /// </summary>
-    Warning,
-
-    /// <summary>
-    ///   A danger progress bar
-    /// </summary>
-    Danger
+    None,
+    V3,
+    V4
   }
 }

@@ -15,24 +15,30 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+using WebExtras.Core;
 
-#pragma warning disable 1591
-
-namespace WebExtras.Core
+namespace WebExtras.JQueryUI
 {
   /// <summary>
-  ///   Gumby button styles
+  ///   All available JQuery UI icon types
   /// </summary>
-  public enum EGumbyButtonStyle
+  public enum EJQueryUIIconType
   {
-    Oval,
-    Rounded,
-    Squared,
-    Pill_Left,
-    Pill_Right,
-    Small,
-    Medium,
-    Large,
-    XLarge
+    /// <summary>
+    ///   Default icon
+    /// </summary>
+    Default,
+
+    /// <summary>
+    ///   Highlighted icon
+    /// </summary>
+    [StringValue("ui-highlight")]
+    Highlight,
+
+    /// <summary>
+    ///   Error icon
+    /// </summary>
+    [StringValue("ui-error")]
+    Error
   }
 }
