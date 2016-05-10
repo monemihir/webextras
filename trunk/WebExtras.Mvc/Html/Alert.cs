@@ -19,6 +19,7 @@ using WebExtras.Bootstrap;
 using WebExtras.Core;
 using WebExtras.Gumby;
 using WebExtras.Html;
+using WebExtras.JQueryUI;
 using WebExtras.Mvc.JQueryUI;
 
 namespace WebExtras.Mvc.Html
@@ -156,9 +157,7 @@ namespace WebExtras.Mvc.Html
 
       if (icon != null)
         bc.PrependTags.Add(icon.Component);
-
-      Bold b = new Bold(bc);
-
+      
       if (WebExtrasConstants.CssFramework != ECssFramework.JQueryUI)
       {
         CSSClasses.Add("alert");
@@ -168,7 +167,7 @@ namespace WebExtras.Mvc.Html
         closeBtn["data-dismiss"] = "alert";
 
         Prepend(closeBtn);
-        Prepend(b);
+        Prepend(bc.ToHtmlElement());
         InnerHtml = (!string.IsNullOrWhiteSpace(title) || icon != null)
           ? WebExtrasConstants.HTMLSpace + message
           : message;
@@ -194,7 +193,7 @@ namespace WebExtras.Mvc.Html
         }
 
         div.CSSClasses.Add("ui-corner-all");
-        div.Prepend(b);
+        div.Prepend(bc.ToHtmlElement());
         div.InnerHtml = (!string.IsNullOrWhiteSpace(title) || icon != null)
           ? WebExtrasConstants.HTMLSpace + message
           : message;

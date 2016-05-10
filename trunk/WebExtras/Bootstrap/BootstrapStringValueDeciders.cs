@@ -23,17 +23,16 @@ namespace WebExtras.Bootstrap
   ///   FontAwesome large icon CSS class value decider based on
   ///   the FontAwesome library version
   /// </summary>
-  internal class FontAwesomeLargeIconStringValue : IStringValueDecider
+  internal class FontAwesomeLargeIconStringValue : IStringValueDecider<EFontAwesomeIconSize>
   {
     /// <summary>
     ///   The string value decider function
     /// </summary>
-    /// <param name="sender">
-    ///   [Optional] Sender object that can contain extra data
-    ///   which can then be used to decide the value
+    /// <param name="args">
+    ///   String value decider args
     /// </param>
     /// <returns>The string value to be used for the enum value</returns>
-    public string Decide(object sender = null)
+    public string Decide(StringValueDeciderArgs<EFontAwesomeIconSize> args)
     {
       string css;
 
@@ -54,70 +53,69 @@ namespace WebExtras.Bootstrap
   }
 
   /// <summary>
-  ///   Bootstrap large button CSS class value decider based on
-  ///   the Bootstrap version decider
+  /// The string value decider for a bootstrap button
   /// </summary>
-  internal class BootstrapLargeButtonStringValue : IStringValueDecider
+  internal class BootstrapButtonStringValueDecider : IStringValueDecider<EBootstrapButton>
   {
     /// <summary>
     ///   The string value decider function
     /// </summary>
-    /// <param name="sender">
-    ///   [Optional] Sender object that can contain extra data
-    ///   which can then be used to decide the value
+    /// <param name="args">
+    ///   String value decider args
     /// </param>
     /// <returns>The string value to be used for the enum value</returns>
-    public string Decide(object sender = null)
+    public string Decide(StringValueDeciderArgs<EBootstrapButton> args)
     {
-      string css;
+      if (WebExtrasConstants.BootstrapVersion == EBootstrapVersion.None)
+        throw new BootstrapVersionException();
 
-      switch (WebExtrasConstants.BootstrapVersion)
-      {
-        case EBootstrapVersion.None:
-          throw new BootstrapVersionException();
-        case EBootstrapVersion.V2:
-          css = "btn-large";
-          break;
-        default:
-          css = "btn-lg";
-          break;
-      }
+      string iconName = "btn-" + args.Value.ToString().ToLowerInvariant();
 
-      return css;
+      if (WebExtrasConstants.BootstrapVersion == EBootstrapVersion.V3 &&
+        args.Value == EBootstrapButton.Large)
+        iconName = "btn-lg";
+
+      if (WebExtrasConstants.BootstrapVersion == EBootstrapVersion.V3 &&
+        args.Value == EBootstrapButton.Small)
+        iconName = "btn-sm";
+
+      string value = "btn " + iconName;
+
+      return value;
     }
   }
 
   /// <summary>
-  ///   Bootstrap small button CSS class value decider based on
-  ///   the Bootstrap version decider
+  /// The string value decider for a bootstrap icon
   /// </summary>
-  internal class BootstrapSmallButtonStringValue : IStringValueDecider
+  internal class BootstrapIconStringValueDecider : IStringValueDecider<EBootstrapIcon>
   {
     /// <summary>
     ///   The string value decider function
     /// </summary>
-    /// <param name="sender">
+    /// <param name="args">
     ///   [Optional] Sender object that can contain extra data
     ///   which can then be used to decide the value
     /// </param>
     /// <returns>The string value to be used for the enum value</returns>
-    public string Decide(object sender = null)
+    public string Decide(StringValueDeciderArgs<EBootstrapIcon> args)
     {
-      string css;
+      string iconName = args.Value.ToString().ToLowerInvariant().Replace("_", "-");
 
+      string value;
       switch (WebExtrasConstants.BootstrapVersion)
       {
-        case EBootstrapVersion.None:
-          throw new BootstrapVersionException();
         case EBootstrapVersion.V2:
-          css = "btn-small";
+          value = "icon-" + iconName;
+          break;
+        case EBootstrapVersion.V3:
+          value = "glyphicon glyphicon-" + iconName;
           break;
         default:
-          css = "btn-sm";
-          break;
+          throw new BootstrapVersionException();
       }
 
-      return css;
+      return value;
     }
   }
 }

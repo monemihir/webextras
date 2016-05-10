@@ -18,19 +18,15 @@
 
 #pragma warning disable 1591
 
-namespace WebExtras.Core
+namespace WebExtras.Bootstrap
 {
   /// <summary>
-  ///   Gumby buttons
+  ///   Bootstrap version selector
   /// </summary>
-  public enum EGumbyButton
+  public enum EBootstrapVersion
   {
-    Default,
-    Primary,
-    Secondary,
-    Info,
-    Danger,
-    Warning,
-    Success
+    None,
+    V2,
+    V3
   }
 }

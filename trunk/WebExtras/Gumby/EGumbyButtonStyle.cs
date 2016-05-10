@@ -18,15 +18,21 @@
 
 #pragma warning disable 1591
 
-namespace WebExtras.Core
+namespace WebExtras.Gumby
 {
   /// <summary>
-  ///   Font Awesome version selector
+  ///   Gumby button styles
   /// </summary>
-  public enum EFontAwesomeVersion
+  public enum EGumbyButtonStyle
   {
-    None,
-    V3,
-    V4
+    Oval,
+    Rounded,
+    Squared,
+    Pill_Left,
+    Pill_Right,
+    Small,
+    Medium,
+    Large,
+    XLarge
   }
 }

@@ -19,7 +19,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using WebExtras.Bootstrap;
 using WebExtras.Core;
+using WebExtras.Html;
 using WebExtras.Mvc.Core;
 using WebExtras.Mvc.Html;
 
@@ -47,21 +49,21 @@ namespace WebExtras.Mvc.Bootstrap
     public static T AddIcon<T>(this T html, EBootstrapIcon icon, object htmlAttributes = null)
       where T : IExtendedHtmlString
     {
-      List<string> cssClasses = new List<string>();
+      //List<string> cssClasses = new List<string>();
 
-      switch (WebExtrasConstants.BootstrapVersion)
-      {
-        case EBootstrapVersion.V2:
-          cssClasses.Add("icon-" + icon.ToString().ToLowerInvariant().Replace("_", "-"));
-          break;
-        case EBootstrapVersion.V3:
-          cssClasses.Add("glyphicon glyphicon-" + icon.ToString().ToLowerInvariant().Replace("_", "-"));
-          break;
-        default:
-          throw new BootstrapVersionException();
-      }
+      //switch (WebExtrasConstants.BootstrapVersion)
+      //{
+      //  case EBootstrapVersion.V2:
+      //    cssClasses.Add("icon-" + icon.ToString().ToLowerInvariant().Replace("_", "-"));
+      //    break;
+      //  case EBootstrapVersion.V3:
+      //    cssClasses.Add("glyphicon glyphicon-" + icon.ToString().ToLowerInvariant().Replace("_", "-"));
+      //    break;
+      //  default:
+      //    throw new BootstrapVersionException();
+      //}
 
-      html = AddIcon(html, cssClasses, htmlAttributes);
+      html = AddIcon(html, new[] { icon.GetStringValue() }, htmlAttributes);
 
       return html;
     }
@@ -81,12 +83,9 @@ namespace WebExtras.Mvc.Bootstrap
     public static T AddWhiteIcon<T>(this T html, EBootstrapIcon icon, object htmlAttributes = null)
       where T : IExtendedHtmlString
     {
-      List<string> cssClasses = new List<string>();
-
       switch (WebExtrasConstants.BootstrapVersion)
       {
         case EBootstrapVersion.V2:
-          cssClasses.Add("icon-white icon-" + icon.ToString().ToLowerInvariant().Replace("_", "-"));
           break;
         case EBootstrapVersion.V3:
           throw new InvalidOperationException(
@@ -95,7 +94,7 @@ namespace WebExtras.Mvc.Bootstrap
           throw new BootstrapVersionException();
       }
 
-      html = AddIcon(html, cssClasses, htmlAttributes);
+      html = AddIcon(html, new[] { "icon-white " + icon.GetStringValue() } , htmlAttributes);
 
       return html;
     }
@@ -160,13 +159,14 @@ namespace WebExtras.Mvc.Bootstrap
         rvd.Remove("class");
       }
 
-      Italic i = new Italic();
-      i["class"] = string.Join(" ", finalClasses);
+      HtmlComponent i = new HtmlComponent(EHtmlTag.I);
+      i.CssClasses.AddRange(finalClasses);
 
       foreach (string key in rvd.Keys)
         i.Attributes[key] = rvd[key].ToString();
 
-      html.Prepend(i);
+      // TODO: remove unnecessary conversion
+      html.Prepend(i.ToHtmlElement());
 
       if (html.Attributes.ContainsKey("style"))
         html.Attributes["style"] += ";text-decoration:none";

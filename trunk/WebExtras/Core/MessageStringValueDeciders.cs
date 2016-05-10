@@ -15,22 +15,24 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+using WebExtras.Bootstrap;
+using WebExtras.Gumby;
+
 namespace WebExtras.Core
 {
   /// <summary>
   ///   Success message string value decider
   /// </summary>
-  internal class MessageSuccessStringValue : IStringValueDecider
+  internal class MessageSuccessStringValue : IStringValueDecider<EMessage>
   {
     /// <summary>
     ///   The string value decider function
     /// </summary>
-    /// <param name="sender">
-    ///   [Optional] Sender object that can contain extra data
-    ///   which can then be used to decide the value
+    /// <param name="args">
+    ///   String value decider args
     /// </param>
     /// <returns>The string value to be used for the enum value</returns>
-    public string Decide(object sender = null)
+    public string Decide(StringValueDeciderArgs<EMessage> args)
     {
       string css = string.Empty;
 
@@ -63,17 +65,16 @@ namespace WebExtras.Core
   /// <summary>
   ///   Error message string value decider
   /// </summary>
-  internal class MessageErrorStringValue : IStringValueDecider
+  internal class MessageErrorStringValue : IStringValueDecider<EMessage>
   {
     /// <summary>
     ///   The string value decider function
     /// </summary>
-    /// <param name="sender">
-    ///   [Optional] Sender object that can contain extra data
-    ///   which can then be used to decide the value
+    /// <param name="args">
+    ///   String value decider args
     /// </param>
     /// <returns>The string value to be used for the enum value</returns>
-    public string Decide(object sender = null)
+    public string Decide(StringValueDeciderArgs<EMessage> args)
     {
       string css = string.Empty;
 
@@ -110,17 +111,16 @@ namespace WebExtras.Core
   /// <summary>
   ///   Warning message string value decider
   /// </summary>
-  internal class MessageWarningStringValue : IStringValueDecider
+  internal class MessageWarningStringValue : IStringValueDecider<EMessage>
   {
     /// <summary>
     ///   The string value decider function
     /// </summary>
-    /// <param name="sender">
-    ///   [Optional] Sender object that can contain extra data
-    ///   which can then be used to decide the value
+    /// <param name="args">
+    ///   String value decider args
     /// </param>
     /// <returns>The string value to be used for the enum value</returns>
-    public string Decide(object sender = null)
+    public string Decide(StringValueDeciderArgs<EMessage> args)
     {
       string css = string.Empty;
 
@@ -153,17 +153,16 @@ namespace WebExtras.Core
   /// <summary>
   ///   Warning message string value decider
   /// </summary>
-  internal class MessageInfoStringValue : IStringValueDecider
+  internal class MessageInfoStringValue : IStringValueDecider<EMessage>
   {
     /// <summary>
     ///   The string value decider function
     /// </summary>
-    /// <param name="sender">
-    ///   [Optional] Sender object that can contain extra data
-    ///   which can then be used to decide the value
+    /// <param name="args">
+    ///   String value decider args
     /// </param>
     /// <returns>The string value to be used for the enum value</returns>
-    public string Decide(object sender = null)
+    public string Decide(StringValueDeciderArgs<EMessage> args)
     {
       string css = string.Empty;
 

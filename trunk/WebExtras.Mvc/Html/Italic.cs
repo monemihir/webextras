@@ -24,6 +24,7 @@ namespace WebExtras.Mvc.Html
   ///   Represents an HTML I element
   /// </summary>
   [Serializable]
+  [Obsolete]
   public class Italic : HtmlElement
   {
     /// <summary>

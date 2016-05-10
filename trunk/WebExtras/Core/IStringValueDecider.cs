@@ -21,16 +21,15 @@ namespace WebExtras.Core
   ///   A generic interface used to decide the StringValue of an enum value
   ///   at run time
   /// </summary>
-  public interface IStringValueDecider
+  public interface IStringValueDecider<T>
   {
     /// <summary>
     ///   The string value decider function
     /// </summary>
-    /// <param name="sender">
-    ///   [Optional] Sender object that can contain extra data
-    ///   which can then be used to decide the value
+    /// <param name="args">
+    ///   String value decider args
     /// </param>
     /// <returns>The string value to be used for the enum value</returns>
-    string Decide(object sender = null);
+    string Decide(StringValueDeciderArgs<T> args);
   }
 }

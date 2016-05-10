@@ -16,6 +16,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 using System;
+using System.Linq;
 
 namespace WebExtras.Core
 {
@@ -24,9 +25,14 @@ namespace WebExtras.Core
   ///   to resolve to STRING rather than the default INT
   /// </summary>
   [Serializable]
-  [AttributeUsage(AttributeTargets.Field)]
+  [AttributeUsage(AttributeTargets.Field | AttributeTargets.Enum)]
   public class StringValueAttribute : Attribute
   {
+    /// <summary>
+    ///   The string value decider type non templated name
+    /// </summary>
+    private const string RefTypeNonTemplatedName = "WebExtras.Core.IStringValueDecider";
+
     /// <summary>
     ///   String value
     /// </summary>
@@ -62,7 +68,7 @@ namespace WebExtras.Core
     /// </summary>
     /// <param name="t">
     ///   Decide the string value based on the given type. The given type MUST
-    ///   implement the <see cref="WebExtras.Core.IStringValueDecider" /> interface and have a
+    ///   implement the <see cref="T:IStringValueDecider" /> interface and have a
     ///   default parameterless constructor
     /// </param>
     /// <exception cref="System.InvalidOperationException">
@@ -71,7 +77,9 @@ namespace WebExtras.Core
     /// </exception>
     public StringValueAttribute(Type t)
     {
-      if (!typeof(IStringValueDecider).IsAssignableFrom(t))
+      bool isValid = t.GetInterfaces().Count(f => f.FullName.StartsWith(RefTypeNonTemplatedName)) == 1;
+
+      if (!isValid)
         throw new InvalidOperationException("The type " + t.FullName +
                                             " does not implement WebExtras.Core.IStringValueDecider");
 

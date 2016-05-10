@@ -16,6 +16,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 using Nancy.ViewEngines.Razor;
+using WebExtras.Bootstrap;
 using WebExtras.Core;
 using WebExtras.Html;
 

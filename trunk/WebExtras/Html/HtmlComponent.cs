@@ -60,13 +60,9 @@ namespace WebExtras.Html
     /// </summary>
     /// <param name="tag">The HTML tag to initialise with</param>
     public HtmlComponent(EHtmlTag tag)
+      : this(tag, null)
     {
-      Tag = tag;
-      Attributes = new Dictionary<string, string>();
-      CssClasses = new CssClassList();
-
-      AppendTags = new HtmlComponentList();
-      PrependTags = new HtmlComponentList();
+      // nothing to do here
     }
 
     /// <summary>
@@ -75,8 +71,14 @@ namespace WebExtras.Html
     /// <param name="tag">An HTML tag to initialise this element with</param>
     /// <param name="htmlAttributes">Extra HTML attributes</param>
     public HtmlComponent(EHtmlTag tag, object htmlAttributes)
-      : this(tag)
     {
+      Tag = tag;
+      Attributes = new Dictionary<string, string>();
+      CssClasses = new CssClassList();
+
+      AppendTags = new HtmlComponentList();
+      PrependTags = new HtmlComponentList();
+
       if (htmlAttributes == null)
         return;
 

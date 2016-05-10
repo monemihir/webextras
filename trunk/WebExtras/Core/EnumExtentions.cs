@@ -16,7 +16,9 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 using System;
+using System.ComponentModel;
 using System.Globalization;
+using System.Linq;
 using System.Reflection;
 
 namespace WebExtras.Core
@@ -38,7 +40,8 @@ namespace WebExtras.Core
 
     /// <summary>
     ///   Gets the Enum value's string value which is decorated by using
-    ///   StringValue attribute
+    ///   StringValue attribute. <see cref="StringValueAttribute"/> placed
+    /// at an individual Enum value supersedes one placed at Enum level
     /// </summary>
     /// <param name="value">Enum value to be checked</param>
     /// <param name="sender">
@@ -48,27 +51,42 @@ namespace WebExtras.Core
     /// <returns>Associated string value, else null</returns>
     public static string GetStringValue(this Enum value, object sender = null)
     {
-      string output = null;
-      Type type = value.GetType();
-      FieldInfo fi = type.GetField(value.ToString());
-      StringValueAttribute[] attrs =
-        (StringValueAttribute[]) fi.GetCustomAttributes(typeof(StringValueAttribute), false);
+      string output;
+      Type enumType = value.GetType();
+
+      StringValueAttribute[] attrs = enumType.GetCustomAttributes<StringValueAttribute>(false).ToArray();
+      
+      FieldInfo fi = enumType.GetField(value.ToString());
+      StringValueAttribute[] fieldAttrs = fi.GetCustomAttributes<StringValueAttribute>(false).ToArray();
+
+      // type level attributes superseded by field level attributes
+      attrs = fieldAttrs.Length > 0 ? fieldAttrs : attrs;
 
       if (attrs.Length > 0)
       {
         if (attrs[0].HasCustomDecider)
         {
-          var obj = Activator.CreateInstance(attrs[0].ValueDeciderType);
+          // create the value decider args instance
+          Type valueDeciderArgsBaseType = typeof(StringValueDeciderArgs<>);
+          Type[] templateTypeArgs = { enumType };
 
-          MethodInfo decideMethod = obj.GetType().GetMethod("Decide", new[] {typeof(object)});
+          Type argsType = valueDeciderArgsBaseType.MakeGenericType(templateTypeArgs);
+          object args = Activator.CreateInstance(argsType, new[] { value, sender });
+          
+          // create value decider instance
+          object obj = Activator.CreateInstance(attrs[0].ValueDeciderType);
 
-          output = (string) decideMethod.Invoke(obj, new[] {sender});
+          MethodInfo decideMethod = obj.GetType().GetMethod("Decide", new[] { argsType });
+
+          output = (string)decideMethod.Invoke(obj, new[] { args });
         }
         else
         {
           output = attrs[0].Value;
         }
       }
+      else
+        throw new InvalidUsageException("Cannot have multiple decorations of [StringValue] attribute");
 
       return output;
     }

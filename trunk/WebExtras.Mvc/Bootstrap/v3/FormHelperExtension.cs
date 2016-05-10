@@ -21,8 +21,10 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Web.Mvc;
 using Newtonsoft.Json;
+using WebExtras.Bootstrap;
 using WebExtras.Bootstrap.v3;
 using WebExtras.Core;
+using WebExtras.Html;
 using WebExtras.Mvc.Core;
 using WebExtras.Mvc.Html;
 
@@ -97,19 +99,21 @@ namespace WebExtras.Mvc.Bootstrap.v3
         input.Attributes["class"] = "form-control";
 
       // create icon
-      Italic icons = new Italic();
-
+      
+      HtmlComponent icon = new HtmlComponent(EHtmlTag.I);
       if (WebExtrasConstants.FontAwesomeVersion == EFontAwesomeVersion.V4)
-        icons.AddCssClass("fa fa-calendar");
+        icon.CssClasses.Add("fa fa-calendar");
       else if (WebExtrasConstants.FontAwesomeVersion == EFontAwesomeVersion.V3)
-        icons.AddCssClass("icon-calendar");
+        icon.CssClasses.Add("icon-calendar");
       else
-        icons.AddCssClass("glyphicon glyphicon-calendar");
-
+        icon.CssClasses.Add("glyphicon glyphicon-calendar");
+      
       // create addon
       Span addOn = new Span();
-      addOn.AddCssClass("input-group-addon");
-      addOn.Append(icons);
+      addOn.CSSClasses.Add("input-group-addon");
+
+      // TODO: remove unnecessary conversion
+      addOn.Append(icon.ToHtmlElement());
 
       Div control = new Div();
       control.Attributes["id"] = fieldId;

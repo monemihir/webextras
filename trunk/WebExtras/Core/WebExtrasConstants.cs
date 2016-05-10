@@ -16,6 +16,8 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 using Newtonsoft.Json;
+using WebExtras.Bootstrap;
+using WebExtras.Gumby;
 using WebExtras.JQDataTables;
 
 namespace WebExtras.Core

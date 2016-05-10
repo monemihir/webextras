@@ -21,6 +21,7 @@
 using System;
 using System.Reflection;
 using System.Web.Mvc;
+using WebExtras.Bootstrap;
 using WebExtras.Core;
 using WebExtras.Mvc.Core;
 

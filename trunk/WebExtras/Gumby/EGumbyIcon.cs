@@ -19,7 +19,7 @@
 
 using System;
 
-namespace WebExtras.Core
+namespace WebExtras.Gumby
 {
   /// <summary>
   ///   A collection of all available icons

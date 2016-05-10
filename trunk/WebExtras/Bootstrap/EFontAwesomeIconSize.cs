@@ -15,11 +15,11 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-using WebExtras.Bootstrap;
+using WebExtras.Core;
 
 #pragma warning disable 1591
 
-namespace WebExtras.Core
+namespace WebExtras.Bootstrap
 {
   /// <summary>
   ///   Available icon sizes for the Font-Awesome icon library

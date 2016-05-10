@@ -15,34 +15,33 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-using System;
-
 namespace WebExtras.Core
 {
   /// <summary>
-  ///   Types of bootstrap navigation bars available
+  ///   String value decider arguments
   /// </summary>
-  [Serializable]
-  public enum EBootstrapNavbar
+  /// <typeparam name="T">Type of current value</typeparam>
+  public class StringValueDeciderArgs<T>
   {
     /// <summary>
-    ///   Regular navigation bar
+    ///   Current value
     /// </summary>
-    [StringValue("navbar navbar-default")] Normal,
+    public T Value { get; private set; }
 
     /// <summary>
-    ///   Navigation bar fixed at top of the viewport
+    ///   Sender object
     /// </summary>
-    [StringValue("navbar-fixed-top")] FixedTop,
+    public object Sender { get; private set; }
 
     /// <summary>
-    ///   Navigation bar fixed at bottom of the viewport
+    ///   Constructor
     /// </summary>
-    [StringValue("navbar-fixed-bottom")] FixedBottom,
-
-    /// <summary>
-    ///   Navigation bar fixed at top of the page
-    /// </summary>
-    [StringValue("navbar-static-top")] StaticTop
+    /// <param name="value">Current value</param>
+    /// <param name="sender">Sender object</param>
+    public StringValueDeciderArgs(T value, object sender)
+    {
+      Value = value;
+      Sender = sender;
+    }
   }
 }
