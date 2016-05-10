@@ -97,11 +97,8 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\External\Microsoft\MVC5.2.3\System.Web.Http.dll</HintPath>
-    </Reference>
     <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.30506.0\lib\net40\System.Web.Razor.dll</HintPath>
       <Private>True</Private>
@@ -118,7 +115,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bootstrap\FormHelperExtension.cs" />
-    <Compile Include="Core\ERouteType.cs" />
     <Compile Include="Core\HtmlHelpersExtension.cs" />
     <Compile Include="Core\IHasRouteMethods.cs" />
     <Compile Include="Core\RoutesCreatorExtension.cs" />
@@ -127,6 +123,12 @@
     <Compile Include="Html\FormControl.cs" />
     <Compile Include="Html\IExtendedHtmlString.cs" />
     <Compile Include="Html\IFormControl.cs" />
+    <Compile Include="Http\AbstractRouteAttribute.cs" />
+    <Compile Include="Http\DeleteRouteAttribute.cs" />
+    <Compile Include="Http\EHttpRoute.cs" />
+    <Compile Include="Http\GetRouteAttribute.cs" />
+    <Compile Include="Http\PostRouteAttribute.cs" />
+    <Compile Include="Http\RouteException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SquishIt\CSSBundleExtensions.cs" />
     <Compile Include="SquishIt\JavaScriptBundleExtensions.cs" />

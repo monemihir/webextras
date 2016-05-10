@@ -15,25 +15,19 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-namespace WebExtras.Nancy.Html
+namespace WebExtras.Nancy.Http
 {
-  /// <summary>
-  ///   Generic extension for an extended html string
-  /// </summary>
-  public static class ExtendedHtmlStringExtension
-  {
-    /// <summary>
-    ///   Adds given CSS class(es) to the current HTML element
-    /// </summary>
-    /// <param name="html">HTML element to add class to</param>
-    /// <param name="css">CSS class(es) to be added</param>
-    /// <returns>Current HTML element with classes added</returns>
-    public static T AddCssClass<T>(this T html, string css) where T : IExtendedHtmlString
-    {
-      if (!string.IsNullOrWhiteSpace(css))
-        html.Component.CssClasses.AddRange(css.Trim().Split(' '));
+#pragma warning disable 1591
 
-      return html;
-    }
+  /// <summary>
+  ///   All known route types that can be handled
+  /// </summary>
+  public enum EHttpRoute
+  {
+    Get,
+    Post,
+    Delete
   }
+
+#pragma warning restore 1591
 }

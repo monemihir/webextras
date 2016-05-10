@@ -15,25 +15,35 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-namespace WebExtras.Nancy.Html
+using System;
+
+namespace WebExtras.Nancy.Http
 {
   /// <summary>
-  ///   Generic extension for an extended html string
+  ///   An abstract Nancy route
   /// </summary>
-  public static class ExtendedHtmlStringExtension
+  [AttributeUsage(AttributeTargets.Method)]
+  public abstract class AbstractRouteAttribute : Attribute
   {
     /// <summary>
-    ///   Adds given CSS class(es) to the current HTML element
+    ///   Route path
     /// </summary>
-    /// <param name="html">HTML element to add class to</param>
-    /// <param name="css">CSS class(es) to be added</param>
-    /// <returns>Current HTML element with classes added</returns>
-    public static T AddCssClass<T>(this T html, string css) where T : IExtendedHtmlString
-    {
-      if (!string.IsNullOrWhiteSpace(css))
-        html.Component.CssClasses.AddRange(css.Trim().Split(' '));
+    public string RoutePath { get; private set; }
 
-      return html;
+    /// <summary>
+    ///   HTTP request type
+    /// </summary>
+    public EHttpRoute RequestType { get; private set; }
+
+    /// <summary>
+    ///   Constructor
+    /// </summary>
+    /// <param name="routePath">Route path</param>
+    /// <param name="requestType">Request type</param>
+    protected AbstractRouteAttribute(string routePath, EHttpRoute requestType)
+    {
+      RoutePath = routePath;
+      RequestType = requestType;
     }
   }
 }

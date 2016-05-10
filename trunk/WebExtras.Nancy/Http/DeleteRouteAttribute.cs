@@ -15,25 +15,21 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-namespace WebExtras.Nancy.Html
+namespace WebExtras.Nancy.Http
 {
   /// <summary>
-  ///   Generic extension for an extended html string
+  ///   A HTTP DELETE route
   /// </summary>
-  public static class ExtendedHtmlStringExtension
+  public class DeleteRouteAttribute : AbstractRouteAttribute
   {
     /// <summary>
-    ///   Adds given CSS class(es) to the current HTML element
+    ///   Constructor
     /// </summary>
-    /// <param name="html">HTML element to add class to</param>
-    /// <param name="css">CSS class(es) to be added</param>
-    /// <returns>Current HTML element with classes added</returns>
-    public static T AddCssClass<T>(this T html, string css) where T : IExtendedHtmlString
+    /// <param name="routePath">Route path</param>
+    public DeleteRouteAttribute(string routePath)
+      : base(routePath, EHttpRoute.Delete)
     {
-      if (!string.IsNullOrWhiteSpace(css))
-        html.Component.CssClasses.AddRange(css.Trim().Split(' '));
-
-      return html;
+      // nothing to do here
     }
   }
 }

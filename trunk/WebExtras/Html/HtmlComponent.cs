@@ -33,6 +33,11 @@ namespace WebExtras.Html
     /// </summary>
     public static readonly List<string> SupportedTags;
 
+    /// <summary>
+    ///   Empty HTML component
+    /// </summary>
+    public static IHtmlComponent Empty { get { return new HtmlComponent(EHtmlTag.Empty); } }
+
     #region ctors
 
     /// <summary>
@@ -79,7 +84,7 @@ namespace WebExtras.Html
 
       if (isDict)
       {
-        Attributes = (IDictionary<string, string>)htmlAttributes;
+        Attributes = (IDictionary<string, string>) htmlAttributes;
 
         return;
       }
@@ -134,6 +139,9 @@ namespace WebExtras.Html
     /// <returns></returns>
     public virtual string ToHtml()
     {
+      if (Tag == EHtmlTag.Empty)
+        return string.Empty;
+
       if (Attributes.ContainsKey("class"))
         CssClasses.Add(Attributes["class"]);
 
@@ -154,7 +162,7 @@ namespace WebExtras.Html
       parts.Add("<" + Tag.ToString().ToLowerInvariant());
       parts.AddRange(Attributes.Select(f => string.Format("{0}=\"{1}\"", f.Key, f.Value)));
 
-      if (Tag == EHtmlTag.Img)
+      if (Tag == EHtmlTag.Img || Tag == EHtmlTag.Input)
         parts.Add("/>");
       else
       {

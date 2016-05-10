@@ -26,7 +26,7 @@ namespace WebExtras.Nancy.SquishIt
   public static class CSSBundleExtensions
   {
     /// <summary>
-    /// Renders current <see cref="CSSBundle"/> to given file
+    ///   Renders current <see cref="CSSBundle" /> to given file
     /// </summary>
     /// <param name="cssBundle">Current CSS bundle</param>
     /// <param name="renderTo">File to render to</param>
