@@ -38,5 +38,5 @@ Here's a shout out to the cool guys at
 * GitHub for code hosting
 * [JetBrains](https://www.jetbrains.com) for development tools and goodies
 * [AppVeyor](https://www.appveyor.com) for continuous integration (Windows)
-* [TravisCI](https://travic-ci.org) for continuous integrations (Mono on Linux)
+* [TravisCI](https://travic-ci.org) for continuous integration (Mono on Linux)
 * [AppHarbor](https://www.appharbor.com) for cloud deploy 
