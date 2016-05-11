@@ -22,7 +22,7 @@ A collection of helper/extension methods for .NET developers.
 ---
 Windows: [![Build status](https://ci.appveyor.com/api/projects/status/9c4s5yu5hjptvnwn?svg=true)](https://ci.appveyor.com/project/monemihir/webextras)
 
-Mono on Linux: [![Travis](https://img.shields.io/travis/monemihir/webextras.svg?maxAge=2592000)](https://travis-ci.org/monemihir/webextras)
+Mono on Linux: [![Travis](https://travis-ci.org/monemihir/webextras.svg?branch=master)](https://travis-ci.org/monemihir/webextras)
 
 ### Demos and Documentation
 ---
@@ -37,5 +37,6 @@ WebExtras is licensed under [Apache License v2.0](http://www.apache.org/licenses
 Here's a shout out to the cool guys at
 * GitHub for code hosting
 * [JetBrains](https://www.jetbrains.com) for development tools and goodies
-* [AppVeyor](https://www.appveyor.com) for continuous integration
+* [AppVeyor](https://www.appveyor.com) for continuous integration (Windows)
+* [TravisCI](https://travic-ci.org) for continuous integrations (Mono on Linux)
 * [AppHarbor](https://www.appharbor.com) for cloud deploy 
