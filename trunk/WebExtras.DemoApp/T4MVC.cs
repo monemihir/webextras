@@ -321,38 +321,38 @@ namespace Links
             public static readonly string youtube_logo_png = Url("youtube-logo.png");
         }
     
-        public static readonly string style_bootstrap_less = Url("style-bootstrap.less");
         public static readonly string style_bootstrap_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/style-bootstrap.min.css") ? Url("style-bootstrap.min.css") : Url("style-bootstrap.css");
+        public static readonly string style_bootstrap_less = Url("style-bootstrap.less");
         public static readonly string style_bootstrap_min_css = Url("style-bootstrap.min.css");
-        public static readonly string style_bootstrap3_less = Url("style-bootstrap3.less");
         public static readonly string style_bootstrap3_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/style-bootstrap3.min.css") ? Url("style-bootstrap3.min.css") : Url("style-bootstrap3.css");
+        public static readonly string style_bootstrap3_less = Url("style-bootstrap3.less");
         public static readonly string style_bootstrap3_min_css = Url("style-bootstrap3.min.css");
-        public static readonly string style_gumby_less = Url("style-gumby.less");
         public static readonly string style_gumby_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/style-gumby.min.css") ? Url("style-gumby.min.css") : Url("style-gumby.css");
+        public static readonly string style_gumby_less = Url("style-gumby.less");
         public static readonly string style_gumby_min_css = Url("style-gumby.min.css");
-        public static readonly string style_jqueryui_less = Url("style-jqueryui.less");
         public static readonly string style_jqueryui_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/style-jqueryui.min.css") ? Url("style-jqueryui.min.css") : Url("style-jqueryui.css");
+        public static readonly string style_jqueryui_less = Url("style-jqueryui.less");
         public static readonly string style_jqueryui_min_css = Url("style-jqueryui.min.css");
-        public static readonly string style_less = Url("style.less");
         public static readonly string style_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/style.min.css") ? Url("style.min.css") : Url("style.css");
+        public static readonly string style_less = Url("style.less");
         public static readonly string style_min_css = Url("style.min.css");
-        public static readonly string webextras_bootstrap_less = Url("webextras.bootstrap.less");
         public static readonly string webextras_bootstrap_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/webextras.bootstrap.min.css") ? Url("webextras.bootstrap.min.css") : Url("webextras.bootstrap.css");
+        public static readonly string webextras_bootstrap_less = Url("webextras.bootstrap.less");
         public static readonly string webextras_bootstrap_min_css = Url("webextras.bootstrap.min.css");
-        public static readonly string webextras_bootstrap3_less = Url("webextras.bootstrap3.less");
         public static readonly string webextras_bootstrap3_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/webextras.bootstrap3.min.css") ? Url("webextras.bootstrap3.min.css") : Url("webextras.bootstrap3.css");
+        public static readonly string webextras_bootstrap3_less = Url("webextras.bootstrap3.less");
         public static readonly string webextras_bootstrap3_min_css = Url("webextras.bootstrap3.min.css");
-        public static readonly string webextras_common_less = Url("webextras.common.less");
         public static readonly string webextras_common_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/webextras.common.min.css") ? Url("webextras.common.min.css") : Url("webextras.common.css");
+        public static readonly string webextras_common_less = Url("webextras.common.less");
         public static readonly string webextras_common_min_css = Url("webextras.common.min.css");
-        public static readonly string webextras_gumby_less = Url("webextras.gumby.less");
+        public static readonly string webextras_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/webextras.min.css") ? Url("webextras.min.css") : Url("webextras.css");
         public static readonly string webextras_gumby_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/webextras.gumby.min.css") ? Url("webextras.gumby.min.css") : Url("webextras.gumby.css");
+        public static readonly string webextras_gumby_less = Url("webextras.gumby.less");
         public static readonly string webextras_gumby_min_css = Url("webextras.gumby.min.css");
-        public static readonly string webextras_jqueryui_less = Url("webextras.jqueryui.less");
         public static readonly string webextras_jqueryui_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/webextras.jqueryui.min.css") ? Url("webextras.jqueryui.min.css") : Url("webextras.jqueryui.css");
+        public static readonly string webextras_jqueryui_less = Url("webextras.jqueryui.less");
         public static readonly string webextras_jqueryui_min_css = Url("webextras.jqueryui.min.css");
         public static readonly string webextras_less = Url("webextras.less");
-        public static readonly string webextras_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/webextras.min.css") ? Url("webextras.min.css") : Url("webextras.css");
         public static readonly string webextras_min_css = Url("webextras.min.css");
     }
 
@@ -479,6 +479,28 @@ namespace Links
                 public const string jquery_jScrollPane_2_0_0beta12_css = "~/Content/jquery.jScrollPane-2.0.0beta12.css";
                 public const string jquery_ui_datetimepicker_css = "~/Content/jquery.ui.datetimepicker.css";
                 public const string jquery_ui_menubar_css = "~/Content/jquery.ui.menubar.css";
+                public const string style_bootstrap_css = "~/Content/style-bootstrap.css";
+                public const string style_bootstrap_min_css = "~/Content/style-bootstrap.min.css";
+                public const string style_bootstrap3_css = "~/Content/style-bootstrap3.css";
+                public const string style_bootstrap3_min_css = "~/Content/style-bootstrap3.min.css";
+                public const string style_gumby_css = "~/Content/style-gumby.css";
+                public const string style_gumby_min_css = "~/Content/style-gumby.min.css";
+                public const string style_jqueryui_css = "~/Content/style-jqueryui.css";
+                public const string style_jqueryui_min_css = "~/Content/style-jqueryui.min.css";
+                public const string style_css = "~/Content/style.css";
+                public const string style_min_css = "~/Content/style.min.css";
+                public const string webextras_bootstrap_css = "~/Content/webextras.bootstrap.css";
+                public const string webextras_bootstrap_min_css = "~/Content/webextras.bootstrap.min.css";
+                public const string webextras_bootstrap3_css = "~/Content/webextras.bootstrap3.css";
+                public const string webextras_bootstrap3_min_css = "~/Content/webextras.bootstrap3.min.css";
+                public const string webextras_common_css = "~/Content/webextras.common.css";
+                public const string webextras_common_min_css = "~/Content/webextras.common.min.css";
+                public const string webextras_css = "~/Content/webextras.css";
+                public const string webextras_gumby_css = "~/Content/webextras.gumby.css";
+                public const string webextras_gumby_min_css = "~/Content/webextras.gumby.min.css";
+                public const string webextras_jqueryui_css = "~/Content/webextras.jqueryui.css";
+                public const string webextras_jqueryui_min_css = "~/Content/webextras.jqueryui.min.css";
+                public const string webextras_min_css = "~/Content/webextras.min.css";
             }
         }
     }
