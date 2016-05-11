@@ -1,4 +1,5 @@
 ﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<WebExtras.JQDataTables.Datatable>" %>
+<%@ Import Namespace="System.Web.Mvc" %>
 <%@ Import Namespace="WebExtras.JQDataTables" %>
 
 <!--
