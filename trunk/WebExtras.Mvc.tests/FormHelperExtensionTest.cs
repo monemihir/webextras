@@ -46,7 +46,7 @@ namespace WebExtras.Mvc.tests
     public void Button_Without_OnClick_Test()
     {
       // Arrange
-      const string expected = "<button class=\"test-css-class\" title=\"test title\" type=\"button\">Test Button</button>";
+      const string expected = "<button title=\"test title\" class=\"test-css-class\" type=\"button\">Test Button</button>";
 
       // Act
       Button result = FormHelperExtension.Button(
@@ -67,7 +67,7 @@ namespace WebExtras.Mvc.tests
     public void Button_With_OnClick_Test()
     {
       // Arrange
-      const string expected = "<button class=\"test-css-class\" onclick=\"javascript:callTestFunc()\" title=\"test title\" type=\"submit\">Test Button</button>";
+      const string expected = "<button title=\"test title\" class=\"test-css-class\" type=\"submit\" onclick=\"javascript:callTestFunc()\">Test Button</button>";
 
       // Act
       Button result = FormHelperExtension.Button(
@@ -93,7 +93,7 @@ namespace WebExtras.Mvc.tests
     public void CheckBoxGroup_Without_NumBoxesPerLine_Test()
     {
       // Arrange
-      const string expected = "<table class=\"checkbox-group\" title=\"check box group\"><tr><td><input name=\"test-chkbox-group\" type=\"checkbox\" value=\"val 1\" /> box 1</td>\n<td><input name=\"test-chkbox-group\" type=\"checkbox\" value=\"val 2\" /> box 2</td>\n<td><input name=\"test-chkbox-group\" type=\"checkbox\" value=\"val 3\" /> box 3</td>\n<td><input name=\"test-chkbox-group\" type=\"checkbox\" value=\"val 4\" /> box 4</td>\n<td><input name=\"test-chkbox-group\" type=\"checkbox\" value=\"val 5\" /> box 5</td>\n</tr>\n<tr><td><input name=\"test-chkbox-group\" type=\"checkbox\" value=\"val 6\" /> box 6</td>\n<td><input name=\"test-chkbox-group\" type=\"checkbox\" value=\"val 7\" /> box 7</td>\n<td><input name=\"test-chkbox-group\" type=\"checkbox\" value=\"val 8\" /> box 8</td>\n<td><input name=\"test-chkbox-group\" type=\"checkbox\" value=\"val 9\" /> box 9</td>\n<td><input name=\"test-chkbox-group\" type=\"checkbox\" value=\"val 10\" /> box 10</td>\n</tr>\n</table>";
+      const string expected = "<table class=\"checkbox-group\" title=\"check box group\"><tr><td><input type=\"checkbox\" value=\"val 1\" name=\"test-chkbox-group\"/> box 1</td>\n<td><input type=\"checkbox\" value=\"val 2\" name=\"test-chkbox-group\"/> box 2</td>\n<td><input type=\"checkbox\" value=\"val 3\" name=\"test-chkbox-group\"/> box 3</td>\n<td><input type=\"checkbox\" value=\"val 4\" name=\"test-chkbox-group\"/> box 4</td>\n<td><input type=\"checkbox\" value=\"val 5\" name=\"test-chkbox-group\"/> box 5</td>\n</tr>\n<tr><td><input type=\"checkbox\" value=\"val 6\" name=\"test-chkbox-group\"/> box 6</td>\n<td><input type=\"checkbox\" value=\"val 7\" name=\"test-chkbox-group\"/> box 7</td>\n<td><input type=\"checkbox\" value=\"val 8\" name=\"test-chkbox-group\"/> box 8</td>\n<td><input type=\"checkbox\" value=\"val 9\" name=\"test-chkbox-group\"/> box 9</td>\n<td><input type=\"checkbox\" value=\"val 10\" name=\"test-chkbox-group\"/> box 10</td>\n</tr>\n</table>";
 
       // Act
       string result = FormHelperExtension.CheckBoxGroup(
@@ -114,7 +114,7 @@ namespace WebExtras.Mvc.tests
     public void CheckBoxGroup_With_NumBoxesPerLine_Test()
     {
       // Arrange
-      const string expected = "<table class=\"checkbox-group\" title=\"check box group\"><tr><td><input name=\"test-chkbox-group\" type=\"checkbox\" value=\"val 1\" /> box 1</td>\n<td><input name=\"test-chkbox-group\" type=\"checkbox\" value=\"val 2\" /> box 2</td>\n<td><input name=\"test-chkbox-group\" type=\"checkbox\" value=\"val 3\" /> box 3</td>\n</tr>\n<tr><td><input name=\"test-chkbox-group\" type=\"checkbox\" value=\"val 4\" /> box 4</td>\n<td><input name=\"test-chkbox-group\" type=\"checkbox\" value=\"val 5\" /> box 5</td>\n<td><input name=\"test-chkbox-group\" type=\"checkbox\" value=\"val 6\" /> box 6</td>\n</tr>\n<tr><td><input name=\"test-chkbox-group\" type=\"checkbox\" value=\"val 7\" /> box 7</td>\n<td><input name=\"test-chkbox-group\" type=\"checkbox\" value=\"val 8\" /> box 8</td>\n<td><input name=\"test-chkbox-group\" type=\"checkbox\" value=\"val 9\" /> box 9</td>\n</tr>\n<tr><td><input name=\"test-chkbox-group\" type=\"checkbox\" value=\"val 10\" /> box 10</td>\n</tr>\n</table>";
+      const string expected = "<table class=\"checkbox-group\" title=\"check box group\"><tr><td><input type=\"checkbox\" value=\"val 1\" name=\"test-chkbox-group\"/> box 1</td>\n<td><input type=\"checkbox\" value=\"val 2\" name=\"test-chkbox-group\"/> box 2</td>\n<td><input type=\"checkbox\" value=\"val 3\" name=\"test-chkbox-group\"/> box 3</td>\n</tr>\n<tr><td><input type=\"checkbox\" value=\"val 4\" name=\"test-chkbox-group\"/> box 4</td>\n<td><input type=\"checkbox\" value=\"val 5\" name=\"test-chkbox-group\"/> box 5</td>\n<td><input type=\"checkbox\" value=\"val 6\" name=\"test-chkbox-group\"/> box 6</td>\n</tr>\n<tr><td><input type=\"checkbox\" value=\"val 7\" name=\"test-chkbox-group\"/> box 7</td>\n<td><input type=\"checkbox\" value=\"val 8\" name=\"test-chkbox-group\"/> box 8</td>\n<td><input type=\"checkbox\" value=\"val 9\" name=\"test-chkbox-group\"/> box 9</td>\n</tr>\n<tr><td><input type=\"checkbox\" value=\"val 10\" name=\"test-chkbox-group\"/> box 10</td>\n</tr>\n</table>";
 
       // Act
       string result = FormHelperExtension.CheckBoxGroup(
@@ -140,7 +140,7 @@ namespace WebExtras.Mvc.tests
     public void RadioButtonGroup_Without_NumButtonsPerLine_Test()
     {
       // arrange
-      const string expected = "<table class=\"radiobutton-group\" title=\"radio button group\"><tr><td><input name=\"test-radio-group\" type=\"radio\" value=\"val 1\" /> rbtn 1</td>\n<td><input name=\"test-radio-group\" type=\"radio\" value=\"val 2\" /> rbtn 2</td>\n<td><input name=\"test-radio-group\" type=\"radio\" value=\"val 3\" /> rbtn 3</td>\n<td><input name=\"test-radio-group\" type=\"radio\" value=\"val 4\" /> rbtn 4</td>\n<td><input name=\"test-radio-group\" type=\"radio\" value=\"val 5\" /> rbtn 5</td>\n</tr>\n<tr><td><input name=\"test-radio-group\" type=\"radio\" value=\"val 6\" /> rbtn 6</td>\n<td><input name=\"test-radio-group\" type=\"radio\" value=\"val 7\" /> rbtn 7</td>\n<td><input name=\"test-radio-group\" type=\"radio\" value=\"val 8\" /> rbtn 8</td>\n<td><input name=\"test-radio-group\" type=\"radio\" value=\"val 9\" /> rbtn 9</td>\n<td><input name=\"test-radio-group\" type=\"radio\" value=\"val 10\" /> rbtn 10</td>\n</tr>\n</table>";
+      const string expected = "<table class=\"radiobutton-group\" title=\"radio button group\"><tr><td><input type=\"radio\" value=\"val 1\" name=\"test-radio-group\"/> rbtn 1</td>\n<td><input type=\"radio\" value=\"val 2\" name=\"test-radio-group\"/> rbtn 2</td>\n<td><input type=\"radio\" value=\"val 3\" name=\"test-radio-group\"/> rbtn 3</td>\n<td><input type=\"radio\" value=\"val 4\" name=\"test-radio-group\"/> rbtn 4</td>\n<td><input type=\"radio\" value=\"val 5\" name=\"test-radio-group\"/> rbtn 5</td>\n</tr>\n<tr><td><input type=\"radio\" value=\"val 6\" name=\"test-radio-group\"/> rbtn 6</td>\n<td><input type=\"radio\" value=\"val 7\" name=\"test-radio-group\"/> rbtn 7</td>\n<td><input type=\"radio\" value=\"val 8\" name=\"test-radio-group\"/> rbtn 8</td>\n<td><input type=\"radio\" value=\"val 9\" name=\"test-radio-group\"/> rbtn 9</td>\n<td><input type=\"radio\" value=\"val 10\" name=\"test-radio-group\"/> rbtn 10</td>\n</tr>\n</table>";
 
       // act
       string result = FormHelperExtension.RadioButtonGroup(
@@ -161,7 +161,7 @@ namespace WebExtras.Mvc.tests
     public void RadioButtonGroup_With_NumButtonsPerLine_Test()
     {
       // arrange
-      const string expected = "<table class=\"radiobutton-group\" title=\"radio button group\"><tr><td><input name=\"test-radio-group\" type=\"radio\" value=\"val 1\" /> rbtn 1</td>\n<td><input name=\"test-radio-group\" type=\"radio\" value=\"val 2\" /> rbtn 2</td>\n<td><input name=\"test-radio-group\" type=\"radio\" value=\"val 3\" /> rbtn 3</td>\n</tr>\n<tr><td><input name=\"test-radio-group\" type=\"radio\" value=\"val 4\" /> rbtn 4</td>\n<td><input name=\"test-radio-group\" type=\"radio\" value=\"val 5\" /> rbtn 5</td>\n<td><input name=\"test-radio-group\" type=\"radio\" value=\"val 6\" /> rbtn 6</td>\n</tr>\n<tr><td><input name=\"test-radio-group\" type=\"radio\" value=\"val 7\" /> rbtn 7</td>\n<td><input name=\"test-radio-group\" type=\"radio\" value=\"val 8\" /> rbtn 8</td>\n<td><input name=\"test-radio-group\" type=\"radio\" value=\"val 9\" /> rbtn 9</td>\n</tr>\n<tr><td><input name=\"test-radio-group\" type=\"radio\" value=\"val 10\" /> rbtn 10</td>\n</tr>\n</table>";
+      const string expected = "<table class=\"radiobutton-group\" title=\"radio button group\"><tr><td><input type=\"radio\" value=\"val 1\" name=\"test-radio-group\"/> rbtn 1</td>\n<td><input type=\"radio\" value=\"val 2\" name=\"test-radio-group\"/> rbtn 2</td>\n<td><input type=\"radio\" value=\"val 3\" name=\"test-radio-group\"/> rbtn 3</td>\n</tr>\n<tr><td><input type=\"radio\" value=\"val 4\" name=\"test-radio-group\"/> rbtn 4</td>\n<td><input type=\"radio\" value=\"val 5\" name=\"test-radio-group\"/> rbtn 5</td>\n<td><input type=\"radio\" value=\"val 6\" name=\"test-radio-group\"/> rbtn 6</td>\n</tr>\n<tr><td><input type=\"radio\" value=\"val 7\" name=\"test-radio-group\"/> rbtn 7</td>\n<td><input type=\"radio\" value=\"val 8\" name=\"test-radio-group\"/> rbtn 8</td>\n<td><input type=\"radio\" value=\"val 9\" name=\"test-radio-group\"/> rbtn 9</td>\n</tr>\n<tr><td><input type=\"radio\" value=\"val 10\" name=\"test-radio-group\"/> rbtn 10</td>\n</tr>\n</table>";
 
       // act
       string result = FormHelperExtension.RadioButtonGroup(

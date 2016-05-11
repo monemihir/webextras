@@ -23,6 +23,7 @@ namespace WebExtras.Core
   ///   Bootstrap version exception thrown when a valid
   ///   Bootstrap version is not selected
   /// </summary>
+  [Serializable]
   public class BootstrapVersionException : Exception
   {
     /// <summary>

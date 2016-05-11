@@ -15,12 +15,15 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+using System;
+
 namespace WebExtras.Core
 {
   /// <summary>
   ///   String value decider arguments
   /// </summary>
   /// <typeparam name="T">Type of current value</typeparam>
+  [Serializable]
   public class StringValueDeciderArgs<T>
   {
     /// <summary>

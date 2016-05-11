@@ -15,6 +15,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+using System;
 using Newtonsoft.Json;
 using WebExtras.Core;
 using WebExtras.Html;
@@ -24,6 +25,7 @@ namespace WebExtras.Bootstrap.v3
   /// <summary>
   ///   Denotes a Bootstrap 3 date time picker component
   /// </summary>
+  [Serializable]
   public class DateTimePickerHtmlComponent : HtmlComponent
   {
     /// <summary>

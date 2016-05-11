@@ -23,10 +23,14 @@ namespace WebExtras.tests
       // Arrange
       Assembly a = Assembly.LoadFrom("WebExtras.dll");
 
+      string[] ignoredTypes = new[] {
+        ""
+      };
+
       // Assert
       foreach (Type type in a.GetTypes())
       {
-        if (!type.IsSealed && !type.IsInterface)
+        if (!type.IsSealed && type.IsVisible && !type.IsInterface && !ignoredTypes.Contains(type.FullName))
           Assert.IsTrue(type.IsSerializable, type.FullName + " is not marked as serializable");
 
       }
@@ -42,6 +46,12 @@ namespace WebExtras.tests
       // Arrange
       Assembly a = Assembly.LoadFrom("WebExtras.dll");
 
+      string[] ignoredTypes = new[] {
+        "CssClassList",
+        "HtmlComponentList"
+      };
+
+
       // Act
       foreach (Type t in a.GetTypes().Where(y => !y.IsSealed))
       {
@@ -50,6 +60,9 @@ namespace WebExtras.tests
         foreach (PropertyInfo prop in props)
         {
           Type pType = prop.PropertyType;
+
+          if (ignoredTypes.Contains(pType.Name))
+            continue;
 
           List<Type> ifaces = pType.GetInterfaces().Where(x => x.Name == typeof(ICollection).Name).ToList();
 
@@ -73,13 +86,23 @@ namespace WebExtras.tests
       List<Type> knownEnumTypes = Assembly.LoadFrom("WebExtras.dll").GetTypes()
         .Where(t => !string.IsNullOrEmpty(t.Namespace) && t.Namespace.StartsWith(namespaceToSearch))
         .ToList();
+
+      string[] ignoredNamespaces = {
+        "WebExtras.Html",
+        "WebExtras.Bootstrap",
+        "WebExtras.Bootstrap.v2",
+        "WebExtras.Bootstrap.v3"
+      };
+
       string[] ignoredPropertyTypes =
       { 
         "WebExtras.JQDataTables.ESort",
         "WebExtras.JQDataTables.EPagination"
       };
 
-      string[] ignoredPropertyNames = { "WebExtras.JQDataTables.AOColumnAttribute.sType" };
+      string[] ignoredPropertyNames = {
+        "WebExtras.JQDataTables.AOColumnAttribute.sType"
+      };
 
       // Act & Assert
       foreach (Type t in knownEnumTypes)
@@ -94,7 +117,8 @@ namespace WebExtras.tests
             continue;
 
           if (ignoredPropertyTypes.Contains(actualType.FullName) ||
-            ignoredPropertyNames.Contains(t.FullName + "." + prop.Name))
+            ignoredPropertyNames.Contains(t.FullName + "." + prop.Name) || 
+            ignoredNamespaces.Contains(t.Namespace))
             continue;
 
           object[] arr = prop.GetCustomAttributes(typeof(JsonConverterAttribute), false);

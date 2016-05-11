@@ -23,6 +23,7 @@ namespace WebExtras.Core
   ///   No CSS framework theme selected exception thrown when neither Bootstrap nor Gumby
   ///   CSS framework is selected and an extension for these framework is used
   /// </summary>
+  [Serializable]
   public class NoCssThemeException : Exception
   {
     /// <summary>

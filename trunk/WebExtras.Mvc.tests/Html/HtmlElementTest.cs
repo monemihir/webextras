@@ -69,10 +69,10 @@ namespace WebExtras.Mvc.tests.Html
       Assert.AreEqual(0, element.PrependTags.Count);
       Assert.AreEqual(0, element.AppendTags.Count);
 
-      Assert.AreEqual(1, element.Attributes.Count);
+      Assert.AreEqual(2, element.Attributes.Count);
       Assert.AreEqual("test title", element.Attributes["title"]);
-      Assert.AreEqual(1, element.CSSClasses.Count);
-      Assert.AreEqual("test-css-class", element.CSSClasses[0]);
+      Assert.AreEqual("test-css-class", element.Attributes["class"]);
+      Assert.AreEqual(0, element.CSSClasses.Count);
     }
 
     #endregion Ctor tests
@@ -95,9 +95,7 @@ namespace WebExtras.Mvc.tests.Html
       Assert.AreEqual("Test link", result.InnerHtml);
       Assert.AreEqual("/test.html", result["href"]);
       Assert.AreEqual("valid hyperlink", result["title"]);
-      Assert.AreEqual(2, result.CSSClasses.Count);
-      Assert.AreEqual("t1", result.CSSClasses[0]);
-      Assert.AreEqual("t2", result.CSSClasses[1]);
+      Assert.AreEqual("t1 t2", result["class"]);
     }
 
     /// <summary>
@@ -117,13 +115,10 @@ namespace WebExtras.Mvc.tests.Html
       Assert.IsTrue(string.IsNullOrEmpty(result.InnerHtml));
       Assert.AreEqual("/test.html", result["href"]);
       Assert.AreEqual("valid hyperlink", result["title"]);
-      Assert.AreEqual(2, result.CSSClasses.Count);
-      Assert.AreEqual("t1", result.CSSClasses[0]);
-      Assert.AreEqual("t2", result.CSSClasses[1]);
+      Assert.AreEqual("t1 t2", result["class"]);
 
       Assert.AreEqual(2, result.PrependTags.Count);
-      Assert.AreEqual(1, result.PrependTags[0].CSSClasses.Count);
-      Assert.AreEqual("icon-temp", result.PrependTags[0].CSSClasses[0]);
+      Assert.AreEqual("icon-temp", result.PrependTags[0].Attributes["class"]);
       Assert.AreEqual("Test link", result.PrependTags[1].InnerHtml);
     }
 
@@ -136,7 +131,7 @@ namespace WebExtras.Mvc.tests.Html
     {
       // arrange
       string html = "<a href='/test.html' class='t1 t2' title='valid hyperlink'><i class='icon-temp'></i>Test link <b>for bolded text</b></a>";
-      string expected = "<a class=\"t1 t2\" href=\"/test.html\" title=\"valid hyperlink\"><i class=\"icon-temp\"></i><span>Test link </span><b>for bolded text</b></a>";
+      string expected = "<a href=\"/test.html\" class=\"t1 t2\" title=\"valid hyperlink\"><i class=\"icon-temp\"></i><span >Test link </span><b >for bolded text</b></a>";
 
       // act
       HtmlElement result = HtmlElement.Parse(html);
@@ -145,13 +140,10 @@ namespace WebExtras.Mvc.tests.Html
       Assert.IsTrue(string.IsNullOrEmpty(result.InnerHtml));
       Assert.AreEqual("/test.html", result["href"]);
       Assert.AreEqual("valid hyperlink", result["title"]);
-      Assert.AreEqual(2, result.CSSClasses.Count);
-      Assert.AreEqual("t1", result.CSSClasses[0]);
-      Assert.AreEqual("t2", result.CSSClasses[1]);
+      Assert.AreEqual("t1 t2", result["class"]);
 
       Assert.AreEqual(3, result.PrependTags.Count);
-      Assert.AreEqual(1, result.PrependTags[0].CSSClasses.Count);
-      Assert.AreEqual("icon-temp", result.PrependTags[0].CSSClasses[0]);
+      Assert.AreEqual("icon-temp", result.PrependTags[0].Attributes["class"]);
       Assert.AreEqual("Test link ", result.PrependTags[1].InnerHtml);
       Assert.AreEqual("for bolded text", result.PrependTags[2].InnerHtml);
 

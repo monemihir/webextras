@@ -22,6 +22,7 @@ namespace WebExtras.Core
   /// <summary>
   ///   No CSS framework selected
   /// </summary>
+  [Serializable]
   public class NoCssFrameworkException : Exception
   {
     /// <summary>

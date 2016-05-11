@@ -15,6 +15,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+using System;
 using WebExtras.Bootstrap;
 using WebExtras.Core;
 
@@ -25,6 +26,7 @@ namespace WebExtras.Html
   /// </summary>
   /// <typeparam name="TModel">Object model</typeparam>
   /// <typeparam name="TValue">Model property</typeparam>
+  [Serializable]
   public abstract class AbstractFormComponent<TModel, TValue> : IFormComponent<TModel, TValue>
   {
     /// <summary>

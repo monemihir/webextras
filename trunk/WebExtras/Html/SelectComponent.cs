@@ -25,6 +25,7 @@ namespace WebExtras.Html
   /// <summary>
   ///   HTML Select tag
   /// </summary>
+  [Serializable]
   public class SelectComponent : HtmlComponent
   {
     /// <summary>

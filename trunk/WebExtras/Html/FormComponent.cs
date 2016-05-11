@@ -28,6 +28,7 @@ namespace WebExtras.Html
   /// <summary>
   ///   A bootstrap form control which allows appending and prepending of elements
   /// </summary>
+  [Serializable]
   public class FormComponent<TModel, TValue> : AbstractFormComponent<TModel, TValue>
   {
     /// <summary>

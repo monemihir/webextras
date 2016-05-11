@@ -265,8 +265,8 @@ namespace WebExtras.Mvc.Html
       EHtmlTag tag = (EHtmlTag) Enum.Parse(typeof(EHtmlTag), element.Name.LocalName.ToTitleCase());
 
       // get the attributes of the element as HTML attributes dictionary
-      IDictionary<string, object> htmlAttributes = element.Attributes()
-        .ToDictionary(f => f.Name.LocalName.ToLowerInvariant(), v => (object) v.Value);
+      IDictionary<string, string> htmlAttributes = element.Attributes()
+        .ToDictionary(f => f.Name.LocalName.ToLowerInvariant(), v => v.Value);
 
       HtmlElement html = new HtmlElement(tag, htmlAttributes);
 

@@ -26,6 +26,7 @@ namespace WebExtras.Html
   /// <summary>
   ///   An abstract HTML component
   /// </summary>
+  [Serializable]
   public class HtmlComponent : IHtmlComponent
   {
     /// <summary>
@@ -86,7 +87,7 @@ namespace WebExtras.Html
 
       if (isDict)
       {
-        Attributes = (IDictionary<string, string>) htmlAttributes;
+        Attributes = (IDictionary<string, string>)htmlAttributes;
 
         return;
       }
@@ -160,9 +161,11 @@ namespace WebExtras.Html
           string.Join("", AppendTags.Select(f => f.ToHtml()));
       }
 
-      List<string> parts = new List<string>();
-      parts.Add("<" + Tag.ToString().ToLowerInvariant());
-      parts.AddRange(Attributes.Select(f => string.Format("{0}=\"{1}\"", f.Key, f.Value)));
+      List<string> parts = new List<string> { "<" + Tag.ToString().ToLowerInvariant() };
+
+      string attribs = " " + string.Join(" ", Attributes.Select(f => string.Format("{0}=\"{1}\"", f.Key, f.Value)));
+
+      parts.Add(attribs);
 
       if (Tag == EHtmlTag.Img || Tag == EHtmlTag.Input)
         parts.Add("/>");
@@ -176,7 +179,7 @@ namespace WebExtras.Html
         parts.Add("</" + Tag.ToString().ToLowerInvariant() + ">");
       }
 
-      string result = string.Join(" ", parts);
+      string result = string.Join(string.Empty, parts);
 
       return result;
     }

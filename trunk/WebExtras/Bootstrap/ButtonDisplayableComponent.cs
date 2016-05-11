@@ -24,6 +24,7 @@ namespace WebExtras.Bootstrap
   /// <summary>
   ///   A component that can be displayed as a button
   /// </summary>
+  [Serializable]
   public class ButtonDisplayableComponent : HtmlComponent, IButtonDisplayableComponent
   {
     /// <summary>

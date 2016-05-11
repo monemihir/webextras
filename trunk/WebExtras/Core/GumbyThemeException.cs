@@ -22,6 +22,7 @@ namespace WebExtras.Core
   /// <summary>
   ///   Gumby theme exception thrown when a valid Gumby theme is not chosen
   /// </summary>
+  [Serializable]
   public class GumbyThemeException : Exception
   {
     /// <summary>

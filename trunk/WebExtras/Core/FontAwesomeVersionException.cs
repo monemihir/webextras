@@ -23,6 +23,7 @@ namespace WebExtras.Core
   ///   FontAwesome version exception thrown when a valid
   ///   FontAwesome library version is not selected
   /// </summary>
+  [Serializable]
   public class FontAwesomeVersionException : Exception
   {
     /// <summary>

@@ -25,7 +25,7 @@ namespace WebExtras.Mvc.tests
       Assembly a = Assembly.LoadFrom("WebExtras.Mvc.dll");
 
       string[] ignoredTypes = new[] { 
-        "CssClassesCollection"
+        "CssClassList"
       };
 
       // Act
