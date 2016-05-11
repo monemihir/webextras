@@ -35,9 +35,10 @@
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\WebExtras.DemoApp.xml</DocumentationFile>
     <NoWarn>1591</NoWarn>
+    <LangVersion>5</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
+    <DebugType>none</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
@@ -45,6 +46,7 @@
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\WebExtras.DemoApp.xml</DocumentationFile>
     <NoWarn>1591</NoWarn>
+    <LangVersion>5</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AjaxMin, Version=4.48.4489.28432, Culture=neutral, PublicKeyToken=21ef50ce11b5d80f, processorArchitecture=MSIL">
@@ -523,6 +525,7 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <DocumentationFile>bin\WebExtras.DemoApp.xml</DocumentationFile>
     <NoWarn>1591</NoWarn>
+    <LangVersion>5</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
     <OutputPath>bin\</OutputPath>
@@ -534,6 +537,7 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <DocumentationFile>bin\WebExtras.DemoApp.xml</DocumentationFile>
     <NoWarn>1591</NoWarn>
+    <LangVersion>5</LangVersion>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
