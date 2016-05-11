@@ -1,41 +1,38 @@
-﻿/*
-* This file is part of - WebExtras
-* Copyright (C) 2014 Mihir Mone
-*
-* This program is free software: you can redistribute it and/or modify
-* it under the terms of the GNU Lesser General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU Lesser General Public License for more details.
-*
-* You should have received a copy of the GNU Lesser General Public License
-* along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
+﻿// 
+// This file is part of - WebExtras
+// Copyright 2016 Mihir Mone
+// 
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// 
+//     http://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using WebExtras.Core;
-using WebExtras.Mvc.Core;
 using WebExtras.Mvc.Html;
 
 namespace WebExtras.Mvc.tests.Html
 {
   /// <summary>
-  /// Hyperlink unit tests
+  ///   Hyperlink unit tests
   /// </summary>
-  [TestClass]
+  [TestFixture]
   public class HtmlElementTest
   {
     #region Ctor tests
 
     /// <summary>
-    /// Test that the constructor initialises all public properties
+    ///   Test that the constructor initialises all public properties
     /// </summary>
-    [TestMethod]
+    [Test]
     public void Ctor_Initialises_Properties()
     {
       // act
@@ -53,19 +50,19 @@ namespace WebExtras.Mvc.tests.Html
     }
 
     /// <summary>
-    /// Test that the constructor with HTML attributes initialises
-    /// all public properties, adds the HTML attributes to the element
-    /// and handles the special condition for 'class' attribute
+    ///   Test that the constructor with HTML attributes initialises
+    ///   all public properties, adds the HTML attributes to the element
+    ///   and handles the special condition for 'class' attribute
     /// </summary>
-    [TestMethod]
+    [Test]
     public void Ctor_With_HTMLAttributes_Works_Properly()
     {
       // act
-      HtmlElement element = new HtmlElement(EHtmlTag.A, new { @class = "test-css-class", title = "test title" });
+      HtmlElement element = new HtmlElement(EHtmlTag.A, new {@class = "test-css-class", title = "test title"});
 
       // assert
       Assert.IsTrue(string.IsNullOrEmpty(element.InnerHtml));
-      Assert.AreEqual(EHtmlTag.A, element.Tag);      
+      Assert.AreEqual(EHtmlTag.A, element.Tag);
       Assert.AreEqual(0, element.PrependTags.Count);
       Assert.AreEqual(0, element.AppendTags.Count);
 
@@ -80,9 +77,9 @@ namespace WebExtras.Mvc.tests.Html
     #region Parse tests
 
     /// <summary>
-    /// Test that the Parse method works properly
+    ///   Test that the Parse method works properly
     /// </summary>
-    [TestMethod]
+    [Test]
     public void Parse_Works_For_Single_Element()
     {
       // arrange
@@ -99,10 +96,10 @@ namespace WebExtras.Mvc.tests.Html
     }
 
     /// <summary>
-    /// Test that the Parse method works properly if the 
-    /// given HTML has child elements
+    ///   Test that the Parse method works properly if the
+    ///   given HTML has child elements
     /// </summary>
-    [TestMethod]
+    [Test]
     public void Parse_Works_For_Single_Child()
     {
       // arrange
@@ -123,15 +120,17 @@ namespace WebExtras.Mvc.tests.Html
     }
 
     /// <summary>
-    /// Test that the Parse method works properly if the 
-    /// given HTML has child elements
+    ///   Test that the Parse method works properly if the
+    ///   given HTML has child elements
     /// </summary>
-    [TestMethod]
+    [Test]
     public void Parse_Works_For_Multiple_Children()
     {
       // arrange
-      string html = "<a href='/test.html' class='t1 t2' title='valid hyperlink'><i class='icon-temp'></i>Test link <b>for bolded text</b></a>";
-      string expected = "<a href=\"/test.html\" class=\"t1 t2\" title=\"valid hyperlink\"><i class=\"icon-temp\"></i><span >Test link </span><b >for bolded text</b></a>";
+      string html =
+        "<a href='/test.html' class='t1 t2' title='valid hyperlink'><i class='icon-temp'></i>Test link <b>for bolded text</b></a>";
+      string expected =
+        "<a href=\"/test.html\" class=\"t1 t2\" title=\"valid hyperlink\"><i class=\"icon-temp\"></i><span >Test link </span><b >for bolded text</b></a>";
 
       // act
       HtmlElement result = HtmlElement.Parse(html);
@@ -152,15 +151,17 @@ namespace WebExtras.Mvc.tests.Html
     }
 
     /// <summary>
-    /// Test that the Parse method throws an exception if the 
-    /// HTML to be parsed is an unsupported tag
+    ///   Test that the Parse method throws an exception if the
+    ///   HTML to be parsed is an unsupported tag
     /// </summary>
-    [TestMethod]
+    [Test]
     public void Parse_Throws_Exception_If_Unsupported_Tag()
     {
       // arrange
       string html = "<nav title='/test.html'>Test navigation</nav>";
-      NotSupportedException expected = new NotSupportedException("NAV tag is not supported. Only the following HTML tags are supported: A, I, B, IMG, BUTTON, INPUT, TEXTAREA, UL, OL, LI, DIV, SPAN, LABEL, SELECT, OPTION, SCRIPT.");
+      NotSupportedException expected =
+        new NotSupportedException(
+          "NAV tag is not supported. Only the following HTML tags are supported: A, I, B, IMG, BUTTON, INPUT, TEXTAREA, UL, OL, LI, DIV, SPAN, LABEL, SELECT, OPTION, SCRIPT.");
       NotSupportedException actual = null;
 
       // act

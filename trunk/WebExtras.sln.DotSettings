@@ -31,20 +31,19 @@
 	<s:Boolean x:Key="/Default/CodeStyle/CodeFormatting/JavaScriptCodeFormatting/JavaScriptFormatBracesLayout/INDENT_CASE_FROM_SWITCH/@EntryValue">True</s:Boolean>
 	<s:String x:Key="/Default/CodeStyle/FileHeader/FileHeaderText/@EntryValue">&#xD;
 This file is part of - WebExtras&#xD;
-Copyright (C) $CURRENT_YEAR$ Mihir Mone&#xD;
+Copyright $CURRENT_YEAR$ Mihir Mone&#xD;
 &#xD;
-This program is free software: you can redistribute it and/or modify&#xD;
-it under the terms of the GNU Lesser General Public License as published by&#xD;
-the Free Software Foundation, either version 3 of the License, or&#xD;
-(at your option) any later version.&#xD;
+Licensed under the Apache License, Version 2.0 (the "License");&#xD;
+you may not use this file except in compliance with the License.&#xD;
+You may obtain a copy of the License at&#xD;
 &#xD;
-This program is distributed in the hope that it will be useful,&#xD;
-but WITHOUT ANY WARRANTY; without even the implied warranty of&#xD;
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the&#xD;
-GNU Lesser General Public License for more details.&#xD;
+    http://www.apache.org/licenses/LICENSE-2.0&#xD;
 &#xD;
-You should have received a copy of the GNU Lesser General Public License&#xD;
-along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.&#xD;
+Unless required by applicable law or agreed to in writing, software&#xD;
+distributed under the License is distributed on an "AS IS" BASIS,&#xD;
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.&#xD;
+See the License for the specific language governing permissions and&#xD;
+limitations under the License.&#xD;
 </s:String>
 	<s:String x:Key="/Default/CodeStyle/Naming/CSharpNaming/Abbreviations/=BS/@EntryIndexedValue">BS</s:String>
 	<s:String x:Key="/Default/CodeStyle/Naming/CSharpNaming/PredefinedNamingRules/=EnumMember/@EntryIndexedValue">&lt;Policy Inspect="True" Prefix="" Suffix="" Style="AaBb_AaBb" /&gt;</s:String>

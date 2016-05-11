@@ -1,29 +1,48 @@
-﻿using System;
+﻿// 
+// This file is part of - WebExtras
+// Copyright 2016 Mihir Mone
+// 
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// 
+//     http://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Reflection;
 using Newtonsoft.Json;
+using NUnit.Framework;
 
 namespace WebExtras.tests
 {
   /// <summary>
-  /// Generic tests across all classes of WebExtras.dll
+  ///   Generic tests across all classes of WebExtras.dll
   /// </summary>
-  [TestClass]
+  [TestFixture]
   public class GenericTest
   {
     /// <summary>
-    /// Test that all classes are marked serializable
+    ///   Test that all classes are marked serializable
     /// </summary>
-    [TestMethod]
+    [Test]
     public void All_Classes_Are_Serializable()
     {
       // Arrange
-      Assembly a = Assembly.LoadFrom("WebExtras.dll");
+      string location = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+      Assembly a = Assembly.LoadFrom(location + "\\WebExtras.dll");
 
-      string[] ignoredTypes = new[] {
+      string[] ignoredTypes =
+      {
         ""
       };
 
@@ -32,21 +51,22 @@ namespace WebExtras.tests
       {
         if (!type.IsSealed && type.IsVisible && !type.IsInterface && !ignoredTypes.Contains(type.FullName))
           Assert.IsTrue(type.IsSerializable, type.FullName + " is not marked as serializable");
-
       }
     }
 
     /// <summary>
-    /// Test that all user facing properties which are collections are
-    /// either arrays or lists
+    ///   Test that all user facing properties which are collections are
+    ///   either arrays or lists
     /// </summary>
-    [TestMethod]
+    [Test]
     public void All_User_Facing_Collections_Are_Arrays_Or_Lists()
     {
       // Arrange
-      Assembly a = Assembly.LoadFrom("WebExtras.dll");
+      string location = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+      Assembly a = Assembly.LoadFrom(location + "\\WebExtras.dll");
 
-      string[] ignoredTypes = new[] {
+      string[] ignoredTypes =
+      {
         "CssClassList",
         "HtmlComponentList"
       };
@@ -68,26 +88,30 @@ namespace WebExtras.tests
 
           if (ifaces.Count > 0 && !pType.IsAssignableFrom(typeof(IDictionary)))
           {
-            Assert.IsTrue(pType.IsArray || pType.Name == "List`1", t.FullName + "." + prop.Name + " must be either an array or a list");
+            Assert.IsTrue(pType.IsArray || pType.Name == "List`1",
+              t.FullName + "." + prop.Name + " must be either an array or a list");
           }
         }
       }
     }
 
     /// <summary>
-    /// Test that all Enum properties of all types have custom
-    /// JsonConverter objects attached
+    ///   Test that all Enum properties of all types have custom
+    ///   JsonConverter objects attached
     /// </summary>
-    [TestMethod]
+    [Test]
     public void All_Enums_Have_JsonConverters_Attached()
     {
       // Arrange
+      string location = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+      Assembly a = Assembly.LoadFrom(location + "\\WebExtras.dll");
       const string namespaceToSearch = "WebExtras";
-      List<Type> knownEnumTypes = Assembly.LoadFrom("WebExtras.dll").GetTypes()
+      List<Type> knownEnumTypes = a.GetTypes()
         .Where(t => !string.IsNullOrEmpty(t.Namespace) && t.Namespace.StartsWith(namespaceToSearch))
         .ToList();
 
-      string[] ignoredNamespaces = {
+      string[] ignoredNamespaces =
+      {
         "WebExtras.Html",
         "WebExtras.Bootstrap",
         "WebExtras.Bootstrap.v2",
@@ -95,12 +119,13 @@ namespace WebExtras.tests
       };
 
       string[] ignoredPropertyTypes =
-      { 
+      {
         "WebExtras.JQDataTables.ESort",
         "WebExtras.JQDataTables.EPagination"
       };
 
-      string[] ignoredPropertyNames = {
+      string[] ignoredPropertyNames =
+      {
         "WebExtras.JQDataTables.AOColumnAttribute.sType"
       };
 
@@ -111,19 +136,22 @@ namespace WebExtras.tests
 
         foreach (var prop in props)
         {
-          Type actualType = prop.PropertyType.Name.StartsWith("Nullable") ? prop.PropertyType.GetGenericArguments()[0] : prop.PropertyType;
+          Type actualType = prop.PropertyType.Name.StartsWith("Nullable")
+            ? prop.PropertyType.GetGenericArguments()[0]
+            : prop.PropertyType;
 
           if (!actualType.IsEnum)
             continue;
 
           if (ignoredPropertyTypes.Contains(actualType.FullName) ||
-            ignoredPropertyNames.Contains(t.FullName + "." + prop.Name) || 
-            ignoredNamespaces.Contains(t.Namespace))
+              ignoredPropertyNames.Contains(t.FullName + "." + prop.Name) ||
+              ignoredNamespaces.Contains(t.Namespace))
             continue;
 
           object[] arr = prop.GetCustomAttributes(typeof(JsonConverterAttribute), false);
 
-          Assert.IsTrue(arr.Length == 1, "Property: " + t.FullName + "." + prop.Name + " is not decorated with a custom JsonConverter");
+          Assert.IsTrue(arr.Length == 1,
+            "Property: " + t.FullName + "." + prop.Name + " is not decorated with a custom JsonConverter");
         }
       }
     }

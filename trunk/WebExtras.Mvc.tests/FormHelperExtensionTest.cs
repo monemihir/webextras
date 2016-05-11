@@ -1,25 +1,23 @@
-﻿/*
-* This file is part of - WebExtras
-* Copyright (C) 2014 Mihir Mone
-*
-* This program is free software: you can redistribute it and/or modify
-* it under the terms of the GNU Lesser General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU Lesser General Public License for more details.
-*
-* You should have received a copy of the GNU Lesser General Public License
-* along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
+﻿// 
+// This file is part of - WebExtras
+// Copyright 2016 Mihir Mone
+// 
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// 
+//     http://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using WebExtras.Core;
 using WebExtras.Mvc.Core;
 using WebExtras.Mvc.Html;
@@ -27,9 +25,9 @@ using WebExtras.Mvc.Html;
 namespace WebExtras.Mvc.tests
 {
   /// <summary>
-  /// FormHelperExtension unit tests
+  ///   FormHelperExtension unit tests
   /// </summary>
-  [TestClass]
+  [TestFixture]
   public class FormHelperExtensionTest
   {
     private HtmlHelper m_html;
@@ -39,43 +37,41 @@ namespace WebExtras.Mvc.tests
     #region Button tests
 
     /// <summary>
-    /// Test that the Button method with no 'onclick' event
-    /// returns expected results
+    ///   Test that the Button method with no 'onclick' event
+    ///   returns expected results
     /// </summary>
-    [TestMethod]
+    [Test]
     public void Button_Without_OnClick_Test()
     {
       // Arrange
-      const string expected = "<button title=\"test title\" class=\"test-css-class\" type=\"button\">Test Button</button>";
+      const string expected =
+        "<button title=\"test title\" class=\"test-css-class\" type=\"button\">Test Button</button>";
 
       // Act
-      Button result = FormHelperExtension.Button(
-        m_html,
-        EButton.Regular,
+      Button result = m_html.Button(EButton.Regular,
         "Test Button",
-        new { title = "test title", @class = "test-css-class" });
+        new {title = "test title", @class = "test-css-class"});
 
       // Assert
       Assert.AreEqual(expected, result.ToHtmlString());
     }
 
     /// <summary>
-    /// Test that the Button method with an 'onclick' event
-    /// returns expected results
+    ///   Test that the Button method with an 'onclick' event
+    ///   returns expected results
     /// </summary>
-    [TestMethod]
+    [Test]
     public void Button_With_OnClick_Test()
     {
       // Arrange
-      const string expected = "<button title=\"test title\" class=\"test-css-class\" type=\"submit\" onclick=\"javascript:callTestFunc()\">Test Button</button>";
+      const string expected =
+        "<button title=\"test title\" class=\"test-css-class\" type=\"submit\" onclick=\"javascript:callTestFunc()\">Test Button</button>";
 
       // Act
-      Button result = FormHelperExtension.Button(
-        m_html,
-        EButton.Submit,
+      Button result = m_html.Button(EButton.Submit,
         "Test Button",
         "callTestFunc()",
-        new { title = "test title", @class = "test-css-class" });
+        new {title = "test title", @class = "test-css-class"});
 
       // Assert
       Assert.AreEqual(expected, result.ToHtmlString());
@@ -86,43 +82,41 @@ namespace WebExtras.Mvc.tests
     #region CheckBoxGroup tests
 
     /// <summary>
-    /// Test that the CheckBoxGroup method with default no. of boxes
-    /// per line returns expected results
+    ///   Test that the CheckBoxGroup method with default no. of boxes
+    ///   per line returns expected results
     /// </summary>
-    [TestMethod]
+    [Test]
     public void CheckBoxGroup_Without_NumBoxesPerLine_Test()
     {
       // Arrange
-      const string expected = "<table class=\"checkbox-group\" title=\"check box group\"><tr><td><input type=\"checkbox\" value=\"val 1\" name=\"test-chkbox-group\"/> box 1</td>\n<td><input type=\"checkbox\" value=\"val 2\" name=\"test-chkbox-group\"/> box 2</td>\n<td><input type=\"checkbox\" value=\"val 3\" name=\"test-chkbox-group\"/> box 3</td>\n<td><input type=\"checkbox\" value=\"val 4\" name=\"test-chkbox-group\"/> box 4</td>\n<td><input type=\"checkbox\" value=\"val 5\" name=\"test-chkbox-group\"/> box 5</td>\n</tr>\n<tr><td><input type=\"checkbox\" value=\"val 6\" name=\"test-chkbox-group\"/> box 6</td>\n<td><input type=\"checkbox\" value=\"val 7\" name=\"test-chkbox-group\"/> box 7</td>\n<td><input type=\"checkbox\" value=\"val 8\" name=\"test-chkbox-group\"/> box 8</td>\n<td><input type=\"checkbox\" value=\"val 9\" name=\"test-chkbox-group\"/> box 9</td>\n<td><input type=\"checkbox\" value=\"val 10\" name=\"test-chkbox-group\"/> box 10</td>\n</tr>\n</table>";
+      const string expected =
+        "<table class=\"checkbox-group\" title=\"check box group\"><tr><td><input type=\"checkbox\" value=\"val 1\" name=\"test-chkbox-group\"/> box 1</td>\n<td><input type=\"checkbox\" value=\"val 2\" name=\"test-chkbox-group\"/> box 2</td>\n<td><input type=\"checkbox\" value=\"val 3\" name=\"test-chkbox-group\"/> box 3</td>\n<td><input type=\"checkbox\" value=\"val 4\" name=\"test-chkbox-group\"/> box 4</td>\n<td><input type=\"checkbox\" value=\"val 5\" name=\"test-chkbox-group\"/> box 5</td>\n</tr>\n<tr><td><input type=\"checkbox\" value=\"val 6\" name=\"test-chkbox-group\"/> box 6</td>\n<td><input type=\"checkbox\" value=\"val 7\" name=\"test-chkbox-group\"/> box 7</td>\n<td><input type=\"checkbox\" value=\"val 8\" name=\"test-chkbox-group\"/> box 8</td>\n<td><input type=\"checkbox\" value=\"val 9\" name=\"test-chkbox-group\"/> box 9</td>\n<td><input type=\"checkbox\" value=\"val 10\" name=\"test-chkbox-group\"/> box 10</td>\n</tr>\n</table>";
 
       // Act
-      string result = FormHelperExtension.CheckBoxGroup(
-        m_html,
-        "test-chkbox-group",
+      string result = m_html.CheckBoxGroup("test-chkbox-group",
         m_checkBoxes,
-        new { title = "check box group" }).ToHtmlString();
+        new {title = "check box group"}).ToHtmlString();
 
       // assert
       Assert.AreEqual(expected, result);
     }
 
     /// <summary>
-    /// Test that the CheckBoxGroup method with a no. of boxes
-    /// per line specified returns expected results
+    ///   Test that the CheckBoxGroup method with a no. of boxes
+    ///   per line specified returns expected results
     /// </summary>
-    [TestMethod]
+    [Test]
     public void CheckBoxGroup_With_NumBoxesPerLine_Test()
     {
       // Arrange
-      const string expected = "<table class=\"checkbox-group\" title=\"check box group\"><tr><td><input type=\"checkbox\" value=\"val 1\" name=\"test-chkbox-group\"/> box 1</td>\n<td><input type=\"checkbox\" value=\"val 2\" name=\"test-chkbox-group\"/> box 2</td>\n<td><input type=\"checkbox\" value=\"val 3\" name=\"test-chkbox-group\"/> box 3</td>\n</tr>\n<tr><td><input type=\"checkbox\" value=\"val 4\" name=\"test-chkbox-group\"/> box 4</td>\n<td><input type=\"checkbox\" value=\"val 5\" name=\"test-chkbox-group\"/> box 5</td>\n<td><input type=\"checkbox\" value=\"val 6\" name=\"test-chkbox-group\"/> box 6</td>\n</tr>\n<tr><td><input type=\"checkbox\" value=\"val 7\" name=\"test-chkbox-group\"/> box 7</td>\n<td><input type=\"checkbox\" value=\"val 8\" name=\"test-chkbox-group\"/> box 8</td>\n<td><input type=\"checkbox\" value=\"val 9\" name=\"test-chkbox-group\"/> box 9</td>\n</tr>\n<tr><td><input type=\"checkbox\" value=\"val 10\" name=\"test-chkbox-group\"/> box 10</td>\n</tr>\n</table>";
+      const string expected =
+        "<table class=\"checkbox-group\" title=\"check box group\"><tr><td><input type=\"checkbox\" value=\"val 1\" name=\"test-chkbox-group\"/> box 1</td>\n<td><input type=\"checkbox\" value=\"val 2\" name=\"test-chkbox-group\"/> box 2</td>\n<td><input type=\"checkbox\" value=\"val 3\" name=\"test-chkbox-group\"/> box 3</td>\n</tr>\n<tr><td><input type=\"checkbox\" value=\"val 4\" name=\"test-chkbox-group\"/> box 4</td>\n<td><input type=\"checkbox\" value=\"val 5\" name=\"test-chkbox-group\"/> box 5</td>\n<td><input type=\"checkbox\" value=\"val 6\" name=\"test-chkbox-group\"/> box 6</td>\n</tr>\n<tr><td><input type=\"checkbox\" value=\"val 7\" name=\"test-chkbox-group\"/> box 7</td>\n<td><input type=\"checkbox\" value=\"val 8\" name=\"test-chkbox-group\"/> box 8</td>\n<td><input type=\"checkbox\" value=\"val 9\" name=\"test-chkbox-group\"/> box 9</td>\n</tr>\n<tr><td><input type=\"checkbox\" value=\"val 10\" name=\"test-chkbox-group\"/> box 10</td>\n</tr>\n</table>";
 
       // Act
-      string result = FormHelperExtension.CheckBoxGroup(
-        m_html,
-        "test-chkbox-group",
+      string result = m_html.CheckBoxGroup("test-chkbox-group",
         m_checkBoxes,
         3,
-        new { title = "check box group" }).ToHtmlString();
+        new {title = "check box group"}).ToHtmlString();
 
       // assert
       Assert.AreEqual(expected, result);
@@ -133,43 +127,41 @@ namespace WebExtras.Mvc.tests
     #region RadioButtonGroup tests
 
     /// <summary>
-    /// Test that the RadioButtonGroup method with no. of buttons
-    /// not specified returns expected results
+    ///   Test that the RadioButtonGroup method with no. of buttons
+    ///   not specified returns expected results
     /// </summary>
-    [TestMethod]
+    [Test]
     public void RadioButtonGroup_Without_NumButtonsPerLine_Test()
     {
       // arrange
-      const string expected = "<table class=\"radiobutton-group\" title=\"radio button group\"><tr><td><input type=\"radio\" value=\"val 1\" name=\"test-radio-group\"/> rbtn 1</td>\n<td><input type=\"radio\" value=\"val 2\" name=\"test-radio-group\"/> rbtn 2</td>\n<td><input type=\"radio\" value=\"val 3\" name=\"test-radio-group\"/> rbtn 3</td>\n<td><input type=\"radio\" value=\"val 4\" name=\"test-radio-group\"/> rbtn 4</td>\n<td><input type=\"radio\" value=\"val 5\" name=\"test-radio-group\"/> rbtn 5</td>\n</tr>\n<tr><td><input type=\"radio\" value=\"val 6\" name=\"test-radio-group\"/> rbtn 6</td>\n<td><input type=\"radio\" value=\"val 7\" name=\"test-radio-group\"/> rbtn 7</td>\n<td><input type=\"radio\" value=\"val 8\" name=\"test-radio-group\"/> rbtn 8</td>\n<td><input type=\"radio\" value=\"val 9\" name=\"test-radio-group\"/> rbtn 9</td>\n<td><input type=\"radio\" value=\"val 10\" name=\"test-radio-group\"/> rbtn 10</td>\n</tr>\n</table>";
+      const string expected =
+        "<table class=\"radiobutton-group\" title=\"radio button group\"><tr><td><input type=\"radio\" value=\"val 1\" name=\"test-radio-group\"/> rbtn 1</td>\n<td><input type=\"radio\" value=\"val 2\" name=\"test-radio-group\"/> rbtn 2</td>\n<td><input type=\"radio\" value=\"val 3\" name=\"test-radio-group\"/> rbtn 3</td>\n<td><input type=\"radio\" value=\"val 4\" name=\"test-radio-group\"/> rbtn 4</td>\n<td><input type=\"radio\" value=\"val 5\" name=\"test-radio-group\"/> rbtn 5</td>\n</tr>\n<tr><td><input type=\"radio\" value=\"val 6\" name=\"test-radio-group\"/> rbtn 6</td>\n<td><input type=\"radio\" value=\"val 7\" name=\"test-radio-group\"/> rbtn 7</td>\n<td><input type=\"radio\" value=\"val 8\" name=\"test-radio-group\"/> rbtn 8</td>\n<td><input type=\"radio\" value=\"val 9\" name=\"test-radio-group\"/> rbtn 9</td>\n<td><input type=\"radio\" value=\"val 10\" name=\"test-radio-group\"/> rbtn 10</td>\n</tr>\n</table>";
 
       // act
-      string result = FormHelperExtension.RadioButtonGroup(
-        m_html,
-        "test-radio-group",
+      string result = m_html.RadioButtonGroup("test-radio-group",
         m_radioBtns,
-        new { title = "radio button group" }).ToHtmlString();
+        new {title = "radio button group"}).ToHtmlString();
 
       // assert
       Assert.AreEqual(expected, result);
     }
 
     /// <summary>
-    /// Test that the RadioButtonGroup method with a no. of buttons
-    /// specified returns expected results
+    ///   Test that the RadioButtonGroup method with a no. of buttons
+    ///   specified returns expected results
     /// </summary>
-    [TestMethod]
+    [Test]
     public void RadioButtonGroup_With_NumButtonsPerLine_Test()
     {
       // arrange
-      const string expected = "<table class=\"radiobutton-group\" title=\"radio button group\"><tr><td><input type=\"radio\" value=\"val 1\" name=\"test-radio-group\"/> rbtn 1</td>\n<td><input type=\"radio\" value=\"val 2\" name=\"test-radio-group\"/> rbtn 2</td>\n<td><input type=\"radio\" value=\"val 3\" name=\"test-radio-group\"/> rbtn 3</td>\n</tr>\n<tr><td><input type=\"radio\" value=\"val 4\" name=\"test-radio-group\"/> rbtn 4</td>\n<td><input type=\"radio\" value=\"val 5\" name=\"test-radio-group\"/> rbtn 5</td>\n<td><input type=\"radio\" value=\"val 6\" name=\"test-radio-group\"/> rbtn 6</td>\n</tr>\n<tr><td><input type=\"radio\" value=\"val 7\" name=\"test-radio-group\"/> rbtn 7</td>\n<td><input type=\"radio\" value=\"val 8\" name=\"test-radio-group\"/> rbtn 8</td>\n<td><input type=\"radio\" value=\"val 9\" name=\"test-radio-group\"/> rbtn 9</td>\n</tr>\n<tr><td><input type=\"radio\" value=\"val 10\" name=\"test-radio-group\"/> rbtn 10</td>\n</tr>\n</table>";
+      const string expected =
+        "<table class=\"radiobutton-group\" title=\"radio button group\"><tr><td><input type=\"radio\" value=\"val 1\" name=\"test-radio-group\"/> rbtn 1</td>\n<td><input type=\"radio\" value=\"val 2\" name=\"test-radio-group\"/> rbtn 2</td>\n<td><input type=\"radio\" value=\"val 3\" name=\"test-radio-group\"/> rbtn 3</td>\n</tr>\n<tr><td><input type=\"radio\" value=\"val 4\" name=\"test-radio-group\"/> rbtn 4</td>\n<td><input type=\"radio\" value=\"val 5\" name=\"test-radio-group\"/> rbtn 5</td>\n<td><input type=\"radio\" value=\"val 6\" name=\"test-radio-group\"/> rbtn 6</td>\n</tr>\n<tr><td><input type=\"radio\" value=\"val 7\" name=\"test-radio-group\"/> rbtn 7</td>\n<td><input type=\"radio\" value=\"val 8\" name=\"test-radio-group\"/> rbtn 8</td>\n<td><input type=\"radio\" value=\"val 9\" name=\"test-radio-group\"/> rbtn 9</td>\n</tr>\n<tr><td><input type=\"radio\" value=\"val 10\" name=\"test-radio-group\"/> rbtn 10</td>\n</tr>\n</table>";
 
       // act
-      string result = FormHelperExtension.RadioButtonGroup(
-        m_html,
-        "test-radio-group",
+      string result = m_html.RadioButtonGroup("test-radio-group",
         m_radioBtns,
         3,
-        new { title = "radio button group" }).ToHtmlString();
+        new {title = "radio button group"}).ToHtmlString();
 
       // assert
       Assert.AreEqual(expected, result);
@@ -178,9 +170,9 @@ namespace WebExtras.Mvc.tests
     #endregion RadioButtonGroup tests
 
     /// <summary>
-    /// Test initialise
+    ///   Test initialise
     /// </summary>
-    [TestInitialize]
+    [SetUp]
     public void Initialise()
     {
       m_html = MockHtmlHelperUtil.CreateHtmlHelper();

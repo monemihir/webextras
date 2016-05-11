@@ -1,26 +1,20 @@
-﻿/*
-* This file is part of - WebExtras
-* Copyright (C) 2014 Mihir Mone
-*
-* This program is free software: you can redistribute it and/or modify
-* it under the terms of the GNU Lesser General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU Lesser General Public License for more details.
-*
-* You should have received a copy of the GNU Lesser General Public License
-* along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
+﻿// 
+// This file is part of - WebExtras
+// Copyright 2016 Mihir Mone
+// 
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// 
+//     http://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
@@ -29,12 +23,12 @@ using Moq;
 namespace WebExtras.Mvc.tests
 {
   /// <summary>
-  /// Mock HtmlHelper utility methods
+  ///   Mock HtmlHelper utility methods
   /// </summary>
   public static class MockHtmlHelperUtil
   {
     /// <summary>
-    /// Create a mock HtmlHelper object
+    ///   Create a mock HtmlHelper object
     /// </summary>
     /// <typeparam name="T">Type of model for which to create the mock</typeparam>
     /// <param name="viewData">View data dictionary</param>
@@ -44,8 +38,8 @@ namespace WebExtras.Mvc.tests
       var vd = viewData ?? new ViewDataDictionary(new T());
 
       var controllerContext = new ControllerContext(new Mock<HttpContextBase>().Object,
-                                                    new RouteData(),
-                                                    new Mock<ControllerBase>().Object);
+        new RouteData(),
+        new Mock<ControllerBase>().Object);
 
       var viewContext = new ViewContext(controllerContext,
         new Mock<IView>().Object,
@@ -60,7 +54,7 @@ namespace WebExtras.Mvc.tests
     }
 
     /// <summary>
-    /// Create a mock HtmlHelper object
+    ///   Create a mock HtmlHelper object
     /// </summary>
     /// <param name="viewData">View data dictionary</param>
     /// <returns>A mocked HtmlHelper object</returns>
@@ -69,8 +63,8 @@ namespace WebExtras.Mvc.tests
       var vd = viewData ?? new ViewDataDictionary();
 
       var controllerContext = new ControllerContext(new Mock<HttpContextBase>().Object,
-                                                    new RouteData(),
-                                                    new Mock<ControllerBase>().Object);
+        new RouteData(),
+        new Mock<ControllerBase>().Object);
 
       var viewContext = new ViewContext(controllerContext,
         new Mock<IView>().Object,

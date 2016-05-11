@@ -1,59 +1,58 @@
-﻿/*
-* This file is part of - WebExtras
-* Copyright (C) 2014 Mihir Mone
-*
-* This program is free software: you can redistribute it and/or modify
-* it under the terms of the GNU Lesser General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU Lesser General Public License for more details.
-*
-* You should have received a copy of the GNU Lesser General Public License
-* along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
+﻿// 
+// This file is part of - WebExtras
+// Copyright 2016 Mihir Mone
+// 
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// 
+//     http://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using WebExtras.JQDataTables;
 
 namespace WebExtras.tests.JQDataTables
 {
   /// <summary>
-  /// Datatable records unit tests
+  ///   Datatable records unit tests
   /// </summary>
-  [TestClass]
+  [TestFixture]
   public class DatatableRecordsSortExtensionTest
   {
     private DatatableRecords m_records;
 
     /// <summary>
-    /// Test setup
+    ///   Test setup
     /// </summary>
-    [TestInitialize]
+    [SetUp]
     public void Initialize()
     {
       m_records = new DatatableRecords();
-      m_records.aaData = new List<string[]> {
-        new string[] { "<a href='/displayplan/4'>4</a>", "mihir", "02-Jan-13", "&euro;15.00" },
-        new string[] { "<a href='/displayplan/24'>3</a>", "sneha", "2013-Mar-12", "&pound;12.00" },
-        new string[] { "<a href='/displayplan/11'>1</a>", "mohan", "20 Mar 13", "$151.00" },
-        new string[] { "<a href='/displayplan/16'>2</a>", "swati", "29May13", "$201.00" }
+      m_records.aaData = new List<string[]>
+      {
+        new[] {"<a href='/displayplan/4'>4</a>", "mihir", "02-Jan-13", "&euro;15.00"},
+        new[] {"<a href='/displayplan/24'>3</a>", "sneha", "2013-Mar-12", "&pound;12.00"},
+        new[] {"<a href='/displayplan/11'>1</a>", "mohan", "20 Mar 13", "$151.00"},
+        new[] {"<a href='/displayplan/16'>2</a>", "swati", "29May13", "$201.00"}
       }.ToArray();
       m_records.iTotalDisplayRecords = m_records.aaData.Count();
       m_records.iTotalRecords = m_records.aaData.Count();
     }
 
     /// <summary>
-    /// Test that the constructor initializes
-    /// the properties properly
+    ///   Test that the constructor initializes
+    ///   the properties properly
     /// </summary>
-    [TestMethod]
+    [Test]
     public void Ctor_Test()
     {
       // Act
@@ -68,42 +67,46 @@ namespace WebExtras.tests.JQDataTables
     }
 
     /// <summary>
-    /// Test that ascending sort works properly
+    ///   Test that ascending sort works properly
     /// </summary>
-    [TestMethod]
+    [Test]
     public void Sort_Ascending_Works_Properly()
     {
       // Arrange
       // sorted on numeric column 0
-      string[][] expected0 = new List<string[]> {
-        new string[] { "<a href='/displayplan/11'>1</a>", "mohan", "20 Mar 13", "$151.00" },
-        new string[] { "<a href='/displayplan/16'>2</a>", "swati", "29May13", "$201.00" },
-        new string[] { "<a href='/displayplan/24'>3</a>", "sneha", "2013-Mar-12", "&pound;12.00" },
-        new string[] { "<a href='/displayplan/4'>4</a>", "mihir", "02-Jan-13", "&euro;15.00" },
+      string[][] expected0 = new List<string[]>
+      {
+        new[] {"<a href='/displayplan/11'>1</a>", "mohan", "20 Mar 13", "$151.00"},
+        new[] {"<a href='/displayplan/16'>2</a>", "swati", "29May13", "$201.00"},
+        new[] {"<a href='/displayplan/24'>3</a>", "sneha", "2013-Mar-12", "&pound;12.00"},
+        new[] {"<a href='/displayplan/4'>4</a>", "mihir", "02-Jan-13", "&euro;15.00"}
       }.ToArray();
 
       // sorted on string column 1
-      string[][] expected1 = new List<string[]> {
-        new string[] { "<a href='/displayplan/4'>4</a>", "mihir", "02-Jan-13", "&euro;15.00" },
-        new string[] { "<a href='/displayplan/11'>1</a>", "mohan", "20 Mar 13", "$151.00" },
-        new string[] { "<a href='/displayplan/24'>3</a>", "sneha", "2013-Mar-12", "&pound;12.00" },
-        new string[] { "<a href='/displayplan/16'>2</a>", "swati", "29May13", "$201.00" }
+      string[][] expected1 = new List<string[]>
+      {
+        new[] {"<a href='/displayplan/4'>4</a>", "mihir", "02-Jan-13", "&euro;15.00"},
+        new[] {"<a href='/displayplan/11'>1</a>", "mohan", "20 Mar 13", "$151.00"},
+        new[] {"<a href='/displayplan/24'>3</a>", "sneha", "2013-Mar-12", "&pound;12.00"},
+        new[] {"<a href='/displayplan/16'>2</a>", "swati", "29May13", "$201.00"}
       }.ToArray();
 
       // sorted on date time column 2
-      string[][] expected2 = new List<string[]> {
-        new string[] { "<a href='/displayplan/4'>4</a>", "mihir", "02-Jan-13", "&euro;15.00" },
-        new string[] { "<a href='/displayplan/24'>3</a>", "sneha", "2013-Mar-12", "&pound;12.00" },
-        new string[] { "<a href='/displayplan/11'>1</a>", "mohan", "20 Mar 13", "$151.00" },
-        new string[] { "<a href='/displayplan/16'>2</a>", "swati", "29May13", "$201.00" }
+      string[][] expected2 = new List<string[]>
+      {
+        new[] {"<a href='/displayplan/4'>4</a>", "mihir", "02-Jan-13", "&euro;15.00"},
+        new[] {"<a href='/displayplan/24'>3</a>", "sneha", "2013-Mar-12", "&pound;12.00"},
+        new[] {"<a href='/displayplan/11'>1</a>", "mohan", "20 Mar 13", "$151.00"},
+        new[] {"<a href='/displayplan/16'>2</a>", "swati", "29May13", "$201.00"}
       }.ToArray();
 
       // sorted on currency column 3
-      string[][] expected3 = new List<string[]> {
-        new string[] { "<a href='/displayplan/24'>3</a>", "sneha", "2013-Mar-12", "&pound;12.00" },
-        new string[] { "<a href='/displayplan/4'>4</a>", "mihir", "02-Jan-13", "&euro;15.00" },
-        new string[] { "<a href='/displayplan/11'>1</a>", "mohan", "20 Mar 13", "$151.00" },
-        new string[] { "<a href='/displayplan/16'>2</a>", "swati", "29May13", "$201.00" }
+      string[][] expected3 = new List<string[]>
+      {
+        new[] {"<a href='/displayplan/24'>3</a>", "sneha", "2013-Mar-12", "&pound;12.00"},
+        new[] {"<a href='/displayplan/4'>4</a>", "mihir", "02-Jan-13", "&euro;15.00"},
+        new[] {"<a href='/displayplan/11'>1</a>", "mohan", "20 Mar 13", "$151.00"},
+        new[] {"<a href='/displayplan/16'>2</a>", "swati", "29May13", "$201.00"}
       }.ToArray();
 
       // Act
@@ -136,15 +139,15 @@ namespace WebExtras.tests.JQDataTables
     }
 
     /// <summary>
-    /// Test that ascending sort with a custom parser works properly.
+    ///   Test that ascending sort with a custom parser works properly.
     /// </summary>
-    [TestMethod]
+    [Test]
     public void Sort_Ascending_With_Custom_Parser_Works_Properly()
     {
       // Arrange
       // Setup a custom parser for the first column to parse as follows:
       // <a href='/displayplan/16'>2</a> should return 16
-      Func<string, object> parser = (string str) =>
+      Func<string, object> parser = str =>
       {
         int val = int.Parse(str.Split('\'')[1].Split('/').Last());
         return val;
@@ -153,11 +156,12 @@ namespace WebExtras.tests.JQDataTables
       parsers.Add(0, parser);
 
       // sorted with the custom parser
-      string[][] expected = new List<string[]> {
-        new string[] { "<a href='/displayplan/4'>4</a>", "mihir", "02-Jan-13", "&euro;15.00" },
-        new string[] { "<a href='/displayplan/11'>1</a>", "mohan", "20 Mar 13", "$151.00" },
-        new string[] { "<a href='/displayplan/16'>2</a>", "swati", "29May13", "$201.00" },
-        new string[] { "<a href='/displayplan/24'>3</a>", "sneha", "2013-Mar-12", "&pound;12.00" }
+      string[][] expected = new List<string[]>
+      {
+        new[] {"<a href='/displayplan/4'>4</a>", "mihir", "02-Jan-13", "&euro;15.00"},
+        new[] {"<a href='/displayplan/11'>1</a>", "mohan", "20 Mar 13", "$151.00"},
+        new[] {"<a href='/displayplan/16'>2</a>", "swati", "29May13", "$201.00"},
+        new[] {"<a href='/displayplan/24'>3</a>", "sneha", "2013-Mar-12", "&pound;12.00"}
       }.ToArray();
 
       // Act
@@ -169,42 +173,46 @@ namespace WebExtras.tests.JQDataTables
     }
 
     /// <summary>
-    /// Test that descending sort works properly
+    ///   Test that descending sort works properly
     /// </summary>
-    [TestMethod]
+    [Test]
     public void Sort_Descending_Works_Properly()
     {
       // Arrange
       // sorted on numeric column 0
-      string[][] expected0 = new List<string[]> {
-        new string[] { "<a href='/displayplan/4'>4</a>", "mihir", "02-Jan-13", "&euro;15.00" },
-        new string[] { "<a href='/displayplan/24'>3</a>", "sneha", "2013-Mar-12", "&pound;12.00" },
-        new string[] { "<a href='/displayplan/16'>2</a>", "swati", "29May13", "$201.00" },
-        new string[] { "<a href='/displayplan/11'>1</a>", "mohan", "20 Mar 13", "$151.00" }
+      string[][] expected0 = new List<string[]>
+      {
+        new[] {"<a href='/displayplan/4'>4</a>", "mihir", "02-Jan-13", "&euro;15.00"},
+        new[] {"<a href='/displayplan/24'>3</a>", "sneha", "2013-Mar-12", "&pound;12.00"},
+        new[] {"<a href='/displayplan/16'>2</a>", "swati", "29May13", "$201.00"},
+        new[] {"<a href='/displayplan/11'>1</a>", "mohan", "20 Mar 13", "$151.00"}
       }.ToArray();
 
       // sorted on string column 1
-      string[][] expected1 = new List<string[]> {
-        new string[] { "<a href='/displayplan/16'>2</a>", "swati", "29May13", "$201.00" },
-        new string[] { "<a href='/displayplan/24'>3</a>", "sneha", "2013-Mar-12", "&pound;12.00" },
-        new string[] { "<a href='/displayplan/11'>1</a>", "mohan", "20 Mar 13", "$151.00" },
-        new string[] { "<a href='/displayplan/4'>4</a>", "mihir", "02-Jan-13", "&euro;15.00" }
+      string[][] expected1 = new List<string[]>
+      {
+        new[] {"<a href='/displayplan/16'>2</a>", "swati", "29May13", "$201.00"},
+        new[] {"<a href='/displayplan/24'>3</a>", "sneha", "2013-Mar-12", "&pound;12.00"},
+        new[] {"<a href='/displayplan/11'>1</a>", "mohan", "20 Mar 13", "$151.00"},
+        new[] {"<a href='/displayplan/4'>4</a>", "mihir", "02-Jan-13", "&euro;15.00"}
       }.ToArray();
 
       // sorted on date time column 2
-      string[][] expected2 = new List<string[]> {
-        new string[] { "<a href='/displayplan/16'>2</a>", "swati", "29May13", "$201.00" },
-        new string[] { "<a href='/displayplan/11'>1</a>", "mohan", "20 Mar 13", "$151.00" },
-        new string[] { "<a href='/displayplan/24'>3</a>", "sneha", "2013-Mar-12", "&pound;12.00" },
-        new string[] { "<a href='/displayplan/4'>4</a>", "mihir", "02-Jan-13", "&euro;15.00" }
+      string[][] expected2 = new List<string[]>
+      {
+        new[] {"<a href='/displayplan/16'>2</a>", "swati", "29May13", "$201.00"},
+        new[] {"<a href='/displayplan/11'>1</a>", "mohan", "20 Mar 13", "$151.00"},
+        new[] {"<a href='/displayplan/24'>3</a>", "sneha", "2013-Mar-12", "&pound;12.00"},
+        new[] {"<a href='/displayplan/4'>4</a>", "mihir", "02-Jan-13", "&euro;15.00"}
       }.ToArray();
 
       // sorted on currency column 3
-      string[][] expected3 = new List<string[]> {
-        new string[] { "<a href='/displayplan/16'>2</a>", "swati", "29May13", "$201.00" },
-        new string[] { "<a href='/displayplan/11'>1</a>", "mohan", "20 Mar 13", "$151.00" },
-        new string[] { "<a href='/displayplan/4'>4</a>", "mihir", "02-Jan-13", "&euro;15.00" },
-        new string[] { "<a href='/displayplan/24'>3</a>", "sneha", "2013-Mar-12", "&pound;12.00" },
+      string[][] expected3 = new List<string[]>
+      {
+        new[] {"<a href='/displayplan/16'>2</a>", "swati", "29May13", "$201.00"},
+        new[] {"<a href='/displayplan/11'>1</a>", "mohan", "20 Mar 13", "$151.00"},
+        new[] {"<a href='/displayplan/4'>4</a>", "mihir", "02-Jan-13", "&euro;15.00"},
+        new[] {"<a href='/displayplan/24'>3</a>", "sneha", "2013-Mar-12", "&pound;12.00"}
       }.ToArray();
 
       // Act
@@ -237,15 +245,15 @@ namespace WebExtras.tests.JQDataTables
     }
 
     /// <summary>
-    /// Test that descending sort with a custom parser works properly.
+    ///   Test that descending sort with a custom parser works properly.
     /// </summary>
-    [TestMethod]
+    [Test]
     public void Sort_Descending_With_Custom_Parser_Works_Properly()
     {
       // Arrange
       // Setup a custom parser for the first column to parse as follows:
       // <a href='/displayplan/16'>2</a> should return 16
-      Func<string, object> parser = (string str) =>
+      Func<string, object> parser = str =>
       {
         int val = int.Parse(str.Split('\'')[1].Split('/').Last());
         return val;
@@ -254,11 +262,12 @@ namespace WebExtras.tests.JQDataTables
       parsers.Add(0, parser);
 
       // sorted with the custom parser
-      string[][] expected = new List<string[]> {
-        new string[] { "<a href='/displayplan/24'>3</a>", "sneha", "2013-Mar-12", "&pound;12.00" },
-        new string[] { "<a href='/displayplan/16'>2</a>", "swati", "29May13", "$201.00" },
-        new string[] { "<a href='/displayplan/11'>1</a>", "mohan", "20 Mar 13", "$151.00" },
-        new string[] { "<a href='/displayplan/4'>4</a>", "mihir", "02-Jan-13", "&euro;15.00" }
+      string[][] expected = new List<string[]>
+      {
+        new[] {"<a href='/displayplan/24'>3</a>", "sneha", "2013-Mar-12", "&pound;12.00"},
+        new[] {"<a href='/displayplan/16'>2</a>", "swati", "29May13", "$201.00"},
+        new[] {"<a href='/displayplan/11'>1</a>", "mohan", "20 Mar 13", "$151.00"},
+        new[] {"<a href='/displayplan/4'>4</a>", "mihir", "02-Jan-13", "&euro;15.00"}
       }.ToArray();
 
       // Act
@@ -270,7 +279,7 @@ namespace WebExtras.tests.JQDataTables
     }
 
     /// <summary>
-    /// Assert that the 2 given collections are equals
+    ///   Assert that the 2 given collections are equals
     /// </summary>
     /// <param name="expected">Expected collection</param>
     /// <param name="actual">Actual collection as result of the Act phase</param>
