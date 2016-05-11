@@ -1,4 +1,4 @@
-### WebExtras  [![NuGet Version](https://img.shields.io/nuget/v/WebExtras.svg?style=flat)](https://www.nuget.org/packages/WebExtras/)  [![Build status](https://ci.appveyor.com/api/projects/status/9c4s5yu5hjptvnwn?svg=true)](https://ci.appveyor.com/project/monemihir/webextras)
+### WebExtras  [![NuGet Version](https://img.shields.io/nuget/v/WebExtras.svg?style=flat)](https://www.nuget.org/packages/WebExtras/) 
 ---
 A collection of helper/extension methods for .NET developers.
 
@@ -17,6 +17,12 @@ A collection of helper/extension methods for .NET developers.
 * [Flot](http://www.flotcharts.org)
 * [jqPlot](http://www.jqplot.com)
 * [HighCharts](http://www.highcharts.com) (coming soon...)
+
+### Build Status
+---
+Windows: [![Build status](https://ci.appveyor.com/api/projects/status/9c4s5yu5hjptvnwn?svg=true)](https://ci.appveyor.com/project/monemihir/webextras)
+
+Mono on Linux: [![Travis](https://img.shields.io/travis/monemihir/webextras.svg?maxAge=2592000)](https://travis-ci.org/monemihir/webextras)
 
 ### Demos and Documentation
 ---
