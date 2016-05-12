@@ -2,21 +2,14 @@
 ---
 A collection of helper/extension methods for .NET developers.
 
-#### .NET 
-* Generic C# development
-* [ASP.NET MVC](http://www.asp.net/mvc)
-* [NancyFx](http://nancyfx.org/)
+.NET | UI Frameworks | Javascript Libraries/Frameworks
+-----|---------------|--------------------------------
+Generic C# development | [Bootstrap](http://getbootstrap.com) | [DataTables](https://datatables.net)
+[ASP.NET MVC](http://www.asp.net/mvc) | [jQuery UI](https://jqueryui.com) | [Flot](http://www.flotcharts.org)
+[NancyFx](http://nancyfx.org/) | [Gumby](http://www.gumbyframework.com)** | [jqPlot](http://www.jqplot.com)
+ | | [HighCharts](http://www.highcharts.com) (coming soon...)
 
-#### UI Frameworks
-* [Bootstrap](http://getbootstrap.com)
-* [jQuery UI](https://jqueryui.com)
-* [Gumby](http://www.gumbyframework.com) (although this is now a defunct project)
-
-#### JavaScript Libraries/Frameworks
-* [DataTables](https://datatables.net)
-* [Flot](http://www.flotcharts.org)
-* [jqPlot](http://www.jqplot.com)
-* [HighCharts](http://www.highcharts.com) (coming soon...)
+** Gumby framework is now a defunct project, so there will be no new versions for it
 
 ### Download
 ---
