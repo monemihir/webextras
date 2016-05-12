@@ -1,28 +1,27 @@
-### WebExtras  [![NuGet Version](https://img.shields.io/nuget/v/WebExtras.svg?style=flat)](https://www.nuget.org/packages/WebExtras/) 
+### WebExtras
 ---
 A collection of helper/extension methods for .NET developers.
 
-#### .NET 
-* Generic C# development
-* [ASP.NET MVC](http://www.asp.net/mvc)
-* [NancyFx](http://nancyfx.org/)
+.NET | UI Frameworks | Javascript Libraries/Frameworks
+-----|---------------|--------------------------------
+Generic C# development | [Bootstrap](http://getbootstrap.com) | [DataTables](https://datatables.net)
+[ASP.NET MVC](http://www.asp.net/mvc) | [jQuery UI](https://jqueryui.com) | [Flot](http://www.flotcharts.org)
+[NancyFx](http://nancyfx.org/) | [Gumby](http://www.gumbyframework.com)** | [jqPlot](http://www.jqplot.com)
+ | | [HighCharts](http://www.highcharts.com) (coming soon...)
 
-#### UI Frameworks
-* [Bootstrap](http://getbootstrap.com)
-* [jQuery UI](https://jqueryui.com)
-* [Gumby](http://www.gumbyframework.com) (although this is now a defunct project)
+** Gumby framework is now a defunct project, so there will be no new versions for it
 
-#### JavaScript Libraries/Frameworks
-* [DataTables](https://datatables.net)
-* [Flot](http://www.flotcharts.org)
-* [jqPlot](http://www.jqplot.com)
-* [HighCharts](http://www.highcharts.com) (coming soon...)
+### Download
+---
+Latest Stable | Last Build
+:-----------: | :------------:
+[![NuGet Version](https://img.shields.io/nuget/v/WebExtras.svg)](https://www.nuget.org/packages/WebExtras/) | [![](https://img.shields.io/badge/last%20build%20artifact-WebExtras.zip-blue.svg)](https://ci.appveyor.com/project/monemihir/webextras)
 
 ### Build Status
 ---
-Windows: [![Build status](https://ci.appveyor.com/api/projects/status/9c4s5yu5hjptvnwn?svg=true)](https://ci.appveyor.com/project/monemihir/webextras)
-
-Mono on Linux: [![Travis](https://travis-ci.org/monemihir/webextras.svg?branch=master)](https://travis-ci.org/monemihir/webextras)
+Windows | Mono on Linux
+:-----: | :------------:
+| [![Build status](https://ci.appveyor.com/api/projects/status/9c4s5yu5hjptvnwn?svg=true)](https://ci.appveyor.com/project/monemihir/webextras) | [![Travis](https://travis-ci.org/monemihir/webextras.svg?branch=master)](https://travis-ci.org/monemihir/webextras) |
 
 ### Demos and Documentation
 ---
