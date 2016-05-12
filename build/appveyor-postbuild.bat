@@ -1,3 +1,6 @@
+REM ~ go to root
+cd ..
+
 REM ~ copy binaries
 xcopy /I /Y "trunk\WebExtras.DemoApp\bin\WebExtras*.*" "dist\lib\net45"
 del "dist\lib\net45\*.pdb"
@@ -31,3 +34,6 @@ cd ..
 
 REM ~ cleanup
 rmdir /S /Q dist
+
+REM ~ go to build folder
+cd build
