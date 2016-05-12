@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+    <metadata>
+        <id>WebExtras.Nancy</id>
+        <version>2.0.0-alpha</version>
+        <title>WebExtras.Nancy</title>
+        <authors>Mihir Mone</authors>
+        <owners>Mihir Mone</owners>
+        <licenseUrl>https://raw.githubusercontent.com/monemihir/webextras/master/LICENSE</licenseUrl>
+        <projectUrl>https://github.com/monemihir/webextras</projectUrl>
+        <requireLicenseAcceptance>true</requireLicenseAcceptance>
+        <description>Provides a set of extensions for the popular NancyFx web framework</description>
+        <summary>A set of extensions for the popular NancyFx web framework</summary>
+        <releaseNotes>- Enh: Adding extensions for rendering SquishIt bundles
+- Enh: All dependencies updated to latest versions
+        </releaseNotes>
+        <copyright>2016 Mihir Mone</copyright>
+        <language>en-AU</language>
+        <tags>.NET, Helpers, Extensions, Nancy, NancyFx, Viewengine, Razor, SquishIt</tags>
+        <dependencies>
+            <group targetFramework=".NETFramework4.5">
+                <dependency id="Newtonsoft.Json" version="8.0.3" />
+                <dependency id="Nancy" version="1.4.3" />     
+                <dependency id="Nancy.Viewengines.Razor" version="1.4.3" />
+                <dependency id="SquishIt" version="0.9.8.2" />
+                <dependency id="WebExtras" version="2.0.0-alpha" />
+            </group>
+        </dependencies>
+    </metadata>
+    <files>
+        <file src="..\dist\lib\net45\WebExtras.Nancy.dll" target="lib\net45\WebExtras.Nancy.dll" />
+        <file src="..\dist\lib\net45\WebExtras.Nancy.xml" target="lib\net45\WebExtras.Nancy.xml" />        
+    </files>
+</package>

@@ -22,5 +22,12 @@ xcopy /I /Y "trunk\WebExtras.DemoApp\Views\Shared\*Datatable*.*" "dist\Views\Sha
 REM ~ create archive
 7z a artifacts\WebExtras.zip dist
 
+REM ~ build nuget packages
+cd build
+nuget pack WebExtras.nuspec -OutputDirectory ..\artifacts
+nuget pack WebExtras.Mvc.nuspec -OutputDirectory ..\artifacts
+nuget pack WebExtras.Nancy.nuspec -OutputDirectory ..\artifacts
+cd ..
+
 REM ~ cleanup
 rmdir /S /Q dist

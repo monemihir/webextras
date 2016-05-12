@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+    <metadata>
+        <id>WebExtras</id>
+        <version>2.0.0-alpha</version>
+        <title>WebExtras</title>
+        <authors>Mihir Mone</authors>
+        <owners>Mihir Mone</owners>
+        <licenseUrl>https://raw.githubusercontent.com/monemihir/webextras/master/LICENSE</licenseUrl>
+        <projectUrl>https://github.com/monemihir/webextras</projectUrl>
+        <requireLicenseAcceptance>true</requireLicenseAcceptance>
+        <description>A set of .NET extensions for jQuery dataTables, jQuery Flot and jqPlot so that you can create the objects in C# and then JSON serialize them to the Web Forms or ASP.Net MVC views.</description>
+        <summary>A set of .NET extensions for jQuery dataTables, jQuery Flot and jqPlot along with generic utility methods for .NET development</summary>
+        <releaseNotes>- Enh: A full rewrite of the undelying HTML component framework to support Nancy extensions
+- Enh: All dependencies updated to latest versions
+- Brk: DatatableColumn is now removed
+        </releaseNotes>
+        <copyright>(c) 2016 Mihir Mone</copyright>
+        <language>en-AU</language>
+        <tags>.NET, Helpers, Extensions, Flot, DataTables, jqPlot</tags>
+        <dependencies>
+            <group targetFramework=".NETFramework4.5">
+                <dependency id="Newtonsoft.Json" version="8.0.3" />
+            </group>
+        </dependencies>
+    </metadata>
+    <files>
+        <file src="..\dist\Content\Css\*.*" target="content\Content\Css\" />
+        <file src="..\dist\Scripts\*.*" target="content\Scripts\" />
+        <file src="..\dist\Views\*.*" target="content\Views\" />
+        <file src="..\dist\lib\net45\WebExtras.dll" target="lib\net45\WebExtras.dll" />
+        <file src="..\dist\lib\net45\WebExtras.xml" target="lib\net45\WebExtras.xml" />        
+    </files>
+</package>
