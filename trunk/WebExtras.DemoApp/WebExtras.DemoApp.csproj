@@ -506,6 +506,10 @@
       <Project>{18e73074-cb8e-4f80-b5e8-e81702ee2e68}</Project>
       <Name>WebExtras.Mvc</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WebExtras.Nancy\WebExtras.Nancy.csproj">
+      <Project>{8b23d1c6-6054-435d-abf7-666e8b640c6f}</Project>
+      <Name>WebExtras.Nancy</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WebExtras\WebExtras.csproj">
       <Project>{79881816-8cc9-458b-99f7-bbe3e35ab665}</Project>
       <Name>WebExtras</Name>
@@ -566,7 +570,7 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
-  </Target>  
+  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

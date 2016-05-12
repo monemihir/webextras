@@ -5,3 +5,5 @@
 *.user
 **/_ReSharper.Caches/**
 **/packages/**
+**/artifacts/**
+**/dist/**
