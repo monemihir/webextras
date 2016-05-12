@@ -1,4 +1,4 @@
-### WebExtras  [![NuGet Version](https://img.shields.io/nuget/v/WebExtras.svg?style=flat)](https://www.nuget.org/packages/WebExtras/) 
+### WebExtras
 ---
 A collection of helper/extension methods for .NET developers.
 
@@ -18,11 +18,17 @@ A collection of helper/extension methods for .NET developers.
 * [jqPlot](http://www.jqplot.com)
 * [HighCharts](http://www.highcharts.com) (coming soon...)
 
+### Download
+---
+Latest Stable | Last Build
+:-----------: | :------------:
+[![NuGet Version](https://img.shields.io/nuget/v/WebExtras.svg)](https://www.nuget.org/packages/WebExtras/) | [![](https://img.shields.io/badge/last%20build%20artifact-WebExtras.zip-blue.svg)](https://ci.appveyor.com/project/monemihir/webextras)
+
 ### Build Status
 ---
-Windows: [![Build status](https://ci.appveyor.com/api/projects/status/9c4s5yu5hjptvnwn?svg=true)](https://ci.appveyor.com/project/monemihir/webextras)
-
-Mono on Linux: [![Travis](https://travis-ci.org/monemihir/webextras.svg?branch=master)](https://travis-ci.org/monemihir/webextras)
+Windows | Mono on Linux
+:-----: | :------------:
+| [![Build status](https://ci.appveyor.com/api/projects/status/9c4s5yu5hjptvnwn?svg=true)](https://ci.appveyor.com/project/monemihir/webextras) | [![Travis](https://travis-ci.org/monemihir/webextras.svg?branch=master)](https://travis-ci.org/monemihir/webextras) |
 
 ### Demos and Documentation
 ---
