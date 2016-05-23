@@ -138,6 +138,7 @@
     <Compile Include="Gumby\EGumbyButtonStyle.cs" />
     <Compile Include="Gumby\EGumbyIcon.cs" />
     <Compile Include="Gumby\EGumbyTheme.cs" />
+    <Compile Include="Gumby\GumbyStringValueDeciders.cs" />
     <Compile Include="Gumby\GumbyUtil.cs" />
     <Compile Include="Html\AbstractFormComponent.cs" />
     <Compile Include="Html\EmptyComponent.cs" />
