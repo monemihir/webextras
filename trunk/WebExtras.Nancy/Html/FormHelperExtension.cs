@@ -33,7 +33,7 @@ namespace WebExtras.Nancy.Html
     /// <param name="text">Button text</param>
     /// <param name="htmlAttributes">[Optional] Any extra html attributes</param>
     /// <returns>A HTML button element</returns>
-    public static Button Button(this HtmlHelpers html, string text, object htmlAttributes = null)
+    public static IExtendedHtmlString Button(this HtmlHelpers html, string text, object htmlAttributes = null)
     {
       return Button(html, EButton.Regular, text, htmlAttributes);
     }
@@ -46,17 +46,16 @@ namespace WebExtras.Nancy.Html
     /// <param name="text">Button text</param>
     /// <param name="htmlAttributes">[Optional] Any extra html attributes</param>
     /// <returns>A HTML button element</returns>
-    public static Button Button(this HtmlHelpers html, EButton type, string text, object htmlAttributes = null)
+    public static IExtendedHtmlString Button(this HtmlHelpers html, EButton type, string text, object htmlAttributes = null)
     {
       HtmlComponent component = new HtmlComponent(EHtmlTag.Button, htmlAttributes);
       component.Attributes["type"] = type.GetStringValue();
+      component.InnerHtml = text;
 
       if (type == EButton.Cancel)
         component.Attributes["onclick"] = "javascript:window.history.back()";
 
-      Button btn = new Button(component);
-
-      return btn;
+      return new ExtendedHtmlString(component);
     }
   }
 }

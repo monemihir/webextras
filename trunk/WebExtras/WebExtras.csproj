@@ -88,7 +88,6 @@
   <ItemGroup>
     <Compile Include="Bootstrap\BootstrapStringValueDeciders.cs" />
     <Compile Include="Bootstrap\BootstrapUtil.cs" />
-    <Compile Include="Bootstrap\ButtonDisplayableComponent.cs" />
     <Compile Include="Bootstrap\EBootstrapButton.cs" />
     <Compile Include="Bootstrap\EBootstrapIcon.cs" />
     <Compile Include="Bootstrap\EBootstrapNavbar.cs" />
@@ -97,7 +96,6 @@
     <Compile Include="Bootstrap\EFontAwesomeIcon.cs" />
     <Compile Include="Bootstrap\EFontAwesomeIconSize.cs" />
     <Compile Include="Bootstrap\EFontAwesomeVersion.cs" />
-    <Compile Include="Bootstrap\IButtonDisplayableComponent.cs" />
     <Compile Include="Bootstrap\v2\BootstrapConstants.cs" />
     <Compile Include="Bootstrap\v2\EPickerView.cs" />
     <Compile Include="Bootstrap\v2\PickerOptions.cs" />

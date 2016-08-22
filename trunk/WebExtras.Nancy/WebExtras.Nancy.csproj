@@ -121,8 +121,6 @@
     <Compile Include="Core\HtmlHelpersExtension.cs" />
     <Compile Include="Core\IHasRouteMethods.cs" />
     <Compile Include="Core\RoutesCreatorExtension.cs" />
-    <Compile Include="Html\Button.cs" />
-    <Compile Include="Html\ButtonExtension.cs" />
     <Compile Include="Html\ExtendedHtmlString.cs" />
     <Compile Include="Html\ExtendedHtmlStringExtension.cs" />
     <Compile Include="Html\FormControl.cs" />
