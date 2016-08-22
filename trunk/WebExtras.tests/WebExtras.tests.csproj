@@ -91,6 +91,7 @@
     <Compile Include="Core\StringValueAttributeTest.cs" />
     <Compile Include="JQDataTables\DatatableRecordsSortExtensionTest.cs" />
     <Compile Include="JQDataTables\AOColumnTest.cs" />
+    <Compile Include="JQDataTables\DatatableSettingsTest.cs" />
     <Compile Include="JQDataTables\DatatableTestClass.cs" />
     <Compile Include="JQDataTables\DatatableRecordsTest.cs" />
     <Compile Include="JQDataTables\ValueFormatterTestClass.cs" />
