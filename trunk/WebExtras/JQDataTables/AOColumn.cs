@@ -182,7 +182,7 @@ namespace WebExtras.JQDataTables
     /// Constructor
     /// </summary>
     /// <param name="title">Column title/header</param>
-    /// <exception cref="System.ArgumentNullException"></exception>
+    /// <exception cref="System.ArgumentNullException">Thrown if the column title is null or empty string</exception>
     public AOColumn(string title)
       : this()
     {
