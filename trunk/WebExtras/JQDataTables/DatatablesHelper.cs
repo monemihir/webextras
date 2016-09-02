@@ -21,6 +21,9 @@ using Newtonsoft.Json;
 
 namespace WebExtras.JQDataTables
 {
+  /// <summary>
+  /// Datatables helper methods
+  /// </summary>
   public static class DatatablesHelper
   {
     /// <summary>
