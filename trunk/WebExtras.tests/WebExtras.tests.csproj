@@ -94,6 +94,7 @@
     <Compile Include="JQDataTables\DatatableSettingsTest.cs" />
     <Compile Include="JQDataTables\DatatableTestClass.cs" />
     <Compile Include="JQDataTables\DatatableRecordsTest.cs" />
+    <Compile Include="JQDataTables\Plugins\ButtonsDatatablePluginTest.cs" />
     <Compile Include="JQDataTables\ValueFormatterTestClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Core\StringExtensionsTest.cs" />
@@ -108,6 +109,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

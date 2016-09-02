@@ -96,9 +96,9 @@ namespace WebExtras.Core
     /// <param name="serializer">The Newtonsoft.Json.JsonWriter to write to</param>
     public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
     {
-      JsFunc f = (JsFunc) value;
+      JsFunc f = (JsFunc)value;
 
-      if (string.IsNullOrEmpty(f.Body)) return;
+      string fnBody = string.IsNullOrWhiteSpace(f.Body) ? string.Empty : f.Body;
 
       StringBuilder fnText = new StringBuilder();
 
@@ -112,7 +112,7 @@ namespace WebExtras.Core
       else
         fnText.Append("() ");
 
-      fnText.Append("{ " + f.Body + " }");
+      fnText.Append("{ " + fnBody + " }");
 
       StringBuilder docReady = new StringBuilder();
       docReady.Append("$(document).ready(function() { ");

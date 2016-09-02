@@ -14,24 +14,21 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-using System.Collections.Generic;
+using Newtonsoft.Json;
 
-namespace WebExtras.JQDataTables
+namespace WebExtras.JQDataTables.Plugins
 {
   /// <summary>
-  ///   A generic datatable plugin interface
+  ///   A generic interface that can process options
   /// </summary>
-  public interface IDatatablePlugin
+  /// <typeparam name="TOptions">Output type of the processed options</typeparam>
+  public interface IProcessOptions<out TOptions>
   {
     /// <summary>
-    ///   Name of the plugin
+    ///   Create options
     /// </summary>
-    string Name { get; }
-
-    /// <summary>
-    ///   Create plugin options
-    /// </summary>
-    /// <returns></returns>
-    IDictionary<string, object> CreateOptions();
+    /// <param name="nullValues">Null value handling</param>
+    /// <returns>Plugin options</returns>
+    TOptions CreateOptions(NullValueHandling nullValues);
   }
 }

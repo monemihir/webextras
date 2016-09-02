@@ -151,7 +151,7 @@
     <Compile Include="JQDataTables\AASort.cs" />
     <Compile Include="JQDataTables\AOColumn.cs" />
     <Compile Include="JQDataTables\AOColumnAttribute.cs" />
-    <Compile Include="JQDataTables\IDatatablePlugin.cs" />
+    <Compile Include="JQDataTables\DatatablesHelper.cs" />
     <Compile Include="JQDataTables\OAria.cs" />
     <Compile Include="JQDataTables\DatatableFilters.cs" />
     <Compile Include="JQDataTables\DatatableRecordsSortExtension.cs" />
@@ -166,6 +166,15 @@
     <Compile Include="JQDataTables\DatatableSettings.cs" />
     <Compile Include="JQDataTables\OPaginate.cs" />
     <Compile Include="JQDataTables\OSearch.cs" />
+    <Compile Include="JQDataTables\Plugins\AbstractDatatablePlugin.cs" />
+    <Compile Include="JQDataTables\Plugins\ButtonsDatatablePlugin.cs" />
+    <Compile Include="JQDataTables\Plugins\ColVisButtonGroup.cs" />
+    <Compile Include="JQDataTables\Plugins\ColVisDatatablePlugin.cs" />
+    <Compile Include="JQDataTables\Plugins\DefaultDatatableButton.cs" />
+    <Compile Include="JQDataTables\Plugins\IDatatableButton.cs" />
+    <Compile Include="JQDataTables\Plugins\IDatatablePlugin.cs" />
+    <Compile Include="JQDataTables\Plugins\InbuiltDatatableButton.cs" />
+    <Compile Include="JQDataTables\Plugins\IProcessOptions.cs" />
     <Compile Include="JQDataTables\PostbackItem.cs" />
     <Compile Include="JQFlot\FlotChart.cs" />
     <Compile Include="JQFlot\Graphs\BarGraph.cs" />

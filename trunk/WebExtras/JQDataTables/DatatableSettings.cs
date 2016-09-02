@@ -21,6 +21,7 @@ using System.Reflection;
 using System.Text;
 using Newtonsoft.Json;
 using WebExtras.Core;
+using WebExtras.JQDataTables.Plugins;
 
 namespace WebExtras.JQDataTables
 {
@@ -323,7 +324,7 @@ namespace WebExtras.JQDataTables
     ///   Settings for plugins
     /// </summary>
     [JsonIgnore]
-    public virtual List<IDatatablePlugin> Plugins { get; private set; }
+    public virtual List<IDatatablePlugin<object>> Plugins { get; private set; }
 
     #endregion Properties
 
@@ -602,7 +603,7 @@ namespace WebExtras.JQDataTables
     /// </summary>
     private void Init()
     {
-      Plugins = new List<IDatatablePlugin>();
+      Plugins = new List<IDatatablePlugin<object>>();
       iDisplayLength = 10;
     }
 
@@ -743,61 +744,33 @@ namespace WebExtras.JQDataTables
     /// <returns>Returns a JSON serialized version of this object</returns>
     public override string ToString()
     {
-      JsonSerializerSettings settings = new JsonSerializerSettings
-      {
-        Formatting = Formatting.Indented,
-        NullValueHandling = NullValueHandling.Ignore
-      };
+      return ToString(WebExtrasConstants.JsonSerializerSettings);
+    }
 
+    /// <summary>
+    ///   Returns a JSON serialized version of this object
+    /// </summary>
+    /// <param name="settings">Json serialiser settings</param>
+    /// <returns>Returns a JSON serialized version of this object</returns>
+    public string ToString(JsonSerializerSettings settings)
+    {
       settings.Converters.Add(new EServerMethodJsonConverter());
 
-      IDictionary<string, object> serializationDict = new Dictionary<string, object>();
+      IDictionary<string, object> serializationDict = DatatablesHelper.ToDictionary(this, settings.NullValueHandling);
 
-      Type t = GetType();
+      IDictionary<string, object> pluginOptions = new Dictionary<string, object>();
 
-      FieldInfo[] fields = t.GetFields();
-
-      foreach (FieldInfo f in fields)
+      foreach (IDatatablePlugin<object> p in Plugins)
       {
-        var ignores = f.GetCustomAttributes<JsonIgnoreAttribute>().ToList();
+        var options = p.CreateOptions(settings.NullValueHandling);
 
-        if (ignores.Count > 0)
-          continue;
-
-        object val = f.GetValue(this);
-
-        if (val != null)
-          serializationDict.Add(f.Name, val);
-      }
-
-      PropertyInfo[] properties = t.GetProperties();
-
-      foreach (PropertyInfo p in properties)
-      {
-        var ignores = p.GetCustomAttributes<JsonIgnoreAttribute>().ToList();
-
-        if (ignores.Count > 0)
-          continue;
-
-        object val = p.GetValue(this);
-
-        if (val != null)
-          serializationDict.Add(p.Name, val);
-      }
-
-      foreach (IDatatablePlugin p in Plugins)
-      {
-        IDictionary<string, object> options = p.CreateOptions();
-
-        serializationDict = serializationDict.Merge(options);
+        pluginOptions.Add(p.Name, options);
       }
 
       if (sPaginationType == EPagination.Bootstrap.GetStringValue() && !string.IsNullOrWhiteSpace(sPaginationType))
-      {
         sPaginationType = EPagination.FullNumbers.GetStringValue();
 
-        serializationDict["sPaginationType"] = sPaginationType;
-      }
+      serializationDict = serializationDict.Merge(pluginOptions);
 
       string json = JsonConvert.SerializeObject(serializationDict, settings);
 

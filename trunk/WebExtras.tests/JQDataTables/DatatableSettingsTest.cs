@@ -14,10 +14,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-using System.Collections.Generic;
-using System.IO;
 using NUnit.Framework;
 using WebExtras.JQDataTables;
+using WebExtras.JQDataTables.Plugins;
 
 namespace WebExtras.tests.JQDataTables
 {
@@ -27,23 +26,18 @@ namespace WebExtras.tests.JQDataTables
     /// <summary>
     ///   Sample plugin class
     /// </summary>
-    private class SamplePlugin : IDatatablePlugin
+    private class SamplePlugin : AbstractDatatablePlugin
     {
-      /// <summary>
-      ///   Name of the plugin
-      /// </summary>
-      public string Name { get { return "sample-plugin;"; } }
+      public int oSampleField;
+      public string oSampleProperty { get; set; }
 
       /// <summary>
-      ///   Create plugin options
+      ///   Constructor
       /// </summary>
-      /// <returns></returns>
-      public IDictionary<string, object> CreateOptions()
+      public SamplePlugin() : base("oSamplePlugin")
       {
-        return new Dictionary<string, object>
-        {
-          {"sample-property", 1234}
-        };
+        oSampleField = 1234;
+        oSampleProperty = "mihir-mone";
       }
     }
 
@@ -59,13 +53,46 @@ namespace WebExtras.tests.JQDataTables
       DatatableSettings s = new DatatableSettings();
       s.Plugins.Add(p);
 
-      string expectedJson = "{\r\n  \"bLengthChange\": false,\r\n  \"bPaginate\": false,\r\n  \"bServerSide\": false,\r\n  \"iDisplayLength\": 10,\r\n  \"sample-property\": 1234\r\n}";
+      const string expectedJson = "{\r\n  \"bLengthChange\": false,\r\n  \"bPaginate\": false,\r\n  \"bServerSide\": false,\r\n  \"iDisplayLength\": 10,\r\n  \"oSamplePlugin\": {\r\n    \"oSampleField\": 1234,\r\n    \"oSampleProperty\": \"mihir-mone\"\r\n  }\r\n}";
 
       // act
       string json = s.ToString();
 
       // assert
       Assert.AreEqual(expectedJson, json);
+    }
+
+    /// <summary>
+    /// Test that the serialization for known plugins works as expected
+    /// </summary>
+    [Test]
+    public void Serialization_Works_As_Expected_For_Known_Plugins()
+    {
+      // arrange
+      ColVisDatatablePlugin cvdp = new ColVisDatatablePlugin {
+        aiExclude = new[] { 0, 1, 4 }
+      };
+
+      DefaultDatatableButton btn = new DefaultDatatableButton
+      {
+        text = "Sample Button",
+        action = DefaultDatatableButton.GetDefaultActionFunc()
+      };
+      btn.action.Body = "alert('hello mihir');";
+
+      ButtonsDatatablePlugin bdp = new ButtonsDatatablePlugin();
+      bdp.buttons.Add(btn);
+
+      DatatableSettings s = new DatatableSettings();
+      s.Plugins.AddRange(new IDatatablePlugin<object> [] { cvdp, bdp });
+
+      const string expected = "{\r\n  \"bLengthChange\": false,\r\n  \"bPaginate\": false,\r\n  \"bServerSide\": false,\r\n  \"iDisplayLength\": 10,\r\n  \"oColVis\": {\r\n    \"aiExclude\": [\r\n      0,\r\n      1,\r\n      4\r\n    ]\r\n  },\r\n  \"buttons\": [\r\n    {\r\n      \"text\": \"Sample Button\",\r\n      \"action\": function (e, dt, node, config) { alert('hello mihir'); }\r\n    }\r\n  ]\r\n}";
+
+      // act
+      string json = s.ToString();
+
+      // assert
+      Assert.AreEqual(expected, json);
     }
   }
 }
