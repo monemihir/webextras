@@ -18,6 +18,7 @@
 
 using WebExtras.Bootstrap;
 using WebExtras.Core;
+using WebExtras.FontAwesome;
 using WebExtras.Mvc.Bootstrap;
 using WebExtras.Mvc.Html;
 #pragma warning disable 1591

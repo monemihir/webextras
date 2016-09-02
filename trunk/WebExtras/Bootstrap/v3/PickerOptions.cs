@@ -18,6 +18,7 @@
 using System;
 using Newtonsoft.Json;
 using WebExtras.Core;
+using WebExtras.FontAwesome;
 
 // ReSharper disable InconsistentNaming
 

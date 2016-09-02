@@ -19,6 +19,7 @@
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using WebExtras.Core;
+using WebExtras.FontAwesome;
 using WebExtras.Html;
 
 namespace WebExtras.Bootstrap

@@ -15,18 +15,26 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+using WebExtras.Bootstrap;
+using WebExtras.Core;
 
 #pragma warning disable 1591
 
-namespace WebExtras.Bootstrap
+namespace WebExtras.FontAwesome
 {
   /// <summary>
-  ///   Font Awesome version selector
+  ///   Available icon sizes for the Font-Awesome icon library
   /// </summary>
-  public enum EFontAwesomeVersion
+  public enum EFontAwesomeIconSize
   {
-    None,
-    V3,
-    V4
+    [StringValue("")] Normal,
+
+    [StringValue(typeof(FontAwesomeLargeIconStringValue))] Large,
+
+    [StringValue("2x")] TwoX,
+
+    [StringValue("3x")] ThreeX,
+
+    [StringValue("4x")] FourX
   }
 }

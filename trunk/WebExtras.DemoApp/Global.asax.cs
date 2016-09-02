@@ -23,6 +23,7 @@ using System.Web.Routing;
 using WebExtras.Bootstrap;
 using WebExtras.Core;
 using WebExtras.DemoApp.App_Start;
+using WebExtras.FontAwesome;
 using WebExtras.Mvc.Core;
 
 namespace WebExtras.DemoApp

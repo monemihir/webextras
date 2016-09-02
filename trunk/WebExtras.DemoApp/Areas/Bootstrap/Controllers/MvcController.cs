@@ -25,6 +25,7 @@ using System.Web.Mvc;
 using WebExtras.Bootstrap;
 using WebExtras.Core;
 using WebExtras.DemoApp.Models.Mvc;
+using WebExtras.FontAwesome;
 using WebExtras.Mvc.Core;
 
 namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers

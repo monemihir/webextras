@@ -18,7 +18,7 @@
 
 #pragma warning disable 1591
 
-namespace WebExtras.Bootstrap
+namespace WebExtras.FontAwesome
 {
   /// <summary>
   ///   A collection of all available Font_Awesome library

@@ -22,6 +22,7 @@ using System.Linq.Expressions;
 using System.Web.Mvc;
 using WebExtras.Bootstrap;
 using WebExtras.Core;
+using WebExtras.FontAwesome;
 using WebExtras.Mvc.Core;
 using WebExtras.Mvc.Html;
 

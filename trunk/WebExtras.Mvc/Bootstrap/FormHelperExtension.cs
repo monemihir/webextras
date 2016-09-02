@@ -20,6 +20,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Web.Mvc;
+using WebExtras.Bootstrap;
 using WebExtras.Html;
 using WebExtras.Mvc.Html;
 
@@ -44,7 +45,7 @@ namespace WebExtras.Mvc.Bootstrap
     public static IFormControl<TModel, TValue> FormGroupControlFor<TModel, TValue>(this HtmlHelper<TModel> html,
       Expression<Func<TModel, TValue>> expression, object htmlAttributes = null)
     {
-      FormComponent<TModel, TValue> bfc = new FormComponent<TModel, TValue>(expression, htmlAttributes);
+      BootstrapFormComponent<TModel, TValue> bfc = new BootstrapFormComponent<TModel, TValue>(expression, htmlAttributes);
 
       return new FormControl<TModel, TValue>(bfc);
     }
@@ -67,7 +68,7 @@ namespace WebExtras.Mvc.Bootstrap
 
       var newOptions = options.Select(f => new SelectListOption { Text = f, Value = f });
 
-      FormComponent<TModel, TValue> bfc = new FormComponent<TModel, TValue>(expression, newOptions,
+      BootstrapFormComponent<TModel, TValue> bfc = new BootstrapFormComponent<TModel, TValue>(expression, newOptions,
         htmlAttributes);
 
       return new FormControl<TModel, TValue>(bfc);
@@ -90,7 +91,7 @@ namespace WebExtras.Mvc.Bootstrap
         throw new ArgumentNullException("options", "Select list options cannot be null");
 
       var newOptions = options.Select(f => new SelectListOption(f.Text, f.Value, f.Selected));
-      FormComponent<TModel, TValue> bfc = new FormComponent<TModel, TValue>(expression, newOptions, htmlAttributes);
+      BootstrapFormComponent<TModel, TValue> bfc = new BootstrapFormComponent<TModel, TValue>(expression, newOptions, htmlAttributes);
 
       return new FormControl<TModel, TValue>(bfc);
     }
@@ -109,7 +110,7 @@ namespace WebExtras.Mvc.Bootstrap
     public static IFormControl<TModel, TValue> FormGroupControlFor<TModel, TValue>(this HtmlHelper<TModel> html,
       Expression<Func<TModel, TValue>> expression, int rows, int columns, object htmlAttributes = null)
     {
-      FormComponent<TModel, TValue> bfc = new FormComponent<TModel, TValue>(expression, rows, columns, htmlAttributes);
+      BootstrapFormComponent<TModel, TValue> bfc = new BootstrapFormComponent<TModel, TValue>(expression, rows, columns, htmlAttributes);
 
       return new FormControl<TModel, TValue>(bfc);
     }

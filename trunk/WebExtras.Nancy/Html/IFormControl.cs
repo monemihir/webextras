@@ -18,6 +18,7 @@
 using Nancy.ViewEngines.Razor;
 using WebExtras.Bootstrap;
 using WebExtras.Core;
+using WebExtras.FontAwesome;
 using WebExtras.Html;
 
 namespace WebExtras.Nancy.Html

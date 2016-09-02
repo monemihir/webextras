@@ -24,6 +24,7 @@ using Newtonsoft.Json;
 using WebExtras.Bootstrap;
 using WebExtras.Bootstrap.v3;
 using WebExtras.Core;
+using WebExtras.FontAwesome;
 using WebExtras.Html;
 using WebExtras.Mvc.Core;
 using WebExtras.Mvc.Html;
