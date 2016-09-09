@@ -48,5 +48,12 @@ namespace WebExtras.Html
     /// <param name="append">[Optional] Whether to append or prepend the addon</param>
     /// <returns>The updated form control</returns>
     IFormComponent<TModel, TValue> AddHtml(IHtmlComponent html, bool append = true);
+
+    /// <summary>
+    ///   Set the value for this component
+    /// </summary>
+    /// <param name="value">Value to be set</param>
+    /// <returns>The updated form control</returns>
+    IFormComponent<TModel, TValue> SetValue(string value);
   }
 }

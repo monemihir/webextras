@@ -101,7 +101,7 @@ namespace WebExtras.Bootstrap
       if (rows <= 0 || columns <= 0)
         throw new InvalidOperationException("Invalid dimensions given. rows/columns must be greater than 0");
 
-      m_textAreaDimensions = new[] {rows, columns};
+      m_textAreaDimensions = new[] { rows, columns };
 
       Init(expression, htmlAttributes);
     }
@@ -139,6 +139,40 @@ namespace WebExtras.Bootstrap
     public IFormComponent<TModel, TValue> AddHtml(IHtmlComponent html, bool append = true)
     {
       return CreateAddOn(html.ToHtml(), append);
+    }
+
+    /// <inheritdoc />
+    public IFormComponent<TModel, TValue> SetValue(string value)
+    {
+      if (Input == null)
+        return this;
+
+      switch (Input.Tag)
+      {
+        case EHtmlTag.Input:
+          if (Input.Attributes["type"] != "password")
+            Input.Attributes["value"] = value;
+          break;
+
+        case EHtmlTag.Select:
+          foreach (var subComponent in Input.AppendTags.Concat(Input.PrependTags))
+          {
+            if (subComponent.Tag != EHtmlTag.Option)
+              continue;
+
+            if (subComponent.InnerHtml == value)
+              subComponent.Attributes["selected"] = "true";
+            else
+              subComponent.Attributes.Remove("selected");
+          }
+          break;
+
+        case EHtmlTag.TextArea:
+          Input.InnerHtml = value;
+          break;
+      }
+
+      return this;
     }
 
     /// <summary>
@@ -251,7 +285,7 @@ namespace WebExtras.Bootstrap
       };
 
       DataTypeAttribute[] customAttribs =
-        (DataTypeAttribute[]) exp.Member.GetCustomAttributes(typeof(DataTypeAttribute), false);
+        (DataTypeAttribute[])exp.Member.GetCustomAttributes(typeof(DataTypeAttribute), false);
       if (customAttribs.Length > 0)
       {
         switch (customAttribs[0].DataType)
@@ -302,7 +336,7 @@ namespace WebExtras.Bootstrap
     /// </summary>
     private void CreateBootstrap2Tags()
     {
-      throw new NotImplementedException();
+      throw new NotSupportedException("Bootstrap 2 is not supported for this component anymore. Please upgrade to Bootstrap 3.");
     }
   }
 }

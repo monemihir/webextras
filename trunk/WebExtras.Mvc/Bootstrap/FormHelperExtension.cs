@@ -1,6 +1,6 @@
 ﻿// 
 // This file is part of - ExpenseLogger application
-// Copyright (C) 2015 Mihir Mone
+// Copyright (C) 2016 Mihir Mone
 // 
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -46,6 +46,7 @@ namespace WebExtras.Mvc.Bootstrap
       Expression<Func<TModel, TValue>> expression, object htmlAttributes = null)
     {
       BootstrapFormComponent<TModel, TValue> bfc = new BootstrapFormComponent<TModel, TValue>(expression, htmlAttributes);
+      SetComponentValue(html, bfc, expression);
 
       return new FormControl<TModel, TValue>(bfc);
     }
@@ -70,6 +71,7 @@ namespace WebExtras.Mvc.Bootstrap
 
       BootstrapFormComponent<TModel, TValue> bfc = new BootstrapFormComponent<TModel, TValue>(expression, newOptions,
         htmlAttributes);
+      SetComponentValue(html, bfc, expression);
 
       return new FormControl<TModel, TValue>(bfc);
     }
@@ -92,6 +94,7 @@ namespace WebExtras.Mvc.Bootstrap
 
       var newOptions = options.Select(f => new SelectListOption(f.Text, f.Value, f.Selected));
       BootstrapFormComponent<TModel, TValue> bfc = new BootstrapFormComponent<TModel, TValue>(expression, newOptions, htmlAttributes);
+      SetComponentValue(html, bfc, expression);
 
       return new FormControl<TModel, TValue>(bfc);
     }
@@ -111,8 +114,25 @@ namespace WebExtras.Mvc.Bootstrap
       Expression<Func<TModel, TValue>> expression, int rows, int columns, object htmlAttributes = null)
     {
       BootstrapFormComponent<TModel, TValue> bfc = new BootstrapFormComponent<TModel, TValue>(expression, rows, columns, htmlAttributes);
+      SetComponentValue(html, bfc, expression);
 
       return new FormControl<TModel, TValue>(bfc);
+    }
+
+    /// <summary>
+    ///   Sets the value of the given component with the current value of the property denoted in the expression
+    /// </summary>
+    /// <param name="html">Current <see cref="HtmlHelper" /></param>
+    /// <param name="bfc">Form component to set value for</param>
+    /// <param name="expression">Model property expression</param>
+    private static void SetComponentValue<TModel, TValue>(this HtmlHelper<TModel> html, IBootstrapFormComponent<TModel, TValue> bfc, Expression<Func<TModel, TValue>> expression)
+    {
+      if (html.ViewData.Model == null)
+        return;
+
+      var result = expression.Compile().DynamicInvoke(html.ViewData.Model);
+
+      bfc.SetValue(result == null ? string.Empty : result.ToString());
     }
 
     #endregion FormGroupControlFor extensions
