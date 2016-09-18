@@ -130,7 +130,16 @@ namespace WebExtras.Mvc.Bootstrap
       if (html.ViewData.Model == null)
         return;
 
-      var result = expression.Compile().DynamicInvoke(html.ViewData.Model);
+      object result = string.Empty;
+
+      try
+      {
+        result = expression.Compile().DynamicInvoke(html.ViewData.Model);
+      }
+      catch (Exception)
+      {
+        // ignore
+      }
 
       bfc.SetValue(result == null ? string.Empty : result.ToString());
     }

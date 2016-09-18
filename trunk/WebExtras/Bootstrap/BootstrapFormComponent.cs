@@ -211,7 +211,7 @@ namespace WebExtras.Bootstrap
       tag.CssClasses.Add("form-group");
 
       if (RenderBehavior == EFormControlBehavior.Default)
-        tag.InnerHtml = Label.ToHtml() + Input.ToHtml();
+        tag.InnerHtml = (Label == null ? string.Empty : Label.ToHtml()) + Input.ToHtml();
       else
         tag.InnerHtml = InputGroup.ToHtml();
 
