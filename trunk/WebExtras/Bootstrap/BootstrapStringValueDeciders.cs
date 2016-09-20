@@ -1,60 +1,25 @@
 ﻿// 
 // This file is part of - WebExtras
-// Copyright (C) 2016 Mihir Mone
+// Copyright 2016 Mihir Mone
 // 
-// This program is free software: you can redistribute it and/or modify
-// it under the terms of the GNU Lesser General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
 // 
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU Lesser General Public License for more details.
+//     http://www.apache.org/licenses/LICENSE-2.0
 // 
-// You should have received a copy of the GNU Lesser General Public License
-// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 using WebExtras.Core;
-using WebExtras.FontAwesome;
 
 namespace WebExtras.Bootstrap
 {
   /// <summary>
-  ///   FontAwesome large icon CSS class value decider based on
-  ///   the FontAwesome library version
-  /// </summary>
-  internal class FontAwesomeLargeIconStringValue : IStringValueDecider<EFontAwesomeIconSize>
-  {
-    /// <summary>
-    ///   The string value decider function
-    /// </summary>
-    /// <param name="args">
-    ///   String value decider args
-    /// </param>
-    /// <returns>The string value to be used for the enum value</returns>
-    public string Decide(StringValueDeciderArgs<EFontAwesomeIconSize> args)
-    {
-      string css;
-
-      switch (WebExtrasConstants.FontAwesomeVersion)
-      {
-        case EFontAwesomeVersion.None:
-          throw new FontAwesomeVersionException();
-        case EFontAwesomeVersion.V3:
-          css = "large";
-          break;
-        default:
-          css = "lg";
-          break;
-      }
-
-      return css;
-    }
-  }
-
-  /// <summary>
-  /// The string value decider for a bootstrap button
+  ///   The string value decider for a bootstrap button
   /// </summary>
   internal class BootstrapButtonStringValueDecider : IStringValueDecider<EBootstrapButton>
   {
@@ -73,11 +38,11 @@ namespace WebExtras.Bootstrap
       string iconName = "btn-" + args.Value.ToString().ToLowerInvariant();
 
       if (WebExtrasConstants.BootstrapVersion == EBootstrapVersion.V3 &&
-        args.Value == EBootstrapButton.Large)
+          args.Value == EBootstrapButton.Large)
         iconName = "btn-lg";
 
       if (WebExtrasConstants.BootstrapVersion == EBootstrapVersion.V3 &&
-        args.Value == EBootstrapButton.Small)
+          args.Value == EBootstrapButton.Small)
         iconName = "btn-sm";
 
       string value = "btn " + iconName;
@@ -87,7 +52,7 @@ namespace WebExtras.Bootstrap
   }
 
   /// <summary>
-  /// The string value decider for a bootstrap icon
+  ///   The string value decider for a bootstrap icon
   /// </summary>
   internal class BootstrapIconStringValueDecider : IStringValueDecider<EBootstrapIcon>
   {

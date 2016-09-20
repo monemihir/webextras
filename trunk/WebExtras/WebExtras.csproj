@@ -155,6 +155,7 @@
     <Compile Include="FontAwesome\EFontAwesomeIcon.cs" />
     <Compile Include="FontAwesome\EFontAwesomeIconSize.cs" />
     <Compile Include="FontAwesome\EFontAwesomeVersion.cs" />
+    <Compile Include="FontAwesome\FontAwesomeStringValueDeciders.cs" />
     <Compile Include="Gumby\EGumbyButton.cs" />
     <Compile Include="Gumby\EGumbyButtonStyle.cs" />
     <Compile Include="Gumby\EGumbyIcon.cs" />

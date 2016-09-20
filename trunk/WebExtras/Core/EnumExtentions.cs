@@ -85,9 +85,10 @@ namespace WebExtras.Core
       }
       else
       {
-        string name = string.Format("{0}.{1}", enumType.Name, value);
-        throw new InvalidUsageException("Cannot have multiple decorations of [StringValue] attribute for enum value: " +
-                                        name);
+        //string name = string.Format("{0}.{1}", enumType.Name, value);
+        //throw new InvalidUsageException("Cannot have multiple decorations of [StringValue] attribute for enum value: " +
+        //                                name);
+        output = value.ToString();
       }
 
       return output;
