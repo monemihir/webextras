@@ -73,12 +73,14 @@ namespace WebExtras.FontAwesome
         case EFontAwesomeVersion.None:
           throw new FontAwesomeVersionException();
         case EFontAwesomeVersion.V3:
-          css = "icon-" + args.Value.ToString().ToLowerInvariant();
+          css = "icon-" + args.Value;
           break;
         default:
-          css = "fa-" + args.Value.ToString().ToLowerInvariant();
+          css = "fa-" + args.Value;
           break;
       }
+
+      css = css.Replace("_", "-").ToLowerInvariant();
 
       return css;
     }

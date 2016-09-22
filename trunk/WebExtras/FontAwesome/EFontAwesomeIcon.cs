@@ -260,6 +260,7 @@ namespace WebExtras.FontAwesome
     Hand_O_Left,
     Hand_O_Right,
     Hand_O_Up,
+    Hand_Stop_O,
     Hdd_O,
     Header,
     Headphones,
