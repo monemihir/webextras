@@ -160,7 +160,7 @@ namespace WebExtras.Bootstrap
             if (subComponent.Tag != EHtmlTag.Option)
               continue;
 
-            if (subComponent.InnerHtml == value)
+            if (subComponent.Attributes["value"] == value)
               subComponent.Attributes["selected"] = "true";
             else
               subComponent.Attributes.Remove("selected");
