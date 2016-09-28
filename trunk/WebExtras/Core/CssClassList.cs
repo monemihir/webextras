@@ -51,6 +51,9 @@ namespace WebExtras.Core
     /// <param name="item">Item to be added</param>
     public new void Add(string item)
     {
+      if (string.IsNullOrWhiteSpace(item))
+        return;
+
       AddRange(item.Split(' '));
     }
 
@@ -63,6 +66,9 @@ namespace WebExtras.Core
     /// <param name="collection">New collection to be added</param>
     public new void AddRange(IEnumerable<string> collection)
     {
+      if (collection == null)
+        return;
+
       IEnumerable<string> flattened = collection.Select(f => f.Split(' ')).SelectMany(f => f);
 
       base.AddRange(flattened);
