@@ -155,7 +155,7 @@ namespace WebExtras.Mvc.Core
       dismissBtn.InnerHtml = "&times;";
 
       // create action message div
-      TagBuilder builder = new TagBuilder("div");
+      TagBuilder builder = new TagBuilder("span");
       builder.Attributes["class"] = "alert alert-dismissable keep-center strong";
       builder.GenerateId(controlId);
       builder.AddCssClass(type.GetStringValue());
