@@ -19,6 +19,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace WebExtras.Core
 {
@@ -107,6 +108,17 @@ namespace WebExtras.Core
     public static string Remove(this string str, string removeStr)
     {
       return str.Replace(removeStr, "").Trim();
+    }
+
+    /// <summary>
+    ///   Splits a camel cased string with given charater
+    /// </summary>
+    /// <param name="input">Input string</param>
+    /// <param name="splitCharacter">[Optional] Character to use when splitting the camel case. Default to SPACE</param>
+    /// <returns>Split camel case word</returns>
+    public static string SplitCamelCase(this string input, char splitCharacter = ' ')
+    {
+      return Regex.Replace(input, "([A-Z])", splitCharacter + "$1", RegexOptions.Compiled).Trim();
     }
   }
 }

@@ -14,6 +14,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+using System.ComponentModel;
 using WebExtras.FontAwesome;
 
 namespace WebExtras.Html
@@ -25,6 +26,13 @@ namespace WebExtras.Html
   /// <typeparam name="TValue">Property to be scanned</typeparam>
   public interface IFormComponent<TModel, TValue> : IHtmlRenderer
   {
+    /// <summary>
+    ///   Adds text based on any <see cref="DisplayNameAttribute" /> decorated on the property, otherwise just uses the property name
+    /// </summary>
+    /// <param name="append">[Optional] Whether to append or prepend the text</param>
+    /// <returns>The updated form control</returns>
+    IFormComponent<TModel, TValue> AddText(bool append = true);
+
     /// <summary>
     ///   Add text addon to the form control
     /// </summary>

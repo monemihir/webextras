@@ -16,6 +16,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Linq.Expressions;
@@ -31,6 +32,11 @@ namespace WebExtras.Bootstrap
   [Serializable]
   public class BootstrapFormComponent<TModel, TValue> : IBootstrapFormComponent<TModel, TValue>
   {
+    /// <summary>
+    /// Property expression
+    /// </summary>
+    private MemberExpression m_propertyExpression;
+
     /// <summary>
     ///   Select list items (populated if we are creating a SELECT control)
     /// </summary>
@@ -107,6 +113,19 @@ namespace WebExtras.Bootstrap
     }
 
     #region Implementation of IBootstrapFormComponent<TModel,TValue>
+
+    /// <inheritdoc />
+    public IFormComponent<TModel, TValue> AddText(bool append = true)
+    {
+      DisplayNameAttribute[] customAttributes = (DisplayNameAttribute[]) m_propertyExpression.Member.GetCustomAttributes(typeof(DisplayNameAttribute), false);
+
+      if (customAttributes.Length > 0)
+        AddText(customAttributes[0].DisplayName, append);
+      else
+        AddText(m_propertyExpression.Member.Name.SplitCamelCase(), append);
+
+      return this;
+    }
 
     /// <summary>
     ///   Add text addon to the form control
@@ -262,30 +281,29 @@ namespace WebExtras.Bootstrap
     private void Init(Expression<Func<TModel, TValue>> expression, object htmlAttributes)
     {
       RenderBehavior = WebExtrasConstants.FormControlBehavior;
+      m_propertyExpression = expression.Body as MemberExpression; 
 
-      MemberExpression exp = expression.Body as MemberExpression;
       if (WebExtrasConstants.BootstrapVersion == EBootstrapVersion.V2)
         CreateBootstrap2Tags();
       else
-        CreateBootstrap3Tags(exp, htmlAttributes);
+        CreateBootstrap3Tags(htmlAttributes);
     }
 
     /// <summary>
     ///   Create bootstrap 3 tags
     /// </summary>
-    /// <param name="exp">Member expression</param>
     /// <param name="htmlAttributes">Extra HTML attributes</param>
-    private void CreateBootstrap3Tags(MemberExpression exp, object htmlAttributes)
+    private void CreateBootstrap3Tags( object htmlAttributes)
     {
       var defaultAttribs = new Dictionary<string, string>
       {
         {"type", "text"},
-        {"id", WebExtrasUtil.GetFieldIdFromExpression(exp)},
-        {"name", WebExtrasUtil.GetFieldNameFromExpression(exp)}
+        {"id", WebExtrasUtil.GetFieldIdFromExpression(m_propertyExpression)},
+        {"name", WebExtrasUtil.GetFieldNameFromExpression(m_propertyExpression)}
       };
 
       DataTypeAttribute[] customAttribs =
-        (DataTypeAttribute[])exp.Member.GetCustomAttributes(typeof(DataTypeAttribute), false);
+        (DataTypeAttribute[])m_propertyExpression.Member.GetCustomAttributes(typeof(DataTypeAttribute), false);
       if (customAttribs.Length > 0)
       {
         switch (customAttribs[0].DataType)
