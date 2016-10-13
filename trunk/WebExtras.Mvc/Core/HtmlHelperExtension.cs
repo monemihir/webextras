@@ -84,6 +84,24 @@ namespace WebExtras.Mvc.Core
 
     #endregion GenerateId extensions
 
+    /// <summary>
+    /// Retrieves the display name
+    /// </summary>
+    /// <typeparam name="TModel">Model type</typeparam>
+    /// <typeparam name="TValue">Property type</typeparam>
+    /// <param name="helper">Current HTML helper</param>
+    /// <param name="expression">Property selector</param>
+    /// <param name="splitOnCamelcase"></param>
+    /// <returns></returns>
+    public static string GetDisplayName<TModel, TValue>(this HtmlHelper<TModel> helper, Expression<Func<TModel, TValue>> expression,bool splitOnCamelcase = false)
+    {
+      ModelMetadata data = ModelMetadata.FromLambdaExpression(expression, new ViewDataDictionary<TModel>());
+
+      string name = data.GetDisplayName();
+
+      return splitOnCamelcase ? name.SplitCamelCase() : name;
+    }
+
     #region Imagelink extensions
 
     /// <summary>

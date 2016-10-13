@@ -86,8 +86,12 @@ namespace WebExtras.Mvc.Html
       : base(EHtmlTag.Img, htmlAttributes)
     {
       Src = href;
-      AltText = altText;
-      Title = title;
+
+      if (!string.IsNullOrWhiteSpace(altText))
+        AltText = altText;
+
+      if (!string.IsNullOrWhiteSpace(title))
+        Title = title;
     }
 
     /// <summary>
