@@ -20,6 +20,7 @@ using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using Newtonsoft.Json;
+using WebExtras.Core;
 
 namespace WebExtras.Mvc.Core
 {
@@ -56,7 +57,7 @@ namespace WebExtras.Mvc.Core
       JsonRequestBehavior behavior = JsonRequestBehavior.DenyGet)
     {
       Data = data;
-      SerialiserSettings = settings ?? GlobalConfiguration.Configuration.Formatters.JsonFormatter.SerializerSettings;
+      SerialiserSettings = settings ?? WebExtrasConstants.JsonSerializerSettings;
       JsonRequestBehavior = behavior;
       ContentEncoding = Encoding.UTF8;
       ContentType = "application/json";
