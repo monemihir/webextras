@@ -36,7 +36,7 @@ namespace WebExtras.Core
     /// </summary>
     public NoCssThemeException()
     {
-      switch (WebExtrasConstants.CssFramework)
+      switch (WebExtrasSettings.CssFramework)
       {
         case ECssFramework.None:
           throw new NoCssFrameworkException();

@@ -102,9 +102,9 @@ namespace WebExtras.Mvc.Bootstrap.v3
       // create icon
       
       HtmlComponent icon = new HtmlComponent(EHtmlTag.I);
-      if (WebExtrasConstants.FontAwesomeVersion == EFontAwesomeVersion.V4)
+      if (WebExtrasSettings.FontAwesomeVersion == EFontAwesomeVersion.V4)
         icon.CssClasses.Add("fa fa-calendar");
-      else if (WebExtrasConstants.FontAwesomeVersion == EFontAwesomeVersion.V3)
+      else if (WebExtrasSettings.FontAwesomeVersion == EFontAwesomeVersion.V3)
         icon.CssClasses.Add("icon-calendar");
       else
         icon.CssClasses.Add("glyphicon glyphicon-calendar");

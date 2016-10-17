@@ -61,9 +61,9 @@ namespace WebExtras.Bootstrap.v3
       // create icon
       HtmlComponent icons = new HtmlComponent(EHtmlTag.I);
 
-      if (WebExtrasConstants.FontAwesomeVersion == EFontAwesomeVersion.V4)
+      if (WebExtrasSettings.FontAwesomeVersion == EFontAwesomeVersion.V4)
         icons.CssClasses.Add("fa fa-calendar");
-      else if (WebExtrasConstants.FontAwesomeVersion == EFontAwesomeVersion.V3)
+      else if (WebExtrasSettings.FontAwesomeVersion == EFontAwesomeVersion.V3)
         icons.CssClasses.Add("icon-calendar");
       else
         icons.CssClasses.Add("glyphicon glyphicon-calendar");

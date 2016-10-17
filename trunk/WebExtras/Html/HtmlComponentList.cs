@@ -49,7 +49,7 @@ namespace WebExtras.Html
     /// <param name="text">Text to add</param>
     public void Add(string text)
     {
-      HtmlComponent c = new HtmlComponent(WebExtrasConstants.DefaultTagForTextEncapsulation)
+      HtmlComponent c = new HtmlComponent(WebExtrasSettings.DefaultTagForTextEncapsulation)
       {
         InnerHtml = text
       };

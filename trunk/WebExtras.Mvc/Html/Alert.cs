@@ -159,7 +159,7 @@ namespace WebExtras.Mvc.Html
       if (icon != null)
         bc.PrependTags.Add(icon.Component);
       
-      if (WebExtrasConstants.CssFramework != ECssFramework.JQueryUI)
+      if (WebExtrasSettings.CssFramework != ECssFramework.JQueryUI)
       {
         CSSClasses.Add("alert");
 
@@ -170,7 +170,7 @@ namespace WebExtras.Mvc.Html
         Prepend(closeBtn);
         Prepend(bc.ToHtmlElement());
         InnerHtml = (!string.IsNullOrWhiteSpace(title) || icon != null)
-          ? WebExtrasConstants.HTMLSpace + message
+          ? WebExtrasSettings.HTMLSpace + message
           : message;
       }
       else
@@ -196,7 +196,7 @@ namespace WebExtras.Mvc.Html
         div.CSSClasses.Add("ui-corner-all");
         div.Prepend(bc.ToHtmlElement());
         div.InnerHtml = (!string.IsNullOrWhiteSpace(title) || icon != null)
-          ? WebExtrasConstants.HTMLSpace + message
+          ? WebExtrasSettings.HTMLSpace + message
           : message;
 
         Prepend(div);

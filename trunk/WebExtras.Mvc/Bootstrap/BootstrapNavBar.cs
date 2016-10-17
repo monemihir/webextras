@@ -110,7 +110,7 @@ namespace WebExtras.Mvc.Bootstrap
 
       this["class"] = Type.GetStringValue();
 
-      switch (WebExtrasConstants.BootstrapVersion)
+      switch (WebExtrasSettings.BootstrapVersion)
       {
         case EBootstrapVersion.V2:
           Div innerNav = new Div();

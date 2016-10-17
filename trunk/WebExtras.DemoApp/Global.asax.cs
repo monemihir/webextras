@@ -42,7 +42,7 @@ namespace WebExtras.DemoApp
       BundleConfig.RegisterBundles();
 
       //WebExtrasConstants.EnableAutoIdGeneration = true;
-      WebExtrasConstants.FontAwesomeVersion = EFontAwesomeVersion.V3;
+      WebExtrasSettings.FontAwesomeVersion = EFontAwesomeVersion.V3;
     }
   }
 }

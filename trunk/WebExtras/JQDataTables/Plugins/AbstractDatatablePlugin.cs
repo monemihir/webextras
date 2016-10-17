@@ -79,7 +79,7 @@ namespace WebExtras.JQDataTables.Plugins
     /// <returns>JSON string representing plugin options</returns>
     public virtual string ToJson(JsonSerializerSettings settings = null)
     {
-      JsonSerializerSettings finalSettings = settings ?? WebExtrasConstants.JsonSerializerSettings;
+      JsonSerializerSettings finalSettings = settings ?? WebExtrasSettings.JsonSerializerSettings;
 
       // this call will detect any custom converters that may have been defined
       IDictionary<string, object> options = CreateOptions(finalSettings.NullValueHandling);

@@ -36,9 +36,9 @@ namespace WebExtras.DemoApp.Areas.Bootstrap.Controllers
       base.OnActionExecuting(filterContext);
 
       ViewData["layout_path"] = MVC.Bootstrap.Shared.Views._Layout;
-      WebExtrasConstants.DatatablesPaginationScheme = JQDataTables.EPagination.Bootstrap;
-      WebExtrasConstants.CssFramework = ECssFramework.Bootstrap;
-      WebExtrasConstants.BootstrapVersion = EBootstrapVersion.V2;
+      WebExtrasSettings.DatatablesPaginationScheme = JQDataTables.EPagination.Bootstrap;
+      WebExtrasSettings.CssFramework = ECssFramework.Bootstrap;
+      WebExtrasSettings.BootstrapVersion = EBootstrapVersion.V2;
 
       Version v = Assembly.GetExecutingAssembly().GetName().Version;
 

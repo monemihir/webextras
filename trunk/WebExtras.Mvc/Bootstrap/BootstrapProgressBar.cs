@@ -59,7 +59,7 @@ namespace WebExtras.Mvc.Bootstrap
 
       Div inner = new Div();
 
-      switch (WebExtrasConstants.BootstrapVersion)
+      switch (WebExtrasSettings.BootstrapVersion)
       {
         case EBootstrapVersion.None:
           throw new BootstrapVersionException();

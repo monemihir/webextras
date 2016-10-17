@@ -513,7 +513,7 @@ namespace WebExtras.JQDataTables
       sAjaxSource = ajaxSource;
       bServerSide = !string.IsNullOrEmpty(ajaxSource);
 
-      SetupPaging(WebExtrasConstants.DatatablesPaginationScheme);
+      SetupPaging(WebExtrasSettings.DatatablesPaginationScheme);
     }
 
     /// <summary>
@@ -744,7 +744,7 @@ namespace WebExtras.JQDataTables
     /// <returns>Returns a JSON serialized version of this object</returns>
     public override string ToString()
     {
-      return ToString(WebExtrasConstants.JsonSerializerSettings);
+      return ToString(WebExtrasSettings.JsonSerializerSettings);
     }
 
     /// <summary>

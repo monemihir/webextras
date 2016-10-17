@@ -32,16 +32,16 @@ namespace WebExtras.Bootstrap
     /// <returns>The string value to be used for the enum value</returns>
     public string Decide(StringValueDeciderArgs<EBootstrapButton> args)
     {
-      if (WebExtrasConstants.BootstrapVersion == EBootstrapVersion.None)
+      if (WebExtrasSettings.BootstrapVersion == EBootstrapVersion.None)
         throw new BootstrapVersionException();
 
       string iconName = "btn-" + args.Value.ToString().ToLowerInvariant();
 
-      if (WebExtrasConstants.BootstrapVersion == EBootstrapVersion.V3 &&
+      if (WebExtrasSettings.BootstrapVersion == EBootstrapVersion.V3 &&
           args.Value == EBootstrapButton.Large)
         iconName = "btn-lg";
 
-      if (WebExtrasConstants.BootstrapVersion == EBootstrapVersion.V3 &&
+      if (WebExtrasSettings.BootstrapVersion == EBootstrapVersion.V3 &&
           args.Value == EBootstrapButton.Small)
         iconName = "btn-sm";
 
@@ -69,7 +69,7 @@ namespace WebExtras.Bootstrap
       string iconName = args.Value.ToString().ToLowerInvariant().Replace("_", "-");
 
       string value;
-      switch (WebExtrasConstants.BootstrapVersion)
+      switch (WebExtrasSettings.BootstrapVersion)
       {
         case EBootstrapVersion.V2:
           value = "icon-" + iconName;

@@ -247,7 +247,7 @@ namespace WebExtras.Bootstrap
     /// <returns>The updated form control</returns>
     private IFormComponent<TModel, TValue> CreateAddOn(string data, bool append = true)
     {
-      HtmlComponent e = new HtmlComponent(WebExtrasConstants.DefaultTagForTextEncapsulation);
+      HtmlComponent e = new HtmlComponent(WebExtrasSettings.DefaultTagForTextEncapsulation);
       e.CssClasses.Add("input-group-addon");
       e.InnerHtml = data;
 
@@ -280,10 +280,10 @@ namespace WebExtras.Bootstrap
     /// <param name="htmlAttributes">Extra HTML attributes</param>
     private void Init(Expression<Func<TModel, TValue>> expression, object htmlAttributes)
     {
-      RenderBehavior = WebExtrasConstants.FormControlBehavior;
+      RenderBehavior = WebExtrasSettings.FormControlBehavior;
       m_propertyExpression = expression.Body as MemberExpression; 
 
-      if (WebExtrasConstants.BootstrapVersion == EBootstrapVersion.V2)
+      if (WebExtrasSettings.BootstrapVersion == EBootstrapVersion.V2)
         CreateBootstrap2Tags();
       else
         CreateBootstrap3Tags(htmlAttributes);

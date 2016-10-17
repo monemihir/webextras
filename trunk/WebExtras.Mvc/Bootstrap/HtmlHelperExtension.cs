@@ -227,7 +227,7 @@ namespace WebExtras.Mvc.Bootstrap
 
       TagBuilder i = new TagBuilder("i");
 
-      switch (WebExtrasConstants.BootstrapVersion)
+      switch (WebExtrasSettings.BootstrapVersion)
       {
         case EBootstrapVersion.V2:
           i.AddCssClass("icon-info-sign");

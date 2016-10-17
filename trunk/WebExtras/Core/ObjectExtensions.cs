@@ -69,7 +69,7 @@ namespace WebExtras.Core
     /// <returns>JSON object</returns>
     public static string ToJson(this object source)
     {
-      return ToJson(source, WebExtrasConstants.JsonSerializerSettings);
+      return ToJson(source, WebExtrasSettings.JsonSerializerSettings);
     }
 
     /// <summary>

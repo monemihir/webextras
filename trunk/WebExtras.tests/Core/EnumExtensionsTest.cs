@@ -25,9 +25,11 @@ namespace WebExtras.tests.Core
   [StringValue(typeof(TestStringValueDecider))]
   public enum TestEnum
   {
-    [StringValue("test me")] testvalue,
+    [StringValue("test me")]
+    testvalue,
 
-    [StringValue(typeof(TestStringValueDecider))] customdecider,
+    [StringValue(typeof(TestStringValueDecider))]
+    customdecider,
 
     typeleveldecider
   }

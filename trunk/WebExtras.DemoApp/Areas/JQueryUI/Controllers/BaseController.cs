@@ -35,7 +35,7 @@ namespace WebExtras.DemoApp.Areas.JQueryUI.Controllers
       base.OnActionExecuting(filterContext);
 
       ViewData["layout_path"] = MVC.JQueryUI.Shared.Views._Layout;
-      WebExtrasConstants.CssFramework = ECssFramework.JQueryUI;
+      WebExtrasSettings.CssFramework = ECssFramework.JQueryUI;
 
       Version v = Assembly.GetExecutingAssembly().GetName().Version;
 

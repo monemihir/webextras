@@ -36,16 +36,16 @@ namespace WebExtras.Core
     {
       string css = string.Empty;
 
-      switch (WebExtrasConstants.CssFramework)
+      switch (WebExtrasSettings.CssFramework)
       {
         case ECssFramework.Bootstrap:
-          if (WebExtrasConstants.BootstrapVersion == EBootstrapVersion.None)
+          if (WebExtrasSettings.BootstrapVersion == EBootstrapVersion.None)
             throw new NoCssThemeException();
           css += " alert-success";
           break;
 
         case ECssFramework.Gumby:
-          if (WebExtrasConstants.GumbyTheme == EGumbyTheme.None)
+          if (WebExtrasSettings.GumbyTheme == EGumbyTheme.None)
             throw new NoCssThemeException();
           css += " success";
           break;
@@ -78,20 +78,20 @@ namespace WebExtras.Core
     {
       string css = string.Empty;
 
-      switch (WebExtrasConstants.CssFramework)
+      switch (WebExtrasSettings.CssFramework)
       {
         case ECssFramework.Bootstrap:
-          if (WebExtrasConstants.BootstrapVersion == EBootstrapVersion.None)
+          if (WebExtrasSettings.BootstrapVersion == EBootstrapVersion.None)
             throw new NoCssThemeException();
 
-          if (WebExtrasConstants.BootstrapVersion == EBootstrapVersion.V2)
+          if (WebExtrasSettings.BootstrapVersion == EBootstrapVersion.V2)
             css += " alert-error";
           else
             css += " alert-danger";
           break;
 
         case ECssFramework.Gumby:
-          if (WebExtrasConstants.GumbyTheme == EGumbyTheme.None)
+          if (WebExtrasSettings.GumbyTheme == EGumbyTheme.None)
             throw new NoCssThemeException();
           css += " danger";
           break;
@@ -124,16 +124,16 @@ namespace WebExtras.Core
     {
       string css = string.Empty;
 
-      switch (WebExtrasConstants.CssFramework)
+      switch (WebExtrasSettings.CssFramework)
       {
         case ECssFramework.Bootstrap:
-          if (WebExtrasConstants.BootstrapVersion == EBootstrapVersion.None)
+          if (WebExtrasSettings.BootstrapVersion == EBootstrapVersion.None)
             throw new NoCssThemeException();
           css += " alert-warning";
           break;
 
         case ECssFramework.Gumby:
-          if (WebExtrasConstants.GumbyTheme == EGumbyTheme.None)
+          if (WebExtrasSettings.GumbyTheme == EGumbyTheme.None)
             throw new NoCssThemeException();
           css += " warning";
           break;
@@ -166,16 +166,16 @@ namespace WebExtras.Core
     {
       string css = string.Empty;
 
-      switch (WebExtrasConstants.CssFramework)
+      switch (WebExtrasSettings.CssFramework)
       {
         case ECssFramework.Bootstrap:
-          if (WebExtrasConstants.BootstrapVersion == EBootstrapVersion.None)
+          if (WebExtrasSettings.BootstrapVersion == EBootstrapVersion.None)
             throw new NoCssThemeException();
           css += " alert-info";
           break;
 
         case ECssFramework.Gumby:
-          if (WebExtrasConstants.GumbyTheme == EGumbyTheme.None)
+          if (WebExtrasSettings.GumbyTheme == EGumbyTheme.None)
             throw new NoCssThemeException();
           css += " info";
           break;

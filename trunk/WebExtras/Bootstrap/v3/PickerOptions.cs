@@ -226,7 +226,7 @@ namespace WebExtras.Bootstrap.v3
     /// <returns>Updated picker options</returns>
     public PickerOptions TryFontAwesomeIcons()
     {
-      switch (WebExtrasConstants.FontAwesomeVersion)
+      switch (WebExtrasSettings.FontAwesomeVersion)
       {
         case EFontAwesomeVersion.V4:
           icons = new IconOptions

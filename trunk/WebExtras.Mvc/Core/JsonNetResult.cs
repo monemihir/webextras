@@ -57,7 +57,7 @@ namespace WebExtras.Mvc.Core
       JsonRequestBehavior behavior = JsonRequestBehavior.DenyGet)
     {
       Data = data;
-      SerialiserSettings = settings ?? WebExtrasConstants.JsonSerializerSettings;
+      SerialiserSettings = settings ?? WebExtrasSettings.JsonSerializerSettings;
       JsonRequestBehavior = behavior;
       ContentEncoding = Encoding.UTF8;
       ContentType = "application/json";

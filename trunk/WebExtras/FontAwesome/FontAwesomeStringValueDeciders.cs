@@ -35,7 +35,7 @@ namespace WebExtras.FontAwesome
     {
       string css;
 
-      switch (WebExtrasConstants.FontAwesomeVersion)
+      switch (WebExtrasSettings.FontAwesomeVersion)
       {
         case EFontAwesomeVersion.None:
           throw new FontAwesomeVersionException();
@@ -68,7 +68,7 @@ namespace WebExtras.FontAwesome
     {
       string css;
 
-      switch (WebExtrasConstants.FontAwesomeVersion)
+      switch (WebExtrasSettings.FontAwesomeVersion)
       {
         case EFontAwesomeVersion.None:
           throw new FontAwesomeVersionException();

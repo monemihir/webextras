@@ -83,7 +83,7 @@ namespace WebExtras.Mvc.Bootstrap
     public static T AddWhiteIcon<T>(this T html, EBootstrapIcon icon, object htmlAttributes = null)
       where T : IExtendedHtmlString
     {
-      switch (WebExtrasConstants.BootstrapVersion)
+      switch (WebExtrasSettings.BootstrapVersion)
       {
         case EBootstrapVersion.V2:
           break;
@@ -118,9 +118,9 @@ namespace WebExtras.Mvc.Bootstrap
     {
       string prefix = string.Empty;
 
-      if (WebExtrasConstants.FontAwesomeVersion == EFontAwesomeVersion.V3)
+      if (WebExtrasSettings.FontAwesomeVersion == EFontAwesomeVersion.V3)
         prefix = "icon-";
-      else if (WebExtrasConstants.FontAwesomeVersion == EFontAwesomeVersion.V4)
+      else if (WebExtrasSettings.FontAwesomeVersion == EFontAwesomeVersion.V4)
         prefix = "fa fa-";
       else
         throw new FontAwesomeVersionException();

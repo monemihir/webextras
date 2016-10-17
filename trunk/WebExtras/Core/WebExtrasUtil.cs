@@ -15,6 +15,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
@@ -53,7 +54,7 @@ namespace WebExtras.Core
       {
         foreach (PropertyDescriptor property in TypeDescriptor.GetProperties(anonObject))
         {
-          object val = property.GetValue(anonObject) ?? string.Empty;
+          object val = property.GetValue(anonObject) ?? String.Empty;
 
           collection.Add(property.Name.Replace('_', '-'), val.ToString());
         }
@@ -69,7 +70,7 @@ namespace WebExtras.Core
     /// <returns>HTML field ID for member</returns>
     public static string GetFieldIdFromExpression(MemberExpression expression)
     {
-      return string.Join("_", GetComponents(expression));
+      return String.Join("_", GetComponents(expression));
     }
 
     /// <summary>
@@ -79,9 +80,9 @@ namespace WebExtras.Core
     /// <returns>HTML field name for member</returns>
     public static string GetFieldNameFromExpression(MemberExpression expression)
     {
-      return string.Join(".", GetComponents(expression));
+      return String.Join(".", GetComponents(expression));
     }
-
+    
     /// <summary>
     ///   Gets the usable components from the expression. For eg. f.Model.Member
     ///   will return Model and Member as usable components.

@@ -15,6 +15,7 @@
 // limitations under the License.
 
 using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Reflection;
@@ -26,6 +27,12 @@ namespace WebExtras.Core
   /// </summary>
   public static class EnumExtentions
   {
+    /// <summary>
+    ///   A string value decider lookup to allow attaching of string value deciders to enum externally i.e when the enum is
+    ///   declared in an assembly other than current
+    /// </summary>
+    internal static readonly IDictionary<Type, Type> ExternalStringValueDecidersLookup = new Dictionary<Type, Type>();
+
     /// <summary>
     ///   Convert a given enum value to titlecase
     /// </summary>
@@ -60,28 +67,14 @@ namespace WebExtras.Core
       // type level attributes superseded by field level attributes
       attrs = fieldAttrs.Length > 0 ? fieldAttrs : attrs;
 
+      Type deciderType = null;
+
       if (attrs.Length > 0)
       {
         if (attrs[0].HasCustomDecider)
-        {
-          // create the value decider args instance
-          Type valueDeciderArgsBaseType = typeof(StringValueDeciderArgs<>);
-          Type[] templateTypeArgs = {enumType};
+          deciderType = attrs[0].ValueDeciderType;
 
-          Type argsType = valueDeciderArgsBaseType.MakeGenericType(templateTypeArgs);
-          object args = Activator.CreateInstance(argsType, value, sender);
-
-          // create value decider instance
-          object obj = Activator.CreateInstance(attrs[0].ValueDeciderType);
-
-          MethodInfo decideMethod = obj.GetType().GetMethod("Decide", new[] {argsType});
-
-          output = (string) decideMethod.Invoke(obj, new[] {args});
-        }
-        else
-        {
-          output = attrs[0].Value;
-        }
+        output = attrs[0].Value;
       }
       else
       {
@@ -89,6 +82,28 @@ namespace WebExtras.Core
         //throw new InvalidUsageException("Cannot have multiple decorations of [StringValue] attribute for enum value: " +
         //                                name);
         output = value.ToString();
+      }
+
+      if (deciderType == null)
+        deciderType = ExternalStringValueDecidersLookup.ContainsKey(enumType)
+          ? ExternalStringValueDecidersLookup[enumType]
+          : null;
+
+      if (deciderType != null)
+      {
+        // create the value decider args instance
+        Type valueDeciderArgsBaseType = typeof(StringValueDeciderArgs<>);
+        Type[] templateTypeArgs = { enumType };
+
+        Type argsType = valueDeciderArgsBaseType.MakeGenericType(templateTypeArgs);
+        object args = Activator.CreateInstance(argsType, value, sender);
+
+        // create value decider instance
+        object obj = Activator.CreateInstance(deciderType);
+
+        MethodInfo decideMethod = obj.GetType().GetMethod("Decide", new[] { argsType });
+
+        output = (string)decideMethod.Invoke(obj, new[] { args });
       }
 
       return output;

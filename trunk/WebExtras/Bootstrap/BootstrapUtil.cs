@@ -46,7 +46,7 @@ namespace WebExtras.Bootstrap
         htmlAttribs.Remove("class");
       }
 
-      switch (WebExtrasConstants.BootstrapVersion)
+      switch (WebExtrasSettings.BootstrapVersion)
       {
         case EBootstrapVersion.V2:
           cssClasses.Add("icon-" + icon.ToString().ToLowerInvariant().Replace("_", "-"));
@@ -85,7 +85,7 @@ namespace WebExtras.Bootstrap
 
       string prefix;
 
-      switch (WebExtrasConstants.FontAwesomeVersion)
+      switch (WebExtrasSettings.FontAwesomeVersion)
       {
         case EFontAwesomeVersion.V3:
           prefix = "icon-";

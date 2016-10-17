@@ -150,7 +150,7 @@
     <Compile Include="Core\ObjectExtensions.cs" />
     <Compile Include="Core\DefaultValueFormatter.cs" />
     <Compile Include="Core\StringValueDeciderArgs.cs" />
-    <Compile Include="Core\WebExtrasConstants.cs" />
+    <Compile Include="Core\WebExtrasSettings.cs" />
     <Compile Include="Core\WebExtrasUtil.cs" />
     <Compile Include="FontAwesome\EFontAwesomeIcon.cs" />
     <Compile Include="FontAwesome\EFontAwesomeIconSize.cs" />
