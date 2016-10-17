@@ -40,7 +40,7 @@ namespace WebExtras.Bootstrap.v3
       : base(EHtmlTag.Div)
     {
       PickerOptions pickerOptions =
-        (options ?? BootstrapConstants.DateTimePickerOptions).TryFontAwesomeIcons();
+        (options ?? BootstrapSettings.DateTimePickerOptions).TryFontAwesomeIcons();
 
       string fieldId = id;
       string fieldName = name;

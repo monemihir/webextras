@@ -47,7 +47,7 @@ namespace WebExtras.Nancy.Bootstrap
       string name,
       object htmlAttributes = null)
     {
-      IHtmlComponent control = new DateTimePickerHtmlComponent(name, name, BootstrapConstants.DateTimePickerOptions, htmlAttributes);
+      IHtmlComponent control = new DateTimePickerHtmlComponent(name, name, BootstrapSettings.DateTimePickerOptions, htmlAttributes);
 
       return new ExtendedHtmlString(control);
     }
@@ -59,7 +59,7 @@ namespace WebExtras.Nancy.Bootstrap
     /// <param name="name">Name of HTML control</param>
     /// <param name="options">
     ///   [Optional] Date time picker options. Defaults to
-    ///   <see cref="BootstrapConstants.DateTimePickerOptions" />
+    ///   <see cref="BootstrapSettings.DateTimePickerOptions" />
     /// </param>
     /// <param name="htmlAttributes">Extra HTML attributes to be applied to the text box</param>
     /// <returns>A Bootstrap date time picker control</returns>
@@ -87,7 +87,7 @@ namespace WebExtras.Nancy.Bootstrap
       Expression<Func<TModel, TValue>> expression,
       object htmlAttributes)
     {
-      return html.DateTimeTextBoxFor(expression, BootstrapConstants.DateTimePickerOptions, htmlAttributes);
+      return html.DateTimeTextBoxFor(expression, BootstrapSettings.DateTimePickerOptions, htmlAttributes);
     }
 
     /// <summary>

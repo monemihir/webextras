@@ -96,7 +96,7 @@ namespace WebExtras.Mvc.Bootstrap.v2
     public static MvcHtmlString DateTimeTextBoxFor<TModel, TValue>(this HtmlHelper<TModel> html,
       Expression<Func<TModel, TValue>> expression, object htmlAttributes = (IDictionary<string, object>) null)
     {
-      return DateTimeTextBoxFor(html, expression, BootstrapConstants.DateTimePickerOptions.DeepClone(), htmlAttributes);
+      return DateTimeTextBoxFor(html, expression, BootstrapSettings.DateTimePickerOptions.DeepClone(), htmlAttributes);
     }
 
     /// <summary>
@@ -116,7 +116,7 @@ namespace WebExtras.Mvc.Bootstrap.v2
       MemberExpression exp = expression.Body as MemberExpression;
 
       PickerOptions pickerOptions =
-        options.GetHashCode() == BootstrapConstants.DateTimePickerOptions.GetHashCode()
+        options.GetHashCode() == BootstrapSettings.DateTimePickerOptions.GetHashCode()
           ? options.DeepClone()
           : options;
 

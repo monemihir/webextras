@@ -116,10 +116,10 @@
     <Compile Include="Bootstrap\EFormControlBehavior.cs" />
     <Compile Include="Bootstrap\BootstrapFormComponent.cs" />
     <Compile Include="Bootstrap\IBootstrapFormComponent.cs" />
-    <Compile Include="Bootstrap\v2\BootstrapConstants.cs" />
+    <Compile Include="Bootstrap\v2\BootstrapSettings.cs" />
     <Compile Include="Bootstrap\v2\EPickerView.cs" />
     <Compile Include="Bootstrap\v2\PickerOptions.cs" />
-    <Compile Include="Bootstrap\v3\BootstrapConstants.cs" />
+    <Compile Include="Bootstrap\v3\BootstrapSettings.cs" />
     <Compile Include="Bootstrap\v3\DateTimePickerHtmlComponent.cs" />
     <Compile Include="Bootstrap\v3\IconOptions.cs" />
     <Compile Include="Bootstrap\v3\PickerOptions.cs" />
