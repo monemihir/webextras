@@ -84,16 +84,15 @@ namespace WebExtras.Core
         output = value.ToString();
       }
 
-      if (deciderType == null)
-        deciderType = ExternalStringValueDecidersLookup.ContainsKey(enumType)
-          ? ExternalStringValueDecidersLookup[enumType]
-          : null;
+      deciderType = ExternalStringValueDecidersLookup.ContainsKey(enumType)
+        ? ExternalStringValueDecidersLookup[enumType]
+        : deciderType;
 
       if (deciderType != null)
       {
         // create the value decider args instance
         Type valueDeciderArgsBaseType = typeof(StringValueDeciderArgs<>);
-        Type[] templateTypeArgs = { enumType };
+        Type[] templateTypeArgs = {enumType};
 
         Type argsType = valueDeciderArgsBaseType.MakeGenericType(templateTypeArgs);
         object args = Activator.CreateInstance(argsType, value, sender);
@@ -101,9 +100,9 @@ namespace WebExtras.Core
         // create value decider instance
         object obj = Activator.CreateInstance(deciderType);
 
-        MethodInfo decideMethod = obj.GetType().GetMethod("Decide", new[] { argsType });
+        MethodInfo decideMethod = obj.GetType().GetMethod("Decide", new[] {argsType});
 
-        output = (string)decideMethod.Invoke(obj, new[] { args });
+        output = (string) decideMethod.Invoke(obj, new[] {args});
       }
 
       return output;
