@@ -137,6 +137,7 @@
     <Compile Include="Core\EMessage.cs" />
     <Compile Include="Core\EnumExtentions.cs" />
     <Compile Include="Core\DictionaryExtensions.cs" />
+    <Compile Include="Core\EnumUtil.cs" />
     <Compile Include="Core\FontAwesomeVersionException.cs" />
     <Compile Include="Core\GumbyThemeException.cs" />
     <Compile Include="Core\InvalidUsageException.cs" />
