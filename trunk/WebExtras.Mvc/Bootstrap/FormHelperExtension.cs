@@ -67,11 +67,15 @@ namespace WebExtras.Mvc.Bootstrap
       if (options == null)
         throw new ArgumentNullException("options", "Select list options cannot be null");
 
-      var newOptions = options.Select(f => new SelectListOption { Text = f, Value = f });
+      var newOptions = options.Select(f => new SelectListOption { Text = f, Value = f }).ToList();
 
       BootstrapFormComponent<TModel, TValue> bfc = new BootstrapFormComponent<TModel, TValue>(expression, newOptions,
         htmlAttributes);
-      SetComponentValue(html, bfc, expression);
+
+      if (newOptions.Any(f => f.Selected))
+        bfc.SetValue(newOptions.First(f => f.Selected).Value);
+      else
+        SetComponentValue(html, bfc, expression);
 
       return new FormControl<TModel, TValue>(bfc);
     }
@@ -92,9 +96,13 @@ namespace WebExtras.Mvc.Bootstrap
       if (options == null)
         throw new ArgumentNullException("options", "Select list options cannot be null");
 
-      var newOptions = options.Select(f => new SelectListOption(f.Text, f.Value, f.Selected));
+      var newOptions = options.Select(f => new SelectListOption(f.Text, f.Value, f.Selected)).ToList();
       BootstrapFormComponent<TModel, TValue> bfc = new BootstrapFormComponent<TModel, TValue>(expression, newOptions, htmlAttributes);
-      SetComponentValue(html, bfc, expression);
+
+      if (newOptions.Any(f => f.Selected))
+        bfc.SetValue(newOptions.First(f => f.Selected).Value);
+      else
+        SetComponentValue(html, bfc, expression);
 
       return new FormControl<TModel, TValue>(bfc);
     }
