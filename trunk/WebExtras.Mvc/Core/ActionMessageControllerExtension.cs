@@ -107,10 +107,14 @@ namespace WebExtras.Mvc.Core
     /// Get the stored user alerts
     /// </summary>
     /// <param name="html">Current HtmlHelper object</param>
+    /// <param name="type">Alert message type</param>
     /// <returns>A collection of notifications</returns>
-    public static Alert[] GetUserAlerts(this HtmlHelper html)
+    public static Alert[] GetUserAlerts(this HtmlHelper html, EMessage? type = null)
     {
       ICollection<Alert> store = html.ViewContext.Controller.TempData[UserAlertsKey] as ICollection<Alert> ?? new Alert[0];
+
+      if (type.HasValue)
+        store = store.Where(f => f.Type == type).ToArray();
 
       return store.ToArray();
     }
