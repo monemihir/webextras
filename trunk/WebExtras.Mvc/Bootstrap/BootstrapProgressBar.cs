@@ -1,57 +1,58 @@
-﻿/*
-* This file is part of - WebExtras
-* Copyright (C) 2014 Mihir Mone
-*
-* This program is free software: you can redistribute it and/or modify
-* it under the terms of the GNU Lesser General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU Lesser General Public License for more details.
-*
-* You should have received a copy of the GNU Lesser General Public License
-* along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
+﻿// 
+// This file is part of - WebExtras
+// Copyright 2016 Mihir Mone
+// 
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// 
+//     http://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 using System;
 using System.Globalization;
 using System.Web.Mvc;
 using WebExtras.Bootstrap;
 using WebExtras.Core;
-using WebExtras.Mvc.Core;
 using WebExtras.Mvc.Html;
 
 namespace WebExtras.Mvc.Bootstrap
 {
   /// <summary>
-  /// Represents a bootstrap progress bar
+  ///   Represents a bootstrap progress bar
   /// </summary>
   [Serializable]
   public class BootstrapProgressBar : HtmlElement
   {
     /// <summary>
-    /// Percentage of completion for the progress bar
+    ///   Percentage of completion for the progress bar
     /// </summary>
     public int Percent { get; set; }
 
     /// <summary>
-    /// Constructor
+    ///   Constructor
     /// </summary>
     /// <param name="percent">Percentage of completion for the progress bar</param>
     /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
     public BootstrapProgressBar(int percent, object htmlAttributes = null)
-      : this(EBootstrapProgressBar.Default, percent, htmlAttributes) { }
+      : this(EBootstrapProgressBar.Default, percent, string.Empty, htmlAttributes)
+    {
+    }
 
     /// <summary>
-    /// Constructor
+    ///   Constructor
     /// </summary>
     /// <param name="type">Progress bar type</param>
     /// <param name="percent">Percentage of completion for the progress bar</param>
+    /// <param name="srText">[Optional] Custom text to be displayed in progress bar. Defaults to percentage complete</param>
     /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
-    public BootstrapProgressBar(EBootstrapProgressBar type, int percent, object htmlAttributes = null)
+    public BootstrapProgressBar(EBootstrapProgressBar type, int percent, string srText = null,
+      object htmlAttributes = null)
       : base(EHtmlTag.Div, htmlAttributes)
     {
       Percent = percent;
@@ -75,7 +76,7 @@ namespace WebExtras.Mvc.Bootstrap
           inner["aria-valuemin"] = "0";
           inner["aria-valuemax"] = "100";
 
-          Span spanInner = new Span(percent + "% Complete");
+          Span spanInner = new Span(string.IsNullOrWhiteSpace(srText) ? percent + "% Complete" : srText);
           spanInner["class"] = "sr-only";
 
           inner.Append(spanInner);
@@ -88,8 +89,8 @@ namespace WebExtras.Mvc.Bootstrap
     }
 
     /// <summary>
-    /// Converts current element to a MVC HTMl string with
-    /// the given tag rendering mode
+    ///   Converts current element to a MVC HTMl string with
+    ///   the given tag rendering mode
     /// </summary>
     /// <param name="renderMode">Tag render mode</param>
     /// <returns>MVC HTML string representation of the current element</returns>
