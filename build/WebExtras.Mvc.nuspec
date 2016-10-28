@@ -17,12 +17,12 @@ A major namespace shuffle has taken place for the entire library. While all the 
 
 Recommended: Creation of HTML components should now be done using the HtmlComponent instead of HtmlElement class. HtmlComponent can then be converted to a HtmlElement using the ToHtmlElement() extension method in the WebExtras.Mvc.Html namespace. HtmlElement class is now marked as obsolete and will be removed in the next major release.
 
-- Enh: IBootstrapFormComponent now gives access to the wrapper <DIV> element
+- Enh: IBootstrapFormComponent now gives access to the wrapper &lt;DIV&gt; element
 - Enh: Added ability to retrieve only specific type of alerts from GetUserAlerts extension method
 - Enh: BootstrapConstants => BootstrapSettings
 - Enh: JsonNetResult now uses the global JSON serialiser settings set via WebExtrasSettings.SerialiseSettings
 - Enh: WebExtrasConstants => WebExtrasSettings, WebExtrasMvcConstants has been merged into WebExtrasSettings
-- Enh: Errors on model state can now be ignored using the IgnoreErrors<> extension method
+- Enh: Errors on model state can now be ignored using the IgnoreErrors&lt;&gt; extension method
 - Enh: Adding EButton.Back as a synonym of EButton.Cancel
 - Enh: Adding IHtmlRenderer.PreRender to be able to hook into the rendering pipeline just before the compose phase starts
 - Enh: A form component can now have it's value set via IFormComponent.SetValue(...)
