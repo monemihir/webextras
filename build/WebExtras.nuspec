@@ -11,13 +11,21 @@
         <requireLicenseAcceptance>true</requireLicenseAcceptance>
         <description>A set of .NET extensions for jQuery dataTables, jQuery Flot and jqPlot so that you can create the objects in C# and then JSON serialize them to the Web Forms or ASP.Net MVC views.</description>
         <summary>A set of .NET extensions for jQuery dataTables, jQuery Flot and jqPlot along with generic utility methods for .NET development</summary>
-        <releaseNotes>- Enh: A full rewrite of the undelying HTML component framework to support Nancy extensions
-- Enh: All dependencies updated to latest versions
-- Brk: DatatableColumn is now removed
+        <releaseNotes>The project is now licensed under Apache License v2.0
+        
+A major namespace shuffle has taken place for the entire library. While all the old functionality is still available, you will have to update your USING statements accordingly. Both WebExtras.Mvc and WebExtras.Nancy libraries now depend on WebExtras library and as such you must add this library to your project
+
+- Enh: BootstrapConstants => BootstrapSettings
+- Enh: Added ability to specify an external string value decider via WebExtrasSettings.AddStringValueDecider(...)
+- Enh: WebExtrasConstants => WebExtrasSettings, since that's what they are...settings
+- Enh: Adding IHtmlRenderer.PreRender to be able to hook into the rendering pipeline just before the compose phase starts
+- Enh: GetStringValue extension method now return the enum value if a IStringValueDecider is not associated with the enum rather than throwing an exception
+- Enh: A form component can now have it's value set via IFormComponent.SetValue(...)
+- Enh: jQuery dataTables bindings now support adding of plugin options via DatatableSettings.Plugins property. Buttons and ColVis plugins are supported out-of-the-box
         </releaseNotes>
         <copyright>(c) 2016 Mihir Mone</copyright>
         <language>en-AU</language>
-        <tags>.NET, Helpers, Extensions, Flot, DataTables, jqPlot</tags>
+        <tags>.NET, Helpers, Extensions, Flot, DataTables, jqPlot, jQuery</tags>
         <dependencies>
             <group targetFramework=".NETFramework4.5">
                 <dependency id="Newtonsoft.Json" version="8.0.3" />

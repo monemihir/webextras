@@ -11,8 +11,13 @@
         <requireLicenseAcceptance>true</requireLicenseAcceptance>
         <description>Provides a set of extensions for the popular NancyFx web framework</description>
         <summary>A set of extensions for the popular NancyFx web framework</summary>
-        <releaseNotes>- Enh: Adding extensions for rendering SquishIt bundles
-- Enh: All dependencies updated to latest versions
+        <releaseNotes>The project is now licensed under Apache License v2.0
+        
+A major namespace shuffle has taken place for the entire library. While all the old functionality is still available, you will have to update your USING statements accordingly. Both WebExtras.Mvc and WebExtras.Nancy libraries now depend on WebExtras library and as such you must add this library to your project
+
+- Enh: Adding EButton.Back as a synonym of EButton.Cancel
+- Enh: Added Button, RequiredFieldLabelFor, Image, Hyperlink, AuthHyperlink, Imagelink, AuthImagelink extensions for Nancy
+- Enh: Added extension method to create SquishIt powered bundles for Nancy
         </releaseNotes>
         <copyright>2016 Mihir Mone</copyright>
         <language>en-AU</language>
