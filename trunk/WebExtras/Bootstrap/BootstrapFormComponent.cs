@@ -33,7 +33,7 @@ namespace WebExtras.Bootstrap
   public class BootstrapFormComponent<TModel, TValue> : IBootstrapFormComponent<TModel, TValue>
   {
     /// <summary>
-    /// Property expression
+    ///   Property expression
     /// </summary>
     private MemberExpression m_propertyExpression;
 
@@ -107,7 +107,7 @@ namespace WebExtras.Bootstrap
       if (rows <= 0 || columns <= 0)
         throw new InvalidOperationException("Invalid dimensions given. rows/columns must be greater than 0");
 
-      m_textAreaDimensions = new[] { rows, columns };
+      m_textAreaDimensions = new[] {rows, columns};
 
       Init(expression, htmlAttributes);
     }
@@ -117,7 +117,8 @@ namespace WebExtras.Bootstrap
     /// <inheritdoc />
     public IFormComponent<TModel, TValue> AddText(bool append = true)
     {
-      DisplayNameAttribute[] customAttributes = (DisplayNameAttribute[]) m_propertyExpression.Member.GetCustomAttributes(typeof(DisplayNameAttribute), false);
+      DisplayNameAttribute[] customAttributes =
+        (DisplayNameAttribute[]) m_propertyExpression.Member.GetCustomAttributes(typeof(DisplayNameAttribute), false);
 
       if (customAttributes.Length > 0)
         AddText(customAttributes[0].DisplayName, append);
@@ -194,6 +195,9 @@ namespace WebExtras.Bootstrap
       return this;
     }
 
+    /// <inheritdoc />
+    public IHtmlComponent Wrapper { get; private set; }
+
     /// <summary>
     ///   Changes render behavior to default
     /// </summary>
@@ -226,15 +230,14 @@ namespace WebExtras.Bootstrap
     /// <returns>MVC HTML string representation of current element</returns>
     public string ToHtml()
     {
-      HtmlComponent tag = new HtmlComponent(EHtmlTag.Div);
-      tag.CssClasses.Add("form-group");
+      Wrapper.CssClasses.Add("form-group");
 
       if (RenderBehavior == EFormControlBehavior.Default)
-        tag.InnerHtml = (Label == null ? string.Empty : Label.ToHtml()) + Input.ToHtml();
+        Wrapper.InnerHtml = (Label == null ? string.Empty : Label.ToHtml()) + Input.ToHtml();
       else
-        tag.InnerHtml = InputGroup.ToHtml();
+        Wrapper.InnerHtml = InputGroup.ToHtml();
 
-      return tag.ToHtml();
+      return Wrapper.ToHtml();
     }
 
     #endregion Implementation of IHtmlRenderer
@@ -280,8 +283,9 @@ namespace WebExtras.Bootstrap
     /// <param name="htmlAttributes">Extra HTML attributes</param>
     private void Init(Expression<Func<TModel, TValue>> expression, object htmlAttributes)
     {
+      Wrapper = new HtmlComponent(EHtmlTag.Div);
       RenderBehavior = WebExtrasSettings.FormControlBehavior;
-      m_propertyExpression = expression.Body as MemberExpression; 
+      m_propertyExpression = expression.Body as MemberExpression;
 
       if (WebExtrasSettings.BootstrapVersion == EBootstrapVersion.V2)
         CreateBootstrap2Tags();
@@ -293,7 +297,7 @@ namespace WebExtras.Bootstrap
     ///   Create bootstrap 3 tags
     /// </summary>
     /// <param name="htmlAttributes">Extra HTML attributes</param>
-    private void CreateBootstrap3Tags( object htmlAttributes)
+    private void CreateBootstrap3Tags(object htmlAttributes)
     {
       var defaultAttribs = new Dictionary<string, string>
       {
@@ -303,7 +307,7 @@ namespace WebExtras.Bootstrap
       };
 
       DataTypeAttribute[] customAttribs =
-        (DataTypeAttribute[])m_propertyExpression.Member.GetCustomAttributes(typeof(DataTypeAttribute), false);
+        (DataTypeAttribute[]) m_propertyExpression.Member.GetCustomAttributes(typeof(DataTypeAttribute), false);
       if (customAttribs.Length > 0)
       {
         switch (customAttribs[0].DataType)
@@ -354,7 +358,8 @@ namespace WebExtras.Bootstrap
     /// </summary>
     private void CreateBootstrap2Tags()
     {
-      throw new NotSupportedException("Bootstrap 2 is not supported for this component anymore. Please upgrade to Bootstrap 3.");
+      throw new NotSupportedException(
+        "Bootstrap 2 is not supported for this component anymore. Please upgrade to Bootstrap 3.");
     }
   }
 }

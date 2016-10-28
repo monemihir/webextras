@@ -26,6 +26,11 @@ namespace WebExtras.Bootstrap
   public interface IBootstrapFormComponent<TModel, TValue> : IFormComponent<TModel, TValue>
   {
     /// <summary>
+    /// The wrapper DIV element. Note: This property is only initialised in the constructor. Composition of the component takes place just before rendering i.e in the <see cref="IHtmlRenderer.ToHtml"/> method
+    /// </summary>
+    IHtmlComponent Wrapper { get; }
+
+    /// <summary>
     ///   Changes render behavior to default
     /// </summary>
     /// <returns>The updated form control</returns>
