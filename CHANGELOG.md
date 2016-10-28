@@ -1,5 +1,4 @@
-### Major release: v2.0.0
-### Released: n/a
+### Major release: v2.0.0 (dev)
 
 #### The project is now licensed under Apache License v2.0
 
@@ -23,8 +22,7 @@
 - **Enh:** Added extension method to create SquishIt powered bundles for Nancy
 - **Fix:** Fixing a bug in the dropdown creator extension where the selected option was not honoured when the SelectListItem.Selected property was set to true
 
-### Minor release: v1.5.0 
-### Released: 03 May 2016
+### Minor release: v1.5.0 (Released: 03 May 2016)
 
 - **Enh:** Further support for jqPlot 
 - **Enh:** Added an extension to create Cancel buttons 
