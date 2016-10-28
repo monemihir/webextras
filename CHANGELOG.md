@@ -11,7 +11,7 @@
 - **Enh:** `BootstrapConstants` => `BootstrapSettings`
 - **Enh:** Added ability to specify an external string value decider via `WebExtrasSettings.AddStringValueDecider(...)`
 - **Enh:** `JsonNetResult` now uses the global JSON serialiser settings set via `WebExtrasSettings.SerialiseSettings`
-- **Enh:** `WebExtrasConstants` => `WebExtrasSettings`, `WebExtrasMvcConstants` has been removed
+- **Enh:** `WebExtrasConstants` => `WebExtrasSettings`, `WebExtrasMvcConstants` has been merged into `WebExtrasSettings`
 - **Enh:** Errors on model state can now be ignored using the `IgnoreErrors<>` extension method
 - **Enh:** Adding `EButton.Back` as a synonym of `EButton.Cancel`
 - **Enh:** Adding `IHtmlRenderer.PreRender` to be able to hook into the rendering pipeline just before the compose phase starts
