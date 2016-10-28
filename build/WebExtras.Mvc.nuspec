@@ -35,7 +35,7 @@ Recommended: Creation of HTML components should now be done using the HtmlCompon
         <dependencies>
             <group targetFramework=".NETFramework4.5">
                 <dependency id="Microsoft.AspNet.Mvc" version="4.0.20505" />
-                <dependency id="T4MVCExtensions" version="3.0.0" />
+                <dependency id="T4MVCExtensions" version="3.17.5" />
                 <dependency id="Newtonsoft.Json" version="8.0.3" />
                 <dependency id="WebExtras" version="2.0.0.66" />
             </group>
