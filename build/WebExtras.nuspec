@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
         <id>WebExtras</id>
-        <version>2.0.0.70</version>
+        <version>2.0.0.72</version>
         <title>WebExtras</title>
         <authors>Mihir Mone</authors>
         <owners>Mihir Mone</owners>
@@ -33,10 +33,10 @@ A major namespace shuffle has taken place for the entire library. While all the 
         </dependencies>
     </metadata>
     <files>
-        <file src="..\dist\Content\Css\*.*" target="content\Content\Css\" />
-        <file src="..\dist\Scripts\*.*" target="content\Scripts\" />
-        <file src="..\dist\Views\*.*" target="content\Views\" />
+        <file src="..\dist\Content\Css\*.*" target="extras\Css\" />
+        <file src="..\dist\Scripts\*.*" target="extras\Scripts\" />        
         <file src="..\dist\lib\net45\WebExtras.dll" target="lib\net45\WebExtras.dll" />
-        <file src="..\dist\lib\net45\WebExtras.xml" target="lib\net45\WebExtras.xml" />        
+        <file src="..\dist\lib\net45\WebExtras.xml" target="lib\net45\WebExtras.xml" />    
+        <file src="WebExtras-ReadMe.txt" target="ReadMe.txt" />
     </files>
 </package>

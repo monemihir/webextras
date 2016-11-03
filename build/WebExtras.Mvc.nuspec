@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
         <id>WebExtras.Mvc</id>
-        <version>2.0.0.70</version>
+        <version>2.0.0.72</version>
         <title>WebExtras.Mvc</title>
         <authors>Mihir Mone</authors>
         <owners>Mihir Mone</owners>
@@ -37,7 +37,7 @@ Recommended: Creation of HTML components should now be done using the HtmlCompon
                 <dependency id="Microsoft.AspNet.Mvc" version="4.0.20505" />
                 <dependency id="T4MVCExtensions" version="3.17.5" />
                 <dependency id="Newtonsoft.Json" version="8.0.3" />
-                <dependency id="WebExtras" version="2.0.0.66" />
+                <dependency id="WebExtras" version="2.0.0.72" />
             </group>
         </dependencies>
         <frameworkAssemblies>
@@ -46,7 +46,9 @@ Recommended: Creation of HTML components should now be done using the HtmlCompon
         </frameworkAssemblies>
     </metadata>
     <files>
+        <file src="..\dist\Views\Shared\*.*" target="extras\Views\" />
         <file src="..\dist\lib\net45\WebExtras.Mvc.dll" target="lib\net45\WebExtras.Mvc.dll" />
-        <file src="..\dist\lib\net45\WebExtras.Mvc.xml" target="lib\net45\WebExtras.Mvc.xml" />        
+        <file src="..\dist\lib\net45\WebExtras.Mvc.xml" target="lib\net45\WebExtras.Mvc.xml" />      
+        <file src="WebExtras.Mvc-ReadMe.txt" target="ReadMe.txt" />
     </files>
 </package>

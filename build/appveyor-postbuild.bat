@@ -30,4 +30,4 @@ nuget pack WebExtras.Nancy.nuspec -OutputDirectory ..\artifacts
 cd ..
 
 REM ~ cleanup
-rmdir /S /Q dist
+REM ~ rmdir /S /Q dist

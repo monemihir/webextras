@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
         <id>WebExtras.Nancy</id>
-        <version>2.0.0.70</version>
+        <version>2.0.0.72</version>
         <title>WebExtras.Nancy</title>
         <authors>Mihir Mone</authors>
         <owners>Mihir Mone</owners>
@@ -28,7 +28,7 @@ A major namespace shuffle has taken place for the entire library. While all the 
                 <dependency id="Nancy" version="1.4.3" />     
                 <dependency id="Nancy.Viewengines.Razor" version="1.4.3" />
                 <dependency id="SquishIt" version="0.9.8.2" />
-                <dependency id="WebExtras" version="2.0.0.66" />
+                <dependency id="WebExtras" version="2.0.0.72" />
             </group>
         </dependencies>
     </metadata>

@@ -1,0 +1,7 @@
+﻿The Views folders which contains a partial view to render the jQuery dataTable using the provided binding is included in the 'extras' folder.
+
+This is done so that they don't automatically get included in your project when you install the package in case you are only looking to use the extension methods.
+
+You may wish to add them manually.
+
+Mihir Mone
