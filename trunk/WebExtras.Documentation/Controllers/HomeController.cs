@@ -6,12 +6,12 @@ using System.Web.Mvc;
 
 namespace WebExtras.Documentation.Controllers
 {
-    public class HomeController : Controller
+  public partial class HomeController : Controller
+  {
+    // GET: Home
+    public virtual ActionResult Index()
     {
-        // GET: Home
-        public ActionResult Index()
-        {
-            return View();
-        }
+      return View();
     }
+  }
 }

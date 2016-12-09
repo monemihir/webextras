@@ -14,25 +14,26 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-using System.Web;
-using System.Web.Mvc;
-using System.Web.Routing;
-
 namespace WebExtras.Documentation
 {
   /// <summary>
-  ///   Main MVC application
+  ///   All available content bundles
   /// </summary>
-  public class MvcApplication : HttpApplication
+  public enum ContentBundle
   {
     /// <summary>
-    ///   Application start
+    ///   Main CSS bundle
     /// </summary>
-    protected void Application_Start()
-    {
-      AreaRegistration.RegisterAllAreas();
-      RouteConfig.RegisterRoutes(RouteTable.Routes);
-      BundleConfig.RegisterBundles();
-    }
+    CssMain,
+
+    /// <summary>
+    ///   Main JavaScript bundle
+    /// </summary>
+    JsMain,
+
+    /// <summary>
+    ///   JavaScript libraries
+    /// </summary>
+    JsLib
   }
 }

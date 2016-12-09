@@ -14,25 +14,32 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-using System.Web;
-using System.Web.Mvc;
-using System.Web.Routing;
+using Links;
+using SquishIt.Framework;
+using WebExtras.Documentation.Models.Helpers;
 
 namespace WebExtras.Documentation
 {
   /// <summary>
-  ///   Main MVC application
+  /// CSS and JS bundles
   /// </summary>
-  public class MvcApplication : HttpApplication
+  public static class BundleConfig
   {
     /// <summary>
-    ///   Application start
+    /// Register all bundles
     /// </summary>
-    protected void Application_Start()
+    public static void RegisterBundles()
     {
-      AreaRegistration.RegisterAllAreas();
-      RouteConfig.RegisterRoutes(RouteTable.Routes);
-      BundleConfig.RegisterBundles();
+      Bundle.Css()
+        .AddMinified(Content.css.materialize.materialize_min_css)
+        .AddMinified(Content.css.style_min_css)
+        .AsCached(ContentBundle.CssMain);
+
+      Bundle.JavaScript()
+        .AddMinified(Scripts.jquery_3_1_1_slim_min_js)
+        .Add(Scripts.modernizr_2_8_3_js)
+        .AddMinified(Scripts.materialize.materialize_min_js)
+        .AsCached(ContentBundle.JsMain);
     }
   }
 }
