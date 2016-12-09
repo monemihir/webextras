@@ -130,12 +130,15 @@ namespace WebExtras.JQDataTables
     /// <param name="enableStatusColumn">[Optional] flag indicating whether to enable status column. Defaults to false</param>
     public Datatable(string id, DatatableSettings settings, DatatableRecords records, IEnumerable<PostbackItem> postbacks = null, bool enableStatusColumn = false)
     {
+      if (settings.aoColumns == null)
+        throw new NullReferenceException("Column setup not done. DatatableSettings.aoColumns property must be set in order to compose the datatable");
+
       ID = id.Replace("-", "_");
       Settings = settings;
       Records = records;
       Postbacks = postbacks != null ? postbacks.ToArray() : new PostbackItem[0];
       EnableStatusColumn = enableStatusColumn;
-
+      
       if (EnableStatusColumn)
       {
         settings.aoColumns = settings.aoColumns.Concat(new[] { new AOColumn { bVisible = false } }).ToArray();

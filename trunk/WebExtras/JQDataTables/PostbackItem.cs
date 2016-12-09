@@ -68,6 +68,9 @@ namespace WebExtras.JQDataTables
     /// <returns>Generated Postback items</returns>
     public static List<PostbackItem> FromObject(object o, bool nullValueIgnore = true)
     {
+      if (o == null)
+        return new List<PostbackItem>();
+
       PropertyInfo[] props = o
         .GetType()
         .GetProperties(BindingFlags.Public | BindingFlags.Instance);
