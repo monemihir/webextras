@@ -24,6 +24,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppHarbor.WebExtras.DemoApp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebExtras.FontAwesomeParser", "WebExtras.FontAwesomeParser\WebExtras.FontAwesomeParser.csproj", "{DC84F8E9-D1A7-4991-9C62-3AFB3F21D682}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebExtras.Mvc.T4", "WebExtras.Mvc.T4\WebExtras.Mvc.T4.csproj", "{846AE1CE-4DB4-41F8-8F87-022DA5CBCAB8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -88,6 +90,14 @@ Global
 		{DC84F8E9-D1A7-4991-9C62-3AFB3F21D682}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DC84F8E9-D1A7-4991-9C62-3AFB3F21D682}.Release|x86.ActiveCfg = Release|x86
 		{DC84F8E9-D1A7-4991-9C62-3AFB3F21D682}.Release|x86.Build.0 = Release|x86
+		{846AE1CE-4DB4-41F8-8F87-022DA5CBCAB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{846AE1CE-4DB4-41F8-8F87-022DA5CBCAB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{846AE1CE-4DB4-41F8-8F87-022DA5CBCAB8}.Debug|x86.ActiveCfg = Debug|x86
+		{846AE1CE-4DB4-41F8-8F87-022DA5CBCAB8}.Debug|x86.Build.0 = Debug|x86
+		{846AE1CE-4DB4-41F8-8F87-022DA5CBCAB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{846AE1CE-4DB4-41F8-8F87-022DA5CBCAB8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{846AE1CE-4DB4-41F8-8F87-022DA5CBCAB8}.Release|x86.ActiveCfg = Release|x86
+		{846AE1CE-4DB4-41F8-8F87-022DA5CBCAB8}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

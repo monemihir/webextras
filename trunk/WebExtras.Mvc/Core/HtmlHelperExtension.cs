@@ -147,74 +147,6 @@ namespace WebExtras.Mvc.Core
     }
 
     /// <summary>
-    ///   Create a HTML hyperlink with an image and given action
-    /// </summary>
-    /// <param name="html">Current HTML helper object</param>
-    /// <param name="src">Image location</param>
-    /// <param name="result">Action result</param>
-    /// <param name="htmlAttributes">
-    ///   [Optional] Extra html attributes for the image link. By default
-    ///   these attributes will be applied to the A tag only.
-    /// </param>
-    /// <returns>HTML image hyperlink</returns>
-    public static IExtendedHtmlString Imagelink(
-      this HtmlHelper html,
-      string src,
-      ActionResult result,
-      object htmlAttributes = null)
-    {
-      return Imagelink(html, src, string.Empty, string.Empty, result, htmlAttributes);
-    }
-
-    /// <summary>
-    ///   Create a HTML hyperlink with an image and given action
-    /// </summary>
-    /// <param name="html">Current HTML helper object</param>
-    /// <param name="src">Image location</param>
-    /// <param name="altText">Image alt text</param>
-    /// <param name="result">Action result</param>
-    /// <param name="htmlAttributes">
-    ///   [Optional] Extra html attributes for the image link. By default
-    ///   these attributes will be applied to the A tag only.
-    /// </param>
-    /// <returns>HTML image hyperlink</returns>
-    public static IExtendedHtmlString Imagelink(
-      this HtmlHelper html,
-      string src,
-      string altText,
-      ActionResult result,
-      object htmlAttributes = null)
-    {
-      return Imagelink(html, src, altText, string.Empty, result, htmlAttributes);
-    }
-
-    /// <summary>
-    ///   Create a HTML hyperlink with an image and given action
-    /// </summary>
-    /// <param name="html">Current HTML helper object</param>
-    /// <param name="src">Image location</param>
-    /// <param name="altText">Image alt text</param>
-    /// <param name="title">Image title</param>
-    /// <param name="result">Action result</param>
-    /// <param name="htmlAttributes">
-    ///   [Optional] Extra html attributes for the image link. By default
-    ///   these attributes will be applied to the A tag only.
-    /// </param>
-    /// <returns>HTML image hyperlink</returns>
-    public static IExtendedHtmlString Imagelink(
-      this HtmlHelper html,
-      string src,
-      string altText,
-      string title,
-      ActionResult result,
-      object htmlAttributes = null)
-    {
-      string url = WebExtrasMvcUtil.GetUrl(html, result);
-
-      return Imagelink(html, src, altText, title, url, htmlAttributes);
-    }
-
-    /// <summary>
     ///   Create a HTML hyperlink with an image
     /// </summary>
     /// <param name="html">Current HTML helper object</param>
@@ -309,81 +241,7 @@ namespace WebExtras.Mvc.Core
     {
       return AuthImagelink(html, user, src, altText, string.Empty, url, htmlAttributes);
     }
-
-    /// <summary>
-    ///   Create a HTML hyperlink with an image and given action
-    /// </summary>
-    /// <param name="html">Current HTML helper object</param>
-    /// <param name="user">User used to authenticate</param>
-    /// <param name="src">Image location</param>
-    /// <param name="result">Action result</param>
-    /// <param name="htmlAttributes">
-    ///   [Optional] Extra html attributes for the image link. By default
-    ///   these attributes will be applied to the A tag only.
-    /// </param>
-    /// <returns>HTML image hyperlink</returns>
-    public static IExtendedHtmlString AuthImagelink(
-      this HtmlHelper html,
-      IPrincipal user,
-      string src,
-      ActionResult result,
-      object htmlAttributes = null)
-    {
-      return AuthImagelink(html, user, src, string.Empty, string.Empty, result, htmlAttributes);
-    }
-
-    /// <summary>
-    ///   Create a HTML hyperlink with an image and given action
-    /// </summary>
-    /// <param name="html">Current HTML helper object</param>
-    /// <param name="user">User used to authenticate</param>
-    /// <param name="src">Image location</param>
-    /// <param name="altText">Image alt text</param>
-    /// <param name="result">Action result</param>
-    /// <param name="htmlAttributes">
-    ///   [Optional] Extra html attributes for the image link. By default
-    ///   these attributes will be applied to the A tag only.
-    /// </param>
-    /// <returns>HTML image hyperlink</returns>
-    public static IExtendedHtmlString AuthImagelink(
-      this HtmlHelper html,
-      IPrincipal user,
-      string src,
-      string altText,
-      ActionResult result,
-      object htmlAttributes = null)
-    {
-      return AuthImagelink(html, user, src, altText, string.Empty, result, htmlAttributes);
-    }
-
-    /// <summary>
-    ///   Create a HTML hyperlink with an image and given action
-    /// </summary>
-    /// <param name="html">Current HTML helper object</param>
-    /// <param name="user">User used to authenticate</param>
-    /// <param name="src">Image location</param>
-    /// <param name="altText">Image alt text</param>
-    /// <param name="title">Image title</param>
-    /// <param name="result">Action result</param>
-    /// <param name="htmlAttributes">
-    ///   [Optional] Extra html attributes for the image link. By default
-    ///   these attributes will be applied to the A tag only.
-    /// </param>
-    /// <returns>HTML image hyperlink</returns>
-    public static IExtendedHtmlString AuthImagelink(
-      this HtmlHelper html,
-      IPrincipal user,
-      string src,
-      string altText,
-      string title,
-      ActionResult result,
-      object htmlAttributes = null)
-    {
-      return user.Identity.IsAuthenticated
-        ? Imagelink(html, src, altText, title, result, htmlAttributes)
-        : HtmlElement.Empty;
-    }
-
+    
     /// <summary>
     ///   Create a HTML hyperlink with an image
     /// </summary>
@@ -434,26 +292,7 @@ namespace WebExtras.Mvc.Core
 
       return h;
     }
-
-    /// <summary>
-    ///   Creates a HTML hyperlink from given text and action
-    /// </summary>
-    /// <param name="html">Current html helper object</param>
-    /// <param name="linkText">Link text</param>
-    /// <param name="result">Action result</param>
-    /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
-    /// <returns>HTML hyperlink</returns>
-    public static IExtendedHtmlString Hyperlink(
-      this HtmlHelper html,
-      string linkText,
-      ActionResult result,
-      object htmlAttributes = null)
-    {
-      string link = WebExtrasMvcUtil.GetUrl(html, result);
-
-      return Hyperlink(html, linkText, link, htmlAttributes);
-    }
-
+    
     #endregion Hyperlink extensions
 
     #region AuthHyperlink extensions
@@ -478,31 +317,7 @@ namespace WebExtras.Mvc.Core
         ? new Hyperlink(linkText, url, htmlAttributes)
         : HtmlElement.Empty;
     }
-
-    /// <summary>
-    ///   Creates a HTML hyperlink from given text and action
-    /// </summary>
-    /// <param name="html">Current html helper object</param>
-    /// <param name="user">User used to authenticate</param>
-    /// <param name="linkText">Link text</param>
-    /// <param name="result">Action result</param>
-    /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
-    /// <returns>HTML hyperlink</returns>
-    public static IExtendedHtmlString AuthHyperlink(
-      this HtmlHelper html,
-      IPrincipal user,
-      string linkText,
-      ActionResult result,
-      object htmlAttributes = null)
-    {
-      if (!user.Identity.IsAuthenticated)
-        return HtmlElement.Empty;
-
-      string url = WebExtrasMvcUtil.GetUrl(html, result);
-
-      return Hyperlink(html, linkText, url, htmlAttributes);
-    }
-
+    
     #endregion AuthHyperlink extensions
 
     #region Image extensions

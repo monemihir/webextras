@@ -42,21 +42,5 @@ namespace WebExtras.Mvc.Core
 
       return t == typeof(Hyperlink) || t == typeof(Button);
     }
-
-    /// <summary>
-    ///   Get the url from given action result
-    /// </summary>
-    /// <param name="html">Current HTML helper instance</param>
-    /// <param name="result">Action to be parsed</param>
-    /// <returns>The URL the action points to</returns>
-    public static string GetUrl(HtmlHelper html, ActionResult result)
-    {
-      UrlHelper urlHelper = new UrlHelper(html.ViewContext.RequestContext);
-
-      RouteValueDictionary rvd = result.GetRouteValueDictionary();
-      string link = urlHelper.RouteUrl(rvd);
-
-      return link;
-    }
   }
 }

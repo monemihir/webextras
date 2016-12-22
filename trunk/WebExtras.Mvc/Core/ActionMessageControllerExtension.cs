@@ -34,36 +34,18 @@ namespace WebExtras.Mvc.Core
     /// <summary>
     /// The key used to store the message in the TempData object
     /// </summary>
-    private const string TempDataMessageKey = "<WebExtras_LastActionMessage>";
+    public const string TempDataMessageKey = "<WebExtras_LastActionMessage>";
 
     /// <summary>
     /// The key used to store the message type i.e success/failure in the TempData object
     /// </summary>
-    private const string TempDataMessageTypeKey = "<WebExtras_LastActionMessageType>";
+    public const string TempDataMessageTypeKey = "<WebExtras_LastActionMessageType>";
 
     /// <summary>
     /// The key used to store user alerts in the TempData object
     /// </summary>
-    private const string UserAlertsKey = "<WebExtras_UserAlerts>";
-
-    /// <summary>
-    /// Overload of the RedirectToAction method, which allows the saving of an action message
-    /// before the redirect is executed
-    /// </summary>
-    /// <param name="c">The controller</param>
-    /// <param name="result">The redirect result to execute</param>
-    /// <param name="message">The action message to display</param>
-    /// <param name="type">Action message type</param>
-    /// <param name="args">Any message formatting arguments</param>
-    /// <returns>A RedirectToRouteResult result</returns>
-    public static RedirectToRouteResult RedirectToAction(this ControllerBase c, ActionResult result, string message, EMessage type = EMessage.Success, params object[] args)
-    {
-      SaveLastActionMessage(c, message, type, args);
-
-      var callInfo = result.GetT4MVCResult();
-      return new RedirectToRouteResult(null, callInfo.RouteValueDictionary);
-    }
-
+    public const string UserAlertsKey = "<WebExtras_UserAlerts>";
+    
     /// <summary>
     /// Overload of the View method, which allows the saving of an action message
     /// before the View is returned
