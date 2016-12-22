@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{40A2735C-ADCD-4E3E-8337-E50F103CB0E2}"
 	ProjectSection(SolutionItems) = preProject
@@ -21,6 +21,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebExtras.Nancy", "WebExtras.Nancy\WebExtras.Nancy.csproj", "{8B23D1C6-6054-435D-ABF7-666E8B640C6F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppHarbor.WebExtras.DemoApp", "WebExtras.DemoApp\AppHarbor.WebExtras.DemoApp.csproj", "{4DDB7680-851E-4C20-9C72-EC23B3AD9639}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebExtras.FontAwesomeParser", "WebExtras.FontAwesomeParser\WebExtras.FontAwesomeParser.csproj", "{DC84F8E9-D1A7-4991-9C62-3AFB3F21D682}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -78,6 +80,14 @@ Global
 		{4DDB7680-851E-4C20-9C72-EC23B3AD9639}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4DDB7680-851E-4C20-9C72-EC23B3AD9639}.Release|x86.ActiveCfg = Release|x86
 		{4DDB7680-851E-4C20-9C72-EC23B3AD9639}.Release|x86.Build.0 = Release|x86
+		{DC84F8E9-D1A7-4991-9C62-3AFB3F21D682}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC84F8E9-D1A7-4991-9C62-3AFB3F21D682}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC84F8E9-D1A7-4991-9C62-3AFB3F21D682}.Debug|x86.ActiveCfg = Debug|x86
+		{DC84F8E9-D1A7-4991-9C62-3AFB3F21D682}.Debug|x86.Build.0 = Debug|x86
+		{DC84F8E9-D1A7-4991-9C62-3AFB3F21D682}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC84F8E9-D1A7-4991-9C62-3AFB3F21D682}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC84F8E9-D1A7-4991-9C62-3AFB3F21D682}.Release|x86.ActiveCfg = Release|x86
+		{DC84F8E9-D1A7-4991-9C62-3AFB3F21D682}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
