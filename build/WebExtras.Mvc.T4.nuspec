@@ -1,17 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
-        <id>WebExtras.Mvc</id>
+        <id>WebExtras.Mvc.T4</id>
         <version>2.1.0.15</version>
-        <title>WebExtras.Mvc</title>
+        <title>WebExtras.Mvc.T4</title>
         <authors>Mihir Mone</authors>
         <owners>Mihir Mone</owners>
         <licenseUrl>https://raw.githubusercontent.com/monemihir/webextras/master/LICENSE</licenseUrl>
         <projectUrl>https://github.com/monemihir/webextras</projectUrl>
         <requireLicenseAcceptance>true</requireLicenseAcceptance>
-        <description>Provides a set of MVC helper and extension methods for the popular Bootstrap, Gumby and jQuery UI CSS frameworks. Includes other MVC helpers which can be used in core MVC development as well.</description>
+        <description>Provides a set of MVC helper and extension methods (that depend on the T4MVC templating engine) for the popular Bootstrap, Gumby and jQuery UI CSS frameworks. Includes other MVC helpers which can be used in core MVC development as well.</description>
         <summary>A set of MVC helpers for Bootstrap 2, Bootstrap 3, Font Awesome, Gumby and jQuery UI</summary>
-        <releaseNotes>- Brk: Some of the extension methods have been moved to a different package called WebExtras.Mvc.T4. This is since not all .NET MVC project may be using T4MVC templating. This allows you to use the library without getting runtime errors if you are not using the T4MVC templating engine.
+        <releaseNotes>Initial release after split from the WebExtras.Mvc package.
+        
+No new functionality has been added.
         </releaseNotes>
         <copyright>2016 Mihir Mone</copyright>
         <language>en-AU</language>
@@ -31,8 +33,8 @@
     </metadata>
     <files>
         <file src="..\dist\Views\Shared\*.*" target="extras\Views\" />
-        <file src="..\dist\lib\net45\WebExtras.Mvc.dll" target="lib\net45\WebExtras.Mvc.dll" />
-        <file src="..\dist\lib\net45\WebExtras.Mvc.xml" target="lib\net45\WebExtras.Mvc.xml" />      
+        <file src="..\dist\lib\net45\WebExtras.Mvc.T4.dll" target="lib\net45\WebExtras.Mvc.T4.dll" />
+        <file src="..\dist\lib\net45\WebExtras.Mvc.T4.xml" target="lib\net45\WebExtras.Mvc.T4.xml" />      
         <file src="WebExtras.Mvc-ReadMe.txt" target="ReadMe.txt" />
     </files>
 </package>

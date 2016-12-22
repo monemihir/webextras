@@ -4,4 +4,13 @@ This is done so that they don't automatically get included in your project when 
 
 You may wish to add them manually.
 
+Version Specific Notes:
+-----------------------
+
+2.1.0.15: 
+As of this version extension methods that depend on the T4MVC templating engine have been moved to a different NuGet package called "WebExtras.Mvc.T4". 
+This is so as to account for the fact that not all .NET MVC project may use the T4MVC templating engine which would lead to runtime errors if they
+use these extension methods.
+
+
 Mihir Mone
