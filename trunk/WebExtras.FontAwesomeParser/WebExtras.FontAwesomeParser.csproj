@@ -70,6 +70,15 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="fontawesome.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WebExtras\WebExtras.csproj">
+      <Project>{79881816-8cc9-458b-99f7-bbe3e35ab665}</Project>
+      <Name>WebExtras</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
