@@ -26,6 +26,7 @@ REM ~ build nuget packages
 cd build
 nuget pack WebExtras.nuspec -OutputDirectory ..\artifacts
 nuget pack WebExtras.Mvc.nuspec -OutputDirectory ..\artifacts
+nuget pack WebExtras.Mvc.T4.nuspec -OutputDirectory ..\artifacts
 nuget pack WebExtras.Nancy.nuspec -OutputDirectory ..\artifacts
 cd ..
 
