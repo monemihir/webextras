@@ -42,7 +42,7 @@ namespace WebExtras.FontAwesomeParser
 
         cssClass = startsWithNumber ? "N" + cssClass : cssClass;
 
-        classes[cssClass] = small?.InnerText;
+        classes[cssClass] = small == null ? string.Empty : small.InnerText;
       }
 
       const string commentTemplate = "/// <summary>\r\n/// Since FA v{0}\r\n/// </summary>";
