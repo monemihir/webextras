@@ -34,7 +34,7 @@ namespace WebExtras.Mvc.Gumby
     /// <param name="result">Link action</param>
     /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
     /// <returns>A icon only link</returns>
-    public static IExtendedHtmlString Hyperlink(this HtmlHelper html, EGumbyIcon icon, ActionResult result,
+    public static IExtendedHtmlStringLegacy Hyperlink(this HtmlHelper html, EGumbyIcon icon, ActionResult result,
       object htmlAttributes = null)
     {
       string link = WebExtrasMvcUtilT4.GetUrl(html, result);

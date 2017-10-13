@@ -16,6 +16,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Web;
 using WebExtras.Core;
 using WebExtras.Html;
 
@@ -25,7 +26,7 @@ namespace WebExtras.Mvc.Html
   ///   Represents a HTML LIST element
   /// </summary>
   [Serializable]
-  public class HtmlList : HtmlComponent
+  public class HtmlList : HtmlComponent, IHtmlString
   {
     /// <summary>
     ///   List type
@@ -59,6 +60,15 @@ namespace WebExtras.Mvc.Html
     {
       Type = type;
       AppendTags.AddRange(listItems);
+    }
+
+    /// <summary>
+    ///   Returns an HTML-encoded string.
+    /// </summary>
+    /// <returns>An HTML-encoded string.</returns>
+    public string ToHtmlString()
+    {
+      return ToHtml();
     }
   }
 }

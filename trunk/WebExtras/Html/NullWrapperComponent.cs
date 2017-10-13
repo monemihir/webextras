@@ -14,6 +14,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using WebExtras.Core;
@@ -23,6 +24,7 @@ namespace WebExtras.Html
   /// <summary>
   ///   A simple wrapper component which renders all internal components side-by-side
   /// </summary>
+  [Serializable]
   public class NullWrapperComponent : HtmlComponent
   {
     /// <summary>

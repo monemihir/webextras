@@ -80,7 +80,7 @@ namespace WebExtras.Mvc.Html
     /// <param name="html">HTML to be added</param>
     /// <param name="append">[Optional] Whether to append or prepend the addon</param>
     /// <returns>The updated form control</returns>
-    public IFormControl<TModel, TValue> AddHtml(IExtendedHtmlString html, bool append = true)
+    public IFormControl<TModel, TValue> AddHtml(IExtendedHtmlStringLegacy html, bool append = true)
     {
       Component = Component.AddHtml(html.Component, append);
 

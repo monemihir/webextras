@@ -27,7 +27,7 @@ namespace WebExtras.Mvc.Html
     /// <param name="html">HTML element to add class to</param>
     /// <param name="css">CSS class(es) to be added</param>
     /// <returns>Current HTML element with classes added</returns>
-    public static T AddCssClass<T>(this T html, string css) where T : IExtendedHtmlString
+    public static T AddCssClass<T>(this T html, string css) where T : IExtendedHtmlStringLegacy
     {
       if (!string.IsNullOrWhiteSpace(css))
         html.CSSClasses.AddRange(css.Trim().Split(' '));
@@ -44,7 +44,7 @@ namespace WebExtras.Mvc.Html
     /// <param name="overwrite">[Optional] Whether to overwrite an existing value. Defaults to false</param>
     /// <returns>Updated element</returns>
     public static T SetAttribute<T>(this T html, string name, string value, bool overwrite = false)
-      where T : IExtendedHtmlString
+      where T : IExtendedHtmlStringLegacy
     {
       if (overwrite)
         html.Attributes[name] = value;

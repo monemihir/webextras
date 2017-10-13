@@ -47,7 +47,7 @@ namespace WebExtras.Mvc.Bootstrap
     ///   is not selected
     /// </exception>
     public static T AddIcon<T>(this T html, EBootstrapIcon icon, object htmlAttributes = null)
-      where T : IExtendedHtmlString
+      where T : IExtendedHtmlStringLegacy
     {
       //List<string> cssClasses = new List<string>();
 
@@ -81,7 +81,7 @@ namespace WebExtras.Mvc.Bootstrap
     ///   is not selected
     /// </exception>
     public static T AddWhiteIcon<T>(this T html, EBootstrapIcon icon, object htmlAttributes = null)
-      where T : IExtendedHtmlString
+      where T : IExtendedHtmlStringLegacy
     {
       switch (WebExtrasSettings.BootstrapVersion)
       {
@@ -114,7 +114,7 @@ namespace WebExtras.Mvc.Bootstrap
     /// </exception>
     public static T AddIcon<T>(this T html, EFontAwesomeIcon icon,
       EFontAwesomeIconSize size = EFontAwesomeIconSize.Normal, object htmlAttributes = null)
-      where T : IExtendedHtmlString
+      where T : IExtendedHtmlStringLegacy
     {
       string prefix = string.Empty;
 
@@ -147,7 +147,7 @@ namespace WebExtras.Mvc.Bootstrap
     /// <param name="htmlAttributes">[Optional] Extra html attributes</param>
     /// <returns>Html element with icon added</returns>
     private static T AddIcon<T>(T html, IEnumerable<string> cssClasses, object htmlAttributes = null)
-      where T : IExtendedHtmlString
+      where T : IExtendedHtmlStringLegacy
     {
       IDictionary<string, object> rvd = HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes);
 
@@ -187,7 +187,7 @@ namespace WebExtras.Mvc.Bootstrap
     /// <typeparam name="T">Generic type to be used. Can only be either Hyperlink or Button</typeparam>
     /// <param name="html">Current HTML element</param>
     /// <returns>A special button</returns>
-    public static T AsButton<T>(this T html) where T : IExtendedHtmlString
+    public static T AsButton<T>(this T html) where T : IExtendedHtmlStringLegacy
     {
       return AsButton(html, EBootstrapButton.Default);
     }
@@ -199,7 +199,7 @@ namespace WebExtras.Mvc.Bootstrap
     /// <param name="html">Current HTML element</param>
     /// <param name="types">Bootstrap button types</param>
     /// <returns>A special button</returns>
-    public static T AsButton<T>(this T html, params EBootstrapButton[] types) where T : IExtendedHtmlString
+    public static T AsButton<T>(this T html, params EBootstrapButton[] types) where T : IExtendedHtmlStringLegacy
     {
       if (!WebExtrasMvcUtil.CanDisplayAsButton(html))
         throw new InvalidUsageException("The AsButton decorator can only be used with Button and Hyperlink extensions");
@@ -218,7 +218,7 @@ namespace WebExtras.Mvc.Bootstrap
     /// </summary>
     /// <param name="list">List to be converted</param>
     /// <returns>An unstyled list</returns>
-    public static IExtendedHtmlString AsUnstyled(this HtmlList list)
+    public static IExtendedHtmlStringLegacy AsUnstyled(this HtmlList list)
     {
       list.CssClasses.Add("unstyled list-unstyled");
 
@@ -231,7 +231,7 @@ namespace WebExtras.Mvc.Bootstrap
     /// </summary>
     /// <param name="list">List to be converted</param>
     /// <returns>An inline list</returns>
-    public static IExtendedHtmlString AsInline(this HtmlList list)
+    public static IExtendedHtmlStringLegacy AsInline(this HtmlList list)
     {
       list.CssClasses.Add("inline list-inline");
 

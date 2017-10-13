@@ -115,7 +115,7 @@ namespace WebExtras.Mvc.Core
     ///   these attributes will be applied to the A tag only.
     /// </param>
     /// <returns>HTML image hyperlink</returns>
-    public static IExtendedHtmlString Imagelink(
+    public static IExtendedHtmlStringLegacy Imagelink(
       this HtmlHelper html,
       string src,
       string url,
@@ -136,7 +136,7 @@ namespace WebExtras.Mvc.Core
     ///   these attributes will be applied to the A tag only.
     /// </param>
     /// <returns>HTML image hyperlink</returns>
-    public static IExtendedHtmlString Imagelink(
+    public static IExtendedHtmlStringLegacy Imagelink(
       this HtmlHelper html,
       string src,
       string altText,
@@ -159,7 +159,7 @@ namespace WebExtras.Mvc.Core
     ///   these attributes will be applied to the A tag only.
     /// </param>
     /// <returns>HTML image hyperlink</returns>
-    public static IExtendedHtmlString Imagelink(
+    public static IExtendedHtmlStringLegacy Imagelink(
       this HtmlHelper html,
       string src,
       string altText,
@@ -208,7 +208,7 @@ namespace WebExtras.Mvc.Core
     ///   these attributes will be applied to the A tag only.
     /// </param>
     /// <returns>HTML image hyperlink</returns>
-    public static IExtendedHtmlString AuthImagelink(
+    public static IExtendedHtmlStringLegacy AuthImagelink(
       this HtmlHelper html,
       IPrincipal user,
       string src,
@@ -231,7 +231,7 @@ namespace WebExtras.Mvc.Core
     ///   these attributes will be applied to the A tag only.
     /// </param>
     /// <returns>HTML image hyperlink</returns>
-    public static IExtendedHtmlString AuthImagelink(
+    public static IExtendedHtmlStringLegacy AuthImagelink(
       this HtmlHelper html,
       IPrincipal user,
       string src,
@@ -256,7 +256,7 @@ namespace WebExtras.Mvc.Core
     ///   these attributes will be applied to the A tag only.
     /// </param>
     /// <returns>HTML image hyperlink</returns>
-    public static IExtendedHtmlString AuthImagelink(
+    public static IExtendedHtmlStringLegacy AuthImagelink(
       this HtmlHelper html,
       IPrincipal user,
       string src,
@@ -282,7 +282,7 @@ namespace WebExtras.Mvc.Core
     /// <param name="url">Link URL</param>
     /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
     /// <returns>HTML hyperlink</returns>
-    public static IExtendedHtmlString Hyperlink(
+    public static IExtendedHtmlStringLegacy Hyperlink(
       this HtmlHelper html,
       string linkText,
       string url,
@@ -306,7 +306,7 @@ namespace WebExtras.Mvc.Core
     /// <param name="url">Link URL</param>
     /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
     /// <returns>HTML Hyperlink</returns>
-    public static IExtendedHtmlString AuthHyperlink(
+    public static IExtendedHtmlStringLegacy AuthHyperlink(
       this HtmlHelper html,
       IPrincipal user,
       string linkText,
@@ -329,7 +329,7 @@ namespace WebExtras.Mvc.Core
     /// <param name="src">Image location</param>
     /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
     /// <returns>An HTML image</returns>
-    public static IExtendedHtmlString Image(
+    public static IExtendedHtmlStringLegacy Image(
       this HtmlHelper html,
       string src,
       object htmlAttributes = null)
@@ -345,7 +345,7 @@ namespace WebExtras.Mvc.Core
     /// <param name="altText">Image alt text</param>
     /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
     /// <returns>An HTML image</returns>
-    public static IExtendedHtmlString Image(
+    public static IExtendedHtmlStringLegacy Image(
       this HtmlHelper html,
       string src,
       string altText,
@@ -363,7 +363,7 @@ namespace WebExtras.Mvc.Core
     /// <param name="title">Image title</param>
     /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
     /// <returns>An HTML image</returns>
-    public static IExtendedHtmlString Image(
+    public static IExtendedHtmlStringLegacy Image(
       this HtmlHelper html,
       string src,
       string altText,

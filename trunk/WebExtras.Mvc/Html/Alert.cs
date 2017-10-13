@@ -28,12 +28,12 @@ namespace WebExtras.Mvc.Html
   /// <summary>
   ///   Denotes an alert
   /// </summary>
-  public class Alert : HtmlElement
+  public class Alert : HtmlComponent
   {
     /// <summary>
     ///   The alert type
     /// </summary>
-    public EMessage Type { get; set; }
+    public EMessage Type { get; private set; }
 
     /// <summary>
     ///   Constructor
@@ -78,7 +78,7 @@ namespace WebExtras.Mvc.Html
     public Alert(EMessage type, string message, string title, EFontAwesomeIcon? icon, object htmlAttributes = null)
       : base(EHtmlTag.Div, htmlAttributes)
     {
-      IExtendedHtmlString i = (icon != null) ? BootstrapUtil.CreateIcon(icon.Value).ToHtmlElement() : null;
+      IExtendedHtmlStringLegacy i = (icon != null) ? BootstrapUtil.CreateIcon(icon.Value).ToHtmlElement() : null;
 
       CreateAlert(type, message, title, i);
     }
@@ -97,7 +97,7 @@ namespace WebExtras.Mvc.Html
     public Alert(EMessage type, string message, string title, EBootstrapIcon? icon, object htmlAttributes = null)
       : base(EHtmlTag.Div, htmlAttributes)
     {
-      IExtendedHtmlString i = (icon != null) ? BootstrapUtil.CreateIcon(icon.Value).ToHtmlElement() : null;
+      IExtendedHtmlStringLegacy i = (icon != null) ? BootstrapUtil.CreateIcon(icon.Value).ToHtmlElement() : null;
 
       CreateAlert(type, message, title, i);
     }
@@ -116,7 +116,7 @@ namespace WebExtras.Mvc.Html
     public Alert(EMessage type, string message, string title, EJQueryUIIcon? icon, object htmlAttributes = null)
       : base(EHtmlTag.Div, htmlAttributes)
     {
-      IExtendedHtmlString i = (icon != null) ? JQueryUIUtil.CreateIcon(icon.Value) : null;
+      IExtendedHtmlStringLegacy i = (icon != null) ? JQueryUIUtil.CreateIcon(icon.Value) : null;
 
       CreateAlert(type, message, title, i);
     }
@@ -135,7 +135,7 @@ namespace WebExtras.Mvc.Html
     public Alert(EMessage type, string message, string title, EGumbyIcon? icon, object htmlAttributes = null)
       : base(EHtmlTag.Div, htmlAttributes)
     {
-      IExtendedHtmlString i = (icon != null) ? GumbyUtil.CreateIcon(icon.Value).ToHtmlElement() : null;
+      IExtendedHtmlStringLegacy i = (icon != null) ? GumbyUtil.CreateIcon(icon.Value).ToHtmlElement() : null;
 
       CreateAlert(type, message, title, i);
     }
@@ -147,9 +147,9 @@ namespace WebExtras.Mvc.Html
     /// <param name="message">Alert message</param>
     /// <param name="title">Title/Heading of the alert</param>
     /// <param name="icon">Icon to be rendered with title/heading</param>
-    private void CreateAlert(EMessage type, string message, string title, IExtendedHtmlString icon)
+    private void CreateAlert(EMessage type, string message, string title, IExtendedHtmlStringLegacy icon)
     {
-      CSSClasses.Add(type.GetStringValue());
+      CssClasses.Add(type.GetStringValue());
 
       HtmlComponent bc = new HtmlComponent(EHtmlTag.B)
       {
@@ -161,45 +161,45 @@ namespace WebExtras.Mvc.Html
       
       if (WebExtrasSettings.CssFramework != ECssFramework.JQueryUI)
       {
-        CSSClasses.Add("alert");
+        CssClasses.Add("alert");
 
         Button closeBtn = new Button(EButton.Regular, "&times;", string.Empty);
         closeBtn.CSSClasses.Add("close");
         closeBtn["data-dismiss"] = "alert";
 
-        Prepend(closeBtn);
-        Prepend(bc.ToHtmlElement());
+        PrependTags.Add(closeBtn.Component);
+        PrependTags.Add(bc);
         InnerHtml = (!string.IsNullOrWhiteSpace(title) || icon != null)
           ? WebExtrasSettings.HTMLSpace + message
           : message;
       }
       else
       {
-        Div div = new Div();
+        HtmlComponent div = new HtmlComponent(EHtmlTag.Div);
 
         switch (type)
         {
           case EMessage.Error:
-            div.CSSClasses.Add("ui-state-error");
+            div.CssClasses.Add("ui-state-error");
             break;
 
           case EMessage.Information:
           case EMessage.Warning:
-            div.CSSClasses.Add("ui-state-highlight");
+            div.CssClasses.Add("ui-state-highlight");
             break;
 
           case EMessage.Success:
-            div.CSSClasses.Add("ui-state-success");
+            div.CssClasses.Add("ui-state-success");
             break;
         }
 
-        div.CSSClasses.Add("ui-corner-all");
-        div.Prepend(bc.ToHtmlElement());
+        div.CssClasses.Add("ui-corner-all");
+        div.PrependTags.Add(bc);
         div.InnerHtml = (!string.IsNullOrWhiteSpace(title) || icon != null)
           ? WebExtrasSettings.HTMLSpace + message
           : message;
 
-        Prepend(div);
+        PrependTags.Add(div);
       }
 
       Type = type;

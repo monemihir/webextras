@@ -42,7 +42,7 @@ namespace WebExtras.Mvc.Gumby
     /// <param name="icon">Gumby icon</param>
     /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
     /// <returns>A Gumby icon</returns>
-    public static IExtendedHtmlString Icon(this HtmlHelper html, EGumbyIcon icon, object htmlAttributes = null)
+    public static IExtendedHtmlStringLegacy Icon(this HtmlHelper html, EGumbyIcon icon, object htmlAttributes = null)
     {
       return GumbyUtil.CreateIcon(icon, htmlAttributes).ToHtmlElement();
     }
@@ -230,7 +230,7 @@ namespace WebExtras.Mvc.Gumby
     /// <param name="url">Link action</param>
     /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
     /// <returns>A icon only link</returns>
-    public static IExtendedHtmlString Hyperlink(this HtmlHelper html, EGumbyIcon icon, string url, object htmlAttributes = null)
+    public static IExtendedHtmlStringLegacy Hyperlink(this HtmlHelper html, EGumbyIcon icon, string url, object htmlAttributes = null)
     {
       return new GumbyIconLink(icon, url, htmlAttributes);
     }

@@ -29,7 +29,7 @@ namespace WebExtras.Mvc.Html
   ///   Represents an HTML element
   /// </summary>
   [Serializable]
-  public class HtmlElement : IExtendedHtmlString
+  public class HtmlElement : IExtendedHtmlStringLegacy
   {
     #region Attributes
 
@@ -66,17 +66,17 @@ namespace WebExtras.Mvc.Html
     /// <summary>
     ///   Inner HTML tags to be appended
     /// </summary>
-    public List<IExtendedHtmlString> AppendTags
+    public List<IExtendedHtmlStringLegacy> AppendTags
     {
-      get { return Component.AppendTags.Select(f => f.ToHtmlElement()).ToList<IExtendedHtmlString>(); }
+      get { return Component.AppendTags.Select(f => f.ToHtmlElement()).ToList<IExtendedHtmlStringLegacy>(); }
     }
 
     /// <summary>
     ///   Inner HTML tags to be prepended
     /// </summary>
-    public List<IExtendedHtmlString> PrependTags
+    public List<IExtendedHtmlStringLegacy> PrependTags
     {
-      get { return Component.PrependTags.Select(f => f.ToHtmlElement()).ToList<IExtendedHtmlString>(); }
+      get { return Component.PrependTags.Select(f => f.ToHtmlElement()).ToList<IExtendedHtmlStringLegacy>(); }
     }
 
     #endregion Attributes
@@ -155,7 +155,7 @@ namespace WebExtras.Mvc.Html
     ///   element
     /// </summary>
     /// <param name="element">HTML element to be added</param>
-    public virtual void Append(IExtendedHtmlString element)
+    public virtual void Append(IExtendedHtmlStringLegacy element)
     {
       Component.AppendTags.Add(element.Component);
     }
@@ -165,7 +165,7 @@ namespace WebExtras.Mvc.Html
     ///   element
     /// </summary>
     /// <param name="elements">HTML elements to be added</param>
-    public virtual void Append(IEnumerable<IExtendedHtmlString> elements)
+    public virtual void Append(IEnumerable<IExtendedHtmlStringLegacy> elements)
     {
       Component.AppendTags.AddRange(elements.Select(e => e.Component));
     }
@@ -184,7 +184,7 @@ namespace WebExtras.Mvc.Html
     ///   the current element
     /// </summary>
     /// <param name="element">HTML element to be added</param>
-    public virtual void Prepend(IExtendedHtmlString element)
+    public virtual void Prepend(IExtendedHtmlStringLegacy element)
     {
       Component.PrependTags.Add(element.Component);
     }
@@ -194,7 +194,7 @@ namespace WebExtras.Mvc.Html
     ///   the current element
     /// </summary>
     /// <param name="elements">HTML elements to be added</param>
-    public virtual void Prepend(IEnumerable<IExtendedHtmlString> elements)
+    public virtual void Prepend(IEnumerable<IExtendedHtmlStringLegacy> elements)
     {
       Component.PrependTags.AddRange(elements.Select(e => e.Component));
     }
@@ -230,7 +230,7 @@ namespace WebExtras.Mvc.Html
     /// <summary>
     ///   Empty string
     /// </summary>
-    public static IExtendedHtmlString Empty { get { return new HtmlElement(EHtmlTag.Empty); } }
+    public static IExtendedHtmlStringLegacy Empty { get { return new HtmlElement(EHtmlTag.Empty); } }
 
     #region Parse
 

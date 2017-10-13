@@ -43,7 +43,7 @@ namespace WebExtras.Mvc.JQueryUI
     /// <param name="icon">JQuery UI icon</param>
     /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
     /// <returns>A JQuery UI icon</returns>
-    public static IExtendedHtmlString Icon(this HtmlHelper html, EJQueryUIIcon icon, object htmlAttributes = null)
+    public static IExtendedHtmlStringLegacy Icon(this HtmlHelper html, EJQueryUIIcon icon, object htmlAttributes = null)
     {
       return Icon(html, icon, EJQueryUIIconType.Default, htmlAttributes);
     }
@@ -56,7 +56,7 @@ namespace WebExtras.Mvc.JQueryUI
     /// <param name="type">JQUery UI icon type</param>
     /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
     /// <returns>A JQuery UI icon</returns>
-    public static IExtendedHtmlString Icon(this HtmlHelper html, EJQueryUIIcon icon, EJQueryUIIconType type, object htmlAttributes = null)
+    public static IExtendedHtmlStringLegacy Icon(this HtmlHelper html, EJQueryUIIcon icon, EJQueryUIIconType type, object htmlAttributes = null)
     {
       Span s = new Span(htmlAttributes);
       s.AddCssClass("ui-icon");

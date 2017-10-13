@@ -35,7 +35,7 @@ namespace WebExtras.Mvc.Core
     /// </summary>
     /// <param name="html">Current HTML element</param>
     /// <returns>True if can display as button, else False</returns>
-    public static bool CanDisplayAsButton(IExtendedHtmlString html)
+    public static bool CanDisplayAsButton(IExtendedHtmlStringLegacy html)
     {
       // We can only display hyperlinks and button as buttons
       Type t = html.GetType();

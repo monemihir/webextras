@@ -46,7 +46,7 @@ namespace WebExtras.Mvc.Bootstrap.v3
     /// <param name="expression">The property lamba expression</param>
     /// <param name="htmlAttributes">Extra HTML attributes to be applied to the text box</param>
     /// <returns>A Bootstrap date time picker control</returns>
-    public static IExtendedHtmlString DateTimeTextBoxFor<TModel, TValue>(this HtmlHelper<TModel> html,
+    public static IExtendedHtmlStringLegacy DateTimeTextBoxFor<TModel, TValue>(this HtmlHelper<TModel> html,
       Expression<Func<TModel, TValue>> expression, object htmlAttributes = (IDictionary<string, object>) null)
     {
       return DateTimeTextBoxFor(html, expression, BootstrapSettings.DateTimePickerOptions.DeepClone(), htmlAttributes);
@@ -62,7 +62,7 @@ namespace WebExtras.Mvc.Bootstrap.v3
     /// <param name="options">Date time picker options</param>
     /// <param name="htmlAttributes">Extra HTML attributes to be applied to the text box</param>
     /// <returns>A Bootstrap date time picker control</returns>
-    public static IExtendedHtmlString DateTimeTextBoxFor<TModel, TValue>(this HtmlHelper<TModel> html,
+    public static IExtendedHtmlStringLegacy DateTimeTextBoxFor<TModel, TValue>(this HtmlHelper<TModel> html,
       Expression<Func<TModel, TValue>> expression, PickerOptions options,
       object htmlAttributes = (IDictionary<string, object>) null)
     {

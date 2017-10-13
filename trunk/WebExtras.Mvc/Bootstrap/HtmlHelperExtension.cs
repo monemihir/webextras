@@ -15,6 +15,8 @@
 // limitations under the License.
 
 using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Linq.Expressions;
@@ -45,7 +47,7 @@ namespace WebExtras.Mvc.Bootstrap
     ///   Thrown when a valid Bootstrap version
     ///   is not selected
     /// </exception>
-    public static IExtendedHtmlString Icon(this HtmlHelper html, EBootstrapIcon icon, object htmlAttributes = null)
+    public static IExtendedHtmlStringLegacy Icon(this HtmlHelper html, EBootstrapIcon icon, object htmlAttributes = null)
     {
       return BootstrapUtil.CreateIcon(icon, htmlAttributes).ToHtmlElement();
     }
@@ -57,7 +59,7 @@ namespace WebExtras.Mvc.Bootstrap
     /// <param name="icon">Icon to be rendered</param>
     /// <param name="htmlAttributes">Extra HTML attributes</param>
     /// <returns>A Bootstrap icon</returns>
-    public static IExtendedHtmlString Icon(this HtmlHelper html, EFontAwesomeIcon icon, object htmlAttributes)
+    public static IExtendedHtmlStringLegacy Icon(this HtmlHelper html, EFontAwesomeIcon icon, object htmlAttributes)
     {
       return Icon(html, icon, EFontAwesomeIconSize.Normal, htmlAttributes);
     }
@@ -74,7 +76,7 @@ namespace WebExtras.Mvc.Bootstrap
     ///   Thrown when a valid FontAwesome
     ///   icon library version is not selected
     /// </exception>
-    public static IExtendedHtmlString Icon(this HtmlHelper html, EFontAwesomeIcon icon,
+    public static IExtendedHtmlStringLegacy Icon(this HtmlHelper html, EFontAwesomeIcon icon,
       EFontAwesomeIconSize size = EFontAwesomeIconSize.Normal, object htmlAttributes = null)
     {
       return BootstrapUtil.CreateIcon(icon, size, htmlAttributes).ToHtmlElement();
@@ -296,7 +298,7 @@ namespace WebExtras.Mvc.Bootstrap
     ///   Note. These attributes are only applied to the top level div
     /// </param>
     /// <returns>A Bootstrap styled alert</returns>
-    public static Alert Alert(this HtmlHelper html, EMessage type, string message, object htmlAttributes = null)
+    public static IExtendedHtmlString Alert(this HtmlHelper html, EMessage type, string message, object htmlAttributes = null)
     {
       return Alert(html, type, message, string.Empty, (EBootstrapIcon?) null, htmlAttributes);
     }
@@ -313,7 +315,7 @@ namespace WebExtras.Mvc.Bootstrap
     ///   Note. These attributes are only applied to the top level div
     /// </param>
     /// <returns>A Bootstrap styled alert</returns>
-    public static Alert Alert(this HtmlHelper html, EMessage type, string message, string title,
+    public static IExtendedHtmlString Alert(this HtmlHelper html, EMessage type, string message, string title,
       object htmlAttributes = null)
     {
       return Alert(html, type, message, title, (EBootstrapIcon?) null, htmlAttributes);
@@ -332,10 +334,10 @@ namespace WebExtras.Mvc.Bootstrap
     ///   Note. These attributes are only applied to the top level div
     /// </param>
     /// <returns>A Bootstrap styled alert</returns>
-    public static Alert Alert(this HtmlHelper html, EMessage type, string message, string title, EFontAwesomeIcon? icon,
+    public static IExtendedHtmlString Alert(this HtmlHelper html, EMessage type, string message, string title, EFontAwesomeIcon? icon,
       object htmlAttributes = null)
     {
-      return new Alert(type, message, title, icon, htmlAttributes);
+      return new ExtendedHtmlString(new Alert(type, message, title, icon, htmlAttributes));
     }
 
     /// <summary>
@@ -351,10 +353,10 @@ namespace WebExtras.Mvc.Bootstrap
     ///   Note. These attributes are only applied to the top level div
     /// </param>
     /// <returns>A Bootstrap styled alert</returns>
-    public static Alert Alert(this HtmlHelper html, EMessage type, string message, string title, EBootstrapIcon? icon,
+    public static IExtendedHtmlString Alert(this HtmlHelper html, EMessage type, string message, string title, EBootstrapIcon? icon,
       object htmlAttributes = null)
     {
-      return new Alert(type, message, title, icon, htmlAttributes);
+      return new ExtendedHtmlString(new Alert(type, message, title, icon, htmlAttributes));
     }
 
     #endregion Alert extensions
@@ -369,7 +371,7 @@ namespace WebExtras.Mvc.Bootstrap
     /// <param name="url">Link action</param>
     /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
     /// <returns>A icon only link</returns>
-    public static IExtendedHtmlString Hyperlink(this HtmlHelper html, EBootstrapIcon icon, string url,
+    public static IExtendedHtmlStringLegacy Hyperlink(this HtmlHelper html, EBootstrapIcon icon, string url,
       object htmlAttributes = null)
     {
       return new BootstrapIconlink(icon, url, htmlAttributes);
@@ -383,7 +385,7 @@ namespace WebExtras.Mvc.Bootstrap
     /// <param name="url">Link action</param>
     /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
     /// <returns>A icon only link</returns>
-    public static IExtendedHtmlString Hyperlink(this HtmlHelper html, EFontAwesomeIcon icon, string url,
+    public static IExtendedHtmlStringLegacy Hyperlink(this HtmlHelper html, EFontAwesomeIcon icon, string url,
       object htmlAttributes = null)
     {
       return new BootstrapIconlink(icon, url, htmlAttributes);

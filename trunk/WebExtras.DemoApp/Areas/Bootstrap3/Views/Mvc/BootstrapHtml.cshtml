@@ -47,13 +47,13 @@
 </div>
 
 @{
-  Alert[] alerts = Html.GetUserAlerts();
+  IExtendedHtmlString[] alerts = Html.GetUserAlerts();
   if (alerts.Length > 0)
   {
-  
+
   <div class="row">
     <div class="col-md-12">
-      @foreach (Alert alert in alerts)
+      @foreach (IExtendedHtmlString alert in alerts)
       {
         @alert
       }
@@ -190,7 +190,7 @@
         Hyperlink link4 = new Hyperlink("Brand", "#", new { @class = "brand" });
 
         HtmlListItem item3 = new HtmlListItem(string.Empty);
-        item3.Append(link3);
+        item3.AppendTags.Add(link3.Component);
 
         HtmlList list = new HtmlList(EList.Unordered, new HtmlListItem[] { item3 });    
       }

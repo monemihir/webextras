@@ -37,7 +37,7 @@ namespace WebExtras.Mvc.JQueryUI
     /// <param name="icon">Icon to be rendered</param>
     /// <param name="htmlAttributes">[Optional] Extra html attributes</param>    
     /// <returns>Html element with icon added</returns>
-    public static T AddIcon<T>(this T html, EJQueryUIIcon icon, object htmlAttributes = null) where T : IExtendedHtmlString
+    public static T AddIcon<T>(this T html, EJQueryUIIcon icon, object htmlAttributes = null) where T : IExtendedHtmlStringLegacy
     {
       Span s = new Span(htmlAttributes);
       s.AddCssClass("ui-icon");
