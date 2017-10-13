@@ -1,6 +1,6 @@
 ﻿// 
 // This file is part of - WebExtras
-// Copyright 2016 Mihir Mone
+// Copyright 2017 Mihir Mone
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -58,14 +58,15 @@ namespace WebExtras.Mvc.tests
           if (ignoredTypes.Contains(pType.Name))
             continue;
 
-          List<Type> ifaces =
-            pType.GetInterfaces()
-              .Where(x => x.Name == typeof(ICollection).Name || x.Name == typeof(IEnumerable).Name)
-              .ToList();
+          List<Type> allInterfaces = pType.GetInterfaces().ToList();
 
-          if (ifaces.Count > 0 && !pType.Name.StartsWith("IDictionary"))
+          List<Type> checkInterfaces = allInterfaces
+            .Where(x => x.Name == typeof(ICollection).Name || x.Name == typeof(IEnumerable).Name)
+            .ToList();
+
+          if (checkInterfaces.Count > 0 && !pType.Name.StartsWith("IDictionary"))
           {
-            Assert.IsTrue(pType.IsArray || pType.Name == "List`1",
+            Assert.IsTrue(pType.IsArray || allInterfaces.Contains(typeof(IList)),
               t.FullName + "." + prop.Name + " must be either an array or a list");
           }
         }

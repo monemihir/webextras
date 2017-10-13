@@ -1,6 +1,6 @@
 ﻿// 
 // This file is part of - WebExtras
-// Copyright 2016 Mihir Mone
+// Copyright 2017 Mihir Mone
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -87,6 +87,12 @@ namespace WebExtras.Html
       if (isDict)
       {
         Attributes = (IDictionary<string, string>) htmlAttributes;
+        if (!Attributes.ContainsKey("class"))
+          return;
+
+        CssClasses.Add(Attributes["class"]);
+        Attributes.Remove("class");
+
         return;
       }
 
@@ -180,7 +186,8 @@ namespace WebExtras.Html
 
       List<string> parts = new List<string> {"<" + Tag.ToString().ToLowerInvariant()};
 
-      string attribs = " " + string.Join(" ", Attributes.Select(f => string.Format("{0}=\"{1}\"", f.Key, f.Value)));
+      string attribs = " " + string.Join(" ",
+                         Attributes.OrderBy(f => f.Key).Select(f => string.Format("{0}=\"{1}\"", f.Key, f.Value)));
 
       parts.Add(attribs);
 
