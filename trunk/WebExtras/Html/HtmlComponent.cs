@@ -87,14 +87,22 @@ namespace WebExtras.Html
       if (isDict)
       {
         Attributes = (IDictionary<string, string>) htmlAttributes;
-
         return;
       }
 
       NameValueCollection attribs = WebExtrasUtil.AnonymousObjectToHtmlAttributes(htmlAttributes);
 
       foreach (string key in attribs.Keys)
+      {
+        if (key.Equals("class", StringComparison.OrdinalIgnoreCase))
+        {
+          CssClasses.Clear();
+          CssClasses.Add(attribs[key]);
+          continue;
+        }
+
         Attributes[key] = attribs[key];
+      }
     }
 
     #endregion ctors

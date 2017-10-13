@@ -1,6 +1,6 @@
 ﻿// 
 // This file is part of - WebExtras
-// Copyright 2016 Mihir Mone
+// Copyright 2017 Mihir Mone
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -135,8 +135,23 @@ namespace WebExtras.Mvc.Html
     /// <returns>Value of attribute if available, else null</returns>
     public string this[string attribute]
     {
-      get { return Component.Attributes.ContainsKey(attribute) ? Component.Attributes[attribute] : string.Empty; }
-      set { Component.Attributes[attribute] = value; }
+      get
+      {
+        if (attribute.Equals("class", StringComparison.OrdinalIgnoreCase))
+          return string.Join(" ", CSSClasses);
+
+        return Component.Attributes.ContainsKey(attribute) ? Component.Attributes[attribute] : string.Empty;
+      }
+      set
+      {
+        if (attribute.Equals("class", StringComparison.OrdinalIgnoreCase))
+        {
+          CSSClasses.Clear();
+          CSSClasses.Add(value);
+        }
+        else
+          Component.Attributes[attribute] = value;
+      }
     }
 
     #region Append/Prepend
