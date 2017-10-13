@@ -115,7 +115,7 @@ namespace WebExtras.Mvc.Core
     ///   these attributes will be applied to the A tag only.
     /// </param>
     /// <returns>HTML image hyperlink</returns>
-    public static IExtendedHtmlStringLegacy Imagelink(
+    public static IExtendedHtmlString Imagelink(
       this HtmlHelper html,
       string src,
       string url,
@@ -136,7 +136,7 @@ namespace WebExtras.Mvc.Core
     ///   these attributes will be applied to the A tag only.
     /// </param>
     /// <returns>HTML image hyperlink</returns>
-    public static IExtendedHtmlStringLegacy Imagelink(
+    public static IExtendedHtmlString Imagelink(
       this HtmlHelper html,
       string src,
       string altText,
@@ -159,7 +159,7 @@ namespace WebExtras.Mvc.Core
     ///   these attributes will be applied to the A tag only.
     /// </param>
     /// <returns>HTML image hyperlink</returns>
-    public static IExtendedHtmlStringLegacy Imagelink(
+    public static IExtendedHtmlString Imagelink(
       this HtmlHelper html,
       string src,
       string altText,
@@ -187,7 +187,7 @@ namespace WebExtras.Mvc.Core
       Hyperlink link = new Hyperlink(string.Empty, url, linkAttributes);
       Image img = new Image(src, altText, title, imgAttributes);
 
-      link.Append(img);
+      link.AppendTags.Add(img.Component);
 
       return link;
     }
@@ -208,7 +208,7 @@ namespace WebExtras.Mvc.Core
     ///   these attributes will be applied to the A tag only.
     /// </param>
     /// <returns>HTML image hyperlink</returns>
-    public static IExtendedHtmlStringLegacy AuthImagelink(
+    public static IExtendedHtmlString AuthImagelink(
       this HtmlHelper html,
       IPrincipal user,
       string src,
@@ -231,7 +231,7 @@ namespace WebExtras.Mvc.Core
     ///   these attributes will be applied to the A tag only.
     /// </param>
     /// <returns>HTML image hyperlink</returns>
-    public static IExtendedHtmlStringLegacy AuthImagelink(
+    public static IExtendedHtmlString AuthImagelink(
       this HtmlHelper html,
       IPrincipal user,
       string src,
@@ -256,7 +256,7 @@ namespace WebExtras.Mvc.Core
     ///   these attributes will be applied to the A tag only.
     /// </param>
     /// <returns>HTML image hyperlink</returns>
-    public static IExtendedHtmlStringLegacy AuthImagelink(
+    public static IExtendedHtmlString AuthImagelink(
       this HtmlHelper html,
       IPrincipal user,
       string src,
@@ -267,7 +267,7 @@ namespace WebExtras.Mvc.Core
     {
       return user.Identity.IsAuthenticated
         ? Imagelink(html, src, altText, title, url, htmlAttributes)
-        : HtmlElement.Empty;
+        : ExtendedHtmlString.Empty;
     }
 
     #endregion AuthImagelink extensions
@@ -282,7 +282,7 @@ namespace WebExtras.Mvc.Core
     /// <param name="url">Link URL</param>
     /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
     /// <returns>HTML hyperlink</returns>
-    public static IExtendedHtmlStringLegacy Hyperlink(
+    public static IExtendedHtmlString Hyperlink(
       this HtmlHelper html,
       string linkText,
       string url,
@@ -306,7 +306,7 @@ namespace WebExtras.Mvc.Core
     /// <param name="url">Link URL</param>
     /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
     /// <returns>HTML Hyperlink</returns>
-    public static IExtendedHtmlStringLegacy AuthHyperlink(
+    public static IExtendedHtmlString AuthHyperlink(
       this HtmlHelper html,
       IPrincipal user,
       string linkText,
@@ -315,7 +315,7 @@ namespace WebExtras.Mvc.Core
     {
       return user.Identity.IsAuthenticated
         ? new Hyperlink(linkText, url, htmlAttributes)
-        : HtmlElement.Empty;
+        : ExtendedHtmlString.Empty;
     }
     
     #endregion AuthHyperlink extensions
@@ -329,7 +329,7 @@ namespace WebExtras.Mvc.Core
     /// <param name="src">Image location</param>
     /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
     /// <returns>An HTML image</returns>
-    public static IExtendedHtmlStringLegacy Image(
+    public static IExtendedHtmlString Image(
       this HtmlHelper html,
       string src,
       object htmlAttributes = null)
@@ -345,7 +345,7 @@ namespace WebExtras.Mvc.Core
     /// <param name="altText">Image alt text</param>
     /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
     /// <returns>An HTML image</returns>
-    public static IExtendedHtmlStringLegacy Image(
+    public static IExtendedHtmlString Image(
       this HtmlHelper html,
       string src,
       string altText,
@@ -363,7 +363,7 @@ namespace WebExtras.Mvc.Core
     /// <param name="title">Image title</param>
     /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
     /// <returns>An HTML image</returns>
-    public static IExtendedHtmlStringLegacy Image(
+    public static IExtendedHtmlString Image(
       this HtmlHelper html,
       string src,
       string altText,

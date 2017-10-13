@@ -27,21 +27,21 @@ namespace WebExtras.Mvc.tests.Core
   [TestFixture]
   public class WebExtrasMvcUtilTest
   {
-    /// <summary>
-    ///   CanDisplayAsButton returns True for Hyperlink
-    /// </summary>
-    [Test]
-    public void CanDisplayAsButton_Returns_True_For_Hyperlink()
-    {
-      // arrange
-      Hyperlink link = new Hyperlink(string.Empty, string.Empty);
+    ///// <summary>
+    /////   CanDisplayAsButton returns True for Hyperlink
+    ///// </summary>
+    //[Test]
+    //public void CanDisplayAsButton_Returns_True_For_Hyperlink()
+    //{
+    //  // arrange
+    //  Hyperlink link = new Hyperlink(string.Empty, string.Empty);
 
-      // act
-      bool result = WebExtrasMvcUtil.CanDisplayAsButton(link);
+    //  // act
+    //  bool result = WebExtrasMvcUtil.CanDisplayAsButton(link);
 
-      // assert
-      Assert.IsTrue(result);
-    }
+    //  // assert
+    //  Assert.IsTrue(result);
+    //}
 
     /// <summary>
     ///   CanDisplayAsButton returns True for Button

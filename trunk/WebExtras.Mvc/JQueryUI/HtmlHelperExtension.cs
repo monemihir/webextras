@@ -22,6 +22,7 @@ using System.Linq;
 using System.Text;
 using System.Web.Mvc;
 using WebExtras.Core;
+using WebExtras.Html;
 using WebExtras.JQueryUI;
 using WebExtras.Mvc.Bootstrap;
 using WebExtras.Mvc.Core;
@@ -43,7 +44,7 @@ namespace WebExtras.Mvc.JQueryUI
     /// <param name="icon">JQuery UI icon</param>
     /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
     /// <returns>A JQuery UI icon</returns>
-    public static IExtendedHtmlStringLegacy Icon(this HtmlHelper html, EJQueryUIIcon icon, object htmlAttributes = null)
+    public static IExtendedHtmlString Icon(this HtmlHelper html, EJQueryUIIcon icon, object htmlAttributes = null)
     {
       return Icon(html, icon, EJQueryUIIconType.Default, htmlAttributes);
     }
@@ -56,14 +57,14 @@ namespace WebExtras.Mvc.JQueryUI
     /// <param name="type">JQUery UI icon type</param>
     /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
     /// <returns>A JQuery UI icon</returns>
-    public static IExtendedHtmlStringLegacy Icon(this HtmlHelper html, EJQueryUIIcon icon, EJQueryUIIconType type, object htmlAttributes = null)
+    public static IExtendedHtmlString Icon(this HtmlHelper html, EJQueryUIIcon icon, EJQueryUIIconType type, object htmlAttributes = null)
     {
-      Span s = new Span(htmlAttributes);
-      s.AddCssClass("ui-icon");
-      s.AddCssClass(string.Format("ui-icon-{0}", icon.ToString().ToLowerInvariant().Replace("_", "-")));
-      s.AddCssClass(type.GetStringValue());
+      HtmlComponent span = new HtmlComponent(EHtmlTag.Span, htmlAttributes);
+      span.CssClasses.Add("ui-icon");
+      span.CssClasses.Add(string.Format("ui-icon-{0}", icon.ToString().ToLowerInvariant().Replace("_", "-")));
+      span.CssClasses.Add(type.GetStringValue());
 
-      return s;
+      return new ExtendedHtmlString(span);
     }
 
     #endregion Icon extensions

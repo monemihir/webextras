@@ -27,7 +27,7 @@ namespace WebExtras.Mvc.Bootstrap
   /// </summary>
   public class BootstrapIconlink : Hyperlink
   {
-    private readonly HtmlElement m_icon;
+    private IHtmlComponent m_icon;
 
     /// <summary>
     ///   Constructor
@@ -38,11 +38,10 @@ namespace WebExtras.Mvc.Bootstrap
     public BootstrapIconlink(EBootstrapIcon icon, string url, object htmlAttributes = null) :
       base(string.Empty, url, htmlAttributes)
     {
-      CSSClasses.Add("icon-only-link");
+      CssClasses.Add("icon-only-link");
       IHtmlComponent iconElement = BootstrapUtil.CreateIcon(icon);
 
-      m_icon = new HtmlElement(iconElement);
-      Prepend(m_icon);
+      PrependTags.Add(iconElement);
     }
 
     /// <summary>
@@ -54,11 +53,10 @@ namespace WebExtras.Mvc.Bootstrap
     public BootstrapIconlink(EFontAwesomeIcon icon, string url, object htmlAttributes = null) :
       base(string.Empty, url, htmlAttributes)
     {
-      CSSClasses.Add("icon-only-link");
-      IHtmlComponent iconElement = BootstrapUtil.CreateIcon(icon);
+      CssClasses.Add("icon-only-link");
+      m_icon = BootstrapUtil.CreateIcon(icon);
 
-      m_icon = new HtmlElement(iconElement);
-      Prepend(m_icon);
+      PrependTags.Add(m_icon);
     }
 
     /// <summary>
@@ -68,7 +66,7 @@ namespace WebExtras.Mvc.Bootstrap
     /// <returns>Updated link</returns>
     public BootstrapIconlink SetIconSize(EFontAwesomeIconSize size)
     {
-      m_icon.AddCssClass("fa-" + size.GetStringValue());
+      m_icon.CssClasses.Add("fa-" + size.GetStringValue());
 
       return this;
     }

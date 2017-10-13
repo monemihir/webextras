@@ -66,7 +66,7 @@ namespace WebExtras.Mvc.Gumby
 
       foreach (Hyperlink item in items)
       {
-        if (item.CSSClasses.Contains("logo"))
+        if (item.CssClasses.Contains("logo"))
         {
           Logo = item;
         }
@@ -98,8 +98,8 @@ namespace WebExtras.Mvc.Gumby
 
       HtmlComponent logoDiv = new HtmlComponent(EHtmlTag.Div);
 
-      logoDiv.CssClasses.AddRange(Logo.CSSClasses);
-      Logo.CSSClasses.Clear();
+      logoDiv.CssClasses.AddRange(Logo.CssClasses);
+      Logo.CssClasses.Clear();
 
       logoDiv.AppendTags.Add(Logo.Component);
 

@@ -27,10 +27,10 @@ namespace WebExtras.Mvc.Html
     /// <param name="html">HTML element to add class to</param>
     /// <param name="css">CSS class(es) to be added</param>
     /// <returns>Current HTML element with classes added</returns>
-    public static T AddCssClass<T>(this T html, string css) where T : IExtendedHtmlStringLegacy
+    public static T AddCssClass<T>(this T html, string css) where T : IExtendedHtmlString
     {
       if (!string.IsNullOrWhiteSpace(css))
-        html.CSSClasses.AddRange(css.Trim().Split(' '));
+        html.Component.CssClasses.AddRange(css.Trim().Split(' '));
 
       return html;
     }

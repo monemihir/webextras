@@ -1,6 +1,6 @@
 ﻿// 
 // This file is part of - WebExtras
-// Copyright 2016 Mihir Mone
+// Copyright 2017 Mihir Mone
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -16,6 +16,7 @@
 
 using System;
 using WebExtras.Core;
+using WebExtras.Html;
 
 namespace WebExtras.Mvc.Html
 {
@@ -23,12 +24,12 @@ namespace WebExtras.Mvc.Html
   ///   Represents a HTML BUTTON element
   /// </summary>
   [Serializable]
-  public class Button : HtmlElement
+  public class Button : HtmlComponent, IExtendedHtmlString
   {
     /// <summary>
     ///   Button onclick event
     /// </summary>
-    public string OnClick { get { return this["onclick"]; } set { this["onclick"] = value; } }
+    public string OnClick { get { return Attributes["onclick"]; } set { Attributes["onclick"] = value; } }
 
     /// <summary>
     ///   Constructor
@@ -67,7 +68,7 @@ namespace WebExtras.Mvc.Html
       : base(EHtmlTag.Button, htmlAttributes)
     {
       InnerHtml = text;
-      this["type"] = type.GetStringValue();
+      Attributes["type"] = type.GetStringValue();
 
       if (type == EButton.Cancel || type == EButton.Back)
       {
@@ -83,5 +84,14 @@ namespace WebExtras.Mvc.Html
       else
         OnClick = "javascript:" + onclick;
     }
+
+    /// <inheritdoc />
+    public string ToHtmlString()
+    {
+      return ToHtml();
+    }
+
+    /// <inheritdoc />
+    public IHtmlComponent Component { get { return this; } }
   }
 }

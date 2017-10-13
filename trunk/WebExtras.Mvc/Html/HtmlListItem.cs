@@ -42,7 +42,7 @@ namespace WebExtras.Mvc.Html
     /// </summary>
     /// <param name="item">Item to convert to a list item</param>
     /// <returns>A HtmlListItem</returns>
-    public static HtmlListItem From(IExtendedHtmlStringLegacy item)
+    public static HtmlListItem From(IExtendedHtmlString item)
     {
       HtmlListItem li = new HtmlListItem(string.Empty);
       li.AppendTags.Add(item.Component);

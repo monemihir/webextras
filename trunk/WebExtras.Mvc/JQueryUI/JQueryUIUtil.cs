@@ -37,7 +37,7 @@ namespace WebExtras.Mvc.JQueryUI
     /// <param name="icon">Icon to be created</param>
     /// <param name="htmlAttributes">[Optional] Any extra HTML attributes</param>
     /// <returns>A jQuery UI icon</returns>
-    public static IExtendedHtmlStringLegacy CreateIcon(EJQueryUIIcon icon, object htmlAttributes = null)
+    public static IHtmlComponent CreateIcon(EJQueryUIIcon icon, object htmlAttributes = null)
     {
       NameValueCollection rvd = WebExtrasUtil.AnonymousObjectToHtmlAttributes(htmlAttributes);
 
@@ -54,7 +54,7 @@ namespace WebExtras.Mvc.JQueryUI
       HtmlComponent i = new HtmlComponent(EHtmlTag.I);
       i.CssClasses.AddRange(cssClasses);
 
-      return i.ToHtmlElement();
+      return i;
     }
   }
 }

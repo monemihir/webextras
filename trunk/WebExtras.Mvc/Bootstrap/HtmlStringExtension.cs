@@ -47,22 +47,8 @@ namespace WebExtras.Mvc.Bootstrap
     ///   is not selected
     /// </exception>
     public static T AddIcon<T>(this T html, EBootstrapIcon icon, object htmlAttributes = null)
-      where T : IExtendedHtmlStringLegacy
+      where T : IExtendedHtmlString
     {
-      //List<string> cssClasses = new List<string>();
-
-      //switch (WebExtrasConstants.BootstrapVersion)
-      //{
-      //  case EBootstrapVersion.V2:
-      //    cssClasses.Add("icon-" + icon.ToString().ToLowerInvariant().Replace("_", "-"));
-      //    break;
-      //  case EBootstrapVersion.V3:
-      //    cssClasses.Add("glyphicon glyphicon-" + icon.ToString().ToLowerInvariant().Replace("_", "-"));
-      //    break;
-      //  default:
-      //    throw new BootstrapVersionException();
-      //}
-
       html = AddIcon(html, new[] {icon.GetStringValue()}, htmlAttributes);
 
       return html;
@@ -81,7 +67,7 @@ namespace WebExtras.Mvc.Bootstrap
     ///   is not selected
     /// </exception>
     public static T AddWhiteIcon<T>(this T html, EBootstrapIcon icon, object htmlAttributes = null)
-      where T : IExtendedHtmlStringLegacy
+      where T : IExtendedHtmlString
     {
       switch (WebExtrasSettings.BootstrapVersion)
       {
@@ -114,9 +100,9 @@ namespace WebExtras.Mvc.Bootstrap
     /// </exception>
     public static T AddIcon<T>(this T html, EFontAwesomeIcon icon,
       EFontAwesomeIconSize size = EFontAwesomeIconSize.Normal, object htmlAttributes = null)
-      where T : IExtendedHtmlStringLegacy
+      where T : IExtendedHtmlString
     {
-      string prefix = string.Empty;
+      string prefix;
 
       if (WebExtrasSettings.FontAwesomeVersion == EFontAwesomeVersion.V3)
         prefix = "icon-";
@@ -147,12 +133,11 @@ namespace WebExtras.Mvc.Bootstrap
     /// <param name="htmlAttributes">[Optional] Extra html attributes</param>
     /// <returns>Html element with icon added</returns>
     private static T AddIcon<T>(T html, IEnumerable<string> cssClasses, object htmlAttributes = null)
-      where T : IExtendedHtmlStringLegacy
+      where T : IExtendedHtmlString
     {
       IDictionary<string, object> rvd = HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes);
 
-      List<string> finalClasses = new List<string>(cssClasses);
-      finalClasses.Add("wb-ext-addicon");
+      List<string> finalClasses = new List<string>(cssClasses) {"wb-ext-addicon"};
 
       if (rvd.ContainsKey("class"))
       {
@@ -166,13 +151,12 @@ namespace WebExtras.Mvc.Bootstrap
       foreach (string key in rvd.Keys)
         i.Attributes[key] = rvd[key].ToString();
 
-      // TODO: remove unnecessary conversion
-      html.Prepend(i.ToHtmlElement());
+      html.Component.PrependTags.Add(i);
 
-      if (html.Attributes.ContainsKey("style"))
-        html.Attributes["style"] += ";text-decoration:none";
+      if (html.Component.Attributes.ContainsKey("style"))
+        html.Component.Attributes["style"] += ";text-decoration:none";
       else
-        html.Attributes["style"] = "text-decoration:none";
+        html.Component.Attributes["style"] = "text-decoration:none";
 
       return html;
     }
@@ -187,7 +171,7 @@ namespace WebExtras.Mvc.Bootstrap
     /// <typeparam name="T">Generic type to be used. Can only be either Hyperlink or Button</typeparam>
     /// <param name="html">Current HTML element</param>
     /// <returns>A special button</returns>
-    public static T AsButton<T>(this T html) where T : IExtendedHtmlStringLegacy
+    public static T AsButton<T>(this T html) where T : IExtendedHtmlString
     {
       return AsButton(html, EBootstrapButton.Default);
     }
@@ -199,12 +183,12 @@ namespace WebExtras.Mvc.Bootstrap
     /// <param name="html">Current HTML element</param>
     /// <param name="types">Bootstrap button types</param>
     /// <returns>A special button</returns>
-    public static T AsButton<T>(this T html, params EBootstrapButton[] types) where T : IExtendedHtmlStringLegacy
+    public static T AsButton<T>(this T html, params EBootstrapButton[] types) where T : IExtendedHtmlString
     {
       if (!WebExtrasMvcUtil.CanDisplayAsButton(html))
         throw new InvalidUsageException("The AsButton decorator can only be used with Button and Hyperlink extensions");
 
-      html.AddCssClass(string.Join(" ", types.Select(t => t.GetStringValue())));
+      html.Component.CssClasses.Add(string.Join(" ", types.Select(t => t.GetStringValue())));
 
       return html;
     }

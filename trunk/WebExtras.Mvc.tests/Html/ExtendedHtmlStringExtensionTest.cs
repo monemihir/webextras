@@ -39,7 +39,7 @@ namespace WebExtras.Mvc.tests.Html
       link.AddCssClass("test-css-classes");
 
       // assert
-      Assert.AreEqual("test-css-classes", link.CSSClasses[0]);
+      Assert.AreEqual("test-css-classes", link.CssClasses[0]);
     }
   }
 }

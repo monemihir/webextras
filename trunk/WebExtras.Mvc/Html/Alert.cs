@@ -28,7 +28,7 @@ namespace WebExtras.Mvc.Html
   /// <summary>
   ///   Denotes an alert
   /// </summary>
-  public class Alert : HtmlComponent
+  public class Alert : HtmlComponent, IExtendedHtmlString
   {
     /// <summary>
     ///   The alert type
@@ -78,7 +78,7 @@ namespace WebExtras.Mvc.Html
     public Alert(EMessage type, string message, string title, EFontAwesomeIcon? icon, object htmlAttributes = null)
       : base(EHtmlTag.Div, htmlAttributes)
     {
-      IExtendedHtmlStringLegacy i = (icon != null) ? BootstrapUtil.CreateIcon(icon.Value).ToHtmlElement() : null;
+      IHtmlComponent i = (icon != null) ? BootstrapUtil.CreateIcon(icon.Value) : null;
 
       CreateAlert(type, message, title, i);
     }
@@ -97,7 +97,7 @@ namespace WebExtras.Mvc.Html
     public Alert(EMessage type, string message, string title, EBootstrapIcon? icon, object htmlAttributes = null)
       : base(EHtmlTag.Div, htmlAttributes)
     {
-      IExtendedHtmlStringLegacy i = (icon != null) ? BootstrapUtil.CreateIcon(icon.Value).ToHtmlElement() : null;
+      IHtmlComponent i = (icon != null) ? BootstrapUtil.CreateIcon(icon.Value) : null;
 
       CreateAlert(type, message, title, i);
     }
@@ -116,7 +116,7 @@ namespace WebExtras.Mvc.Html
     public Alert(EMessage type, string message, string title, EJQueryUIIcon? icon, object htmlAttributes = null)
       : base(EHtmlTag.Div, htmlAttributes)
     {
-      IExtendedHtmlStringLegacy i = (icon != null) ? JQueryUIUtil.CreateIcon(icon.Value) : null;
+      IHtmlComponent i = (icon != null) ? JQueryUIUtil.CreateIcon(icon.Value) : null;
 
       CreateAlert(type, message, title, i);
     }
@@ -135,7 +135,7 @@ namespace WebExtras.Mvc.Html
     public Alert(EMessage type, string message, string title, EGumbyIcon? icon, object htmlAttributes = null)
       : base(EHtmlTag.Div, htmlAttributes)
     {
-      IExtendedHtmlStringLegacy i = (icon != null) ? GumbyUtil.CreateIcon(icon.Value).ToHtmlElement() : null;
+      IHtmlComponent i = (icon != null) ? GumbyUtil.CreateIcon(icon.Value) : null;
 
       CreateAlert(type, message, title, i);
     }
@@ -147,7 +147,7 @@ namespace WebExtras.Mvc.Html
     /// <param name="message">Alert message</param>
     /// <param name="title">Title/Heading of the alert</param>
     /// <param name="icon">Icon to be rendered with title/heading</param>
-    private void CreateAlert(EMessage type, string message, string title, IExtendedHtmlStringLegacy icon)
+    private void CreateAlert(EMessage type, string message, string title, IHtmlComponent icon)
     {
       CssClasses.Add(type.GetStringValue());
 
@@ -157,17 +157,17 @@ namespace WebExtras.Mvc.Html
       };
 
       if (icon != null)
-        bc.PrependTags.Add(icon.Component);
+        bc.PrependTags.Add(icon);
       
       if (WebExtrasSettings.CssFramework != ECssFramework.JQueryUI)
       {
         CssClasses.Add("alert");
 
         Button closeBtn = new Button(EButton.Regular, "&times;", string.Empty);
-        closeBtn.CSSClasses.Add("close");
-        closeBtn["data-dismiss"] = "alert";
+        closeBtn.CssClasses.Add("close");
+        closeBtn.Attributes["data-dismiss"] = "alert";
 
-        PrependTags.Add(closeBtn.Component);
+        PrependTags.Add(closeBtn);
         PrependTags.Add(bc);
         InnerHtml = (!string.IsNullOrWhiteSpace(title) || icon != null)
           ? WebExtrasSettings.HTMLSpace + message
@@ -204,5 +204,14 @@ namespace WebExtras.Mvc.Html
 
       Type = type;
     }
+
+    /// <inheritdoc />
+    public string ToHtmlString()
+    {
+      return ToHtml();
+    }
+
+    /// <inheritdoc />
+    public IHtmlComponent Component { get { return this; } }
   }
 }

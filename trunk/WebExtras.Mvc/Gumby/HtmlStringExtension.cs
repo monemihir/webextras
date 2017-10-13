@@ -39,20 +39,15 @@ namespace WebExtras.Mvc.Gumby
     /// <param name="icon">Gumby icon to be added</param>
     /// <param name="iconLeft">[Optional] Flag indicating whether to place icon on left. Defaults to true</param>
     /// <returns>HTML element with icon added</returns>
-    public static T AddIcon<T>(this T html, EGumbyIcon icon, bool iconLeft = true) where T : IExtendedHtmlStringLegacy
+    public static T AddIcon<T>(this T html, EGumbyIcon icon, bool iconLeft = true) where T : IExtendedHtmlString
     {
       HtmlComponent ic = new HtmlComponent(EHtmlTag.I);
       ic.CssClasses.Add(icon.GetStringValue());
 
-      //i["class"] = "icon-" + icon.ToString().ToLowerInvariant().Replace('_', '-');
-
-      // todo: remove unnecessary conversion
-      HtmlElement i = ic.ToHtmlElement();
-
       if (iconLeft)
-        html.Prepend(i);
+        html.Component.PrependTags.Add(ic);
       else
-        html.Append(i);
+        html.Component.AppendTags.Add(ic);
 
       return html;
     }
@@ -67,7 +62,7 @@ namespace WebExtras.Mvc.Gumby
     /// <returns>A Gumby button styled hyperlink</returns>
     /// <exception cref="GumbyThemeException">Thrown when a valid Gumby framework
     /// theme is not selected</exception>
-    public static IExtendedHtmlStringLegacy AsButton<T>(this T html, EGumbyButton type, params EGumbyButtonStyle[] sizeOrstyle) where T : IExtendedHtmlStringLegacy
+    public static IExtendedHtmlString AsButton<T>(this T html, EGumbyButton type, params EGumbyButtonStyle[] sizeOrstyle) where T : IExtendedHtmlString
     {
       if (WebExtrasSettings.GumbyTheme == EGumbyTheme.None)
         throw new GumbyThemeException();
@@ -117,8 +112,7 @@ namespace WebExtras.Mvc.Gumby
 
       div.AppendTags.Add(html.Component);
 
-      // TODO: remove re-conversion
-      return div.ToHtmlElement();
+      return new ExtendedHtmlString(div);
     }
   }
 }

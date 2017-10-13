@@ -37,10 +37,10 @@ namespace WebExtras.Mvc.Gumby
     public GumbyIconLink(EGumbyIcon icon, string url, object htmlAttributes = null) :
       base(string.Empty, url, htmlAttributes)
     {
-      CSSClasses.Add("icon-only-link");
+      CssClasses.Add("icon-only-link");
       IHtmlComponent iconElement = GumbyUtil.CreateIcon(icon);
 
-      Prepend(iconElement.ToHtmlElement());
+      PrependTags.Add(iconElement);
     }
   }
 }

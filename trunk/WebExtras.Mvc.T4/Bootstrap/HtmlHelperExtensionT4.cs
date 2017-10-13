@@ -37,7 +37,7 @@ namespace WebExtras.Mvc.Bootstrap
     /// <param name="result">Link action</param>
     /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
     /// <returns>A icon only link</returns>
-    public static IExtendedHtmlStringLegacy Hyperlink(this HtmlHelper html, EBootstrapIcon icon, ActionResult result,
+    public static IExtendedHtmlString Hyperlink(this HtmlHelper html, EBootstrapIcon icon, ActionResult result,
       object htmlAttributes = null)
     {
       string link = WebExtrasMvcUtilT4.GetUrl(html, result);
@@ -53,7 +53,7 @@ namespace WebExtras.Mvc.Bootstrap
     /// <param name="result">Link action</param>
     /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
     /// <returns>A icon only link</returns>
-    public static IExtendedHtmlStringLegacy Hyperlink(this HtmlHelper html, EFontAwesomeIcon icon, ActionResult result,
+    public static IExtendedHtmlString Hyperlink(this HtmlHelper html, EFontAwesomeIcon icon, ActionResult result,
       object htmlAttributes = null)
     {
       string link = WebExtrasMvcUtilT4.GetUrl(html, result);

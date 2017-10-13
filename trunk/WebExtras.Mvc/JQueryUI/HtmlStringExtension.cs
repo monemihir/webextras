@@ -17,6 +17,7 @@
 */
 
 using WebExtras.Core;
+using WebExtras.Html;
 using WebExtras.JQueryUI;
 using WebExtras.Mvc.Html;
 
@@ -37,13 +38,13 @@ namespace WebExtras.Mvc.JQueryUI
     /// <param name="icon">Icon to be rendered</param>
     /// <param name="htmlAttributes">[Optional] Extra html attributes</param>    
     /// <returns>Html element with icon added</returns>
-    public static T AddIcon<T>(this T html, EJQueryUIIcon icon, object htmlAttributes = null) where T : IExtendedHtmlStringLegacy
+    public static T AddIcon<T>(this T html, EJQueryUIIcon icon, object htmlAttributes = null) where T : IExtendedHtmlString
     {
-      Span s = new Span(htmlAttributes);
-      s.AddCssClass("ui-icon");
-      s.AddCssClass("ui-icon-" + icon.ToString().ToLowerInvariant().Replace("_", "-"));
+      HtmlComponent span = new HtmlComponent(EHtmlTag.Span, htmlAttributes);
+      span.CssClasses.Add("ui-icon");
+      span.CssClasses.Add(string.Format("ui-icon-{0}", icon.ToString().ToLowerInvariant().Replace("_", "-")));
 
-      html.Prepend(s);
+      html.Component.PrependTags.Add(span);
 
       return html;
     }
