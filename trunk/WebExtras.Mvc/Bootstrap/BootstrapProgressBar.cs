@@ -1,6 +1,6 @@
 ﻿// 
 // This file is part of - WebExtras
-// Copyright 2016 Mihir Mone
+// Copyright 2017 Mihir Mone
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -19,6 +19,7 @@ using System.Globalization;
 using System.Web.Mvc;
 using WebExtras.Bootstrap;
 using WebExtras.Core;
+using WebExtras.Html;
 using WebExtras.Mvc.Html;
 
 namespace WebExtras.Mvc.Bootstrap
@@ -42,6 +43,7 @@ namespace WebExtras.Mvc.Bootstrap
     public BootstrapProgressBar(int percent, object htmlAttributes = null)
       : this(EBootstrapProgressBar.Default, percent, string.Empty, htmlAttributes)
     {
+      // nothing to do here
     }
 
     /// <summary>
@@ -58,7 +60,7 @@ namespace WebExtras.Mvc.Bootstrap
       Percent = percent;
       this["class"] += "progress";
 
-      Div inner = new Div();
+      HtmlComponent inner = new HtmlComponent(EHtmlTag.Div);
 
       switch (WebExtrasSettings.BootstrapVersion)
       {
@@ -66,24 +68,26 @@ namespace WebExtras.Mvc.Bootstrap
           throw new BootstrapVersionException();
 
         case EBootstrapVersion.V2:
-          inner["class"] = string.Format("bar bar-{0}", type.ToString().ToLowerInvariant());
+          inner.Attributes["class"] = string.Format("bar bar-{0}", type.ToString().ToLowerInvariant());
           break;
 
         case EBootstrapVersion.V3:
-          inner["class"] = string.Format("progress-bar progress-bar-{0}", type.ToString().ToLowerInvariant());
-          inner["role"] = "progressbar";
-          inner["aria-valuenow"] = percent.ToString(CultureInfo.InvariantCulture);
-          inner["aria-valuemin"] = "0";
-          inner["aria-valuemax"] = "100";
+          inner.Attributes["class"] =
+            string.Format("progress-bar progress-bar-{0}", type.ToString().ToLowerInvariant());
+          inner.Attributes["role"] = "progressbar";
+          inner.Attributes["aria-valuenow"] = percent.ToString(CultureInfo.InvariantCulture);
+          inner.Attributes["aria-valuemin"] = "0";
+          inner.Attributes["aria-valuemax"] = "100";
 
-          Span spanInner = new Span(string.IsNullOrWhiteSpace(srText) ? percent + "% Complete" : srText);
-          spanInner["class"] = "sr-only";
+          HtmlComponent spanInner = new HtmlComponent(EHtmlTag.Span);
+          spanInner.InnerHtml = string.IsNullOrWhiteSpace(srText) ? percent + "% Complete" : srText;
+          spanInner.Attributes["class"] = "sr-only";
 
-          inner.Append(spanInner);
+          inner.AppendTags.Add(spanInner);
           break;
       }
 
-      Append(inner);
+      Component.AppendTags.Add(inner);
 
       //this.m_tag.MergeAttributes(HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes));
     }

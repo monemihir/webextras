@@ -1,41 +1,40 @@
-﻿/*
-* This file is part of - WebExtras
-* Copyright (C) 2014 Mihir Mone
-*
-* This program is free software: you can redistribute it and/or modify
-* it under the terms of the GNU Lesser General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU Lesser General Public License for more details.
-*
-* You should have received a copy of the GNU Lesser General Public License
-* along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
+﻿// 
+// This file is part of - WebExtras
+// Copyright 2017 Mihir Mone
+// 
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// 
+//     http://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 using System;
 using System.Collections.Generic;
 using WebExtras.Core;
+using WebExtras.Html;
 using WebExtras.Mvc.Html;
 
 namespace WebExtras.Mvc.Gumby
 {
   /// <summary>
-  /// A Gumby navigation bar
+  ///   A Gumby navigation bar
   /// </summary>
   [Serializable]
   public class GumbyNavbar : HtmlElement
   {
     /// <summary>
-    /// The logo hyperlink
+    ///   The logo hyperlink
     /// </summary>
-    public Hyperlink Logo { get; set; }
+    public Hyperlink Logo { get; private set; }
 
     /// <summary>
-    /// Constructor
+    ///   Constructor
     /// </summary>
     /// <param name="logoLink">Navigation bar logo link</param>
     /// <param name="items">Navigation bar items</param>
@@ -47,7 +46,7 @@ namespace WebExtras.Mvc.Gumby
     }
 
     /// <summary>
-    /// Constructor
+    ///   Constructor
     /// </summary>
     /// <param name="items">Navigation bar items</param>
     public GumbyNavbar(HtmlList items)
@@ -57,7 +56,7 @@ namespace WebExtras.Mvc.Gumby
     }
 
     /// <summary>
-    /// Constructor
+    ///   Constructor
     /// </summary>
     /// <param name="items">Navigation bar items</param>
     public GumbyNavbar(IEnumerable<Hyperlink> items)
@@ -84,25 +83,27 @@ namespace WebExtras.Mvc.Gumby
     }
 
     /// <summary>
-    /// Create the Gumby navigation bar
+    ///   Create the Gumby navigation bar
     /// </summary>
     /// <param name="list">Navigation bar items</param>
     private void CreateNavBar(HtmlList list)
     {
       this["class"] = "row navbar metro";
-      Append(list.ToHtmlElement());
+
+      Component.AppendTags.Add(list);
 
       // append the logo/brand is it was supplied
       if (Logo == null)
         return;
 
-      Div logoDiv = new Div();
-      logoDiv.CSSClasses.AddRange(Logo.CSSClasses);
+      HtmlComponent logoDiv = new HtmlComponent(EHtmlTag.Div);
+
+      logoDiv.CssClasses.AddRange(Logo.CSSClasses);
       Logo.CSSClasses.Clear();
 
-      logoDiv.Append(Logo);
+      logoDiv.AppendTags.Add(Logo.Component);
 
-      Prepend(logoDiv);
+      Component.PrependTags.Add(logoDiv);
     }
   }
 }

@@ -1,20 +1,18 @@
-﻿/*
-* This file is part of - WebExtras
-* Copyright (C) 2014 Mihir Mone
-*
-* This program is free software: you can redistribute it and/or modify
-* it under the terms of the GNU Lesser General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU Lesser General Public License for more details.
-*
-* You should have received a copy of the GNU Lesser General Public License
-* along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
+﻿// 
+// This file is part of - WebExtras
+// Copyright 2017 Mihir Mone
+// 
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// 
+//     http://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 using System;
 using System.ComponentModel;
@@ -23,20 +21,19 @@ using System.Linq.Expressions;
 using System.Web.Mvc;
 using WebExtras.Core;
 using WebExtras.Gumby;
-using WebExtras.Mvc.Core;
 using WebExtras.Mvc.Html;
 
 namespace WebExtras.Mvc.Gumby
 {
   /// <summary>
-  /// Gumby HTML extensions
+  ///   Gumby HTML extensions
   /// </summary>
   public static class HtmlHelperExtension
   {
     #region Icon extensions
 
     /// <summary>
-    /// Renders a Gumby icon
+    ///   Renders a Gumby icon
     /// </summary>
     /// <param name="html">Current Html helper object</param>
     /// <param name="icon">Gumby icon</param>
@@ -52,8 +49,8 @@ namespace WebExtras.Mvc.Gumby
     #region TooltipFor extensions
 
     /// <summary>
-    /// Create a Gumby tooltip. The tooltip text is retrieved from the
-    /// 'Description' attribute for the property
+    ///   Create a Gumby tooltip. The tooltip text is retrieved from the
+    ///   'Description' attribute for the property
     /// </summary>
     /// <typeparam name="TModel">Type to be scanned</typeparam>
     /// <typeparam name="TValue">Property to be scanned</typeparam>
@@ -70,7 +67,7 @@ namespace WebExtras.Mvc.Gumby
     }
 
     /// <summary>
-    /// Create a Gumby tooltip
+    ///   Create a Gumby tooltip
     /// </summary>
     /// <typeparam name="TModel">Type to be scanned</typeparam>
     /// <typeparam name="TValue">Property to be scanned</typeparam>
@@ -106,14 +103,15 @@ namespace WebExtras.Mvc.Gumby
     }
 
     /// <summary>
-    /// Get the 'Description' attribute text for the given property
+    ///   Get the 'Description' attribute text for the given property
     /// </summary>
     /// <typeparam name="TModel">Type to be scanned</typeparam>
     /// <typeparam name="TValue">Property to be scanned</typeparam>
     /// <param name="html">Htmlhelper extension</param>
     /// <param name="expression">The property lambda expression</param>
     /// <returns>Tooltip text to be displayed</returns>
-    private static string GetTooltipFor<TModel, TValue>(this HtmlHelper<TModel> html, Expression<Func<TModel, TValue>> expression)
+    private static string GetTooltipFor
+      <TModel, TValue>(this HtmlHelper<TModel> html, Expression<Func<TModel, TValue>> expression)
     {
       string tooltip;
       MemberExpression exp = expression.Body as MemberExpression;
@@ -136,7 +134,7 @@ namespace WebExtras.Mvc.Gumby
     #region Navbar extensions
 
     /// <summary>
-    /// Create a navigation bar
+    ///   Create a navigation bar
     /// </summary>
     /// <param name="html">Current Html helper object</param>
     /// <param name="items">Navigation bar items</param>
@@ -147,7 +145,7 @@ namespace WebExtras.Mvc.Gumby
     }
 
     /// <summary>
-    /// Create a navigation bar
+    ///   Create a navigation bar
     /// </summary>
     /// <param name="html">Current Html helper object</param>
     /// <param name="logoLink">Navigation bar logo link</param>
@@ -159,7 +157,7 @@ namespace WebExtras.Mvc.Gumby
     }
 
     /// <summary>
-    /// Create a navigation bar
+    ///   Create a navigation bar
     /// </summary>
     /// <param name="html">Current Html helper object</param>
     /// <param name="items">Navigation bar items</param>
@@ -174,63 +172,73 @@ namespace WebExtras.Mvc.Gumby
     #region Alert extensions
 
     /// <summary>
-    /// Renders a Gumby alert
+    ///   Renders a Gumby alert
     /// </summary>
     /// <param name="html">HtmlHelper extension</param>
     /// <param name="type">Type of alert</param>
     /// <param name="message">Alert message</param>
-    /// <param name="htmlAttributes">[Optional] Any extras HTML attributes to be applied. 
-    /// Note. These attributes are only applied to the top level div</param>
+    /// <param name="htmlAttributes">
+    ///   [Optional] Any extras HTML attributes to be applied.
+    ///   Note. These attributes are only applied to the top level div
+    /// </param>
     /// <returns>A Bootstrap styled alert</returns>
-    public static Alert Alert(this HtmlHelper html, EMessage type, string message, object htmlAttributes = null)
+    public static IExtendedHtmlString Alert(this HtmlHelper html, EMessage type, string message,
+      object htmlAttributes = null)
     {
-      return Alert (html, type, message, string.Empty, (EGumbyIcon?)null, htmlAttributes);
+      return Alert(html, type, message, string.Empty, null, htmlAttributes);
     }
 
     /// <summary>
-    /// Renders a Gumby alert
+    ///   Renders a Gumby alert
     /// </summary>
     /// <param name="html">HtmlHelper extension</param>
     /// <param name="type">Type of alert</param>
     /// <param name="message">Alert message</param>
     /// <param name="title">Title/Heading of the alert</param>
-    /// <param name="htmlAttributes">[Optional] Any extras HTML attributes to be applied. 
-    /// Note. These attributes are only applied to the top level div</param>
+    /// <param name="htmlAttributes">
+    ///   [Optional] Any extras HTML attributes to be applied.
+    ///   Note. These attributes are only applied to the top level div
+    /// </param>
     /// <returns>A Bootstrap styled alert</returns>
-    public static Alert Alert(this HtmlHelper html, EMessage type, string message, string title, object htmlAttributes = null)
+    public static IExtendedHtmlString Alert(this HtmlHelper html, EMessage type, string message, string title,
+      object htmlAttributes = null)
     {
-      return Alert (html, type, message, title, (EGumbyIcon?)null, htmlAttributes);
+      return Alert(html, type, message, title, null, htmlAttributes);
     }
 
-   /// <summary>
-    /// Renders a Gumby alert
+    /// <summary>
+    ///   Renders a Gumby alert
     /// </summary>
     /// <param name="html">HtmlHelper extension</param>
     /// <param name="type">Type of alert</param>
     /// <param name="message">Alert message</param>
     /// <param name="title">Title/Heading of the alert</param>
     /// <param name="icon">Icon to be rendered with title/heading</param>
-    /// <param name="htmlAttributes">[Optional] Any extras HTML attributes to be applied. 
-    /// Note. These attributes are only applied to the top level div</param>
+    /// <param name="htmlAttributes">
+    ///   [Optional] Any extras HTML attributes to be applied.
+    ///   Note. These attributes are only applied to the top level div
+    /// </param>
     /// <returns>A Bootstrap styled alert</returns>
-    public static Alert Alert(this HtmlHelper html, EMessage type, string message, string title, EGumbyIcon? icon, object htmlAttributes = null)
+    public static IExtendedHtmlString Alert(this HtmlHelper html, EMessage type, string message, string title,
+      EGumbyIcon? icon, object htmlAttributes = null)
     {
-      return new Alert(type, message, title, icon, htmlAttributes);
+      return new ExtendedHtmlString(new Alert(type, message, title, icon, htmlAttributes));
     }
 
     #endregion Alert extensions
 
     #region Hyperlink extensions
-    
+
     /// <summary>
-    /// Create a icon only link
+    ///   Create a icon only link
     /// </summary>
     /// <param name="html">Current HTML helper object</param>
     /// <param name="icon">Icon to display</param>
     /// <param name="url">Link action</param>
     /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
     /// <returns>A icon only link</returns>
-    public static IExtendedHtmlStringLegacy Hyperlink(this HtmlHelper html, EGumbyIcon icon, string url, object htmlAttributes = null)
+    public static IExtendedHtmlStringLegacy Hyperlink(this HtmlHelper html, EGumbyIcon icon, string url,
+      object htmlAttributes = null)
     {
       return new GumbyIconLink(icon, url, htmlAttributes);
     }
@@ -238,4 +246,3 @@ namespace WebExtras.Mvc.Gumby
     #endregion Hyperlink extensions
   }
 }
-

@@ -110,14 +110,15 @@ namespace WebExtras.Mvc.Gumby
       if (sizeCnt == 0)
         classes.Add("medium");
 
-      Div div = new Div();
+      HtmlComponent div = new HtmlComponent(EHtmlTag.Div);
 
-      div["class"] = string.Join(" ", classes
+      div.Attributes["class"] = string.Join(" ", classes
         .Concat(sizeOrstyle.Select(s => s.ToString().ToLowerInvariant().Replace('_', '-'))));
 
-      div.Append(html);
+      div.AppendTags.Add(html.Component);
 
-      return div;
+      // TODO: remove re-conversion
+      return div.ToHtmlElement();
     }
   }
 }

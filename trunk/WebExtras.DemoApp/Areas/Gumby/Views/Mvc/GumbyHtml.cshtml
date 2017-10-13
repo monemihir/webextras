@@ -46,19 +46,19 @@
 </div>
 
 @{
-  Alert[] alerts = Html.GetUserAlerts();
+  IExtendedHtmlString[] alerts = Html.GetUserAlerts();
   if (alerts.Length > 0)
   {
-  
-  <div class="row">
-    <div class="twelve columns">
-      @foreach (Alert alert in alerts)
-      {
-        @alert
-      }
+
+    <div class="row">
+      <div class="twelve columns">
+        @foreach (IExtendedHtmlString alert in alerts)
+        {
+          @alert
+        }
+      </div>
     </div>
-  </div>
-  
+
   }
 }
 
@@ -132,7 +132,7 @@
   <p>Markup</p>
   <pre><code>
   @@{
-      <span class="comment">// You can use Hyperlink elements or a HtmlList element to render a navbar</span>
+  <span class="comment">// You can use Hyperlink elements or a HtmlList element to render a navbar</span>
       Hyperlink logo = new Hyperlink("Metro Logo", "/").AddCssClass("two columns logo");
       Hyperlink link = new Hyperlink("Link", "#");
       IExtendedHtmlString list = new HtmlList(EList.Unordered, new HtmlListItem[]
@@ -157,9 +157,9 @@
       @{
         Hyperlink logo1 = new Hyperlink("Metro Logo", "/", new { @class = "two columns logo" });
         Hyperlink logo2 = new Hyperlink("Pretty Logo", "/", new { @class = "two columns logo" });
-        
+
         Hyperlink link = new Hyperlink("Link", "#");
-        
+
         HtmlList list = new HtmlList(EList.Unordered, new HtmlListItem[]
         {
           HtmlListItem.From(link),
@@ -168,11 +168,12 @@
           HtmlListItem.From(link),
           HtmlListItem.From(link),
           HtmlListItem.From(link)
-        }).AddCssClass("ten columns");
+        });
+        list.CssClasses.Add("ten columns");
       }
 
       @Html.Navbar(logo1, list)
-      
+
       @Html.Navbar(logo2, link, link, link).AsPretty()
     </div>
   </div>
@@ -207,7 +208,6 @@
   <pre><code>
   <span class="comment">// Tooltip text retrieved from the <span class="highlight">System.ComponentModel.DescriptionAttribute</span> added to the view model property</span>
   @@Html.TooltipFor(propertySelector)
-
   <span class="comment">// Tooltip text retrieved from the function parameter passed in</span>
   @@Html.TooltipFor(propertySelector, tooltipText)
   </code></pre>
@@ -242,7 +242,6 @@
   <pre><code>
   <span class="comment">// In the controller</span>
   using WebExtras.MVC.Bootstrap.Core
-
   public class HomeController : ControllerBase
   {
     public ActionResult SomeAction()
@@ -250,26 +249,27 @@
       SomeModel model = new SomeModel();
       return <span class="highlight">this.</span>View("myview", model, "Your action was successful");
     }
-
     public ActionResult SomeOtherAction()
     {
       SomeModel model = new SomeModel();
       return <span class="highlight">this.</span>RedirectToAction(myActionResult, "Your action failed", EActionMessage.Error);
     }
   }
-
   <span class="comment">// In the view</span>
   @@Html.GetLastActionMessage()
   </code></pre>
   <p>Output</p>
   <div class="content">
-    <span class="comment">// Click the link below to see an action message demo.
+    <span class="comment">
+      // Click the link below to see an action message demo.
       <br />
     </span>
-    <span class="comment">// Action messages by default appear on the top right corner of the screen.
+    <span class="comment">
+      // Action messages by default appear on the top right corner of the screen.
       <br />
     </span>
-    <span class="comment">// It's position can be controlled via CSS though. See the accompanying webextras.css file.
+    <span class="comment">
+      // It's position can be controlled via CSS though. See the accompanying webextras.css file.
       <br />
     </span>
     <br />
@@ -310,10 +310,12 @@
   </code></pre>
   <p>Output</p>
   <div class="content">
-    <span class="comment">// Click the link below to see an user alerts demo.
+    <span class="comment">
+      // Click the link below to see an user alerts demo.
       <br />
     </span>
-    <span class="comment">// User alerts will be shown at the top of the page.
+    <span class="comment">
+      // User alerts will be shown at the top of the page.
       <br />
     </span>
     <br />

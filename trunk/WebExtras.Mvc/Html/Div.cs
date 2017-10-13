@@ -24,6 +24,7 @@ namespace WebExtras.Mvc.Html
   ///   Represents a HTML DIV element
   /// </summary>
   [Serializable]
+  [Obsolete("Use WebExtras.Html.HtmlComponent instead. This will be removed in next major release")]
   public class Div : HtmlElement
   {
     /// <summary>
