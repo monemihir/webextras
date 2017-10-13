@@ -44,12 +44,12 @@ namespace WebExtras.Mvc.Html
     /// <param name="overwrite">[Optional] Whether to overwrite an existing value. Defaults to false</param>
     /// <returns>Updated element</returns>
     public static T SetAttribute<T>(this T html, string name, string value, bool overwrite = false)
-      where T : IExtendedHtmlStringLegacy
+      where T : IExtendedHtmlString
     {
       if (overwrite)
-        html.Attributes[name] = value;
-      else if (!html.Attributes.ContainsKey(name))
-        html.Attributes[name] = value;
+        html.Component.Attributes[name] = value;
+      else if (!html.Component.Attributes.ContainsKey(name))
+        html.Component.Attributes[name] = value;
 
       return html;
     }

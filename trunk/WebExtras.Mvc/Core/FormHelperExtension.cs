@@ -127,7 +127,7 @@ namespace WebExtras.Mvc.Core
       object htmlAttributes = null)
     {
       CheckBox[] checkBoxs = checkboxes as CheckBox[] ?? checkboxes.ToArray();
-      Array.ForEach(checkBoxs, c => c["name"] = name);
+      Array.ForEach(checkBoxs, c => c.Attributes["name"] = name);
 
       List<string> rows = new List<string>();
       for (int i = 0; i < checkBoxs.Length; i += boxesPerLine)
@@ -186,7 +186,7 @@ namespace WebExtras.Mvc.Core
       object htmlAttributes = null)
     {
       RadioButton[] radioBtns = radioButtons as RadioButton[] ?? radioButtons.ToArray();
-      Array.ForEach(radioBtns, r => r["name"] = name);
+      Array.ForEach(radioBtns, r => r.Attributes["name"] = name);
 
       List<string> rows = new List<string>();
       for (int i = 0; i < radioBtns.Length; i += buttonsPerLine)

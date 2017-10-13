@@ -1,23 +1,22 @@
 ﻿// 
-// This file is part of - ExpenseLogger application
-// Copyright (C) 2016 Mihir Mone
+// This file is part of - WebExtras
+// Copyright 2017 Mihir Mone
 // 
-// This program is free software: you can redistribute it and/or modify
-// it under the terms of the GNU Affero General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
 // 
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU Affero General Public License for more details.
+//     http://www.apache.org/licenses/LICENSE-2.0
 // 
-// You should have received a copy of the GNU Affero General Public License
-// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 using System;
-using System.Web.Mvc;
 using WebExtras.Core;
+using WebExtras.Html;
 
 namespace WebExtras.Mvc.Html
 {
@@ -25,7 +24,7 @@ namespace WebExtras.Mvc.Html
   ///   Represents a HTML RADIO button element
   /// </summary>
   [Serializable]
-  public class RadioButton : HtmlElement
+  public class RadioButton : HtmlComponent, IExtendedHtmlString
   {
     /// <summary>
     ///   Radio button text
@@ -35,11 +34,7 @@ namespace WebExtras.Mvc.Html
     /// <summary>
     ///   Radio button value
     /// </summary>
-    public string Value
-    {
-      get { return this["value"]; }
-      set { this["value"] = value; }
-    }
+    public string Value { get { return Attributes["value"]; } set { Attributes["value"] = value; } }
 
     /// <summary>
     ///   Flag indicating whether the radio button is checked
@@ -85,27 +80,25 @@ namespace WebExtras.Mvc.Html
     public RadioButton(string text, string value, bool isChecked, bool isDisabled, object htmlAttributes = null)
       : base(EHtmlTag.Input, htmlAttributes)
     {
-      this["type"] = "radio";
+      Attributes["type"] = "radio";
       Value = value;
       Text = text;
       IsChecked = isChecked;
       IsDisabled = isDisabled;
     }
 
-    /// <summary>
-    ///   Converts current element to a MVC HTMl string with
-    ///   the given tag rendering mode
-    /// </summary>
-    /// <param name="renderMode">Tag render mode</param>
-    /// <returns>MVC HTML string representation of the current element</returns>
-    public override string ToHtmlString(TagRenderMode renderMode)
+    /// <inheritdoc />
+    public string ToHtmlString()
     {
       if (IsChecked)
-        this["checked"] = "";
+        Attributes["checked"] = "";
       if (IsDisabled)
-        this["disabled"] = "";
+        Attributes["disabled"] = "";
 
-      return base.ToHtmlString(TagRenderMode.SelfClosing) + " " + Text;
+      return ToHtml() + " " + Text;
     }
+
+    /// <inheritdoc />
+    public IHtmlComponent Component { get { return this; } }
   }
 }

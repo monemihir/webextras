@@ -158,7 +158,6 @@
     <Compile Include="Bootstrap\FormHelperExtension.cs" />
     <Compile Include="Bootstrap\HtmlHelperExtension.cs" />
     <Compile Include="Html\FormControl.cs" />
-    <Compile Include="Html\HtmlLabel.cs" />
     <Compile Include="Html\HtmlListItem.cs" />
     <Compile Include="Html\HtmlElement.cs" />
     <Compile Include="Html\CheckBox.cs" />
@@ -169,7 +168,6 @@
     <Compile Include="Html\IFormControl.cs" />
     <Compile Include="Html\IHtmlComponentExtension.cs" />
     <Compile Include="Html\Image.cs" />
-    <Compile Include="Html\Italic.cs" />
     <Compile Include="Html\HtmlList.cs" />
     <Compile Include="Bootstrap\BootstrapProgressBar.cs" />
     <Compile Include="Html\RadioButton.cs" />
