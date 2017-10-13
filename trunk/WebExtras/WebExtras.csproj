@@ -171,6 +171,7 @@
     <Compile Include="Html\IHtmlRenderer.cs" />
     <Compile Include="Html\SelectComponent.cs" />
     <Compile Include="Html\SelectListOption.cs" />
+    <Compile Include="Html\NullWrapperComponent.cs" />
     <Compile Include="JQDataTables\AASort.cs" />
     <Compile Include="JQDataTables\AOColumn.cs" />
     <Compile Include="JQDataTables\AOColumnAttribute.cs" />

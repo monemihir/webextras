@@ -91,8 +91,8 @@ namespace WebExtras.Mvc.Bootstrap
         else
         {
           HtmlListItem li = new HtmlListItem(string.Empty);
-          li.Append(item);
-          list.Append(li);
+          li.AppendTags.Add(item.Component);
+          list.AppendTags.Add(li);
         }
       }
 
@@ -106,7 +106,7 @@ namespace WebExtras.Mvc.Bootstrap
     /// <param name="list">Navigation bar items</param>
     private void CreateNavBar(HtmlList list)
     {
-      list["class"] = "nav navbar-nav";
+      list.Attributes["class"] = "nav navbar-nav";
 
       this["class"] = Type.GetStringValue();
 
@@ -118,7 +118,9 @@ namespace WebExtras.Mvc.Bootstrap
 
           if (Brand != null)
             innerNav.Prepend(Brand);
-          innerNav.Append(list);
+
+          // TODO: Remove redundant re-conversion
+          innerNav.AppendTags.Add(list.ToHtmlElement());
 
           Append(innerNav);
           break;
@@ -128,7 +130,9 @@ namespace WebExtras.Mvc.Bootstrap
             Brand.Attributes["class"] = "navbar-brand";
             Prepend(Brand);
           }
-          Append(list);
+
+          // TODO: Remove redundant re-conversion
+          Append(list.ToHtmlElement());
           break;
         default:
           throw new BootstrapVersionException();

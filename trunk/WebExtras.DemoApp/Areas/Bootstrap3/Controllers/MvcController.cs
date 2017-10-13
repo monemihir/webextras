@@ -1,20 +1,18 @@
-﻿/*
-* This file is part of - WebExtras Demo application
-* Copyright (C) 2014 Mihir Mone
-*
-* This program is free software: you can redistribute it and/or modify
-* it under the terms of the GNU Lesser General Public License as published by
-* the Free Software Foundation, either version 2 of the License, or
-* (at your option) any later version.
-*
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU Lesser General Public License for more details.
-*
-* You should have received a copy of the GNU Lesser General Public License
-* along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
+﻿// 
+// This file is part of - WebExtras
+// Copyright 2017 Mihir Mone
+// 
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// 
+//     http://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 using WebExtras.Bootstrap;
 using WebExtras.Core;
@@ -79,7 +77,8 @@ namespace WebExtras.DemoApp.Areas.Bootstrap3.Controllers
       {
         DateTextBox = DateTime.Now,
         DateTimeTextBox = DateTime.Now,
-        TimeTextBox = DateTime.Now
+        TimeTextBox = DateTime.Now,
+        DatePickerNoAddon = DateTime.Now
       };
 
       return View(model);
@@ -99,10 +98,12 @@ namespace WebExtras.DemoApp.Areas.Bootstrap3.Controllers
     public virtual ActionResult UserAlertsDemo()
     {
       Random rand = new Random(DateTime.UtcNow.Millisecond);
-      Alert[] defaultAlerts = {
+      Alert[] defaultAlerts =
+      {
         new Alert(EMessage.Success, "Hooray...I am a resounding success"),
         new Alert(EMessage.Warning, "Oops...something went wrong. But no worries, I can still continue", "Note:"),
-        new Alert(EMessage.Error, "No dice...something is seriously wrong. I quit", "Error:", EBootstrapIcon.Exclamation_Sign),
+        new Alert(EMessage.Error, "No dice...something is seriously wrong. I quit", "Error:",
+          EBootstrapIcon.Exclamation_Sign),
         new Alert(EMessage.Information, "Just so you know, I am gonna try it again", "Note:", EFontAwesomeIcon.Flag)
       };
 

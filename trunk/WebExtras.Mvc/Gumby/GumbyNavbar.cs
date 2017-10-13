@@ -75,8 +75,8 @@ namespace WebExtras.Mvc.Gumby
         {
           // check if this is the "brand"
           HtmlListItem li = new HtmlListItem(string.Empty);
-          li.Append(item);
-          list.Append(li);
+          li.AppendTags.Add(item.Component);
+          list.AppendTags.Add(li);
         }
       }
 
@@ -90,7 +90,7 @@ namespace WebExtras.Mvc.Gumby
     private void CreateNavBar(HtmlList list)
     {
       this["class"] = "row navbar metro";
-      Append(list);
+      Append(list.ToHtmlElement());
 
       // append the logo/brand is it was supplied
       if (Logo == null)

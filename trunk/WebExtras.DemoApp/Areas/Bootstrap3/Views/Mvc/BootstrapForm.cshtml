@@ -112,6 +112,16 @@
         @Html.DateTimeTextBoxFor(f => f.DateTimeTextBox)
       </div>
     </div>
+    <hr />
+    <div class="row keep-center">
+      <div class="col-md-4">Picker without addon field</div>
+    </div>
+    <div class="row keep-center">
+      <div class="col-md-4">@Html.DateTimeTextBoxFor(f => f.DatePickerNoAddon, new PickerOptions { format = "YYYY-MM-DD", useAddonField = false })</div>
+    </div>
+    <div class="row keep-center">
+      <div class="col-md-4">Clicking in the textbox invokes the picker</div>
+    </div>
   </div>
   <p>A slight gotcha with the time only picker is that the date will always be fixed to 31 December 1899. </p>
 </div>

@@ -1,19 +1,18 @@
 ﻿// 
-// This file is part of - ExpenseLogger application
-// Copyright (C) 2015 Mihir Mone
+// This file is part of - WebExtras
+// Copyright 2017 Mihir Mone
 // 
-// This program is free software: you can redistribute it and/or modify
-// it under the terms of the GNU Affero General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
 // 
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU Affero General Public License for more details.
+//     http://www.apache.org/licenses/LICENSE-2.0
 // 
-// You should have received a copy of the GNU Affero General Public License
-// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 using System;
 using System.Collections.Generic;
@@ -21,12 +20,10 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Web.Mvc;
 using Newtonsoft.Json;
-using WebExtras.Bootstrap;
 using WebExtras.Bootstrap.v3;
 using WebExtras.Core;
 using WebExtras.FontAwesome;
 using WebExtras.Html;
-using WebExtras.Mvc.Core;
 using WebExtras.Mvc.Html;
 
 namespace WebExtras.Mvc.Bootstrap.v3
@@ -86,11 +83,11 @@ namespace WebExtras.Mvc.Bootstrap.v3
       string fieldName = WebExtrasUtil.GetFieldNameFromExpression(exp);
 
       // create the text box
-      HtmlElement input = new HtmlElement(EHtmlTag.Input);
+      HtmlComponent input = new HtmlComponent(EHtmlTag.Input);
       var attribs = HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes)
         .ToDictionary(k => k.Key, v => v.Value.ToString());
 
-      input.Attributes.Add(attribs);      
+      input.Attributes.Add(attribs);
       input.Attributes["type"] = "text";
       input.Attributes["name"] = fieldName;
 
@@ -100,7 +97,6 @@ namespace WebExtras.Mvc.Bootstrap.v3
         input.Attributes["class"] = "form-control";
 
       // create icon
-      
       HtmlComponent icon = new HtmlComponent(EHtmlTag.I);
       if (WebExtrasSettings.FontAwesomeVersion == EFontAwesomeVersion.V4)
         icon.CssClasses.Add("fa fa-calendar");
@@ -108,30 +104,43 @@ namespace WebExtras.Mvc.Bootstrap.v3
         icon.CssClasses.Add("icon-calendar");
       else
         icon.CssClasses.Add("glyphicon glyphicon-calendar");
-      
+
       // create addon
-      Span addOn = new Span();
-      addOn.CSSClasses.Add("input-group-addon");
-
-      // TODO: remove unnecessary conversion
-      addOn.Append(icon.ToHtmlElement());
-
-      Div control = new Div();
-      control.Attributes["id"] = fieldId;
-      control.Attributes["class"] = "input-group date";
-      control.Append(input);
-      control.Append(addOn);
+      HtmlComponent addOn = new HtmlComponent(EHtmlTag.Span);
+      addOn.CssClasses.Add("input-group-addon");
+      addOn.AppendTags.Add(icon);
 
       // create JSON dictionary of the picker options
       string op = pickerOptions.ToJson(new JsonSerializerSettings {NullValueHandling = NullValueHandling.Ignore});
 
-      HtmlElement script = new HtmlElement(EHtmlTag.Script);
+      HtmlComponent script = new HtmlComponent(EHtmlTag.Script);
       script.Attributes["type"] = "text/javascript";
       script.InnerHtml = "$(function(){ $('#" + fieldId + "').datetimepicker(" + op + "); });";
 
-      control.Append(script);
+      // create the final component
+      IHtmlComponent control;
+      if (pickerOptions.useAddonField.Equals(false))
+      {
+        NullWrapperComponent wrapper = new NullWrapperComponent();
 
-      return control;
+        input.Attributes["id"] = fieldId;
+        wrapper.Components.Add(input);
+
+        wrapper.Components.Add(script);
+
+        control = wrapper;
+      }
+      else
+      {
+        control = new HtmlComponent(EHtmlTag.Div);
+        control.Attributes["id"] = fieldId;
+        control.Attributes["class"] = "input-group date";
+        control.AppendTags.Add(input);
+        control.AppendTags.Add(addOn);
+        control.AppendTags.Add(script);
+      }
+
+      return new HtmlElement(control);
     }
 
     #endregion DateTimeTextBoxFor extensions

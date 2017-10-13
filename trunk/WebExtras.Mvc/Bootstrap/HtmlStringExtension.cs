@@ -220,9 +220,10 @@ namespace WebExtras.Mvc.Bootstrap
     /// <returns>An unstyled list</returns>
     public static IExtendedHtmlString AsUnstyled(this HtmlList list)
     {
-      list.AddCssClass("unstyled list-unstyled");
+      list.CssClasses.Add("unstyled list-unstyled");
 
-      return list;
+      // TODO: Remove redundant re-conversion
+      return list.ToHtmlElement();
     }
 
     /// <summary>
@@ -232,9 +233,10 @@ namespace WebExtras.Mvc.Bootstrap
     /// <returns>An inline list</returns>
     public static IExtendedHtmlString AsInline(this HtmlList list)
     {
-      list.AddCssClass("inline list-inline");
+      list.CssClasses.Add("inline list-inline");
 
-      return list;
+      // TODO: Remove redundant re-conversion
+      return list.ToHtmlElement();
     }
 
     #endregion List extensions

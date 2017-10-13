@@ -41,5 +41,10 @@ namespace WebExtras.DemoApp.Models.Mvc
     /// Date to be displayed
     /// </summary>
     public DateTime TimeTextBox { get; set; }
+
+    /// <summary>
+    /// Date to be displayed
+    /// </summary>
+    public DateTime DatePickerNoAddon { get; set; }
   }
 }
