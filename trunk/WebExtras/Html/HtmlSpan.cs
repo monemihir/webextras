@@ -14,17 +14,30 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+using System;
+using WebExtras.Core;
+
 namespace WebExtras.Html
 {
   /// <summary>
-  ///   An HTML renderer
+  ///   Represents a HTML SPAN element
   /// </summary>
-  public interface IHtmlRenderer
+  [Serializable]
+  public class HtmlSpan : HtmlComponent
   {
     /// <summary>
-    ///   Converts current HTML component as a string
+    ///   Constructor
     /// </summary>
-    /// <returns>Current HTML component as a string</returns>
-    string ToHtml();
+    public HtmlSpan() : this(null)
+    {
+    }
+
+    /// <summary>
+    ///   Constructor to specify extra HTML attributes as an anonymous type
+    /// </summary>
+    /// <param name="htmlAttributes">Extra HTML attributes</param>
+    public HtmlSpan(object htmlAttributes) : base(EHtmlTag.Span, htmlAttributes)
+    {
+    }
   }
 }

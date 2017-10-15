@@ -1,19 +1,18 @@
 ﻿// 
-// This file is part of - ExpenseLogger application
-// Copyright (C) 2016 Mihir Mone
+// This file is part of - WebExtras
+// Copyright 2017 Mihir Mone
 // 
-// This program is free software: you can redistribute it and/or modify
-// it under the terms of the GNU Affero General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
 // 
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU Affero General Public License for more details.
+//     http://www.apache.org/licenses/LICENSE-2.0
 // 
-// You should have received a copy of the GNU Affero General Public License
-// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 using System;
 using System.Collections.Generic;
@@ -47,7 +46,8 @@ namespace WebExtras.Nancy.Bootstrap
       string name,
       object htmlAttributes = null)
     {
-      IHtmlComponent control = new DateTimePickerHtmlComponent(name, name, BootstrapSettings.DateTimePickerOptions, htmlAttributes);
+      IHtmlComponent control = new DateTimePickerHtmlComponent(name, name, BootstrapSettings.DateTimePickerOptions,
+        htmlAttributes);
 
       return new ExtendedHtmlString(control);
     }
@@ -151,7 +151,7 @@ namespace WebExtras.Nancy.Bootstrap
       if (options == null)
         throw new ArgumentNullException("options", "Select list options cannot be null");
 
-      var newOptions = options.Select(f => new SelectListOption {Text = f, Value = f});
+      var newOptions = options.Select(f => new HtmlSelectListOption {Text = f, Value = f});
 
       BootstrapFormComponent<TModel, TValue> bfc = new BootstrapFormComponent<TModel, TValue>(expression, newOptions,
         htmlAttributes);
@@ -170,13 +170,15 @@ namespace WebExtras.Nancy.Bootstrap
     /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
     /// <returns>The created form control</returns>
     public static IFormControl<TModel, TValue> FormGroupControlFor<TModel, TValue>(this HtmlHelpers<TModel> html,
-      Expression<Func<TModel, TValue>> expression, IEnumerable<SelectListOption> options, object htmlAttributes = null)
+      Expression<Func<TModel, TValue>> expression, IEnumerable<HtmlSelectListOption> options,
+      object htmlAttributes = null)
     {
       if (options == null)
         throw new ArgumentNullException("options", "Select list options cannot be null");
 
-      var newOptions = options.Select(f => new SelectListOption(f.Text, f.Value, f.Selected));
-      BootstrapFormComponent<TModel, TValue> bfc = new BootstrapFormComponent<TModel, TValue>(expression, newOptions, htmlAttributes);
+      var newOptions = options.Select(f => new HtmlSelectListOption(f.Text, f.Value, f.Selected));
+      BootstrapFormComponent<TModel, TValue> bfc = new BootstrapFormComponent<TModel, TValue>(expression, newOptions,
+        htmlAttributes);
 
       return new FormControl<TModel, TValue>(bfc);
     }
@@ -195,7 +197,8 @@ namespace WebExtras.Nancy.Bootstrap
     public static IFormControl<TModel, TValue> FormGroupControlFor<TModel, TValue>(this HtmlHelpers<TModel> html,
       Expression<Func<TModel, TValue>> expression, int rows, int columns, object htmlAttributes = null)
     {
-      BootstrapFormComponent<TModel, TValue> bfc = new BootstrapFormComponent<TModel, TValue>(expression, rows, columns, htmlAttributes);
+      BootstrapFormComponent<TModel, TValue> bfc = new BootstrapFormComponent<TModel, TValue>(expression, rows, columns,
+        htmlAttributes);
 
       return new FormControl<TModel, TValue>(bfc);
     }
@@ -217,7 +220,7 @@ namespace WebExtras.Nancy.Bootstrap
 
       string cssClasses = string.Join(" ", types.Select(t => t.GetStringValue()));
 
-      html.AddCssClass(cssClasses);
+      ExtendedHtmlStringExtension.AddCssClass(html, cssClasses);
 
       return html;
     }
@@ -233,9 +236,10 @@ namespace WebExtras.Nancy.Bootstrap
     /// <param name="icon">Bootstrap icon</param>
     /// <param name="htmlAttributes">[Optional] Extra html attributes</param>
     /// <returns>HTML element with icon added</returns>
-    public static T AddIcon<T>(this T html, EBootstrapIcon icon, object htmlAttributes = null) where T : IExtendedHtmlString
+    public static T AddIcon<T>(this T html, EBootstrapIcon icon, object htmlAttributes = null)
+      where T : IExtendedHtmlString
     {
-      return AddIcon(html, new[] { icon.GetStringValue() }, htmlAttributes);
+      return AddIcon(html, new[] {icon.GetStringValue()}, htmlAttributes);
     }
 
     /// <summary>

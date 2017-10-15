@@ -166,11 +166,15 @@
     <Compile Include="Html\EmptyComponent.cs" />
     <Compile Include="Html\HtmlComponent.cs" />
     <Compile Include="Html\HtmlComponentList.cs" />
+    <Compile Include="Html\HtmlDiv.cs" />
+    <Compile Include="Html\HtmlLabel.cs" />
+    <Compile Include="Html\HtmlSpan.cs" />
     <Compile Include="Html\IFormComponent.cs" />
     <Compile Include="Html\IHtmlComponent.cs" />
+    <Compile Include="Html\IHtmlComponentExtension.cs" />
     <Compile Include="Html\IHtmlRenderer.cs" />
-    <Compile Include="Html\SelectComponent.cs" />
-    <Compile Include="Html\SelectListOption.cs" />
+    <Compile Include="Html\HtmlSelect.cs" />
+    <Compile Include="Html\HtmlSelectListOption.cs" />
     <Compile Include="Html\NullWrapperComponent.cs" />
     <Compile Include="JQDataTables\AASort.cs" />
     <Compile Include="JQDataTables\AOColumn.cs" />

@@ -1,6 +1,6 @@
 ﻿// 
 // This file is part of - WebExtras
-// Copyright 2016 Mihir Mone
+// Copyright 2017 Mihir Mone
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -40,7 +40,7 @@ namespace WebExtras.Bootstrap
     /// <summary>
     ///   Select list items (populated if we are creating a SELECT control)
     /// </summary>
-    private readonly IEnumerable<SelectListOption> m_selectListItems;
+    private readonly IEnumerable<HtmlSelectListOption> m_selectListItems;
 
     /// <summary>
     ///   Text area row/column count (populated if we are creating a TEXTAREA control)
@@ -83,7 +83,7 @@ namespace WebExtras.Bootstrap
     /// <param name="expression">The property lamba expression</param>
     /// <param name="options">Select list options</param>
     /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
-    public BootstrapFormComponent(Expression<Func<TModel, TValue>> expression, IEnumerable<SelectListOption> options,
+    public BootstrapFormComponent(Expression<Func<TModel, TValue>> expression, IEnumerable<HtmlSelectListOption> options,
       object htmlAttributes = null)
     {
       if (options == null)
@@ -335,7 +335,7 @@ namespace WebExtras.Bootstrap
       HtmlComponent input;
 
       if (m_selectListItems != null)
-        input = new SelectComponent(m_selectListItems, attribs);
+        input = new HtmlSelect(m_selectListItems, attribs);
       else if (m_textAreaDimensions != null || attribs.ContainsValue("textarea"))
       {
         attribs.Remove("type");

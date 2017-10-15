@@ -1,6 +1,6 @@
 ﻿// 
 // This file is part of - WebExtras
-// Copyright 2016 Mihir Mone
+// Copyright 2017 Mihir Mone
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -67,7 +67,7 @@ namespace WebExtras.Mvc.Bootstrap
       if (options == null)
         throw new ArgumentNullException("options", "Select list options cannot be null");
 
-      var newOptions = options.Select(f => new SelectListOption {Text = f, Value = f}).ToList();
+      var newOptions = options.Select(f => new HtmlSelectListOption {Text = f, Value = f}).ToList();
 
       BootstrapFormComponent<TModel, TValue> bfc = new BootstrapFormComponent<TModel, TValue>(expression, newOptions,
         htmlAttributes);
@@ -96,7 +96,7 @@ namespace WebExtras.Mvc.Bootstrap
       if (options == null)
         throw new ArgumentNullException("options", "Select list options cannot be null");
 
-      var newOptions = options.Select(f => new SelectListOption(f.Text, f.Value, f.Selected)).ToList();
+      var newOptions = options.Select(f => new HtmlSelectListOption(f.Text, f.Value, f.Selected)).ToList();
       BootstrapFormComponent<TModel, TValue> bfc = new BootstrapFormComponent<TModel, TValue>(expression, newOptions,
         htmlAttributes);
 

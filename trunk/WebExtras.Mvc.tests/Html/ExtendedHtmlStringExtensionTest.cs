@@ -15,6 +15,7 @@
 // limitations under the License.
 
 using NUnit.Framework;
+using WebExtras.Html;
 using WebExtras.Mvc.Html;
 
 namespace WebExtras.Mvc.tests.Html

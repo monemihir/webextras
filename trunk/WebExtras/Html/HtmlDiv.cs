@@ -14,17 +14,33 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+using System;
+using WebExtras.Core;
+
 namespace WebExtras.Html
 {
   /// <summary>
-  ///   An HTML renderer
+  ///   Represents a HTML DIV element
   /// </summary>
-  public interface IHtmlRenderer
+  [Serializable]
+  public class HtmlDiv : HtmlComponent
   {
     /// <summary>
-    ///   Converts current HTML component as a string
+    ///   Constructor
     /// </summary>
-    /// <returns>Current HTML component as a string</returns>
-    string ToHtml();
+    public HtmlDiv()
+      : this(null)
+    {
+    }
+
+    /// <summary>
+    ///   Constructor to specify extra HTML attributes as an anonymous type
+    /// </summary>
+    /// <param name="innerHtml">Inner HTML</param>
+    /// <param name="htmlAttributes">Extra HTML attributes</param>
+    public HtmlDiv(string innerHtml, object htmlAttributes = null) : base(EHtmlTag.Div, htmlAttributes)
+    {
+      InnerHtml = innerHtml;
+    }
   }
 }

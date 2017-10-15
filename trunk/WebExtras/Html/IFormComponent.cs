@@ -1,6 +1,6 @@
 ﻿// 
 // This file is part of - WebExtras
-// Copyright 2016 Mihir Mone
+// Copyright 2017 Mihir Mone
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -27,7 +27,8 @@ namespace WebExtras.Html
   public interface IFormComponent<TModel, TValue> : IHtmlRenderer
   {
     /// <summary>
-    ///   Adds text based on any <see cref="DisplayNameAttribute" /> decorated on the property, otherwise just uses the property name
+    ///   Adds text based on any <see cref="DisplayNameAttribute" /> decorated on the property, otherwise just uses the
+    ///   property name
     /// </summary>
     /// <param name="append">[Optional] Whether to append or prepend the text</param>
     /// <returns>The updated form control</returns>
