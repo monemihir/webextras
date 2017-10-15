@@ -204,7 +204,20 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\WebExtras.Mvc\WebExtras.Mvc.csproj">
+      <Project>{18e73074-cb8e-4f80-b5e8-e81702ee2e68}</Project>
+      <Name>WebExtras.Mvc</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebExtras.Nancy\WebExtras.Nancy.csproj">
+      <Project>{8b23d1c6-6054-435d-abf7-666e8b640c6f}</Project>
+      <Name>WebExtras.Nancy</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebExtras\WebExtras.csproj">
+      <Project>{79881816-8cc9-458b-99f7-bbe3e35ab665}</Project>
+      <Name>WebExtras</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
