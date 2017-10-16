@@ -187,7 +187,7 @@ namespace WebExtras.Html
       List<string> parts = new List<string> {"<" + Tag.ToString().ToLowerInvariant()};
 
       string attribs = " " + string.Join(" ",
-        Attributes.OrderBy(f => f.Key).Select(f => string.Format("{0}=\"{1}\"", f.Key, f.Value)));
+                         Attributes.OrderBy(f => f.Key).Select(f => string.Format("{0}=\"{1}\"", f.Key, f.Value)));
 
       parts.Add(attribs);
 

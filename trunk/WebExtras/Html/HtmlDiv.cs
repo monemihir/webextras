@@ -28,8 +28,9 @@ namespace WebExtras.Html
     /// <summary>
     ///   Constructor
     /// </summary>
-    public HtmlDiv()
-      : this(null)
+    /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
+    public HtmlDiv(object htmlAttributes = null)
+      : this(null, htmlAttributes)
     {
     }
 
@@ -37,7 +38,7 @@ namespace WebExtras.Html
     ///   Constructor to specify extra HTML attributes as an anonymous type
     /// </summary>
     /// <param name="innerHtml">Inner HTML</param>
-    /// <param name="htmlAttributes">Extra HTML attributes</param>
+    /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
     public HtmlDiv(string innerHtml, object htmlAttributes = null) : base(EHtmlTag.Div, htmlAttributes)
     {
       InnerHtml = innerHtml;
