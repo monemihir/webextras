@@ -8,6 +8,7 @@
         <owners>Mihir Mone</owners>
         <licenseUrl>https://raw.githubusercontent.com/monemihir/webextras/master/LICENSE</licenseUrl>
         <projectUrl>https://github.com/monemihir/webextras</projectUrl>
+        <iconUrl>https://github.com/monemihir/webextras/blob/master/trunk/WebExtras.DemoApp/Content/img/webextras-logo.png</iconUrl>
         <requireLicenseAcceptance>true</requireLicenseAcceptance>
         <description>Provides a set of extensions for the popular NancyFx web framework</description>
         <summary>A set of extensions for the popular NancyFx web framework</summary>
