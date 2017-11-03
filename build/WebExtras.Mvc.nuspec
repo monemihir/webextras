@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
         <id>WebExtras.Mvc</id>
-        <version>3.0.0 Beta 1</version>
+        <version>3.0.0-pre20171103</version>
         <title>WebExtras.Mvc</title>
         <authors>Mihir Mone</authors>
         <owners>Mihir Mone</owners>
@@ -23,7 +23,7 @@
             <group targetFramework=".NETFramework4.5">
                 <dependency id="Microsoft.AspNet.Mvc" version="4.0.20505" />                
                 <dependency id="Newtonsoft.Json" version="8.0.3" />
-                <dependency id="WebExtras" version="3.0.0 Beta 1" />
+                <dependency id="WebExtras" version="3.0.0-pre20171103" />
             </group>
         </dependencies>
         <frameworkAssemblies>

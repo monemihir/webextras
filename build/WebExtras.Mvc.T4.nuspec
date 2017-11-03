@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
         <id>WebExtras.Mvc.T4</id>
-        <version>3.0.0 Beta 1</version>
+        <version>3.0.0-pre20171103</version>
         <title>WebExtras.Mvc.T4</title>
         <authors>Mihir Mone</authors>
         <owners>Mihir Mone</owners>
@@ -24,7 +24,7 @@
                 <dependency id="Microsoft.AspNet.Mvc" version="4.0.20505" />
                 <dependency id="T4MVCExtensions" version="3.17.5" />
                 <dependency id="Newtonsoft.Json" version="8.0.3" />
-                <dependency id="WebExtras.Mvc" version="3.0.0 Beta 1" />
+                <dependency id="WebExtras.Mvc" version="3.0.0-pre20171103" />
             </group>
         </dependencies>
         <frameworkAssemblies>
