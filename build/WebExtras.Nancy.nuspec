@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
         <id>WebExtras.Nancy</id>
-        <version>2.0.0.72</version>
+        <version>3.0.0 Beta 1</version>
         <title>WebExtras.Nancy</title>
         <authors>Mihir Mone</authors>
         <owners>Mihir Mone</owners>
@@ -11,13 +11,10 @@
         <requireLicenseAcceptance>true</requireLicenseAcceptance>
         <description>Provides a set of extensions for the popular NancyFx web framework</description>
         <summary>A set of extensions for the popular NancyFx web framework</summary>
-        <releaseNotes>The project is now licensed under Apache License v2.0
-        
-A major namespace shuffle has taken place for the entire library. While all the old functionality is still available, you will have to update your USING statements accordingly. Both WebExtras.Mvc and WebExtras.Nancy libraries now depend on WebExtras library and as such you must add this library to your project
-
-- Enh: Adding EButton.Back as a synonym of EButton.Cancel
-- Enh: Added Button, RequiredFieldLabelFor, Image, Hyperlink, AuthHyperlink, Imagelink, AuthImagelink extensions for Nancy
-- Enh: Added extension method to create SquishIt powered bundles for Nancy
+        <releaseNotes>- Enh: IHtmlComponent is now the main interfaces off which all HTML components hang off.
+- Enh: Major rewrite of all HTML components with new interfaces.
+- Brk: Many of the HTML components like DIV, LABEL, SPAN have been moved to WebExtras library and dropped from WebExtras.Mvc library.
+- Brk: IExtendedHtmlString renamed to IExtendedHtmlStringLegacy. This interface will eventually be dropped.
         </releaseNotes>
         <copyright>2016 Mihir Mone</copyright>
         <language>en-AU</language>
@@ -28,7 +25,7 @@ A major namespace shuffle has taken place for the entire library. While all the 
                 <dependency id="Nancy" version="1.4.3" />     
                 <dependency id="Nancy.Viewengines.Razor" version="1.4.3" />
                 <dependency id="SquishIt" version="0.9.8.2" />
-                <dependency id="WebExtras" version="2.0.0.72" />
+                <dependency id="WebExtras" version="3.0.0 Beta 1" />
             </group>
         </dependencies>
     </metadata>
