@@ -108,6 +108,11 @@ namespace WebExtras.Core
     /// <summary>
     ///   HTML SCRIPT tag
     /// </summary>
-    Script
+    Script,
+
+    /// <summary>
+    /// HTML P tag
+    /// </summary>
+    P
   }
 }

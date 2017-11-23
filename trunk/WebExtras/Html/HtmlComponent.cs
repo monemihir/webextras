@@ -18,12 +18,14 @@ using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
+using System.Xml;
+using System.Xml.Linq;
 using WebExtras.Core;
 
 namespace WebExtras.Html
 {
   /// <summary>
-  ///   An abstract HTML component
+  ///   A generic HTML component
   /// </summary>
   [Serializable]
   public class HtmlComponent : IHtmlComponent
@@ -56,21 +58,11 @@ namespace WebExtras.Html
     }
 
     /// <summary>
-    ///   Constructor
-    /// </summary>
-    /// <param name="tag">The HTML tag to initialise with</param>
-    public HtmlComponent(EHtmlTag tag)
-      : this(tag, null)
-    {
-      // nothing to do here
-    }
-
-    /// <summary>
     ///   Constructor to specify extra HTML attributes as an anonymous type
     /// </summary>
     /// <param name="tag">An HTML tag to initialise this element with</param>
     /// <param name="htmlAttributes">Extra HTML attributes</param>
-    public HtmlComponent(EHtmlTag tag, object htmlAttributes)
+    public HtmlComponent(EHtmlTag tag, object htmlAttributes = null)
     {
       Tag = tag;
       Attributes = new Dictionary<string, string>();
@@ -209,5 +201,69 @@ namespace WebExtras.Html
     }
 
     #endregion Implementation of IHtmlComponent
+
+    #region Parse
+
+    /// <summary>
+    ///   Parse the given HTML to a HtmlElement. Note the HTML given
+    ///   must be valid XML.
+    /// </summary>
+    /// <param name="html">HTML to be parsed</param>
+    /// <returns>The parsed HtmlElement</returns>
+    /// <exception cref="System.NotSupportedException">Thrown if an unsupported HTML tag is encountered</exception>
+    public static HtmlComponent Parse(string html)
+    {
+      return ParseElement(XElement.Parse(html));
+    }
+
+    /// <summary>
+    ///   Parse an XML valid node to a HtmlElement
+    /// </summary>
+    /// <param name="element">Element to be parsed</param>
+    /// <returns>The parsed HtmlElement</returns>
+    /// <exception cref="System.NotSupportedException">Thrown if an unsupported HTML tag is encountered</exception>
+    private static HtmlComponent ParseElement(XElement element)
+    {
+      // check if we support the given parent tag
+      if (!SupportedTags.Contains(element.Name.LocalName.ToLowerInvariant()))
+        throw new NotSupportedException(
+          string.Format("{0} tag is not supported. Only the following HTML tags are supported: {1}.",
+            element.Name.LocalName.ToUpperInvariant(),
+            string.Join(", ", SupportedTags.Select(f => f.ToUpperInvariant()))));
+
+      EHtmlTag tag = (EHtmlTag) Enum.Parse(typeof(EHtmlTag), element.Name.LocalName.ToTitleCase());
+
+      // get the attributes of the element as HTML attributes dictionary
+      IDictionary<string, string> htmlAttributes = element.Attributes()
+        .ToDictionary(f => f.Name.LocalName.ToLowerInvariant(), v => v.Value);
+
+      HtmlComponent html = new HtmlComponent(tag, htmlAttributes);
+
+      if (!element.HasElements)
+      {
+        // this means that the current element does not have any child elements 
+        // and that it is only a text element or an empty element
+        html.InnerHtml = element.Value;
+        return html;
+      }
+
+      if (!element.Nodes().Any())
+        return html;
+
+      foreach (XNode node in element.Nodes())
+      {
+        string text = node.ToString();
+
+        // TODO: check whether there are any INFINITE LOOP conditions which
+        // will make the function throw OutOfMemoryException
+        HtmlComponent parsed = node.NodeType == XmlNodeType.Text ? new NullWrapperComponent(text) : Parse(text);
+
+        html.PrependTags.Add(parsed);
+      }
+
+      return html;
+    }
+
+    #endregion Parse
   }
 }
