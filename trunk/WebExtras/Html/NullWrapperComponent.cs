@@ -41,9 +41,21 @@ namespace WebExtras.Html
       Components = components == null ? new List<HtmlComponent>() : components.ToList();
     }
 
+    /// <summary>
+    /// Constructor
+    /// </summary>
+    /// <param name="text">Text to be rendered</param>
+    public NullWrapperComponent(string text) : base(EHtmlTag.Empty)
+    {
+      InnerHtml = text ?? "";
+    }
+
     /// <inheritdoc />
     public override string ToHtml()
     {
+      if (Components.Count == 0)
+        return InnerHtml;
+
       IEnumerable<string> txtComponents = Components.Select(c => c.ToHtml());
 
       string html = string.Join("", txtComponents);

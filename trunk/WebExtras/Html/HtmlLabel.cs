@@ -28,8 +28,17 @@ namespace WebExtras.Html
     /// <summary>
     ///   Constructor to specify extra HTML attributes as an anonymous type
     /// </summary>
+    /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
+    public HtmlLabel(object htmlAttributes = null)
+      : this(null, htmlAttributes)
+    {
+    }
+
+    /// <summary>
+    ///   Constructor to specify extra HTML attributes as an anonymous type
+    /// </summary>
     /// <param name="innerHtml">Inner HTML</param>
-    /// <param name="htmlAttributes">Extra HTML attributes</param>
+    /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
     public HtmlLabel(string innerHtml, object htmlAttributes = null) : base(EHtmlTag.Label, htmlAttributes)
     {
       InnerHtml = innerHtml;

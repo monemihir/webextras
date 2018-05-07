@@ -28,15 +28,17 @@ namespace WebExtras.Html
     /// <summary>
     ///   Constructor
     /// </summary>
-    public HtmlSpan() : this(null)
+    /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
+    public HtmlSpan(object htmlAttributes = null) : this(null, htmlAttributes)
     {
     }
 
     /// <summary>
     ///   Constructor to specify extra HTML attributes as an anonymous type
     /// </summary>
-    /// <param name="htmlAttributes">Extra HTML attributes</param>
-    public HtmlSpan(object htmlAttributes) : base(EHtmlTag.Span, htmlAttributes)
+    /// <param name="innerHtml">Inner HTML</param>
+    /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
+    public HtmlSpan(string innerHtml, object htmlAttributes = null) : base(EHtmlTag.Span, htmlAttributes)
     {
     }
   }

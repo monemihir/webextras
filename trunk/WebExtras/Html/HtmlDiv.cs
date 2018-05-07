@@ -30,7 +30,7 @@ namespace WebExtras.Html
     /// </summary>
     /// <param name="htmlAttributes">[Optional] Extra HTML attributes</param>
     public HtmlDiv(object htmlAttributes = null)
-      : this(null)
+      : this(null, htmlAttributes)
     {
     }
 

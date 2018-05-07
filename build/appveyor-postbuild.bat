@@ -1,5 +1,6 @@
 REM ~ copy binaries
 xcopy /I /Y "trunk\WebExtras.DemoApp\bin\WebExtras*.*" "dist\lib\net45"
+xcopy /I /Y "trunk\WebExtras.Nancy\bin\WebExtras*.*" "dist\lib\net45"
 del "dist\lib\net45\*.pdb"
 
 REM ~ copy styles
