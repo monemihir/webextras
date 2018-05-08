@@ -45,7 +45,7 @@ namespace WebExtras.Html
     /// Constructor
     /// </summary>
     /// <param name="text">Text to be rendered</param>
-    public NullWrapperComponent(string text) : base(EHtmlTag.Empty)
+    public NullWrapperComponent(string text) : this()
     {
       InnerHtml = text ?? "";
     }
